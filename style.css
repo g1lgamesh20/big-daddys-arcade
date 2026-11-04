@@ -35,3 +35,21 @@ body{background:#050509 radial-gradient(ellipse at 50% 22%,#210820 0%,transparen
 .secondary{border-color:#55ff38;color:#aaff9b;box-shadow:0 0 13px #55ff3855,inset 0 0 12px #55ff3822}
 .rank-note{font-size:10px;text-align:center;color:#a9a1b2;line-height:1.5;margin:0 5px}
 @media(prefers-reduced-motion:reduce){.neon-frame,.tube,.primary{animation:none!important}}
+
+/* v1.4: Original assets/arcade-logo.png remains unmodified.
+   Smooth glow + animated SVG border tracers; no on/off flicker. */
+.neon-frame{animation:neonBreath 4.8s ease-in-out infinite;isolation:isolate}
+.neon-frame::before{animation:innerBreath 5.8s ease-in-out infinite}
+.neon-tracers{position:absolute;z-index:3;inset:-5px;width:calc(100% + 10px);height:calc(100% + 10px);overflow:visible;pointer-events:none;fill:none}
+.trace-path{vector-effect:non-scaling-stroke;stroke-width:4;stroke-linecap:round;stroke-dasharray:12 88;filter:drop-shadow(0 0 4px currentColor) drop-shadow(0 0 9px currentColor);animation:traceLap 6s linear infinite}
+.trace-green{stroke:#73ff4a;color:#73ff4a}
+.trace-pink{stroke:#ff48c8;color:#ff48c8;stroke-dasharray:8 92;animation-duration:8s;animation-direction:reverse;animation-delay:-3s}
+@keyframes traceLap{to{stroke-dashoffset:-100}}
+@keyframes neonBreath{0%,100%{box-shadow:0 0 9px #ff35bc,0 0 23px #ff35bc66,inset 0 0 12px #ff35bc33}50%{box-shadow:0 0 16px #ff35bc,0 0 43px #ff35bc99,inset 0 0 22px #ff35bc66}}
+@keyframes innerBreath{0%,100%{box-shadow:0 0 8px #4cff38,inset 0 0 7px #4cff3844}50%{box-shadow:0 0 19px #4cff38,inset 0 0 17px #4cff3888}}
+/* Tracer highlights on the button, using a rotating light sweep on its border. */
+.primary{isolation:isolate;animation:buttonPulsePink 3.6s ease-in-out infinite}
+.primary::before{content:"";position:absolute;inset:-3px;border-radius:inherit;padding:3px;background:conic-gradient(from 0deg,transparent 0 72%,#ff9ae9 77%,#ff35bc 81%,transparent 88%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;animation:buttonTrace 5s linear infinite}
+@keyframes buttonTrace{to{transform:rotate(360deg)}}
+.primary::after{z-index:-1}
+@media(prefers-reduced-motion:reduce){.neon-frame,.neon-frame::before,.trace-path,.primary,.primary::before{animation:none!important}.trace-path{stroke-dasharray:none;opacity:.4}.primary::before{display:none}}
