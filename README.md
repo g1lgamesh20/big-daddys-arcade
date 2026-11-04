@@ -1,13 +1,29 @@
-# BIG DADDY’S ARCADE — HALL OF LEGENDS v1.5
+# BIG DADDY’S ARCADE — HALL OF LEGENDS v1.6
 
-New: starfield above a glowing magenta horizon, perspective neon grid receding into the distance, subtle ambient motion. Existing buttons, iScored links, rankings panel, and neon tracers remain. **assets/arcade-logo.png is byte-for-byte unchanged from v1.4.**
+Retains the v1.5 logo image byte-for-byte, neon tracer, buttons, grid and starfield. Adds a rotating **TODAY’S LEGENDS** panel.
 
-## Deploy to GitHub Pages
+## Important: score connection status
 
-1. Extract the ZIP.
-2. Upload the contents (not the enclosing folder) to https://github.com/g1lgamesh20/big-daddys-arcade, replacing matching files at repository root.
-3. Commit; wait for Pages deployment.
-4. Open https://g1lgamesh20.github.io/big-daddys-arcade/ on your PC and iPhone.
-5. If the previous version remains, reload in Safari and fully close/reopen the Home Screen app.
+The scoreboard **does not yet fetch live iScored data**. The public iScored API endpoint, authorization and browser CORS permissions have not been verified. This release safely reads `legends.json` hosted on GitHub Pages. Empty entries show an honest placeholder, never fabricated scores.
 
-The PWA continues to link to the existing iScored page. Today's Legends remains a placeholder until live data integration is implemented.
+To populate the panel, use verified, approved scores exported from iScored and edit `legends.json` as follows:
+
+```json
+{
+  "updated_at": "2026-11-04T12:00:00Z",
+  "source": "iScored approved scores",
+  "entries": [
+    {"player": "AAA", "game": "EXAMPLE GAME", "score": "123,450"}
+  ]
+}
+```
+
+The above record is **illustrative only**; do not publish it as a real score. Names are displayed in uppercase without modifying iScored records. Scores rotate every 8 seconds; previous/next controls are included. To automate, use a trusted server-side process or GitHub Actions with a documented read-only iScored endpoint and secret stored in GitHub Actions secrets; never embed API tokens in client files.
+
+## Deploy
+
+Upload the contents of this folder to the repository root, replacing existing files and adding `legends.json`. Keep the `assets` folder structure. GitHub Pages URL: https://g1lgamesh20.github.io/big-daddys-arcade/
+
+## Existing iScored behavior
+
+All score submissions, photo proof, and admin approvals continue on iScored. The Overall Player Rankings button still opens the public leaderboard, not a separate rankings URL.
