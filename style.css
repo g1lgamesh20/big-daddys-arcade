@@ -14,3 +14,24 @@
 @keyframes sheen{0%,72%,100%{transform:translateX(-130%)}86%{transform:translateX(130%)}}
 @media(min-width:900px) and (min-height:650px){.shell{max-width:1100px;padding:26px 48px}.hero{margin:20px 0}.logo{max-width:780px;max-height:52vh}.actions{max-width:740px}.primary,.secondary{padding:22px 18px;font-size:20px}.notice p{font-size:14px}.subtitle{font-size:42px}}
 @media(prefers-reduced-motion:reduce){.shell::before,.status .dot,.logo,.subtitle,.primary,.primary::after{animation:none!important}}
+
+/* v1.3: additive neon frame; the original logo PNG is not edited */
+body{background:#050509 radial-gradient(ellipse at 50% 22%,#210820 0%,transparent 65%)}
+.shell{isolation:isolate}
+.shell::after{content:"";position:absolute;z-index:0;inset:0;pointer-events:none;opacity:.24;background:linear-gradient(transparent 69%,#fa29bc2c 70%,transparent 72%),repeating-linear-gradient(90deg,transparent 0 50px,#54ff3930 51px 52px);background-size:100% 100%,100% 100%;transform:perspective(330px) rotateX(60deg) scale(1.5);transform-origin:bottom;mask-image:linear-gradient(to bottom,transparent 48%,black 100%)}
+.neon-frame{position:relative;border:3px solid #ff35bc;border-radius:20px;padding:clamp(8px,2vw,20px);box-shadow:0 0 8px #ff35bc,0 0 25px #ff35bc55,inset 0 0 15px #ff35bc33;background:#08040b77;animation:frameFlicker 12s linear infinite}
+.neon-frame::before{content:"";position:absolute;inset:8px;border:2px solid #4cff38;border-radius:13px;box-shadow:0 0 10px #4cff38, inset 0 0 8px #4cff3855;pointer-events:none}
+.neon-frame .logo{position:relative;z-index:1;animation:none;filter:none;width:100%}
+.tube{position:absolute;z-index:2;height:4px;width:23%;border-radius:6px;background:#5bff3e;box-shadow:0 0 8px #5bff3e,0 0 18px #5bff3e;pointer-events:none}
+.tube-top{top:-3px;left:15%;animation:tubeFlicker 10s linear infinite}
+.tube-bottom{bottom:-3px;right:12%;background:#ff32ba;box-shadow:0 0 8px #ff32ba,0 0 18px #ff32ba;animation:tubeFlicker 13s linear infinite 2s}
+@keyframes frameFlicker{0%,2%,2.6%,3.5%,54%,54.4%,55%,100%{opacity:1}2.2%,3%,54.2%{opacity:.55}}
+@keyframes tubeFlicker{0%,6%,6.4%,7%,69%,69.4%,70%,100%{opacity:1}6.2%,69.2%{opacity:.18}}
+.legends{border:2px solid #5aff3d;border-radius:12px;background:#07110bdf;box-shadow:0 0 15px #4cff3844,inset 0 0 22px #4cff3815;padding:16px;text-align:center}
+.legends h2{color:#ffe86b;font-size:clamp(15px,3vw,22px);letter-spacing:2px;margin:0 0 10px;text-shadow:0 0 12px #ffca3a}
+.legends p{margin:5px 0;color:#74ff5a;font-size:13px;font-weight:800;letter-spacing:1px}.legends .legends-note{color:#b9aabd;font-size:11px;line-height:1.5;font-weight:500;letter-spacing:0}
+.primary{background:linear-gradient(130deg,#16071b,#320e2b);color:#fff;border:3px solid #ff39c4;text-shadow:0 0 10px #ff39c4;box-shadow:0 0 14px #ff39c488,inset 0 0 14px #ff39c444;animation:buttonPulsePink 3.6s ease-in-out infinite}
+@keyframes buttonPulsePink{50%{box-shadow:0 0 30px #ff39c4bb,inset 0 0 20px #ff39c466}}
+.secondary{border-color:#55ff38;color:#aaff9b;box-shadow:0 0 13px #55ff3855,inset 0 0 12px #55ff3822}
+.rank-note{font-size:10px;text-align:center;color:#a9a1b2;line-height:1.5;margin:0 5px}
+@media(prefers-reduced-motion:reduce){.neon-frame,.tube,.primary{animation:none!important}}
