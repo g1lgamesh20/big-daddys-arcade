@@ -64,3 +64,6 @@ html{background:#03030b}body{background:#03030b;min-height:100vh}.shell{max-widt
 .legend-score{color:#ffde54;font-size:clamp(1.2rem,5vw,1.8rem);font-weight:900;text-shadow:0 0 12px #ffcf55aa;margin:0}
 .legend-controls{display:flex;align-items:center;justify-content:center;gap:14px;color:#fff;margin:4px auto 8px}
 .legend-controls[hidden]{display:none}.legend-controls button{background:#170c23;border:1px solid #ff38bd;color:#fff;border-radius:7px;min-width:42px;min-height:38px;cursor:pointer}
+
+/* v1.7: live sanitized scores and estimated PAPA leaders */
+.legend-kind{color:#ffe86b!important;font-size:10px!important;letter-spacing:2px!important}.papa-section{border:1px solid #ff35bc;border-radius:12px;background:#110819dd;padding:14px;text-align:center;box-shadow:0 0 15px #ff35bc55}.papa-section[hidden]{display:none}.papa-section h2{margin:0 0 12px;color:#ffe86b;font-size:16px;letter-spacing:2px}.papa-row{font-weight:800;color:#86ff75;font-size:clamp(12px,2.6vw,15px);padding:5px 0}.papa-section .rank-note{margin-top:10px}

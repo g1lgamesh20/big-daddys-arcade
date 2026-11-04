@@ -1,29 +1,18 @@
-# BIG DADDY’S ARCADE — HALL OF LEGENDS v1.6
+# BIG DADDY’S ARCADE — Hall of Legends v1.7
 
-Retains the v1.5 logo image byte-for-byte, neon tracer, buttons, grid and starfield. Adds a rotating **TODAY’S LEGENDS** panel.
+This version preserves the original logo (`assets/arcade-logo.png`) and the v1.6 space/neon design.
 
-## Important: score connection status
+## Enable automatic scores
 
-The scoreboard **does not yet fetch live iScored data**. The public iScored API endpoint, authorization and browser CORS permissions have not been verified. This release safely reads `legends.json` hosted on GitHub Pages. Empty entries show an honest placeholder, never fabricated scores.
+1. In iScored enable **Allow Read Access through the iScored API** only. Leave write access and public edit/delete OFF.
+2. Upload **all contents** of this ZIP to the root of your existing GitHub repository, including the hidden `.github` folder and `tools` folder. GitHub's web upload supports dragging the unzipped folder contents; verify `.github/workflows/update-legends.yml` exists afterward.
+3. In GitHub open **Actions → Refresh Hall of Legends scores → Run workflow**. Wait for success. It will write `legends.json` with sanitized scores. Scheduled runs occur approximately every two hours (GitHub may delay scheduled jobs).
+4. Refresh the GitHub Pages app. The PWA checks the published feed every 10 minutes while open; the published data updates when GitHub Actions runs and Pages deploys.
 
-To populate the panel, use verified, approved scores exported from iScored and edit `legends.json` as follows:
+The app does NOT expose email fields, API credentials, raw records, or IDs in the published JSON. Only public player names, game titles, scores, dates, and estimated PAPA standings are published. The API itself may expose additional fields to anyone with read access; consult iScored privacy settings.
 
-```json
-{
-  "updated_at": "2026-11-04T12:00:00Z",
-  "source": "iScored approved scores",
-  "entries": [
-    {"player": "AAA", "game": "EXAMPLE GAME", "score": "123,450"}
-  ]
-}
-```
+## PAPA scoring
 
-The above record is **illustrative only**; do not publish it as a real score. Names are displayed in uppercase without modifying iScored records. Scores rotate every 8 seconds; previous/next controls are included. To automate, use a trusted server-side process or GitHub Actions with a documented read-only iScored endpoint and secret stored in GitHub Actions secrets; never embed API tokens in client files.
+Per game, each player's highest score is ranked, then 1st=100, 2nd=90, 3rd=85, each later rank one point less (floored at zero); sum the player's best 1000 game placements. Competition ranking is used for ties (e.g. 1,1,3). **This is a local estimate, not a guarantee of an exact match with iScored's own overall rankings**: their tie handling, scoring options, and hidden/invalid score policies may differ. Use the iScored site as official source.
 
-## Deploy
-
-Upload the contents of this folder to the repository root, replacing existing files and adding `legends.json`. Keep the `assets` folder structure. GitHub Pages URL: https://g1lgamesh20.github.io/big-daddys-arcade/
-
-## Existing iScored behavior
-
-All score submissions, photo proof, and admin approvals continue on iScored. The Overall Player Rankings button still opens the public leaderboard, not a separate rankings URL.
+The UI shows up to 120 alphabetical game champions and 12 latest scores. Game champions are based on the best recorded score for each player/game. Scores are pulled by GitHub Actions (server-side) because direct browser requests may fail due to CORS. The initial `legends.json` is intentionally empty until the first successful sync. No demo scores are fabricated.
