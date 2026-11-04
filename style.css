@@ -85,3 +85,16 @@ html{background:#03030b}body{background:#03030b;min-height:100vh}.shell{max-widt
 .leaders-explain{padding-top:17px;line-height:1.55;font-size:13px;color:#eee}.leaders-explain strong{color:#ffe86b}.leaders-disclaimer{color:#bcb3c5;font-size:11px}
 body.leaders-dialog-open{overflow:hidden}
 @media(max-width:440px){.leaders-dialog-inner{padding:13px}.leaders-full-row{gap:7px}}
+
+/* v1.9: compact legend spotlight, distinct game title, clear leaderboard CTA */
+.legends{padding:10px 12px}
+.legends h2{margin-bottom:4px}
+.legend-spotlight{min-height:0;gap:2px;padding:5px 6px}
+.legends .legend-spotlight p{margin:1px 0;line-height:1.2}
+.legends .legend-spotlight .legend-detail{color:#ff58cf!important;font-weight:900;text-shadow:0 0 9px #ff24b666;font-size:clamp(12px,2.8vw,15px);letter-spacing:.04em}
+.legend-controls{margin:2px auto 4px}
+.legends .legends-note{margin:3px 0 0;line-height:1.3}
+.leaders-open{display:flex;flex-direction:column;gap:5px;align-items:center;padding:3px 2px 9px}
+.leaders-title{display:block;line-height:1.35}
+.leaders-hint{display:block;width:100%;line-height:1.3}
+.enter-subtext{text-align:center;color:#ffbde9;font-size:clamp(11px,2.5vw,13px);font-weight:850;letter-spacing:1.5px;text-shadow:0 0 8px #ff35bc99;margin:-7px 0 2px}
