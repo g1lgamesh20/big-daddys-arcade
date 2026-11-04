@@ -1,5 +1,1267 @@
 {
-  "updated_at": null,
-  "source": "iScored approved scores (not yet connected)",
-  "entries": []
+  "updated_at": "2026-11-04T23:34:09.237829+00:00",
+  "source": "iScored public read API",
+  "scoring_note": "PAPA-style estimate: top 1000 games per player; one best score per player per game; competition ties. iScored may handle ties differently.",
+  "standings": [
+    {
+      "player": "DON",
+      "points": 20905,
+      "games": 212
+    },
+    {
+      "player": "SPC",
+      "points": 4002,
+      "games": 42
+    },
+    {
+      "player": "KAK",
+      "points": 2201,
+      "games": 24
+    },
+    {
+      "player": "RPS",
+      "points": 1955,
+      "games": 22
+    },
+    {
+      "player": "VJG",
+      "points": 1282,
+      "games": 14
+    },
+    {
+      "player": "RDG",
+      "points": 988,
+      "games": 11
+    },
+    {
+      "player": "SMS",
+      "points": 950,
+      "games": 10
+    },
+    {
+      "player": "DAY",
+      "points": 785,
+      "games": 9
+    },
+    {
+      "player": "BOB",
+      "points": 684,
+      "games": 8
+    },
+    {
+      "player": "MAB",
+      "points": 645,
+      "games": 7
+    },
+    {
+      "player": "POD",
+      "points": 545,
+      "games": 6
+    },
+    {
+      "player": "BGR",
+      "points": 535,
+      "games": 6
+    },
+    {
+      "player": "FO",
+      "points": 354,
+      "games": 4
+    },
+    {
+      "player": "GPS",
+      "points": 100,
+      "games": 1
+    },
+    {
+      "player": "F O",
+      "points": 90,
+      "games": 1
+    },
+    {
+      "player": "LEY",
+      "points": 85,
+      "games": 1
+    }
+  ],
+  "entries": [
+    {
+      "kind": "champion",
+      "player": "SPC",
+      "game": "1942",
+      "game_id": "50010",
+      "score": 155340,
+      "date": "2024-01-19 17:56:09",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "SPC",
+      "game": "1943",
+      "game_id": "50011",
+      "score": 70800,
+      "date": "2024-01-19 18:09:31",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "A.P.B.",
+      "game_id": "50215",
+      "score": 1357,
+      "date": "2025-04-04 23:16:12",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "After Burner Climax",
+      "game_id": "73126",
+      "score": 61200,
+      "date": "2025-03-05 10:34:29",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "afterburner",
+      "game_id": "70343",
+      "score": 18000,
+      "date": "2025-02-20 00:20:18",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "SPC",
+      "game": "afterburner 2",
+      "game_id": "50012",
+      "score": 754200,
+      "date": "2024-01-25 22:38:57",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Alien Syndrome",
+      "game_id": "50013",
+      "score": 81000,
+      "date": "2024-01-19 21:28:16",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Aliens",
+      "game_id": "86264",
+      "score": 16745250,
+      "date": "2026-08-27 23:38:06",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Aliens vs Predator",
+      "game_id": "86265",
+      "score": 5683181,
+      "date": "2025-11-24 19:42:59",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Altered Beast",
+      "game_id": "62267",
+      "score": 70800,
+      "date": "2025-02-20 00:19:55",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Amidar",
+      "game_id": "50014",
+      "score": 9820,
+      "date": "2024-01-19 21:27:50",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Angler Dangler",
+      "game_id": "50217",
+      "score": 13300,
+      "date": "2025-02-13 15:43:35",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Anteater",
+      "game_id": "71989",
+      "score": 4010,
+      "date": "2025-02-13 12:58:40",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Arabian",
+      "game_id": "50216",
+      "score": 26000,
+      "date": "2024-01-21 14:13:37",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "KAK",
+      "game": "Arkanoid",
+      "game_id": "50015",
+      "score": 28650,
+      "date": "2024-01-19 21:29:23",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Arkanoid Revenge of DoH",
+      "game_id": "50016",
+      "score": 19550,
+      "date": "2024-01-23 20:51:29",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Asteroids",
+      "game_id": "50017",
+      "score": 7940,
+      "date": "2025-02-17 00:43:02",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "SPC",
+      "game": "Asteroids Deluxe",
+      "game_id": "50018",
+      "score": 13010,
+      "date": "2024-01-19 21:31:06",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "ATTACK from MARS",
+      "game_id": "86901",
+      "score": 1335983720,
+      "date": "2026-08-28 00:09:52",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Baby Pacman",
+      "game_id": "72950",
+      "score": 42070,
+      "date": "2025-10-28 16:26:14",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Back to the Future",
+      "game_id": "86258",
+      "score": 4233949,
+      "date": "2025-11-23 16:46:34",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Barnstorming (Atari2600)",
+      "game_id": "84683",
+      "score": 40440,
+      "date": "2025-10-31 21:39:08",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Battletoads Pinball",
+      "game_id": "86385",
+      "score": 15706010,
+      "date": "2025-11-24 17:53:42",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "SPC",
+      "game": "Battlezone",
+      "game_id": "50019",
+      "score": 30000,
+      "date": "2024-01-19 21:32:06",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Berzerk",
+      "game_id": "50020",
+      "score": 3330,
+      "date": "2024-01-19 21:32:29",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Black Hole",
+      "game_id": "71993",
+      "score": 37950,
+      "date": "2025-11-30 17:05:04",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Black Knight 2000",
+      "game_id": "58359",
+      "score": 1281090,
+      "date": "2025-03-06 18:28:47",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Black Tiger",
+      "game_id": "50219",
+      "score": 33350,
+      "date": "2024-01-21 14:18:41",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Black widow v2",
+      "game_id": "50021",
+      "score": 32900,
+      "date": "2024-01-19 21:32:51",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Blue Shark",
+      "game_id": "50220",
+      "score": 10100,
+      "date": "2024-03-18 15:09:55",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Bomb jack",
+      "game_id": "50221",
+      "score": 27500,
+      "date": "2024-01-21 14:35:48",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Bubble Bobble",
+      "game_id": "50022",
+      "score": 467990,
+      "date": "2025-02-08 18:38:26",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Bubble Bobble II",
+      "game_id": "72478",
+      "score": 216760,
+      "date": "2025-02-20 22:06:17",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Buck Rogers",
+      "game_id": "50023",
+      "score": 8518,
+      "date": "2024-02-23 13:37:15",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "SPC",
+      "game": "BUMP N JUMP",
+      "game_id": "50157",
+      "score": 27556,
+      "date": "2024-01-20 22:22:44",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "BurgerTime",
+      "game_id": "50024",
+      "score": 11550,
+      "date": "2024-01-19 21:34:23",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Cameltry",
+      "game_id": "72179",
+      "score": 63610,
+      "date": "2025-02-13 12:26:16",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Captain America and The Avengers - Arcade",
+      "game_id": "101600",
+      "score": 10800,
+      "date": "2026-06-23 21:14:10",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Captain America Pinball",
+      "game_id": "86746",
+      "score": 7436064,
+      "date": "2025-11-29 11:31:20",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Carnival",
+      "game_id": "51765",
+      "score": 6740,
+      "date": "2024-02-20 16:08:25",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Castlevania",
+      "game_id": "50391",
+      "score": 29100,
+      "date": "2024-01-25 13:17:36",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "SPC",
+      "game": "CENTIPEDE",
+      "game_id": "50025",
+      "score": 27284,
+      "date": "2025-03-27 21:21:59",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Cheyenne",
+      "game_id": "74010",
+      "score": 1700,
+      "date": "2025-03-27 23:50:03",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Chiller",
+      "game_id": "74011",
+      "score": 6200,
+      "date": "2025-03-28 00:04:42",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "CIRCUS CHARLIE",
+      "game_id": "70346",
+      "score": 33200,
+      "date": "2025-01-14 08:56:15",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "SPC",
+      "game": "Commando",
+      "game_id": "50026",
+      "score": 36400,
+      "date": "2025-04-17 22:06:06",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Congo Bongo",
+      "game_id": "50027",
+      "score": 7980,
+      "date": "2024-01-19 21:38:36",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "KAK",
+      "game": "Contra (Arcade)",
+      "game_id": "84699",
+      "score": 47000,
+      "date": "2025-10-31 19:15:42",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Cosmic Ark",
+      "game_id": "50344",
+      "score": 9500,
+      "date": "2024-01-22 13:37:39",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Cosmic Ark",
+      "game_id": "84714",
+      "score": 9500,
+      "date": "2025-10-31 21:43:24",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Crazy Climber",
+      "game_id": "50160",
+      "score": 24900,
+      "date": "2024-01-22 19:58:11",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Crazy Climber 2",
+      "game_id": "50226",
+      "score": 8700,
+      "date": "2025-02-20 22:08:15",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Crazy Taxi",
+      "game_id": "58286",
+      "score": 234631,
+      "date": "2024-06-28 22:22:35",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Creature from the Black Lagoon",
+      "game_id": "58361",
+      "score": 35921970,
+      "date": "2025-03-08 18:08:57",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Crossbow",
+      "game_id": "73168",
+      "score": 185500,
+      "date": "2026-09-27 13:43:29",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Crystal Castles",
+      "game_id": "50029",
+      "score": 46825,
+      "date": "2025-04-04 20:30:46",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "SPC",
+      "game": "Defender",
+      "game_id": "50039",
+      "score": 8600,
+      "date": "2024-01-23 21:00:58",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Dig Dug",
+      "game_id": "49991",
+      "score": 42840,
+      "date": "2024-01-19 15:36:13",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Dig Dug II",
+      "game_id": "50007",
+      "score": 33800,
+      "date": "2024-01-19 15:22:42",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "SPC",
+      "game": "Discs of Tron",
+      "game_id": "101599",
+      "score": 17300,
+      "date": "2026-06-23 21:14:12",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Do Run Run!",
+      "game_id": "50031",
+      "score": 46450,
+      "date": "2024-01-19 21:40:32",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Doctor Strange",
+      "game_id": "106684",
+      "score": 1533000,
+      "date": "2026-09-01 22:07:17",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "VJG",
+      "game": "Donkey Kong",
+      "game_id": "50032",
+      "score": 55000,
+      "date": "2025-11-10 21:18:51",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "DONKEY KONG (Japan)",
+      "game_id": "52039",
+      "score": 26800,
+      "date": "2024-02-25 17:15:28",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "DONKEY KONG 3",
+      "game_id": "50034",
+      "score": 58100,
+      "date": "2024-01-19 21:43:18",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "DONKEY KONG JR.",
+      "game_id": "50033",
+      "score": 18300,
+      "date": "2024-01-19 21:42:36",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Doom Fx3",
+      "game_id": "86263",
+      "score": 5379202,
+      "date": "2025-11-24 19:43:02",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DAY",
+      "game": "Dr. Mario",
+      "game_id": "50350",
+      "score": 3600,
+      "date": "2025-02-27 15:35:42",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "SPC",
+      "game": "Dragster",
+      "game_id": "50333",
+      "score": 6012,
+      "date": "2024-01-22 13:10:32",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "SMS",
+      "game": "Duck Hunt",
+      "game_id": "73127",
+      "score": 28600,
+      "date": "2025-03-06 17:18:37",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "RPS",
+      "game": "Elevator Action",
+      "game_id": "50035",
+      "score": 1650,
+      "date": "2024-01-20 23:04:01",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Elevator Action Returns",
+      "game_id": "50036",
+      "score": 54900,
+      "date": "2025-02-27 15:31:30",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Eyes",
+      "game_id": "70348",
+      "score": 38040,
+      "date": "2025-01-14 08:58:12",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Family Guy FX3",
+      "game_id": "106101",
+      "score": 11599217,
+      "date": "2026-08-27 15:05:06",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Fantastic Four",
+      "game_id": "86756",
+      "score": 4831834,
+      "date": "2025-11-29 11:31:18",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "BGR",
+      "game": "Fishing Derby",
+      "game_id": "73125",
+      "score": 99,
+      "date": "2025-03-05 08:51:27",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Fishing Derby",
+      "game_id": "73125",
+      "score": 99,
+      "date": "2025-03-05 08:50:33",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "FO",
+      "game": "Fishing Derby",
+      "game_id": "73125",
+      "score": 99,
+      "date": "2025-03-05 08:51:02",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "MAB",
+      "game": "Fishing Derby",
+      "game_id": "73125",
+      "score": 99,
+      "date": "2025-03-05 08:51:15",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "SPC",
+      "game": "Fishing Derby",
+      "game_id": "73125",
+      "score": 99,
+      "date": "2025-03-05 08:50:44",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Fix it Felix Jr.",
+      "game_id": "70364",
+      "score": 1110750,
+      "date": "2025-01-14 09:00:47",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Flicky",
+      "game_id": "50037",
+      "score": 27550,
+      "date": "2024-01-19 21:44:20",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Food Fight",
+      "game_id": "101601",
+      "score": 9700,
+      "date": "2026-06-23 21:22:09",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "freeway",
+      "game_id": "50343",
+      "score": 30,
+      "date": "2024-01-22 13:37:56",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Frenzy",
+      "game_id": "50038",
+      "score": 5323,
+      "date": "2024-01-19 21:45:25",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "VJG",
+      "game": "Frogger",
+      "game_id": "49992",
+      "score": 12200,
+      "date": "2024-03-10 13:13:11",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "SPC",
+      "game": "Frogs and Flies",
+      "game_id": "50932",
+      "score": 72,
+      "date": "2025-03-05 08:38:40",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "SPC",
+      "game": "Galaga",
+      "game_id": "50041",
+      "score": 68230,
+      "date": "2024-01-19 21:46:17",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "SPC",
+      "game": "Galaxian",
+      "game_id": "101602",
+      "score": 5620,
+      "date": "2026-06-23 21:22:12",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Gauntlet",
+      "game_id": "72620",
+      "score": 2260,
+      "date": "2025-02-21 22:50:26",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Ghost Rider",
+      "game_id": "106140",
+      "score": 7748100,
+      "date": "2026-08-28 00:12:09",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Ghostbusters",
+      "game_id": "72623",
+      "score": 20100,
+      "date": "2025-02-21 22:43:14",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Ghosts 'n Goblins",
+      "game_id": "50042",
+      "score": 51700,
+      "date": "2024-01-19 21:47:59",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Ghouls'n Ghosts",
+      "game_id": "50043",
+      "score": 144000,
+      "date": "2024-01-25 12:57:59",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Goonies",
+      "game_id": "50434",
+      "score": 23810,
+      "date": "2025-02-08 21:22:39",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "RDG",
+      "game": "Gorf",
+      "game_id": "50044",
+      "score": 10440,
+      "date": "2024-01-19 21:49:29",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Gorgar",
+      "game_id": "58358",
+      "score": 16770,
+      "date": "2025-03-06 18:16:29",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "SPC",
+      "game": "Gradius",
+      "game_id": "50224",
+      "score": 32500,
+      "date": "2024-01-21 16:17:31",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Guardians of the Galaxy",
+      "game_id": "106169",
+      "score": 2377003,
+      "date": "2026-08-28 18:14:21",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Guilty Gear XX Accent Core Plus",
+      "game_id": "73894",
+      "score": 583800,
+      "date": "2025-03-19 16:23:40",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "GUN SMOKE",
+      "game_id": "50045",
+      "score": 54900,
+      "date": "2024-01-21 13:51:48",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "SPC",
+      "game": "Gyruss",
+      "game_id": "50223",
+      "score": 58500,
+      "date": "2024-01-21 16:18:16",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Hammerin' Harry",
+      "game_id": "50228",
+      "score": 35900,
+      "date": "2024-01-21 17:41:40",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Hang On",
+      "game_id": "50050",
+      "score": 4034690,
+      "date": "2025-02-19 18:05:07",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Hercules (Atari 1979)",
+      "game_id": "72617",
+      "score": 27700,
+      "date": "2025-03-06 18:12:37",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Hopping Mappy",
+      "game_id": "50229",
+      "score": 1844,
+      "date": "2025-04-12 20:11:43",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "I, ROBOT",
+      "game_id": "50257",
+      "score": 9790,
+      "date": "2025-02-20 22:42:46",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "ICE COLD BEER",
+      "game_id": "62269",
+      "score": 8190,
+      "date": "2026-10-20 21:43:56",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Indiana Jones and The Temple of Doom",
+      "game_id": "50047",
+      "score": 15100,
+      "date": "2024-01-22 12:17:11",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "IRON MAN",
+      "game_id": "101612",
+      "score": 540000,
+      "date": "2026-06-23 22:28:36",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Jackal",
+      "game_id": "50048",
+      "score": 37400,
+      "date": "2024-01-19 21:50:27",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Jaws",
+      "game_id": "106174",
+      "score": 2074192,
+      "date": "2026-08-28 18:14:16",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "SMS",
+      "game": "journey",
+      "game_id": "50049",
+      "score": 16200,
+      "date": "2024-01-19 21:51:15",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "VJG",
+      "game": "Joust",
+      "game_id": "50051",
+      "score": 34050,
+      "date": "2024-01-19 21:12:08",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Joust II",
+      "game_id": "50258",
+      "score": 23000,
+      "date": "2024-01-21 21:48:15",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "SPC",
+      "game": "JR. PAC-MAN turbo",
+      "game_id": "50172",
+      "score": 68870,
+      "date": "2024-01-21 00:23:56",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Jungle King",
+      "game_id": "49996",
+      "score": 15980,
+      "date": "2025-10-28 16:27:28",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Jurassic Park",
+      "game_id": "106167",
+      "score": 3208712,
+      "date": "2026-08-28 18:14:14",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Kangaroo",
+      "game_id": "50000",
+      "score": 19600,
+      "date": "2024-01-19 15:26:53",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Karate Champ",
+      "game_id": "50259",
+      "score": 3200,
+      "date": "2025-02-21 17:58:04",
+      "rank": 1
+    },
+    {
+      "kind": "recent",
+      "player": "DON",
+      "game": "Street Fighter II Championship Edition",
+      "game_id": "73284",
+      "score": 199200,
+      "date": "2026-11-01 17:12:31"
+    },
+    {
+      "kind": "recent",
+      "player": "DON",
+      "game": "ICE COLD BEER",
+      "game_id": "62269",
+      "score": 8190,
+      "date": "2026-10-20 21:43:56"
+    },
+    {
+      "kind": "recent",
+      "player": "DON",
+      "game": "ICE COLD BEER",
+      "game_id": "62269",
+      "score": 1850,
+      "date": "2026-10-06 17:13:08"
+    },
+    {
+      "kind": "recent",
+      "player": "DON",
+      "game": "ICE COLD BEER",
+      "game_id": "62269",
+      "score": 1320,
+      "date": "2026-10-06 17:07:26"
+    },
+    {
+      "kind": "recent",
+      "player": "DON",
+      "game": "Crossbow",
+      "game_id": "73168",
+      "score": 185500,
+      "date": "2026-09-27 13:43:29"
+    },
+    {
+      "kind": "recent",
+      "player": "DON",
+      "game": "X-Men vs Street Fighter",
+      "game_id": "73288",
+      "score": 200700,
+      "date": "2026-09-07 23:58:20"
+    },
+    {
+      "kind": "recent",
+      "player": "DON",
+      "game": "Pac-Land",
+      "game_id": "50244",
+      "score": 19380,
+      "date": "2026-09-03 16:06:03"
+    },
+    {
+      "kind": "recent",
+      "player": "DON",
+      "game": "Doctor Strange",
+      "game_id": "106684",
+      "score": 1533000,
+      "date": "2026-09-01 22:07:17"
+    },
+    {
+      "kind": "recent",
+      "player": "DON",
+      "game": "The Avengers",
+      "game_id": "106682",
+      "score": 1509566,
+      "date": "2026-09-01 20:35:06"
+    },
+    {
+      "kind": "recent",
+      "player": "DON",
+      "game": "Guardians of the Galaxy",
+      "game_id": "106169",
+      "score": 2377003,
+      "date": "2026-08-28 18:14:21"
+    },
+    {
+      "kind": "recent",
+      "player": "DON",
+      "game": "Jaws",
+      "game_id": "106174",
+      "score": 2074192,
+      "date": "2026-08-28 18:14:16"
+    },
+    {
+      "kind": "recent",
+      "player": "DON",
+      "game": "Jurassic Park",
+      "game_id": "106167",
+      "score": 3208712,
+      "date": "2026-08-28 18:14:14"
+    }
+  ],
+  "total_games": 240,
+  "total_players": 16
 }
