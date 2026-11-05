@@ -1,26 +1,27 @@
-# BIG DADDY’S ARCADE — Hall of Legends v1.7
+# BIG DADDY’S ARCADE — v2.0 Medal Club (Stage 1)
 
-This version preserves the original logo (`assets/arcade-logo.png`) and the v1.6 space/neon design.
+## What works
+- Preserves the v1.9 layout and original `assets/arcade-logo.png`.
+- Existing rotating legends and overall leaders remain.
+- The existing scheduled GitHub Actions workflow now also generates `medals.json` and `medal-state.json`.
+- A medal activity feed shows newly detected top-three per-game scores only.
+- Gold = 1st, Silver = 2nd, Bronze = 3rd. Tied scores share competition rank.
+- The **first run silently establishes a baseline** and does not publish historic achievements.
+- Read-only public feed: no emails, no user-generated comments, no API credentials.
 
-## Enable automatic scores
+## IMPORTANT installation
+Upload only these files to your GitHub repo, retaining their paths:
+- `index.html`, `style.css`, `script.js`, `sw.js`
+- `tools/update_legends.py`
+- `.github/workflows/update-legends.yml`
 
-1. In iScored enable **Allow Read Access through the iScored API** only. Leave write access and public edit/delete OFF.
-2. Upload **all contents** of this ZIP to the root of your existing GitHub repository, including the hidden `.github` folder and `tools` folder. GitHub's web upload supports dragging the unzipped folder contents; verify `.github/workflows/update-legends.yml` exists afterward.
-3. In GitHub open **Actions → Refresh Hall of Legends scores → Run workflow**. Wait for success. It will write `legends.json` with sanitized scores. Scheduled runs occur approximately every two hours (GitHub may delay scheduled jobs).
-4. Refresh the GitHub Pages app. The PWA checks the published feed every 10 minutes while open; the published data updates when GitHub Actions runs and Pages deploys.
+**DO NOT upload `legends.json` or replace your logo/assets.** Run the workflow manually once after committing to establish the baseline. It will create `medals.json` and `medal-state.json`. Subsequent workflow runs will record newly observed top-three achievements.
 
-The app does NOT expose email fields, API credentials, raw records, or IDs in the published JSON. Only public player names, game titles, scores, dates, and estimated PAPA standings are published. The API itself may expose additional fields to anyone with read access; consult iScored privacy settings.
-
-## PAPA scoring
-
-Per game, each player's highest score is ranked, then 1st=100, 2nd=90, 3rd=85, each later rank one point less (floored at zero); sum the player's best 1000 game placements. Competition ranking is used for ties (e.g. 1,1,3). **This is a local estimate, not a guarantee of an exact match with iScored's own overall rankings**: their tie handling, scoring options, and hidden/invalid score policies may differ. Use the iScored site as official source.
-
-The UI shows up to 120 alphabetical game champions and 12 latest scores. Game champions are based on the best recorded score for each player/game. Scores are pulled by GitHub Actions (server-side) because direct browser requests may fail due to CORS. The initial `legends.json` is intentionally empty until the first successful sync. No demo scores are fabricated.
-
-
-## v1.8 changes
-- Removed redundant Overall Player Rankings external button and explanatory text.
-- Renamed Overall PAPA Leaders to Overall Leaders.
-- Tap the leaderboard heading to view all available standings in an accessible, scrollable dialog.
-- Added Best Game (PAPA) scoring explanation and estimate disclaimer.
-- Original arcade logo binary unchanged.
+## Limitations / roadmap
+- GitHub Actions checks every ~2 hours; alerts are not instant.
+- The medal feed is **in-app only**. Phone push notifications, likes and comments are not included yet; those require a secure push backend/database, opt-in and moderation.
+- This uses best score per player per game and competition ranking for ties. Confirm these rules against iScored if necessary.
+- A newly approved score that has fallen outside the top 3 before the next sync won't alert.
+- No historical medals are backfilled by design.
+- Score-ID tracking is persisted in `medal-state.json`; do not delete it after the first sync.
+- Check that the GitHub workflow has permission to commit generated files.

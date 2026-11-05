@@ -16,3 +16,31 @@ document.addEventListener('keydown',e=>{if(leadersDialog.hidden)return;if(e.key=
  catch(err){source.textContent=entries.length?'PREVIOUSLY SYNCED SCORES — LIVE UPDATE UNAVAILABLE':'SCORE FEED UNAVAILABLE — OPEN iSCORED FOR SCORES';}}
  await refresh();setInterval(()=>{if(!document.hidden&&entries.length>1&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches)move(1)},8000);setInterval(refresh,10*60*1000);
 })();
+
+// Read-only medal feed. Push notifications and public reactions are separate future features.
+(async function initMedals(){
+ const feed=document.querySelector('#medal-feed'),status=document.querySelector('#medal-status');
+ if(!feed)return;
+ async function refresh(){
+  try{
+   const response=await fetch('./medals.json?refresh='+Date.now(),{cache:'no-store'});
+   if(!response.ok)throw Error('Medal feed not yet generated');
+   const data=await response.json();const alerts=Array.isArray(data.alerts)?data.alerts:[];
+   feed.replaceChildren();
+   if(!alerts.length){const empty=document.createElement('p');empty.className='medal-empty';empty.textContent='THE PODIUM IS READY — WAITING FOR THE NEXT NEW MEDAL!';feed.append(empty)}
+   alerts.slice(0,20).forEach(a=>{
+    if(!['gold','silver','bronze'].includes(a.medal)||typeof a.player!=='string'||typeof a.game!=='string'||!Number.isFinite(Number(a.score)))return;
+    const card=document.createElement('article');card.className='medal-card';
+    const icon=document.createElement('span');icon.className='medal-icon';icon.textContent=({gold:'🥇',silver:'🥈',bronze:'🥉'})[a.medal];
+    const body=document.createElement('div');
+    const label=document.createElement('div');label.className='medal-label';label.textContent=a.medal.toUpperCase()+' • '+a.rank+(a.rank===1?'ST':a.rank===2?'ND':'RD')+' PLACE';
+    const player=document.createElement('div');player.className='medal-player';player.textContent=a.player.toUpperCase();
+    const game=document.createElement('div');game.className='medal-game';game.textContent=a.game;
+    const score=document.createElement('div');score.className='medal-score';score.textContent=Number(a.score).toLocaleString('en-US')+' POINTS';
+    body.append(label,player,game,score);card.append(icon,body);feed.append(card);
+   });
+   status.textContent='NEW TOP-3 GAME SCORES ONLY • SYNCED '+(data.updated_at?new Date(data.updated_at).toLocaleString():'WITH iSCORED');
+  }catch(e){status.textContent='MEDAL FEED AWAITING FIRST SYNC';}
+ }
+ await refresh();setInterval(refresh,10*60*1000);
+})();

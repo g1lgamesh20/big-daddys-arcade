@@ -98,3 +98,11 @@ body.leaders-dialog-open{overflow:hidden}
 .leaders-title{display:block;line-height:1.35}
 .leaders-hint{display:block;width:100%;line-height:1.3}
 .enter-subtext{text-align:center;color:#ffbde9;font-size:clamp(11px,2.5vw,13px);font-weight:850;letter-spacing:1.5px;text-shadow:0 0 8px #ff35bc99;margin:-7px 0 2px}
+
+/* Version 2.0 medal activity feed */
+.medal-section{border:1px solid rgba(255,55,168,.5);border-radius:16px;padding:17px 15px;margin:16px 0;background:rgba(10,3,26,.78);box-shadow:0 0 22px rgba(255,25,135,.13),inset 0 0 20px rgba(22,255,153,.035);text-align:center}
+.medal-section h2{font-size:clamp(1rem,4vw,1.35rem);color:#ff5bb8;text-shadow:0 0 12px #ff1599;margin:0 0 7px}
+.medal-subtitle,.medal-note{font-size:.7rem;letter-spacing:.09em;color:#a6ffdc;margin:8px 0}
+.medal-feed{display:grid;gap:9px;max-height:370px;overflow:auto;padding:3px}
+.medal-card{border:1px solid rgba(255,255,255,.17);border-radius:11px;background:rgba(3,5,20,.86);padding:12px;text-align:left;display:grid;grid-template-columns:38px 1fr;gap:10px;align-items:center}
+.medal-icon{font-size:1.7rem;text-align:center}.medal-player{font-weight:900;color:#fff;text-shadow:0 0 9px #fd41ba}.medal-game{color:#ff69c7;font-weight:700;margin-top:4px}.medal-score{color:#9cffd5;font-weight:800;margin-top:4px}.medal-time{color:#b7afc4;font-size:.7rem;margin-top:5px}.medal-empty{font-size:.8rem;color:#b6fce1;margin:12px 0}.medal-label{font-size:.68rem;letter-spacing:.08em;color:#ffe09a}
