@@ -67,7 +67,12 @@ def send(payload, key):
         with urlopen(req, timeout=25) as response:
             result = json.load(response)
             if response.status not in (200, 201) or not result.get('id'):
-                raise RuntimeError('OneSignal did not confirm a notification ID')
+                raise RuntimeError(
+    'OneSignal returned no notification ID; '
+    f'HTTP status={response.status}; '
+    f'errors={str(result.get("errors", "none"))[:500]}; '
+    f'recipients={result.get("recipients", "unknown")}'
+)
     except HTTPError as e:
         # Don't echo response bodies: service responses might include sensitive details.
         raise RuntimeError(f'OneSignal returned HTTP {e.code}') from None
