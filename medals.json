@@ -1,4 +1,15 @@
 {
-  "updated_at": "2026-11-05T01:11:17.506379+00:00",
-  "alerts": []
+  "updated_at": "2026-11-05T01:17:21.804130+00:00",
+  "alerts": [
+    {
+      "id": "380117",
+      "player": "DON",
+      "game": "Dragons Lair",
+      "game_id": "50317",
+      "score": 100,
+      "date": "2026-11-04 19:16:50",
+      "rank": 1,
+      "medal": "gold"
+    }
+  ]
 }

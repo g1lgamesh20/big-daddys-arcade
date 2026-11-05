@@ -1,12 +1,12 @@
 {
-  "updated_at": "2026-11-05T01:11:17.506379+00:00",
+  "updated_at": "2026-11-05T01:17:21.804130+00:00",
   "source": "iScored public read API",
   "scoring_note": "PAPA-style estimate: top 1000 games per player; one best score per player per game; competition ties. iScored may handle ties differently.",
   "standings": [
     {
       "player": "DON",
-      "points": 20905,
-      "games": 212
+      "points": 21005,
+      "games": 213
     },
     {
       "player": "SPC",
@@ -767,6 +767,16 @@
     },
     {
       "kind": "champion",
+      "player": "DON",
+      "game": "Dragons Lair",
+      "game_id": "50317",
+      "score": 100,
+      "date": "2026-11-04 19:16:50",
+      "score_id": "380117",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
       "player": "SPC",
       "game": "Dragster",
       "game_id": "50333",
@@ -1276,14 +1286,13 @@
       "rank": 1
     },
     {
-      "kind": "champion",
+      "kind": "recent",
       "player": "DON",
-      "game": "Karate Champ",
-      "game_id": "50259",
-      "score": 3200,
-      "date": "2025-02-21 17:58:04",
-      "score_id": "148958",
-      "rank": 1
+      "game": "Dragons Lair",
+      "game_id": "50317",
+      "score": 100,
+      "date": "2026-11-04 19:16:50",
+      "score_id": "380117"
     },
     {
       "kind": "recent",
@@ -1383,17 +1392,8 @@
       "score": 2074192,
       "date": "2026-08-28 18:14:16",
       "score_id": "349735"
-    },
-    {
-      "kind": "recent",
-      "player": "DON",
-      "game": "Jurassic Park",
-      "game_id": "106167",
-      "score": 3208712,
-      "date": "2026-08-28 18:14:14",
-      "score_id": "349738"
     }
   ],
-  "total_games": 240,
+  "total_games": 241,
   "total_players": 16
 }
