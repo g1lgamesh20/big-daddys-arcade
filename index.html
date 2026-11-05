@@ -94,6 +94,17 @@
 @media (max-width: 600px) {
   .shell { padding-top: calc(24px + env(safe-area-inset-top, 0px)) !important; }
 }
+
+/* NEW CHAMPION: first-place achievements get an enhanced fanfare. */
+.arcade-celebrate.arcade-champion .arcade-celebrate-panel{border-color:#ffd45d;background:radial-gradient(ellipse at 50% 10%,#52351c,#180d32 62%,#09071b);box-shadow:0 0 24px #ffd45dbb,0 0 54px #ff39c477,inset 0 0 24px #ffd45d55;animation:arcade-pop .45s ease-out,champion-glow 1.1s ease-in-out infinite alternate}
+.arcade-celebrate.arcade-champion .arcade-celebrate-title{color:#fff1a2;font-size:clamp(31px,9vw,52px);text-shadow:0 0 8px #ffcf48,0 0 22px #ff9e32;animation:champion-title .65s steps(2,end) infinite alternate}
+.arcade-celebrate.arcade-champion .arcade-celebrate-icon{font-size:86px;filter:drop-shadow(0 0 17px #ffce4d)}
+.arcade-celebrate.arcade-champion .arcade-celebrate-spark{opacity:1;background-size:53px 59px,73px 67px,47px 43px;animation-duration:.6s}
+.arcade-celebrate.arcade-champion .arcade-celebrate-player{font-size:clamp(26px,8vw,37px);color:#7aff52;text-shadow:0 0 12px #7aff52aa}
+.arcade-champion-test{border-color:#ffcf52!important;color:#ffcf52!important}
+@keyframes champion-glow{from{box-shadow:0 0 18px #ffd45da0,0 0 30px #ff39c466}to{box-shadow:0 0 38px #ffd45de0,0 0 66px #ff39c499}}
+@keyframes champion-title{from{opacity:1}to{opacity:.72}}
+@media(prefers-reduced-motion:reduce){.arcade-celebrate.arcade-champion .arcade-celebrate-panel,.arcade-celebrate.arcade-champion .arcade-celebrate-title{animation:none}}
 </style></head><body><div class="cosmos" aria-hidden="true"><div class="stars stars-near"></div><div class="stars stars-far"></div><div class="nebula"></div><div class="horizon"></div><div class="retro-grid"></div></div><main class="shell"><div class="scanlines" aria-hidden="true"></div><header class="top"><span class="status"><span class="dot"></span> HALL OF LEGENDS</span></header><section class="hero" aria-label="Big Daddy's Arcade"><div class="neon-frame"><svg class="neon-tracers" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect class="trace-path trace-green" x="1" y="1" width="98" height="98" rx="3" pathLength="100"/><rect class="trace-path trace-pink" x="1" y="1" width="98" height="98" rx="3" pathLength="100"/></svg><img class="logo" src="assets/arcade-logo.png" alt="Big Daddy's Arcade neon green and pink Space Invader logo"></div><div class="subtitle">★ HALL OF LEGENDS ★</div><p class="tag">YOUR SCORE. YOUR LEGACY.</p></section><section class="actions"><a id="enter" class="primary pinball-entry" href="https://www.iScored.info/?mode=public&amp;user=G1LGAMESH" rel="noopener noreferrer"><span class="pinball-grid" aria-hidden="true"></span><span class="pinball-title enter-title"><span class="pinball-top-line"><span class="pinball-arrow" aria-hidden="true">➜</span><span class="pinball-enter">ENTER THE</span><span class="pinball-arrow pinball-arrow-left" aria-hidden="true">➜</span></span><span class="pinball-desktop-line">HALL OF LEGENDS</span></span><span class="pinball-subtitle enter-subtext">TO SUBMIT &amp; VIEW SCORES</span></a><section class="legends" aria-labelledby="legends-title"><h2 id="legends-title">★ TODAY'S LEGENDS ★</h2><div id="legend-spotlight" class="legend-spotlight" aria-live="polite"><p class="legend-headline">AWAITING THE NEXT LEGEND</p><p class="legend-detail">REAL SCORES WILL APPEAR HERE WHEN A VERIFIED DATA FEED IS CONFIGURED.</p></div><div class="legend-controls" id="legend-controls" hidden><button type="button" id="legend-prev" aria-label="Previous legend">◀</button><span id="legend-counter"></span><button type="button" id="legend-next" aria-label="Next legend">▶</button></div><p class="legends-note" id="legend-source">Scores remain available on iScored while data access is being configured.</p></section><section class="papa-section" id="papa-section" hidden><button type="button" class="leaders-open" id="leaders-open" aria-haspopup="dialog" aria-controls="leaders-dialog"><span class="leaders-title">🏆 OVERALL LEADERS 🏆</span><span class="leaders-hint">TAP TO VIEW ALL ↗</span></button><div id="papa-standings"></div><p class="rank-note">Estimated from public scores. Official rankings remain on iScored.</p></section><section class="medal-section" aria-labelledby="medals-title"><h2 id="medals-title">🥇 THE MEDAL CLUB 🥈🥉</h2><p class="medal-subtitle">NEW GOLD • SILVER • BRONZE ACHIEVEMENTS</p><button type="button" id="medal-alerts-optin" class="small" hidden>🔔 ENABLE MEDAL ALERTS</button><div id="medal-feed" class="medal-feed"><p class="medal-empty">WATCHING FOR THE NEXT PODIUM FINISH...</p></div><p class="medal-note" id="medal-status">ONLY NEW TOP-3 GAME SCORES APPEAR HERE.</p></section><div class="notice"><strong>HIGH SCORE RULES</strong><p>ENTER YOUR NAME IN <b>ALL CAPS</b> · INCLUDE A CLEAR PHOTO OF YOUR SCORE · ALL SUBMISSIONS REQUIRE ADMIN APPROVAL.</p><p class="fine">The score form is hosted by iScored. Its settings control photo requirements and approvals.</p></div></section><footer><span>BIG DADDY'S ARCADE</span><button id="reset" class="textbutton">↻ RETURN TO START</button></footer><section class="arcade-settings" aria-label="Arcade settings">
 <details id="arcade-settings-panel">
 <summary aria-label="Open arcade settings"><span class="arcade-settings-gear" aria-hidden="true">⚙</span><span>ARCADE CONTROL PANEL</span><span class="arcade-settings-chevron" aria-hidden="true">▾</span></summary>
@@ -101,7 +112,7 @@
 <p class="arcade-settings-intro">★ OPERATOR OPTIONS ★</p>
 <div class="arcade-settings-item"><h3>🔊 ARCADE AUDIO</h3><div class="arcade-sound-controls"><button class="small arcade-sound-toggle" id="arcade-sound-toggle" type="button" aria-label="Play arcade startup sound">🔊 PLAY STARTUP</button></div></div>
 <div class="arcade-settings-item"><h3>👾 ATTRACT MODE</h3><div class="arcade-attract-settings"><label for="arcade-attract-enabled"><input type="checkbox" id="arcade-attract-enabled" checked> ENABLE ATTRACT MODE (AFTER 30 SECONDS)</label></div></div>
-<div class="arcade-settings-item"><h3>🏆 ACHIEVEMENT TEST</h3><button type="button" id="arcade-celebrate-test" class="arcade-celebrate-test">🎉 PREVIEW MEDAL CELEBRATION</button></div>
+<div class="arcade-settings-item"><h3>🏆 ACHIEVEMENT TEST</h3><button type="button" id="arcade-celebrate-test" class="arcade-celebrate-test">🎉 PREVIEW MEDAL CELEBRATION</button><button type="button" id="arcade-champion-test" class="arcade-celebrate-test arcade-champion-test">🏆 PREVIEW NEW HIGH SCORE</button></div>
 <div class="arcade-settings-item arcade-settings-install"><section class="arcade-install" aria-labelledby="arcade-install-title"><h2 id="arcade-install-title">🕹️ TAKE THE ARCADE HOME!</h2><p>YOUR POCKET-SIZED HALL OF LEGENDS</p><button type="button" id="arcade-install-button" class="arcade-install-button">⬇ INSTALL THE ARCADE</button><p class="arcade-install-small">FREE • iPHONE • ANDROID</p><div id="arcade-install-help" class="arcade-install-help" hidden role="status" aria-live="polite"></div></section></div>
 </div>
 </details>
@@ -256,22 +267,34 @@
  const overlay=document.getElementById('arcade-celebrate');
  const close=document.getElementById('arcade-celebrate-dismiss');
  const preview=document.getElementById('arcade-celebrate-test');
+ const championPreview=document.getElementById('arcade-champion-test');
  const storeKey='big-daddys-arcade-celebrated-medals-v1';
  let lastFocus=null,queue=[],busy=false,seen=new Set(),initialized=false;
  try { const saved=localStorage.getItem(storeKey); if(saved!==null){seen=new Set(JSON.parse(saved));initialized=true;} } catch (_) {}
  function key(a){return JSON.stringify([a.medal,a.player,a.game,a.score,a.rank,a.timestamp||a.created_at||a.date||'']);}
  function save(){try{localStorage.setItem(storeKey,JSON.stringify([...seen].slice(-250)));}catch(_){}}
- function chime(){
+ function chime(champion=false){
    if(window.arcadeSoundsEnabled===false)return;
    // Browsers may block audio until a gesture; never interrupt the visual celebration.
    try{const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;const ctx=new AC();if(ctx.state==='suspended'){ctx.close();return;}
-   [523.25,659.25,783.99,1046.5].forEach((freq,i)=>{const o=ctx.createOscillator(),g=ctx.createGain(),t=ctx.currentTime+i*.12;o.type='square';o.frequency.value=freq;g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.045,t+.012);g.gain.exponentialRampToValueAtTime(.0001,t+.20);o.connect(g);g.connect(ctx.destination);o.start(t);o.stop(t+.22);});setTimeout(()=>ctx.close().catch(()=>{}),1300);
+   (champion?[392,523.25,659.25,783.99,1046.5,1318.51]:[523.25,659.25,783.99,1046.5]).forEach((freq,i)=>{const o=ctx.createOscillator(),g=ctx.createGain(),t=ctx.currentTime+i*.12;o.type='square';o.frequency.value=freq;g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.045,t+.012);g.gain.exponentialRampToValueAtTime(.0001,t+.20);o.connect(g);g.connect(ctx.destination);o.start(t);o.stop(t+.22);});setTimeout(()=>ctx.close().catch(()=>{}),1300);
    }catch(_){}
  }
- function show(a){busy=true;lastFocus=document.activeElement;document.getElementById('arcade-celebrate-icon').textContent=({gold:'🥇',silver:'🥈',bronze:'🥉'})[a.medal]||'🏆';document.getElementById('arcade-celebrate-player').textContent=String(a.player||'ARCADE LEGEND').toUpperCase();document.getElementById('arcade-celebrate-game').textContent=String(a.game||'HALL OF LEGENDS')+' • '+String(a.medal||'GOLD').toUpperCase()+' MEDAL';overlay.hidden=false;close.focus();chime();}
+ function show(a){
+  busy=true;lastFocus=document.activeElement;
+  const champion=a.championPreview===true||(a.medal==='gold'&&Number(a.rank)===1);
+  overlay.classList.toggle('arcade-champion',champion);
+  document.getElementById('arcade-celebrate-title').textContent=champion?'NEW HIGH SCORE!':'MEDAL UNLOCKED!';
+  document.getElementById('arcade-celebrate-icon').textContent=champion?'🏆':(({gold:'🥇',silver:'🥈',bronze:'🥉'})[a.medal]||'🏆');
+  document.getElementById('arcade-celebrate-player').textContent=String(a.player||'ARCADE LEGEND').toUpperCase();
+  const score=Number(a.score);
+  document.getElementById('arcade-celebrate-game').textContent=String(a.game||'HALL OF LEGENDS')+(champion?' • NEW #1 CHAMPION'+(Number.isFinite(score)&&score>0?' • '+score.toLocaleString('en-US')+' PTS':''):' • '+String(a.medal||'GOLD').toUpperCase()+' MEDAL');
+  overlay.hidden=false;close.focus();chime(champion);
+ }
  function dismiss(){overlay.hidden=true;busy=false;if(lastFocus&&lastFocus.focus)lastFocus.focus();if(queue.length)show(queue.shift());}
  close.addEventListener('click',dismiss);overlay.addEventListener('click',e=>{if(e.target===overlay)dismiss();});document.addEventListener('keydown',e=>{if(!overlay.hidden&&e.key==='Escape')dismiss();});
  preview.addEventListener('click',()=>{if(!busy)show({medal:'gold',player:'BIG DADDY',game:'DEMO ACHIEVEMENT'});});
+ championPreview.addEventListener('click',()=>{if(!busy)show({medal:'gold',rank:1,championPreview:true,player:'BIG DADDY',game:'DEMO HIGH SCORE',score:999999});});
  async function check(){try{const r=await fetch('./medals.json?celebrate='+Date.now(),{cache:'no-store'});if(!r.ok)return;const d=await r.json();if(!Array.isArray(d.alerts))return;const valid=d.alerts.filter(a=>a&&['gold','silver','bronze'].includes(a.medal)&&typeof a.player==='string'&&typeof a.game==='string');
  if(!initialized){valid.forEach(a=>seen.add(key(a)));initialized=true;save();return;}
  const fresh=valid.filter(a=>!seen.has(key(a)));fresh.forEach(a=>seen.add(key(a)));if(fresh.length)save();
