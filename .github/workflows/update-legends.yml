@@ -5,10 +5,13 @@ on:
   workflow_dispatch:
 permissions:
   contents: write
+concurrency:
+  group: hall-of-legends-refresh
+  cancel-in-progress: false
 jobs:
   update:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 8
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -25,5 +28,18 @@ jobs:
           git add legends.json medals.json medal-state.json
           if ! git diff --cached --quiet; then
             git commit -m "Refresh arcade legends and medals"
+            git push
+          fi
+      - name: Send new medal push notifications
+        id: push
+        env:
+          ONESIGNAL_REST_API_KEY: ${{ secrets.ONESIGNAL_REST_API_KEY }}
+        run: python tools/send_medal_notifications.py
+      - name: Commit notification delivery state
+        if: always() && steps.push.outcome != 'skipped'
+        run: |
+          git add medal-notification-state.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Record delivered medal notifications"
             git push
           fi
