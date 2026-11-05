@@ -1,1 +1,77 @@
-const CACHE='hall-of-legends-v2-1';const FILES=['./','./index.html','./style.css','./script.js','./manifest.webmanifest','./assets/arcade-logo.png','./assets/icon-192.png','./assets/icon-512.png'];self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(FILES))));self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k))))));self.addEventListener('fetch',e=>{if(e.request.method!=='GET'||new URL(e.request.url).origin!==self.location.origin)return;if((/\/(legends|medals)\.json$/.test(new URL(e.request.url).pathname))){e.respondWith(fetch(e.request).catch(()=>caches.match(e.request)));return}e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request)))});
+
+const CACHE = 'hall-of-legends-v3-network-first';
+
+const FILES = [
+  './',
+  './index.html',
+  './style.css',
+  './script.js',
+  './manifest.webmanifest',
+  './assets/arcade-logo.png',
+  './assets/icon-192.png',
+  './assets/icon-512.png'
+];
+
+self.addEventListener('install', event => {
+  event.waitUntil((async () => {
+    const cache = await caches.open(CACHE);
+    await Promise.allSettled(FILES.map(file => cache.add(file)));
+    await self.skipWaiting();
+  })());
+});
+
+self.addEventListener('activate', event => {
+  event.waitUntil((async () => {
+    const keys = await caches.keys();
+    await Promise.all(
+      keys
+        .filter(key =>
+          key.startsWith('hall-of-legends-') &&
+          key !== CACHE
+        )
+        .map(key => caches.delete(key))
+    );
+    await self.clients.claim();
+  })());
+});
+
+self.addEventListener('fetch', event => {
+  const request = event.request;
+  if (request.method !== 'GET') return;
+
+  const url = new URL(request.url);
+
+  if (
+    url.origin !== self.location.origin ||
+    !url.pathname.startsWith('/big-daddys-arcade/')
+  ) return;
+
+  // Leave OneSignal's worker files alone.
+  if (/\/OneSignalSDK(?:Updater)?Worker\.js$/.test(url.pathname)) {
+    return;
+  }
+
+  event.respondWith((async () => {
+    const cache = await caches.open(CACHE);
+
+    try {
+      const response = await fetch(request);
+
+      if (response.ok && response.type === 'basic') {
+        await cache.put(request, response.clone());
+      }
+
+      return response;
+    } catch (error) {
+      const cached = await caches.match(request);
+      if (cached) return cached;
+
+      if (request.mode === 'navigate') {
+        const fallback = await cache.match('./index.html');
+        if (fallback) return fallback;
+      }
+
+      throw error;
+    }
+  })());
+});
