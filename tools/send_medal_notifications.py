@@ -45,7 +45,7 @@ def make_payload(a):
     key = str(uuid.uuid5(uuid.NAMESPACE_URL, f'big-daddys-arcade:medal:{a["id"]}'))
     return {
         'app_id': APP_ID,
-        'included_segments': ['Subscribed Users'],
+        'included_segments': ['All'],
         'headings': {'en': f'{emoji} NEW {medal} MEDAL!'},
         'contents': {'en': f'{player} earned {rank}{"st" if rank == 1 else "nd" if rank == 2 else "rd"} place in {game} with {score:,} points!'},
         'url': ARCADE_URL,
