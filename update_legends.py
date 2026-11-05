@@ -102,7 +102,7 @@ def main():
     all_ids = {str(row.get('id')) for row in raw['scores'] if isinstance(row,dict) and row.get('id') is not None}
     if STATE.exists():
         state = json.loads(STATE.read_text(encoding='utf-8'))
-        known = set(state.get('known_ids',[]))
+        known = set(str(x) for x in state.get('known_ids',[]))
         prior = json.loads(FEED.read_text(encoding='utf-8')) if FEED.exists() else {'alerts':[]}
         alerts = [entry for entry in podium if entry['id'] not in known]
         alerts.sort(key=lambda x:(x['date'],x['id']),reverse=True)
@@ -115,9 +115,14 @@ def main():
             seen.add(alert.get('id'))
             combined.append(alert)
         combined = combined[:100]
+        # Preserve IDs even if an old score disappears from the API.
+        # Otherwise a later reappearance could create a duplicate alert.
+        all_ids.update(known)
     else:
         combined = []  # Initial run is a quiet baseline.
     # Keep a durable ID set so records don't generate duplicate notifications.
+    # Existing records are baseline on the very first run; later runs alert only
+    # when a newly observed score currently holds a top-three game position.
     STATE.write_text(json.dumps({'known_ids':sorted(all_ids)},ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     FEED.write_text(json.dumps({'updated_at':result['updated_at'],'alerts':combined},ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     OUTPUT.write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
