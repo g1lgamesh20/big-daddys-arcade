@@ -171,3 +171,45 @@ body.leaders-dialog-open{overflow:hidden}
 @media(max-width:380px){
   #enter .pinball-title .pinball-desktop-line{font-size:clamp(17px,5vw,19px)}
 }
+
+/* v2.5: Final approved pinball CTA — green arrow header, large amber dot-matrix title. */
+#enter.pinball-entry{min-height:146px;padding:18px 10px 16px}
+#enter .pinball-title{gap:5px;line-height:1.13;letter-spacing:0;filter:none}
+#enter .pinball-title .pinball-top-line{
+  display:flex;align-items:center;justify-content:center;gap:clamp(8px,3vw,24px);
+  font-size:clamp(15px,3.5vw,22px);line-height:1.25;
+  background:none;-webkit-text-fill-color:initial;color:#65ff39;
+}
+#enter .pinball-top-line .pinball-enter{
+  display:inline-block;font-size:1em;color:#65ff39;
+  background-image:radial-gradient(circle,#75ff42 52%,transparent 58%);
+  background-size:4px 4px;background-position:center;
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 0 3px #39ff14) drop-shadow(0 0 6px #39ff1480);
+}
+#enter .pinball-top-line .pinball-arrow{
+  display:inline-block;font-family:Arial,sans-serif;font-size:1.4em;line-height:1;
+  color:#60ff38;-webkit-text-fill-color:#60ff38;background:none;
+  text-shadow:0 0 5px #39ff14,0 0 11px #39ff1488;
+}
+#enter .pinball-top-line .pinball-arrow-left{transform:rotate(180deg)}
+#enter .pinball-title .pinball-desktop-line{
+  display:block;white-space:nowrap;font-size:clamp(19px,4.65vw,35px);
+  font-weight:1000;letter-spacing:-.025em;line-height:1.25;
+  background-image:radial-gradient(circle,#ffc44c 57%,transparent 62%);
+  background-size:5px 5px;background-position:center;
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 0 2px #ff9800) drop-shadow(0 0 5px #ff7700a0);
+}
+#enter .pinball-subtitle{margin-top:7px;font-size:clamp(10px,2.5vw,14px);letter-spacing:.025em}
+@media(max-width:600px){
+  #enter.pinball-entry{min-height:150px;padding:20px 8px 17px}
+  #enter .pinball-title{gap:7px}
+  #enter .pinball-title .pinball-top-line{font-size:clamp(15px,4.2vw,20px);gap:clamp(7px,2.2vw,13px)}
+  #enter .pinball-title .pinball-desktop-line{font-size:clamp(17px,5.05vw,27px);letter-spacing:-.035em}
+  #enter .pinball-subtitle{font-size:clamp(10px,2.7vw,13px);margin-top:10px}
+}
+@media(max-width:360px){
+  #enter .pinball-title .pinball-desktop-line{font-size:17px;letter-spacing:-.05em}
+  #enter .pinball-title .pinball-top-line{font-size:15px}
+}
