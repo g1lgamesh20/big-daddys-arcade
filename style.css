@@ -111,3 +111,46 @@ body.leaders-dialog-open{overflow:hidden}
 .primary .enter-title,.primary .enter-subtext{display:block;position:relative;z-index:1}
 .primary .enter-title{line-height:1.3}
 .primary .enter-subtext{margin:7px 0 0;color:#ffd9f3;font-size:clamp(10px,2.2vw,13px);font-weight:800;letter-spacing:1.3px;text-shadow:0 0 8px #ff35bcaa;line-height:1.3}
+
+
+/* v2.2 — Pinball dot-matrix Hall of Legends CTA (only #enter). */
+#enter.pinball-entry{
+  position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  isolation:isolate;overflow:hidden;min-height:116px;padding:18px 12px 15px;
+  border:3px solid #ff54dc;border-radius:20px;
+  background:radial-gradient(ellipse at 50% 5%,#37124b 0%,#110925 55%,#070819 100%);
+  box-shadow:0 0 6px #fff0fb,0 0 15px #ff3acb,0 0 30px #ff3acb88,inset 0 0 14px #ff3acb99;
+  text-decoration:none;animation:pinballBreathe 3.8s ease-in-out infinite;
+  -webkit-tap-highlight-color:transparent;
+}
+#enter.pinball-entry::before{
+  content:"";position:absolute;inset:5px;border:1px solid #7cf5ff99;border-radius:14px;
+  box-shadow:inset 0 0 9px #00dfff44,0 0 8px #00dfff55;pointer-events:none;
+  background:none;animation:none;transform:none;mask:none;-webkit-mask:none;padding:0;
+}
+#enter.pinball-entry::after{display:none}
+#enter .pinball-grid{position:absolute;inset:48% 0 0;z-index:0;pointer-events:none;
+  background-image:linear-gradient(#c93fff66 1px,transparent 1px),linear-gradient(90deg,#c93fff66 1px,transparent 1px);
+  background-size:24px 17px;transform:perspective(150px) rotateX(53deg) scale(1.25);
+  transform-origin:center bottom;opacity:.48;mask-image:linear-gradient(transparent,#000 60%);
+}
+#enter .pinball-title{position:relative;z-index:1;display:flex;flex-direction:column;gap:3px;
+  width:100%;margin:0;text-align:center;font-family:Arial Black,Impact,system-ui,sans-serif;
+  font-weight:1000;letter-spacing:.075em;line-height:1.18;
+  font-size:clamp(17px,4.6vw,28px);color:#ffbc29;
+  filter:drop-shadow(0 0 3px #ff8b00) drop-shadow(0 0 7px #ff6800aa);
+  text-shadow:none;
+}
+#enter .pinball-title span{display:block;background-image:radial-gradient(circle,#ffb62a 47%,transparent 53%);background-size:5px 5px;background-position:center;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+#enter .pinball-title span:first-child{font-size:.82em}
+#enter .pinball-subtitle{position:relative;z-index:1;display:block;margin:11px 0 0;
+  color:#46f4ff;font-size:clamp(10px,2.6vw,14px);font-weight:900;
+  letter-spacing:.08em;line-height:1.3;text-shadow:0 0 7px #00dfff,0 0 13px #00dfff77;
+}
+#enter.pinball-entry:active{transform:scale(.985);
+  box-shadow:0 0 12px #fff,0 0 28px #ff49d9,0 0 48px #ff49d9,inset 0 0 25px #ff49d9;
+}
+#enter.pinball-entry:focus-visible{outline:3px solid #fff;outline-offset:5px}
+@keyframes pinballBreathe{50%{box-shadow:0 0 9px #fff0fb,0 0 21px #ff3acb,0 0 40px #ff3acbaa,inset 0 0 19px #ff3acbaa}}
+@media(max-width:380px){#enter.pinball-entry{padding-inline:8px}#enter .pinball-title{font-size:clamp(15px,4.6vw,19px);letter-spacing:.04em}}
+@media(prefers-reduced-motion:reduce){#enter.pinball-entry{animation:none!important}}
