@@ -1,12 +1,12 @@
 {
-  "updated_at": "2026-11-05T18:59:30.316019+00:00",
+  "updated_at": "2026-11-05T20:55:36.600524+00:00",
   "source": "iScored public read API",
   "scoring_note": "PAPA-style estimate: top 1000 games per player; one best score per player per game; competition ties. iScored may handle ties differently.",
   "standings": [
     {
       "player": "DON",
-      "points": 20995,
-      "games": 213
+      "points": 20905,
+      "games": 212
     },
     {
       "player": "SPC",
@@ -1297,15 +1297,6 @@
     {
       "kind": "recent",
       "player": "DON",
-      "game": "Dragons Lair",
-      "game_id": "50317",
-      "score": 100,
-      "date": "2026-11-04 19:16:50",
-      "score_id": "380117"
-    },
-    {
-      "kind": "recent",
-      "player": "DON",
       "game": "Street Fighter II Championship Edition",
       "game_id": "73284",
       "score": 199200,
@@ -1392,6 +1383,15 @@
       "score": 2377003,
       "date": "2026-08-28 18:14:21",
       "score_id": "349734"
+    },
+    {
+      "kind": "recent",
+      "player": "DON",
+      "game": "Jaws",
+      "game_id": "106174",
+      "score": 2074192,
+      "date": "2026-08-28 18:14:16",
+      "score_id": "349735"
     }
   ],
   "total_games": 241,
