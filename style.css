@@ -281,3 +281,42 @@ body.leaders-dialog-open{overflow:hidden}
   #enter .pinball-title .pinball-desktop-line { font-size: 20px; }
   #enter .pinball-title .pinball-top-line { font-size: 17px; gap: 9px; }
 }
+
+/* v6: iPhone spotlight hierarchy — modest green prompt, prominent amber DMD */
+@media (max-width: 600px) {
+  #enter.pinball-entry { min-height: 158px; padding: 18px 8px 17px; }
+  #enter .pinball-title { gap: 13px; }
+  #enter .pinball-title .pinball-top-line {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: clamp(12px, 3.25vw, 15px) !important;
+    font-weight: 500 !important;
+    letter-spacing: .09em;
+    line-height: 1.2;
+    gap: 12px;
+  }
+  #enter .pinball-top-line .pinball-enter { font-weight: 500 !important; }
+  #enter .pinball-top-line .pinball-arrow { font-size: 1.4em; }
+  #enter .pinball-title .pinball-desktop-line {
+    display: block;
+    width: 112%;
+    margin-left: -6%;
+    font-family: Impact, 'Arial Narrow', 'Arial Black', sans-serif;
+    font-size: clamp(26px, 7.4vw, 34px) !important;
+    font-weight: 900;
+    letter-spacing: -.015em;
+    line-height: 1.2;
+    white-space: nowrap;
+    transform: scaleX(.88);
+    transform-origin: center;
+    background-image: radial-gradient(circle, #ffca53 62%, transparent 69%);
+    background-size: 4px 4px;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: none;
+  }
+  #enter .pinball-subtitle { margin-top: 13px; }
+}
+@media (max-width: 370px) {
+  #enter .pinball-title .pinball-desktop-line { font-size: 25px !important; }
+}
