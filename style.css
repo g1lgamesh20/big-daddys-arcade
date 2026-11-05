@@ -320,3 +320,35 @@ body.leaders-dialog-open{overflow:hidden}
 @media (max-width: 370px) {
   #enter .pinball-title .pinball-desktop-line { font-size: 25px !important; }
 }
+
+/* v7: balanced arrows and bigger amber DMD title on iPhone only. */
+@media (max-width: 600px) {
+  #enter .pinball-top-line .pinball-arrow,
+  #enter .pinball-top-line .pinball-arrow-left {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 1.35em;
+    width: 1.35em;
+    height: 1.35em;
+    font-family: Arial, sans-serif;
+    font-size: 1.4em !important;
+    font-weight: 900;
+    line-height: 1;
+    transform: none;
+    filter: none;
+  }
+  #enter .pinball-top-line .pinball-arrow-left { transform: scaleX(-1); }
+  #enter .pinball-title .pinball-desktop-line {
+    width: 100%;
+    margin-left: 0;
+    font-size: clamp(31px, 8.5vw, 42px) !important;
+    letter-spacing: -.02em;
+    transform: scaleX(.78);
+    transform-origin: center center;
+    line-height: 1.25;
+  }
+}
+@media (max-width: 370px) {
+  #enter .pinball-title .pinball-desktop-line { font-size: 29px !important; }
+}
