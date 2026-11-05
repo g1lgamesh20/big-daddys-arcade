@@ -154,3 +154,17 @@ body.leaders-dialog-open{overflow:hidden}
 @keyframes pinballBreathe{50%{box-shadow:0 0 9px #fff0fb,0 0 21px #ff3acb,0 0 40px #ff3acbaa,inset 0 0 19px #ff3acbaa}}
 @media(max-width:380px){#enter.pinball-entry{padding-inline:8px}#enter .pinball-title{font-size:clamp(15px,4.6vw,19px);letter-spacing:.04em}}
 @media(prefers-reduced-motion:reduce){#enter.pinball-entry{animation:none!important}}
+
+/* v2.2.1 — readable iPhone/mobile pinball display; desktop remains unchanged. */
+@media (max-width: 600px) {
+  #enter.pinball-entry { min-height: 132px; padding: 20px 10px 18px; }
+  #enter .pinball-title { font-size: clamp(19px, 5.6vw, 26px); letter-spacing: .015em; line-height: 1.22; gap: 5px; filter: none; }
+  #enter .pinball-title span {
+    background: none; -webkit-background-clip: initial; background-clip: initial;
+    -webkit-text-fill-color: #ffd65a; color: #ffd65a;
+    text-shadow: 0 0 2px #ffb500, 0 0 7px #ff8b0080;
+  }
+  #enter .pinball-title span:first-child { font-size: .84em; }
+  #enter .pinball-subtitle { font-size: clamp(10px, 2.8vw, 13px); letter-spacing: .035em; margin-top: 10px; text-shadow: 0 0 5px #00dfff80; }
+  #enter .pinball-grid { opacity: .26; }
+}
