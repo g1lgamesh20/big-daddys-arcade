@@ -155,35 +155,19 @@ body.leaders-dialog-open{overflow:hidden}
 @media(max-width:380px){#enter.pinball-entry{padding-inline:8px}#enter .pinball-title{font-size:clamp(15px,4.6vw,19px);letter-spacing:.04em}}
 @media(prefers-reduced-motion:reduce){#enter.pinball-entry{animation:none!important}}
 
-/* v2.2.1 — readable iPhone/mobile pinball display; desktop remains unchanged. */
-@media (max-width: 600px) {
-  #enter.pinball-entry { min-height: 132px; padding: 20px 10px 18px; }
-  #enter .pinball-title { font-size: clamp(19px, 5.6vw, 26px); letter-spacing: .015em; line-height: 1.22; gap: 5px; filter: none; }
-  #enter .pinball-title span {
-    background: none; -webkit-background-clip: initial; background-clip: initial;
-    -webkit-text-fill-color: #ffd65a; color: #ffd65a;
-    text-shadow: 0 0 2px #ffb500, 0 0 7px #ff8b0080;
-  }
-  #enter .pinball-title span:first-child { font-size: .84em; }
-  #enter .pinball-subtitle { font-size: clamp(10px, 2.8vw, 13px); letter-spacing: .035em; margin-top: 10px; text-shadow: 0 0 5px #00dfff80; }
-  #enter .pinball-grid { opacity: .26; }
+/* v2.4: Two-line pinball dot-matrix title on all screens. */
+@media(max-width:600px){
+  #enter.pinball-entry{min-height:155px;padding:20px 10px 18px}
+  #enter .pinball-title{gap:6px;line-height:1.22;letter-spacing:.01em;
+    filter:drop-shadow(0 0 2px #ff8b00) drop-shadow(0 0 4px #ff680088)}
+  #enter .pinball-title span:first-child{font-size:clamp(25px,7vw,32px)}
+  #enter .pinball-title .pinball-desktop-line{display:block;
+    font-size:clamp(18px,5.1vw,25px);letter-spacing:0;white-space:nowrap}
+  #enter .pinball-title span{background-image:radial-gradient(circle,#ffca53 53%,transparent 57%);
+    background-size:5px 5px;background-position:center;-webkit-background-clip:text;
+    background-clip:text;-webkit-text-fill-color:transparent;text-shadow:none}
+  #enter .pinball-subtitle{font-size:clamp(11px,2.8vw,13px);letter-spacing:.02em;margin-top:12px}
 }
-
-/* v2.3 — iPhone: three large, solid amber lines; desktop unchanged. */
-@media (max-width:600px) {
-  #enter.pinball-entry { min-height:205px; padding:22px 12px 19px; }
-  #enter .pinball-title { display:flex; flex-direction:column; align-items:center; gap:3px; font-size:clamp(28px,8vw,39px); line-height:1.1; letter-spacing:0; filter:none; }
-  #enter .pinball-title span, #enter .pinball-title span:first-child {
-    font-size:1em; background:none; -webkit-background-clip:initial; background-clip:initial;
-    -webkit-text-fill-color:#ffdc66; color:#ffdc66;
-    text-shadow:0 0 2px #ffb500,0 0 8px #ff9b0055;
-  }
-  #enter .pinball-subtitle { font-size:clamp(11px,3vw,13px); letter-spacing:0; margin-top:12px; }
-  #enter .pinball-grid { opacity:.22; }
-}
-@media (min-width:601px) {
-  #enter .pinball-title span:nth-child(2), #enter .pinball-title span:nth-child(3) { display:inline; }
-  #enter .pinball-title { display:block; }
-  #enter .pinball-title span:first-child { display:block; }
-  #enter .pinball-title span:nth-child(2)::after { content:' '; white-space:pre; }
+@media(max-width:380px){
+  #enter .pinball-title .pinball-desktop-line{font-size:clamp(17px,5vw,19px)}
 }
