@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-11-05T05:04:07.378567+00:00",
+  "updated_at": "2026-11-05T05:14:48.550796+00:00",
   "source": "iScored public read API",
   "scoring_note": "PAPA-style estimate: top 1000 games per player; one best score per player per game; competition ties. iScored may handle ties differently.",
   "standings": [
     {
       "player": "DON",
-      "points": 21005,
+      "points": 20995,
       "games": 213
     },
     {
@@ -25,8 +25,8 @@
     },
     {
       "player": "VJG",
-      "points": 1282,
-      "games": 14
+      "points": 1382,
+      "games": 15
     },
     {
       "player": "RDG",
@@ -767,12 +767,12 @@
     },
     {
       "kind": "champion",
-      "player": "DON",
+      "player": "VJG",
       "game": "Dragons Lair",
       "game_id": "50317",
-      "score": 100,
-      "date": "2026-11-04 19:16:50",
-      "score_id": "380117",
+      "score": 21790,
+      "date": "2026-11-04 23:14:27",
+      "score_id": "380161",
       "rank": 1
     },
     {
@@ -1287,6 +1287,15 @@
     },
     {
       "kind": "recent",
+      "player": "VJG",
+      "game": "Dragons Lair",
+      "game_id": "50317",
+      "score": 21790,
+      "date": "2026-11-04 23:14:27",
+      "score_id": "380161"
+    },
+    {
+      "kind": "recent",
       "player": "DON",
       "game": "Dragons Lair",
       "game_id": "50317",
@@ -1383,15 +1392,6 @@
       "score": 2377003,
       "date": "2026-08-28 18:14:21",
       "score_id": "349734"
-    },
-    {
-      "kind": "recent",
-      "player": "DON",
-      "game": "Jaws",
-      "game_id": "106174",
-      "score": 2074192,
-      "date": "2026-08-28 18:14:16",
-      "score_id": "349735"
     }
   ],
   "total_games": 241,
