@@ -79,30 +79,28 @@
 })();
 </script>
 <script>
-/* Original 8-bit arcade startup fanfare. Audio is triggered only by a user tap. */
+/* Startup fanfare: attempt autoplay; on restricted browsers, wait for first interaction. */
 (() => {
   const button = document.getElementById('arcade-sound-toggle');
   if (!button) return;
   const STORAGE_KEY = 'big-daddys-arcade-sounds-enabled';
-  let enabled = true; // Preserve the existing quarter-drop sound by default.
+  let enabled = true;
   try { enabled = localStorage.getItem(STORAGE_KEY) !== 'false'; } catch (_) {}
   window.arcadeSoundsEnabled = enabled;
-  let hasPlayedThisVisit = false;
-  let audioContext;
+  let played = false;
+  let ctx = null;
+  let pending = false;
+  let attempted = false;
+  const AC = window.AudioContext || window.webkitAudioContext;
+
   function label() {
-    button.textContent = !enabled ? '🔊 ENABLE SOUND' : hasPlayedThisVisit ? '🔇 MUTE SOUND' : '🔊 PLAY STARTUP';
-    button.setAttribute('aria-label', !enabled ? 'Enable arcade sounds and play startup jingle' : hasPlayedThisVisit ? 'Mute arcade sounds' : 'Play arcade startup jingle');
+    button.textContent = enabled ? '🔇 MUTE SOUND' : '🔊 ENABLE SOUND';
+    button.setAttribute('aria-label', enabled ? 'Mute arcade sounds' : 'Enable arcade sounds');
     button.setAttribute('aria-pressed', String(enabled));
   }
-  function startupJingle() {
-    const AC = window.AudioContext || window.webkitAudioContext;
-    if (!AC) return;
-    audioContext ||= new AC();
-    const ctx = audioContext;
-    if (ctx.state === 'suspended') ctx.resume().catch(() => {});
+  function playNotes() {
     const start = ctx.currentTime + 0.015;
-    const notes = [392, 523.25, 659.25, 1046.5];
-    notes.forEach((freq, i) => {
+    [392, 523.25, 659.25, 1046.5].forEach((freq, i) => {
       const t = start + i * 0.15;
       const osc = ctx.createOscillator();
       const gain = ctx.createGain();
@@ -117,22 +115,53 @@
       osc.stop(t + (i === 3 ? 0.4 : 0.15));
     });
   }
+  async function startJingle() {
+    if (!enabled || played || !AC || pending) return;
+    pending = true;
+    try {
+      ctx ||= new AC();
+      if (ctx.state === 'suspended') await ctx.resume();
+      if (ctx.state !== 'running' || !enabled || played) return;
+      played = true;
+      playNotes();
+      removeFallback();
+    } catch (_) { /* User gesture fallback will retry. */ }
+    finally { pending = false; }
+  }
+  function onFirstInteraction(event) {
+    if (!enabled || played) return;
+    // The coin slot takes priority; never layer the startup fanfare over its sound.
+    if (event.target.closest && event.target.closest('#enter')) { removeFallback(); return; }
+    if (event.target.closest && event.target.closest('#arcade-sound-toggle')) return;
+    startJingle();
+  }
+  function removeFallback() {
+    document.removeEventListener('pointerdown', onFirstInteraction, true);
+    document.removeEventListener('keydown', onFirstInteraction, true);
+  }
+  function addFallback() {
+    document.addEventListener('pointerdown', onFirstInteraction, true);
+    document.addEventListener('keydown', onFirstInteraction, true);
+  }
   button.addEventListener('click', () => {
+    enabled = !enabled;
+    window.arcadeSoundsEnabled = enabled;
     if (!enabled) {
-      enabled = true;
-      window.arcadeSoundsEnabled = true;
-      hasPlayedThisVisit = true;
-      try { startupJingle(); } catch (_) {}
-    } else if (!hasPlayedThisVisit) {
-      hasPlayedThisVisit = true;
-      try { startupJingle(); } catch (_) {}
+      removeFallback();
+      if (ctx && ctx.state === 'running') ctx.suspend().catch(() => {});
     } else {
-      enabled = false;
-      window.arcadeSoundsEnabled = false;
+      if (!played) startJingle();
+      if (!played) addFallback();
     }
     try { localStorage.setItem(STORAGE_KEY, String(enabled)); } catch (_) {}
     label();
   });
   label();
+  if (enabled) {
+    addFallback();
+    // Desktop browsers may permit autoplay. iOS typically waits for a gesture.
+    attempted = true;
+    startJingle();
+  }
 })();
 </script><script src="script.js"></script></body></html>
