@@ -1,16 +1,16 @@
-BIG DADDY'S ARCADE — v1.9 UI-ONLY UPDATE
+BIG DADDY’S ARCADE — v2.1 BUTTON LAYOUT ONLY
 
-Upload ONLY index.html and style.css to the ROOT of your GitHub repository.
-Replace the existing two files and commit to main.
+Upload ONLY these three files to the root of your existing GitHub repository:
+- index.html
+- style.css
+- sw.js
 
-DO NOT upload or replace legends.json, script.js, tools/, .github/, or assets/.
-Your existing live scoreboard and original logo stay untouched.
+Do NOT overwrite legends.json, medals.json, assets, scripts, tools, or .github.
 
 Changes:
-- Reduced padding/spacing in Today's Legends; game name is neon pink.
-- Trophy on both sides of Overall Leaders.
-- TAP TO VIEW ALL moved to its own line.
-- TO SUBMIT AND VIEW SCORES below the Enter button.
+- Moves Enter the Hall of Legends button above Today's Legends.
+- Places “TO SUBMIT & VIEW SCORES” inside the same button beneath its title.
+- Keeps existing live leaderboard and medal features untouched.
+- Bumps service-worker cache to v2.1 for installed app refresh; also corrects a malformed score-data fetch condition in the previous sw.js.
 
-After deployment, reload the app. If iPhone home-screen app is cached,
-close and reopen it; if needed reload in Safari.
+After commit, allow GitHub Pages to deploy, then close/reopen the installed app.

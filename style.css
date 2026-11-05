@@ -106,3 +106,8 @@ body.leaders-dialog-open{overflow:hidden}
 .medal-feed{display:grid;gap:9px;max-height:370px;overflow:auto;padding:3px}
 .medal-card{border:1px solid rgba(255,255,255,.17);border-radius:11px;background:rgba(3,5,20,.86);padding:12px;text-align:left;display:grid;grid-template-columns:38px 1fr;gap:10px;align-items:center}
 .medal-icon{font-size:1.7rem;text-align:center}.medal-player{font-weight:900;color:#fff;text-shadow:0 0 9px #fd41ba}.medal-game{color:#ff69c7;font-weight:700;margin-top:4px}.medal-score{color:#9cffd5;font-weight:800;margin-top:4px}.medal-time{color:#b7afc4;font-size:.7rem;margin-top:5px}.medal-empty{font-size:.8rem;color:#b6fce1;margin:12px 0}.medal-label{font-size:.68rem;letter-spacing:.08em;color:#ffe09a}
+
+/* v2.1: primary action above score panels, with supporting copy inside the button */
+.primary .enter-title,.primary .enter-subtext{display:block;position:relative;z-index:1}
+.primary .enter-title{line-height:1.3}
+.primary .enter-subtext{margin:7px 0 0;color:#ffd9f3;font-size:clamp(10px,2.2vw,13px);font-weight:800;letter-spacing:1.3px;text-shadow:0 0 8px #ff35bcaa;line-height:1.3}
