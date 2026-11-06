@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-05T22:53:38.981172+00:00",
+  "updated_at": "2026-11-06T01:14:32.349781+00:00",
   "source": "iScored public read API",
   "scoring_note": "PAPA-style estimate: top 1000 games per player; one best score per player per game; competition ties. iScored may handle ties differently.",
   "standings": [
