@@ -1,22 +1,22 @@
 {
-  "updated_at": "2026-11-06T02:55:57.028237+00:00",
+  "updated_at": "2026-11-06T04:03:08.809076+00:00",
   "source": "iScored public read API",
   "scoring_note": "PAPA-style estimate: top 1000 games per player; one best score per player per game; competition ties. iScored may handle ties differently.",
   "standings": [
     {
       "player": "DON",
-      "points": 20865,
+      "points": 20813,
       "games": 212
     },
     {
       "player": "SPC",
-      "points": 4592,
-      "games": 48
+      "points": 4661,
+      "games": 49
     },
     {
       "player": "KAK",
-      "points": 2459,
-      "games": 27
+      "points": 2570,
+      "games": 28
     },
     {
       "player": "RPS",
@@ -25,23 +25,33 @@
     },
     {
       "player": "VJG",
-      "points": 1482,
+      "points": 1566,
+      "games": 17
+    },
+    {
+      "player": "DAY",
+      "points": 1428,
       "games": 16
     },
     {
       "player": "RDG",
-      "points": 1168,
-      "games": 13
-    },
-    {
-      "player": "DAY",
-      "points": 1130,
-      "games": 13
+      "points": 1263,
+      "games": 14
     },
     {
       "player": "SMS",
       "points": 950,
       "games": 10
+    },
+    {
+      "player": "POD",
+      "points": 811,
+      "games": 9
+    },
+    {
+      "player": "FO",
+      "points": 788,
+      "games": 9
     },
     {
       "player": "BOB",
@@ -50,23 +60,13 @@
     },
     {
       "player": "MAB",
-      "points": 645,
-      "games": 7
-    },
-    {
-      "player": "POD",
-      "points": 629,
+      "points": 640,
       "games": 7
     },
     {
       "player": "BGR",
       "points": 535,
       "games": 6
-    },
-    {
-      "player": "FO",
-      "points": 439,
-      "games": 5
     },
     {
       "player": "GPS",
@@ -137,12 +137,12 @@
     },
     {
       "kind": "champion",
-      "player": "SPC",
+      "player": "VJG",
       "game": "afterburner 2",
       "game_id": "50012",
-      "score": 754200,
-      "date": "2024-01-25 22:38:57",
-      "score_id": "74739",
+      "score": 1057640,
+      "date": "2026-11-05 21:09:12",
+      "score_id": "380775",
       "rank": 1
     },
     {
@@ -287,12 +287,12 @@
     },
     {
       "kind": "champion",
-      "player": "DON",
+      "player": "DAY",
       "game": "Back to the Future",
       "game_id": "86258",
-      "score": 4233949,
-      "date": "2025-11-23 16:46:34",
-      "score_id": "237073",
+      "score": 18100629,
+      "date": "2026-11-05 22:00:26",
+      "score_id": "380828",
       "rank": 1
     },
     {
@@ -437,12 +437,12 @@
     },
     {
       "kind": "champion",
-      "player": "DON",
+      "player": "KAK",
       "game": "BurgerTime",
       "game_id": "50024",
-      "score": 11550,
-      "date": "2024-01-19 21:34:23",
-      "score_id": "74173",
+      "score": 19550,
+      "date": "2026-11-05 21:27:45",
+      "score_id": "380796",
       "rank": 1
     },
     {
@@ -1187,12 +1187,12 @@
     },
     {
       "kind": "champion",
-      "player": "DON",
+      "player": "DAY",
       "game": "IRON MAN",
       "game_id": "101612",
-      "score": 540000,
-      "date": "2026-06-23 22:28:36",
-      "score_id": "320706",
+      "score": 570000,
+      "date": "2026-11-05 20:59:37",
+      "score_id": "380765",
       "rank": 1
     },
     {
@@ -1288,112 +1288,112 @@
     {
       "kind": "recent",
       "player": "DAY",
-      "game": "IRON MAN",
-      "game_id": "101612",
-      "score": 397000,
-      "date": "2026-11-05 20:43:55",
-      "score_id": "380753"
-    },
-    {
-      "kind": "recent",
-      "player": "POD",
-      "game": "X-Men: Pinball",
-      "game_id": "62265",
-      "score": 3342150,
-      "date": "2026-11-05 20:43:29",
-      "score_id": "380750"
-    },
-    {
-      "kind": "recent",
-      "player": "SPC",
-      "game": "Paperboy",
-      "game_id": "50245",
-      "score": 13395,
-      "date": "2026-11-05 20:43:11",
-      "score_id": "380748"
+      "game": "Back to the Future",
+      "game_id": "86258",
+      "score": 11882971,
+      "date": "2026-11-05 22:00:59",
+      "score_id": "380830"
     },
     {
       "kind": "recent",
       "player": "DAY",
-      "game": "SUPER BREAKOUT",
-      "game_id": "112566",
-      "score": 94,
-      "date": "2026-11-05 20:41:23",
-      "score_id": "380752"
-    },
-    {
-      "kind": "recent",
-      "player": "FO",
-      "game": "X-Men: Pinball",
-      "game_id": "62265",
-      "score": 3835110,
-      "date": "2026-11-05 20:40:59",
-      "score_id": "380743"
+      "game": "Back to the Future",
+      "game_id": "86258",
+      "score": 18100629,
+      "date": "2026-11-05 22:00:26",
+      "score_id": "380828"
     },
     {
       "kind": "recent",
       "player": "KAK",
-      "game": "X-Men: Pinball",
-      "game_id": "62265",
-      "score": 3269350,
-      "date": "2026-11-05 20:40:30",
-      "score_id": "380741"
-    },
-    {
-      "kind": "recent",
-      "player": "RDG",
-      "game": "Q*bert",
-      "game_id": "49999",
-      "score": 7725,
-      "date": "2026-11-05 20:40:16",
-      "score_id": "380742"
-    },
-    {
-      "kind": "recent",
-      "player": "SPC",
-      "game": "Hang On",
-      "game_id": "50050",
-      "score": 4185460,
-      "date": "2026-11-05 20:40:08",
-      "score_id": "380738"
+      "game": "Back to the Future",
+      "game_id": "86258",
+      "score": 3718649,
+      "date": "2026-11-05 21:55:25",
+      "score_id": "380801"
     },
     {
       "kind": "recent",
       "player": "DAY",
-      "game": "Q*bert",
-      "game_id": "49999",
-      "score": 6525,
-      "date": "2026-11-05 20:39:50",
-      "score_id": "380737"
+      "game": "Tekken 3",
+      "game_id": "73295",
+      "score": 2,
+      "date": "2026-11-05 21:46:33",
+      "score_id": "380814"
     },
     {
       "kind": "recent",
-      "player": "RDG",
+      "player": "DAY",
+      "game": "Outrun",
+      "game_id": "50101",
+      "score": 2884800,
+      "date": "2026-11-05 21:30:33",
+      "score_id": "380784"
+    },
+    {
+      "kind": "recent",
+      "player": "FO",
       "game": "Paperboy",
       "game_id": "50245",
-      "score": 12275,
-      "date": "2026-11-05 20:39:30",
-      "score_id": "380733"
+      "score": 10750,
+      "date": "2026-11-05 21:28:40",
+      "score_id": "380740"
     },
     {
       "kind": "recent",
-      "player": "SPC",
-      "game": "SUPER BREAKOUT",
-      "game_id": "112566",
-      "score": 168,
-      "date": "2026-11-05 20:39:20",
-      "score_id": "380732"
+      "player": "KAK",
+      "game": "BurgerTime",
+      "game_id": "50024",
+      "score": 19550,
+      "date": "2026-11-05 21:27:45",
+      "score_id": "380796"
+    },
+    {
+      "kind": "recent",
+      "player": "FO",
+      "game": "Aliens",
+      "game_id": "86264",
+      "score": 2474000,
+      "date": "2026-11-05 21:27:08",
+      "score_id": "380785"
+    },
+    {
+      "kind": "recent",
+      "player": "KAK",
+      "game": "Paperboy",
+      "game_id": "50245",
+      "score": 23547,
+      "date": "2026-11-05 21:26:51",
+      "score_id": "380787"
     },
     {
       "kind": "recent",
       "player": "DAY",
-      "game": "Hang On",
-      "game_id": "50050",
-      "score": 3974850,
-      "date": "2026-11-05 20:39:08",
-      "score_id": "380731"
+      "game": "BurgerTime",
+      "game_id": "50024",
+      "score": 6500,
+      "date": "2026-11-05 21:26:41",
+      "score_id": "380790"
+    },
+    {
+      "kind": "recent",
+      "player": "POD",
+      "game": "SUPER BREAKOUT",
+      "game_id": "112566",
+      "score": 283,
+      "date": "2026-11-05 21:26:20",
+      "score_id": "380791"
+    },
+    {
+      "kind": "recent",
+      "player": "FO",
+      "game": "Back to the Future",
+      "game_id": "86258",
+      "score": 16260297,
+      "date": "2026-11-05 21:26:11",
+      "score_id": "380794"
     }
   ],
-  "total_games": 243,
+  "total_games": 244,
   "total_players": 16
 }
