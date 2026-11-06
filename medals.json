@@ -1,6 +1,176 @@
 {
-  "updated_at": "2026-11-06T01:14:32.349781+00:00",
+  "updated_at": "2026-11-06T02:55:57.028237+00:00",
   "alerts": [
+    {
+      "id": "380753",
+      "player": "DAY",
+      "game": "IRON MAN",
+      "game_id": "101612",
+      "score": 397000,
+      "date": "2026-11-05 20:43:55",
+      "rank": 2,
+      "medal": "silver"
+    },
+    {
+      "id": "380748",
+      "player": "SPC",
+      "game": "Paperboy",
+      "game_id": "50245",
+      "score": 13395,
+      "date": "2026-11-05 20:43:11",
+      "rank": 1,
+      "medal": "gold"
+    },
+    {
+      "id": "380752",
+      "player": "DAY",
+      "game": "SUPER BREAKOUT",
+      "game_id": "112566",
+      "score": 94,
+      "date": "2026-11-05 20:41:23",
+      "rank": 3,
+      "medal": "bronze"
+    },
+    {
+      "id": "380743",
+      "player": "FO",
+      "game": "X-Men: Pinball",
+      "game_id": "62265",
+      "score": 3835110,
+      "date": "2026-11-05 20:40:59",
+      "rank": 3,
+      "medal": "bronze"
+    },
+    {
+      "id": "380742",
+      "player": "RDG",
+      "game": "Q*bert",
+      "game_id": "49999",
+      "score": 7725,
+      "date": "2026-11-05 20:40:16",
+      "rank": 2,
+      "medal": "silver"
+    },
+    {
+      "id": "380738",
+      "player": "SPC",
+      "game": "Hang On",
+      "game_id": "50050",
+      "score": 4185460,
+      "date": "2026-11-05 20:40:08",
+      "rank": 1,
+      "medal": "gold"
+    },
+    {
+      "id": "380737",
+      "player": "DAY",
+      "game": "Q*bert",
+      "game_id": "49999",
+      "score": 6525,
+      "date": "2026-11-05 20:39:50",
+      "rank": 3,
+      "medal": "bronze"
+    },
+    {
+      "id": "380733",
+      "player": "RDG",
+      "game": "Paperboy",
+      "game_id": "50245",
+      "score": 12275,
+      "date": "2026-11-05 20:39:30",
+      "rank": 2,
+      "medal": "silver"
+    },
+    {
+      "id": "380732",
+      "player": "SPC",
+      "game": "SUPER BREAKOUT",
+      "game_id": "112566",
+      "score": 168,
+      "date": "2026-11-05 20:39:20",
+      "rank": 1,
+      "medal": "gold"
+    },
+    {
+      "id": "380731",
+      "player": "DAY",
+      "game": "Hang On",
+      "game_id": "50050",
+      "score": 3974850,
+      "date": "2026-11-05 20:39:08",
+      "rank": 3,
+      "medal": "bronze"
+    },
+    {
+      "id": "380730",
+      "player": "KAK",
+      "game": "SUPER BREAKOUT",
+      "game_id": "112566",
+      "score": 145,
+      "date": "2026-11-05 20:38:53",
+      "rank": 2,
+      "medal": "silver"
+    },
+    {
+      "id": "380726",
+      "player": "KAK",
+      "game": "Paperboy",
+      "game_id": "50245",
+      "score": 8525,
+      "date": "2026-11-05 20:15:58",
+      "rank": 3,
+      "medal": "bronze"
+    },
+    {
+      "id": "380721",
+      "player": "VJG",
+      "game": "Outrun",
+      "game_id": "50101",
+      "score": 2727820,
+      "date": "2026-11-05 20:14:58",
+      "rank": 1,
+      "medal": "gold"
+    },
+    {
+      "id": "380718",
+      "player": "DON",
+      "game": "Star Wars",
+      "game_id": "50001",
+      "score": 469854,
+      "date": "2026-11-05 20:14:12",
+      "rank": 1,
+      "medal": "gold"
+    },
+    {
+      "id": "380715",
+      "player": "SPC",
+      "game": "X-Men: Pinball",
+      "game_id": "62265",
+      "score": 14957410,
+      "date": "2026-11-05 20:14:02",
+      "rank": 1,
+      "medal": "gold"
+    },
+    {
+      "id": "380703",
+      "player": "SPC",
+      "game": "Contra (Arcade)",
+      "game_id": "84699",
+      "score": 45300,
+      "date": "2026-11-05 20:13:50",
+      "rank": 2,
+      "medal": "silver"
+    },
+    {
+      "id": "380702",
+      "player": "SPC",
+      "game": "Asteroids",
+      "game_id": "50017",
+      "score": 15490,
+      "date": "2026-11-05 19:46:29",
+      "rank": 1,
+      "medal": "gold"
+    },
     {
       "id": "380161",
       "player": "VJG",

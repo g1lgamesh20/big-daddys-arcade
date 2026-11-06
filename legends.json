@@ -1,22 +1,22 @@
 {
-  "updated_at": "2026-11-06T01:14:32.349781+00:00",
+  "updated_at": "2026-11-06T02:55:57.028237+00:00",
   "source": "iScored public read API",
   "scoring_note": "PAPA-style estimate: top 1000 games per player; one best score per player per game; competition ties. iScored may handle ties differently.",
   "standings": [
     {
       "player": "DON",
-      "points": 20905,
+      "points": 20865,
       "games": 212
     },
     {
       "player": "SPC",
-      "points": 4002,
-      "games": 42
+      "points": 4592,
+      "games": 48
     },
     {
       "player": "KAK",
-      "points": 2201,
-      "games": 24
+      "points": 2459,
+      "games": 27
     },
     {
       "player": "RPS",
@@ -25,23 +25,23 @@
     },
     {
       "player": "VJG",
-      "points": 1382,
-      "games": 15
+      "points": 1482,
+      "games": 16
     },
     {
       "player": "RDG",
-      "points": 988,
-      "games": 11
+      "points": 1168,
+      "games": 13
+    },
+    {
+      "player": "DAY",
+      "points": 1130,
+      "games": 13
     },
     {
       "player": "SMS",
       "points": 950,
       "games": 10
-    },
-    {
-      "player": "DAY",
-      "points": 785,
-      "games": 9
     },
     {
       "player": "BOB",
@@ -55,8 +55,8 @@
     },
     {
       "player": "POD",
-      "points": 545,
-      "games": 6
+      "points": 629,
+      "games": 7
     },
     {
       "player": "BGR",
@@ -65,8 +65,8 @@
     },
     {
       "player": "FO",
-      "points": 354,
-      "games": 4
+      "points": 439,
+      "games": 5
     },
     {
       "player": "GPS",
@@ -247,12 +247,12 @@
     },
     {
       "kind": "champion",
-      "player": "DON",
+      "player": "SPC",
       "game": "Asteroids",
       "game_id": "50017",
-      "score": 7940,
-      "date": "2025-02-17 00:43:02",
-      "score_id": "147481",
+      "score": 15490,
+      "date": "2026-11-05 19:46:29",
+      "score_id": "380702",
       "rank": 1
     },
     {
@@ -1127,12 +1127,12 @@
     },
     {
       "kind": "champion",
-      "player": "DON",
+      "player": "SPC",
       "game": "Hang On",
       "game_id": "50050",
-      "score": 4034690,
-      "date": "2025-02-19 18:05:07",
-      "score_id": "148249",
+      "score": 4185460,
+      "date": "2026-11-05 20:40:08",
+      "score_id": "380738",
       "rank": 1
     },
     {
@@ -1287,113 +1287,113 @@
     },
     {
       "kind": "recent",
-      "player": "VJG",
-      "game": "Dragons Lair",
-      "game_id": "50317",
-      "score": 21790,
-      "date": "2026-11-04 23:14:27",
-      "score_id": "380161"
+      "player": "DAY",
+      "game": "IRON MAN",
+      "game_id": "101612",
+      "score": 397000,
+      "date": "2026-11-05 20:43:55",
+      "score_id": "380753"
     },
     {
       "kind": "recent",
-      "player": "DON",
-      "game": "Street Fighter II Championship Edition",
-      "game_id": "73284",
-      "score": 199200,
-      "date": "2026-11-01 17:12:31",
-      "score_id": "375710"
+      "player": "POD",
+      "game": "X-Men: Pinball",
+      "game_id": "62265",
+      "score": 3342150,
+      "date": "2026-11-05 20:43:29",
+      "score_id": "380750"
     },
     {
       "kind": "recent",
-      "player": "DON",
-      "game": "ICE COLD BEER",
-      "game_id": "62269",
-      "score": 8190,
-      "date": "2026-10-20 21:43:56",
-      "score_id": "373308"
+      "player": "SPC",
+      "game": "Paperboy",
+      "game_id": "50245",
+      "score": 13395,
+      "date": "2026-11-05 20:43:11",
+      "score_id": "380748"
     },
     {
       "kind": "recent",
-      "player": "DON",
-      "game": "ICE COLD BEER",
-      "game_id": "62269",
-      "score": 1850,
-      "date": "2026-10-06 17:13:08",
-      "score_id": "366126"
+      "player": "DAY",
+      "game": "SUPER BREAKOUT",
+      "game_id": "112566",
+      "score": 94,
+      "date": "2026-11-05 20:41:23",
+      "score_id": "380752"
     },
     {
       "kind": "recent",
-      "player": "DON",
-      "game": "ICE COLD BEER",
-      "game_id": "62269",
-      "score": 1320,
-      "date": "2026-10-06 17:07:26",
-      "score_id": "366125"
+      "player": "FO",
+      "game": "X-Men: Pinball",
+      "game_id": "62265",
+      "score": 3835110,
+      "date": "2026-11-05 20:40:59",
+      "score_id": "380743"
     },
     {
       "kind": "recent",
-      "player": "DON",
-      "game": "Crossbow",
-      "game_id": "73168",
-      "score": 185500,
-      "date": "2026-09-27 13:43:29",
-      "score_id": "361954"
+      "player": "KAK",
+      "game": "X-Men: Pinball",
+      "game_id": "62265",
+      "score": 3269350,
+      "date": "2026-11-05 20:40:30",
+      "score_id": "380741"
     },
     {
       "kind": "recent",
-      "player": "DON",
-      "game": "X-Men vs Street Fighter",
-      "game_id": "73288",
-      "score": 200700,
-      "date": "2026-09-07 23:58:20",
-      "score_id": "354474"
+      "player": "RDG",
+      "game": "Q*bert",
+      "game_id": "49999",
+      "score": 7725,
+      "date": "2026-11-05 20:40:16",
+      "score_id": "380742"
     },
     {
       "kind": "recent",
-      "player": "DON",
-      "game": "Pac-Land",
-      "game_id": "50244",
-      "score": 19380,
-      "date": "2026-09-03 16:06:03",
-      "score_id": "352251"
+      "player": "SPC",
+      "game": "Hang On",
+      "game_id": "50050",
+      "score": 4185460,
+      "date": "2026-11-05 20:40:08",
+      "score_id": "380738"
     },
     {
       "kind": "recent",
-      "player": "DON",
-      "game": "Doctor Strange",
-      "game_id": "106684",
-      "score": 1533000,
-      "date": "2026-09-01 22:07:17",
-      "score_id": "351846"
+      "player": "DAY",
+      "game": "Q*bert",
+      "game_id": "49999",
+      "score": 6525,
+      "date": "2026-11-05 20:39:50",
+      "score_id": "380737"
     },
     {
       "kind": "recent",
-      "player": "DON",
-      "game": "The Avengers",
-      "game_id": "106682",
-      "score": 1509566,
-      "date": "2026-09-01 20:35:06",
-      "score_id": "351811"
+      "player": "RDG",
+      "game": "Paperboy",
+      "game_id": "50245",
+      "score": 12275,
+      "date": "2026-11-05 20:39:30",
+      "score_id": "380733"
     },
     {
       "kind": "recent",
-      "player": "DON",
-      "game": "Guardians of the Galaxy",
-      "game_id": "106169",
-      "score": 2377003,
-      "date": "2026-08-28 18:14:21",
-      "score_id": "349734"
+      "player": "SPC",
+      "game": "SUPER BREAKOUT",
+      "game_id": "112566",
+      "score": 168,
+      "date": "2026-11-05 20:39:20",
+      "score_id": "380732"
     },
     {
       "kind": "recent",
-      "player": "DON",
-      "game": "Jaws",
-      "game_id": "106174",
-      "score": 2074192,
-      "date": "2026-08-28 18:14:16",
-      "score_id": "349735"
+      "player": "DAY",
+      "game": "Hang On",
+      "game_id": "50050",
+      "score": 3974850,
+      "date": "2026-11-05 20:39:08",
+      "score_id": "380731"
     }
   ],
-  "total_games": 241,
+  "total_games": 243,
   "total_players": 16
 }
