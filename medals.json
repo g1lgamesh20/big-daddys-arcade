@@ -1,6 +1,126 @@
 {
-  "updated_at": "2026-11-07T22:43:18.237026+00:00",
+  "updated_at": "2026-11-07T23:48:14.352770+00:00",
   "alerts": [
+    {
+      "id": "380978",
+      "player": "SPC",
+      "game": "RoadBlasters",
+      "game_id": "50166",
+      "score": 44470,
+      "date": "2026-11-07 17:45:19",
+      "rank": 1,
+      "medal": "gold"
+    },
+    {
+      "id": "380980",
+      "player": "SPC",
+      "game": "SPACE INVADERS",
+      "game_id": "50163",
+      "score": 2170,
+      "date": "2026-11-07 17:45:09",
+      "rank": 2,
+      "medal": "silver"
+    },
+    {
+      "id": "380832",
+      "player": "RDG",
+      "game": "Super Punch Out",
+      "game_id": "50178",
+      "score": 6760,
+      "date": "2026-11-07 17:43:17",
+      "rank": 1,
+      "medal": "gold"
+    },
+    {
+      "id": "380945",
+      "player": "SPC",
+      "game": "Pole Position",
+      "game_id": "50249",
+      "score": 29540,
+      "date": "2026-11-07 17:43:06",
+      "rank": 1,
+      "medal": "gold"
+    },
+    {
+      "id": "380951",
+      "player": "SPC",
+      "game": "Tetris",
+      "game_id": "50253",
+      "score": 19988,
+      "date": "2026-11-07 17:42:51",
+      "rank": 1,
+      "medal": "gold"
+    },
+    {
+      "id": "381006",
+      "player": "DAY",
+      "game": "Rampage",
+      "game_id": "50165",
+      "score": 27250,
+      "date": "2026-11-07 17:42:04",
+      "rank": 2,
+      "medal": "silver"
+    },
+    {
+      "id": "381124",
+      "player": "DAY",
+      "game": "Q*bert",
+      "game_id": "49999",
+      "score": 7425,
+      "date": "2026-11-07 17:40:42",
+      "rank": 3,
+      "medal": "bronze"
+    },
+    {
+      "id": "381127",
+      "player": "DAY",
+      "game": "Donkey Kong",
+      "game_id": "50032",
+      "score": 7200,
+      "date": "2026-11-07 17:40:24",
+      "rank": 3,
+      "medal": "bronze"
+    },
+    {
+      "id": "381128",
+      "player": "DAY",
+      "game": "Gorf",
+      "game_id": "50044",
+      "score": 2400,
+      "date": "2026-11-07 17:40:12",
+      "rank": 3,
+      "medal": "bronze"
+    },
+    {
+      "id": "381722",
+      "player": "RDG",
+      "game": "Gyruss",
+      "game_id": "50223",
+      "score": 73950,
+      "date": "2026-11-07 17:39:47",
+      "rank": 1,
+      "medal": "gold"
+    },
+    {
+      "id": "381725",
+      "player": "RDG",
+      "game": "Galaga",
+      "game_id": "50041",
+      "score": 70380,
+      "date": "2026-11-07 17:39:34",
+      "rank": 1,
+      "medal": "gold"
+    },
+    {
+      "id": "381727",
+      "player": "RDG",
+      "game": "Arkanoid",
+      "game_id": "50015",
+      "score": 31630,
+      "date": "2026-11-07 17:37:42",
+      "rank": 1,
+      "medal": "gold"
+    },
     {
       "id": "380828",
       "player": "DAY",
