@@ -1,12 +1,12 @@
 {
-  "updated_at": "2026-11-07T23:48:14.352770+00:00",
+  "updated_at": "2026-11-08T01:09:55.963776+00:00",
   "source": "iScored public read API",
   "scoring_note": "PAPA-style estimate: top 1000 games per player; one best score per player per game; competition ties. iScored may handle ties differently.",
   "standings": [
     {
       "player": "DON",
-      "points": 20782,
-      "games": 212
+      "points": 20972,
+      "games": 214
     },
     {
       "player": "SPC",
@@ -19,19 +19,19 @@
       "games": 28
     },
     {
+      "player": "RDG",
+      "points": 2029,
+      "games": 22
+    },
+    {
       "player": "RPS",
       "points": 1955,
       "games": 22
     },
     {
-      "player": "RDG",
-      "points": 1829,
-      "games": 20
-    },
-    {
       "player": "DAY",
-      "points": 1772,
-      "games": 20
+      "points": 1862,
+      "games": 21
     },
     {
       "player": "VJG",
@@ -39,14 +39,14 @@
       "games": 17
     },
     {
+      "player": "POD",
+      "points": 1080,
+      "games": 12
+    },
+    {
       "player": "SMS",
       "points": 950,
       "games": 10
-    },
-    {
-      "player": "POD",
-      "points": 811,
-      "games": 9
     },
     {
       "player": "FO",
@@ -297,6 +297,16 @@
     },
     {
       "kind": "champion",
+      "player": "POD",
+      "game": "Bad Dudes Vs. Dragon Ninja",
+      "game_id": "112664",
+      "score": 88500,
+      "date": "2026-11-07 18:11:35",
+      "score_id": "381766",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
       "player": "DON",
       "game": "Barnstorming (Atari2600)",
       "game_id": "84683",
@@ -393,6 +403,16 @@
       "score": 27500,
       "date": "2024-01-21 14:35:48",
       "score_id": "74407",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "RDG",
+      "game": "Bosconian",
+      "game_id": "112913",
+      "score": 49880,
+      "date": "2026-11-07 18:10:58",
+      "score_id": "381767",
       "rank": 1
     },
     {
@@ -583,6 +603,16 @@
       "score": 9500,
       "date": "2025-10-31 21:43:24",
       "score_id": "228400",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "crater raider",
+      "game_id": "112915",
+      "score": 1750,
+      "date": "2026-11-07 18:10:46",
+      "score_id": "381776",
       "rank": 1
     },
     {
@@ -1256,34 +1286,85 @@
       "rank": 1
     },
     {
-      "kind": "champion",
-      "player": "DON",
-      "game": "Jungle King",
-      "game_id": "49996",
-      "score": 15980,
-      "date": "2025-10-28 16:27:28",
-      "score_id": "227716",
-      "rank": 1
+      "kind": "recent",
+      "player": "POD",
+      "game": "Hang On",
+      "game_id": "50050",
+      "score": 2081070,
+      "date": "2026-11-07 19:03:55",
+      "score_id": "381017"
     },
     {
-      "kind": "champion",
-      "player": "DON",
-      "game": "Jurassic Park",
-      "game_id": "106167",
-      "score": 3208712,
-      "date": "2026-08-28 18:14:14",
-      "score_id": "349738",
-      "rank": 1
+      "kind": "recent",
+      "player": "DAY",
+      "game": "Star Trek: The Next Generation",
+      "game_id": "50055",
+      "score": 68090600,
+      "date": "2026-11-07 18:19:30",
+      "score_id": "381008"
     },
     {
-      "kind": "champion",
+      "kind": "recent",
       "player": "DON",
-      "game": "Kangaroo",
-      "game_id": "50000",
-      "score": 19600,
-      "date": "2024-01-19 15:26:53",
-      "score_id": "74121",
-      "rank": 1
+      "game": "ROBOTRON",
+      "game_id": "50167",
+      "score": 83075,
+      "date": "2026-11-07 18:18:35",
+      "score_id": "381781"
+    },
+    {
+      "kind": "recent",
+      "player": "POD",
+      "game": "Pole Position",
+      "game_id": "50249",
+      "score": 23270,
+      "date": "2026-11-07 18:13:52",
+      "score_id": "381778"
+    },
+    {
+      "kind": "recent",
+      "player": "RDG",
+      "game": "Smash T.V.",
+      "game_id": "112914",
+      "score": 126850,
+      "date": "2026-11-07 18:11:46",
+      "score_id": "381768"
+    },
+    {
+      "kind": "recent",
+      "player": "POD",
+      "game": "Bad Dudes Vs. Dragon Ninja",
+      "game_id": "112664",
+      "score": 88500,
+      "date": "2026-11-07 18:11:35",
+      "score_id": "381766"
+    },
+    {
+      "kind": "recent",
+      "player": "RDG",
+      "game": "Bosconian",
+      "game_id": "112913",
+      "score": 49880,
+      "date": "2026-11-07 18:10:58",
+      "score_id": "381767"
+    },
+    {
+      "kind": "recent",
+      "player": "DON",
+      "game": "crater raider",
+      "game_id": "112915",
+      "score": 1750,
+      "date": "2026-11-07 18:10:46",
+      "score_id": "381776"
+    },
+    {
+      "kind": "recent",
+      "player": "DON",
+      "game": "Bosconian",
+      "game_id": "112913",
+      "score": 27670,
+      "date": "2026-11-07 18:10:44",
+      "score_id": "381769"
     },
     {
       "kind": "recent",
@@ -1311,89 +1392,8 @@
       "score": 6760,
       "date": "2026-11-07 17:43:17",
       "score_id": "380832"
-    },
-    {
-      "kind": "recent",
-      "player": "SPC",
-      "game": "Pole Position",
-      "game_id": "50249",
-      "score": 29540,
-      "date": "2026-11-07 17:43:06",
-      "score_id": "380945"
-    },
-    {
-      "kind": "recent",
-      "player": "SPC",
-      "game": "Tetris",
-      "game_id": "50253",
-      "score": 19988,
-      "date": "2026-11-07 17:42:51",
-      "score_id": "380951"
-    },
-    {
-      "kind": "recent",
-      "player": "DAY",
-      "game": "Rampage",
-      "game_id": "50165",
-      "score": 27250,
-      "date": "2026-11-07 17:42:04",
-      "score_id": "381006"
-    },
-    {
-      "kind": "recent",
-      "player": "DAY",
-      "game": "CENTIPEDE",
-      "game_id": "50025",
-      "score": 5167,
-      "date": "2026-11-07 17:41:12",
-      "score_id": "381014"
-    },
-    {
-      "kind": "recent",
-      "player": "DAY",
-      "game": "Hang On",
-      "game_id": "50050",
-      "score": 2081070,
-      "date": "2026-11-07 17:40:53",
-      "score_id": "381017"
-    },
-    {
-      "kind": "recent",
-      "player": "DAY",
-      "game": "Q*bert",
-      "game_id": "49999",
-      "score": 7425,
-      "date": "2026-11-07 17:40:42",
-      "score_id": "381124"
-    },
-    {
-      "kind": "recent",
-      "player": "DAY",
-      "game": "Donkey Kong",
-      "game_id": "50032",
-      "score": 7200,
-      "date": "2026-11-07 17:40:24",
-      "score_id": "381127"
-    },
-    {
-      "kind": "recent",
-      "player": "DAY",
-      "game": "Gorf",
-      "game_id": "50044",
-      "score": 2400,
-      "date": "2026-11-07 17:40:12",
-      "score_id": "381128"
-    },
-    {
-      "kind": "recent",
-      "player": "RDG",
-      "game": "Joust",
-      "game_id": "50051",
-      "score": 12000,
-      "date": "2026-11-07 17:39:57",
-      "score_id": "381720"
     }
   ],
-  "total_games": 245,
+  "total_games": 249,
   "total_players": 16
 }
