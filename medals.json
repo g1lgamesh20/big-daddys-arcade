@@ -1,6 +1,36 @@
 {
-  "updated_at": "2026-11-08T01:09:55.963776+00:00",
+  "updated_at": "2026-11-08T02:56:38.310197+00:00",
   "alerts": [
+    {
+      "id": "380968",
+      "player": "SPC",
+      "game": "Galaga",
+      "game_id": "50041",
+      "score": 93340,
+      "date": "2026-11-07 20:01:00",
+      "rank": 1,
+      "medal": "gold"
+    },
+    {
+      "id": "381130",
+      "player": "DAY",
+      "game": "Batman 66",
+      "game_id": "86776",
+      "score": 18795700,
+      "date": "2026-11-07 20:00:46",
+      "rank": 1,
+      "medal": "gold"
+    },
+    {
+      "id": "381800",
+      "player": "DAY",
+      "game": "Jurassic Park",
+      "game_id": "112918",
+      "score": 16170370,
+      "date": "2026-11-07 19:57:45",
+      "rank": 1,
+      "medal": "gold"
+    },
     {
       "id": "381008",
       "player": "DAY",

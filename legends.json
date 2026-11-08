@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-08T01:09:55.963776+00:00",
+  "updated_at": "2026-11-08T02:56:38.310197+00:00",
   "source": "iScored public read API",
   "scoring_note": "PAPA-style estimate: top 1000 games per player; one best score per player per game; competition ties. iScored may handle ties differently.",
   "standings": [
@@ -10,7 +10,7 @@
     },
     {
       "player": "SPC",
-      "points": 4847,
+      "points": 4857,
       "games": 51
     },
     {
@@ -19,19 +19,19 @@
       "games": 28
     },
     {
+      "player": "DAY",
+      "points": 2062,
+      "games": 23
+    },
+    {
       "player": "RDG",
-      "points": 2029,
+      "points": 2019,
       "games": 22
     },
     {
       "player": "RPS",
       "points": 1955,
       "games": 22
-    },
-    {
-      "player": "DAY",
-      "points": 1862,
-      "games": 21
     },
     {
       "player": "VJG",
@@ -313,6 +313,16 @@
       "score": 40440,
       "date": "2025-10-31 21:39:08",
       "score_id": "228399",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DAY",
+      "game": "Batman 66",
+      "game_id": "86776",
+      "score": 18795700,
+      "date": "2026-11-07 20:00:46",
+      "score_id": "381130",
       "rank": 1
     },
     {
@@ -608,7 +618,7 @@
     {
       "kind": "champion",
       "player": "DON",
-      "game": "crater raider",
+      "game": "Crater Raider",
       "game_id": "112915",
       "score": 1750,
       "date": "2026-11-07 18:10:46",
@@ -997,12 +1007,12 @@
     },
     {
       "kind": "champion",
-      "player": "RDG",
+      "player": "SPC",
       "game": "Galaga",
       "game_id": "50041",
-      "score": 70380,
-      "date": "2026-11-07 17:39:34",
-      "score_id": "381725",
+      "score": 93340,
+      "date": "2026-11-07 20:01:00",
+      "score_id": "380968",
       "rank": 1
     },
     {
@@ -1276,14 +1286,31 @@
       "rank": 1
     },
     {
-      "kind": "champion",
+      "kind": "recent",
       "player": "SPC",
-      "game": "JR. PAC-MAN turbo",
-      "game_id": "50172",
-      "score": 68870,
-      "date": "2024-01-21 00:23:56",
-      "score_id": "74344",
-      "rank": 1
+      "game": "Galaga",
+      "game_id": "50041",
+      "score": 93340,
+      "date": "2026-11-07 20:01:00",
+      "score_id": "380968"
+    },
+    {
+      "kind": "recent",
+      "player": "DAY",
+      "game": "Batman 66",
+      "game_id": "86776",
+      "score": 18795700,
+      "date": "2026-11-07 20:00:46",
+      "score_id": "381130"
+    },
+    {
+      "kind": "recent",
+      "player": "DAY",
+      "game": "Jurassic Park",
+      "game_id": "112918",
+      "score": 16170370,
+      "date": "2026-11-07 19:57:45",
+      "score_id": "381800"
     },
     {
       "kind": "recent",
@@ -1351,7 +1378,7 @@
     {
       "kind": "recent",
       "player": "DON",
-      "game": "crater raider",
+      "game": "Crater Raider",
       "game_id": "112915",
       "score": 1750,
       "date": "2026-11-07 18:10:46",
@@ -1365,35 +1392,8 @@
       "score": 27670,
       "date": "2026-11-07 18:10:44",
       "score_id": "381769"
-    },
-    {
-      "kind": "recent",
-      "player": "SPC",
-      "game": "RoadBlasters",
-      "game_id": "50166",
-      "score": 44470,
-      "date": "2026-11-07 17:45:19",
-      "score_id": "380978"
-    },
-    {
-      "kind": "recent",
-      "player": "SPC",
-      "game": "SPACE INVADERS",
-      "game_id": "50163",
-      "score": 2170,
-      "date": "2026-11-07 17:45:09",
-      "score_id": "380980"
-    },
-    {
-      "kind": "recent",
-      "player": "RDG",
-      "game": "Super Punch Out",
-      "game_id": "50178",
-      "score": 6760,
-      "date": "2026-11-07 17:43:17",
-      "score_id": "380832"
     }
   ],
-  "total_games": 249,
+  "total_games": 251,
   "total_players": 16
 }
