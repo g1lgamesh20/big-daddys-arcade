@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-09T01:13:41.874722+00:00",
+  "updated_at": "2026-11-09T02:55:27.713698+00:00",
   "source": "iScored public read API",
   "scoring_note": "PAPA-style estimate: top 1000 games per player; one best score per player per game; competition ties. iScored may handle ties differently.",
   "standings": [
@@ -20,7 +20,7 @@
     },
     {
       "player": "DAY",
-      "points": 2062,
+      "points": 2057,
       "games": 23
     },
     {
@@ -40,8 +40,8 @@
     },
     {
       "player": "POD",
-      "points": 1080,
-      "games": 12
+      "points": 1170,
+      "games": 13
     },
     {
       "player": "SMS",
@@ -1287,6 +1287,15 @@
     },
     {
       "kind": "recent",
+      "player": "POD",
+      "game": "Rampage",
+      "game_id": "50165",
+      "score": 48300,
+      "date": "2026-11-08 20:27:58",
+      "score_id": "382137"
+    },
+    {
+      "kind": "recent",
       "player": "SPC",
       "game": "Galaga",
       "game_id": "50041",
@@ -1383,15 +1392,6 @@
       "score": 1750,
       "date": "2026-11-07 18:10:46",
       "score_id": "381776"
-    },
-    {
-      "kind": "recent",
-      "player": "DON",
-      "game": "Bosconian",
-      "game_id": "112913",
-      "score": 27670,
-      "date": "2026-11-07 18:10:44",
-      "score_id": "381769"
     }
   ],
   "total_games": 251,
