@@ -136,9 +136,10 @@
 <summary aria-label="Open arcade settings"><span class="arcade-settings-gear" aria-hidden="true">⚙</span><span>ARCADE CONTROL PANEL</span><span class="arcade-settings-chevron" aria-hidden="true">▾</span></summary>
 <div class="arcade-settings-body">
 <p class="arcade-settings-intro">★ OPERATOR OPTIONS ★</p>
-<div class="arcade-settings-item"><h3>🔊 ARCADE AUDIO</h3><div class="arcade-sound-controls"><button class="small arcade-sound-toggle" id="arcade-sound-toggle" type="button" aria-label="Play arcade startup sound">🔊 PLAY STARTUP</button></div></div>
+<div class="arcade-settings-item"><h3>🔊 ARCADE AUDIO</h3><p style="font:500 12px/1.5 system-ui,sans-serif;color:#86eaff;margin:3px 0 10px">Retro button sounds, menu blips, and arcade fanfares use the same sound toggle.</p><div class="arcade-sound-controls"><button class="small arcade-sound-toggle" id="arcade-sound-toggle" type="button" aria-label="Play arcade startup sound">🔊 PLAY STARTUP</button></div></div>
 <div class="arcade-settings-item"><h3>👾 ATTRACT MODE</h3><div class="arcade-attract-settings"><label for="arcade-attract-enabled"><input type="checkbox" id="arcade-attract-enabled" checked> ENABLE ATTRACT MODE (AFTER 30 SECONDS)</label></div></div>
 <div class="arcade-settings-item"><h3>🏆 ACHIEVEMENT TEST</h3><button type="button" id="arcade-celebrate-test" class="arcade-celebrate-test">🎉 PREVIEW MEDAL CELEBRATION</button></div>
+<div class="arcade-settings-item"><h3>🏆 THURSDAY CHAMPION FANFARE</h3><button type="button" id="arcade-thursday-fanfare-preview" class="arcade-celebrate-test">🎺 PREVIEW CHAMPION FANFARE</button><p style="font:500 12px/1.5 system-ui,sans-serif;color:#86eaff;margin:7px 0 0">A special victory tune plays when you open a newly crowned Thursday champion. Respects Arcade Audio mute.</p></div>
 <div class="arcade-settings-item arcade-settings-install"><section class="arcade-install" aria-labelledby="arcade-install-title"><h2 id="arcade-install-title">🕹️ TAKE THE ARCADE HOME!</h2><p>YOUR POCKET-SIZED HALL OF LEGENDS</p><button type="button" id="arcade-install-button" class="arcade-install-button">⬇ INSTALL THE ARCADE</button><button type="button" id="arcade-share-button" class="arcade-share-button" aria-label="Share Big Daddy’s Arcade" title="Share the Arcade"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.7 10.7 6.6-4.4M8.7 13.3l6.6 4.4"/></svg></button><p class="arcade-install-small">FREE • iPHONE • ANDROID</p><div id="arcade-install-help" class="arcade-install-help" hidden role="status" aria-live="polite"></div><div id="arcade-share-fallback" class="arcade-share-fallback" hidden aria-live="polite"></div></section></div>
 </div>
 </details>
@@ -411,6 +412,7 @@ See you on the leaderboard! 🏆`;
    const r=await fetch('./thursday-challenge.json?t='+Date.now(),{cache:'no-store'});
    if(!r.ok)throw Error('Challenge feed not yet published');
    const d=await r.json();
+   window.arcadeThursdayChampion=d;
    game.textContent=d.game.toUpperCase();
    date.textContent='★ THURSDAY '+d.thursday_date+' • 11:59 PM ET CUTOFF ★';
    if(d.status==='final'){
@@ -437,5 +439,97 @@ See you on the leaderboard! 🏆`;
  }
  refresh();setInterval(refresh,10*60*1000);
  document.addEventListener('visibilitychange',()=>{if(!document.hidden)refresh()});
+})();
+</script><script>
+/* Original Web Audio UI effects. No sound files, network calls or third-party code. */
+(() => {
+  let ctx, lastTime = 0;
+  const AC = window.AudioContext || window.webkitAudioContext;
+  const settings = document.getElementById('arcade-settings-panel');
+  const soundToggle = document.getElementById('arcade-sound-toggle');
+  function enabled() { return window.arcadeSoundsEnabled !== false; }
+  function audio() {
+    if (!AC || !enabled()) return null;
+    try {
+      ctx ||= new AC();
+      if (ctx.state === 'suspended') ctx.resume().catch(() => {});
+      return ctx;
+    } catch (_) { return null; }
+  }
+  function tone(freq, duration, offset=0, shape='square', volume=0.018, endFreq) {
+    const a=audio(); if(!a)return;
+    const t=a.currentTime+0.008+offset, o=a.createOscillator(), g=a.createGain();
+    o.type=shape; o.frequency.setValueAtTime(freq,t);
+    if(endFreq)o.frequency.exponentialRampToValueAtTime(endFreq,t+duration);
+    g.gain.setValueAtTime(0.0001,t);
+    g.gain.exponentialRampToValueAtTime(volume,t+0.008);
+    g.gain.exponentialRampToValueAtTime(0.0001,t+duration);
+    o.connect(g);g.connect(a.destination);o.start(t);o.stop(t+duration+0.015);
+  }
+  function play(kind) {
+    if(!enabled())return;
+    const now=performance.now();if(now-lastTime<55)return;lastTime=now;
+    try {
+      switch(kind){
+        case 'open':tone(440,.055);tone(660,.07,.065);break;
+        case 'close':tone(550,.045);tone(330,.065,.055);break;
+        case 'next':tone(610,.05);tone(810,.07,.06);break;
+        case 'previous':tone(810,.05);tone(610,.07,.06);break;
+        case 'confirm':tone(523,.055);tone(784,.10,.07,'triangle');break;
+        case 'share':tone(660,.045);tone(880,.06,.055);tone(1175,.09,.12,'triangle');break;
+        case 'toggle':tone(330,.05);tone(495,.07,.065);break;
+        case 'thursday-champion':{
+          // Original 8-bit crown fanfare: rising arpeggio, brass-like double hit, final flourish.
+          const notes=[[392,0,.13],[523.25,.14,.13],[659.25,.28,.13],[783.99,.42,.20],[659.25,.67,.10],[783.99,.79,.10],[1046.5,.92,.36],[783.99,1.33,.13],[1046.5,1.48,.52]];
+          notes.forEach(([f,t,d],i)=>tone(f,d,t,i>5?'sawtooth':'square',i>5?.022:.018));
+          break;
+        }
+        default:tone(620,.045,0,'square',.012);break;
+      }
+    } catch (_) { /* UI interactions must never fail because of audio. */ }
+  }
+  // Click events also cover keyboard activation and touchscreen taps. One sound per action.
+  document.addEventListener('click',event=>{
+    const target=event.target.closest('button,summary,a[href],input[type="checkbox"],label[for]');
+    if(!target || target.disabled || target.closest('[hidden]'))return;
+    // Preserve dedicated quarter-drop, startup fanfare and achievement jingles.
+    if(target.closest('#enter,#arcade-sound-toggle,#arcade-celebrate-test,#arcade-celebrate-close,#arcade-thursday-fanfare-preview'))return;
+    if(target.closest('#arcade-attract')){
+      play('close');return;
+    }
+    if(target.id==='arcade-share-button'){play('share');return;}
+    if(target.id==='legend-next'){play('next');return;}
+    if(target.id==='legend-prev'){play('previous');return;}
+    if(target.id==='leaders-close'){play('close');return;}
+    if(target.id==='leaders-open'){play('open');return;}
+    if(target.id==='arcade-install-button'){play('confirm');return;}
+    if(target.id==='arcade-attract-enabled' || target.closest('label[for="arcade-attract-enabled"]')){play('toggle');return;}
+    if(target.closest('#thursday-challenge-panel > summary') && !target.parentElement.open){
+      const d=window.arcadeThursdayChampion;
+      if(d?.status==='final' && d.winner && d.thursday_date){
+        const key='big-daddys-thursday-crowned-'+d.thursday_date;
+        try{if(!localStorage.getItem(key)){localStorage.setItem(key,'1');play('thursday-champion');return;}}catch(_){}
+      }
+    }
+    if(target.tagName==='SUMMARY'){
+      play(target.parentElement.open?'close':'open');return;
+    }
+    if(target.tagName==='A'){play('confirm');return;}
+    play('tap');
+  },{capture:true});
+  // When the global sound toggle mutes audio, don't play any click effects.
+  // On iOS/Android audio starts only after a user interaction.
+  window.arcadeUiSounds={play};
+  document.getElementById('arcade-thursday-fanfare-preview')?.addEventListener('click',()=>play('thursday-champion'));
+  // Only celebrate a NEW final winner on this device, and only on a user gesture.
+  // Avoid mobile autoplay restrictions and avoid repeating on every visit.
+  document.getElementById('thursday-challenge-panel')?.addEventListener('toggle',e=>{
+    if(!e.target.open)return;
+    const data=window.arcadeThursdayChampion;
+    if(!data || data.status!=='final' || !data.winner || !data.thursday_date)return;
+    const key='big-daddys-thursday-crowned-'+data.thursday_date;
+    try{if(localStorage.getItem(key))return;localStorage.setItem(key,'1');}catch(_){}
+    play('thursday-champion');
+  });
 })();
 </script></body></html>

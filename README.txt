@@ -1,9 +1,7 @@
-BIG DADDY’S ARCADE — SHARE THE ARCADE
+Big Daddy’s Arcade — Retro Button Sounds + Thursday Champion Fanfare
 
-Upload index.html and script.js to the repository root, replacing those files. No changes to workflows, OneSignal, iScored, or existing data files.
+Upload index.html and script.js to repository root, replacing the existing files. No workflow changes.
 
-The new share icon is next to INSTALL THE ARCADE in TAKE THE ARCADE HOME inside the Arcade Control Panel. On compatible phones it opens the native share sheet (including AirDrop where supported). On other browsers it offers Email, Message and Copy Invite. The invite includes the link and installation instructions for iPhone and Android.
+New: distinct nine-note 8-bit Thursday Night Champion fanfare. Preview from Arcade Control Panel. It also plays once per newly finalized weekly champion on this device when the Thursday Challenge card is opened. If the card was already open when results loaded, close and reopen it. Browser audio requires a tap; no background autoplay is promised. Muting Arcade Audio disables this fanfare.
 
-NOTE: This package is based on the latest Thursday Night Champion version available here. If you made any further live-site edits to index.html after that package, compare them before replacing the file.
-
-Test: iPhone Safari share sheet; Android Chrome share sheet; desktop fallback. Email and SMS recipients must be selected by the sender. Some apps may trim long shared text; check the resulting message before sending.
+This package is based on the latest Retro Button Sounds build, preserving its Share the Arcade and Thursday Challenge features.
