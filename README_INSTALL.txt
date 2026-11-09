@@ -1,32 +1,28 @@
-BIG DADDY'S ARCADE — THURSDAY NIGHT CHAMPION + 9 AM PUSH
+BIG DADDY'S ARCADE — FRIDAY 9 AM THURSDAY CHAMPION PUSH
 
-INSTALL (GitHub repository root):
-1. Replace index.html and script.js.
-2. Upload BOTH supplied Python files into tools/.
-3. Upload .github/workflows/thursday-challenge.yml into the same path.
-4. Commit everything to main.
-5. In GitHub Actions, run "Thursday Challenge Announcement" manually once to generate
-   thursday-challenge.json and thursday-challenge-state.json. Manual runs outside
-   Thursday 9 AM ET DO NOT send a notification.
-6. Ensure existing ONESIGNAL_REST_API_KEY secret remains set.
-7. Check that the challenge card loads; verify real iScored date formats before
-   relying on Thursday winners. Date strings without offsets are assumed Eastern.
-8. The workflow aims for Thursday 9 AM Eastern and accounts for daylight saving time.
-   GitHub Actions schedules may run late.
+Upload these TWO files to your GitHub repository:
+1) tools/send_friday_champion_notification.py (new file)
+2) .github/workflows/thursday-challenge.yml (REPLACE existing workflow)
 
-RULES:
-- Highest approved score SUBMITTED on Thursday 00:00–23:59:59 ET wins.
-- A score approved later counts if iScored date reflects Thursday submission;
-  confirm actual API timestamp semantics before treating as official.
-- Ties: earliest submission timestamp wins, then alphabetical player name.
-- This is separate from the all-time high score.
-- Winner finalizes after Thursday ends and next successful sync.
-- Existing scoreboard and medal workflow remains unchanged.
-- OneSignal sends to segment All, at most once per Thursday in normal operation.
+Do not replace index.html, script.js, or existing medal notification files.
+Do not remove your existing ONESIGNAL_REST_API_KEY GitHub Actions secret.
 
-LIMITATIONS:
-- Selection freezes when challenge workflow first runs that week.
-- iScored date format and timestamp meaning have NOT been verified against live API.
-- If selected game's dates are unparseable, winner is held for review.
-- A GitHub scheduled workflow may be delayed or missed.
-- If notification succeeds but state commit fails, a later retry may duplicate it.
+The existing Thursday workflow continues updating challenge data and sending the
+Thursday 9 AM game announcement. The Friday addition checks at 9 AM New York time
+(13:00 or 14:00 UTC, accounting for DST), and sends one champion notification
+only when Thursday's challenge feed is FINAL and contains a winner.
+
+Manual workflow runs outside Friday 9 AM Eastern will NOT send a winner push.
+The Friday send deduplication state is committed as
+friday-champion-notification-state.json after OneSignal confirms acceptance.
+GitHub scheduled workflows can run late or fail, so delivery at exactly 9 AM
+is not guaranteed. If the run occurs outside the 9 AM hour, it skips the send.
+
+IMPORTANT: The current iScored timestamp semantics have not been verified.
+The Friday announcement reflects APPROVED scores available by the workflow run.
+Late approvals may change the true Thursday winner after the announcement.
+Consider delaying the official announcement until submissions are approved, or
+implementing a provisional result policy, if Friday 9 AM approvals are incomplete.
+
+Testing: Actions > Thursday Challenge Announcement > Run workflow. This tests
+workflow success but will NOT send a Friday push outside the Friday 9 AM hour.
