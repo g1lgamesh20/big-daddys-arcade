@@ -1,7 +1,15 @@
-Big Daddy’s Arcade — Retro Button Sounds + Thursday Champion Fanfare
+BIG DADDY'S ARCADE — MESSAGE & CELEBRATION TEST LAB
 
-Upload index.html and script.js to repository root, replacing the existing files. No workflow changes.
+Upload index.html and script.js to repository root, replacing those two files.
+No workflow or OneSignal changes.
 
-New: distinct nine-note 8-bit Thursday Night Champion fanfare. Preview from Arcade Control Panel. It also plays once per newly finalized weekly champion on this device when the Thursday Challenge card is opened. If the card was already open when results loaded, close and reopen it. Browser audio requires a tap; no background autoplay is promised. Muting Arcade Audio disables this fanfare.
+Control Panel > Message & Celebration Test Lab:
+Gold, Silver, Bronze launch the REAL existing medal modal with sample data.
+New High Score, Thursday Champion, Thursday 9 AM push, Friday 9 AM push,
+and Medal Push show READ-ONLY EXAMPLE MESSAGE TEXT.
+The Thursday fanfare preview remains available separately.
 
-This package is based on the latest Retro Button Sounds build, preserving its Share the Arcade and Thursday Challenge features.
+IMPORTANT: The text-only message previews are illustrative, not exact live
+notification/animation renderings. No real notifications are sent.
+No live medals, scores, seen-state or champion records are changed.
+Keep this testing panel until real-world verification is complete.
