@@ -80,6 +80,11 @@
 .arcade-settings-gear{font-size:26px;color:#ffca50}
 .arcade-settings-chevron{font-size:20px;color:#6deeff;transition:transform .2s}
 .arcade-settings details[open] .arcade-settings-chevron{transform:rotate(180deg)}
+.arcade-settings details.arcade-test-lab-panel{display:block;max-width:230px;margin:16px auto 0!important;border:1px solid #5b566c!important;border-radius:8px!important;background:#100c1c!important;box-shadow:none!important}
+.arcade-settings .arcade-test-lab-panel>summary{color:#9189a6!important;font-size:10px!important;font-weight:600!important;min-height:29px!important;padding:5px 9px!important;letter-spacing:.06em!important;gap:5px!important;text-shadow:none!important}.arcade-settings .arcade-test-lab-panel[open]{max-width:100%!important;border-color:#6deeff80!important}.arcade-settings .arcade-test-lab-panel[open]>summary{color:#6deeff!important}.arcade-settings .arcade-test-lab-panel .arcade-settings-body{border-color:#5b566c!important}
+.arcade-test-lab-panel .arcade-preview-buttons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.arcade-test-lab-panel .arcade-preview-buttons button{min-width:0;width:100%;font-size:11px;padding:12px 5px}
+@media(max-width:350px){.arcade-test-lab-panel .arcade-preview-buttons{grid-template-columns:1fr}}
 .arcade-settings-body{padding:0 16px 20px;border-top:1px solid #f53cba55}
 .arcade-settings-intro{text-align:center;color:#6deeff;font:700 11px system-ui,sans-serif;letter-spacing:.15em;margin:18px 0}
 .arcade-settings-item{padding:15px 0;text-align:center;border-top:1px solid #a65bba45}
@@ -138,7 +143,10 @@
 <p class="arcade-settings-intro">★ OPERATOR OPTIONS ★</p>
 <div class="arcade-settings-item"><h3>🔊 ARCADE AUDIO</h3><p style="font:500 12px/1.5 system-ui,sans-serif;color:#86eaff;margin:3px 0 10px">Retro button sounds, menu blips, and arcade fanfares use the same sound toggle.</p><div class="arcade-sound-controls"><button class="small arcade-sound-toggle" id="arcade-sound-toggle" type="button" aria-label="Play arcade startup sound">🔊 PLAY STARTUP</button></div></div>
 <div class="arcade-settings-item"><h3>👾 ATTRACT MODE</h3><div class="arcade-attract-settings"><label for="arcade-attract-enabled"><input type="checkbox" id="arcade-attract-enabled" checked> ENABLE ATTRACT MODE (AFTER 30 SECONDS)</label></div></div>
-<div class="arcade-settings-item" id="arcade-preview-section">
+<div class="arcade-settings-item arcade-settings-install"><section class="arcade-install" aria-labelledby="arcade-install-title"><h2 id="arcade-install-title">🕹️ TAKE THE ARCADE HOME!</h2><p>YOUR POCKET-SIZED HALL OF LEGENDS</p><button type="button" id="arcade-install-button" class="arcade-install-button">⬇ INSTALL THE ARCADE</button><button type="button" id="arcade-share-button" class="arcade-share-button" aria-label="Share Big Daddy’s Arcade" title="Share the Arcade"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.7 10.7 6.6-4.4M8.7 13.3l6.6 4.4"/></svg></button><p class="arcade-install-small">FREE • iPHONE • ANDROID</p><div id="arcade-install-help" class="arcade-install-help" hidden role="status" aria-live="polite"></div><div id="arcade-share-fallback" class="arcade-share-fallback" hidden aria-live="polite"></div></section></div>
+<details id="arcade-test-lab-panel" class="arcade-test-lab-panel arcade-settings-item">
+<summary aria-label="Open message and celebration test lab"><span aria-hidden="true">⚙</span><span>TEST LAB</span><span class="arcade-settings-chevron" aria-hidden="true">▾</span></summary>
+<div class="arcade-settings-body"><p class="arcade-settings-intro">★ TESTING ONLY — NO LIVE CHANGES ★</p><div class="arcade-settings-item" id="arcade-preview-section">
 <h3>🎮 MESSAGE &amp; CELEBRATION TEST LAB</h3>
 <p style="font:500 12px/1.5 system-ui,sans-serif;color:#86eaff;margin:3px 0 10px">Operator-only sample previews. No real scores, notifications or championship results are changed.</p>
 <div class="arcade-preview-buttons">
@@ -150,13 +158,16 @@
 <button type="button" data-arcade-message-preview="thursday-push" class="arcade-celebrate-test">📣 THURSDAY 9 AM PUSH</button>
 <button type="button" data-arcade-message-preview="friday-push" class="arcade-celebrate-test">📣 FRIDAY 9 AM PUSH</button>
 <button type="button" data-arcade-message-preview="medal-push" class="arcade-celebrate-test">🔔 MEDAL PUSH MESSAGE</button>
+<button type="button" id="arcade-thursday-fanfare-preview" class="arcade-celebrate-test">🎺 THURSDAY CHAMPION FANFARE</button>
 </div>
 <div id="arcade-message-preview-output" hidden role="status" aria-live="polite" style="margin-top:10px;padding:12px;border:1px solid #6deaff;border-radius:9px;background:#10091e;color:#fff;font:500 13px/1.6 system-ui,sans-serif;white-space:pre-wrap"></div>
 </div>
-<div class="arcade-settings-item"><h3>🏆 THURSDAY CHAMPION FANFARE</h3><button type="button" id="arcade-thursday-fanfare-preview" class="arcade-celebrate-test">🎺 PREVIEW CHAMPION FANFARE</button><p style="font:500 12px/1.5 system-ui,sans-serif;color:#86eaff;margin:7px 0 0">A special victory tune plays when you open a newly crowned Thursday champion. Respects Arcade Audio mute.</p></div>
-<div class="arcade-settings-item arcade-settings-install"><section class="arcade-install" aria-labelledby="arcade-install-title"><h2 id="arcade-install-title">🕹️ TAKE THE ARCADE HOME!</h2><p>YOUR POCKET-SIZED HALL OF LEGENDS</p><button type="button" id="arcade-install-button" class="arcade-install-button">⬇ INSTALL THE ARCADE</button><button type="button" id="arcade-share-button" class="arcade-share-button" aria-label="Share Big Daddy’s Arcade" title="Share the Arcade"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.7 10.7 6.6-4.4M8.7 13.3l6.6 4.4"/></svg></button><p class="arcade-install-small">FREE • iPHONE • ANDROID</p><div id="arcade-install-help" class="arcade-install-help" hidden role="status" aria-live="polite"></div><div id="arcade-share-fallback" class="arcade-share-fallback" hidden aria-live="polite"></div></section></div>
+
+</div></details>
 </div>
 </details>
+
+
 </section></main><div class="leaders-backdrop" id="leaders-dialog" role="dialog" aria-modal="true" aria-labelledby="leaders-dialog-title" hidden><div class="leaders-dialog-inner"><div class="leaders-dialog-head"><h2 id="leaders-dialog-title">🏆 OVERALL LEADERS</h2><button type="button" id="leaders-close" aria-label="Close rankings">✕</button></div><p class="leaders-intro">ALL ARCADE PLAYERS • ESTIMATED PAPA POINTS</p><div id="leaders-all" class="leaders-all"></div><div class="leaders-explain"><strong>HOW THE RANKINGS WORK</strong><p>Players earn points based on their finishing position on each game: 1st = 100, 2nd = 90, 3rd = 85, then one fewer point for each subsequent place. Each player’s best 1,000 game results count toward their overall total.</p><p class="leaders-disclaimer">These standings are calculated from the available iScored score feed and may differ from iScored’s official rankings.</p></div></div></div><script>
 /* Arcade coin drop: original synthesized sound, no audio file required. */
 (() => {
@@ -394,7 +405,7 @@ See you on the leaderboard! 🏆`;
  const storageKey='big-daddys-arcade-attract-enabled-v1';
  let enabled=true,idleTimer=null,rotation=null,index=0,priorFocus=null;
  try{enabled=localStorage.getItem(storageKey)!=='false';}catch(_){} toggle.checked=enabled;
- function isBlocked(){return document.getElementById('arcade-settings-panel').open||document.hidden||!document.getElementById('arcade-celebrate').hidden||!document.getElementById('leaders-dialog').hidden||document.activeElement?.matches('input,textarea,select')}
+ function isBlocked(){return document.getElementById('arcade-settings-panel').open||document.getElementById('arcade-test-lab-panel')?.open||document.hidden||!document.getElementById('arcade-celebrate').hidden||!document.getElementById('leaders-dialog').hidden||document.activeElement?.matches('input,textarea,select')}
  function slides(){
   const items=[];
   document.querySelectorAll('#leaders-all .leaders-full-row').forEach(row=>{

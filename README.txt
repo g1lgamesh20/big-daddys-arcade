@@ -1,15 +1,7 @@
-BIG DADDY'S ARCADE — MESSAGE & CELEBRATION TEST LAB
+BIG DADDY’S ARCADE — DISCREET TEST LAB SUBMENU
 
-Upload index.html and script.js to repository root, replacing those two files.
-No workflow or OneSignal changes.
+Replace index.html and script.js in your GitHub Pages repository root.
 
-Control Panel > Message & Celebration Test Lab:
-Gold, Silver, Bronze launch the REAL existing medal modal with sample data.
-New High Score, Thursday Champion, Thursday 9 AM push, Friday 9 AM push,
-and Medal Push show READ-ONLY EXAMPLE MESSAGE TEXT.
-The Thursday fanfare preview remains available separately.
+The existing Arcade Control Panel stays exactly as the primary menu. Inside it, below Take the Arcade Home, is a small muted “⚙ TEST LAB” collapsible submenu. Its preview grid and Thursday champion fanfare remain unchanged.
 
-IMPORTANT: The text-only message previews are illustrative, not exact live
-notification/animation renderings. No real notifications are sent.
-No live medals, scores, seen-state or champion records are changed.
-Keep this testing panel until real-world verification is complete.
+No GitHub workflow, OneSignal, iScored or leaderboard changes. Preview features are for testing, not hidden or password protected.
