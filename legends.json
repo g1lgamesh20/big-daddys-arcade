@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-09T15:00:18.266649+00:00",
+  "updated_at": "2026-11-09T16:49:57.927388+00:00",
   "source": "iScored public read API",
   "scoring_note": "PAPA-style estimate: top 1000 games per player; one best score per player per game; competition ties. iScored may handle ties differently.",
   "standings": [
@@ -50,8 +50,8 @@
     },
     {
       "player": "FO",
-      "points": 788,
-      "games": 9
+      "points": 878,
+      "games": 10
     },
     {
       "player": "BOB",
@@ -71,11 +71,6 @@
     {
       "player": "GPS",
       "points": 100,
-      "games": 1
-    },
-    {
-      "player": "F O",
-      "points": 90,
       "games": 1
     },
     {
@@ -1287,6 +1282,15 @@
     },
     {
       "kind": "recent",
+      "player": "FO",
+      "game": "Crystal Castles",
+      "game_id": "50029",
+      "score": 36276,
+      "date": "2026-11-09 10:49:11",
+      "score_id": "74183"
+    },
+    {
+      "kind": "recent",
       "player": "POD",
       "game": "Rampage",
       "game_id": "50165",
@@ -1383,17 +1387,8 @@
       "score": 49880,
       "date": "2026-11-07 18:10:58",
       "score_id": "381767"
-    },
-    {
-      "kind": "recent",
-      "player": "DON",
-      "game": "Crater Raider",
-      "game_id": "112915",
-      "score": 1750,
-      "date": "2026-11-07 18:10:46",
-      "score_id": "381776"
     }
   ],
   "total_games": 251,
-  "total_players": 16
+  "total_players": 15
 }
