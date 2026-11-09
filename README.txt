@@ -1,30 +1,9 @@
-BIG DADDY'S ARCADE — v2.3 Medal Sync Foundation
+BIG DADDY’S ARCADE — SHARE THE ARCADE
 
-IMPORTANT DISCOVERY
-The uploaded repository has TWO score processors:
-- tools/update_legends.py (old scoreboard-only version)
-- update_legends.py (new medal-aware version)
-GitHub Actions was running the OLD tools version and only committing legends.json.
-This patch places the tested medal-aware script at the actual workflow path and
-updates the workflow to commit legends.json, medals.json and medal-state.json.
+Upload index.html and script.js to the repository root, replacing those files. No changes to workflows, OneSignal, iScored, or existing data files.
 
-INSTALL
-Upload only:
-  tools/update_legends.py
-  tools/test_medals.py
-  .github/workflows/update-legends.yml
-Preserve their folder paths. Do NOT upload/replace legends.json or your website files.
-Commit, then manually run Refresh Hall of Legends scores.
+The new share icon is next to INSTALL THE ARCADE in TAKE THE ARCADE HOME inside the Arcade Control Panel. On compatible phones it opens the native share sheet (including AirDrop where supported). On other browsers it offers Email, Message and Copy Invite. The invite includes the link and installation instructions for iPhone and Android.
 
-FIRST RUN
-If medal-state.json does not yet exist, this run quietly baselines existing scores.
-Future newly observed top-3 score IDs are announced after the scheduled sync.
-No historical medal flood.
+NOTE: This package is based on the latest Thursday Night Champion version available here. If you made any further live-site edits to index.html after that package, compare them before replacing the file.
 
-NOT YET INCLUDED
-Phone push delivery is NOT enabled by this patch. GitHub Pages alone cannot securely
-store subscriptions or send Web Push. That requires a push provider/backend,
-subscription storage, credentials kept in secrets, and opt-in permission UI.
-This fix makes the medal feed reliable before connecting push delivery.
-
-Original logo and all website styling remain untouched.
+Test: iPhone Safari share sheet; Android Chrome share sheet; desktop fallback. Email and SMS recipients must be selected by the sender. Some apps may trim long shared text; check the resulting message before sending.
