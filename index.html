@@ -342,54 +342,39 @@
  resetIdle();
 })();
 </script><script>
-/* Thursday challenge: read-only, deterministic weekly game rotation in America/New_York. */
+/* Thursday Challenge: server-selected game, Thursday-only results and champion. */
 (() => {
- const dateEl=document.getElementById('thursday-challenge-date');
- const gameEl=document.getElementById('thursday-challenge-game');
- const champEl=document.getElementById('thursday-challenge-champ');
- const scoreEl=document.getElementById('thursday-challenge-score');
- const teaser=document.getElementById('thursday-challenge-teaser');
- if(!gameEl)return;
- let lastWeek='';
- function easternParts(){
-  const parts=new Intl.DateTimeFormat('en-US',{timeZone:'America/New_York',year:'numeric',month:'2-digit',day:'2-digit',weekday:'short'}).formatToParts(new Date());
-  return Object.fromEntries(parts.map(p=>[p.type,p.value]));
- }
- function weekInfo(){
-  const p=easternParts();
-  const d=new Date(Date.UTC(Number(p.year),Number(p.month)-1,Number(p.day)));
-  const dow=d.getUTCDay();
-  // Thursday-to-Wednesday schedule: same featured game for the entire cycle.
-  d.setUTCDate(d.getUTCDate()-((dow+3)%7));
-  const key=d.toISOString().slice(0,10);
-  return {key,thursday:p.weekday==='Thu',start:d};
- }
- function gameIndex(key,count){
-  // Stable across browsers and devices; sorted games ensure consistent rotation.
-  const n=Math.floor(Date.parse(key+'T00:00:00Z')/86400000/7);
-  return ((n%count)+count)%count;
- }
+ const get=id=>document.getElementById(id);
+ const game=get('thursday-challenge-game'),date=get('thursday-challenge-date'),champ=get('thursday-challenge-champ'),score=get('thursday-challenge-score'),note=get('thursday-challenge-note'),teaser=get('thursday-challenge-teaser');
+ if(!game)return;
  async function refresh(){
-  const w=weekInfo();
-  if(lastWeek===w.key&&gameEl.dataset.loaded==='yes')return;
   try{
-   const res=await fetch('./legends.json?thursday='+Date.now(),{cache:'no-store'});
-   if(!res.ok)throw Error('Score feed unavailable');
-   const data=await res.json();
-   const champions=(Array.isArray(data.entries)?data.entries:[]).filter(e=>e&&e.kind!=='recent'&&typeof e.game==='string'&&e.game.trim()&&typeof e.player==='string'&&Number.isFinite(Number(e.score)));
-   const byGame=new Map();
-   for(const e of champions){const k=e.game.trim().toLocaleLowerCase('en-US');const old=byGame.get(k);if(!old||Number(e.score)>Number(old.score))byGame.set(k,e);}
-   const games=[...byGame.values()].sort((a,b)=>a.game.localeCompare(b.game,'en-US'));
-   if(!games.length)throw Error('No game champions in feed');
-   const chosen=games[gameIndex(w.key,games.length)];
-   gameEl.textContent=chosen.game.toUpperCase();
-   champEl.textContent='CURRENT CHAMPION: '+chosen.player.toUpperCase();
-   scoreEl.textContent='SCORE TO BEAT: '+Number(chosen.score).toLocaleString('en-US');
-   const day=w.start;
-   dateEl.textContent=(w.thursday?'★ IT’S THURSDAY — GAME ON! ★':'★ THIS WEEK’S FEATURED GAME ★')+' • '+new Intl.DateTimeFormat('en-US',{timeZone:'UTC',month:'short',day:'numeric'}).format(day);
-   teaser.textContent=w.thursday?'TONIGHT’S SHOWDOWN — TAP TO VIEW ▾':'TAP TO SEE THIS WEEK’S CHALLENGE ▾';
-   gameEl.dataset.loaded='yes';lastWeek=w.key;
-  }catch(err){gameEl.textContent='CHALLENGE TEMPORARILY UNAVAILABLE';champEl.textContent='';scoreEl.textContent='';dateEl.textContent='CHECK BACK AFTER THE NEXT SCORE SYNC';teaser.textContent='TAP TO VIEW ▾';}
+   const r=await fetch('./thursday-challenge.json?t='+Date.now(),{cache:'no-store'});
+   if(!r.ok)throw Error('Challenge feed not yet published');
+   const d=await r.json();
+   game.textContent=d.game.toUpperCase();
+   date.textContent='★ THURSDAY '+d.thursday_date+' • 11:59 PM ET CUTOFF ★';
+   if(d.status==='final'){
+     champ.textContent=d.winner?'🏆 THURSDAY NIGHT CHAMPION: '+d.winner.player:'NO QUALIFYING SCORES THIS THURSDAY';
+     score.textContent=d.winner?'WINNING SCORE: '+Number(d.winner.score).toLocaleString('en-US'):'';
+     note.textContent='Highest approved score submitted on Thursday wins. Ties are broken by earliest submission time.';
+   }else if(d.status==='needs_date_review'){
+     champ.textContent='FINAL RESULTS PENDING DATE VERIFICATION';
+     score.textContent='';
+     note.textContent='Some iScored submission timestamps could not be interpreted. No champion is declared until verified.';
+   }else{
+     const leader=(d.standings||[])[0];
+     champ.textContent=leader?'👑 CURRENT THURSDAY LEADER: '+leader.player:'THE THURSDAY CROWN IS UP FOR GRABS!';
+     score.textContent=leader?'THURSDAY SCORE: '+Number(leader.score).toLocaleString('en-US'):'';
+     note.textContent='Only scores submitted on Thursday (Eastern Time) count. This challenge is separate from the all-time leaderboard. Results update as iScored approves scores.';
+   }
+   teaser.textContent=d.status==='final'?'THURSDAY CHAMPION CROWNED — TAP TO VIEW ▾':'TAP TO SEE THIS WEEK’S SHOWDOWN ▾';
+  }catch(e){
+   game.textContent='CHALLENGE FEED NOT YET READY';
+   champ.textContent='';score.textContent='';
+   date.textContent='RUN THE NEW GITHUB ACTION TO INITIALIZE';
+   note.textContent='Your regular scores and medal notifications are unaffected.';
+  }
  }
  refresh();setInterval(refresh,10*60*1000);
  document.addEventListener('visibilitychange',()=>{if(!document.hidden)refresh()});
