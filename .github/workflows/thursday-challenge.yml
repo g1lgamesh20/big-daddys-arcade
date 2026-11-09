@@ -2,7 +2,7 @@ name: Thursday Challenge Announcement
 on:
   schedule:
     # Both UTC hours cover 9 AM New York across daylight-saving changes.
-    - cron: '0 13,14 * * 4'
+    - cron: '0 13,14 * * 4,5'
     # Refresh standings and finalize Thursday winners through the week.
     - cron: '37 */2 * * *'
   workflow_dispatch:
@@ -25,6 +25,10 @@ jobs:
         env:
           ONESIGNAL_REST_API_KEY: ${{ secrets.ONESIGNAL_REST_API_KEY }}
         run: python tools/send_thursday_notification.py
+      - name: Send Friday champion notification at 9 AM Eastern
+        env:
+          ONESIGNAL_REST_API_KEY: ${{ secrets.ONESIGNAL_REST_API_KEY }}
+        run: python tools/send_friday_champion_notification.py
       - name: Save challenge and announcement state
         run: |
           git config user.name "github-actions[bot]"
@@ -32,6 +36,9 @@ jobs:
           git add thursday-challenge.json thursday-challenge-state.json
           if [ -f thursday-notification-state.json ]; then
             git add thursday-notification-state.json
+          fi
+          if [ -f friday-champion-notification-state.json ]; then
+            git add friday-champion-notification-state.json
           fi
           if ! git diff --cached --quiet; then
             git commit -m "Update Thursday challenge announcement"
