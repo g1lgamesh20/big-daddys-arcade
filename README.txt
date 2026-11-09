@@ -1,7 +1,14 @@
-SECRET SPACE INVADER TEST LAB
+BIG DADDY'S ARCADE — AUTOMATIC STARTUP SOUND
 
-Upload index.html and script.js to the GitHub repository root, replacing the current files.
+Replace index.html and script.js in GitHub repository root.
 
-A small, dim 👾 appears at the bottom of the page. Hold it continuously for five seconds (touch or mouse) to reveal the existing Message & Celebration Test Lab within the Arcade Control Panel. Releasing early or moving away cancels. Closing the Control Panel hides the lab again. Keyboard users can hold Enter or Space while the invader has focus.
+Changes:
+- Attempts the original 8-bit startup jingle automatically when the page loads.
+- Audio defaults ON for new visitors. Existing stored mute preference remains respected.
+- Arcade Control Panel now uses a checked ENABLE ARCADE AUDIO checkbox. Unchecking mutes all supported sound effects.
+- Secret Space Invader Test Lab includes PLAY STARTUP SOUND button.
+- Existing secret 5-second hold, previews, Thursday features, sharing, scores and other sounds retained.
 
-No changes to score feeds, workflows, push notifications, or sound system. This is visual concealment, NOT authentication: anyone inspecting the source can discover the controls.
+Browser caveat: iOS Safari and some Android/desktop configurations block audio without a user gesture. No unexpected delayed autoplay is attempted. Preview button works after a tap.
+
+No workflow changes required. Test on actual devices.
