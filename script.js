@@ -81,7 +81,12 @@ function arcadeAttachReactions(card, achievement) {
   const button=document.createElement('button');button.type='button';button.className='arcade-reaction-trigger';
   button.textContent='❤️ GIVE PROPS';button.setAttribute('aria-label','React to '+achievement.player+' on '+achievement.game);
   const note=document.createElement('span');note.className='arcade-reaction-hint';note.textContent='TAP OR HOLD FOR REACTIONS';
-  wrap.append(button,note);card.append(wrap);
+  const totals=document.createElement('div');totals.className='arcade-reaction-totals';
+  totals.setAttribute('aria-label','Public reaction totals');
+  totals.dataset.scoreId=String(scoreId);
+  wrap.append(button,note);card.append(wrap,totals);
+  arcadeLoadReactionTotals(scoreId,totals);
+
   let pressTimer=null,wasLong=false,downX=0,downY=0;
   button.addEventListener('pointerdown',e=>{
     if(e.button!==0)return;
@@ -92,6 +97,33 @@ function arcadeAttachReactions(card, achievement) {
   ['pointerup','pointercancel','pointerleave'].forEach(type=>button.addEventListener(type,()=>{clearTimeout(pressTimer);pressTimer=null;}));
   button.addEventListener('click',()=>{if(wasLong){wasLong=false;return;}arcadeOpenSocial(scoreId,achievement,button,false);});
   button.addEventListener('contextmenu',e=>e.preventDefault());
+}
+async function arcadeLoadReactionTotals(scoreId, target) {
+  if(!target?.isConnected)return;
+  try {
+    const response=await fetch(ARCADE_SOCIAL.base+'/social-arcade?score_id='+scoreId,{
+      headers:{apikey:ARCADE_SOCIAL.anon,Authorization:'Bearer '+ARCADE_SOCIAL.anon},
+      cache:'no-store'
+    });
+    if(!response.ok)throw Error('Unable to load reactions');
+    const data=await response.json();
+    if(!target.isConnected)return;
+    target.replaceChildren();
+    for(const [id,emoji,label] of ARCADE_CHOICES){
+      const count=Number(data?.reactions?.[id]||0);
+      if(!Number.isFinite(count)||count<=0)continue;
+      const item=document.createElement('span');item.className='arcade-reaction-count';
+      item.textContent=emoji+' '+count;item.title=label+': '+count;
+      item.setAttribute('aria-label',label+': '+count);
+      target.append(item);
+    }
+  }catch(_){if(target.isConnected)target.setAttribute('title','Reaction totals temporarily unavailable');}
+}
+function arcadeRefreshReactionTotals(scoreId){
+  document.querySelectorAll('.medal-card').forEach(card=>{
+    const target=card.querySelector('.arcade-reaction-totals');
+    if(target&&Number(target.dataset.scoreId)===scoreId)arcadeLoadReactionTotals(scoreId,target);
+  });
 }
 function arcadeBuildSocialDialog() {
   if(arcadeSocialDialog)return arcadeSocialDialog;
@@ -197,6 +229,7 @@ async function arcadeSendSocial(remove) {
     if(!response.ok||data.success!==true)throw Error(data.error||'Reaction could not be saved.');
     try{localStorage.setItem('big-daddys-arcade-reaction-initials',initials);}catch(_){}
     arcadeSocialStatus(remove?'Reaction removed!':'Reaction saved! 🏆');
+    arcadeRefreshReactionTotals(current.scoreId);
     if(!remove&&arcadeSocialLastFocus?.isConnected)arcadeSocialLastFocus.textContent='❤️ REACTED!';
     setTimeout(()=>{if(arcadeSocialCurrent===current)arcadeCloseSocial();},900);
   }catch(e){arcadeSocialStatus(e.message||'Unable to save. Try again.');}
