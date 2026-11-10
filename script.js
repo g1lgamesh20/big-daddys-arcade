@@ -80,11 +80,10 @@ function arcadeAttachReactions(card, achievement) {
   const wrap=document.createElement('div');wrap.className='arcade-reaction-entry';
   const button=document.createElement('button');button.type='button';button.className='arcade-reaction-trigger';
   button.textContent='❤️ GIVE PROPS';button.setAttribute('aria-label','React to '+achievement.player+' on '+achievement.game);
-  const note=document.createElement('span');note.className='arcade-reaction-hint';note.textContent='TAP OR HOLD FOR REACTIONS';
   const totals=document.createElement('div');totals.className='arcade-reaction-totals';
   totals.setAttribute('aria-label','Public reaction totals');
   totals.dataset.scoreId=String(scoreId);
-  wrap.append(button,note);card.append(wrap,totals);
+  wrap.append(button,totals);card.append(wrap);
   arcadeLoadReactionTotals(scoreId,totals);
 
   let pressTimer=null,wasLong=false,downX=0,downY=0;
