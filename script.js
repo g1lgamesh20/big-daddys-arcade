@@ -84,7 +84,7 @@ function arcadeAttachReactions(card, achievement) {
   totals.setAttribute('aria-label','Public reaction totals');
   totals.dataset.scoreId=String(scoreId);
   wrap.append(button,totals);card.append(wrap);
-  arcadeLoadReactionTotals(scoreId,totals);
+  queueMicrotask(()=>arcadeLoadReactionTotals(scoreId,totals));
 
   let pressTimer=null,wasLong=false,downX=0,downY=0;
   button.addEventListener('pointerdown',e=>{

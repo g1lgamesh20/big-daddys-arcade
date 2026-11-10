@@ -126,6 +126,13 @@
 .arcade-share-fallback[hidden]{display:none}
 .arcade-share-fallback a,.arcade-share-fallback button{display:inline-block;margin:5px;padding:9px 12px;border:1px solid #ff8bde;border-radius:8px;background:#251032;color:#fff;font:700 13px system-ui,sans-serif;text-decoration:none;cursor:pointer}
 @media(max-width:380px){.arcade-install .arcade-install-button{font-size:13px;padding:12px}.arcade-install .arcade-share-button{min-width:44px;margin-left:5px}}
+
+/* Medal Club GIVE PROPS: button and totals are siblings in one compact row. */
+#medal-feed .medal-card .arcade-reaction-entry{display:flex!important;flex-flow:row wrap!important;align-items:center!important;justify-content:flex-start!important;gap:6px!important;min-width:0!important;max-width:100%!important;width:100%!important;box-sizing:border-box!important}
+#medal-feed .medal-card .arcade-reaction-entry>.arcade-reaction-trigger{display:inline-flex!important;flex:0 0 auto!important;width:auto!important;min-width:116px!important;height:auto!important;min-height:34px!important;white-space:nowrap!important;padding:7px 10px!important;line-height:1.2!important;box-sizing:border-box!important}
+#medal-feed .medal-card .arcade-reaction-entry>.arcade-reaction-totals{display:inline-flex!important;flex:0 1 auto!important;flex-flow:row wrap!important;align-items:center!important;gap:5px!important;width:auto!important;min-width:0!important;margin:0!important;padding:0!important}
+#medal-feed .medal-card .arcade-reaction-entry .arcade-reaction-count{display:inline-flex!important;flex:0 0 auto!important;white-space:nowrap!important;width:auto!important}
+#medal-feed .medal-card .arcade-reaction-hint{display:none!important}
 </style><style>
 /* Discreet operator access: not an authentication/security boundary. */
 .arcade-secret-entry{text-align:center;margin:14px auto 8px}
@@ -385,7 +392,7 @@ See you on the leaderboard! 🏆`;
  });
 })();
 </script>
-<script src="script.js"></script><script>
+<script src="script.js?v=give-props-counts-fix-2"></script><script>
 /* Celebrate only newly published medals after an initial baseline. No score writes. */
 (() => {
  const overlay=document.getElementById('arcade-celebrate');
