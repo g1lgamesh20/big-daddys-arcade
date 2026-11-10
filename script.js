@@ -83,7 +83,7 @@ function arcadeAttachReactions(card, achievement) {
   const totals=document.createElement('div');totals.className='arcade-reaction-totals';
   totals.setAttribute('aria-label','Public reaction totals');
   totals.dataset.scoreId=String(scoreId);
-  wrap.append(button,totals);card.append(wrap);
+  wrap.append(button,totals);card.children[1].append(wrap);
   queueMicrotask(()=>arcadeLoadReactionTotals(scoreId,totals));
 
   let pressTimer=null,wasLong=false,downX=0,downY=0;
