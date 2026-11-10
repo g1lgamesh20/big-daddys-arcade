@@ -143,6 +143,22 @@
 #arcade-test-lab-panel{max-width:100%!important}
 .arcade-audio-label{display:inline-flex;align-items:center;gap:9px;color:#91ff83;font:700 12px/1.5 system-ui,sans-serif;cursor:pointer}.arcade-audio-label input{width:18px;height:18px;accent-color:#70ff4b;cursor:pointer}
 </style>
+<style id="arcade-trash-styles">
+/* TRASH TALK: scoped inside the existing Medal Club information column. */
+#medal-feed .medal-card .arcade-trash{margin-top:13px;min-width:0;width:100%;max-width:100%;box-sizing:border-box;border-top:1px solid #ff59c455;padding-top:10px;text-align:left}
+.arcade-trash-title{color:#7aff55;font:900 12px system-ui,sans-serif;letter-spacing:.06em;margin-bottom:7px;text-shadow:0 0 7px #53ff4260}
+.arcade-trash-entries{min-width:0}.arcade-trash-comment{display:flex;align-items:baseline;gap:8px;min-width:0;padding:7px 0;border-bottom:1px solid #8a58a544;font:500 12px/1.4 system-ui,sans-serif;color:#f8edff}
+.arcade-trash-comment strong{flex:0 0 auto;color:#ffcc5c}.arcade-trash-message{flex:1;min-width:0;overflow-wrap:anywhere;white-space:pre-wrap}
+.arcade-trash-extra{display:none}.arcade-trash-expanded .arcade-trash-extra{display:flex}
+.arcade-trash-empty{color:#a9b6c5;font:600 10px/1.5 system-ui,sans-serif;margin:5px 0 9px}
+.arcade-trash-actions{display:flex;align-items:center;justify-content:space-between;gap:7px;flex-wrap:wrap;margin-top:8px}
+.arcade-trash-actions button,.arcade-trash-delete{background:#200d32;color:#83edff;border:1px solid #55dfff;border-radius:7px;padding:7px 9px;font:800 10px/1.2 system-ui,sans-serif;cursor:pointer;touch-action:manipulation}
+.arcade-trash-actions .arcade-trash-add{color:#ffcfeb;border-color:#ff65ca;background:#45123e}.arcade-trash-delete{flex:0 0 auto;color:#ffc3da;border-color:#ff65ca;padding:4px 6px;font-size:9px}
+.arcade-trash-panel #arcade-trash-initials{width:100px;max-width:100%;text-align:center;text-transform:uppercase;font:800 19px system-ui,sans-serif;padding:8px;border-radius:6px;background:white;color:#111}
+.arcade-trash-panel #arcade-trash-message{display:block;width:100%;box-sizing:border-box;min-height:100px;padding:10px;border-radius:8px;background:#fff;color:#111;font:500 15px/1.4 system-ui,sans-serif;resize:vertical}
+#arcade-trash-counter{font:700 11px system-ui,sans-serif;text-align:right;color:#83edff;margin-top:4px}
+#arcade-trash-post-fields[hidden],#arcade-trash-delete-prompt[hidden]{display:none!important}
+</style>
 <style id="arcade-social-styles">
 .arcade-reaction-entry{margin:8px 0 0;display:flex;flex-wrap:wrap;align-items:center;gap:6px;max-width:100%;min-width:0}
 .arcade-reaction-trigger{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;white-space:nowrap;min-width:0;width:auto;max-width:100%;min-height:32px;background:#230d33;color:#ffbde8;border:1px solid #ff58c8;border-radius:8px;padding:6px 10px;font:800 11px/1.2 system-ui,sans-serif;cursor:pointer;touch-action:manipulation}
@@ -392,7 +408,7 @@ See you on the leaderboard! 🏆`;
  });
 })();
 </script>
-<script src="script.js?v=give-props-counts-fix-2"></script><script>
+<script src="script.js?v=trash-talk-v1"></script><script>
 /* Celebrate only newly published medals after an initial baseline. No score writes. */
 (() => {
  const overlay=document.getElementById('arcade-celebrate');

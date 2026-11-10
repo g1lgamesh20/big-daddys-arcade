@@ -37,7 +37,7 @@ document.addEventListener('keydown',e=>{if(leadersDialog.hidden)return;if(e.key=
     const player=document.createElement('div');player.className='medal-player';player.textContent=a.player.toUpperCase();
     const game=document.createElement('div');game.className='medal-game';game.textContent=a.game;
     const score=document.createElement('div');score.className='medal-score';score.textContent=Number(a.score).toLocaleString('en-US')+' POINTS';
-    body.append(label,player,game,score);card.append(icon,body);arcadeAttachReactions(card,a);feed.append(card);
+    body.append(label,player,game,score);card.append(icon,body);arcadeAttachReactions(card,a);arcadeAttachTrashTalk(card,a);feed.append(card);
    });
    status.textContent='NEW TOP-3 GAME SCORES ONLY • SYNCED '+(data.updated_at?new Date(data.updated_at).toLocaleString():'WITH iSCORED');
   }catch(e){status.textContent='MEDAL FEED AWAITING FIRST SYNC';}
@@ -107,7 +107,8 @@ async function arcadeLoadReactionTotals(scoreId, target) {
     if(!response.ok)throw Error('Unable to load reactions');
     const data=await response.json();
     if(!target.isConnected)return;
-    target.replaceChildren();
+     arcadeRenderTrashTalk(target.closest('.medal-card'),data.comments,scoreId);
+     target.replaceChildren();
     for(const [id,emoji,label] of ARCADE_CHOICES){
       const count=Number(data?.reactions?.[id]||0);
       if(!Number.isFinite(count)||count<=0)continue;
@@ -236,4 +237,86 @@ async function arcadeSendSocial(remove) {
     arcadeSocialToken='';save.disabled=false;undo.disabled=false;
     if(arcadeSocialWidgetId!==null&&window.turnstile?.reset){try{window.turnstile.reset(arcadeSocialWidgetId);}catch(_){}}
   }
+}
+
+
+/* TRASH TALK — additive Medal Club comments. GIVE PROPS remains unchanged. */
+const ARCADE_TRASH_INITIALS_KEY='big-daddys-arcade-reaction-initials';
+const ARCADE_TRASH_OWNED_KEY='big-daddys-arcade-owned-comments-v1';
+let arcadeTrashDialog=null,arcadeTrashWidget=null,arcadeTrashCaptcha='',arcadeTrashCurrent=null,arcadeTrashLastFocus=null;
+function arcadeTrashOwned(){try{const ids=JSON.parse(localStorage.getItem(ARCADE_TRASH_OWNED_KEY)||'[]');return Array.isArray(ids)?ids.filter(Number.isSafeInteger):[];}catch(_){return [];}}
+function arcadeTrashSaveOwned(ids){try{localStorage.setItem(ARCADE_TRASH_OWNED_KEY,JSON.stringify([...new Set(ids)].slice(-500)));}catch(_){}}
+function arcadeAttachTrashTalk(card,achievement){
+ const scoreId=Number(achievement.id);if(!Number.isSafeInteger(scoreId)||scoreId<=0)return;
+ const wrap=document.createElement('section');wrap.className='arcade-trash';wrap.dataset.scoreId=String(scoreId);
+ const title=document.createElement('div');title.className='arcade-trash-title';title.textContent='💬 TRASH TALK';
+ const entries=document.createElement('div');entries.className='arcade-trash-entries';entries.textContent='LOADING TRASH TALK…';
+ const actions=document.createElement('div');actions.className='arcade-trash-actions';
+ const more=document.createElement('button');more.type='button';more.className='arcade-trash-more';more.hidden=true;more.textContent='VIEW ALL COMMENTS';
+ const add=document.createElement('button');add.type='button';add.className='arcade-trash-add';add.textContent='+ ADD TRASH TALK';
+ more.addEventListener('click',()=>{wrap.classList.toggle('arcade-trash-expanded');more.textContent=wrap.classList.contains('arcade-trash-expanded')?'SHOW LESS':'VIEW ALL COMMENTS';});
+ add.addEventListener('click',()=>arcadeOpenTrash(scoreId,achievement,add,null));
+ actions.append(more,add);wrap.append(title,entries,actions);card.children[1].append(wrap);
+}
+function arcadeRenderTrashTalk(card,comments,scoreId){
+ const wrap=card?.querySelector('.arcade-trash');if(!wrap||Number(wrap.dataset.scoreId)!==scoreId)return;
+ const entries=wrap.querySelector('.arcade-trash-entries'),more=wrap.querySelector('.arcade-trash-more');entries.replaceChildren();
+ if(!Array.isArray(comments)){entries.textContent='COMMENTS TEMPORARILY UNAVAILABLE';more.hidden=true;return;}
+ const owned=new Set(arcadeTrashOwned());
+ if(!comments.length){const empty=document.createElement('p');empty.className='arcade-trash-empty';empty.textContent='NO TRASH TALK YET. START THE RIVALRY!';entries.append(empty);}
+ comments.forEach((comment,index)=>{
+  if(!comment||!Number.isSafeInteger(Number(comment.id))||typeof comment.message!=='string')return;
+  const row=document.createElement('div');row.className='arcade-trash-comment';if(index>=2)row.classList.add('arcade-trash-extra');
+  const name=document.createElement('strong');name.textContent=String(comment.player_initials||'???').slice(0,3);
+  const msg=document.createElement('span');msg.className='arcade-trash-message';msg.textContent=comment.message;
+  row.append(name,msg);
+  if(owned.has(Number(comment.id))){const del=document.createElement('button');del.type='button';del.className='arcade-trash-delete';del.textContent='DELETE';del.setAttribute('aria-label','Delete your comment');del.addEventListener('click',()=>arcadeOpenTrash(scoreId,null,del,Number(comment.id)));row.append(del);}
+  entries.append(row);
+ });
+ more.hidden=comments.length<=2;if(more.hidden)wrap.classList.remove('arcade-trash-expanded');
+ more.textContent=wrap.classList.contains('arcade-trash-expanded')?'SHOW LESS':'VIEW ALL COMMENTS ('+comments.length+')';
+}
+function arcadeBuildTrashDialog(){
+ if(arcadeTrashDialog)return arcadeTrashDialog;
+ const overlay=document.createElement('div');overlay.className='arcade-social-overlay';overlay.id='arcade-trash-overlay';overlay.hidden=true;overlay.setAttribute('role','dialog');overlay.setAttribute('aria-modal','true');overlay.setAttribute('aria-label','Trash Talk');
+ overlay.innerHTML=`<div class="arcade-social-panel arcade-trash-panel"><button type="button" class="arcade-social-close" id="arcade-trash-close" aria-label="Close Trash Talk">✕</button><h2>💬 TRASH TALK</h2><p id="arcade-trash-heading"></p><div id="arcade-trash-post-fields"><label class="arcade-social-label" for="arcade-trash-initials">YOUR INITIALS (1–3)</label><input id="arcade-trash-initials" maxlength="3" autocomplete="off" placeholder="DON"><label class="arcade-social-label" for="arcade-trash-message">YOUR TRASH TALK (160 CHARACTERS MAX)</label><textarea id="arcade-trash-message" maxlength="160" rows="4" placeholder="Bring your best arcade banter!"></textarea><div id="arcade-trash-counter">0 / 160</div></div><p id="arcade-trash-delete-prompt" hidden>Delete this comment from this device?</p><div id="arcade-trash-captcha" class="arcade-social-captcha"></div><p id="arcade-trash-status" class="arcade-social-status" role="status" aria-live="polite"></p><div class="arcade-social-actions"><button type="button" id="arcade-trash-submit">POST TRASH TALK</button><button type="button" id="arcade-trash-cancel">CANCEL</button></div><p class="arcade-social-small">Keep it friendly. Maximum 160 characters. You can delete comments from the device that posted them.</p></div>`;
+ document.body.append(overlay);overlay.querySelector('#arcade-trash-close').addEventListener('click',arcadeCloseTrash);overlay.querySelector('#arcade-trash-cancel').addEventListener('click',arcadeCloseTrash);overlay.addEventListener('click',e=>{if(e.target===overlay)arcadeCloseTrash();});
+ overlay.querySelector('#arcade-trash-initials').addEventListener('input',e=>{e.target.value=e.target.value.toUpperCase().replace(/[^A-Z0-9 ]/g,'').slice(0,3);});
+ overlay.querySelector('#arcade-trash-message').addEventListener('input',e=>{overlay.querySelector('#arcade-trash-counter').textContent=e.target.value.length+' / 160';});
+ overlay.querySelector('#arcade-trash-submit').addEventListener('click',arcadeSubmitTrash);
+ overlay.addEventListener('keydown',e=>{if(e.key==='Escape'){e.preventDefault();arcadeCloseTrash();}if(e.key!=='Tab')return;const els=[...overlay.querySelectorAll('button:not([disabled]),input:not([disabled]),textarea:not([disabled])')].filter(el=>el.getClientRects().length);if(!els.length)return;const first=els[0],last=els[els.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}});
+ arcadeTrashDialog=overlay;return overlay;
+}
+function arcadeTrashStatus(msg){const el=arcadeTrashDialog?.querySelector('#arcade-trash-status');if(el)el.textContent=msg;}
+function arcadeOpenTrash(scoreId,achievement,trigger,commentId){
+ const overlay=arcadeBuildTrashDialog();arcadeTrashCurrent={scoreId,commentId};arcadeTrashLastFocus=trigger;arcadeTrashCaptcha='';arcadeTrashWidget=null;
+ const deleting=Number.isSafeInteger(commentId);overlay.querySelector('#arcade-trash-post-fields').hidden=deleting;overlay.querySelector('#arcade-trash-delete-prompt').hidden=!deleting;
+ overlay.querySelector('#arcade-trash-submit').textContent=deleting?'DELETE MY COMMENT':'POST TRASH TALK';overlay.querySelector('#arcade-trash-submit').disabled=false;
+ overlay.querySelector('#arcade-trash-heading').textContent=achievement?achievement.player.toUpperCase()+' • '+achievement.game:'REMOVE YOUR TRASH TALK';
+ const initials=overlay.querySelector('#arcade-trash-initials');try{initials.value=localStorage.getItem(ARCADE_TRASH_INITIALS_KEY)||'';}catch(_){initials.value='';}
+ overlay.querySelector('#arcade-trash-message').value='';overlay.querySelector('#arcade-trash-counter').textContent='0 / 160';
+ overlay.hidden=false;document.body.classList.add('arcade-social-open');overlay.querySelector('#arcade-trash-close').focus();arcadeTrashStatus('Complete Cloudflare verification to continue.');
+ const captcha=overlay.querySelector('#arcade-trash-captcha');captcha.replaceChildren();const started=Date.now();
+ const wait=()=>{if(overlay.hidden||arcadeTrashCurrent?.scoreId!==scoreId||arcadeTrashCurrent?.commentId!==commentId)return;
+  if(window.turnstile?.render){try{arcadeTrashWidget=window.turnstile.render(captcha,{sitekey:ARCADE_SOCIAL.siteKey,callback:token=>{arcadeTrashCaptcha=token;arcadeTrashStatus('Verification complete. Ready!');},'expired-callback':()=>{arcadeTrashCaptcha='';arcadeTrashStatus('Verification expired. Please retry.');},'error-callback':()=>{arcadeTrashCaptcha='';arcadeTrashStatus('Verification failed. Please retry.');}});}catch(_){arcadeTrashStatus('Could not load verification. Reopen Trash Talk.');}}
+  else if(Date.now()-started<12000)setTimeout(wait,250);else arcadeTrashStatus('Cloudflare verification did not load.');};wait();
+}
+function arcadeCloseTrash(){if(!arcadeTrashDialog)return;arcadeTrashDialog.hidden=true;document.body.classList.remove('arcade-social-open');if(arcadeTrashWidget!==null&&window.turnstile?.remove){try{window.turnstile.remove(arcadeTrashWidget);}catch(_){}}arcadeTrashWidget=null;arcadeTrashCaptcha='';arcadeTrashCurrent=null;if(arcadeTrashLastFocus?.isConnected)arcadeTrashLastFocus.focus();}
+async function arcadeSubmitTrash(){
+ const current=arcadeTrashCurrent;if(!current)return;const deleting=Number.isSafeInteger(current.commentId);
+ const initials=arcadeTrashDialog.querySelector('#arcade-trash-initials').value.toUpperCase().trim(),message=arcadeTrashDialog.querySelector('#arcade-trash-message').value.trim();
+ if(!deleting&&(!/^[A-Z0-9 ]{1,3}$/.test(initials)||!initials.trim())){arcadeTrashStatus('Enter 1–3 arcade initials.');return;}
+ if(!deleting&&(!message||message.length>160)){arcadeTrashStatus('Enter 1–160 characters of Trash Talk.');return;}
+ if(!arcadeTrashCaptcha){arcadeTrashStatus('Complete Cloudflare verification first.');return;}
+ const submit=arcadeTrashDialog.querySelector('#arcade-trash-submit');submit.disabled=true;arcadeTrashStatus(deleting?'Deleting comment…':'Posting Trash Talk…');
+ try{
+  const body={action:deleting?'delete':'post',score_id:current.scoreId,device_token:arcadeDeviceToken(),turnstile_token:arcadeTrashCaptcha};
+  if(deleting)body.comment_id=current.commentId;else{body.player_initials=initials;body.message=message;}
+  const response=await fetch(ARCADE_SOCIAL.base+'/social-arcade-comments-write',{method:'POST',headers:{'Content-Type':'application/json',apikey:ARCADE_SOCIAL.anon,Authorization:'Bearer '+ARCADE_SOCIAL.anon},body:JSON.stringify(body)});
+  const data=await response.json().catch(()=>({}));if(!response.ok||data.success!==true)throw Error(data.error||'Unable to save Trash Talk.');
+  const owned=arcadeTrashOwned();if(deleting)arcadeTrashSaveOwned(owned.filter(id=>id!==current.commentId));else{arcadeTrashSaveOwned([...owned,Number(data.comment_id)]);try{localStorage.setItem(ARCADE_TRASH_INITIALS_KEY,initials);}catch(_){}}
+  arcadeTrashStatus(deleting?'Comment deleted!':'Trash Talk posted! 👾');arcadeRefreshReactionTotals(current.scoreId);
+  setTimeout(()=>{if(arcadeTrashCurrent===current)arcadeCloseTrash();},850);
+ }catch(e){arcadeTrashStatus(e.message||'Unable to save Trash Talk.');}
+ finally{arcadeTrashCaptcha='';submit.disabled=false;if(arcadeTrashWidget!==null&&window.turnstile?.reset){try{window.turnstile.reset(arcadeTrashWidget);}catch(_){}}}
 }
