@@ -37,10 +37,171 @@ document.addEventListener('keydown',e=>{if(leadersDialog.hidden)return;if(e.key=
     const player=document.createElement('div');player.className='medal-player';player.textContent=a.player.toUpperCase();
     const game=document.createElement('div');game.className='medal-game';game.textContent=a.game;
     const score=document.createElement('div');score.className='medal-score';score.textContent=Number(a.score).toLocaleString('en-US')+' POINTS';
-    body.append(label,player,game,score);card.append(icon,body);feed.append(card);
+    body.append(label,player,game,score);card.append(icon,body);arcadeAttachReactions(card,a);feed.append(card);
    });
    status.textContent='NEW TOP-3 GAME SCORES ONLY • SYNCED '+(data.updated_at?new Date(data.updated_at).toLocaleString():'WITH iSCORED');
   }catch(e){status.textContent='MEDAL FEED AWAITING FIRST SYNC';}
  }
  await refresh();setInterval(refresh,10*60*1000);
 })();
+
+
+/* Medal Club social reactions. All writes go through the secured Edge Function. */
+const ARCADE_SOCIAL = Object.freeze({
+  base: 'https://jrqzwlowxofnyqpmjgkg.supabase.co/functions/v1',
+  anon: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpycXp3bG93eG9mbnlxcG1qZ2tnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTQzMTc2MDYsImV4cCI6MjEwOTg5MzYwNn0.hASh2oQMBrPU7JqEEgKHiB5XYng65-1U_0Ot02PsGyI',
+  siteKey: '0x4AAAAAAF7pNMnGbksEUOCw'
+});
+const ARCADE_CHOICES = [
+  ['heart','❤️','LOVE IT'], ['invader','👾','LIKE IT'],
+  ['joystick','🕹️','GREAT PLAY'], ['gamepad','🎮','GAME ON!'],
+  ['quarter','🪙','GIVE PROPS'], ['trophy','🏆','LEGENDARY'],
+  ['poop','💩','DISLIKE'], ['angry','😡','SALTY!']
+];
+let arcadeSocialDialog = null;
+let arcadeSocialWidgetId = null;
+let arcadeSocialToken = '';
+let arcadeSocialCurrent = null;
+let arcadeSocialChoice = 'heart';
+let arcadeSocialLastFocus = null;
+function arcadeDeviceToken() {
+  const k='big-daddys-arcade-device-token-v1';
+  try {
+    let value=localStorage.getItem(k);
+    if(value && /^[a-f0-9]{64}$/.test(value))return value;
+    const bytes=new Uint8Array(32);crypto.getRandomValues(bytes);
+    value=Array.from(bytes,b=>b.toString(16).padStart(2,'0')).join('');
+    localStorage.setItem(k,value);return value;
+  } catch (_) { throw new Error('Device storage unavailable. Enable browser storage to react.'); }
+}
+function arcadeAttachReactions(card, achievement) {
+  const scoreId=Number(achievement.id);
+  if(!Number.isSafeInteger(scoreId)||scoreId<=0)return;
+  const wrap=document.createElement('div');wrap.className='arcade-reaction-entry';
+  const button=document.createElement('button');button.type='button';button.className='arcade-reaction-trigger';
+  button.textContent='❤️ GIVE PROPS';button.setAttribute('aria-label','React to '+achievement.player+' on '+achievement.game);
+  const note=document.createElement('span');note.className='arcade-reaction-hint';note.textContent='TAP OR HOLD FOR REACTIONS';
+  wrap.append(button,note);card.append(wrap);
+  let pressTimer=null,wasLong=false,downX=0,downY=0;
+  button.addEventListener('pointerdown',e=>{
+    if(e.button!==0)return;
+    wasLong=false;downX=e.clientX;downY=e.clientY;
+    pressTimer=setTimeout(()=>{pressTimer=null;wasLong=true;arcadeOpenSocial(scoreId,achievement,button,true);},550);
+  });
+  button.addEventListener('pointermove',e=>{if(Math.hypot(e.clientX-downX,e.clientY-downY)>15){clearTimeout(pressTimer);pressTimer=null;}});
+  ['pointerup','pointercancel','pointerleave'].forEach(type=>button.addEventListener(type,()=>{clearTimeout(pressTimer);pressTimer=null;}));
+  button.addEventListener('click',()=>{if(wasLong){wasLong=false;return;}arcadeOpenSocial(scoreId,achievement,button,false);});
+  button.addEventListener('contextmenu',e=>e.preventDefault());
+}
+function arcadeBuildSocialDialog() {
+  if(arcadeSocialDialog)return arcadeSocialDialog;
+  const dialog=document.createElement('div');dialog.id='arcade-social-overlay';dialog.className='arcade-social-overlay';dialog.hidden=true;
+  dialog.setAttribute('role','dialog');dialog.setAttribute('aria-modal','true');dialog.setAttribute('aria-label','Arcade reactions');
+  dialog.innerHTML=`<div class="arcade-social-panel">
+    <button type="button" id="arcade-social-close" class="arcade-social-close" aria-label="Close reactions">✕</button>
+    <h2>👾 GIVE PROPS!</h2><p id="arcade-social-heading"></p>
+    <div id="arcade-social-choices" class="arcade-social-choices"></div>
+    <label class="arcade-social-label" for="arcade-social-initials">YOUR INITIALS (1–3)</label>
+    <input id="arcade-social-initials" maxlength="3" autocomplete="off" placeholder="DON" aria-label="Your arcade initials">
+    <div id="arcade-social-captcha" class="arcade-social-captcha"></div>
+    <p id="arcade-social-status" class="arcade-social-status" role="status" aria-live="polite"></p>
+    <div class="arcade-social-actions"><button type="button" id="arcade-social-save">🪙 SEND REACTION</button>
+    <button type="button" id="arcade-social-remove">UNDO MY REACTION</button></div>
+    <p class="arcade-social-small">One reaction per device per score. Change or undo anytime.</p>
+  </div>`;
+  document.body.append(dialog);
+  dialog.querySelector('#arcade-social-close').addEventListener('click',arcadeCloseSocial);
+  dialog.addEventListener('click',e=>{if(e.target===dialog)arcadeCloseSocial();});
+  document.addEventListener('keydown',e=>{if(dialog.hidden)return;if(e.key==='Escape')arcadeCloseSocial();if(e.key==='Tab'){
+    const els=[...dialog.querySelectorAll('button:not([disabled]),input:not([disabled])')].filter(el=>el.offsetParent!==null);
+    if(!els.length)return;const first=els[0],last=els[els.length-1];
+    if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}
+    else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}
+  }});
+  dialog.querySelector('#arcade-social-initials').addEventListener('input',e=>{e.target.value=e.target.value.toUpperCase().replace(/[^A-Z0-9 ]/g,'').slice(0,3);});
+  dialog.querySelector('#arcade-social-save').addEventListener('click',()=>arcadeSendSocial(false));
+  dialog.querySelector('#arcade-social-remove').addEventListener('click',()=>arcadeSendSocial(true));
+  arcadeSocialDialog=dialog;return dialog;
+}
+function arcadeSocialStatus(message) {document.getElementById('arcade-social-status').textContent=message;}
+function arcadeSetChoice(choice) {
+  arcadeSocialChoice=choice;
+  document.querySelectorAll('.arcade-social-choice').forEach(b=>{
+    const selected=b.dataset.choice===choice;b.classList.toggle('selected',selected);b.setAttribute('aria-pressed',String(selected));
+  });
+}
+async function arcadeOpenSocial(scoreId,achievement,trigger,showAll) {
+  const dialog=arcadeBuildSocialDialog();arcadeSocialLastFocus=trigger;
+  arcadeSocialCurrent={scoreId,achievement};arcadeSocialToken='';arcadeSocialWidgetId=null;
+  dialog.querySelector('#arcade-social-heading').textContent=achievement.player.toUpperCase()+' • '+achievement.game+' • '+Number(achievement.score).toLocaleString('en-US');
+  const choices=dialog.querySelector('#arcade-social-choices');choices.replaceChildren();
+  ARCADE_CHOICES.forEach(([id,emoji,label])=>{
+    const b=document.createElement('button');b.type='button';b.className='arcade-social-choice';b.dataset.choice=id;
+    b.textContent=emoji+' '+label;b.addEventListener('click',()=>arcadeSetChoice(id));choices.append(b);
+  });
+  arcadeSetChoice('heart');
+  const initials=dialog.querySelector('#arcade-social-initials');
+  try{initials.value=localStorage.getItem('big-daddys-arcade-reaction-initials')||'';}catch(_){initials.value='';}
+  dialog.hidden=false;document.body.classList.add('arcade-social-open');
+  arcadeSocialStatus(showAll?'Choose a reaction, enter your initials, and complete verification.':'LOVE IT is selected. You can choose any other reaction.');
+  dialog.querySelector('#arcade-social-close').focus();
+  const captcha=dialog.querySelector('#arcade-social-captcha');captcha.replaceChildren();
+  const start=Date.now();
+  const wait=()=>{
+    if(dialog.hidden||arcadeSocialCurrent?.scoreId!==scoreId)return;
+    if(window.turnstile?.render){
+      try{arcadeSocialWidgetId=window.turnstile.render(captcha,{
+        sitekey:ARCADE_SOCIAL.siteKey,
+        callback:token=>{arcadeSocialToken=token;arcadeSocialStatus('Verification complete. Ready to send!');},
+        'expired-callback':()=>{arcadeSocialToken='';arcadeSocialStatus('Verification expired. Complete it again.');},
+        'error-callback':()=>{arcadeSocialToken='';arcadeSocialStatus('Verification could not load. Please retry.');}
+      });}catch(_){arcadeSocialStatus('Could not load verification. Please reopen reactions.');}
+    }else if(Date.now()-start<12000){setTimeout(wait,250);}
+    else arcadeSocialStatus('Cloudflare verification did not load. Check your connection.');
+  };wait();
+  // Read-only count lookup; errors do not prevent posting.
+  try{
+    const response=await fetch(ARCADE_SOCIAL.base+'/social-arcade?score_id='+scoreId,{
+      headers:{apikey:ARCADE_SOCIAL.anon,Authorization:'Bearer '+ARCADE_SOCIAL.anon}
+    });
+    if(!response.ok)return;const data=await response.json();
+    if(dialog.hidden||arcadeSocialCurrent?.scoreId!==scoreId)return;
+    if(data?.reactions){choices.querySelectorAll('button').forEach(b=>{
+      const count=Number(data.reactions[b.dataset.choice]||0);
+      if(count>0)b.textContent+=' ('+count+')';
+    });}
+  }catch(_){}
+}
+function arcadeCloseSocial() {
+  if(!arcadeSocialDialog)return;
+  arcadeSocialDialog.hidden=true;document.body.classList.remove('arcade-social-open');
+  if(arcadeSocialWidgetId!==null&&window.turnstile?.remove){try{window.turnstile.remove(arcadeSocialWidgetId);}catch(_){}}
+  arcadeSocialWidgetId=null;arcadeSocialToken='';arcadeSocialCurrent=null;
+  if(arcadeSocialLastFocus?.isConnected)arcadeSocialLastFocus.focus();
+}
+async function arcadeSendSocial(remove) {
+  const current=arcadeSocialCurrent;if(!current)return;
+  const initials=document.getElementById('arcade-social-initials').value.toUpperCase();
+  if(!/^[A-Z0-9 ]{1,3}$/.test(initials)||!initials.trim()){arcadeSocialStatus('Enter 1–3 arcade initials.');return;}
+  if(!arcadeSocialToken){arcadeSocialStatus('Complete the Cloudflare verification first.');return;}
+  const save=document.getElementById('arcade-social-save'),undo=document.getElementById('arcade-social-remove');
+  save.disabled=true;undo.disabled=true;arcadeSocialStatus('Sending to the arcade…');
+  try{
+    const device=arcadeDeviceToken();
+    const response=await fetch(ARCADE_SOCIAL.base+'/social-arcade-write',{
+      method:'POST',headers:{'Content-Type':'application/json',apikey:ARCADE_SOCIAL.anon,Authorization:'Bearer '+ARCADE_SOCIAL.anon},
+      body:JSON.stringify({score_id:current.scoreId,player_initials:initials,device_token:device,
+        reaction:remove?null:arcadeSocialChoice,turnstile_token:arcadeSocialToken})
+    });
+    const data=await response.json().catch(()=>({}));
+    if(!response.ok||data.success!==true)throw Error(data.error||'Reaction could not be saved.');
+    try{localStorage.setItem('big-daddys-arcade-reaction-initials',initials);}catch(_){}
+    arcadeSocialStatus(remove?'Reaction removed!':'Reaction saved! 🏆');
+    if(!remove&&arcadeSocialLastFocus?.isConnected)arcadeSocialLastFocus.textContent='❤️ REACTED!';
+    setTimeout(()=>{if(arcadeSocialCurrent===current)arcadeCloseSocial();},900);
+  }catch(e){arcadeSocialStatus(e.message||'Unable to save. Try again.');}
+  finally{
+    arcadeSocialToken='';save.disabled=false;undo.disabled=false;
+    if(arcadeSocialWidgetId!==null&&window.turnstile?.reset){try{window.turnstile.reset(arcadeSocialWidgetId);}catch(_){}}
+  }
+}
