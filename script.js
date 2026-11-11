@@ -1,3 +1,67 @@
+// Player stat cards: read-only iScored scoreboard and permanent verified Thursday victories.
+(function initArcadePlayerCards(){
+  const dialog=document.querySelector('#player-dialog');
+  const detail=document.querySelector('#player-card-detail');
+  const list=document.querySelector('#player-card-list');
+  const spotlight=document.querySelector('#player-spotlight');
+  const close=document.querySelector('#player-close');
+  const seeAll=document.querySelector('#player-see-all');
+  let players=[], victories={}, selected='', previousFocus=null;
+  const dateET=()=>new Intl.DateTimeFormat('en-CA',{timeZone:'America/New_York',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
+  function makeCard(p){
+    const card=document.createElement('article');card.className='player-stat-card';
+    const title=document.createElement('h3');title.textContent=p.player.toUpperCase();card.append(title);
+    const rank=document.createElement('p');rank.className='player-stat-rank';rank.textContent='CURRENT RANK #'+p.rank;card.append(rank);
+    const stats=document.createElement('div');stats.className='player-stat-grid';
+    for(const [label,value,emoji] of [['GOLD',p.gold,'🥇'],['SILVER',p.silver,'🥈'],['BRONZE',p.bronze,'🥉'],['THURSDAY WINS',victories[p.player]||0,'🏆'],['iSCORED POINTS',p.points,'⭐']]){
+      const item=document.createElement('div');item.className='player-stat-cell';
+      const number=document.createElement('strong');number.textContent=emoji+' '+Number(value||0).toLocaleString('en-US');
+      const text=document.createElement('span');text.textContent=label;item.append(number,text);stats.append(item);
+    }
+    card.append(stats);return card;
+  }
+  function featured(){
+    if(!players.length){spotlight.textContent='AWAITING VERIFIED PLAYER DATA';return;}
+    // Rotate fairly: every eligible player appears once before the cycle repeats.
+    const sorted=[...players].sort((a,b)=>a.player.localeCompare(b.player));
+    const day=Math.floor(Date.parse(dateET()+'T12:00:00Z')/86400000);
+    const p=sorted[((day%sorted.length)+sorted.length)%sorted.length];
+    spotlight.replaceChildren(makeCard(p));
+  }
+  function showPlayer(name){
+    const p=players.find(x=>x.player===name)||players[0];if(!p)return;
+    selected=p.player;detail.replaceChildren(makeCard(p));
+    list.querySelectorAll('button').forEach(b=>b.setAttribute('aria-current',b.dataset.player===selected?'true':'false'));
+  }
+  function open(name){if(!players.length)return;previousFocus=document.activeElement;dialog.hidden=false;document.body.classList.add('player-dialog-open');showPlayer(name||players[0].player);close.focus();}
+  function dismiss(){dialog.hidden=true;document.body.classList.remove('player-dialog-open');previousFocus?.focus?.();}
+  function browse(){list.replaceChildren();players.forEach(p=>{const b=document.createElement('button');b.type='button';b.className='player-browse-button';b.dataset.player=p.player;b.textContent='#'+p.rank+' '+p.player;b.addEventListener('click',()=>showPlayer(p.player));list.append(b);});}
+  window.arcadeSetPlayers=function(rows){
+    players=rows.map((r,i)=>({...r,rank:i+1,player:String(r.player).trim().toUpperCase()}));
+    browse();featured();if(!dialog.hidden)showPlayer(selected);
+  };
+  window.arcadeOpenPlayer=open;
+  close.addEventListener('click',dismiss);
+  dialog.addEventListener('click',e=>{if(e.target===dialog)dismiss();});
+  seeAll.addEventListener('click',()=>open());
+  document.addEventListener('keydown',e=>{if(dialog.hidden)return;if(e.key==='Escape'){e.stopPropagation();dismiss();}if(e.key==='Tab'){
+    const els=[...dialog.querySelectorAll('button:not([disabled])')];if(!els.length)return;
+    const first=els[0],last=els[els.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}
+    else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}
+  }});
+  async function refreshWins(){try{
+    const res=await fetch('./thursday-winners.json?refresh='+Date.now(),{cache:'no-store'});
+    if(!res.ok)return;const data=await res.json();const counts={};
+    for(const week of Array.isArray(data.weeks)?data.weeks:[]){
+      if(week?.status!=='final'||typeof week.winner?.player!=='string')continue;
+      const player=week.winner.player.trim().toUpperCase();counts[player]=(counts[player]||0)+1;
+    }
+    victories=counts;featured();if(!dialog.hidden)showPlayer(selected);
+  }catch(_){/* Archive not installed yet; display zero until synced. */}}
+  refreshWins();setInterval(refreshWins,10*60*1000);
+  setInterval(()=>{if(!document.hidden)featured();},60*1000);
+})();
+
 const reset=document.querySelector('#reset');reset.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));let deferredPrompt;window.addEventListener('beforeinstallprompt',event=>{event.preventDefault();deferredPrompt=event;(()=>{const install=document.querySelector('#install');if(install)install.hidden=false})()});document.querySelector('#install')?.addEventListener('click',async()=>{if(!deferredPrompt)return;deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null;const install=document.querySelector('#install');if(install)install.hidden=true});if('serviceWorker' in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
 const leadersDialog=document.querySelector('#leaders-dialog'),leadersOpen=document.querySelector('#leaders-open'),leadersClose=document.querySelector('#leaders-close'),leadersAll=document.querySelector('#leaders-all');
 let lastLeadersFocus=null;
@@ -10,7 +74,7 @@ document.addEventListener('keydown',e=>{if(leadersDialog.hidden)return;if(e.key=
  const panel=document.querySelector('#legend-spotlight'),controls=document.querySelector('#legend-controls'),counter=document.querySelector('#legend-counter'),source=document.querySelector('#legend-source');
  let entries=[],position=0,updatedAt=null;
   const showcase=document.querySelector('#arcade-showcase');
-  const slides=[document.querySelector('#showcase-legends'),document.querySelector('#showcase-champion'),document.querySelector('#showcase-records')];
+  const slides=[document.querySelector('#showcase-legends'),document.querySelector('#showcase-champion'),document.querySelector('#showcase-records'),document.querySelector('#showcase-player')];
   let activePage=0, lastManualSwitch=0;
   const reducedMotion=()=>window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function switchPage(page,manual=false){
@@ -52,7 +116,7 @@ document.addEventListener('keydown',e=>{if(leadersDialog.hidden)return;if(e.key=
       const data=await response.json();
       const next=Array.isArray(data.records)?data.records.filter(r=>r&&typeof r.player==='string'&&typeof r.game==='string'&&Number.isFinite(Number(r.score))):[];
       const currentId=records[recordPosition]?.id;
-      records=next;
+      records=next.slice(0,10);
       const preserved=records.findIndex(r=>r.id===currentId);
       recordPosition=preserved>=0?preserved:0;
       showRecord();recordSource.textContent='PERMANENT FIRST-PLACE HISTORY • SYNCED WITH iSCORED';
@@ -76,7 +140,7 @@ document.addEventListener('keydown',e=>{if(leadersDialog.hidden)return;if(e.key=
  function show(){if(!entries.length)return;const e=entries[position];panel.replaceChildren();const label=document.createElement('p');label.className='legend-kind';label.textContent=e.kind==='recent'?'RECENT SCORE':'GAME CHAMPION';const h=document.createElement('p');h.className='legend-headline';h.textContent=String(e.player).toUpperCase();const g=document.createElement('p');g.className='legend-detail';g.textContent=String(e.game).toUpperCase();const sc=document.createElement('p');sc.className='legend-score';sc.textContent=Number(e.score).toLocaleString('en-US');panel.append(label,h,g,sc);counter.textContent=`${position+1} / ${entries.length}`;}
  function move(delta){position=(position+delta+entries.length)%entries.length;show()}
  document.querySelector('#legend-prev').addEventListener('click',()=>move(-1));document.querySelector('#legend-next').addEventListener('click',()=>move(1));
- async function refresh(){try{const response=await fetch('./legends.json?refresh='+Date.now(),{cache:'no-store'});if(!response.ok)throw Error('Unavailable');const data=await response.json();const next=Array.isArray(data.entries)?data.entries.filter(e=>e&&typeof e.player==='string'&&typeof e.game==='string'&&Number.isFinite(Number(e.score))):[];if(!next.length){source.textContent='AWAITING FIRST LIVE SCORE SYNC — SEE iSCORED FOR RECORDS';return}entries=next;position=Math.min(position,entries.length-1);controls.hidden=entries.length<2;updatedAt=data.updated_at;updateChampion();source.textContent=updatedAt?'SCORES SYNCED '+new Date(updatedAt).toLocaleString():'VERIFIED iSCORED SCORE FEED';show();const rankings=document.querySelector('#papa-standings');if(rankings){rankings.replaceChildren();const allStandings=Array.isArray(data.standings)?data.standings.filter(r=>r&&typeof r.player==='string'&&Number.isFinite(Number(r.points))):[];const standings=allStandings.slice(0,5);leadersAll.replaceChildren();allStandings.forEach((r,i)=>{const row=document.createElement('div');row.className='leaders-full-row';const name=document.createElement('span');name.textContent=`${i+1}. ${r.player.toUpperCase()}`;const pts=document.createElement('span');pts.textContent=`${Number(r.points).toLocaleString('en-US')} PTS`;row.append(name,pts);leadersAll.append(row)});standings.forEach((r,i)=>{const line=document.createElement('div');line.className='papa-row';line.textContent=`${i+1}. ${String(r.player).toUpperCase()} — ${Number(r.points).toLocaleString()} PTS`;rankings.append(line)});document.querySelector('#papa-section').hidden=!standings.length;leadersOpen.disabled=!standings.length;}}
+ async function refresh(){try{const response=await fetch('./legends.json?refresh='+Date.now(),{cache:'no-store'});if(!response.ok)throw Error('Unavailable');const data=await response.json();const next=Array.isArray(data.entries)?data.entries.filter(e=>e&&typeof e.player==='string'&&typeof e.game==='string'&&Number.isFinite(Number(e.score))):[];if(!next.length){source.textContent='AWAITING FIRST LIVE SCORE SYNC — SEE iSCORED FOR RECORDS';return}entries=next;position=Math.min(position,entries.length-1);controls.hidden=entries.length<2;updatedAt=data.updated_at;updateChampion();source.textContent=updatedAt?'SCORES SYNCED '+new Date(updatedAt).toLocaleString():'VERIFIED iSCORED SCORE FEED';show();const rankings=document.querySelector('#papa-standings');if(rankings){rankings.replaceChildren();const allStandings=Array.isArray(data.standings)?data.standings.filter(r=>r&&typeof r.player==='string'&&Number.isFinite(Number(r.points))):[];const standings=allStandings.slice(0,5);window.arcadeSetPlayers?.(allStandings);leadersAll.replaceChildren();allStandings.forEach((r,i)=>{const row=document.createElement('div');row.className='leaders-full-row';const name=document.createElement('button');name.type='button';name.className='player-name-link';name.textContent=`${i+1}. ${r.player.toUpperCase()}`;name.addEventListener('click',()=>window.arcadeOpenPlayer?.(r.player));const pts=document.createElement('span');pts.textContent=`${Number(r.points).toLocaleString('en-US')} PTS`;row.append(name,pts);leadersAll.append(row)});standings.forEach((r,i)=>{const line=document.createElement('div');line.className='papa-row';line.innerHTML='';const playerLink=document.createElement('button');playerLink.type='button';playerLink.className='player-name-link';playerLink.textContent=`${i+1}. ${String(r.player).toUpperCase()}`;playerLink.addEventListener('click',()=>window.arcadeOpenPlayer?.(r.player));line.append(playerLink,document.createTextNode(` — ${Number(r.points).toLocaleString()} PTS`));rankings.append(line)});document.querySelector('#papa-section').hidden=!standings.length;leadersOpen.disabled=!standings.length;}}
  catch(err){source.textContent=entries.length?'PREVIOUSLY SYNCED SCORES — LIVE UPDATE UNAVAILABLE':'SCORE FEED UNAVAILABLE — OPEN iSCORED FOR SCORES';}}
  await refresh();setInterval(()=>{if(!document.hidden&&activePage===0&&entries.length>1&&!reducedMotion())move(1)},8000);setInterval(refresh,10*60*1000);
   setInterval(()=>{if(!document.hidden)updateChampion();},60*1000);
