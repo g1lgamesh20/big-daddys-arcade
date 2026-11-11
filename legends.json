@@ -1,82 +1,127 @@
 {
-  "updated_at": "2026-11-11T17:25:47.450087+00:00",
+  "updated_at": "2026-11-11T18:24:52.821419+00:00",
   "source": "iScored public read API",
   "scoring_note": "PAPA-style estimate: top 1000 games per player; one best score per player per game; competition ties. iScored may handle ties differently.",
   "standings": [
     {
       "player": "DON",
       "points": 20972,
-      "games": 214
+      "games": 214,
+      "gold": 177,
+      "silver": 26,
+      "bronze": 9
     },
     {
       "player": "SPC",
       "points": 4857,
-      "games": 51
+      "games": 51,
+      "gold": 30,
+      "silver": 15,
+      "bronze": 4
     },
     {
       "player": "KAK",
       "points": 2550,
-      "games": 28
+      "games": 28,
+      "gold": 9,
+      "silver": 9,
+      "bronze": 4
     },
     {
       "player": "DAY",
       "points": 2057,
-      "games": 23
+      "games": 23,
+      "gold": 6,
+      "silver": 4,
+      "bronze": 7
     },
     {
       "player": "RDG",
       "points": 2019,
-      "games": 22
+      "games": 22,
+      "gold": 9,
+      "silver": 5,
+      "bronze": 3
     },
     {
       "player": "RPS",
       "points": 1955,
-      "games": 22
+      "games": 22,
+      "gold": 4,
+      "silver": 7,
+      "bronze": 6
     },
     {
       "player": "VJG",
       "points": 1565,
-      "games": 17
+      "games": 17,
+      "gold": 6,
+      "silver": 7,
+      "bronze": 0
     },
     {
       "player": "POD",
       "points": 1170,
-      "games": 13
+      "games": 13,
+      "gold": 4,
+      "silver": 2,
+      "bronze": 4
     },
     {
       "player": "SMS",
       "points": 950,
-      "games": 10
+      "games": 10,
+      "gold": 6,
+      "silver": 2,
+      "bronze": 2
     },
     {
       "player": "FO",
       "points": 878,
-      "games": 10
+      "games": 10,
+      "gold": 1,
+      "silver": 3,
+      "bronze": 4
     },
     {
       "player": "BOB",
       "points": 683,
-      "games": 8
+      "games": 8,
+      "gold": 0,
+      "silver": 2,
+      "bronze": 2
     },
     {
       "player": "MAB",
       "points": 640,
-      "games": 7
+      "games": 7,
+      "gold": 2,
+      "silver": 3,
+      "bronze": 2
     },
     {
       "player": "BGR",
       "points": 535,
-      "games": 6
+      "games": 6,
+      "gold": 1,
+      "silver": 3,
+      "bronze": 0
     },
     {
       "player": "GPS",
       "points": 100,
-      "games": 1
+      "games": 1,
+      "gold": 1,
+      "silver": 0,
+      "bronze": 0
     },
     {
       "player": "LEY",
       "points": 85,
-      "games": 1
+      "games": 1,
+      "gold": 0,
+      "silver": 0,
+      "bronze": 1
     }
   ],
   "entries": [
