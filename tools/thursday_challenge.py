@@ -11,6 +11,7 @@ from urllib.request import Request, urlopen
 
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/'thursday-challenge.json'
+WINNERS=ROOT/'thursday-winners.json'
 STATE=ROOT/'thursday-challenge-state.json'
 NY=ZoneInfo('America/New_York')
 URL=os.environ.get('ISCORED_READ_URL','https://www.iScored.info/api/G1LGAMESH/getAllScores')
@@ -89,6 +90,18 @@ def build(now=None,rows=None):
             'unparseable_game_dates':unparseable,'updated_at':now.isoformat()}
     # Retain only a small selection history, but keep previous winners in the public feed separately if needed.
     state['weeks']={k:v for k,v in sorted(weeks.items())[-20:]}
+    # Permanent, idempotent archive of verified finalized weeks.
+    # Preserve existing entries and never record unverified or live results.
+    if result['status'] == 'final' and result['unparseable_game_dates'] == 0:
+        archive = json.loads(WINNERS.read_text(encoding='utf-8')) if WINNERS.exists() else {'weeks': []}
+        history = archive.get('weeks', [])
+        if not isinstance(history, list):
+            raise ValueError('Invalid Thursday winners archive; refusing to overwrite')
+        if not any(isinstance(item, dict) and item.get('week') == key for item in history):
+            history.append({'week': key, 'game_id': gid, 'game': selection['game'],
+                            'winner': winner, 'status': 'final'})
+            history.sort(key=lambda item: str(item.get('week', '')))
+            WINNERS.write_text(json.dumps({'weeks': history}, indent=2, ensure_ascii=False)+'\n', encoding='utf-8')
     OUT.write_text(json.dumps(result,indent=2,ensure_ascii=False)+'\n')
     STATE.write_text(json.dumps(state,indent=2,ensure_ascii=False)+'\n')
     print(f'Thursday {key}: {selection["game"]} / {result["status"]} / {len(standings)} players')
