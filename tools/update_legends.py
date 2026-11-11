@@ -13,6 +13,7 @@ URL = os.environ.get('ISCORED_READ_URL', 'https://www.iScored.info/api/G1LGAMESH
 OUTPUT = Path(__file__).resolve().parents[1] / 'legends.json'
 STATE = OUTPUT.with_name('medal-state.json')
 FEED = OUTPUT.with_name('medals.json')
+RECORDS = OUTPUT.with_name('arcade-records.json')
 
 def papa_points(rank):
     if rank == 1: return 100
@@ -120,6 +121,25 @@ def main():
         all_ids.update(known)
     else:
         combined = []  # Initial run is a quiet baseline.
+    # Independent, permanent first-place history. Preserve every recorded gold event.
+    # Bootstrap from previously observed gold medal alerts; never call baseline scores NEW.
+    previous_records = json.loads(RECORDS.read_text(encoding='utf-8')) if RECORDS.exists() else {}
+    history = [r for r in previous_records.get('records', []) if isinstance(r, dict)]
+    gold_events = [a for a in combined if a.get('rank') == 1 and a.get('medal') == 'gold']
+    seen_record_ids = {str(r.get('id')) for r in history}
+    for event in gold_events:
+        if str(event['id']) not in seen_record_ids:
+            history.append({**event, 'record_type': 'new_first_place'})
+            seen_record_ids.add(str(event['id']))
+    # On first installation, if there is no historic gold event, retain a
+    # clearly labeled current champion as a non-new fallback, avoiding an empty slide.
+    if not history:
+        candidates = [p for p in podium if p['rank'] == 1]
+        if candidates:
+            best = max(candidates, key=lambda p:(p['date'],p['id']))
+            history.append({**best, 'record_type': 'baseline_champion'})
+    history.sort(key=lambda r:(str(r.get('date','')), str(r.get('id',''))), reverse=True)
+    RECORDS.write_text(json.dumps({'updated_at':result['updated_at'], 'records':history}, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
     # Keep a durable ID set so records don't generate duplicate notifications.
     # Existing records are baseline on the very first run; later runs alert only
     # when a newly observed score currently holds a top-three game position.
