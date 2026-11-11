@@ -18,12 +18,14 @@ jobs:
         run: python tools/test_medals.py
       - name: Download scores and update medal feed
         run: python tools/update_legends.py
+      - name: Update Thursday winner history
+        run: python tools/thursday_challenge.py
       - name: Commit updated scoreboard and medal state
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add legends.json medals.json medal-state.json arcade-records.json
+          git add legends.json medals.json medal-state.json arcade-records.json thursday-challenge.json thursday-challenge-state.json thursday-winners.json
           if ! git diff --cached --quiet; then
-            git commit -m "Refresh arcade legends and medals"
+            git commit -m "Refresh arcade legends, medals and Thursday challenge"
             git push
           fi
