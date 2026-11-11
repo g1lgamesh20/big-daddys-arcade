@@ -1,3 +1,11 @@
 {
-  "weeks": []
+  "weeks": [
+    {
+      "week": "2026-11-05",
+      "game_id": "50221",
+      "game": "Bomb jack",
+      "winner": null,
+      "status": "final"
+    }
+  ]
 }
