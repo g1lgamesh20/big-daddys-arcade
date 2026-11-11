@@ -352,3 +352,17 @@ body.leaders-dialog-open{overflow:hidden}
 @media (max-width: 370px) {
   #enter .pinball-title .pinball-desktop-line { font-size: 29px !important; }
 }
+
+/* Arcade Showcase v1: two swipeable screens; future screens can be added independently. */
+.arcade-showcase{touch-action:pan-y;overflow:hidden}
+.arcade-showcase-slide[hidden]{display:none!important}
+.arcade-showcase-slide{min-height:205px}
+.arcade-showcase-kicker{color:#6ceaff!important;font-size:11px!important;letter-spacing:1px!important;font-weight:900!important}
+.arcade-showcase-nav{display:flex;align-items:center;justify-content:center;gap:12px;margin:10px auto 0}
+.arcade-showcase-nav button{cursor:pointer;touch-action:manipulation}
+.arcade-showcase-nav>button:not(.showcase-dot){min-width:37px;min-height:34px;border:1px solid #ff38bd;border-radius:8px;background:#170c23;color:#fff;font-size:16px}
+.arcade-showcase-nav .showcase-dot{width:12px;height:12px;padding:0;border-radius:50%;border:1px solid #bcb0cc;background:#655875}
+.arcade-showcase-nav .showcase-dot.is-active{width:25px;border-color:#78ff53;background:#78ff53;box-shadow:0 0 9px #78ff53}
+.arcade-showcase-hint{font-size:10px!important;color:#b9aabd!important;letter-spacing:1px!important;margin-top:9px!important}
+.arcade-champion-link{display:inline-block;margin:8px auto 4px;padding:11px 16px;background:#d32b9f;border:1px solid #ff9de5;border-radius:9px;color:#fff;font-weight:900;font-size:12px;text-decoration:none}
+.arcade-showcase #champion-spotlight .legend-detail{font-size:clamp(16px,4vw,23px);font-weight:900;color:#ffd35d}
