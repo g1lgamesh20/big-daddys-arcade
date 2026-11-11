@@ -10,7 +10,7 @@ document.addEventListener('keydown',e=>{if(leadersDialog.hidden)return;if(e.key=
  const panel=document.querySelector('#legend-spotlight'),controls=document.querySelector('#legend-controls'),counter=document.querySelector('#legend-counter'),source=document.querySelector('#legend-source');
  let entries=[],position=0,updatedAt=null;
   const showcase=document.querySelector('#arcade-showcase');
-  const slides=[document.querySelector('#showcase-legends'),document.querySelector('#showcase-champion')];
+  const slides=[document.querySelector('#showcase-legends'),document.querySelector('#showcase-champion'),document.querySelector('#showcase-records')];
   let activePage=0, lastManualSwitch=0;
   const reducedMotion=()=>window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function switchPage(page,manual=false){
@@ -28,6 +28,38 @@ document.addEventListener('keydown',e=>{if(leadersDialog.hidden)return;if(e.key=
   let touchX=0,touchY=0;
   showcase.addEventListener('touchstart',e=>{if(e.touches.length!==1)return;touchX=e.touches[0].clientX;touchY=e.touches[0].clientY;},{passive:true});
   showcase.addEventListener('touchend',e=>{if(!e.changedTouches.length)return;const dx=e.changedTouches[0].clientX-touchX,dy=e.changedTouches[0].clientY-touchY;if(Math.abs(dx)>45&&Math.abs(dx)>Math.abs(dy)*1.4)switchPage(activePage+(dx<0?1:-1),true);},{passive:true});
+  let records=[],recordPosition=0;
+  const recordPanel=document.querySelector('#records-spotlight');
+  const recordControls=document.querySelector('#records-controls');
+  const recordCounter=document.querySelector('#records-counter');
+  const recordSource=document.querySelector('#records-source');
+  function showRecord(){
+    recordPanel.replaceChildren();
+    if(!records.length){const p=document.createElement('p');p.className='legend-detail';p.textContent='AWAITING FIRST VERIFIED RECORD SYNC';recordPanel.append(p);recordControls.hidden=true;return;}
+    recordControls.hidden=records.length<2;
+    const r=records[recordPosition];
+    const fields=[['legend-kind',r.record_type==='baseline_champion'?'CURRENT #1 • HISTORY STARTED':'NEW #1 ARCADE RECORD'],['legend-headline',String(r.player).toUpperCase()],['legend-detail',String(r.game).toUpperCase()],['legend-score',Number(r.score).toLocaleString('en-US')]];
+    fields.forEach(([cls,value])=>{const p=document.createElement('p');p.className=cls;p.textContent=value;recordPanel.append(p);});
+    recordCounter.textContent=`${recordPosition+1} / ${records.length}`;
+  }
+  function moveRecord(delta){if(!records.length)return;recordPosition=(recordPosition+delta+records.length)%records.length;showRecord();}
+  document.querySelector('#records-prev').addEventListener('click',()=>moveRecord(-1));
+  document.querySelector('#records-next').addEventListener('click',()=>moveRecord(1));
+  async function refreshRecords(){
+    try{
+      const response=await fetch('./arcade-records.json?refresh='+Date.now(),{cache:'no-store'});
+      if(!response.ok)throw Error('Record history not yet available');
+      const data=await response.json();
+      const next=Array.isArray(data.records)?data.records.filter(r=>r&&typeof r.player==='string'&&typeof r.game==='string'&&Number.isFinite(Number(r.score))):[];
+      const currentId=records[recordPosition]?.id;
+      records=next;
+      const preserved=records.findIndex(r=>r.id===currentId);
+      recordPosition=preserved>=0?preserved:0;
+      showRecord();recordSource.textContent='PERMANENT FIRST-PLACE HISTORY • SYNCED WITH iSCORED';
+    }catch(_){if(!records.length)showRecord();recordSource.textContent='AWAITING RECORD HISTORY SYNC';}
+  }
+  refreshRecords();setInterval(refreshRecords,10*60*1000);
+  setInterval(()=>{if(!document.hidden&&activePage===2&&records.length>1&&!reducedMotion())moveRecord(1)},8000);
   function easternDay(){return new Intl.DateTimeFormat('en-CA',{timeZone:'America/New_York',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());}
   function updateChampion(){
     const target=document.querySelector('#champion-spotlight');target.replaceChildren();
