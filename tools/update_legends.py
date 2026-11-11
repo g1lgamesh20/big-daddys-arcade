@@ -55,7 +55,21 @@ def build(raw):
             last_score = row['score']
             per_player.setdefault(row['player'], []).append(papa_points(rank))
             if rank == 1: champions.append({**row, 'rank':1})
-    standings = [{'player':player,'points':sum(sorted(points,reverse=True)[:1000]),'games':len(points)} for player,points in per_player.items()]
+    # Current medal positions across all games (not lifetime medal alerts).
+    podium_counts = {player: {'gold': 0, 'silver': 0, 'bronze': 0} for player in per_player}
+    for group in games.values():
+        group.sort(key=lambda x: (-x['score'], x['player']))
+        prior_score = None
+        rank = 0
+        for i, row in enumerate(group):
+            if row['score'] != prior_score:
+                rank = i + 1
+            prior_score = row['score']
+            if rank in (1, 2, 3):
+                podium_counts[row['player']][('gold', 'silver', 'bronze')[rank - 1]] += 1
+    standings = [{'player':player,'points':sum(sorted(points,reverse=True)[:1000]),
+                  'games':len(points), **podium_counts[player]}
+                 for player,points in per_player.items()]
     standings.sort(key=lambda x:(-x['points'],-x['games'],x['player']))
     recent = sorted(valid,key=lambda x:x['date'],reverse=True)[:12]
     champions.sort(key=lambda x:(x['game'].casefold(),x['player']))
