@@ -1,13 +1,13 @@
 {
-  "week": "2026-11-05",
-  "game_id": "50221",
-  "game": "Bomb jack",
-  "thursday_date": "2026-11-05",
+  "week": "2026-11-12",
+  "game_id": "112913",
+  "game": "Bosconian",
+  "thursday_date": "2026-11-12",
   "cutoff": "Thursday 11:59 PM America/New_York",
-  "status": "final",
+  "status": "live",
   "winner": null,
   "standings": [],
   "eligible_scores": 0,
   "unparseable_game_dates": 0,
-  "updated_at": "2026-11-12T03:23:57.885334+00:00"
+  "updated_at": "2026-11-12T05:33:50.280425+00:00"
 }
