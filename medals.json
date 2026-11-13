@@ -1,6 +1,16 @@
 {
-  "updated_at": "2026-11-12T22:53:35.758860+00:00",
+  "updated_at": "2026-11-13T01:15:30.186360+00:00",
   "alerts": [
+    {
+      "id": "384377",
+      "player": "DON",
+      "game": "Bosconian",
+      "game_id": "112913",
+      "score": 45110,
+      "date": "2026-11-12 19:00:46",
+      "rank": 2,
+      "medal": "silver"
+    },
     {
       "id": "382137",
       "player": "POD",

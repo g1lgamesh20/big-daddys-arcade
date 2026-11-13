@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-12T22:53:35.758860+00:00",
+  "updated_at": "2026-11-13T01:15:30.186360+00:00",
   "source": "iScored public read API",
   "scoring_note": "PAPA-style estimate: top 1000 games per player; one best score per player per game; competition ties. iScored may handle ties differently.",
   "standings": [
@@ -1328,6 +1328,15 @@
     {
       "kind": "recent",
       "player": "DON",
+      "game": "Bosconian",
+      "game_id": "112913",
+      "score": 45110,
+      "date": "2026-11-12 19:00:46",
+      "score_id": "384377"
+    },
+    {
+      "kind": "recent",
+      "player": "DON",
       "game": "Bomb jack",
       "game_id": "50221",
       "score": 9840,
@@ -1423,15 +1432,6 @@
       "score": 126850,
       "date": "2026-11-07 18:11:46",
       "score_id": "381768"
-    },
-    {
-      "kind": "recent",
-      "player": "POD",
-      "game": "Bad Dudes Vs. Dragon Ninja",
-      "game_id": "112664",
-      "score": 88500,
-      "date": "2026-11-07 18:11:35",
-      "score_id": "381766"
     }
   ],
   "total_games": 251,
