@@ -22,7 +22,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add legends.json medals.json medal-state.json arcade-records.json
+          git add legends.json medals.json medal-state.json arcade-records.json daily-champion.json
           if ! git diff --cached --quiet; then
             git commit -m "Refresh arcade legends and medals"
             git pull --rebase origin main
