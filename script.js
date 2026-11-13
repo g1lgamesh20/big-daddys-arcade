@@ -73,6 +73,7 @@ document.addEventListener('keydown',e=>{if(leadersDialog.hidden||!document.query
 (async function initLegends(){
  const panel=document.querySelector('#legend-spotlight'),controls=document.querySelector('#legend-controls'),counter=document.querySelector('#legend-counter'),source=document.querySelector('#legend-source');
  let entries=[],position=0,updatedAt=null;
+  let lastManualLegendBrowse=0;
   const showcase=document.querySelector('#arcade-showcase');
   const slides=[document.querySelector('#showcase-legends'),document.querySelector('#showcase-champion'),document.querySelector('#showcase-records'),document.querySelector('#showcase-player')];
   let activePage=0, lastManualSwitch=0;
@@ -93,6 +94,7 @@ document.addEventListener('keydown',e=>{if(leadersDialog.hidden||!document.query
   showcase.addEventListener('touchstart',e=>{if(e.touches.length!==1)return;touchX=e.touches[0].clientX;touchY=e.touches[0].clientY;},{passive:true});
   showcase.addEventListener('touchend',e=>{if(!e.changedTouches.length)return;const dx=e.changedTouches[0].clientX-touchX,dy=e.changedTouches[0].clientY-touchY;if(Math.abs(dx)>45&&Math.abs(dx)>Math.abs(dy)*1.4)switchPage(activePage+(dx<0?1:-1),true);},{passive:true});
   let records=[],recordPosition=0;
+  let lastManualRecordBrowse=0;
   const recordPanel=document.querySelector('#records-spotlight');
   const recordControls=document.querySelector('#records-controls');
   const recordCounter=document.querySelector('#records-counter');
@@ -107,8 +109,8 @@ document.addEventListener('keydown',e=>{if(leadersDialog.hidden||!document.query
     recordCounter.textContent=`${recordPosition+1} / ${records.length}`;
   }
   function moveRecord(delta){if(!records.length)return;recordPosition=(recordPosition+delta+records.length)%records.length;showRecord();}
-  document.querySelector('#records-prev').addEventListener('click',()=>moveRecord(-1));
-  document.querySelector('#records-next').addEventListener('click',()=>moveRecord(1));
+  document.querySelector('#records-prev').addEventListener('click',()=>{lastManualRecordBrowse=Date.now();moveRecord(-1);});
+  document.querySelector('#records-next').addEventListener('click',()=>{lastManualRecordBrowse=Date.now();moveRecord(1);});
   async function refreshRecords(){
     try{
       const response=await fetch('./arcade-records.json?refresh='+Date.now(),{cache:'no-store'});
@@ -123,26 +125,40 @@ document.addEventListener('keydown',e=>{if(leadersDialog.hidden||!document.query
     }catch(_){if(!records.length)showRecord();recordSource.textContent='AWAITING RECORD HISTORY SYNC';}
   }
   refreshRecords();setInterval(refreshRecords,10*60*1000);
-  setInterval(()=>{if(!document.hidden&&activePage===2&&records.length>1&&!reducedMotion())moveRecord(1)},8000);
+  setInterval(()=>{if(!document.hidden&&activePage===2&&records.length>1&&!reducedMotion()&&Date.now()-lastManualRecordBrowse>=30000)moveRecord(1)},8000);
   function easternDay(){return new Intl.DateTimeFormat('en-CA',{timeZone:'America/New_York',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());}
+  let championSchedule=[], allChampions=[];
+  async function refreshChampionSchedule(){
+    try{
+      const response=await fetch('./daily-champion.json?refresh='+Date.now(),{cache:'no-store'});
+      if(!response.ok)throw Error('Daily champion schedule unavailable');
+      const data=await response.json();
+      if(Array.isArray(data.days))championSchedule=data.days.filter(d=>d&&typeof d.date==='string'&&typeof d.game_id==='string');
+    }catch(_){/* Preserve last loaded schedule if a refresh fails. */}
+    updateChampion();
+  }
   function updateChampion(){
     const target=document.querySelector('#champion-spotlight');target.replaceChildren();
-    const champions=entries.filter(e=>e.kind==='champion'||e.kind==='game_champion'||e.kind==='game-champion');
-    if(!champions.length){const msg=document.createElement('p');msg.className='legend-detail';msg.textContent='AWAITING VERIFIED GAME CHAMPION DATA';target.append(msg);return;}
-    // A deterministic date-based selection: all visitors see the same featured game.
-    const date=easternDay();let hash=0;for(const char of date)hash=(hash*31+char.charCodeAt(0))>>>0;
-    const sorted=[...champions].sort((a,b)=>String(a.game).localeCompare(String(b.game)));
-    const chosen=sorted[hash%sorted.length];
-    const elements=[['p','arcade-showcase-kicker','CURRENT CHAMPION'],['p','legend-detail',String(chosen.game).toUpperCase()],['p','legend-headline',String(chosen.player).toUpperCase()],['p','legend-score',Number(chosen.score).toLocaleString('en-US')],['p','arcade-showcase-kicker','BEAT THIS SCORE TO TAKE THE CROWN!']];
+    const day=championSchedule.find(d=>d.date===easternDay());
+    if(!day){const msg=document.createElement('p');msg.className='legend-detail';msg.textContent='AWAITING TODAY\'S VERIFIED CHALLENGE SYNC';target.append(msg);return;}
+    const champions=allChampions.length?allChampions:entries.filter(e=>e.kind==='champion');
+    const matching=champions.filter(c=>String(c.game_id)===day.game_id);
+    const chosen=matching.sort((a,b)=>Number(b.score)-Number(a.score))[0];
+    const game=chosen?.game||day.game||'FEATURED GAME';
+    const elements=[['p','arcade-showcase-kicker','CURRENT CHAMPION'],['p','legend-detail',String(game).toUpperCase()]];
+    if(chosen){elements.push(['p','legend-headline',String(chosen.player).toUpperCase()],['p','legend-score',Number(chosen.score).toLocaleString('en-US')]);}
+    else elements.push(['p','legend-headline','AWAITING CURRENT VERIFIED SCORE']);
+    elements.push(['p','arcade-showcase-kicker','BEAT THIS SCORE TO TAKE THE CROWN!']);
     elements.forEach(([tag,cls,value])=>{const el=document.createElement(tag);el.className=cls;el.textContent=value;target.append(el);});
   }
+  refreshChampionSchedule();setInterval(refreshChampionSchedule,10*60*1000);
 
  function show(){if(!entries.length)return;const e=entries[position];panel.replaceChildren();const label=document.createElement('p');label.className='legend-kind';label.textContent=e.kind==='recent'?'RECENT SCORE':'GAME CHAMPION';const h=document.createElement('p');h.className='legend-headline';h.textContent=String(e.player).toUpperCase();const g=document.createElement('p');g.className='legend-detail';g.textContent=String(e.game).toUpperCase();const sc=document.createElement('p');sc.className='legend-score';sc.textContent=Number(e.score).toLocaleString('en-US');panel.append(label,h,g,sc);counter.textContent=`${position+1} / ${entries.length}`;}
  function move(delta){position=(position+delta+entries.length)%entries.length;show()}
- document.querySelector('#legend-prev').addEventListener('click',()=>move(-1));document.querySelector('#legend-next').addEventListener('click',()=>move(1));
- async function refresh(){try{const response=await fetch('./legends.json?refresh='+Date.now(),{cache:'no-store'});if(!response.ok)throw Error('Unavailable');const data=await response.json();const next=Array.isArray(data.entries)?data.entries.filter(e=>e&&typeof e.player==='string'&&typeof e.game==='string'&&Number.isFinite(Number(e.score))):[];if(!next.length){source.textContent='AWAITING FIRST LIVE SCORE SYNC — SEE iSCORED FOR RECORDS';return}entries=next;position=Math.min(position,entries.length-1);controls.hidden=entries.length<2;updatedAt=data.updated_at;updateChampion();source.textContent=updatedAt?'SCORES SYNCED '+new Date(updatedAt).toLocaleString():'VERIFIED iSCORED SCORE FEED';show();const rankings=document.querySelector('#papa-standings');if(rankings){rankings.replaceChildren();const allStandings=Array.isArray(data.standings)?data.standings.filter(r=>r&&typeof r.player==='string'&&Number.isFinite(Number(r.points))):[];const standings=allStandings.slice(0,5);window.arcadeSetPlayers?.(allStandings);leadersAll.replaceChildren();allStandings.forEach((r,i)=>{const row=document.createElement('div');row.className='leaders-full-row';const name=document.createElement('button');name.type='button';name.className='player-name-link';name.textContent=`${i+1}. ${r.player.toUpperCase()}`;name.addEventListener('click',()=>{closeLeaders();window.arcadeOpenPlayer?.(r.player);});const pts=document.createElement('span');pts.textContent=`${Number(r.points).toLocaleString('en-US')} PTS`;row.append(name,pts);leadersAll.append(row)});standings.forEach((r,i)=>{const line=document.createElement('div');line.className='papa-row';line.innerHTML='';const playerLink=document.createElement('button');playerLink.type='button';playerLink.className='player-name-link';playerLink.textContent=`${i+1}. ${String(r.player).toUpperCase()}`;playerLink.addEventListener('click',()=>window.arcadeOpenPlayer?.(r.player));line.append(playerLink,document.createTextNode(` — ${Number(r.points).toLocaleString()} PTS`));rankings.append(line)});document.querySelector('#papa-section').hidden=!standings.length;leadersOpen.disabled=!standings.length;}}
+ document.querySelector('#legend-prev').addEventListener('click',()=>{lastManualLegendBrowse=Date.now();move(-1);});document.querySelector('#legend-next').addEventListener('click',()=>{lastManualLegendBrowse=Date.now();move(1);});
+ async function refresh(){try{const response=await fetch('./legends.json?refresh='+Date.now(),{cache:'no-store'});if(!response.ok)throw Error('Unavailable');const data=await response.json();const next=Array.isArray(data.entries)?data.entries.filter(e=>e&&typeof e.player==='string'&&typeof e.game==='string'&&Number.isFinite(Number(e.score))):[];if(!next.length){source.textContent='AWAITING FIRST LIVE SCORE SYNC — SEE iSCORED FOR RECORDS';return}entries=next;allChampions=Array.isArray(data.champions)?data.champions.filter(c=>c&&typeof c.game_id==='string'&&typeof c.player==='string'&&Number.isFinite(Number(c.score))):[];position=Math.min(position,entries.length-1);controls.hidden=entries.length<2;updatedAt=data.updated_at;updateChampion();source.textContent=updatedAt?'SCORES SYNCED '+new Date(updatedAt).toLocaleString():'VERIFIED iSCORED SCORE FEED';show();const rankings=document.querySelector('#papa-standings');if(rankings){rankings.replaceChildren();const allStandings=Array.isArray(data.standings)?data.standings.filter(r=>r&&typeof r.player==='string'&&Number.isFinite(Number(r.points))):[];const standings=allStandings.slice(0,5);window.arcadeSetPlayers?.(allStandings);leadersAll.replaceChildren();allStandings.forEach((r,i)=>{const row=document.createElement('div');row.className='leaders-full-row';const name=document.createElement('button');name.type='button';name.className='player-name-link';name.textContent=`${i+1}. ${r.player.toUpperCase()}`;name.addEventListener('click',()=>{closeLeaders();window.arcadeOpenPlayer?.(r.player);});const pts=document.createElement('span');pts.textContent=`${Number(r.points).toLocaleString('en-US')} PTS`;row.append(name,pts);leadersAll.append(row)});standings.forEach((r,i)=>{const line=document.createElement('div');line.className='papa-row';line.innerHTML='';const playerLink=document.createElement('button');playerLink.type='button';playerLink.className='player-name-link';playerLink.textContent=`${i+1}. ${String(r.player).toUpperCase()}`;playerLink.addEventListener('click',()=>window.arcadeOpenPlayer?.(r.player));line.append(playerLink,document.createTextNode(` — ${Number(r.points).toLocaleString()} PTS`));rankings.append(line)});document.querySelector('#papa-section').hidden=!standings.length;leadersOpen.disabled=!standings.length;}}
  catch(err){source.textContent=entries.length?'PREVIOUSLY SYNCED SCORES — LIVE UPDATE UNAVAILABLE':'SCORE FEED UNAVAILABLE — OPEN iSCORED FOR SCORES';}}
- await refresh();setInterval(()=>{if(!document.hidden&&activePage===0&&entries.length>1&&!reducedMotion())move(1)},8000);setInterval(refresh,10*60*1000);
+ await refresh();setInterval(()=>{if(!document.hidden&&activePage===0&&entries.length>1&&!reducedMotion()&&Date.now()-lastManualLegendBrowse>=30000)move(1)},8000);setInterval(refresh,10*60*1000);
   setInterval(()=>{if(!document.hidden)updateChampion();},60*1000);
   setInterval(()=>{if(!document.hidden&&!reducedMotion()&&Date.now()-lastManualSwitch>20000)switchPage(activePage+1);},10000);
 })();
