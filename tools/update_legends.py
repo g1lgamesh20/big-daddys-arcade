@@ -98,21 +98,22 @@ def update_daily_champion(champions, updated_at):
         except (ValueError, OSError, TypeError):
             existing = {}
     # One entry per game ID, not per tied first-place player.
-    eligible = {str(row['game_id']):row['game'] for row in champions}
+    eligible = {str(row['game_id']):row['game'] for row in champions
+                if str(row.get('game', '')).strip().casefold() != 'test game'}
     if not eligible:
         return
     days = []
     previous = existing.get((today-timedelta(days=1)).isoformat())
-    if previous:
+    if previous and previous['game_id'] in eligible:
         days.append(previous)
     for offset in (0, 1):
         date = (today+timedelta(days=offset)).isoformat()
         prior = existing.get(date)
-        if prior:
-            # Do not change an already announced day's selection as games arrive.
-            chosen = prior
+        avoid = days[-1]['game_id'] if days else None
+        if prior and prior['game_id'] in eligible and (prior['game_id'] != avoid or len(eligible) == 1):
+            # Preserve valid announced selections, but repair removed games and repeats.
+            chosen = {**prior, 'game':eligible[prior['game_id']]}
         else:
-            avoid = days[-1]['game_id'] if days else None
             choices = sorted(k for k in eligible if k != avoid)
             if not choices:  # Only one game available; repeating is unavoidable.
                 choices = sorted(eligible)
