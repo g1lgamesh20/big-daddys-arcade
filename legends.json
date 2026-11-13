@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-13T04:16:21.076138+00:00",
+  "updated_at": "2026-11-13T05:04:20.359590+00:00",
   "source": "iScored public read API",
   "scoring_note": "PAPA-style estimate: top 1000 games per player; one best score per player per game; competition ties. iScored may handle ties differently.",
   "standings": [
@@ -13,9 +13,9 @@
     },
     {
       "player": "SPC",
-      "points": 5148,
-      "games": 54,
-      "gold": 32,
+      "points": 5248,
+      "games": 55,
+      "gold": 33,
       "silver": 16,
       "bronze": 5
     },
@@ -60,19 +60,19 @@
       "bronze": 0
     },
     {
+      "player": "POD",
+      "points": 1252,
+      "games": 14,
+      "gold": 4,
+      "silver": 2,
+      "bronze": 4
+    },
+    {
       "player": "FO",
       "points": 1246,
       "games": 14,
       "gold": 3,
       "silver": 3,
-      "bronze": 4
-    },
-    {
-      "player": "POD",
-      "points": 1170,
-      "games": 13,
-      "gold": 4,
-      "silver": 2,
       "bronze": 4
     },
     {
@@ -1327,6 +1327,24 @@
     },
     {
       "kind": "recent",
+      "player": "SPC",
+      "game": "Solomons Key",
+      "game_id": "113225",
+      "score": 55220,
+      "date": "2026-11-12 23:01:38",
+      "score_id": "384450"
+    },
+    {
+      "kind": "recent",
+      "player": "POD",
+      "game": "Bosconian",
+      "game_id": "112913",
+      "score": 12660,
+      "date": "2026-11-12 23:01:34",
+      "score_id": "384472"
+    },
+    {
+      "kind": "recent",
       "player": "FO",
       "game": "Tesla",
       "game_id": "113220",
@@ -1414,26 +1432,8 @@
       "score": 12700,
       "date": "2026-11-12 22:04:21",
       "score_id": "384445"
-    },
-    {
-      "kind": "recent",
-      "player": "DAY",
-      "game": "Adventures of Rocky and Bullwinkle and Friends",
-      "game_id": "112920",
-      "score": 64912340,
-      "date": "2026-11-12 21:34:56",
-      "score_id": "384421"
-    },
-    {
-      "kind": "recent",
-      "player": "DAY",
-      "game": "Demolition Man (Limited Cryo Edition Mod)",
-      "game_id": "112919",
-      "score": 181991950,
-      "date": "2026-11-12 21:34:55",
-      "score_id": "384423"
     }
   ],
-  "total_games": 258,
+  "total_games": 259,
   "total_players": 15
 }

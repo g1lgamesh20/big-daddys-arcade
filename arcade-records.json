@@ -1,6 +1,17 @@
 {
-  "updated_at": "2026-11-13T04:16:21.076138+00:00",
+  "updated_at": "2026-11-13T05:04:20.359590+00:00",
   "records": [
+    {
+      "id": "384450",
+      "player": "SPC",
+      "game": "Solomons Key",
+      "game_id": "113225",
+      "score": 55220,
+      "date": "2026-11-12 23:01:38",
+      "rank": 1,
+      "medal": "gold",
+      "record_type": "new_first_place"
+    },
     {
       "id": "384430",
       "player": "FO",
