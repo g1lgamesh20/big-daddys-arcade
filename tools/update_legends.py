@@ -4,9 +4,11 @@ No emails, internal IDs, or raw API payload are written to GitHub Pages.
 PAPA calculation is an approximation pending verification of iScored tie/rank rules.
 """
 import json
+import hashlib
 import os
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from pathlib import Path
+from zoneinfo import ZoneInfo
 from urllib.request import Request, urlopen
 
 URL = os.environ.get('ISCORED_READ_URL', 'https://www.iScored.info/api/G1LGAMESH/getAllScores')
@@ -14,6 +16,7 @@ OUTPUT = Path(__file__).resolve().parents[1] / 'legends.json'
 STATE = OUTPUT.with_name('medal-state.json')
 FEED = OUTPUT.with_name('medals.json')
 RECORDS = OUTPUT.with_name('arcade-records.json')
+DAILY = OUTPUT.with_name('daily-champion.json')
 
 def papa_points(rank):
     if rank == 1: return 100
@@ -77,8 +80,49 @@ def build(raw):
             'source':'iScored public read API',
             'scoring_note':'PAPA-style estimate: top 1000 games per player; one best score per player per game; competition ties. iScored may handle ties differently.',
             'standings':standings,
+            'champions':champions,
             'entries': [{'kind':'champion',**row} for row in champions[:120]] + [{'kind':'recent',**row} for row in recent],
             'total_games':len(games),'total_players':len(per_player)}
+
+
+def update_daily_champion(champions, updated_at):
+    """Persist daily game IDs; preselect tomorrow so midnight ET needs no Action run."""
+    today = datetime.now(ZoneInfo('America/New_York')).date()
+    existing = {}
+    if DAILY.exists():
+        try:
+            old = json.loads(DAILY.read_text(encoding='utf-8'))
+            existing = {item['date']:item for item in old.get('days', [])
+                        if isinstance(item, dict) and isinstance(item.get('date'), str)
+                        and isinstance(item.get('game_id'), str)}
+        except (ValueError, OSError, TypeError):
+            existing = {}
+    # One entry per game ID, not per tied first-place player.
+    eligible = {str(row['game_id']):row['game'] for row in champions}
+    if not eligible:
+        return
+    days = []
+    previous = existing.get((today-timedelta(days=1)).isoformat())
+    if previous:
+        days.append(previous)
+    for offset in (0, 1):
+        date = (today+timedelta(days=offset)).isoformat()
+        prior = existing.get(date)
+        if prior:
+            # Do not change an already announced day's selection as games arrive.
+            chosen = prior
+        else:
+            avoid = days[-1]['game_id'] if days else None
+            choices = sorted(k for k in eligible if k != avoid)
+            if not choices:  # Only one game available; repeating is unavoidable.
+                choices = sorted(eligible)
+            # Stable selection, independent of score order or runtime hash seeds.
+            digest = hashlib.sha256(('BigDaddysArcade:'+date).encode()).digest()
+            game_id = choices[int.from_bytes(digest[:8], 'big') % len(choices)]
+            chosen = {'date':date, 'game_id':game_id, 'game':eligible[game_id]}
+        days.append(chosen)
+    DAILY.write_text(json.dumps({'updated_at':updated_at, 'timezone':'America/New_York',
+                                 'days':days},ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 
 def main():
     req = Request(URL,headers={'User-Agent':'BigDaddysArcadeLegends/1.7','Accept':'application/json'})
@@ -159,6 +203,7 @@ def main():
     # when a newly observed score currently holds a top-three game position.
     STATE.write_text(json.dumps({'known_ids':sorted(all_ids)},ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     FEED.write_text(json.dumps({'updated_at':result['updated_at'],'alerts':combined},ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+    update_daily_champion(result['champions'], result['updated_at'])
     OUTPUT.write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     print('Updated',result['total_games'],'games and',result['total_players'],'players')
 if __name__=='__main__': main()
