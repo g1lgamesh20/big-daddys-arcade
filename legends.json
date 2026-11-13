@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-13T14:56:27.880677+00:00",
+  "updated_at": "2026-11-13T16:29:03.821196+00:00",
   "source": "iScored public read API",
   "scoring_note": "PAPA-style estimate: top 1000 games per player; one best score per player per game; competition ties. iScored may handle ties differently.",
   "standings": [
@@ -122,6 +122,2384 @@
       "gold": 0,
       "silver": 0,
       "bronze": 1
+    }
+  ],
+  "champions": [
+    {
+      "player": "SPC",
+      "game": "1942",
+      "game_id": "50010",
+      "score": 155340,
+      "date": "2024-01-19 17:56:09",
+      "score_id": "74148",
+      "rank": 1
+    },
+    {
+      "player": "SPC",
+      "game": "1943",
+      "game_id": "50011",
+      "score": 70800,
+      "date": "2024-01-19 18:09:31",
+      "score_id": "74149",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "A.P.B.",
+      "game_id": "50215",
+      "score": 1357,
+      "date": "2025-04-04 23:16:12",
+      "score_id": "171686",
+      "rank": 1
+    },
+    {
+      "player": "DAY",
+      "game": "Adventures of Rocky and Bullwinkle and Friends",
+      "game_id": "112920",
+      "score": 64912340,
+      "date": "2026-11-12 21:34:56",
+      "score_id": "384421",
+      "rank": 1
+    },
+    {
+      "player": "SPC",
+      "game": "After Burner Climax",
+      "game_id": "73126",
+      "score": 134010,
+      "date": "2026-11-12 21:33:56",
+      "score_id": "384425",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "afterburner",
+      "game_id": "70343",
+      "score": 18000,
+      "date": "2025-02-20 00:20:18",
+      "score_id": "148371",
+      "rank": 1
+    },
+    {
+      "player": "VJG",
+      "game": "afterburner 2",
+      "game_id": "50012",
+      "score": 1057640,
+      "date": "2026-11-05 21:09:12",
+      "score_id": "380775",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Alien Syndrome",
+      "game_id": "50013",
+      "score": 81000,
+      "date": "2024-01-19 21:28:16",
+      "score_id": "74163",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Aliens",
+      "game_id": "86264",
+      "score": 16745250,
+      "date": "2026-08-27 23:38:06",
+      "score_id": "349506",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Aliens vs Predator",
+      "game_id": "86265",
+      "score": 5683181,
+      "date": "2025-11-24 19:42:59",
+      "score_id": "237333",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Altered Beast",
+      "game_id": "62267",
+      "score": 70800,
+      "date": "2025-02-20 00:19:55",
+      "score_id": "148369",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Amidar",
+      "game_id": "50014",
+      "score": 9820,
+      "date": "2024-01-19 21:27:50",
+      "score_id": "74162",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Angler Dangler",
+      "game_id": "50217",
+      "score": 13300,
+      "date": "2025-02-13 15:43:35",
+      "score_id": "146608",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Anteater",
+      "game_id": "71989",
+      "score": 4010,
+      "date": "2025-02-13 12:58:40",
+      "score_id": "146550",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Arabian",
+      "game_id": "50216",
+      "score": 26000,
+      "date": "2024-01-21 14:13:37",
+      "score_id": "74402",
+      "rank": 1
+    },
+    {
+      "player": "RDG",
+      "game": "Arkanoid",
+      "game_id": "50015",
+      "score": 31630,
+      "date": "2026-11-07 17:37:42",
+      "score_id": "381727",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Arkanoid Revenge of DoH",
+      "game_id": "50016",
+      "score": 19550,
+      "date": "2024-01-23 20:51:29",
+      "score_id": "74604",
+      "rank": 1
+    },
+    {
+      "player": "SPC",
+      "game": "Asteroids",
+      "game_id": "50017",
+      "score": 15490,
+      "date": "2026-11-05 19:46:29",
+      "score_id": "380702",
+      "rank": 1
+    },
+    {
+      "player": "SPC",
+      "game": "Asteroids Deluxe",
+      "game_id": "50018",
+      "score": 13010,
+      "date": "2024-01-19 21:31:06",
+      "score_id": "74165",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "ATTACK from MARS",
+      "game_id": "86901",
+      "score": 1335983720,
+      "date": "2026-08-28 00:09:52",
+      "score_id": "349513",
+      "rank": 1
+    },
+    {
+      "player": "DAY",
+      "game": "Avengers, The: Age of Ultron",
+      "game_id": "106681",
+      "score": 7617236,
+      "date": "2026-11-12 22:05:07",
+      "score_id": "384440",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Baby Pacman",
+      "game_id": "72950",
+      "score": 42070,
+      "date": "2025-10-28 16:26:14",
+      "score_id": "227714",
+      "rank": 1
+    },
+    {
+      "player": "DAY",
+      "game": "Back to the Future",
+      "game_id": "86258",
+      "score": 18100629,
+      "date": "2026-11-05 22:00:26",
+      "score_id": "380828",
+      "rank": 1
+    },
+    {
+      "player": "POD",
+      "game": "Bad Dudes Vs. Dragon Ninja",
+      "game_id": "112664",
+      "score": 88500,
+      "date": "2026-11-07 18:11:35",
+      "score_id": "381766",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Barnstorming (Atari2600)",
+      "game_id": "84683",
+      "score": 40440,
+      "date": "2025-10-31 21:39:08",
+      "score_id": "228399",
+      "rank": 1
+    },
+    {
+      "player": "DAY",
+      "game": "Batman 66",
+      "game_id": "86776",
+      "score": 18795700,
+      "date": "2026-11-07 20:00:46",
+      "score_id": "381130",
+      "rank": 1
+    },
+    {
+      "player": "DAY",
+      "game": "Batman Forever",
+      "game_id": "112923",
+      "score": 319845820,
+      "date": "2026-11-12 22:04:35",
+      "score_id": "384444",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Battletoads Pinball",
+      "game_id": "86385",
+      "score": 15706010,
+      "date": "2025-11-24 17:53:42",
+      "score_id": "237301",
+      "rank": 1
+    },
+    {
+      "player": "SPC",
+      "game": "Battlezone",
+      "game_id": "50019",
+      "score": 30000,
+      "date": "2024-01-19 21:32:06",
+      "score_id": "74167",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Berzerk",
+      "game_id": "50020",
+      "score": 3330,
+      "date": "2024-01-19 21:32:29",
+      "score_id": "74168",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Black Hole",
+      "game_id": "71993",
+      "score": 37950,
+      "date": "2025-11-30 17:05:04",
+      "score_id": "239675",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Black Knight 2000",
+      "game_id": "58359",
+      "score": 1281090,
+      "date": "2025-03-06 18:28:47",
+      "score_id": "153935",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Black Tiger",
+      "game_id": "50219",
+      "score": 33350,
+      "date": "2024-01-21 14:18:41",
+      "score_id": "74403",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Black widow v2",
+      "game_id": "50021",
+      "score": 32900,
+      "date": "2024-01-19 21:32:51",
+      "score_id": "74169",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Blue Shark",
+      "game_id": "50220",
+      "score": 10100,
+      "date": "2024-03-18 15:09:55",
+      "score_id": "74406",
+      "rank": 1
+    },
+    {
+      "player": "SPC",
+      "game": "Bomb jack",
+      "game_id": "50221",
+      "score": 42280,
+      "date": "2026-11-12 22:04:43",
+      "score_id": "384441",
+      "rank": 1
+    },
+    {
+      "player": "RDG",
+      "game": "Bosconian",
+      "game_id": "112913",
+      "score": 63450,
+      "date": "2026-11-12 21:01:29",
+      "score_id": "384380",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Bubble Bobble",
+      "game_id": "50022",
+      "score": 467990,
+      "date": "2025-02-08 18:38:26",
+      "score_id": "145421",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Bubble Bobble II",
+      "game_id": "72478",
+      "score": 216760,
+      "date": "2025-02-20 22:06:17",
+      "score_id": "148656",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Buck Rogers",
+      "game_id": "50023",
+      "score": 8518,
+      "date": "2024-02-23 13:37:15",
+      "score_id": "74172",
+      "rank": 1
+    },
+    {
+      "player": "SPC",
+      "game": "BUMP N JUMP",
+      "game_id": "50157",
+      "score": 27556,
+      "date": "2024-01-20 22:22:44",
+      "score_id": "74308",
+      "rank": 1
+    },
+    {
+      "player": "KAK",
+      "game": "BurgerTime",
+      "game_id": "50024",
+      "score": 19550,
+      "date": "2026-11-05 21:27:45",
+      "score_id": "380796",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Cameltry",
+      "game_id": "72179",
+      "score": 63610,
+      "date": "2025-02-13 12:26:16",
+      "score_id": "146531",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Captain America and The Avengers - Arcade",
+      "game_id": "101600",
+      "score": 10800,
+      "date": "2026-06-23 21:14:10",
+      "score_id": "320675",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Captain America Pinball",
+      "game_id": "86746",
+      "score": 7436064,
+      "date": "2025-11-29 11:31:20",
+      "score_id": "239167",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Carnival",
+      "game_id": "51765",
+      "score": 6740,
+      "date": "2024-02-20 16:08:25",
+      "score_id": "75483",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Castlevania",
+      "game_id": "50391",
+      "score": 29100,
+      "date": "2024-01-25 13:17:36",
+      "score_id": "74679",
+      "rank": 1
+    },
+    {
+      "player": "SPC",
+      "game": "CENTIPEDE",
+      "game_id": "50025",
+      "score": 27284,
+      "date": "2025-03-27 21:21:59",
+      "score_id": "168569",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Cheyenne",
+      "game_id": "74010",
+      "score": 1700,
+      "date": "2025-03-27 23:50:03",
+      "score_id": "168609",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Chiller",
+      "game_id": "74011",
+      "score": 6200,
+      "date": "2025-03-28 00:04:42",
+      "score_id": "168613",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "CIRCUS CHARLIE",
+      "game_id": "70346",
+      "score": 33200,
+      "date": "2025-01-14 08:56:15",
+      "score_id": "138289",
+      "rank": 1
+    },
+    {
+      "player": "SPC",
+      "game": "Commando",
+      "game_id": "50026",
+      "score": 36400,
+      "date": "2025-04-17 22:06:06",
+      "score_id": "176836",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Congo Bongo",
+      "game_id": "50027",
+      "score": 7980,
+      "date": "2024-01-19 21:38:36",
+      "score_id": "74181",
+      "rank": 1
+    },
+    {
+      "player": "KAK",
+      "game": "Contra (Arcade)",
+      "game_id": "84699",
+      "score": 47000,
+      "date": "2025-10-31 19:15:42",
+      "score_id": "228357",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Cosmic Ark",
+      "game_id": "50344",
+      "score": 9500,
+      "date": "2024-01-22 13:37:39",
+      "score_id": "74512",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Cosmic Ark",
+      "game_id": "84714",
+      "score": 9500,
+      "date": "2025-10-31 21:43:24",
+      "score_id": "228400",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Crater Raider",
+      "game_id": "112915",
+      "score": 1750,
+      "date": "2026-11-07 18:10:46",
+      "score_id": "381776",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Crazy Climber",
+      "game_id": "50160",
+      "score": 24900,
+      "date": "2024-01-22 19:58:11",
+      "score_id": "74554",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Crazy Climber 2",
+      "game_id": "50226",
+      "score": 8700,
+      "date": "2025-02-20 22:08:15",
+      "score_id": "148658",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Crazy Taxi",
+      "game_id": "58286",
+      "score": 234631,
+      "date": "2024-06-28 22:22:35",
+      "score_id": "87508",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Creature from the Black Lagoon",
+      "game_id": "58361",
+      "score": 35921970,
+      "date": "2025-03-08 18:08:57",
+      "score_id": "154474",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Crossbow",
+      "game_id": "73168",
+      "score": 185500,
+      "date": "2026-09-27 13:43:29",
+      "score_id": "361954",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Crystal Castles",
+      "game_id": "50029",
+      "score": 46825,
+      "date": "2025-04-04 20:30:46",
+      "score_id": "171609",
+      "rank": 1
+    },
+    {
+      "player": "SPC",
+      "game": "Defender",
+      "game_id": "50039",
+      "score": 8600,
+      "date": "2024-01-23 21:00:58",
+      "score_id": "74606",
+      "rank": 1
+    },
+    {
+      "player": "DAY",
+      "game": "Demolition Man (Limited Cryo Edition Mod)",
+      "game_id": "112919",
+      "score": 181991950,
+      "date": "2026-11-12 21:34:55",
+      "score_id": "384423",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Dig Dug",
+      "game_id": "49991",
+      "score": 42840,
+      "date": "2024-01-19 15:36:13",
+      "score_id": "74138",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Dig Dug II",
+      "game_id": "50007",
+      "score": 33800,
+      "date": "2024-01-19 15:22:42",
+      "score_id": "74114",
+      "rank": 1
+    },
+    {
+      "player": "SPC",
+      "game": "Discs of Tron",
+      "game_id": "101599",
+      "score": 17300,
+      "date": "2026-06-23 21:14:12",
+      "score_id": "320674",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Do Run Run!",
+      "game_id": "50031",
+      "score": 46450,
+      "date": "2024-01-19 21:40:32",
+      "score_id": "74185",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Doctor Strange",
+      "game_id": "106684",
+      "score": 1533000,
+      "date": "2026-09-01 22:07:17",
+      "score_id": "351846",
+      "rank": 1
+    },
+    {
+      "player": "VJG",
+      "game": "Donkey Kong",
+      "game_id": "50032",
+      "score": 55000,
+      "date": "2025-11-10 21:18:51",
+      "score_id": "232971",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "DONKEY KONG (Japan)",
+      "game_id": "52039",
+      "score": 26800,
+      "date": "2024-02-25 17:15:28",
+      "score_id": "76232",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "DONKEY KONG 3",
+      "game_id": "50034",
+      "score": 58100,
+      "date": "2024-01-19 21:43:18",
+      "score_id": "74191",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "DONKEY KONG JR.",
+      "game_id": "50033",
+      "score": 18300,
+      "date": "2024-01-19 21:42:36",
+      "score_id": "74189",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Doom Fx3",
+      "game_id": "86263",
+      "score": 5379202,
+      "date": "2025-11-24 19:43:02",
+      "score_id": "237336",
+      "rank": 1
+    },
+    {
+      "player": "DAY",
+      "game": "Dr. Mario",
+      "game_id": "50350",
+      "score": 3600,
+      "date": "2025-02-27 15:35:42",
+      "score_id": "151688",
+      "rank": 1
+    },
+    {
+      "player": "VJG",
+      "game": "Dragons Lair",
+      "game_id": "50317",
+      "score": 21790,
+      "date": "2026-11-04 23:14:27",
+      "score_id": "380161",
+      "rank": 1
+    },
+    {
+      "player": "SPC",
+      "game": "Dragster",
+      "game_id": "50333",
+      "score": 6012,
+      "date": "2024-01-22 13:10:32",
+      "score_id": "74507",
+      "rank": 1
+    },
+    {
+      "player": "SMS",
+      "game": "Duck Hunt",
+      "game_id": "73127",
+      "score": 28600,
+      "date": "2025-03-06 17:18:37",
+      "score_id": "153925",
+      "rank": 1
+    },
+    {
+      "player": "FO",
+      "game": "E.T.",
+      "game_id": "113221",
+      "score": 2096000,
+      "date": "2026-11-12 22:05:54",
+      "score_id": "384432",
+      "rank": 1
+    },
+    {
+      "player": "RPS",
+      "game": "Elevator Action",
+      "game_id": "50035",
+      "score": 1650,
+      "date": "2024-01-20 23:04:01",
+      "score_id": "74328",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Elevator Action Returns",
+      "game_id": "50036",
+      "score": 54900,
+      "date": "2025-02-27 15:31:30",
+      "score_id": "151687",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Eyes",
+      "game_id": "70348",
+      "score": 38040,
+      "date": "2025-01-14 08:58:12",
+      "score_id": "138291",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Family Guy FX3",
+      "game_id": "106101",
+      "score": 11599217,
+      "date": "2026-08-27 15:05:06",
+      "score_id": "349265",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Fantastic Four",
+      "game_id": "86756",
+      "score": 4831834,
+      "date": "2025-11-29 11:31:18",
+      "score_id": "239165",
+      "rank": 1
+    },
+    {
+      "player": "BGR",
+      "game": "Fishing Derby",
+      "game_id": "73125",
+      "score": 99,
+      "date": "2025-03-05 08:51:27",
+      "score_id": "152919",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Fishing Derby",
+      "game_id": "73125",
+      "score": 99,
+      "date": "2025-03-05 08:50:33",
+      "score_id": "152915",
+      "rank": 1
+    },
+    {
+      "player": "FO",
+      "game": "Fishing Derby",
+      "game_id": "73125",
+      "score": 99,
+      "date": "2025-03-05 08:51:02",
+      "score_id": "152917",
+      "rank": 1
+    },
+    {
+      "player": "MAB",
+      "game": "Fishing Derby",
+      "game_id": "73125",
+      "score": 99,
+      "date": "2025-03-05 08:51:15",
+      "score_id": "152918",
+      "rank": 1
+    },
+    {
+      "player": "SPC",
+      "game": "Fishing Derby",
+      "game_id": "73125",
+      "score": 99,
+      "date": "2025-03-05 08:50:44",
+      "score_id": "152916",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Fix it Felix Jr.",
+      "game_id": "70364",
+      "score": 1110750,
+      "date": "2025-01-14 09:00:47",
+      "score_id": "138294",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Flicky",
+      "game_id": "50037",
+      "score": 27550,
+      "date": "2024-01-19 21:44:20",
+      "score_id": "74193",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Food Fight",
+      "game_id": "101601",
+      "score": 9700,
+      "date": "2026-06-23 21:22:09",
+      "score_id": "320679",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "freeway",
+      "game_id": "50343",
+      "score": 30,
+      "date": "2024-01-22 13:37:56",
+      "score_id": "74513",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Frenzy",
+      "game_id": "50038",
+      "score": 5323,
+      "date": "2024-01-19 21:45:25",
+      "score_id": "74196",
+      "rank": 1
+    },
+    {
+      "player": "VJG",
+      "game": "Frogger",
+      "game_id": "49992",
+      "score": 12200,
+      "date": "2024-03-10 13:13:11",
+      "score_id": "74135",
+      "rank": 1
+    },
+    {
+      "player": "SPC",
+      "game": "Frogs and Flies",
+      "game_id": "50932",
+      "score": 72,
+      "date": "2025-03-05 08:38:40",
+      "score_id": "152912",
+      "rank": 1
+    },
+    {
+      "player": "SPC",
+      "game": "Galaga",
+      "game_id": "50041",
+      "score": 93340,
+      "date": "2026-11-07 20:01:00",
+      "score_id": "380968",
+      "rank": 1
+    },
+    {
+      "player": "SPC",
+      "game": "Galaxian",
+      "game_id": "101602",
+      "score": 5620,
+      "date": "2026-06-23 21:22:12",
+      "score_id": "320680",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Gauntlet",
+      "game_id": "72620",
+      "score": 2260,
+      "date": "2025-02-21 22:50:26",
+      "score_id": "149067",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Ghost Rider",
+      "game_id": "106140",
+      "score": 7748100,
+      "date": "2026-08-28 00:12:09",
+      "score_id": "349515",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Ghostbusters",
+      "game_id": "72623",
+      "score": 20100,
+      "date": "2025-02-21 22:43:14",
+      "score_id": "149065",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Ghosts 'n Goblins",
+      "game_id": "50042",
+      "score": 51700,
+      "date": "2024-01-19 21:47:59",
+      "score_id": "74200",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Ghouls'n Ghosts",
+      "game_id": "50043",
+      "score": 144000,
+      "date": "2024-01-25 12:57:59",
+      "score_id": "74471",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Goonies",
+      "game_id": "50434",
+      "score": 23810,
+      "date": "2025-02-08 21:22:39",
+      "score_id": "145451",
+      "rank": 1
+    },
+    {
+      "player": "RDG",
+      "game": "Gorf",
+      "game_id": "50044",
+      "score": 10440,
+      "date": "2024-01-19 21:49:29",
+      "score_id": "74203",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Gorgar",
+      "game_id": "58358",
+      "score": 16770,
+      "date": "2025-03-06 18:16:29",
+      "score_id": "153934",
+      "rank": 1
+    },
+    {
+      "player": "SPC",
+      "game": "Gradius",
+      "game_id": "50224",
+      "score": 32500,
+      "date": "2024-01-21 16:17:31",
+      "score_id": "74383",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Guardians of the Galaxy",
+      "game_id": "106169",
+      "score": 2377003,
+      "date": "2026-08-28 18:14:21",
+      "score_id": "349734",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Guilty Gear XX Accent Core Plus",
+      "game_id": "73894",
+      "score": 583800,
+      "date": "2025-03-19 16:23:40",
+      "score_id": "160477",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "GUN SMOKE",
+      "game_id": "50045",
+      "score": 54900,
+      "date": "2024-01-21 13:51:48",
+      "score_id": "74399",
+      "rank": 1
+    },
+    {
+      "player": "RDG",
+      "game": "Gyruss",
+      "game_id": "50223",
+      "score": 73950,
+      "date": "2026-11-07 17:39:47",
+      "score_id": "381722",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Hammerin' Harry",
+      "game_id": "50228",
+      "score": 35900,
+      "date": "2024-01-21 17:41:40",
+      "score_id": "74415",
+      "rank": 1
+    },
+    {
+      "player": "SPC",
+      "game": "Hang On",
+      "game_id": "50050",
+      "score": 4185460,
+      "date": "2026-11-05 20:40:08",
+      "score_id": "380738",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Hercules (Atari 1979)",
+      "game_id": "72617",
+      "score": 27700,
+      "date": "2025-03-06 18:12:37",
+      "score_id": "153931",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Hopping Mappy",
+      "game_id": "50229",
+      "score": 1844,
+      "date": "2025-04-12 20:11:43",
+      "score_id": "175239",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "I, ROBOT",
+      "game_id": "50257",
+      "score": 9790,
+      "date": "2025-02-20 22:42:46",
+      "score_id": "148668",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "ICE COLD BEER",
+      "game_id": "62269",
+      "score": 8190,
+      "date": "2026-10-20 21:43:56",
+      "score_id": "373308",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Indiana Jones and The Temple of Doom",
+      "game_id": "50047",
+      "score": 15100,
+      "date": "2024-01-22 12:17:11",
+      "score_id": "74501",
+      "rank": 1
+    },
+    {
+      "player": "DAY",
+      "game": "IRON MAN",
+      "game_id": "101612",
+      "score": 570000,
+      "date": "2026-11-05 20:59:37",
+      "score_id": "380765",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Jackal",
+      "game_id": "50048",
+      "score": 37400,
+      "date": "2024-01-19 21:50:27",
+      "score_id": "74204",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Jaws",
+      "game_id": "106174",
+      "score": 2074192,
+      "date": "2026-08-28 18:14:16",
+      "score_id": "349735",
+      "rank": 1
+    },
+    {
+      "player": "SMS",
+      "game": "journey",
+      "game_id": "50049",
+      "score": 16200,
+      "date": "2024-01-19 21:51:15",
+      "score_id": "74206",
+      "rank": 1
+    },
+    {
+      "player": "VJG",
+      "game": "Joust",
+      "game_id": "50051",
+      "score": 34050,
+      "date": "2024-01-19 21:12:08",
+      "score_id": "74159",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Joust II",
+      "game_id": "50258",
+      "score": 23000,
+      "date": "2024-01-21 21:48:15",
+      "score_id": "74438",
+      "rank": 1
+    },
+    {
+      "player": "SPC",
+      "game": "JR. PAC-MAN turbo",
+      "game_id": "50172",
+      "score": 68870,
+      "date": "2024-01-21 00:23:56",
+      "score_id": "74344",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Jungle King",
+      "game_id": "49996",
+      "score": 15980,
+      "date": "2025-10-28 16:27:28",
+      "score_id": "227716",
+      "rank": 1
+    },
+    {
+      "player": "DAY",
+      "game": "Jurassic Park",
+      "game_id": "112918",
+      "score": 16170370,
+      "date": "2026-11-07 19:57:45",
+      "score_id": "381800",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Jurassic Park",
+      "game_id": "106167",
+      "score": 3208712,
+      "date": "2026-08-28 18:14:14",
+      "score_id": "349738",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Kangaroo",
+      "game_id": "50000",
+      "score": 19600,
+      "date": "2024-01-19 15:26:53",
+      "score_id": "74121",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Karate Champ",
+      "game_id": "50259",
+      "score": 3200,
+      "date": "2025-02-21 17:58:04",
+      "score_id": "148958",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "KARNOV",
+      "game_id": "50260",
+      "score": 63720,
+      "date": "2024-01-21 21:46:59",
+      "score_id": "74436",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Keystone Kapers",
+      "game_id": "50342",
+      "score": 10400,
+      "date": "2024-01-22 13:41:02",
+      "score_id": "74521",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "KID NIKI",
+      "game_id": "50261",
+      "score": 81800,
+      "date": "2024-01-21 21:46:20",
+      "score_id": "28264",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Killer Instinct",
+      "game_id": "86388",
+      "score": 21690720,
+      "date": "2025-11-24 18:42:54",
+      "score_id": "237313",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Krull",
+      "game_id": "50234",
+      "score": 37740,
+      "date": "2024-01-21 19:13:22",
+      "score_id": "58046",
+      "rank": 1
+    },
+    {
+      "player": "KAK",
+      "game": "Kung fu master",
+      "game_id": "101603",
+      "score": 27410,
+      "date": "2026-06-23 21:27:33",
+      "score_id": "320685",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "LIBERATOR",
+      "game_id": "50263",
+      "score": 4040,
+      "date": "2024-01-25 18:46:53",
+      "score_id": "74686",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Lock n Chase",
+      "game_id": "50301",
+      "score": 13000,
+      "date": "2024-02-25 15:58:37",
+      "score_id": "28378",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Lunar Lander",
+      "game_id": "84713",
+      "score": 295,
+      "date": "2025-11-23 15:57:49",
+      "score_id": "237059",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Major Havoc",
+      "game_id": "50237",
+      "score": 38400,
+      "date": "2024-02-25 15:58:56",
+      "score_id": "76222",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Make Trax",
+      "game_id": "50238",
+      "score": 5540,
+      "date": "2024-01-21 22:02:27",
+      "score_id": "74462",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Mappy",
+      "game_id": "50062",
+      "score": 19790,
+      "date": "2025-10-28 16:23:28",
+      "score_id": "227710",
+      "rank": 1
+    },
+    {
+      "player": "KAK",
+      "game": "Marble Madness",
+      "game_id": "50009",
+      "score": 24860,
+      "date": "2024-01-19 17:52:22",
+      "score_id": "74147",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Mario Bros.",
+      "game_id": "50064",
+      "score": 52720,
+      "date": "2024-01-20 22:59:23",
+      "score_id": "74324",
+      "rank": 1
+    },
+    {
+      "player": "RPS",
+      "game": "Marvel Antman (Zen Pinball)",
+      "game_id": "86266",
+      "score": 25150393,
+      "date": "2025-11-24 19:28:37",
+      "score_id": "237330",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Marvel Deadpool (Zen Pinball)",
+      "game_id": "86267",
+      "score": 3539890,
+      "date": "2025-11-24 19:43:01",
+      "score_id": "237335",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Medieval Madness",
+      "game_id": "58357",
+      "score": 15560730,
+      "date": "2025-03-08 18:08:23",
+      "score_id": "154473",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "megamania",
+      "game_id": "50340",
+      "score": 9960,
+      "date": "2024-01-22 13:41:31",
+      "score_id": "74522",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Mighty Pang",
+      "game_id": "50239",
+      "score": 243500,
+      "date": "2024-01-21 22:04:19",
+      "score_id": "74468",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Millipede",
+      "game_id": "50052",
+      "score": 29301,
+      "date": "2024-01-19 21:52:01",
+      "score_id": "74207",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "MISSILE COMMAND",
+      "game_id": "50053",
+      "score": 15675,
+      "date": "2024-01-19 21:52:43",
+      "score_id": "74208",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Monster Bash (Williams, 1998)",
+      "game_id": "72616",
+      "score": 8363200,
+      "date": "2025-03-08 18:07:52",
+      "score_id": "154472",
+      "rank": 1
+    },
+    {
+      "player": "RPS",
+      "game": "Moon Knight",
+      "game_id": "86262",
+      "score": 1373758,
+      "date": "2025-11-24 19:43:03",
+      "score_id": "237337",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Moon Patrol",
+      "game_id": "50054",
+      "score": 23350,
+      "date": "2024-03-18 15:05:40",
+      "score_id": "74500",
+      "rank": 1
+    },
+    {
+      "player": "MAB",
+      "game": "Mouse Trap",
+      "game_id": "50930",
+      "score": 49090,
+      "date": "2024-02-25 16:04:41",
+      "score_id": "76224",
+      "rank": 1
+    },
+    {
+      "player": "SPC",
+      "game": "Mr. Do!",
+      "game_id": "50230",
+      "score": 56550,
+      "date": "2024-01-21 17:57:59",
+      "score_id": "74423",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Mr. Do's Castle",
+      "game_id": "50231",
+      "score": 14900,
+      "date": "2024-01-21 17:58:58",
+      "score_id": "74425",
+      "rank": 1
+    },
+    {
+      "player": "KAK",
+      "game": "Mr. Do's Wild Ride!",
+      "game_id": "50232",
+      "score": 17191,
+      "date": "2024-01-21 18:00:08",
+      "score_id": "74428",
+      "rank": 1
+    },
+    {
+      "player": "KAK",
+      "game": "Ms. Pac-Man",
+      "game_id": "101598",
+      "score": 30690,
+      "date": "2026-06-23 21:01:10",
+      "score_id": "320667",
+      "rank": 1
+    },
+    {
+      "player": "SMS",
+      "game": "Munch Mobile",
+      "game_id": "72188",
+      "score": 5350,
+      "date": "2025-02-13 13:12:43",
+      "score_id": "146555",
+      "rank": 1
+    },
+    {
+      "player": "SPC",
+      "game": "New Rally-X",
+      "game_id": "50242",
+      "score": 56640,
+      "date": "2024-02-02 19:52:20",
+      "score_id": "58293",
+      "rank": 1
+    },
+    {
+      "player": "SPC",
+      "game": "NIBBLER",
+      "game_id": "50240",
+      "score": 12740,
+      "date": "2024-01-21 22:01:50",
+      "score_id": "74461",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "No Good Gofers",
+      "game_id": "106139",
+      "score": 2733340,
+      "date": "2026-08-28 00:12:07",
+      "score_id": "349514",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Noahs Ark",
+      "game_id": "50307",
+      "score": 12350,
+      "date": "2024-01-21 22:43:40",
+      "score_id": "74450",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Operation Wolf",
+      "game_id": "50313",
+      "score": 59100,
+      "date": "2025-03-07 00:56:33",
+      "score_id": "154002",
+      "rank": 1
+    },
+    {
+      "player": "SPC",
+      "game": "Outrun",
+      "game_id": "50101",
+      "score": 2955630,
+      "date": "2026-11-05 21:09:24",
+      "score_id": "380777",
+      "rank": 1
+    },
+    {
+      "player": "KAK",
+      "game": "Pac & Pal",
+      "game_id": "50314",
+      "score": 35000,
+      "date": "2024-01-22 07:39:27",
+      "score_id": "74492",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Pac-Land",
+      "game_id": "50244",
+      "score": 19380,
+      "date": "2026-09-03 16:06:03",
+      "score_id": "352251",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "PAC-MAN",
+      "game_id": "49994",
+      "score": 30480,
+      "date": "2024-01-19 15:31:48",
+      "score_id": "74129",
+      "rank": 1
+    },
+    {
+      "player": "RDG",
+      "game": "pac-man atari 2600",
+      "game_id": "50339",
+      "score": 2311,
+      "date": "2024-01-22 13:42:51",
+      "score_id": "74525",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Pac-Man Plus",
+      "game_id": "101604",
+      "score": 13840,
+      "date": "2026-06-23 21:36:45",
+      "score_id": "320691",
+      "rank": 1
+    },
+    {
+      "player": "KAK",
+      "game": "Paperboy",
+      "game_id": "50245",
+      "score": 23547,
+      "date": "2026-11-05 21:26:51",
+      "score_id": "380787",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Parodius Da!",
+      "game_id": "50315",
+      "score": 50500,
+      "date": "2024-01-22 07:39:58",
+      "score_id": "74493",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "PENGO",
+      "game_id": "50247",
+      "score": 4070,
+      "date": "2024-02-25 16:10:16",
+      "score_id": "76226",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Phoenix",
+      "game_id": "50248",
+      "score": 10680,
+      "date": "2024-01-21 22:00:40",
+      "score_id": "74457",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "pitfall",
+      "game_id": "50336",
+      "score": 55863,
+      "date": "2024-01-22 12:55:23",
+      "score_id": "74504",
+      "rank": 1
+    },
+    {
+      "player": "SPC",
+      "game": "Pole Position",
+      "game_id": "50249",
+      "score": 29540,
+      "date": "2026-11-07 17:43:06",
+      "score_id": "380945",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "POOYAN",
+      "game_id": "50251",
+      "score": 57350,
+      "date": "2024-01-21 21:53:42",
+      "score_id": "74442",
+      "rank": 1
+    },
+    {
+      "player": "DAY",
+      "game": "Popeye",
+      "game_id": "112922",
+      "score": 52477510,
+      "date": "2026-11-12 21:34:49",
+      "score_id": "384428",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Popeye (arcade)",
+      "game_id": "50061",
+      "score": 23580,
+      "date": "2024-01-20 23:00:06",
+      "score_id": "74327",
+      "rank": 1
+    },
+    {
+      "player": "RDG",
+      "game": "Punch Out",
+      "game_id": "50177",
+      "score": 71230,
+      "date": "2024-01-21 00:31:37",
+      "score_id": "74350",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Q*bert",
+      "game_id": "49999",
+      "score": 27315,
+      "date": "2024-01-19 15:27:42",
+      "score_id": "74122",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Q*berts Cubes",
+      "game_id": "50320",
+      "score": 40875,
+      "date": "2025-10-31 19:23:12",
+      "score_id": "228358",
+      "rank": 1
+    },
+    {
+      "player": "SMS",
+      "game": "Qix",
+      "game_id": "50316",
+      "score": 14275,
+      "date": "2024-01-22 12:33:28",
+      "score_id": "74502",
+      "rank": 1
+    },
+    {
+      "player": "SMS",
+      "game": "RALLY X",
+      "game_id": "50241",
+      "score": 14800,
+      "date": "2025-02-21 18:11:21",
+      "score_id": "148965",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Rampage",
+      "game_id": "50165",
+      "score": 68425,
+      "date": "2024-01-21 00:19:08",
+      "score_id": "74338",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Rastan",
+      "game_id": "50164",
+      "score": 85400,
+      "date": "2024-01-21 00:18:31",
+      "score_id": "74337",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Reactor",
+      "game_id": "70359",
+      "score": 1804,
+      "date": "2025-02-08 21:58:27",
+      "score_id": "145459",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Return of the Jedi",
+      "game_id": "50003",
+      "score": 53020,
+      "date": "2025-03-23 00:19:27",
+      "score_id": "162150",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Road Runner",
+      "game_id": "75251",
+      "score": 22340,
+      "date": "2025-04-14 21:55:51",
+      "score_id": "175761",
+      "rank": 1
+    },
+    {
+      "player": "SPC",
+      "game": "RoadBlasters",
+      "game_id": "50166",
+      "score": 44470,
+      "date": "2026-11-07 17:45:19",
+      "score_id": "380978",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "ROBOTRON",
+      "game_id": "50167",
+      "score": 83075,
+      "date": "2026-11-07 18:18:35",
+      "score_id": "381781",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Rock n Rope",
+      "game_id": "50321",
+      "score": 3530,
+      "date": "2025-02-21 19:12:50",
+      "score_id": "148997",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "ROLLING THUNDER",
+      "game_id": "50168",
+      "score": 57780,
+      "date": "2024-01-21 00:20:39",
+      "score_id": "74340",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "ROLLING THUNDER 2",
+      "game_id": "50322",
+      "score": 33200,
+      "date": "2025-01-17 23:28:28",
+      "score_id": "138976",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Sea Of Thieves",
+      "game_id": "86393",
+      "score": 15322460,
+      "date": "2025-11-24 18:58:28",
+      "score_id": "237323",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "sea wolf",
+      "game_id": "50309",
+      "score": 7500,
+      "date": "2024-01-21 22:45:15",
+      "score_id": "74448",
+      "rank": 1
+    },
+    {
+      "player": "SPC",
+      "game": "sea wolf",
+      "game_id": "50309",
+      "score": 7500,
+      "date": "2024-02-04 20:13:25",
+      "score_id": "49144",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Sega Star Wars Trilogy",
+      "game_id": "50406",
+      "score": 70900,
+      "date": "2025-03-05 08:35:51",
+      "score_id": "152911",
+      "rank": 1
+    },
+    {
+      "player": "KAK",
+      "game": "Shinobi",
+      "game_id": "50170",
+      "score": 49750,
+      "date": "2025-03-13 19:22:38",
+      "score_id": "158507",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Simpsons Bowling",
+      "game_id": "101611",
+      "score": 265,
+      "date": "2026-06-23 22:23:27",
+      "score_id": "320702",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Sinistar",
+      "game_id": "49995",
+      "score": 48120,
+      "date": "2025-10-28 16:24:45",
+      "score_id": "227712",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Skyrim",
+      "game_id": "86395",
+      "score": 6129884,
+      "date": "2025-11-28 16:31:09",
+      "score_id": "238853",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Slither",
+      "game_id": "50323",
+      "score": 34870,
+      "date": "2024-02-01 22:49:55",
+      "score_id": "73303",
+      "rank": 1
+    },
+    {
+      "player": "RDG",
+      "game": "Smash T.V.",
+      "game_id": "112914",
+      "score": 126850,
+      "date": "2026-11-07 18:11:46",
+      "score_id": "381768",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Solar Fox",
+      "game_id": "50325",
+      "score": 18180,
+      "date": "2024-02-01 22:50:17",
+      "score_id": "73302",
+      "rank": 1
+    },
+    {
+      "player": "SPC",
+      "game": "Solomons Key",
+      "game_id": "113225",
+      "score": 55220,
+      "date": "2026-11-12 23:01:38",
+      "score_id": "384450",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Space Harrier",
+      "game_id": "50353",
+      "score": 1399980,
+      "date": "2025-02-21 23:22:00",
+      "score_id": "149072",
+      "rank": 1
+    },
+    {
+      "player": "GPS",
+      "game": "SPACE INVADERS",
+      "game_id": "50163",
+      "score": 2830,
+      "date": "2024-01-20 23:50:12",
+      "score_id": "74333",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Spider-Man (Zen)",
+      "game_id": "58287",
+      "score": 10980000,
+      "date": "2025-03-08 18:06:31",
+      "score_id": "154469",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Spy Hunter",
+      "game_id": "50171",
+      "score": 13490,
+      "date": "2024-01-21 00:22:51",
+      "score_id": "74343",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Star Castle",
+      "game_id": "50326",
+      "score": 6710,
+      "date": "2024-02-01 22:50:57",
+      "score_id": "73125",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Star Trek w/Aurich Translite",
+      "game_id": "50056",
+      "score": 56575,
+      "date": "2024-01-19 21:10:42",
+      "score_id": "74156",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Star Trek: The Next Generation",
+      "game_id": "50055",
+      "score": 203410810,
+      "date": "2025-11-29 10:55:32",
+      "score_id": "239152",
+      "rank": 1
+    },
+    {
+      "player": "RDG",
+      "game": "Star Wars",
+      "game_id": "50001",
+      "score": 469854,
+      "date": "2026-11-05 21:08:43",
+      "score_id": "380769",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Street Fighter II Championship Edition",
+      "game_id": "73284",
+      "score": 199200,
+      "date": "2026-11-01 17:12:31",
+      "score_id": "375710",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "STUN Runner",
+      "game_id": "50169",
+      "score": 89165,
+      "date": "2024-01-21 00:21:05",
+      "score_id": "74341",
+      "rank": 1
+    },
+    {
+      "player": "POD",
+      "game": "SUPER BREAKOUT",
+      "game_id": "112566",
+      "score": 283,
+      "date": "2026-11-05 21:26:20",
+      "score_id": "380791",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Super Contra",
+      "game_id": "50058",
+      "score": 109080,
+      "date": "2024-01-20 23:41:15",
+      "score_id": "74332",
+      "rank": 1
+    },
+    {
+      "player": "POD",
+      "game": "Super Hang-On",
+      "game_id": "50327",
+      "score": 1723020,
+      "date": "2025-02-20 22:09:05",
+      "score_id": "148660",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Super Mario 1-1 Speed Run",
+      "game_id": "50347",
+      "score": 336,
+      "date": "2024-01-23 20:28:49",
+      "score_id": "74600",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Super Mario Bros.",
+      "game_id": "50346",
+      "score": 272600,
+      "date": "2024-01-22 15:03:24",
+      "score_id": "74537",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Super Mario Bros. 3",
+      "game_id": "50348",
+      "score": 145980,
+      "date": "2025-03-20 01:17:56",
+      "score_id": "161304",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Super Pac-Man",
+      "game_id": "101605",
+      "score": 46740,
+      "date": "2026-06-23 22:11:35",
+      "score_id": "320696",
+      "rank": 1
+    },
+    {
+      "player": "RDG",
+      "game": "Super Punch Out",
+      "game_id": "50178",
+      "score": 6760,
+      "date": "2026-11-07 17:43:17",
+      "score_id": "380832",
+      "rank": 1
+    },
+    {
+      "player": "SPC",
+      "game": "Super Zaxxon",
+      "game_id": "50306",
+      "score": 4300,
+      "date": "2024-02-01 22:36:03",
+      "score_id": "73640",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Tac/Scan",
+      "game_id": "50252",
+      "score": 42700,
+      "date": "2024-01-21 21:53:04",
+      "score_id": "74441",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Tales of the Arabian Nights",
+      "game_id": "58362",
+      "score": 5773180,
+      "date": "2024-06-29 16:43:27",
+      "score_id": "87586",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Tapper",
+      "game_id": "49997",
+      "score": 45900,
+      "date": "2025-11-09 17:20:05",
+      "score_id": "232349",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Teenage Mutant Ninja Turtles (Data East 1991)",
+      "game_id": "58360",
+      "score": 176170,
+      "date": "2025-03-08 15:53:14",
+      "score_id": "154402",
+      "rank": 1
+    },
+    {
+      "player": "RPS",
+      "game": "Teenage Mutant Ninja Turtles (Legends)",
+      "game_id": "86386",
+      "score": 8053250,
+      "date": "2025-11-24 18:26:07",
+      "score_id": "237310",
+      "rank": 1
+    },
+    {
+      "player": "DAY",
+      "game": "Tekken 3",
+      "game_id": "73295",
+      "score": 2,
+      "date": "2026-11-05 21:46:33",
+      "score_id": "380814",
+      "rank": 1
+    },
+    {
+      "player": "SPC",
+      "game": "Tempest",
+      "game_id": "50060",
+      "score": 23476,
+      "date": "2024-01-20 22:11:21",
+      "score_id": "74305",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Tempest Tubes",
+      "game_id": "101606",
+      "score": 17985,
+      "date": "2026-06-23 22:11:33",
+      "score_id": "320698",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Terminator 2: Judgement Day",
+      "game_id": "73212",
+      "score": 54550,
+      "date": "2025-03-07 23:40:24",
+      "score_id": "154254",
+      "rank": 1
+    },
+    {
+      "player": "FO",
+      "game": "Tesla",
+      "game_id": "113220",
+      "score": 684300,
+      "date": "2026-11-12 22:06:01",
+      "score_id": "384430",
+      "rank": 1
+    },
+    {
+      "player": "SPC",
+      "game": "Tetris",
+      "game_id": "50253",
+      "score": 19988,
+      "date": "2026-11-07 17:42:51",
+      "score_id": "380951",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "The Avengers",
+      "game_id": "106682",
+      "score": 1509566,
+      "date": "2026-09-01 20:35:06",
+      "score_id": "351811",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "The Empire Strikes Back",
+      "game_id": "50002",
+      "score": 49510,
+      "date": "2024-01-19 15:26:17",
+      "score_id": "74120",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "The Infinity Gauntlet",
+      "game_id": "86260",
+      "score": 3544401,
+      "date": "2025-11-23 16:46:33",
+      "score_id": "237072",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "The Legend of Kage",
+      "game_id": "50236",
+      "score": 107000,
+      "date": "2024-01-21 22:03:15",
+      "score_id": "74465",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "The Walking Dead",
+      "game_id": "86396",
+      "score": 6172910,
+      "date": "2025-11-28 16:31:11",
+      "score_id": "238854",
+      "rank": 1
+    },
+    {
+      "player": "SPC",
+      "game": "Time Pilot",
+      "game_id": "50005",
+      "score": 141500,
+      "date": "2024-01-19 15:23:56",
+      "score_id": "74116",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Toobin'",
+      "game_id": "71977",
+      "score": 8993,
+      "date": "2026-06-19 23:36:54",
+      "score_id": "319500",
+      "rank": 1
+    },
+    {
+      "player": "VJG",
+      "game": "Track & Field",
+      "game_id": "49998",
+      "score": 36590,
+      "date": "2024-02-18 07:11:24",
+      "score_id": "75358",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Tron",
+      "game_id": "50057",
+      "score": 11379,
+      "date": "2024-01-19 21:53:16",
+      "score_id": "74209",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Turbo Outrun",
+      "game_id": "50328",
+      "score": 3540140,
+      "date": "2025-12-18 22:54:10",
+      "score_id": "244667",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Turtles",
+      "game_id": "70363",
+      "score": 3790,
+      "date": "2025-01-14 08:59:59",
+      "score_id": "138293",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Tutankham",
+      "game_id": "50008",
+      "score": 29900,
+      "date": "2024-01-19 15:22:05",
+      "score_id": "74113",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Venom 2025",
+      "game_id": "106171",
+      "score": 1375502,
+      "date": "2026-08-28 18:14:12",
+      "score_id": "349744",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "VENTURE",
+      "game_id": "50254",
+      "score": 11020,
+      "date": "2024-01-21 21:56:20",
+      "score_id": "74446",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "VS. Excitebike",
+      "game_id": "50175",
+      "score": 51130,
+      "date": "2024-01-21 00:29:48",
+      "score_id": "74347",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Wizard of Wor",
+      "game_id": "50059",
+      "score": 15400,
+      "date": "2025-04-17 22:14:31",
+      "score_id": "176853",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Wolverine",
+      "game_id": "86751",
+      "score": 17169500,
+      "date": "2025-11-29 11:31:19",
+      "score_id": "239166",
+      "rank": 1
+    },
+    {
+      "player": "POD",
+      "game": "World Class Bowling",
+      "game_id": "50354",
+      "score": 242,
+      "date": "2025-10-28 19:41:03",
+      "score_id": "227748",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "X-Men - Arcade",
+      "game_id": "72621",
+      "score": 37,
+      "date": "2025-03-08 00:22:42",
+      "score_id": "154265",
+      "rank": 1
+    },
+    {
+      "player": "SMS",
+      "game": "X-Men Children of the Atom",
+      "game_id": "101607",
+      "score": 627000,
+      "date": "2026-06-23 22:16:22",
+      "score_id": "320699",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "X-Men vs Street Fighter",
+      "game_id": "73288",
+      "score": 200700,
+      "date": "2026-09-07 23:58:20",
+      "score_id": "354474",
+      "rank": 1
+    },
+    {
+      "player": "SPC",
+      "game": "X-Men: Pinball",
+      "game_id": "62265",
+      "score": 14957410,
+      "date": "2026-11-05 20:14:02",
+      "score_id": "380715",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Xevious",
+      "game_id": "50329",
+      "score": 14820,
+      "date": "2024-02-08 15:01:39",
+      "score_id": "13287",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Yars Revenge",
+      "game_id": "50341",
+      "score": 60734,
+      "date": "2024-01-22 13:43:25",
+      "score_id": "74526",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Zaxxon",
+      "game_id": "50176",
+      "score": 10950,
+      "date": "2024-01-21 00:30:32",
+      "score_id": "74348",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Zookeeper",
+      "game_id": "50046",
+      "score": 100430,
+      "date": "2025-04-04 23:08:21",
+      "score_id": "171683",
+      "rank": 1
     }
   ],
   "entries": [
