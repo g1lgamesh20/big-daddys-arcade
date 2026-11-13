@@ -1,6 +1,136 @@
 {
-  "updated_at": "2026-11-13T02:53:46.897459+00:00",
+  "updated_at": "2026-11-13T04:16:21.076138+00:00",
   "alerts": [
+    {
+      "id": "384430",
+      "player": "FO",
+      "game": "Tesla",
+      "game_id": "113220",
+      "score": 684300,
+      "date": "2026-11-12 22:06:01",
+      "rank": 1,
+      "medal": "gold"
+    },
+    {
+      "id": "384432",
+      "player": "FO",
+      "game": "E.T.",
+      "game_id": "113221",
+      "score": 2096000,
+      "date": "2026-11-12 22:05:54",
+      "rank": 1,
+      "medal": "gold"
+    },
+    {
+      "id": "384434",
+      "player": "RDG",
+      "game": "After Burner Climax",
+      "game_id": "73126",
+      "score": 117130,
+      "date": "2026-11-12 22:05:36",
+      "rank": 2,
+      "medal": "silver"
+    },
+    {
+      "id": "384440",
+      "player": "DAY",
+      "game": "Avengers, The: Age of Ultron",
+      "game_id": "106681",
+      "score": 7617236,
+      "date": "2026-11-12 22:05:07",
+      "rank": 1,
+      "medal": "gold"
+    },
+    {
+      "id": "384441",
+      "player": "SPC",
+      "game": "Bomb jack",
+      "game_id": "50221",
+      "score": 42280,
+      "date": "2026-11-12 22:04:43",
+      "rank": 1,
+      "medal": "gold"
+    },
+    {
+      "id": "384444",
+      "player": "DAY",
+      "game": "Batman Forever",
+      "game_id": "112923",
+      "score": 319845820,
+      "date": "2026-11-12 22:04:35",
+      "rank": 1,
+      "medal": "gold"
+    },
+    {
+      "id": "384445",
+      "player": "SPC",
+      "game": "BurgerTime",
+      "game_id": "50024",
+      "score": 12700,
+      "date": "2026-11-12 22:04:21",
+      "rank": 2,
+      "medal": "silver"
+    },
+    {
+      "id": "384421",
+      "player": "DAY",
+      "game": "Adventures of Rocky and Bullwinkle and Friends",
+      "game_id": "112920",
+      "score": 64912340,
+      "date": "2026-11-12 21:34:56",
+      "rank": 1,
+      "medal": "gold"
+    },
+    {
+      "id": "384423",
+      "player": "DAY",
+      "game": "Demolition Man (Limited Cryo Edition Mod)",
+      "game_id": "112919",
+      "score": 181991950,
+      "date": "2026-11-12 21:34:55",
+      "rank": 1,
+      "medal": "gold"
+    },
+    {
+      "id": "384428",
+      "player": "DAY",
+      "game": "Popeye",
+      "game_id": "112922",
+      "score": 52477510,
+      "date": "2026-11-12 21:34:49",
+      "rank": 1,
+      "medal": "gold"
+    },
+    {
+      "id": "384425",
+      "player": "SPC",
+      "game": "After Burner Climax",
+      "game_id": "73126",
+      "score": 134010,
+      "date": "2026-11-12 21:33:56",
+      "rank": 1,
+      "medal": "gold"
+    },
+    {
+      "id": "384380",
+      "player": "RDG",
+      "game": "Bosconian",
+      "game_id": "112913",
+      "score": 63450,
+      "date": "2026-11-12 21:01:29",
+      "rank": 1,
+      "medal": "gold"
+    },
+    {
+      "id": "384385",
+      "player": "SPC",
+      "game": "Bosconian",
+      "game_id": "112913",
+      "score": 42770,
+      "date": "2026-11-12 21:01:28",
+      "rank": 3,
+      "medal": "bronze"
+    },
     {
       "id": "384377",
       "player": "DON",
