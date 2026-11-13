@@ -6,8 +6,14 @@
   "cutoff": "Thursday 11:59 PM America/New_York",
   "status": "live",
   "winner": null,
-  "standings": [],
-  "eligible_scores": 0,
+  "standings": [
+    {
+      "player": "DON",
+      "score": 45110,
+      "submitted_at": "2026-11-12T19:00:46-05:00"
+    }
+  ],
+  "eligible_scores": 1,
   "unparseable_game_dates": 0,
-  "updated_at": "2026-11-12T23:17:11.366438+00:00"
+  "updated_at": "2026-11-13T01:46:17.655986+00:00"
 }
