@@ -4,8 +4,12 @@
   "game": "Bosconian",
   "thursday_date": "2026-11-12",
   "cutoff": "Thursday 11:59 PM America/New_York",
-  "status": "live",
-  "winner": null,
+  "status": "final",
+  "winner": {
+    "player": "RDG",
+    "score": 63450,
+    "submitted_at": "2026-11-12T21:01:29-05:00"
+  },
   "standings": [
     {
       "player": "RDG",
@@ -23,12 +27,22 @@
       "submitted_at": "2026-11-12T21:01:28-05:00"
     },
     {
+      "player": "FO",
+      "score": 24170,
+      "submitted_at": "2026-11-12T22:05:29-05:00"
+    },
+    {
       "player": "DAY",
       "score": 13150,
       "submitted_at": "2026-11-12T21:01:26-05:00"
+    },
+    {
+      "player": "POD",
+      "score": 12660,
+      "submitted_at": "2026-11-12T23:01:34-05:00"
     }
   ],
-  "eligible_scores": 4,
+  "eligible_scores": 6,
   "unparseable_game_dates": 0,
-  "updated_at": "2026-11-13T03:25:39.150581+00:00"
+  "updated_at": "2026-11-13T05:32:38.403181+00:00"
 }
