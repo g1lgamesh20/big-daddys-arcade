@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-14T04:58:41.477652+00:00",
+  "updated_at": "2026-11-14T07:06:18.486568+00:00",
   "timezone": "America/New_York",
   "days": [
     {
@@ -11,6 +11,11 @@
       "date": "2026-11-14",
       "game_id": "50047",
       "game": "Indiana Jones and The Temple of Doom"
+    },
+    {
+      "date": "2026-11-15",
+      "game_id": "84713",
+      "game": "Lunar Lander"
     }
   ]
 }
