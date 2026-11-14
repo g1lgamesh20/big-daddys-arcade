@@ -1,6 +1,16 @@
 {
-  "updated_at": "2026-11-14T01:06:57.440596+00:00",
+  "updated_at": "2026-11-14T02:04:23.788631+00:00",
   "alerts": [
+    {
+      "id": "385006",
+      "player": "DON",
+      "game": "Marvel Super Heroes",
+      "game_id": "73281",
+      "score": 10551,
+      "date": "2026-11-13 20:00:45",
+      "rank": 1,
+      "medal": "gold"
+    },
     {
       "id": "384450",
       "player": "SPC",

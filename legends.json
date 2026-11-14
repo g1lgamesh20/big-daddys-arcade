@@ -1,13 +1,13 @@
 {
-  "updated_at": "2026-11-14T01:06:57.440596+00:00",
+  "updated_at": "2026-11-14T02:04:23.788631+00:00",
   "source": "iScored public read API",
   "scoring_note": "PAPA-style estimate: top 1000 games per player; one best score per player per game; competition ties. iScored may handle ties differently.",
   "standings": [
     {
       "player": "DON",
-      "points": 20942,
-      "games": 214,
-      "gold": 175,
+      "points": 21042,
+      "games": 215,
+      "gold": 176,
       "silver": 26,
       "bronze": 11
     },
@@ -1446,6 +1446,15 @@
       "score": 3539890,
       "date": "2025-11-24 19:43:01",
       "score_id": "237335",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Marvel Super Heroes",
+      "game_id": "73281",
+      "score": 10551,
+      "date": "2026-11-13 20:00:45",
+      "score_id": "385006",
       "rank": 1
     },
     {
@@ -3705,6 +3714,15 @@
     },
     {
       "kind": "recent",
+      "player": "DON",
+      "game": "Marvel Super Heroes",
+      "game_id": "73281",
+      "score": 10551,
+      "date": "2026-11-13 20:00:45",
+      "score_id": "385006"
+    },
+    {
+      "kind": "recent",
       "player": "SPC",
       "game": "Solomons Key",
       "game_id": "113225",
@@ -3801,17 +3819,8 @@
       "score": 319845820,
       "date": "2026-11-12 22:04:35",
       "score_id": "384444"
-    },
-    {
-      "kind": "recent",
-      "player": "SPC",
-      "game": "BurgerTime",
-      "game_id": "50024",
-      "score": 12700,
-      "date": "2026-11-12 22:04:21",
-      "score_id": "384445"
     }
   ],
-  "total_games": 259,
+  "total_games": 260,
   "total_players": 15
 }
