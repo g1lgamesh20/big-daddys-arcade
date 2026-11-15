@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-14T22:44:57.890362+00:00",
+  "updated_at": "2026-11-15T01:12:19.908924+00:00",
   "source": "iScored public read API",
   "scoring_note": "PAPA-style estimate: top 1000 games per player; one best score per player per game; competition ties. iScored may handle ties differently.",
   "standings": [
@@ -108,20 +108,20 @@
       "bronze": 0
     },
     {
+      "player": "LEY",
+      "points": 265,
+      "games": 3,
+      "gold": 0,
+      "silver": 2,
+      "bronze": 1
+    },
+    {
       "player": "GPS",
       "points": 100,
       "games": 1,
       "gold": 1,
       "silver": 0,
       "bronze": 0
-    },
-    {
-      "player": "LEY",
-      "points": 85,
-      "games": 1,
-      "gold": 0,
-      "silver": 0,
-      "bronze": 1
     }
   ],
   "champions": [
@@ -3714,6 +3714,33 @@
     },
     {
       "kind": "recent",
+      "player": "LEY",
+      "game": "1943",
+      "game_id": "50011",
+      "score": 50200,
+      "date": "2026-11-14 18:09:22",
+      "score_id": "385604"
+    },
+    {
+      "kind": "recent",
+      "player": "LEY",
+      "game": "1943",
+      "game_id": "50011",
+      "score": 30100,
+      "date": "2026-11-14 18:04:26",
+      "score_id": "385602"
+    },
+    {
+      "kind": "recent",
+      "player": "LEY",
+      "game": "1942",
+      "game_id": "50010",
+      "score": 19060,
+      "date": "2026-11-14 17:58:14",
+      "score_id": "385597"
+    },
+    {
+      "kind": "recent",
       "player": "DON",
       "game": "Marvel Super Heroes",
       "game_id": "73281",
@@ -3792,33 +3819,6 @@
       "score": 60310,
       "date": "2026-11-12 22:05:16",
       "score_id": "384439"
-    },
-    {
-      "kind": "recent",
-      "player": "DAY",
-      "game": "Avengers, The: Age of Ultron",
-      "game_id": "106681",
-      "score": 7617236,
-      "date": "2026-11-12 22:05:07",
-      "score_id": "384440"
-    },
-    {
-      "kind": "recent",
-      "player": "SPC",
-      "game": "Bomb jack",
-      "game_id": "50221",
-      "score": 42280,
-      "date": "2026-11-12 22:04:43",
-      "score_id": "384441"
-    },
-    {
-      "kind": "recent",
-      "player": "DAY",
-      "game": "Batman Forever",
-      "game_id": "112923",
-      "score": 319845820,
-      "date": "2026-11-12 22:04:35",
-      "score_id": "384444"
     }
   ],
   "total_games": 260,
