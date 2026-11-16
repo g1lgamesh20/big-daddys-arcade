@@ -1,14 +1,14 @@
 {
-  "updated_at": "2026-11-16T01:44:32.962024+00:00",
+  "updated_at": "2026-11-16T01:58:38.641533+00:00",
   "source": "iScored public read API",
   "scoring_note": "PAPA-style estimate: top 1000 games per player; one best score per player per game; competition ties. iScored may handle ties differently.",
   "standings": [
     {
       "player": "DON",
-      "points": 21042,
+      "points": 21032,
       "games": 215,
-      "gold": 176,
-      "silver": 26,
+      "gold": 175,
+      "silver": 27,
       "bronze": 11
     },
     {
@@ -77,9 +77,9 @@
     },
     {
       "player": "SMS",
-      "points": 950,
-      "games": 10,
-      "gold": 6,
+      "points": 1050,
+      "games": 11,
+      "gold": 7,
       "silver": 2,
       "bronze": 2
     },
@@ -1377,12 +1377,12 @@
       "rank": 1
     },
     {
-      "player": "DON",
+      "player": "SMS",
       "game": "Lunar Lander",
       "game_id": "84713",
-      "score": 295,
-      "date": "2025-11-23 15:57:49",
-      "score_id": "237059",
+      "score": 300,
+      "date": "2026-11-15 19:56:24",
+      "score_id": "386112",
       "rank": 1
     },
     {
@@ -3714,6 +3714,24 @@
     },
     {
       "kind": "recent",
+      "player": "SMS",
+      "game": "Lunar Lander",
+      "game_id": "84713",
+      "score": 300,
+      "date": "2026-11-15 19:56:24",
+      "score_id": "386112"
+    },
+    {
+      "kind": "recent",
+      "player": "DON",
+      "game": "Lunar Lander",
+      "game_id": "84713",
+      "score": 270,
+      "date": "2026-11-15 19:56:16",
+      "score_id": "386106"
+    },
+    {
+      "kind": "recent",
       "player": "LEY",
       "game": "1943",
       "game_id": "50011",
@@ -3801,24 +3819,6 @@
       "score": 117130,
       "date": "2026-11-12 22:05:36",
       "score_id": "384434"
-    },
-    {
-      "kind": "recent",
-      "player": "FO",
-      "game": "Bosconian",
-      "game_id": "112913",
-      "score": 24170,
-      "date": "2026-11-12 22:05:29",
-      "score_id": "384436"
-    },
-    {
-      "kind": "recent",
-      "player": "FO",
-      "game": "After Burner Climax",
-      "game_id": "73126",
-      "score": 60310,
-      "date": "2026-11-12 22:05:16",
-      "score_id": "384439"
     }
   ],
   "total_games": 260,

@@ -1,6 +1,17 @@
 {
-  "updated_at": "2026-11-16T01:44:32.962024+00:00",
+  "updated_at": "2026-11-16T01:58:38.641533+00:00",
   "records": [
+    {
+      "id": "386112",
+      "player": "SMS",
+      "game": "Lunar Lander",
+      "game_id": "84713",
+      "score": 300,
+      "date": "2026-11-15 19:56:24",
+      "rank": 1,
+      "medal": "gold",
+      "record_type": "new_first_place"
+    },
     {
       "id": "385006",
       "player": "DON",
