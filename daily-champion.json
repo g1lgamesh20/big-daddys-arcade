@@ -1,12 +1,7 @@
 {
-  "updated_at": "2026-11-16T03:01:43.044518+00:00",
+  "updated_at": "2026-11-16T05:36:57.568343+00:00",
   "timezone": "America/New_York",
   "days": [
-    {
-      "date": "2026-11-14",
-      "game_id": "50047",
-      "game": "Indiana Jones and The Temple of Doom"
-    },
     {
       "date": "2026-11-15",
       "game_id": "84713",
@@ -16,6 +11,11 @@
       "date": "2026-11-16",
       "game_id": "50354",
       "game": "World Class Bowling"
+    },
+    {
+      "date": "2026-11-17",
+      "game_id": "86751",
+      "game": "Wolverine"
     }
   ]
 }
