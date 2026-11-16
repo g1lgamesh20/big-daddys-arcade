@@ -1,0 +1,22 @@
+name: Baseline Medal Notifications (No Push)
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  baseline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Baseline current medal IDs without sending
+        run: python3 tools/baseline_medal_notifications.py
+      - name: Commit baseline state
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add medal-notification-state.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'Baseline existing medal notification IDs without push'
+            git pull --rebase origin main
+            git push
+          fi

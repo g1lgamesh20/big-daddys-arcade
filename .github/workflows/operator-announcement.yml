@@ -1,0 +1,25 @@
+name: Send Operator Announcement
+on:
+  workflow_dispatch:
+    inputs:
+      title:
+        description: 'Push title (max 80 characters)'
+        required: true
+        type: string
+      message:
+        description: 'Push message (max 240 characters)'
+        required: true
+        type: string
+permissions:
+  contents: read
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Send announcement via OneSignal
+        env:
+          ONESIGNAL_REST_API_KEY: ${{ secrets.ONESIGNAL_REST_API_KEY }}
+          ANNOUNCEMENT_TITLE: ${{ inputs.title }}
+          ANNOUNCEMENT_MESSAGE: ${{ inputs.message }}
+        run: python3 tools/send_operator_announcement.py
