@@ -1,13 +1,13 @@
 {
-  "updated_at": "2026-11-17T13:19:04.029176+00:00",
+  "updated_at": "2026-11-17T22:16:44.036849+00:00",
   "source": "iScored public read API",
   "scoring_note": "PAPA-style estimate: top 1000 games per player; one best score per player per game; competition ties. iScored may handle ties differently.",
   "standings": [
     {
       "player": "DON",
-      "points": 21032,
-      "games": 215,
-      "gold": 175,
+      "points": 20932,
+      "games": 214,
+      "gold": 174,
       "silver": 27,
       "bronze": 11
     },
@@ -609,15 +609,6 @@
       "score": 47000,
       "date": "2025-10-31 19:15:42",
       "score_id": "228357",
-      "rank": 1
-    },
-    {
-      "player": "DON",
-      "game": "Cosmic Ark",
-      "game_id": "50344",
-      "score": 9500,
-      "date": "2024-01-22 13:37:39",
-      "score_id": "74512",
       "rank": 1
     },
     {
@@ -1279,7 +1270,7 @@
     },
     {
       "player": "DON",
-      "game": "Jurassic Park",
+      "game": "Jurassic Park (FX3)",
       "game_id": "106167",
       "score": 3208712,
       "date": "2026-08-28 18:14:14",
@@ -3056,16 +3047,6 @@
       "kind": "champion",
       "player": "DON",
       "game": "Cosmic Ark",
-      "game_id": "50344",
-      "score": 9500,
-      "date": "2024-01-22 13:37:39",
-      "score_id": "74512",
-      "rank": 1
-    },
-    {
-      "kind": "champion",
-      "player": "DON",
-      "game": "Cosmic Ark",
       "game_id": "84714",
       "score": 9500,
       "date": "2025-10-31 21:43:24",
@@ -3713,6 +3694,16 @@
       "rank": 1
     },
     {
+      "kind": "champion",
+      "player": "DON",
+      "game": "Jackal",
+      "game_id": "50048",
+      "score": 37400,
+      "date": "2024-01-19 21:50:27",
+      "score_id": "74204",
+      "rank": 1
+    },
+    {
       "kind": "recent",
       "player": "SMS",
       "game": "Lunar Lander",
@@ -3821,6 +3812,6 @@
       "score_id": "384434"
     }
   ],
-  "total_games": 260,
+  "total_games": 259,
   "total_players": 15
 }
