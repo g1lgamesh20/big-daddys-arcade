@@ -1,0 +1,43 @@
+name: Monthly Challenge - Manage Eligible Games
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: 'Include or exclude a game from random selection'
+        required: true
+        type: choice
+        options:
+          - exclude
+          - include
+      game_id:
+        description: 'Exact iScored game ID from monthly-game-catalog.json'
+        required: true
+        type: string
+permissions:
+  contents: write
+concurrency:
+  group: monthly-game-pool
+  cancel-in-progress: false
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Update eligibility
+        env:
+          POOL_ACTION: ${{ inputs.action }}
+          GAME_ID: ${{ inputs.game_id }}
+        run: python3 tools/manage_monthly_game_pool.py
+      - name: Commit eligibility
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add monthly-game-pool.json
+          git diff --cached --quiet && exit 0
+          git commit -m 'Update monthly game eligibility'
+          git push origin HEAD:main
