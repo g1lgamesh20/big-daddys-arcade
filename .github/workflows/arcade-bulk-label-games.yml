@@ -1,0 +1,42 @@
+name: Arcade - Save Game Labels
+on:
+  workflow_dispatch:
+    inputs:
+      labels_json:
+        description: 'Paste game label changes copied from the operator panel'
+        required: true
+        type: string
+      confirm_labels:
+        description: 'Confirm applying these game label changes'
+        required: true
+        type: boolean
+        default: false
+permissions:
+  contents: write
+concurrency:
+  group: monthly-game-pool
+  cancel-in-progress: false
+jobs:
+  save:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate and save game names and categories
+        env:
+          LABELS_JSON: ${{ inputs.labels_json }}
+          CONFIRM_LABELS: ${{ inputs.confirm_labels }}
+        run: python3 tools/save_arcade_game_labels.py
+      - name: Commit labels
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add monthly-game-labels.json
+          git diff --cached --quiet && exit 0
+          git commit -m 'Save arcade game names and categories'
+          git pull --rebase origin main
+          git push origin HEAD:main
