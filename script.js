@@ -6,7 +6,7 @@
   const spotlight=document.querySelector('#player-spotlight');
   const close=document.querySelector('#player-close');
   const seeAll=document.querySelector('#player-see-all');
-  let players=[], victories={}, selected='', previousFocus=null;
+  let players=[], victories={}, verifiedAwards={}, selected='', previousFocus=null;
   const dateET=()=>new Intl.DateTimeFormat('en-CA',{timeZone:'America/New_York',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
   function makeCard(p){
     const card=document.createElement('article');card.className='player-stat-card';
@@ -18,7 +18,26 @@
       const number=document.createElement('strong');number.textContent=emoji+' '+Number(value||0).toLocaleString('en-US');
       const text=document.createElement('span');text.textContent=label;item.append(number,text);stats.append(item);
     }
-    card.append(stats);return card;
+    card.append(stats);
+    const earned=verifiedAwards[p.player]||[];
+    if(earned.length){
+      const section=document.createElement('section');
+      section.className='player-verified-trophies';
+      section.setAttribute('aria-label','Verified challenge trophies');
+      section.style.cssText='margin:12px 0 2px;padding:10px;border:1px solid #70f6e5;border-radius:10px;background:rgba(14,18,44,.8);text-align:left';
+      const header=document.createElement('strong');
+      header.textContent='🏆 VERIFIED CHALLENGE TROPHIES';
+      header.style.cssText='display:block;color:#aaff78;font-size:12px;margin-bottom:6px';
+      section.append(header);
+      for(const award of earned.slice(-8).reverse()){
+        const entry=document.createElement('div');
+        entry.style.cssText='font-size:12px;margin:5px 0;color:#fff';
+        entry.textContent='🏆 '+String(award.name||'Thursday Champion')+' • '+String(award.game||'')+' • '+String(award.date||'');
+        section.append(entry);
+      }
+      card.append(section);
+    }
+    return card;
   }
   function featured(){
     if(!players.length){spotlight.textContent='AWAITING VERIFIED PLAYER DATA';return;}
@@ -50,14 +69,21 @@
     else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}
   }});
   async function refreshWins(){try{
-    const res=await fetch('./thursday-winners.json?refresh='+Date.now(),{cache:'no-store'});
-    if(!res.ok)return;const data=await res.json();const counts={};
-    for(const week of Array.isArray(data.weeks)?data.weeks:[]){
-      if(week?.status!=='final'||typeof week.winner?.player!=='string')continue;
-      const player=week.winner.player.trim().toUpperCase();counts[player]=(counts[player]||0)+1;
+    const res=await fetch('./verified-challenge-awards.json?refresh='+Date.now(),{cache:'no-store'});
+    if(!res.ok)return;
+    const data=await res.json();
+    if(data.schema_version!==1||!Array.isArray(data.awards))return;
+    const counts={}, detail={};
+    for(const award of data.awards){
+      if(award?.type!=='thursday_champion'||typeof award.player!=='string'
+          ||typeof award.date!=='string'||typeof award.game!=='string')continue;
+      const player=award.player.trim().toUpperCase();
+      counts[player]=(counts[player]||0)+1;
+      (detail[player]||(detail[player]=[])).push(award);
     }
-    victories=counts;featured();if(!dialog.hidden)showPlayer(selected);
-  }catch(_){/* Archive not installed yet; display zero until synced. */}}
+    victories=counts;verifiedAwards=detail;
+    featured();if(!dialog.hidden)showPlayer(selected);
+  }catch(_){/* Preserve previous verified results if network is unavailable. */}}
   refreshWins();setInterval(refreshWins,10*60*1000);
   setInterval(()=>{if(!document.hidden)featured();},60*1000);
 })();
