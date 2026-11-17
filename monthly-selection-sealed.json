@@ -1,4 +1,10 @@
 {
   "version": 1,
-  "selections": {}
+  "selections": {
+    "2026-12": {
+      "v": 1,
+      "nonce": "A4BaaWXgXR+43wjB",
+      "ciphertext": "us7m03V9lApJTozLew0jnIpJndgu+wIFlnkOeiyG73qLbyTLUv6vQhbcK7knwF1nsBXkVXXWOMS2HA8INOhNpT26rxlXNsr1KAfPUzoaCaSDbqR152MHtmtNJFoMz5aZ8gsbHAGYcqCZPT51Voa4xQ2x/SNm8mhq"
+    }
+  }
 }
