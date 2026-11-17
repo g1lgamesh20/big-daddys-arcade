@@ -1,0 +1,53 @@
+name: Monthly Challenge - Private Benchmark Audit
+on:
+  workflow_dispatch:
+    inputs:
+      month:
+        description: 'Selected month, for example 2026-12'
+        required: true
+        default: '2026-12'
+        type: string
+      action:
+        description: 'Audit privately now; lock ONLY after month starts; verify a locked result'
+        required: true
+        type: choice
+        options:
+          - audit
+          - lock
+          - verify
+permissions:
+  contents: write
+concurrency:
+  group: arcade-monthly-private-selection
+  cancel-in-progress: false
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install encryption dependency
+        run: python -m pip install 'cryptography>=43,<47'
+      - name: Audit or lock benchmark without revealing game
+        env:
+          MONTHLY_SELECTION_KEY: ${{ secrets.MONTHLY_SELECTION_KEY }}
+          MONTHLY_BENCHMARK_MONTH: ${{ inputs.month }}
+          MONTHLY_BENCHMARK_ACTION: ${{ inputs.action }}
+        run: python tools/monthly_benchmark.py
+      - name: Commit sealed benchmark if changed
+        if: ${{ inputs.action == 'lock' }}
+        run: |
+          git add monthly-selection-sealed.json
+          if git diff --cached --quiet; then
+            echo 'No change to locked benchmark'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Lock sealed monthly benchmark'
+          git pull --rebase origin main
+          git push origin HEAD:main
