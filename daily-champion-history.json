@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "timezone": "America/New_York",
+  "days": [
+    {
+      "date": "2026-11-16",
+      "game_id": "50354",
+      "game": "World Class Bowling"
+    },
+    {
+      "date": "2026-11-17",
+      "game_id": "86751",
+      "game": "Wolverine"
+    }
+  ]
+}
