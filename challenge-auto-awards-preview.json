@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "mode": "preview_only",
+  "generated_at": "2026-11-17T17:09:00.290591-05:00",
+  "approval_source": "public_iScored_feed_subject_to_operator_endpoint_verification",
+  "timestamp_note": "Naive iScored timestamps interpreted as Eastern pending independent confirmation",
+  "eligible_new_thursday_trophies": 0,
+  "eligible_new_daily_play_records": 0,
+  "blocked_thursday_events": [
+    "2026-11-05:no_live_feed_score"
+  ],
+  "unparseable_feed_dates": 0,
+  "notifications_sent": false
+}
