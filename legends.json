@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-17T22:18:42.319098+00:00",
+  "updated_at": "2026-11-17T22:55:28.885341+00:00",
   "source": "iScored public read API",
   "scoring_note": "PAPA-style estimate: top 1000 games per player; one best score per player per game; competition ties. iScored may handle ties differently.",
   "standings": [
@@ -21,9 +21,9 @@
     },
     {
       "player": "DAY",
-      "points": 2722,
-      "games": 30,
-      "gold": 11,
+      "points": 2822,
+      "games": 31,
+      "gold": 12,
       "silver": 4,
       "bronze": 7
     },
@@ -1023,6 +1023,15 @@
       "score": 7748100,
       "date": "2026-08-28 00:12:09",
       "score_id": "349515",
+      "rank": 1
+    },
+    {
+      "player": "DAY",
+      "game": "Ghostbusters",
+      "game_id": "113231",
+      "score": 10602900,
+      "date": "2026-11-17 16:18:46",
+      "score_id": "386318",
       "rank": 1
     },
     {
@@ -3505,6 +3514,16 @@
     },
     {
       "kind": "champion",
+      "player": "DAY",
+      "game": "Ghostbusters",
+      "game_id": "113231",
+      "score": 10602900,
+      "date": "2026-11-17 16:18:46",
+      "score_id": "386318",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
       "player": "DON",
       "game": "Ghostbusters",
       "game_id": "72623",
@@ -3694,14 +3713,13 @@
       "rank": 1
     },
     {
-      "kind": "champion",
-      "player": "DON",
-      "game": "Jackal",
-      "game_id": "50048",
-      "score": 37400,
-      "date": "2024-01-19 21:50:27",
-      "score_id": "74204",
-      "rank": 1
+      "kind": "recent",
+      "player": "DAY",
+      "game": "Ghostbusters",
+      "game_id": "113231",
+      "score": 10602900,
+      "date": "2026-11-17 16:18:46",
+      "score_id": "386318"
     },
     {
       "kind": "recent",
@@ -3801,17 +3819,8 @@
       "score": 131,
       "date": "2026-11-12 22:05:47",
       "score_id": "384433"
-    },
-    {
-      "kind": "recent",
-      "player": "RDG",
-      "game": "After Burner Climax",
-      "game_id": "73126",
-      "score": 117130,
-      "date": "2026-11-12 22:05:36",
-      "score_id": "384434"
     }
   ],
-  "total_games": 259,
+  "total_games": 260,
   "total_players": 15
 }
