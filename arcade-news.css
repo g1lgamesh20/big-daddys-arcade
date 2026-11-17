@@ -5,3 +5,8 @@
 /* Keep notification controls grouped at the far right: bell then news. */
 .top #arcade-notification-bell{margin-left:auto;margin-right:0;flex-shrink:0}
 .top #arcade-news-open{margin-left:6px;flex-shrink:0}
+
+/* Group the notification bell and Arcade News as a single right-aligned unit on mobile and desktop. */
+.top .arcade-header-actions{display:inline-flex;align-items:center;justify-content:flex-end;gap:8px;margin-left:auto;flex:0 0 auto;white-space:nowrap}
+.top .arcade-header-actions #arcade-notification-bell,.top .arcade-header-actions #arcade-news-open{margin:0;flex:0 0 auto}
+@media(max-width:480px){.top .arcade-header-actions{gap:7px}}
