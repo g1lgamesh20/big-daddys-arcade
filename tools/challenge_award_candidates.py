@@ -15,6 +15,7 @@ from thursday_challenge import parse_time
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/'challenge-award-candidates.json'
 DAILY=ROOT/'daily-champion.json'
+DAILY_HISTORY=ROOT/'daily-champion-history.json'
 THURSDAY=ROOT/'thursday-challenge-state.json'
 NY=ZoneInfo('America/New_York')
 URL='https://www.iScored.info/api/G1LGAMESH/getAllScores'
@@ -23,7 +24,19 @@ def read(path,default):
     return json.loads(path.read_text(encoding='utf-8')) if path.exists() else default
 
 def selections():
-    daily=read(DAILY,{}).get('days',[])
+    # Permanent selections retain credit for scores approved after their day.
+    daily=read(DAILY_HISTORY,{'days':[]}).get('days',[])
+    recent=read(DAILY,{}).get('days',[])
+    if not isinstance(daily,list) or not isinstance(recent,list):
+        raise ValueError('Invalid Daily selection data')
+    known={item['date']:item for item in daily if isinstance(item,dict) and isinstance(item.get('date'),str)}
+    for item in recent:
+        if not isinstance(item,dict) or not isinstance(item.get('date'),str):continue
+        previous=known.get(item['date'])
+        if previous and previous.get('game_id')!=item.get('game_id'):
+            raise ValueError('Daily live schedule differs from permanent history')
+        known.setdefault(item['date'],item)
+    daily=list(known.values())
     weeks=read(THURSDAY,{}).get('weeks',{})
     entries={}
     for day in daily:
