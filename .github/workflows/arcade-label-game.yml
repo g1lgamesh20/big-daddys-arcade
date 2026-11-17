@@ -1,0 +1,47 @@
+name: Arcade - Label Game
+on:
+  workflow_dispatch:
+    inputs:
+      game_id:
+        description: 'Game ID copied from operator manager'
+        required: true
+        type: string
+      display_label:
+        description: 'Optional clearer name (leave blank to keep original)'
+        required: false
+        type: string
+      category:
+        description: 'Operator-assigned category'
+        required: true
+        type: choice
+        options: [Uncategorized, Arcade, Pinball, Console, Other]
+permissions:
+  contents: write
+concurrency:
+  group: monthly-game-pool
+  cancel-in-progress: false
+jobs:
+  label:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Save label
+        env:
+          GAME_ID: ${{ inputs.game_id }}
+          DISPLAY_LABEL: ${{ inputs.display_label }}
+          GAME_CATEGORY: ${{ inputs.category }}
+        run: python3 tools/label_arcade_game.py
+      - name: Commit
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add monthly-game-labels.json
+          git diff --cached --quiet && exit 0
+          git commit -m 'Update arcade game label'
+          git pull --rebase origin main
+          git push origin HEAD:main
