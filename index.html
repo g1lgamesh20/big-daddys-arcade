@@ -279,9 +279,21 @@
 <select id="monthly-pool-category" aria-label="Filter by game type" style="padding:7px;background:#211532;color:white;border:1px solid #6deeff;border-radius:6px"><option value="all">All types</option><option value="Arcade">Arcade</option><option value="Pinball">Pinball</option><option value="Console">Console</option><option value="Other">Other</option><option value="Uncategorized">Uncategorized</option></select>
 <p id="monthly-pool-status" role="status" aria-live="polite" style="font-size:12px">Open this section to load games.</p>
 <div id="monthly-pool-list" style="max-height:270px;overflow-y:auto;border:1px solid #61457a;border-radius:6px;padding:8px"></div>
+<fieldset id="monthly-pool-label-editor" style="border:1px solid #6b5287;border-radius:8px;padding:10px;margin:10px 0" disabled>
+<legend style="color:#8cff7b">🏷️ Game name &amp; type</legend>
+<p id="monthly-pool-editing-name" style="font-size:12px">Select Edit on a game above.</p>
+<label for="monthly-pool-label-input" style="display:block;font-size:12px">Display nickname (optional)</label>
+<input id="monthly-pool-label-input" maxlength="100" placeholder="e.g. Jurassic Park (Data East Pinball)" style="display:block;width:100%;padding:8px;margin:5px 0;background:#211532;color:white;border:1px solid #6deeff;border-radius:6px">
+<label for="monthly-pool-type-input" style="display:block;font-size:12px">Game type</label>
+<select id="monthly-pool-type-input" style="padding:8px;margin:5px 0;background:#211532;color:white;border:1px solid #6deeff;border-radius:6px"><option>Uncategorized</option><option>Arcade</option><option>Pinball</option><option>Console</option><option>Other</option></select>
+<button type="button" id="monthly-pool-stage-label" style="padding:8px;margin:5px 0;background:#246e59;color:#fff;border:0;border-radius:6px">✅ STAGE LABEL CHANGE</button>
+</fieldset>
+<p id="monthly-pool-label-count" style="font-size:12px">0 unsaved label changes</p>
+<button type="button" id="monthly-pool-copy-labels" style="padding:10px;background:#246e59;color:#fff;border:0;border-radius:6px">📋 COPY LABEL CHANGES FOR GITHUB</button>
+<a href="https://github.com/g1lgamesh20/big-daddys-arcade/actions/workflows/arcade-bulk-label-games.yml" target="_blank" rel="noopener noreferrer" style="display:inline-block;margin:8px;color:#8beaff">🔐 OPEN LABEL SAVE WORKFLOW</a>
 <button type="button" id="monthly-pool-copy" style="margin-top:10px;padding:10px;background:#246e59;color:#fff;border:0;border-radius:6px">📋 COPY EXCLUSIONS FOR GITHUB</button>
 <a href="https://github.com/g1lgamesh20/big-daddys-arcade/actions/workflows/monthly-game-pool-save.yml" target="_blank" rel="noopener noreferrer" style="display:inline-block;margin:8px;color:#8beaff">🔐 OPEN SAVE WORKFLOW</a>
-<p style="font-size:12px">Paste copied IDs into <strong>excluded_ids</strong>, check <strong>confirm_replace</strong>, and run the GitHub workflow. Refresh the app after deployment to see saved changes. For category or clearer names use the <a href="https://github.com/g1lgamesh20/big-daddys-arcade/actions/workflows/arcade-label-game.yml" target="_blank" rel="noopener noreferrer">🏷️ Label Game workflow</a>. No changes are saved until the workflow succeeds.</p>
+<p style="font-size:12px">Paste copied IDs into <strong>excluded_ids</strong>, check <strong>confirm_replace</strong>, and run the GitHub workflow. Refresh the app after deployment to see saved changes. For names and types: select a game, stage its label, copy the changes and run the separate <strong>Arcade - Save Game Labels</strong> workflow. Eligibility and labels are saved separately. No changes are saved until the workflow succeeds.</p>
 </details>
 <p><a href="https://github.com/g1lgamesh20/big-daddys-arcade/actions/workflows/arcade-bulletin-manage.yml" target="_blank" rel="noopener noreferrer">✏️ EDIT ARCADE NEWS BULLETIN (GITHUB)</a></p><p><a href="https://github.com/g1lgamesh20/big-daddys-arcade/actions/workflows/arcade-bulletin-manage.yml" target="_blank" rel="noopener noreferrer">🗑️ DELETE ARCADE NEWS BULLETIN (GITHUB)</a></p><p><a href="https://github.com/g1lgamesh20/big-daddys-arcade/actions/workflows/arcade-bulletin.yml" target="_blank" rel="noopener noreferrer">📰 PUBLISH ARCADE NEWS + SEND PUSH (GITHUB)</a></p>
 <a href="https://github.com/g1lgamesh20/big-daddys-arcade/actions/workflows/operator-announcement.yml" target="_blank" rel="noopener noreferrer">📢 SEND OPERATOR ANNOUNCEMENT (GITHUB)</a><a href="https://app.onesignal.com/" target="_blank" rel="noopener noreferrer">📱 VIEW PUSH DELIVERY REPORTS (ONESIGNAL)</a><a href="https://supabase.com/dashboard/project/jrqzwlowxofnyqpmjgkg/editor" target="_blank" rel="noopener noreferrer">💬 REVIEW COMMUNITY MESSAGES (SUPABASE)</a><p>Use a test announcement title such as “ARCADE PUSH TEST” and confirm delivery separately on iPhone and Android. Public community messages do not trigger push alerts in this release.</p></div></details></template>
@@ -827,7 +839,26 @@ See you on the leaderboard! 🏆`;
     const status=panel.querySelector('#monthly-pool-status');
     const list=panel.querySelector('#monthly-pool-list');
     const copy=panel.querySelector('#monthly-pool-copy');
-    let games={},labels={},excluded=new Set(),loaded=false;
+    const editor=panel.querySelector('#monthly-pool-label-editor');
+    const selectedName=panel.querySelector('#monthly-pool-editing-name');
+    const labelInput=panel.querySelector('#monthly-pool-label-input');
+    const typeInput=panel.querySelector('#monthly-pool-type-input');
+    const stageLabel=panel.querySelector('#monthly-pool-stage-label');
+    const copyLabels=panel.querySelector('#monthly-pool-copy-labels');
+    const labelCount=panel.querySelector('#monthly-pool-label-count');
+    let games={},labels={},excluded=new Set(),loaded=false, selectedId=null;
+    const draft=new Map();
+    function chooseGame(id){
+      selectedId=id;
+      const entry=draft.get(id)||labels[id]||{};
+      selectedName.textContent='Editing: '+games[id]+' (ID '+id+')';
+      labelInput.value=entry.label||'';
+      typeInput.value=entry.category||'Uncategorized';
+      editor.disabled=false;
+    }
+    function refreshDraftCount(){
+      labelCount.textContent=draft.size+' unsaved label change'+(draft.size===1?'':'s')+' — changes are not live until GitHub workflow succeeds';
+    }
     function draw(){
       if(!loaded) return;
       const query=search.value.trim().toLocaleLowerCase();
@@ -854,7 +885,13 @@ See you on the leaderboard! 🏆`;
         const number=document.createElement('small');
         number.textContent=' #'+id;
         number.style.color='#b9a8cb';
-        line.append(checkbox,text,number);
+        const edit=document.createElement('button');
+        edit.type='button';
+        edit.textContent='✏️ Edit';
+        edit.setAttribute('aria-label','Edit name and type for '+name);
+        edit.style.cssText='background:#3a2557;color:#fff;border:1px solid #8d69b0;padding:5px 7px;margin-left:auto;border-radius:5px;cursor:pointer;white-space:nowrap;';
+        edit.addEventListener('click',e=>{e.preventDefault();chooseGame(id);});
+        line.append(checkbox,text,number,edit);
         fragment.append(line);
       }
       list.replaceChildren(fragment);
@@ -878,6 +915,30 @@ See you on the leaderboard! 🏆`;
         loaded=true;draw();
       }catch(e){status.textContent='Unable to load game pool: '+e.message;}
     }
+    stageLabel.addEventListener('click',()=>{
+      if(!selectedId)return;
+      const entry={id:selectedId,label:labelInput.value.trim(),category:typeInput.value};
+      if(entry.label.length>100){status.textContent='Nickname must be 100 characters or fewer.';return;}
+      const saved=labels[selectedId]||{};
+      if(entry.label===(saved.label||'')&&entry.category===(saved.category||'Uncategorized'))draft.delete(selectedId);
+      else draft.set(selectedId,entry);
+      refreshDraftCount();
+      status.textContent='Label change staged locally; use Copy Label Changes and the GitHub workflow to save.';
+      draw();
+    });
+    copyLabels.addEventListener('click',async()=>{
+      if(!loaded||!draft.size){status.textContent='No staged label changes to copy.';return;}
+      const data=JSON.stringify([...draft.values()]);
+      try{
+        await navigator.clipboard.writeText(data);
+        status.textContent='Copied '+draft.size+' label edits. Paste into the labels_json field of Arcade - Save Game Labels, check confirmation, and run.';
+      }catch(e){
+        const old=panel.querySelector('#monthly-pool-manual-label-copy');if(old)old.remove();
+        const area=document.createElement('textarea');area.id='monthly-pool-manual-label-copy';
+        area.readOnly=true;area.value=data;area.style.cssText='display:block;width:100%;min-height:75px;margin:8px 0;';
+        copyLabels.after(area);area.select();status.textContent='Copy the selected JSON into GitHub labels_json.';
+      }
+    });
     panel.addEventListener('toggle',()=>{if(panel.open)load();});
     search.addEventListener('input',draw);
     mode.addEventListener('change',draw);
