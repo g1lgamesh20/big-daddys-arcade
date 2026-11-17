@@ -1,0 +1,37 @@
+name: Automatic Challenge Awards - Public iScored Approval Feed
+on:
+  schedule:
+    - cron: '52 */2 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: arcade-verified-trophy-issuance
+  cancel-in-progress: false
+jobs:
+  awards:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test automatic award safeguards
+        run: python tools/test_auto_challenge_awards.py
+      - name: Scan live iScored score feed (preview-only until approved API semantics verified)
+        env:
+          AUTO_CHALLENGE_AWARDS_ENABLED: ${{ vars.AUTO_CHALLENGE_AWARDS_ENABLED }}
+        run: python tools/auto_verified_challenge_awards.py
+      - name: Save diagnostic summary and any enabled verified awards
+        run: |
+          git add challenge-auto-awards-preview.json
+          if [ -f verified-challenge-awards.json ]; then git add verified-challenge-awards.json; fi
+          if git diff --cached --quiet; then exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Audit or record automatically verified challenge awards"
+          git pull --rebase origin main
+          git push origin HEAD:main
