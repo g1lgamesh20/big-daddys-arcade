@@ -1,3 +1,10 @@
 {
-  "bulletins": []
+  "bulletins": [
+    {
+      "id": "97aa0971-0d12-4756-b389-85edb8eb4645",
+      "title": "Arcade News!!!",
+      "message": "Check here for new features! Coming Soon: Gameof the month with monthly challenges, Achievements, Rivalries, and more!!! let me know if you can think of any other cool features to add!",
+      "created_at": "2026-11-17T06:05:55.389952+00:00"
+    }
+  ]
 }
