@@ -1,0 +1,62 @@
+name: Monthly Challenge - Private Game Selection
+on:
+  schedule:
+    # Prepare next month's mystery game on the 25th, well before month rollover.
+    - cron: '20 17 25 * *'
+  workflow_dispatch:
+    inputs:
+      month:
+        description: 'Future month YYYY-MM; blank selects next month'
+        required: false
+        type: string
+      action:
+        description: 'Prepare random/secret override, replace before month starts, or verify seal'
+        required: true
+        type: choice
+        options:
+          - prepare
+          - replace
+          - verify
+      confirm_replace:
+        description: 'Required only for replacement'
+        required: false
+        type: boolean
+        default: false
+permissions:
+  contents: write
+concurrency:
+  group: arcade-monthly-private-selection
+  cancel-in-progress: false
+jobs:
+  select:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install encryption dependency
+        run: python -m pip install 'cryptography>=43,<47'
+      - name: Prepare or verify encrypted monthly game
+        env:
+          MONTHLY_SELECTION_KEY: ${{ secrets.MONTHLY_SELECTION_KEY }}
+          MONTHLY_OVERRIDE_GAME_ID: ${{ secrets.MONTHLY_OVERRIDE_GAME_ID }}
+          MONTHLY_OVERRIDE_MONTH: ${{ secrets.MONTHLY_OVERRIDE_MONTH }}
+          MONTHLY_MONTH: ${{ inputs.month }}
+          MONTHLY_ACTION: ${{ inputs.action || 'prepare' }}
+          CONFIRM_REPLACE: ${{ inputs.confirm_replace }}
+        run: python tools/monthly_private_selection.py
+      - name: Commit sealed selection only
+        run: |
+          git add monthly-selection-sealed.json
+          if git diff --cached --quiet; then
+            echo 'No encrypted selection changes'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Lock encrypted monthly mystery selection'
+          git pull --rebase origin main
+          git push origin HEAD:main
