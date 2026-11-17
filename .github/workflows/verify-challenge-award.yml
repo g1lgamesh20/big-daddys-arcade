@@ -1,0 +1,61 @@
+name: Verify Challenge Score and Issue Reviewed Trophy
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: 'Thursday Champion awards trophy; Daily verified play records evidence (not a trophy)'
+        type: choice
+        required: true
+        options:
+          - thursday_champion
+          - daily_verified_play
+      event_date:
+        description: 'Challenge date YYYY-MM-DD'
+        type: string
+        required: true
+      player:
+        description: 'Player initials/name in iScored (ALL CAPS)'
+        type: string
+        required: true
+      score_id:
+        description: 'Exact score_id from challenge-award-candidates.json'
+        type: string
+        required: true
+      confirmed:
+        description: 'I personally confirmed approval, photo proof, and submission time in iScored'
+        type: boolean
+        default: false
+        required: true
+permissions:
+  contents: write
+concurrency:
+  group: arcade-verified-trophy-issuance
+  cancel-in-progress: false
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate operator approval against candidate and finalized result
+        env:
+          TROPHY_ACTION: ${{ inputs.action }}
+          TROPHY_DATE: ${{ inputs.event_date }}
+          TROPHY_PLAYER: ${{ inputs.player }}
+          TROPHY_SCORE_ID: ${{ inputs.score_id }}
+          TROPHY_CONFIRMED: ${{ inputs.confirmed }}
+        run: python tools/verify_challenge_award.py
+      - name: Save permanent verified ledger
+        run: |
+          git add verified-challenge-awards.json
+          if git diff --cached --quiet; then echo "Existing award unchanged"; exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Record operator-verified challenge achievement"
+          git pull --rebase origin main
+          git push origin HEAD:main
