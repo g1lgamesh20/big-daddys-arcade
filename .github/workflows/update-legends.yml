@@ -19,6 +19,8 @@ jobs:
           python-version: '3.12'
       - name: Test medal detection
         run: python tools/test_medals.py
+      - name: Verify Daily selection history safeguards
+        run: python tools/test_daily_history.py
       - name: Download scores and update medal feed
         run: python tools/update_legends.py
       - name: Send new medal notifications
