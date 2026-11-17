@@ -1,0 +1,45 @@
+name: Monthly Challenge - Safe Launch and Provisional Board
+on:
+  schedule:
+    # Hourly retries around month rollover and 9 AM ET across both DST offsets.
+    - cron: '10 4-14 1 * *'
+    # Refresh provisional standings during the month. ET gate prevents early reveal.
+    - cron: '42 */2 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: arcade-monthly-private-selection
+  cancel-in-progress: false
+jobs:
+  launch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install sealed-selection dependency
+        run: python -m pip install 'cryptography>=43,<47'
+      - name: Insert monthly display loader without replacing operator menu
+        run: python tools/install_monthly_display.py
+      - name: Safely lock or publish at Eastern Time gate
+        env:
+          MONTHLY_SELECTION_KEY: ${{ secrets.MONTHLY_SELECTION_KEY }}
+        run: python tools/monthly_launch.py
+      - name: Commit only sealed baseline and safely revealed public feed
+        run: |
+          git add index.html monthly-selection-sealed.json
+          if [ -f monthly-challenge-live.json ]; then git add monthly-challenge-live.json; fi
+          if git diff --cached --quiet; then
+            echo 'No monthly state changes'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Refresh monthly challenge safely'
+          git pull --rebase origin main
+          git push origin HEAD:main
