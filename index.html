@@ -269,7 +269,19 @@
 <!-- Second secret: developer shortcuts are hidden inside the Test Lab,
      and reveal only after holding the robot for five seconds. -->
 <div id="arcade-developer-control" hidden style="display:none!important"></div><template id="arcade-developer-template"><details id="arcade-developer-control-inner" class="arcade-settings-item" hidden><summary>🤖 DEVELOPER CONTROL ROOM — ROBOT ONLY ▾</summary><div class="arcade-control-room"><p>Hidden operator shortcuts. This menu is not authentication. GitHub login is required to send announcements.</p>
-<p><a href="https://github.com/g1lgamesh20/big-daddys-arcade/actions/workflows/arcade-bulletin-manage.yml" target="_blank" rel="noopener noreferrer">✏️ EDIT ARCADE NEWS BULLETIN (GITHUB)</a></p><p><a href="https://github.com/g1lgamesh20/big-daddys-arcade/actions/workflows/arcade-bulletin-manage.yml" target="_blank" rel="noopener noreferrer">🗑️ DELETE ARCADE NEWS BULLETIN (GITHUB)</a></p><p><a href="https://github.com/g1lgamesh20/big-daddys-arcade/actions/workflows/arcade-bulletin.yml" target="_blank" rel="noopener noreferrer">📰 PUBLISH ARCADE NEWS + SEND PUSH (GITHUB)</a></p>
+<details id="monthly-pool-manager" style="margin:12px 0;padding:12px;border:1px solid #6deeff;border-radius:10px;background:#140d25;color:#fff">
+<summary style="cursor:pointer;color:#8cff7b;font-weight:700">🎮 MONTHLY GAME POOL — MANAGE ELIGIBILITY</summary>
+<p style="font-size:12px">Check games to exclude from random monthly selection. All games are eligible by default. Saving requires your GitHub login.</p>
+<label for="monthly-pool-search">Find a game</label>
+<input id="monthly-pool-search" type="search" placeholder="Search by game name…" style="display:block;width:100%;padding:9px;margin:6px 0;background:#211532;color:white;border:1px solid #6deeff;border-radius:6px">
+<label for="monthly-pool-filter">Show</label>
+<select id="monthly-pool-filter" style="padding:7px;background:#211532;color:white;border:1px solid #6deeff;border-radius:6px"><option value="all">All games</option><option value="eligible">Eligible only</option><option value="excluded">Excluded only</option></select>
+<p id="monthly-pool-status" role="status" aria-live="polite" style="font-size:12px"></p>
+<div id="monthly-pool-list" style="max-height:270px;overflow-y:auto;border:1px solid #61457a;border-radius:6px;padding:8px"></div>
+<button type="button" id="monthly-pool-copy" style="margin-top:10px;padding:10px;background:#246e59;color:#fff;border:0;border-radius:6px">📋 COPY EXCLUSIONS FOR GITHUB</button>
+<a href="https://github.com/g1lgamesh20/big-daddys-arcade/actions/workflows/monthly-game-pool-save.yml" target="_blank" rel="noopener noreferrer" style="display:inline-block;margin:8px;color:#8beaff">🔐 OPEN SAVE WORKFLOW</a>
+<p style="font-size:12px">After copying, open the Save workflow → Run workflow → paste into <b>excluded_ids</b> → check confirmation → Run workflow. Refresh this page after deployment to see saved changes. This panel never publishes the mystery game.</p>
+</details><p><a href="https://github.com/g1lgamesh20/big-daddys-arcade/actions/workflows/arcade-bulletin-manage.yml" target="_blank" rel="noopener noreferrer">✏️ EDIT ARCADE NEWS BULLETIN (GITHUB)</a></p><p><a href="https://github.com/g1lgamesh20/big-daddys-arcade/actions/workflows/arcade-bulletin-manage.yml" target="_blank" rel="noopener noreferrer">🗑️ DELETE ARCADE NEWS BULLETIN (GITHUB)</a></p><p><a href="https://github.com/g1lgamesh20/big-daddys-arcade/actions/workflows/arcade-bulletin.yml" target="_blank" rel="noopener noreferrer">📰 PUBLISH ARCADE NEWS + SEND PUSH (GITHUB)</a></p>
 <a href="https://github.com/g1lgamesh20/big-daddys-arcade/actions/workflows/operator-announcement.yml" target="_blank" rel="noopener noreferrer">📢 SEND OPERATOR ANNOUNCEMENT (GITHUB)</a><a href="https://app.onesignal.com/" target="_blank" rel="noopener noreferrer">📱 VIEW PUSH DELIVERY REPORTS (ONESIGNAL)</a><a href="https://supabase.com/dashboard/project/jrqzwlowxofnyqpmjgkg/editor" target="_blank" rel="noopener noreferrer">💬 REVIEW COMMUNITY MESSAGES (SUPABASE)</a><p>Use a test announcement title such as “ARCADE PUSH TEST” and confirm delivery separately on iPhone and Android. Public community messages do not trigger push alerts in this release.</p></div></details></template>
 </div></details>
 
@@ -801,4 +813,58 @@ See you on the leaderboard! 🏆`;
    if(!lab.open){cancel();room.hidden=true;room.style.setProperty('display','none','important');}
  });
 })();
-</script><script src="arcade-news.js" defer></script></body></html>
+</script><script src="arcade-news.js" defer></script><script>
+(function(){
+ const initialize=()=>{const panel=document.getElementById('monthly-pool-manager');
+ if(!panel||panel.dataset.initialized)return false;
+ panel.dataset.initialized='1';
+ const search=panel.querySelector('#monthly-pool-search'),filter=panel.querySelector('#monthly-pool-filter');
+ const list=panel.querySelector('#monthly-pool-list'),status=panel.querySelector('#monthly-pool-status'),copy=panel.querySelector('#monthly-pool-copy');
+ let games={},excluded=new Set(),ready=false;
+ function draw(){
+   if(!ready)return;
+   const term=search.value.trim().toLowerCase(),mode=filter.value;
+   const entries=Object.entries(games).sort((a,b)=>a[1].localeCompare(b[1])||a[0].localeCompare(b[0]));
+   const visible=entries.filter(([id,name])=>name.toLowerCase().includes(term)&&(mode==='all'||(mode==='excluded')===excluded.has(id)));
+   status.textContent=`${entries.length-excluded.size} eligible • ${excluded.size} excluded • ${visible.length} shown`;
+   list.replaceChildren();
+   if(!visible.length){list.textContent='No matching games';return;}
+   const frag=document.createDocumentFragment();
+   for(const [id,name] of visible){
+     const label=document.createElement('label');
+     label.style.cssText='display:flex;align-items:center;gap:9px;padding:7px 3px;border-bottom:1px solid #382b4a;cursor:pointer;font-size:13px';
+     const check=document.createElement('input');check.type='checkbox';check.checked=excluded.has(id);
+     check.setAttribute('aria-label','Exclude '+name+' (ID '+id+')');
+     check.addEventListener('change',()=>{if(check.checked)excluded.add(id);else excluded.delete(id);draw();});
+     const txt=document.createElement('span');txt.textContent=name;
+     const hint=document.createElement('small');hint.textContent=' #'+id;hint.style.color='#b3a2c9';
+     label.append(check,txt,hint);frag.append(label);
+   }
+   list.append(frag);
+ }
+ async function load(){
+   status.textContent='Loading game catalog…';
+   try{
+     const [a,b]=await Promise.all([fetch('monthly-game-catalog.json',{cache:'no-store'}),fetch('monthly-game-pool.json',{cache:'no-store'})]);
+     if(!a.ok||!b.ok)throw Error('Game catalog unavailable');
+     const catalog=await a.json(),pool=await b.json();
+     if(!catalog.games||!Array.isArray(pool.excluded_game_ids))throw Error('Unexpected game pool format');
+     games=catalog.games;excluded=new Set(pool.excluded_game_ids.map(String));ready=true;draw();
+   }catch(err){status.textContent='Unable to load game pool: '+err.message;}
+ }
+ search.addEventListener('input',draw);filter.addEventListener('change',draw);
+ copy.addEventListener('click',async()=>{
+   if(!ready)return;
+   const value=[...excluded].sort().join(',');
+   try{await navigator.clipboard.writeText(value);status.textContent=`Copied ${excluded.size} excluded game IDs. Paste into the GitHub Save workflow.`;}
+   catch(e){
+     const input=document.createElement('textarea');input.value=value;input.readOnly=true;
+     input.style.cssText='display:block;width:100%;min-height:60px;margin-top:8px';
+     copy.after(input);input.select();status.textContent='Copy the selected text and paste it into GitHub.';
+   }
+ });
+ panel.addEventListener('toggle',()=>{if(panel.open&&!ready)load()});return true;};
+ const observer=new MutationObserver(()=>{if(initialize())observer.disconnect()});
+ if(!initialize())observer.observe(document.body,{childList:true,subtree:true});
+})();
+</script></body></html>
