@@ -17,6 +17,7 @@ STATE = OUTPUT.with_name('medal-state.json')
 FEED = OUTPUT.with_name('medals.json')
 RECORDS = OUTPUT.with_name('arcade-records.json')
 DAILY = OUTPUT.with_name('daily-champion.json')
+DAILY_HISTORY = OUTPUT.with_name('daily-champion-history.json')
 
 def papa_points(rank):
     if rank == 1: return 100
@@ -127,6 +128,32 @@ def update_daily_champion(champions, updated_at):
         days.append(chosen)
     DAILY.write_text(json.dumps({'updated_at':updated_at, 'timezone':'America/New_York',
                                  'days':days},ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+    # Keep announced Daily selections permanently for delayed score approvals.
+    history = json.loads(DAILY_HISTORY.read_text(encoding='utf-8')) if DAILY_HISTORY.exists() else {
+        'schema_version':1,'days':[]}
+    if history.get('schema_version')!=1 or not isinstance(history.get('days'),list):
+        raise ValueError('Invalid permanent daily challenge history')
+    archived={}
+    for item in history['days']:
+        if not isinstance(item,dict) or not isinstance(item.get('date'),str) or not isinstance(item.get('game_id'),str):
+            raise ValueError('Invalid archived Daily challenge selection')
+        date=item['date']
+        if date in archived and archived[date]['game_id']!=item['game_id']:
+            raise ValueError('Conflicting archived Daily challenge game')
+        archived[date]=item
+    for item in days:
+        # Only archive dates after they started, never speculative tomorrow.
+        if item['date'] > today.isoformat():continue
+        prior=archived.get(item['date'])
+        if prior and prior['game_id']!=item['game_id']:
+            # An already announced choice cannot silently change.
+            raise ValueError('Daily game selection changed after archive; investigate manually')
+        archived.setdefault(item['date'],item)
+    DAILY_HISTORY.write_text(json.dumps({
+        'schema_version':1,'timezone':'America/New_York',
+        'days':[archived[k] for k in sorted(archived)]
+    },ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+
 
 def main():
     req = Request(URL,headers={'User-Agent':'BigDaddysArcadeLegends/1.7','Accept':'application/json'})
