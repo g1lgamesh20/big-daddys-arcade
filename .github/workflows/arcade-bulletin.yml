@@ -1,0 +1,48 @@
+name: Publish Arcade Bulletin
+on:
+  workflow_dispatch:
+    inputs:
+      title:
+        description: 'Bulletin title (max 80 characters)'
+        required: true
+        type: string
+      message:
+        description: 'Bulletin text (max 240 characters)'
+        required: true
+        type: string
+      send_push:
+        description: 'Also send OneSignal push notification'
+        required: true
+        default: true
+        type: boolean
+permissions:
+  contents: write
+concurrency:
+  group: arcade-news-publish
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: true
+      - name: Save bulletin to archive
+        env:
+          ANNOUNCEMENT_TITLE: ${{ inputs.title }}
+          ANNOUNCEMENT_MESSAGE: ${{ inputs.message }}
+        run: |
+          python3 tools/save_arcade_bulletin.py
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add arcade-news.json
+          git commit -m 'Publish Arcade News bulletin'
+          git push origin HEAD:main
+      - name: Send push notification
+        if: ${{ inputs.send_push }}
+        env:
+          ONESIGNAL_REST_API_KEY: ${{ secrets.ONESIGNAL_REST_API_KEY }}
+          ANNOUNCEMENT_TITLE: ${{ inputs.title }}
+          ANNOUNCEMENT_MESSAGE: ${{ inputs.message }}
+        run: python3 tools/send_operator_announcement.py
