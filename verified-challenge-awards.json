@@ -1,5 +1,20 @@
 {
   "schema_version": 1,
-  "awards": [],
+  "awards": [
+    {
+      "id": "thursday_champion:2026-11-12",
+      "event_key": "thursday:2026-11-12:112913:RDG",
+      "type": "thursday_champion",
+      "name": "Thursday Champion",
+      "date": "2026-11-12",
+      "player": "RDG",
+      "game": "Bosconian",
+      "game_id": "112913",
+      "score": 63450,
+      "score_id": "384380",
+      "verified_at": "2026-11-17T21:58:53.225264+00:00",
+      "verification_method": "operator_confirmed_iscored_approved_photo_and_time"
+    }
+  ],
   "verified_plays": []
 }
