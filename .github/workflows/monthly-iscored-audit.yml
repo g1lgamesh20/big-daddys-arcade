@@ -1,0 +1,29 @@
+name: Monthly Challenge — Read-Only iScored Audit
+on:
+  workflow_dispatch:
+    inputs:
+      month:
+        description: 'Month to inspect (YYYY-MM, e.g. 2026-12)'
+        required: true
+        type: string
+        default: '2026-12'
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Audit monthly score feed (read-only)
+        env:
+          MONTHLY_AUDIT_MONTH: ${{ inputs.month }}
+        run: python3 tools/monthly_iscored_audit.py
+      - name: Upload private diagnostic artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: monthly-iscored-audit
+          path: monthly-audit-private.json
+          retention-days: 7
