@@ -57,7 +57,10 @@ def build(now=None,rows=None):
     if not games:raise ValueError('No games available; refusing to overwrite challenge')
     # First run after Thursday starts freezes the game for the whole week.
     if key not in weeks:
-        ordered=sorted(games.items(),key=lambda p:(p[1].casefold(),p[0]))
+        from game_eligibility import allowed_game_ids
+        allowed=allowed_game_ids(games.keys())
+        if not allowed:raise ValueError('No eligible Thursday games; preserving existing challenge')
+        ordered=sorted(((gid,games[gid]) for gid in allowed),key=lambda p:(p[1].casefold(),p[0]))
         index=(week.toordinal()//7)%len(ordered)
         gid,name=ordered[index]
         weeks[key]={'game_id':gid,'game':name}

@@ -100,7 +100,10 @@ def update_daily_champion(champions, updated_at):
     # One entry per game ID, not per tied first-place player.
     eligible = {str(row['game_id']):row['game'] for row in champions
                 if str(row.get('game', '')).strip().casefold() != 'test game'}
-    if not eligible:
+    from game_eligibility import allowed_game_ids
+    selectable = allowed_game_ids(eligible.keys())
+    if not selectable:
+        print('No eligible daily games; preserving existing daily champion feed')
         return
     days = []
     previous = existing.get((today-timedelta(days=1)).isoformat())
@@ -114,9 +117,9 @@ def update_daily_champion(champions, updated_at):
             # Preserve valid announced selections, but repair removed games and repeats.
             chosen = {**prior, 'game':eligible[prior['game_id']]}
         else:
-            choices = sorted(k for k in eligible if k != avoid)
+            choices = sorted(k for k in selectable if k != avoid)
             if not choices:  # Only one game available; repeating is unavoidable.
-                choices = sorted(eligible)
+                choices = sorted(selectable)
             # Stable selection, independent of score order or runtime hash seeds.
             digest = hashlib.sha256(('BigDaddysArcade:'+date).encode()).digest()
             game_id = choices[int.from_bytes(digest[:8], 'big') % len(choices)]
@@ -130,6 +133,8 @@ def main():
     with urlopen(req,timeout=25) as response:
         if response.status != 200: raise RuntimeError('iScored returned HTTP '+str(response.status))
         raw = json.load(response)
+    from sync_game_catalog import sync_games
+    sync_games(raw['scores'])
     result = build(raw)
     if not result['entries']: raise RuntimeError('No valid scores; preserving previous scoreboard')
     # Rank each player's single best score per game, not all their submissions.
