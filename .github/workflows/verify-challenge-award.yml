@@ -42,6 +42,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Run permanent-award safety tests
+        run: python tools/test_verified_awards.py
       - name: Validate operator approval against candidate and finalized result
         env:
           TROPHY_ACTION: ${{ inputs.action }}
