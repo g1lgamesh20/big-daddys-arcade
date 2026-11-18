@@ -394,3 +394,8 @@ body.leaders-dialog-open{overflow:hidden}
 body.trophy-hunters-dialog-open{overflow:hidden}
 .trophy-hunters-podium-card:focus-visible,.trophy-hunters-row:focus-visible,.trophy-hunters-open:focus-visible,#trophy-hunters-close:focus-visible{outline:3px solid #fff;outline-offset:3px}
 @media(max-width:440px){.trophy-hunters-row{grid-template-columns:50px 1fr;gap:6px}.trophy-hunters-row .trophy-hunters-count{grid-column:2}.trophy-hunters-section{padding:12px 8px}}
+
+/* Trophy Hunters retains its neon styling inside the final showcase slide. */
+#showcase-trophy-hunters .trophy-hunters-section{margin:3px auto 5px;max-width:100%;box-sizing:border-box}
+#showcase-trophy-hunters .trophy-hunters-podium{margin:8px 0}
+#showcase-trophy-hunters .trophy-hunters-subtitle{margin:4px 0 8px}
