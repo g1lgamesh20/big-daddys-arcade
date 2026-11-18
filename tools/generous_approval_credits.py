@@ -85,7 +85,9 @@ def scheduled(daily_archive,daily_live,thursday_state,monthly_public,baselines=N
             try:date=datetime.strptime(month+'-01','%Y-%m-%d')
             except ValueError:pass
             else:events[('monthly',month+'-01')]={'game_id':gid,
-                    'game':str(monthly_public.get('game') or '')}
+                    'game':str(monthly_public.get('game') or ''),
+                    'starting_record':monthly_public.get('starting_record'),
+                    'benchmark':monthly_public.get('benchmark')}
     # Preserve previously REVEALED monthly games across calendar rollovers.
     # This archive contains no sealed/private game selections.
     if monthly_archive:
@@ -97,7 +99,9 @@ def scheduled(daily_archive,daily_live,thursday_state,monthly_public,baselines=N
             key=('monthly',month+'-01')
             if key in events and events[key]['game_id']!=gid:
                 raise ValueError('Revealed monthly game conflict: '+month)
-            events[key]={'game_id':gid,'game':str(entry.get('game') or '')}
+            events[key]={'game_id':gid,'game':str(entry.get('game') or ''),
+                         'starting_record':entry.get('starting_record'),
+                         'benchmark':entry.get('benchmark')}
     return events
 
 def capture_monthly_reveals(public,previous):
@@ -113,12 +117,31 @@ def capture_monthly_reveals(public,previous):
         return out
     try:datetime.strptime(month+'-01','%Y-%m-%d')
     except ValueError:return out
+    # Starting record and 75% target are public ONLY after the 9 AM reveal.
+    # A previously published target cannot be silently rewritten.
+    record=public.get('starting_record')
+    benchmark=public.get('benchmark')
+    if type(record) is not int or record<0 or type(benchmark) is not int or benchmark!=(record*3+3)//4:
+        # A partially published feed can preserve the event identity, but
+        # must never fabricate a Beat the Average target.
+        record=benchmark=None
     entry={'game_id':gid,'game':str(public.get('game') or ''),
            'source':'already_public_monthly-challenge-live.json'}
+    if record is not None:
+        entry.update({'starting_record':record,'benchmark':benchmark})
     previous_entry=out['months'].get(month)
     if previous_entry and previous_entry['game_id']!=gid:
         raise ValueError('Published Game of the Month changed: '+month)
-    out['months'].setdefault(month,entry)
+    if previous_entry:
+        for k in ('starting_record','benchmark'):
+            if k in previous_entry and k in entry and previous_entry[k]!=entry[k]:
+                raise ValueError('Published Game of the Month target changed: '+month)
+        # Fill missing target only from an already publicly revealed feed.
+        for k in ('starting_record','benchmark'):
+            if k in entry and k not in previous_entry:
+                previous_entry[k]=entry[k]
+    else:
+        out['months'][month]=entry
     return out
 
 def capture_daily_baselines(rows,archive,live,previous,now):
@@ -282,6 +305,60 @@ def process(rows,daily_archive,daily_live,thursday_state,monthly_public,ledger,n
             if kind=='monthly':award['event_month']=day[:7]
             updated['awards'].append(award)
             newly_awarded.append({'player':c['player'],'kind':kind,'date':day,'score':c['score']})
+    # Monthly results have their own permanent trophies. Only publicly
+    # revealed games may enter here, and nothing is awarded until the complete
+    # month + 24-hour approval grace period has elapsed.
+    monthly_trophies=[]
+    for (kind,day),ev in sorted(events.items()):
+        if kind!='monthly':continue
+        _,_,cutoff=interval(kind,day)
+        if now.astimezone(NY)<cutoff:continue
+        attendees=[c for (k,d,_),c in matched.items() if k=='monthly' and d==day]
+        if not attendees:continue
+        benchmark=ev.get('benchmark')
+        starting_record=ev.get('starting_record')
+        # Require the genuine locked 75% target published at reveal;
+        # never recompute it from month-end scores.
+        valid_benchmark=(type(starting_record) is int and starting_record>=0
+                         and type(benchmark) is int and
+                         benchmark==(starting_record*3+3)//4)
+        ordered=sorted(attendees,key=lambda c:(-c['score'],c['player']))
+        seen_score=None
+        rank=0
+        for position,c in enumerate(ordered,1):
+            if c['score']!=seen_score:
+                rank=position
+                seen_score=c['score']
+            if rank in (1,2,3):
+                medal={1:'Gold',2:'Silver',3:'Bronze'}[rank]
+                award_type=f'gotm_podium_{rank}'
+                aid=f'{award_type}:{day}:{c["player"]}'
+                if not any(a.get('id')==aid for a in updated['awards']):
+                    award={'id':aid,'event_key':f'monthly:{day}:{ev["game_id"]}:{c["player"]}',
+                      'type':award_type,'name':f'Monthly {medal}',
+                      'date':day,'event_month':day[:7],'player':c['player'],
+                      'game_id':ev['game_id'],'game':ev['game'],
+                      'score':c['score'],'score_id':c['score_id'],
+                      'rank':rank,'verified_at':now.isoformat(),
+                      'verification_method':'approved_iscored_score_with_24h_generous_grace'}
+                    updated['awards'].append(award)
+                    monthly_trophies.append({'player':c['player'],'type':award_type,'month':day[:7]})
+            if valid_benchmark and c['score']>benchmark:
+                award_type='gotm_beat_average'
+                aid=f'{award_type}:{day}:{c["player"]}'
+                if not any(a.get('id')==aid for a in updated['awards']):
+                    updated['awards'].append({
+                      'id':aid,'event_key':f'monthly:{day}:{ev["game_id"]}:{c["player"]}',
+                      'type':award_type,'name':'Beat the Average',
+                      'date':day,'event_month':day[:7],'player':c['player'],
+                      'game_id':ev['game_id'],'game':ev['game'],
+                      'score':c['score'],'score_id':c['score_id'],
+                      'starting_record':starting_record,'locked_benchmark':benchmark,
+                      'comparison':'strictly_greater_than_locked_75_percent_benchmark',
+                      'verified_at':now.isoformat(),
+                      'verification_method':'approved_iscored_score_with_24h_generous_grace'})
+                    monthly_trophies.append({'player':c['player'],'type':award_type,'month':day[:7]})
+    report['new_monthly_trophies']=monthly_trophies
     report['new_championships']=newly_awarded
     for p in {c['player'] for c in proposed if c['kind']=='daily'}:
         issue_daily_milestones(updated,p,now)
