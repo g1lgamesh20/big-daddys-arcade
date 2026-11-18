@@ -58,7 +58,7 @@
   // AND the already-published monthly feed has identified this month's game.
   // Missing or inaccessible logos are optional: preserve neon text instead.
   const id=String(last.game_id||'');
-  if(/^\\d{1,12}$/.test(id)){
+  if(/^\d{1,12}$/.test(id)){
     const marquee=document.createElement('img');
     marquee.className='monthly-marquee';
     marquee.alt=String(last.game||'Featured game')+' arcade marquee';
@@ -84,7 +84,7 @@
    if(!response.ok)return;
    const data=await response.json();
    if(data&&data.schema_version===1&&data.status==='provisional'
-      &&typeof data.game==='string'&&/^\\d{1,12}$/.test(String(data.game_id||''))
+      &&typeof data.game==='string'&&/^\d{1,12}$/.test(String(data.game_id||''))
       &&Number.isSafeInteger(data.starting_record)
       &&Number.isSafeInteger(data.benchmark)&&Array.isArray(data.leaderboard))
      last=data;
