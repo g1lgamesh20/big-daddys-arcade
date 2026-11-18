@@ -58,7 +58,11 @@ class HistoryTest(unittest.TestCase):
     def test_monthly_published_game_event(self):
         args=list(initial())
         args[4]={'status':'provisional','month':'2026-12','game_id':'10','game':'Revealed'}
-        data=build(*args)
+        # A revealed December event cannot appear in a November as-of report.
+        # Fix the simulated date instead of weakening the production guard.
+        before=build(*args,as_of='2026-11-18')
+        self.assertFalse(any(e['event_key']=='monthly:2026-12-01' for e in before['events']))
+        data=build(*args,as_of='2026-12-01')
         self.assertTrue(any(e['event_key']=='monthly:2026-12-01' for e in data['events']))
     def test_archived_published_month_survives_next_month_rollover(self):
         args=list(initial())
