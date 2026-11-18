@@ -58,7 +58,7 @@ def read(path, default):
 def approve(pending, winner_archive, ledger, *, kind, event_date, player, score_id, confirmed, now):
     if confirmed is not True:
         raise ValueError('Explicit operator approval, photo, and timestamp confirmation required.')
-    if kind not in ('thursday_champion','daily_verified_play'):
+    if kind not in ('thursday_champion','thursday_verified_play','daily_verified_play'):
         raise ValueError('Unknown award action')
     if not re.fullmatch(r'20\d\d-\d\d-\d\d',event_date):
         raise ValueError('Enter event date YYYY-MM-DD')
@@ -71,7 +71,7 @@ def approve(pending, winner_archive, ledger, *, kind, event_date, player, score_
     if ledger.get('schema_version')!=1 or not isinstance(ledger.get('awards'),list) or not isinstance(ledger.get('verified_plays'),list):
         raise ValueError('Invalid official ledger')
     candidates=[c for c in pending.get('candidates',[]) if isinstance(c,dict)
-        and c.get('kind')==('thursday' if kind=='thursday_champion' else 'daily')
+        and c.get('kind')==('thursday' if kind.startswith('thursday_') else 'daily')
         and c.get('date')==event_date and c.get('player')==player
         and str(c.get('score_id'))==score_id.strip()]
     if len(candidates)!=1:
@@ -105,14 +105,15 @@ def approve(pending, winner_archive, ledger, *, kind, event_date, player, score_
             'verification_method':'operator_confirmed_iscored_approved_photo_and_time'}
         ledger['awards'].append(award)
     else:
+        play_kind='thursday' if kind=='thursday_verified_play' else 'daily'
         if any(p.get('event_key')==event for p in ledger['verified_plays']):
-            print('Daily verified play already recorded; no duplicate')
+            print('Verified challenge participation already recorded; no duplicate')
             return ledger,False
-        ledger['verified_plays'].append({'event_key':event,'kind':'daily',
+        ledger['verified_plays'].append({'event_key':event,'kind':play_kind,
             'date':event_date,'player':player,'game_id':c['game_id'],
             'game':c['game'],'score':c['best_score'],'score_id':score_id.strip(),
             'verified_at':now.isoformat(),'trophy_issued':False})
-        issue_daily_milestones(ledger,player,now)
+        if play_kind=='daily':issue_daily_milestones(ledger,player,now)
     issue_cross_challenge_milestones(ledger,now)
     ledger['awards'].sort(key=lambda a:(a['date'],a['id']))
     ledger['verified_plays'].sort(key=lambda a:(a['date'],a['event_key']))
