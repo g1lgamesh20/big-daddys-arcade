@@ -61,7 +61,10 @@ def verified_dates(events,ledger):
         if not isinstance(a,dict):continue
         kind=champion_types.get(a.get('type'))
         if not kind:continue
-        key=kind+':'+str(a.get('date'))
+        award_day=str(a.get('date') or '')
+        # GOTM awards may be stamped with month-end or results day.
+        event_day=(award_day[:7]+'-01') if kind=='monthly' and len(award_day)>=7 else award_day
+        key=kind+':'+event_day
         event=events.get(key)
         player=str(a.get('player') or '').strip().upper()
         if not event or not player or str(a.get('game_id'))!=event['game_id']:continue
