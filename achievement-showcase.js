@@ -23,8 +23,8 @@
   const add=(id,category,emoji,name,description,kind,threshold=0,status='live',note='')=>{
     entries.push({id,category,emoji,name,description,kind,threshold,status,note});
   };
-  add('daily_champion','daily','⚔️','Beat the Champion',
-      'Beat the day’s locked starting champion score with a qualifying approved Daily Challenge score. Multiple players can win on the same day.',
+  add('daily_champion','daily','🥇','Beat the Champion — Gold',
+      'Beat the day’s locked starting champion score with a qualifying approved Daily Challenge score. Multiple players can win on the same day. This earns a Gold-level challenge trophy, not a second iScored Gold medal.',
       'daily_champion',0,'live','Requires a pre-event locked champion score. First place in iScored is separate.');
   add('thursday_champion','thursday','🏆','Thursday Champion',
       'Finish with the highest qualifying score for the Thursday Arcade Challenge.','thursday_champion');

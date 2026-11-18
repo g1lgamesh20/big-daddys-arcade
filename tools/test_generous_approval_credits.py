@@ -79,6 +79,79 @@ class GenerousApprovalTests(unittest.TestCase):
         out,report,_=self.scan(rows,days=daily('2026-11-18','101601'),baselines=baselines)
         self.assertEqual([x['player'] for x in report['new_championships']],['RDG'])
         self.assertEqual(len([a for a in out['awards'] if a['type']=='daily_champion']),1)
+    def test_two_players_beating_daily_baseline_both_get_gold_trophies(self):
+        rows=[row('A','RDG',3000,'101601','2026-11-18 12:00:00'),
+              row('B','DON',2200,'101601','2026-11-19 07:00:00'),
+              row('C','DAY',1800,'101601','2026-11-18 15:00:00')]
+        baselines={'2026-11-18':{'game_id':'101601','starting_champion_score':2000}}
+        out,report,changed=self.scan(rows,days=daily('2026-11-18','101601'),
+            baselines=baselines)
+        winners=[a for a in out['awards'] if a['type']=='daily_champion']
+        self.assertEqual({a['player'] for a in winners},{'DON','RDG'})
+        self.assertEqual(len(out['verified_plays']),3)
+        self.assertTrue(all(a['gold_level'] is True and
+                            a['starting_champion_score']==2000 for a in winners))
+        self.assertTrue(all(a['win_rule']=='strictly_greater_than_locked_starting_champion_score'
+                            for a in winners))
+        self.assertEqual(len(report['new_championships']),2)
+        self.assertTrue(changed)
+    def test_daily_gold_remembers_pre_event_snapshot_provenance(self):
+        rows=[row('A','DON',2500,'101601','2026-11-18 12:00:00')]
+        baselines={'2026-11-18':{'game_id':'101601','starting_champion_score':2000,
+            'observed_at':'2026-11-17T23:52:00-05:00',
+            'evidence':'pre_start_approved_iscored_score_snapshot'}}
+        out,_,_=self.scan(rows,days=daily('2026-11-18','101601'),
+            baselines=baselines)
+        award=next(a for a in out['awards'] if a['type']=='daily_champion')
+        self.assertEqual(award['starting_champion_observed_at'],
+                         '2026-11-17T23:52:00-05:00')
+        self.assertEqual(award['starting_champion_evidence'],
+                         'pre_start_approved_iscored_score_snapshot')
+    def test_daily_late_second_winner_not_blocked_by_existing_gold_winner(self):
+        rows=[row('A','RDG',3000,'101601','2026-11-18 12:00:00'),
+              row('B','DON',2200,'101601','2026-11-19 07:00:00')]
+        baselines={'2026-11-18':{'game_id':'101601','starting_champion_score':2000}}
+        existing=ledger()
+        existing['awards'].append({'id':'daily_champion:2026-11-18:RDG',
+            'event_key':'daily:2026-11-18:101601:RDG','type':'daily_champion',
+            'name':'Daily Champion','date':'2026-11-18','player':'RDG',
+            'game':'A game','game_id':'101601','score':3000,'score_id':'A'})
+        out,report,_=self.scan(rows,days=daily('2026-11-18','101601'),
+            baselines=baselines,stored=existing)
+        self.assertEqual(len([a for a in out['awards'] if a['type']=='daily_champion']),2)
+        self.assertEqual([a['player'] for a in report['new_championships']],['DON'])
+    def test_daily_repeated_scan_never_duplicates_winner_trophies(self):
+        rows=[row('A','RDG',3000,'101601','2026-11-18 12:00:00'),
+              row('B','DON',2200,'101601','2026-11-19 07:00:00')]
+        baselines={'2026-11-18':{'game_id':'101601','starting_champion_score':2000}}
+        first,_,_=self.scan(rows,days=daily('2026-11-18','101601'),
+             baselines=baselines)
+        second,report,changed=self.scan(rows,days=daily('2026-11-18','101601'),
+             baselines=baselines,stored=first)
+        self.assertFalse(changed)
+        self.assertEqual(len([a for a in second['awards'] if a['type']=='daily_champion']),2)
+        self.assertEqual(report['new_championships'],[])
+    def test_equal_starting_target_is_not_a_daily_victory(self):
+        rows=[row('A','DON',2000,'101601','2026-11-18 12:00:00')]
+        baselines={'2026-11-18':{'game_id':'101601','starting_champion_score':2000}}
+        out,_,_=self.scan(rows,days=daily('2026-11-18','101601'),
+            baselines=baselines)
+        self.assertEqual(out['awards'],[])
+        self.assertEqual(len(out['verified_plays']),1)
+    def test_no_locked_starting_target_no_daily_champion(self):
+        rows=[row('A','DON',5000,'101601','2026-11-18 12:00:00')]
+        out,_,_=self.scan(rows,days=daily('2026-11-18','101601'))
+        self.assertEqual(out['awards'],[])
+        self.assertEqual(len(out['verified_plays']),1)
+    def test_wait_until_full_daily_approval_grace_before_gold_trophies(self):
+        rows=[row('A','DON',5000,'101601','2026-11-18 15:00:00')]
+        baselines={'2026-11-18':{'game_id':'101601','starting_champion_score':2000}}
+        before,_,_=self.scan(rows,days=daily('2026-11-18','101601'),
+            now=at('2026-11-19T14:00:00'),baselines=baselines)
+        self.assertEqual(before['awards'],[])
+        after,_,_=self.scan(rows,days=daily('2026-11-18','101601'),
+            now=at('2026-11-20T00:01:00'),baselines=baselines)
+        self.assertEqual(len(after['awards']),1)
     def test_monthly_not_revealed_no_game_leaks(self):
         rows=[row('P','DON',1000,'HIDDEN','2026-12-20 12:00:00')]
         out,report,_=self.scan(rows,monthly={'month':'2026-12','game_id':'HIDDEN',
