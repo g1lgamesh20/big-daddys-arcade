@@ -52,6 +52,23 @@
   spotlight.dataset.monthlyPublished='yes';
   spotlight.dataset.monthlyReleaseTime=last.updated_at;
   kicker.textContent='THE FEATURED GAME IS LIVE!';
+  // iScored's actual per-game logo URL, verified from the operator's
+  // browser HAR (e.g. /images/games/game49994 is the Pac-Man marquee).
+  // Only request artwork after the site's Eastern-time reveal gate has passed
+  // AND the already-published monthly feed has identified this month's game.
+  // Missing or inaccessible logos are optional: preserve neon text instead.
+  const id=String(last.game_id||'');
+  if(/^\d{1,12}$/.test(id)){
+    const marquee=document.createElement('img');
+    marquee.className='monthly-marquee';
+    marquee.alt=String(last.game||'Featured game')+' arcade marquee';
+    marquee.loading='lazy';
+    marquee.decoding='async';
+    marquee.referrerPolicy='no-referrer';
+    marquee.onerror=()=>{marquee.remove();};
+    marquee.src='https://www.iscored.info/images/games/game'+id;
+    spotlight.append(marquee);
+  }
   add('legend-headline',String(last.game||'FEATURED GAME').toUpperCase());
   add('legend-detail','STARTING RECORD: '+Number(last.starting_record).toLocaleString('en-US'));
   add('legend-score','BEAT THE BENCHMARK: '+Number(last.benchmark).toLocaleString('en-US'));
@@ -67,7 +84,8 @@
    if(!response.ok)return;
    const data=await response.json();
    if(data&&data.schema_version===1&&data.status==='provisional'
-      &&typeof data.game==='string'&&Number.isSafeInteger(data.starting_record)
+      &&typeof data.game==='string'&&/^\d{1,12}$/.test(String(data.game_id||''))
+      &&Number.isSafeInteger(data.starting_record)
       &&Number.isSafeInteger(data.benchmark)&&Array.isArray(data.leaderboard))
      last=data;
   }catch(_){}
