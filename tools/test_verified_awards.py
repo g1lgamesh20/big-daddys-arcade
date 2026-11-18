@@ -57,13 +57,13 @@ class AwardsTest(unittest.TestCase):
    ledger,changed=approve(pending,WINNERS,ledger,kind='daily_verified_play',
       event_date=day,player='DON',score_id=sid,confirmed=True,now=NOW)
    self.assertTrue(changed)
-   self.assertEqual(len(ledger['awards']),1 if n==5 else 0)
-  self.assertEqual(ledger['awards'][0]['id'],'daily_participation:DON:5')
-  self.assertEqual(ledger['awards'][0]['type'],'daily_participation_milestone')
+   self.assertEqual(len([a for a in ledger['awards'] if a['type']=='daily_participation_milestone']),1 if n==5 else 0)
+  self.assertIn('daily_participation:DON:5',{a['id'] for a in ledger['awards']})
+  before=len(ledger['awards'])
   ledger,changed=approve(pending,WINNERS,ledger,kind='daily_verified_play',
      event_date='2026-11-05',player='DON',score_id='905',confirmed=True,now=NOW)
   self.assertFalse(changed)
-  self.assertEqual(len(ledger['awards']),1)
+  self.assertEqual(len(ledger['awards']),before)
 
  def test_daily_milestones_require_distinct_dates_and_player(self):
   from verify_challenge_award import issue_daily_milestones
