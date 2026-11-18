@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 """One-approval iScored -> Hall of Legends automatic challenge evidence.
 
-The public getAllScores feed's approval semantics are NOT independently proven.
-The default is PREVIEW ONLY. Enable only after confirming pending submissions
-are absent from that endpoint in the user's Admin Approval configuration.
+Controlled November 18, 2026 testing found that unapproved submissions are absent
+from the public API, but API date values track approval time (apparently ~1 hour
+behind Eastern in November), NOT reliable original submission time.
+The default remains PREVIEW ONLY and enabling awards is HARD-BLOCKED until a
+verifiable independent original-submission-time source is integrated.
 
 Never sends push messages or changes medals. Award only uniquely matching
 final Thursday Champion results after 24h grace. Daily score participation
@@ -52,6 +54,18 @@ def live_by_event(rows):
     return out,bad_dates
 
 def build(rows, pending, winners, ledger, now, enabled=False):
+    # SECURITY: Public iScored 'date' has behaved as APPROVAL time in controlled
+    # tests. Candidate histories and Thursday winner archives were derived from
+    # the same field, so cross-matching them cannot prove a pre-midnight submit.
+    # Do not enable awards (including daily verified plays) until original
+    # submission evidence is independently collected and verified per score.
+    if enabled:
+        raise ValueError(
+            'Automatic challenge awards BLOCKED: iScored API date reflects '
+            'approval time, not proven original submission time. No awards '
+            'can be issued until independent submission-time verification '
+            'is implemented. Leave AUTO_CHALLENGE_AWARDS_ENABLED unset.'
+        )
     now=now.astimezone(NY)
     if not isinstance(pending.get('candidates'),list) or not isinstance(winners.get('weeks'),list):
         raise ValueError('Invalid candidate or Thursday winner archive')
@@ -143,10 +157,13 @@ def build(rows, pending, winners, ledger, now, enabled=False):
 
     preview={'schema_version':1,'mode':'enabled' if enabled else 'preview_only',
        'generated_at':now.isoformat(),
-       'approval_source':'public_iScored_feed_subject_to_operator_endpoint_verification',
-       'timestamp_note':'Naive iScored timestamps interpreted as Eastern pending independent confirmation',
-       'eligible_new_thursday_trophies':len(eligible_thursday),
-       'eligible_new_daily_play_records':len(eligible_daily),
+       'approval_source':'public_iScored_feed_only_after_operator_approval_tested_2026-11-18',
+       'timestamp_note':'iScored API date appears to reflect approval time; NOT valid original submission evidence',
+       'release_blocker':'No independent original submission timestamp; potential matches below are diagnostic only, not award-eligible',
+       'eligible_new_thursday_trophies':0,
+       'eligible_new_daily_play_records':0,
+       'potential_thursday_matches_without_submission_proof':len(eligible_thursday),
+       'potential_daily_matches_without_submission_proof':len(eligible_daily),
        'blocked_thursday_events':blocked,
        'unparseable_feed_dates':bad_dates,
        'notifications_sent':False}
