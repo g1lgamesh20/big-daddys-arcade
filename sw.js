@@ -1,5 +1,5 @@
 
-const CACHE = 'hall-of-legends-v4-achievements';
+const CACHE = 'hall-of-legends-v5-daily-thursday-marquees';
 
 const FILES = [
   './',

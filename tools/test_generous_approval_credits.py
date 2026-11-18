@@ -300,6 +300,26 @@ class GenerousApprovalTests(unittest.TestCase):
         self.assertFalse(changed)
         self.assertEqual(state,snapshot)
         self.assertEqual(report['new_participation_credits'],1)
+    def test_pre_midnight_refresh_improves_future_baseline_but_not_past(self):
+        future=daily('2026-11-19','50042')
+        rows=[row('old','RDG',51700,'50042','2026-11-18 12:00:00')]
+        first=capture_daily_baselines(rows,{'days':[]},future,{},
+              at('2026-11-18T16:00:00'))
+        self.assertEqual(first['2026-11-19']['starting_champion_score'],51700)
+        later=rows+[row('better','DON',60000,'50042','2026-11-18 17:00:00')]
+        refreshed=capture_daily_baselines(later,{'days':[]},future,first,
+              at('2026-11-18T18:00:00'))
+        self.assertEqual(refreshed['2026-11-19']['starting_champion_score'],60000)
+        frozen=capture_daily_baselines(
+              later+[row('too-late','SPC',90000,'50042','2026-11-19 09:00:00')],
+              {'days':[]},future,refreshed,at('2026-11-19T10:00:00'))
+        self.assertEqual(frozen,refreshed)
+        # Capturing an earlier challenge once it is already underway
+        # must never invent an unobserved starting record.
+        past=capture_daily_baselines(
+              later,{'days':[]},daily('2026-11-18','50042'),{},
+              at('2026-11-18T18:00:00'))
+        self.assertEqual(past,{})
     def test_baseline_only_collected_before_start(self):
         rows=[row('old','RDG',1500,'101601','2026-11-17 13:00:00')]
         original={}

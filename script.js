@@ -301,7 +301,7 @@ document.addEventListener('keydown',e=>{if(leadersDialog.hidden||!document.query
   refreshRecords();setInterval(refreshRecords,10*60*1000);
   setInterval(()=>{if(!document.hidden&&activePage===3&&records.length>1&&!reducedMotion()&&Date.now()-lastManualRecordBrowse>=30000)moveRecord(1)},8000);
   function easternDay(){return new Intl.DateTimeFormat('en-CA',{timeZone:'America/New_York',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());}
-  let championSchedule=[], allChampions=[];
+  let championSchedule=[], allChampions=[], dailyGoldBaselines={};
   async function refreshChampionSchedule(){
     try{
       const response=await fetch('./daily-champion.json?refresh='+Date.now(),{cache:'no-store'});
@@ -309,6 +309,13 @@ document.addEventListener('keydown',e=>{if(leadersDialog.hidden||!document.query
       const data=await response.json();
       if(Array.isArray(data.days))championSchedule=data.days.filter(d=>d&&typeof d.date==='string'&&typeof d.game_id==='string');
     }catch(_){/* Preserve last loaded schedule if a refresh fails. */}
+    try{
+      const r=await fetch('./daily-champion-baselines.json?refresh='+Date.now(),{cache:'no-store'});
+      if(r.ok){
+        const baselines=await r.json();
+        if(baselines&&typeof baselines==='object'&&!Array.isArray(baselines))dailyGoldBaselines=baselines;
+      }
+    }catch(_){/* Keep the previous locked score when offline. */}
     updateChampion();
   }
   function updateChampion(){
@@ -319,10 +326,31 @@ document.addEventListener('keydown',e=>{if(leadersDialog.hidden||!document.query
     const matching=champions.filter(c=>String(c.game_id)===day.game_id);
     const chosen=matching.sort((a,b)=>Number(b.score)-Number(a.score))[0];
     const game=chosen?.game||day.game||'FEATURED GAME';
+    // Reuse iScored's own per-game logo, just like Game of the Month.
+    // Current Daily selection is already public; never request tomorrow's
+    // unrevealed Monthly Challenge or infer artwork from its sealed state.
+    if(/^\d{1,12}$/.test(String(day.game_id))){
+      const marquee=document.createElement('img');
+      marquee.className='arcade-game-marquee';
+      marquee.alt=String(game)+' arcade marquee';
+      marquee.loading='lazy';marquee.decoding='async';
+      marquee.referrerPolicy='no-referrer';
+      marquee.onerror=()=>marquee.remove();
+      marquee.src='https://www.iscored.info/images/games/game'+day.game_id;
+      target.append(marquee);
+    }
     const elements=[['p','arcade-showcase-kicker','CURRENT CHAMPION'],['p','legend-detail',String(game).toUpperCase()]];
     if(chosen){elements.push(['p','legend-headline',String(chosen.player).toUpperCase()],['p','legend-score',Number(chosen.score).toLocaleString('en-US')]);}
     else elements.push(['p','legend-headline','AWAITING CURRENT VERIFIED SCORE']);
-    elements.push(['p','arcade-showcase-kicker','BEAT THIS SCORE TO TAKE THE CROWN!']);
+    // The live iScored leader can change during the challenge, but Daily
+    // Gold eligibility is measured against the PRE-START recorded champion.
+    const locked=dailyGoldBaselines[day.date];
+    if(locked&&String(locked.game_id)===day.game_id&&Number.isSafeInteger(locked.starting_champion_score)){
+      elements.push(['p','legend-detail','🥇 DAILY GOLD TARGET (LOCKED BEFORE START): '+Number(locked.starting_champion_score).toLocaleString('en-US')]);
+      elements.push(['p','arcade-showcase-kicker','BEAT THE LOCKED TARGET FOR DAILY GOLD!']);
+    }else{
+      elements.push(['p','arcade-showcase-kicker','TAKE THE CHALLENGE • VERIFIED PARTICIPATION COUNTS']);
+    }
     elements.forEach(([tag,cls,value])=>{const el=document.createElement(tag);el.className=cls;el.textContent=value;target.append(el);});
   }
   refreshChampionSchedule();setInterval(refreshChampionSchedule,10*60*1000);
