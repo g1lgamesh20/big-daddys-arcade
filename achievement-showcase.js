@@ -131,7 +131,7 @@
     const title=el('h4','achievement-tile-name',entry.name);
     const desc=el('p','achievement-tile-desc',entry.description);
     tile.append(upper,title,desc);
-    if(entry.threshold && !planned){
+    if(entry.threshold && !planned && (entry.kind==='golden_encore' || entry.kind.endsWith('_participation') || entry.kind.endsWith('_streak'))){
       const n=selected?progress(selected,entry):0;
       const line=el('p','achievement-tile-progress',
         selected?'PROGRESS: '+Math.min(n,entry.threshold)+' / '+entry.threshold:'SELECT A PLAYER TO SEE PROGRESS');
