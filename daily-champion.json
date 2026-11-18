@@ -1,12 +1,7 @@
 {
-  "updated_at": "2026-11-18T04:10:25.755688+00:00",
+  "updated_at": "2026-11-18T13:10:19.207870+00:00",
   "timezone": "America/New_York",
   "days": [
-    {
-      "date": "2026-11-16",
-      "game_id": "50354",
-      "game": "World Class Bowling"
-    },
     {
       "date": "2026-11-17",
       "game_id": "86751",
@@ -16,6 +11,11 @@
       "date": "2026-11-18",
       "game_id": "101601",
       "game": "Food Fight"
+    },
+    {
+      "date": "2026-11-19",
+      "game_id": "50042",
+      "game": "Ghosts 'n Goblins"
     }
   ]
 }
