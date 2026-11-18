@@ -615,7 +615,11 @@ See you on the leaderboard! 🏆`;
        const img=document.createElement('img');
        img.className='arcade-game-marquee';img.loading='lazy';img.decoding='async';
        img.alt=String(d.game||'Featured Thursday game')+' arcade marquee';
-       img.referrerPolicy='no-referrer';img.onerror=()=>img.remove();
+       let alternate=false;
+       img.onerror=()=>{
+         if(!alternate){alternate=true;img.src='https://www.iscored.info/community/images/games/game'+id;}
+         else img.remove();
+       };
        img.src='https://www.iscored.info/images/games/game'+id;
        marqueeSlot.append(img);
      }
