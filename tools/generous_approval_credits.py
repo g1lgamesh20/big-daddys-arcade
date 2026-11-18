@@ -121,10 +121,16 @@ def capture_monthly_reveals(public,previous):
     # A previously published target cannot be silently rewritten.
     record=public.get('starting_record')
     benchmark=public.get('benchmark')
-    if type(record) is not int or record<0 or type(benchmark) is not int or benchmark!=(record*3+3)//4:
-        # A partially published feed can preserve the event identity, but
-        # must never fabricate a Beat the Average target.
-        record=benchmark=None
+    if record is None and benchmark is None:
+        # Preserve the older game-only public archive format. It cannot
+        # support Beat the Average until a genuine benchmark is published.
+        pass
+    elif (type(record) is not int or record<0 or
+          type(benchmark) is not int or benchmark!=(record*3+3)//4):
+        # A revealed feed that supplies a target must be internally valid.
+        # Never silently strip an inconsistent target and bypass the archive
+        # immutability guard (or overwrite a previously published benchmark).
+        raise ValueError('Invalid published Game of the Month benchmark: '+month)
     entry={'game_id':gid,'game':str(public.get('game') or ''),
            'source':'already_public_monthly-challenge-live.json'}
     if record is not None:
