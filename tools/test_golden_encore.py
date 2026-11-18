@@ -69,7 +69,8 @@ class GoldenEncoreTests(unittest.TestCase):
             previous, ledger, events=evaluate(feed,previous,{str(x) for x in range(1,101)},
                                                ledger,NOW)
             self.assertEqual(len(events),1)
-        self.assertEqual([a['name'] for a in ledger['awards']],
+        self.assertEqual([a['name'] for a in sorted(ledger['awards'],
+                              key=lambda a:a['milestone'])],
                          ['Golden Encore','Gold Rush','Untouchable'])
         self.assertEqual(len(previous['improvements']),10)
         self.assertEqual(len(set(a['id'] for a in ledger['awards'])),3)
