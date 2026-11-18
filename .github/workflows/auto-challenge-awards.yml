@@ -21,13 +21,17 @@ jobs:
           python-version: '3.12'
       - name: Test automatic award safeguards
         run: python tools/test_auto_challenge_awards.py
+      - name: Test unified history safeguards
+        run: python tools/test_unified_achievement_history.py
+      - name: Refresh read-only unified history
+        run: python tools/build_unified_achievement_history.py
       - name: Scan live iScored score feed (preview-only until approved API semantics verified)
         env:
           AUTO_CHALLENGE_AWARDS_ENABLED: ${{ vars.AUTO_CHALLENGE_AWARDS_ENABLED }}
         run: python tools/auto_verified_challenge_awards.py
       - name: Save diagnostic summary and any enabled verified awards
         run: |
-          git add challenge-auto-awards-preview.json
+          git add challenge-auto-awards-preview.json unified-achievement-history.json
           if [ -f verified-challenge-awards.json ]; then git add verified-challenge-awards.json; fi
           if git diff --cached --quiet; then exit 0; fi
           git config user.name "github-actions[bot]"
