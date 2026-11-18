@@ -5,9 +5,10 @@ from urllib.request import Request, urlopen
 
 URL = 'https://www.iScored.info/api/G1LGAMESH/getAllScores'
 TARGETS = [
-    ('DON', '720 Degrees', 2020, 'PENDING'),
-    ('DON', 'Strider', 17200, 'PENDING'),
-    ('VJG', 'Tempest Tubes', 15378, 'PENDING - may be edited'),
+    ('DON', '720 Degrees', 2020, 'APPROVED'),
+    ('DON', 'Strider', 17200, 'APPROVED'),
+    ('VJG', 'Tempest Tubes', 15378, 'EARLIER WRONG GAME - check only'),
+    ('VJG', 'Tempest', 15378, 'APPROVED 2026-11-18 12:30 ET - pending screen 11:21; ref 387301'),
     ('VJG', 'Crystal Castles', 160125, 'PENDING - may be denied'),
     ('VJG', 'Major Havoc', 26003, 'APPROVED'),
 ]
