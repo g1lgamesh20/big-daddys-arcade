@@ -455,3 +455,18 @@ body.achievement-showcase-open{overflow:hidden}
 @media(max-width:480px){
   #showcase-monthly .monthly-marquee{max-width:100%;max-height:105px;margin-bottom:9px}
 }
+
+/* The same authentic per-game iScored artwork in Daily and Thursday. */
+#champion-spotlight .arcade-game-marquee,
+#thursday-marquee-slot .arcade-game-marquee{
+  display:block;width:auto;max-width:min(100%,480px);
+  max-height:145px;height:auto;object-fit:contain;
+  margin:4px auto 12px;
+  filter:drop-shadow(0 0 11px rgba(255,46,189,.42));
+}
+@media(max-width:480px){
+  #champion-spotlight .arcade-game-marquee,
+  #thursday-marquee-slot .arcade-game-marquee{
+    max-width:100%;max-height:105px;margin-bottom:9px;
+  }
+}
