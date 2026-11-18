@@ -30,7 +30,7 @@ def add_event(events,kind,day,game_id,game,source,**extra):
     key=kind+':'+day
     item={'event_key':key,'kind':kind,'date':day,
           'game_id':str(game_id),'game':str(game),'schedule_source':source,
-          'participants':[],'champions':[],'unverified_candidates':[]}
+          'participants':[],'champions':[],'verified_results':[],'unverified_candidates':[]}
     item.update(extra)
     old=events.get(key)
     if old:
@@ -51,6 +51,11 @@ def verified_dates(events,ledger):
         if not event or not player or str(p.get('game_id'))!=event['game_id']:continue
         # The entry was expressly recorded in the permanent verified ledger.
         participation.add((key,player))
+        event['verified_results'].append({
+            'player':player,'role':'participant','score':p.get('score'),
+            'score_id':str(p.get('score_id') or ''),'verified':True,
+            'evidence_source':'verified-challenge-awards.json:verified_plays',
+        })
     champion_types={'thursday_champion':'thursday','daily_champion':'daily','gotm_champion':'monthly'}
     for a in ledger['awards']:
         if not isinstance(a,dict):continue
@@ -64,6 +69,12 @@ def verified_dates(events,ledger):
         # predates the unified format. This is a derived count, not a new award.
         champions.add((key,player))
         participation.add((key,player))
+        event['verified_results'].append({
+            'player':player,'role':'champion','score':a.get('score'),
+            'score_id':str(a.get('score_id') or ''),'verified':True,
+            'award_id':str(a.get('id') or ''),
+            'evidence_source':'verified-challenge-awards.json:awards',
+        })
     for key,player in sorted(participation):
         events[key]['participants'].append(player)
     for key,player in sorted(champions):
@@ -161,6 +172,7 @@ def build(daily_history,daily_live,thursday_state,thursday_winners,monthly_live,
             'player':player,'score_id':sid,'score':c.get('best_score'),
             'status':'ORIGINAL_SUBMISSION_TIME_NOT_VERIFIED'})
     for event in events.values():
+        event['verified_results'].sort(key=lambda x:(x['player'],x['role'],x['score_id']))
         event['unverified_candidates'].sort(key=lambda x:(x['player'],x['score_id']))
         event['verified_participant_count']=len(event['participants'])
         event['verified_champion_count']=len(event['champions'])
