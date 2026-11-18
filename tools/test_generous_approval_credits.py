@@ -91,8 +91,22 @@ class GenerousApprovalTests(unittest.TestCase):
         self.assertEqual(len(out['verified_plays']),3)
         self.assertTrue(all(a['gold_level'] is True and
                             a['starting_champion_score']==2000 for a in winners))
+        self.assertTrue(all(a['win_rule']=='strictly_greater_than_locked_starting_champion_score'
+                            for a in winners))
         self.assertEqual(len(report['new_championships']),2)
         self.assertTrue(changed)
+    def test_daily_gold_remembers_pre_event_snapshot_provenance(self):
+        rows=[row('A','DON',2500,'101601','2026-11-18 12:00:00')]
+        baselines={'2026-11-18':{'game_id':'101601','starting_champion_score':2000,
+            'observed_at':'2026-11-17T23:52:00-05:00',
+            'evidence':'pre_start_approved_iscored_score_snapshot'}}
+        out,_,_=self.scan(rows,days=daily('2026-11-18','101601'),
+            baselines=baselines)
+        award=next(a for a in out['awards'] if a['type']=='daily_champion')
+        self.assertEqual(award['starting_champion_observed_at'],
+                         '2026-11-17T23:52:00-05:00')
+        self.assertEqual(award['starting_champion_evidence'],
+                         'pre_start_approved_iscored_score_snapshot')
     def test_daily_late_second_winner_not_blocked_by_existing_gold_winner(self):
         rows=[row('A','RDG',3000,'101601','2026-11-18 12:00:00'),
               row('B','DON',2200,'101601','2026-11-19 07:00:00')]
