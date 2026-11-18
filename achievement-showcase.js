@@ -31,12 +31,12 @@
   add('gotm_champion','monthly','🌟','Game of the Month Champion',
       'Finish with the top qualifying score in the revealed monthly competition.','gotm_champion');
   add('monthly_average','monthly','🎯','Beat the Average',
-      'Beat the month’s locked average-based target.','monthly_average',0,'planned',
-      'Concept approved; separate achievement awarding is not active yet.');
+      'Exceed 75% of the featured game’s locked starting record with a qualifying approved score.',
+      'monthly_average',0,'live','The target is frozen at monthly launch. An exact tie does not beat it.');
   for(const [place,name,emoji] of [[1,'Monthly Gold','🥇'],[2,'Monthly Silver','🥈'],[3,'Monthly Bronze','🥉']]){
     add('monthly_podium_'+place,'monthly',emoji,name,
-      'Finish in '+(place===1?'first':place===2?'second':'third')+' place in a finalized Game of the Month.',
-      'monthly_podium',place,'planned','Monthly podium-specific trophy awarding is still planned.');
+      'Finish in '+(place===1?'first':place===2?'second':'third')+' place in the finalized Game of the Month. Tied players share a rank (1, 1, 3).',
+      'monthly_podium',place,'live','Based on highest qualifying approved score per player, after the approval grace period.');
   }
   const daily=[[5,'Getting Started'],[10,'Dedicated Challenger'],[25,'Champion Chaser'],[50,'Never Back Down']];
   const thursday=[[3,'Thursday Regular'],[5,'Thursday Devotee'],[10,'Thursday Veteran'],[25,'Thursday Legend']];
@@ -104,6 +104,10 @@
     const playerAwards=uniqueAwards(player);
     if(entry.kind==='daily_champion'||entry.kind==='thursday_champion'||entry.kind==='gotm_champion')
       return playerAwards.some(a=>a.type===entry.kind);
+    if(entry.kind==='monthly_average')
+      return playerAwards.some(a=>a.type==='gotm_beat_average');
+    if(entry.kind==='monthly_podium')
+      return playerAwards.some(a=>a.type==='gotm_podium_'+entry.threshold);
     if(entry.kind==='golden_encore')
       return playerAwards.some(a=>a.id==='golden_encore:'+player+':'+entry.threshold);
     if(entry.kind.endsWith('_participation')||entry.kind.endsWith('_streak'))
@@ -146,6 +150,8 @@
       const matches=uniqueAwards(selected).filter(a=>{
         if(entry.kind==='daily_champion'||entry.kind==='thursday_champion'||entry.kind==='gotm_champion')
           return a.type===entry.kind;
+        if(entry.kind==='monthly_average')return a.type==='gotm_beat_average';
+        if(entry.kind==='monthly_podium')return a.type==='gotm_podium_'+entry.threshold;
         return a.id===entry.id.replace(':',':'+selected+':');
       });
       const first=matches[0];
