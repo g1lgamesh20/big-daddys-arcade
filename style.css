@@ -470,3 +470,93 @@ body.achievement-showcase-open{overflow:hidden}
     max-width:100%;max-height:105px;margin-bottom:9px;
   }
 }
+
+/* iPhone friendly Hall of Achievements; remove expensive blurred compositor
+   while scrolling dozens of neon tiles. Keep the existing neon style. */
+#achievement-showcase-dialog.achievement-showcase-backdrop{
+  padding:calc(env(safe-area-inset-top,0px) + 18px) 10px
+          calc(env(safe-area-inset-bottom,0px) + 18px)!important;
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+  background:rgba(4,2,13,.96)!important;
+}
+#achievement-showcase-dialog .achievement-showcase-panel{
+  max-height:calc(100dvh - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px) - 36px)!important;
+  -webkit-overflow-scrolling:touch;
+  scroll-behavior:auto;
+  box-shadow:0 0 12px rgba(252,103,206,.24)!important;
+}
+#achievement-showcase-dialog .leaders-dialog-head{
+  position:sticky;top:-1px;z-index:5;
+  background:#180c2a;
+  padding:8px 2px 11px;
+  border-bottom:1px solid #664170;
+}
+#achievement-showcase-close{
+  display:flex;align-items:center;justify-content:center;
+  flex:0 0 52px;min-width:52px;min-height:52px;
+  padding:0;border:2px solid #ff84dd;border-radius:12px;
+  background:#310e38;color:white;font-size:26px;font-weight:900;
+  cursor:pointer;touch-action:manipulation;
+  box-shadow:0 0 9px rgba(252,103,206,.25);
+}
+#achievement-showcase-close:active{background:#74245c}
+#achievement-showcase-dialog .achievement-gallery-grid{
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,205px),1fr));
+  gap:8px;
+}
+#achievement-showcase-dialog .achievement-tile{
+  padding:0!important;overflow:hidden;
+  box-shadow:none!important;
+  background:#171229!important;
+}
+#achievement-showcase-dialog .achievement-tile-earned{
+  background:#1c3024!important;
+  box-shadow:none!important;
+}
+#achievement-showcase-dialog .achievement-tile-toggle{
+  display:flex;align-items:center;gap:9px;
+  width:100%;min-height:66px;text-align:left;padding:9px;
+  background:transparent;border:0;color:inherit;cursor:pointer;
+  font:inherit;touch-action:manipulation;
+}
+#achievement-showcase-dialog .achievement-tile-toggle:focus-visible{
+  outline:3px solid #aaff76;outline-offset:-3px;
+}
+#achievement-showcase-dialog .achievement-tile-toggle .achievement-tile-glyph{
+  flex:0 0 34px;text-align:center;font-size:27px;
+  filter:none;text-shadow:none;
+}
+#achievement-showcase-dialog .achievement-tile-toggle .achievement-tile-name{
+  margin:0;flex:1;font-size:13px;line-height:1.25;
+}
+#achievement-showcase-dialog .achievement-tile-toggle .achievement-tile-status{
+  font-size:9px;max-width:72px;text-align:center;
+}
+#achievement-showcase-dialog .achievement-tile-chevron{
+  color:#aaff76;font-size:19px;line-height:1;
+}
+#achievement-showcase-dialog .achievement-tile-expanded .achievement-tile-chevron{
+  transform:rotate(180deg);
+}
+#achievement-showcase-dialog .achievement-tile-details{
+  padding:0 12px 12px;border-top:1px solid #59426b;
+}
+#achievement-showcase-dialog .achievement-tile-details[hidden]{display:none!important}
+@media(max-width:470px){
+  #achievement-showcase-dialog .achievement-gallery-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));gap:7px
+  }
+  #achievement-showcase-dialog .achievement-tile-toggle{
+    flex-wrap:wrap;gap:4px;min-height:72px;padding:8px
+  }
+  #achievement-showcase-dialog .achievement-tile-toggle .achievement-tile-name{
+    flex:1 1 calc(100% - 54px);font-size:12px
+  }
+  #achievement-showcase-dialog .achievement-tile-toggle .achievement-tile-status{
+    order:3;margin-left:35px;max-width:none;font-size:8px
+  }
+  #achievement-showcase-dialog .achievement-tile-chevron{
+    order:4;margin-left:auto
+  }
+}
