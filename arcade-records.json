@@ -1,6 +1,28 @@
 {
-  "updated_at": "2026-11-18T13:10:19.207870+00:00",
+  "updated_at": "2026-11-18T18:03:05.399853+00:00",
   "records": [
+    {
+      "id": "387227",
+      "player": "DON",
+      "game": "Strider",
+      "game_id": "73962",
+      "score": 17200,
+      "date": "2026-11-18 10:28:11",
+      "rank": 1,
+      "medal": "gold",
+      "record_type": "new_first_place"
+    },
+    {
+      "id": "387226",
+      "player": "DON",
+      "game": "720 Degrees",
+      "game_id": "86253",
+      "score": 2020,
+      "date": "2026-11-18 10:20:56",
+      "rank": 1,
+      "medal": "gold",
+      "record_type": "new_first_place"
+    },
     {
       "id": "386318",
       "player": "DAY",

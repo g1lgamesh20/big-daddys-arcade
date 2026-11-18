@@ -1,6 +1,46 @@
 {
-  "updated_at": "2026-11-18T13:10:19.207870+00:00",
+  "updated_at": "2026-11-18T18:03:05.399853+00:00",
   "alerts": [
+    {
+      "id": "387301",
+      "player": "VJG",
+      "game": "Tempest",
+      "game_id": "50060",
+      "score": 15378,
+      "date": "2026-11-18 11:30:46",
+      "rank": 2,
+      "medal": "silver"
+    },
+    {
+      "id": "387227",
+      "player": "DON",
+      "game": "Strider",
+      "game_id": "73962",
+      "score": 17200,
+      "date": "2026-11-18 10:28:11",
+      "rank": 1,
+      "medal": "gold"
+    },
+    {
+      "id": "387226",
+      "player": "DON",
+      "game": "720 Degrees",
+      "game_id": "86253",
+      "score": 2020,
+      "date": "2026-11-18 10:20:56",
+      "rank": 1,
+      "medal": "gold"
+    },
+    {
+      "id": "386367",
+      "player": "VJG",
+      "game": "Major Havoc",
+      "game_id": "50237",
+      "score": 26003,
+      "date": "2026-11-18 09:58:29",
+      "rank": 2,
+      "medal": "silver"
+    },
     {
       "id": "386318",
       "player": "DAY",

@@ -1,15 +1,15 @@
 {
-  "updated_at": "2026-11-18T13:10:19.207870+00:00",
+  "updated_at": "2026-11-18T18:03:05.399853+00:00",
   "source": "iScored public read API",
   "scoring_note": "PAPA-style estimate: top 1000 games per player; one best score per player per game; competition ties. iScored may handle ties differently.",
   "standings": [
     {
       "player": "DON",
-      "points": 20932,
-      "games": 214,
-      "gold": 174,
-      "silver": 27,
-      "bronze": 11
+      "points": 21127,
+      "games": 216,
+      "gold": 176,
+      "silver": 26,
+      "bronze": 12
     },
     {
       "player": "SPC",
@@ -53,10 +53,10 @@
     },
     {
       "player": "VJG",
-      "points": 1565,
-      "games": 17,
+      "points": 1745,
+      "games": 19,
       "gold": 6,
-      "silver": 7,
+      "silver": 9,
       "bronze": 0
     },
     {
@@ -141,6 +141,15 @@
       "score": 70800,
       "date": "2024-01-19 18:09:31",
       "score_id": "74149",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "720 Degrees",
+      "game_id": "86253",
+      "score": 2020,
+      "date": "2026-11-18 10:20:56",
+      "score_id": "387226",
       "rank": 1
     },
     {
@@ -2089,6 +2098,15 @@
     },
     {
       "player": "DON",
+      "game": "Strider",
+      "game_id": "73962",
+      "score": 17200,
+      "date": "2026-11-18 10:28:11",
+      "score_id": "387227",
+      "rank": 1
+    },
+    {
+      "player": "DON",
       "game": "STUN Runner",
       "game_id": "50169",
       "score": 89165,
@@ -2530,6 +2548,16 @@
       "score": 70800,
       "date": "2024-01-19 18:09:31",
       "score_id": "74149",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "DON",
+      "game": "720 Degrees",
+      "game_id": "86253",
+      "score": 2020,
+      "date": "2026-11-18 10:20:56",
+      "score_id": "387226",
       "rank": 1
     },
     {
@@ -3703,14 +3731,40 @@
       "rank": 1
     },
     {
-      "kind": "champion",
-      "player": "DAY",
-      "game": "IRON MAN",
-      "game_id": "101612",
-      "score": 570000,
-      "date": "2026-11-05 20:59:37",
-      "score_id": "380765",
-      "rank": 1
+      "kind": "recent",
+      "player": "VJG",
+      "game": "Tempest",
+      "game_id": "50060",
+      "score": 15378,
+      "date": "2026-11-18 11:30:46",
+      "score_id": "387301"
+    },
+    {
+      "kind": "recent",
+      "player": "DON",
+      "game": "Strider",
+      "game_id": "73962",
+      "score": 17200,
+      "date": "2026-11-18 10:28:11",
+      "score_id": "387227"
+    },
+    {
+      "kind": "recent",
+      "player": "DON",
+      "game": "720 Degrees",
+      "game_id": "86253",
+      "score": 2020,
+      "date": "2026-11-18 10:20:56",
+      "score_id": "387226"
+    },
+    {
+      "kind": "recent",
+      "player": "VJG",
+      "game": "Major Havoc",
+      "game_id": "50237",
+      "score": 26003,
+      "date": "2026-11-18 09:58:29",
+      "score_id": "386367"
     },
     {
       "kind": "recent",
@@ -3783,44 +3837,8 @@
       "score": 55220,
       "date": "2026-11-12 23:01:38",
       "score_id": "384450"
-    },
-    {
-      "kind": "recent",
-      "player": "POD",
-      "game": "Bosconian",
-      "game_id": "112913",
-      "score": 12660,
-      "date": "2026-11-12 23:01:34",
-      "score_id": "384472"
-    },
-    {
-      "kind": "recent",
-      "player": "FO",
-      "game": "Tesla",
-      "game_id": "113220",
-      "score": 684300,
-      "date": "2026-11-12 22:06:01",
-      "score_id": "384430"
-    },
-    {
-      "kind": "recent",
-      "player": "FO",
-      "game": "E.T.",
-      "game_id": "113221",
-      "score": 2096000,
-      "date": "2026-11-12 22:05:54",
-      "score_id": "384432"
-    },
-    {
-      "kind": "recent",
-      "player": "RDG",
-      "game": "SUPER BREAKOUT",
-      "game_id": "112566",
-      "score": 131,
-      "date": "2026-11-12 22:05:47",
-      "score_id": "384433"
     }
   ],
-  "total_games": 260,
+  "total_games": 262,
   "total_players": 15
 }
