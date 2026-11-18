@@ -124,40 +124,60 @@
     const won=Boolean(selected)&&unlocked(selected,entry);
     const planned=entry.status==='planned';
     const tile=el('article','achievement-tile'+(won?' achievement-tile-earned':'')+(planned?' achievement-tile-planned':''));
-    const upper=el('div','achievement-tile-top');
-    const glyph=el('span','achievement-tile-glyph',entry.emoji);glyph.setAttribute('aria-hidden','true');
+    // Compact by default: no descriptions, progress bars or notes are
+    // mounted until the player actually taps an achievement.
+    const toggle=el('button','achievement-tile-toggle');
+    toggle.type='button';
+    toggle.setAttribute('aria-expanded','false');
+    toggle.setAttribute('aria-label','Show how to earn '+entry.name);
+    const glyph=el('span','achievement-tile-glyph',entry.emoji);
+    glyph.setAttribute('aria-hidden','true');
+    const title=el('span','achievement-tile-name',entry.name);
     const status=el('span','achievement-tile-status',planned?'COMING SOON':won?'★ UNLOCKED':'🔒 LOCKED');
-    upper.append(glyph,status);
-    const title=el('h4','achievement-tile-name',entry.name);
-    const desc=el('p','achievement-tile-desc',entry.description);
-    tile.append(upper,title,desc);
-    if(entry.threshold && !planned && (entry.kind==='golden_encore' || entry.kind.endsWith('_participation') || entry.kind.endsWith('_streak'))){
-      const n=selected?progress(selected,entry):0;
-      const line=el('p','achievement-tile-progress',
-        selected?'PROGRESS: '+Math.min(n,entry.threshold)+' / '+entry.threshold:'SELECT A PLAYER TO SEE PROGRESS');
-      tile.append(line);
-      if(selected){
-        const bar=el('div','achievement-tile-track');
-        bar.setAttribute('role','progressbar');bar.setAttribute('aria-label',entry.name+' progress');
-        bar.setAttribute('aria-valuemin','0');bar.setAttribute('aria-valuemax',String(entry.threshold));
-        bar.setAttribute('aria-valuenow',String(Math.min(n,entry.threshold)));
-        const fill=el('div','achievement-tile-fill');
-        fill.style.width=(Math.min(100,100*n/entry.threshold))+'%';
-        bar.append(fill);tile.append(bar);
+    const chevron=el('span','achievement-tile-chevron','⌄');
+    chevron.setAttribute('aria-hidden','true');
+    toggle.append(glyph,title,status,chevron);
+    const detail=el('div','achievement-tile-details');
+    detail.hidden=true;
+    toggle.addEventListener('click',()=>{
+      const expanding=detail.hidden;
+      if(expanding&&!detail.dataset.built){
+        detail.append(el('p','achievement-tile-desc',entry.description));
+        if(entry.threshold&&!planned&&(entry.kind==='golden_encore'||entry.kind.endsWith('_participation')||entry.kind.endsWith('_streak'))){
+          const n=selected?progress(selected,entry):0;
+          detail.append(el('p','achievement-tile-progress',
+            selected?'PROGRESS: '+Math.min(n,entry.threshold)+' / '+entry.threshold:'SELECT A PLAYER TO SEE PROGRESS'));
+          if(selected){
+            const bar=el('div','achievement-tile-track');
+            bar.setAttribute('role','progressbar');
+            bar.setAttribute('aria-label',entry.name+' progress');
+            bar.setAttribute('aria-valuemin','0');
+            bar.setAttribute('aria-valuemax',String(entry.threshold));
+            bar.setAttribute('aria-valuenow',String(Math.min(n,entry.threshold)));
+            const fill=el('div','achievement-tile-fill');
+            fill.style.width=(Math.min(100,100*n/entry.threshold))+'%';
+            bar.append(fill);detail.append(bar);
+          }
+        }
+        if(won){
+          const matches=uniqueAwards(selected).filter(a=>{
+            if(entry.kind==='daily_champion'||entry.kind==='thursday_champion'||entry.kind==='gotm_champion')
+              return a.type===entry.kind;
+            if(entry.kind==='monthly_average')return a.type==='gotm_beat_average';
+            if(entry.kind==='monthly_podium')return a.type==='gotm_podium_'+entry.threshold;
+            return a.id===entry.id.replace(':',':'+selected+':');
+          });
+          if(matches[0]?.date)detail.append(el('p','achievement-tile-earned-date','EARNED '+matches[0].date));
+        }
+        if(entry.note)detail.append(el('p','achievement-tile-note',entry.note));
+        detail.dataset.built='yes';
       }
-    }
-    if(won){
-      const matches=uniqueAwards(selected).filter(a=>{
-        if(entry.kind==='daily_champion'||entry.kind==='thursday_champion'||entry.kind==='gotm_champion')
-          return a.type===entry.kind;
-        if(entry.kind==='monthly_average')return a.type==='gotm_beat_average';
-        if(entry.kind==='monthly_podium')return a.type==='gotm_podium_'+entry.threshold;
-        return a.id===entry.id.replace(':',':'+selected+':');
-      });
-      const first=matches[0];
-      if(first?.date)tile.append(el('p','achievement-tile-earned-date','EARNED '+first.date));
-    }
-    if(entry.note)tile.append(el('p','achievement-tile-note',entry.note));
+      detail.hidden=!expanding;
+      toggle.setAttribute('aria-expanded',String(expanding));
+      toggle.setAttribute('aria-label',(expanding?'Hide details for ':'Show how to earn ')+entry.name);
+      tile.classList.toggle('achievement-tile-expanded',expanding);
+    });
+    tile.append(toggle,detail);
     return tile;
   }
   function drawFilters(){
