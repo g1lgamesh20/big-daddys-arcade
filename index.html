@@ -1,4 +1,4 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#080509"><meta name="description" content="Big Daddy's Arcade: Hall of Legends — submit arcade high scores with photo proof to iScored."><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="Hall of Legends"><link rel="apple-touch-icon" href="assets/icon-192.png"><link rel="manifest" href="manifest.webmanifest"><title>BIG DADDY'S ARCADE — HALL OF LEGENDS</title><link rel="stylesheet" href="style.css?v=iscored-marquee-20261118">
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#080509"><meta name="description" content="Big Daddy's Arcade: Hall of Legends — submit arcade high scores with photo proof to iScored."><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="Hall of Legends"><link rel="apple-touch-icon" href="assets/icon-192.png"><link rel="manifest" href="manifest.webmanifest"><title>BIG DADDY'S ARCADE — HALL OF LEGENDS</title><link rel="stylesheet" href="style.css?v=daily-thursday-marquees-20261118">
 <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
 <script>
   window.OneSignalDeferred = window.OneSignalDeferred || [];
@@ -239,6 +239,7 @@
 <summary><span class="thursday-challenge-kicker">★ WEEKLY FEATURED GAME ★</span><span class="thursday-challenge-heading">🏆 THURSDAY ARCADE CHALLENGE</span><span class="thursday-challenge-teaser" id="thursday-challenge-teaser">TAP TO SEE THIS WEEK'S CHALLENGE ▾</span></summary>
 <div class="thursday-challenge-body">
 <div class="thursday-challenge-date" id="thursday-challenge-date">LOADING CHALLENGE…</div>
+<div id="thursday-marquee-slot"></div>
 <div class="thursday-challenge-game" id="thursday-challenge-game">LOADING LIVE SCORES…</div>
 <div class="thursday-challenge-champ" id="thursday-challenge-champ"></div>
 <div class="thursday-challenge-score" id="thursday-challenge-score"></div>
@@ -525,7 +526,7 @@ See you on the leaderboard! 🏆`;
  });
 })();
 </script>
-<script src="script.js?v=daily-champion-gold-20261118"></script><script>
+<script src="script.js?v=daily-thursday-marquees-20261118"></script><script>
 /* Celebrate only newly published medals after an initial baseline. No score writes. */
 (() => {
  const overlay=document.getElementById('arcade-celebrate');
@@ -596,7 +597,8 @@ See you on the leaderboard! 🏆`;
 /* Thursday Challenge: server-selected game, Thursday-only results and champion. */
 (() => {
  const get=id=>document.getElementById(id);
- const game=get('thursday-challenge-game'),date=get('thursday-challenge-date'),champ=get('thursday-challenge-champ'),score=get('thursday-challenge-score'),note=get('thursday-challenge-note'),teaser=get('thursday-challenge-teaser');
+ const game=get('thursday-challenge-game'),date=get('thursday-challenge-date'),champ=get('thursday-challenge-champ'),score=get('thursday-challenge-score'),note=get('thursday-challenge-note'),teaser=get('thursday-challenge-teaser'),marqueeSlot=get('thursday-marquee-slot');
+ let visibleGameId='';
  if(!game)return;
  async function refresh(){
   try{
@@ -604,6 +606,20 @@ See you on the leaderboard! 🏆`;
    if(!r.ok)throw Error('Challenge feed not yet published');
    const d=await r.json();
    window.arcadeThursdayChampion=d;
+   // The public Thursday feed already identifies the selected game.
+   // No artwork dependency: if iScored has no logo, keep the text title.
+   const id=String(d.game_id||'');
+   if(marqueeSlot&&id!==visibleGameId){
+     visibleGameId=id;marqueeSlot.replaceChildren();
+     if(/^\d{1,12}$/.test(id)){
+       const img=document.createElement('img');
+       img.className='arcade-game-marquee';img.loading='lazy';img.decoding='async';
+       img.alt=String(d.game||'Featured Thursday game')+' arcade marquee';
+       img.referrerPolicy='no-referrer';img.onerror=()=>img.remove();
+       img.src='https://www.iscored.info/images/games/game'+id;
+       marqueeSlot.append(img);
+     }
+   }
    game.textContent=d.game.toUpperCase();
    date.textContent='★ THURSDAY '+d.thursday_date+' • 11:59 PM ET CUTOFF ★';
    if(d.status==='final'){
