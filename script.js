@@ -334,8 +334,11 @@ document.addEventListener('keydown',e=>{if(leadersDialog.hidden||!document.query
       marquee.className='arcade-game-marquee';
       marquee.alt=String(game)+' arcade marquee';
       marquee.loading='lazy';marquee.decoding='async';
-      marquee.referrerPolicy='no-referrer';
-      marquee.onerror=()=>marquee.remove();
+      let alternate=false;
+      marquee.onerror=()=>{
+        if(!alternate){alternate=true;marquee.src='https://www.iscored.info/community/images/games/game'+day.game_id;}
+        else marquee.remove();
+      };
       marquee.src='https://www.iscored.info/images/games/game'+day.game_id;
       target.append(marquee);
     }
