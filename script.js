@@ -6,7 +6,8 @@
   const spotlight=document.querySelector('#player-spotlight');
   const close=document.querySelector('#player-close');
   const seeAll=document.querySelector('#player-see-all');
-  let players=[], victories={}, gotmWins={}, verifiedAwards={}, selected='', previousFocus=null;
+  let players=[], victories={}, gotmWins={}, verifiedAwards={}, dailyCounts={}, selected='', previousFocus=null;
+  const dailyMilestones=[[5,'Getting Started'],[10,'Dedicated Challenger'],[25,'Champion Chaser'],[50,'Never Back Down']];
   const dateET=()=>new Intl.DateTimeFormat('en-CA',{timeZone:'America/New_York',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
   function makeCard(p){
     const card=document.createElement('article');card.className='player-stat-card';
@@ -19,6 +20,36 @@
       const text=document.createElement('span');text.textContent=label;item.append(number,text);stats.append(item);
     }
     card.append(stats);
+    const dailyTotal=dailyCounts[p.player]||0;
+    const target=dailyMilestones.find(([goal])=>dailyTotal<goal);
+    const progress=document.createElement('section');
+    progress.setAttribute('aria-label','Beat the Champion verified Daily participation');
+    progress.style.cssText='margin:12px 0;padding:12px;border:1px solid #fc78d5;border-radius:10px;background:rgba(30,8,44,.8);text-align:left';
+    const progressTitle=document.createElement('strong');
+    progressTitle.textContent='🎮 DAILY CHALLENGES • '+dailyTotal+' VERIFIED DAYS';
+    progressTitle.style.cssText='color:#ffb7e9;font-size:12px;display:block;margin-bottom:5px';
+    progress.append(progressTitle);
+    const progressDesc=document.createElement('p');
+    progressDesc.style.cssText='font-size:12px;color:#d9edff;margin:4px 0 8px';
+    progressDesc.textContent=target?'NEXT TROPHY: '+target[1]+' • '+dailyTotal+' / '+target[0]:'ALL CURRENT DAILY PARTICIPATION MILESTONES UNLOCKED!';
+    progress.append(progressDesc);
+    if(target){
+      const bar=document.createElement('div');
+      bar.setAttribute('role','progressbar');
+      bar.setAttribute('aria-label','Verified Daily challenges towards next milestone');
+      bar.setAttribute('aria-valuemin','0');
+      bar.setAttribute('aria-valuemax',String(target[0]));
+      bar.setAttribute('aria-valuenow',String(dailyTotal));
+      bar.style.cssText='width:100%;height:10px;border-radius:10px;overflow:hidden;background:#3d3056';
+      const fill=document.createElement('div');
+      fill.style.cssText='height:100%;border-radius:10px;background:linear-gradient(90deg,#a9fc6e,#ff66cc);width:'+Math.min(100,100*dailyTotal/target[0])+'%';
+      bar.append(fill);progress.append(bar);
+    }
+    const progressHint=document.createElement('p');
+    progressHint.style.cssText='font-size:10px;color:#c2bbd1;margin:7px 0 0';
+    progressHint.textContent='One credit per verified challenge day. Unverified submissions do not count.';
+    progress.append(progressHint);
+    card.append(progress);
     const earned=verifiedAwards[p.player]||[];
     const section=document.createElement('section');
     section.className='player-verified-trophies';
@@ -110,7 +141,7 @@
     if(!res.ok)return;
     const data=await res.json();
     if(data.schema_version!==1||!Array.isArray(data.awards))return;
-    const counts={}, monthly={}, detail={}, seen=new Set();
+    const counts={}, monthly={}, detail={}, seen=new Set(), dailyDays={};
     for(const award of data.awards){
       if(!award||typeof award.id!=='string'||!award.id.trim()
           ||typeof award.player!=='string'||!award.player.trim()
@@ -122,6 +153,18 @@
       if(award.type==='gotm_champion')monthly[player]=(monthly[player]||0)+1;
       (detail[player]||(detail[player]=[])).push(award);
     }
+    // Count only verified Daily participation days from the immutable evidence ledger.
+    if(Array.isArray(data.verified_plays)){
+      for(const play of data.verified_plays){
+        if(!play||play.kind!=='daily'||typeof play.player!=='string'
+          ||typeof play.date!=='string'||!/^20\d{2}-\d{2}-\d{2}$/.test(play.date)
+          ||typeof play.event_key!=='string'||!play.event_key.startsWith('daily:'))continue;
+        const player=play.player.trim().toUpperCase();
+        if(!player)continue;
+        (dailyDays[player]||(dailyDays[player]=new Set())).add(play.date);
+      }
+    }
+    dailyCounts=Object.fromEntries(Object.entries(dailyDays).map(([player,days])=>[player,days.size]));
     for(const earned of Object.values(detail))earned.sort((a,b)=>b.date.localeCompare(a.date)||a.id.localeCompare(b.id));
     victories=counts;gotmWins=monthly;verifiedAwards=detail;
     featured();if(!dialog.hidden)showPlayer(selected);
