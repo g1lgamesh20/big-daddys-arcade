@@ -8,6 +8,7 @@ No push notifications or medal events are emitted.
 import json,os,re
 from datetime import datetime,timezone
 from pathlib import Path
+from unified_milestone_awards import issue as issue_cross_challenge_milestones
 
 ROOT=Path(__file__).resolve().parents[1]
 PENDING=ROOT/'challenge-award-candidates.json'
@@ -112,6 +113,7 @@ def approve(pending, winner_archive, ledger, *, kind, event_date, player, score_
             'game':c['game'],'score':c['best_score'],'score_id':score_id.strip(),
             'verified_at':now.isoformat(),'trophy_issued':False})
         issue_daily_milestones(ledger,player,now)
+    issue_cross_challenge_milestones(ledger,now)
     ledger['awards'].sort(key=lambda a:(a['date'],a['id']))
     ledger['verified_plays'].sort(key=lambda a:(a['date'],a['event_key']))
     return ledger,True
