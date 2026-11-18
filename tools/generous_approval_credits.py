@@ -19,6 +19,7 @@ from unified_milestone_awards import issue as issue_other_milestones
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/'verified-challenge-awards.json'
 AUDIT=ROOT/'approval-window-credit-report.json'
+BASELINES=ROOT/'daily-champion-baselines.json'
 NY=ZoneInfo('America/New_York')
 # Observed Nov 18 API timestamps were one hour behind ET; Central is a
 # *working assumption*, NOT a proven iScored timezone contract.
@@ -45,7 +46,7 @@ def approval_time(raw):
     if dt.tzinfo is None:dt=dt.replace(tzinfo=SOURCE)
     return dt.astimezone(NY)
 
-def scheduled(daily_archive,daily_live,thursday_state,monthly_public):
+def scheduled(daily_archive,daily_live,thursday_state,monthly_public,baselines=None):
     events={}
     for packet in (daily_archive,daily_live):
         for entry in packet.get('days',[]):
@@ -57,8 +58,13 @@ def scheduled(daily_archive,daily_live,thursday_state,monthly_public):
             except ValueError:continue
             if (old:=events.get(('daily',day))) and old['game_id']!=gid:
                 raise ValueError('Daily game selection changed: '+day)
-            events[('daily',day)]={'game_id':gid,'game':str(entry.get('game') or ''),
-                'starting_champion_score':entry.get('starting_champion_score')}
+            previous=events.get(('daily',day),{})
+            locked=(baselines or {}).get(day,{})
+            baseline=(entry.get('starting_champion_score')
+                     if type(entry.get('starting_champion_score')) is int
+                     else locked.get('starting_champion_score') if locked.get('game_id')==gid else None)
+            events[('daily',day)]={'game_id':gid,'game':str(entry.get('game') or previous.get('game') or ''),
+                'starting_champion_score':baseline}
     for day,entry in thursday_state.get('weeks',{}).items():
         if day<START['thursday'] or not isinstance(entry,dict):continue
         gid=str(entry.get('game_id') or '')
@@ -77,6 +83,36 @@ def scheduled(daily_archive,daily_live,thursday_state,monthly_public):
             else:events[('monthly',month+'-01')]={'game_id':gid,
                     'game':str(monthly_public.get('game') or '')}
     return events
+
+def capture_daily_baselines(rows,archive,live,previous,now):
+    """Snapshot tomorrow's starting champion BEFORE midnight, never retroactively.
+
+    Repeat pre-midnight snapshots to get the latest available approved #1.
+    Existing days are frozen when their local start passes. No secret games.
+    """
+    out=json.loads(json.dumps(previous))
+    for (kind,day),event in scheduled(archive,live,{'weeks':{}},{},{}).items():
+        if kind!='daily':continue
+        begin=datetime.strptime(day,'%Y-%m-%d').replace(tzinfo=NY)
+        if not now.astimezone(NY)<begin:continue
+        gid=event['game_id']
+        eligible=[]
+        for row in rows:
+            if not isinstance(row,dict) or str(row.get('game') or '')!=gid:continue
+            when=approval_time(row.get('date'))
+            if when is None or when>now.astimezone(NY) or when>=begin:continue
+            try:score=int(row.get('score'))
+            except (TypeError,ValueError):continue
+            if score<0 or isinstance(row.get('score'),bool):continue
+            eligible.append(score)
+        if not eligible:continue
+        existing=out.get(day)
+        if existing and existing.get('game_id')!=gid:
+            raise ValueError('Daily baseline game changed: '+day)
+        out[day]={'game_id':gid,'starting_champion_score':max(eligible),
+                  'observed_at':now.isoformat(),
+                  'evidence':'pre_start_approved_iscored_score_snapshot'}
+    return out
 
 def interval(kind,day):
     begin=datetime.strptime(day,'%Y-%m-%d').replace(tzinfo=NY)
@@ -119,10 +155,10 @@ def candidates(rows,events,now):
                     by_event[key]=item
     return by_event,invalid
 
-def process(rows,daily_archive,daily_live,thursday_state,monthly_public,ledger,now,enabled=False):
+def process(rows,daily_archive,daily_live,thursday_state,monthly_public,ledger,now,enabled=False,baselines=None):
     if ledger.get('schema_version')!=1 or not isinstance(ledger.get('verified_plays'),list) or not isinstance(ledger.get('awards'),list):
         raise ValueError('Invalid official verified ledger')
-    events=scheduled(daily_archive,daily_live,thursday_state,monthly_public)
+    events=scheduled(daily_archive,daily_live,thursday_state,monthly_public,baselines)
     matched,invalid=candidates(rows,events,now)
     proposed=[]
     for (kind,day,player),c in sorted(matched.items()):
@@ -200,12 +236,20 @@ def main():
     from thursday_challenge import fetch
     enabled=os.environ.get('GENEROUS_CREDIT_ENABLED','false').strip().lower()=='true'
     ledger=load('verified-challenge-awards.json',{'schema_version':1,'awards':[],'verified_plays':[]})
-    result,report,changed=process(fetch(),
-      load('daily-champion-history.json',{'days':[]}),
-      load('daily-champion.json',{'days':[]}),
+    rows=fetch()
+    archive=load('daily-champion-history.json',{'days':[]})
+    live=load('daily-champion.json',{'days':[]})
+    now=datetime.now(timezone.utc)
+    previous_baselines=load('daily-champion-baselines.json',{})
+    baselines=capture_daily_baselines(rows,archive,live,previous_baselines,now)
+    if baselines!=previous_baselines:
+        BASELINES.write_text(json.dumps(baselines,indent=2)+'\\n',encoding='utf-8')
+    result,report,changed=process(rows,
+      archive,
+      live,
       load('thursday-challenge-state.json',{'weeks':{}}),
       load('monthly-challenge-live.json',{}),
-      ledger,datetime.now(timezone.utc),enabled=enabled)
+      ledger,now,enabled=enabled,baselines=baselines)
     AUDIT.write_text(json.dumps(report,indent=2,ensure_ascii=False)+'\n',encoding='utf-8')
     if changed:
         OUT.write_text(json.dumps(result,indent=2,ensure_ascii=False)+'\n',encoding='utf-8')
