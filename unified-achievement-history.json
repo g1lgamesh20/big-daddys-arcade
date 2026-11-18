@@ -1,0 +1,140 @@
+{
+  "schema_version": 1,
+  "timezone": "America/New_York",
+  "official_start": {
+    "daily": "2026-11-16",
+    "thursday": "2026-11-12",
+    "monthly": "2026-12-01"
+  },
+  "mode": "READ_ONLY_PROJECTION_FROM_PERMANENT_VERIFIED_LEDGER",
+  "rules": {
+    "one_participation_per_player_per_event": true,
+    "championship_implies_participation": true,
+    "unverified_candidates_count_as_zero": true,
+    "api_approval_time_never_proves_submitted_before_midnight": true,
+    "no_awards_or_push_sent_by_this_builder": true
+  },
+  "events": [
+    {
+      "event_key": "thursday:2026-11-12",
+      "kind": "thursday",
+      "date": "2026-11-12",
+      "game_id": "112913",
+      "game": "Bosconian",
+      "schedule_source": "thursday-challenge-state.json",
+      "participants": [
+        "RDG"
+      ],
+      "champions": [
+        "RDG"
+      ],
+      "unverified_candidates": [
+        {
+          "player": "DAY",
+          "score_id": "384386",
+          "score": 13150,
+          "status": "ORIGINAL_SUBMISSION_TIME_NOT_VERIFIED"
+        },
+        {
+          "player": "DON",
+          "score_id": "384377",
+          "score": 45110,
+          "status": "ORIGINAL_SUBMISSION_TIME_NOT_VERIFIED"
+        },
+        {
+          "player": "FO",
+          "score_id": "384436",
+          "score": 24170,
+          "status": "ORIGINAL_SUBMISSION_TIME_NOT_VERIFIED"
+        },
+        {
+          "player": "POD",
+          "score_id": "384472",
+          "score": 12660,
+          "status": "ORIGINAL_SUBMISSION_TIME_NOT_VERIFIED"
+        },
+        {
+          "player": "SPC",
+          "score_id": "384385",
+          "score": 42770,
+          "status": "ORIGINAL_SUBMISSION_TIME_NOT_VERIFIED"
+        }
+      ],
+      "result_status": "final",
+      "archived_winner_unverified_by_this_report": "RDG",
+      "verified_participant_count": 1,
+      "verified_champion_count": 1
+    },
+    {
+      "event_key": "daily:2026-11-16",
+      "kind": "daily",
+      "date": "2026-11-16",
+      "game_id": "50354",
+      "game": "World Class Bowling",
+      "schedule_source": "daily-champion-history.json",
+      "participants": [],
+      "champions": [],
+      "unverified_candidates": [],
+      "verified_participant_count": 0,
+      "verified_champion_count": 0
+    },
+    {
+      "event_key": "daily:2026-11-17",
+      "kind": "daily",
+      "date": "2026-11-17",
+      "game_id": "86751",
+      "game": "Wolverine",
+      "schedule_source": "daily-champion-history.json",
+      "participants": [],
+      "champions": [],
+      "unverified_candidates": [],
+      "verified_participant_count": 0,
+      "verified_champion_count": 0
+    },
+    {
+      "event_key": "daily:2026-11-18",
+      "kind": "daily",
+      "date": "2026-11-18",
+      "game_id": "101601",
+      "game": "Food Fight",
+      "schedule_source": "daily-champion-history.json",
+      "participants": [],
+      "champions": [],
+      "unverified_candidates": [],
+      "verified_participant_count": 0,
+      "verified_champion_count": 0
+    },
+    {
+      "event_key": "daily:2026-11-19",
+      "kind": "daily",
+      "date": "2026-11-19",
+      "game_id": "50042",
+      "game": "Ghosts 'n Goblins",
+      "schedule_source": "daily-champion.json",
+      "participants": [],
+      "champions": [],
+      "unverified_candidates": [],
+      "verified_participant_count": 0,
+      "verified_champion_count": 0
+    }
+  ],
+  "players": {
+    "RDG": {
+      "participation": {
+        "daily": 0,
+        "thursday": 1,
+        "monthly": 0
+      },
+      "championships": {
+        "daily": 0,
+        "thursday": 1,
+        "monthly": 0
+      },
+      "longest_verified_streaks": {
+        "daily": 0,
+        "thursday": 1,
+        "monthly": 0
+      }
+    }
+  }
+}
