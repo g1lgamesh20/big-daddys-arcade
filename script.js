@@ -120,7 +120,8 @@
         ['Thursday Champions',a=>a.type==='thursday_champion'],
         ['Daily Challenges',a=>String(a.type||'').startsWith('daily_')],
         ['Game of the Month',a=>String(a.type||'').startsWith('gotm_')||String(a.type||'').startsWith('monthly_')],
-        ['Other Achievements',a=>!['thursday_champion'].includes(a.type)&&!String(a.type||'').startsWith('daily_')&&!String(a.type||'').startsWith('gotm_')&&!String(a.type||'').startsWith('monthly_')]
+        ['Gold Mastery',a=>a.type==='golden_encore_milestone'],
+        ['Other Achievements',a=>!['thursday_champion','golden_encore_milestone'].includes(a.type)&&!String(a.type||'').startsWith('daily_')&&!String(a.type||'').startsWith('gotm_')&&!String(a.type||'').startsWith('monthly_')]
       ];
       for(const [heading,belongs] of categories){
         const entries=earned.filter(belongs);

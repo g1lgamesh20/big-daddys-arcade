@@ -13,7 +13,7 @@ def payload(rows):
 def run_case():
     with tempfile.TemporaryDirectory() as d:
         root = Path(d)
-        with patch.object(mod, 'OUTPUT', root / 'legends.json'), patch.object(mod, 'STATE', root / 'medal-state.json'), patch.object(mod, 'FEED', root / 'medals.json'):
+        with patch.object(mod, 'OUTPUT', root / 'legends.json'), patch.object(mod, 'STATE', root / 'medal-state.json'), patch.object(mod, 'FEED', root / 'medals.json'), patch('golden_encore.sync', return_value=[]):
             current = payload([(1,'A',1000),(2,'B',900),(3,'C',800),(4,'D',700)])
             class Response:
                 status = 200
