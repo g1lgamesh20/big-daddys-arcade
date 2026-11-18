@@ -5,7 +5,7 @@ import unittest
 from datetime import datetime,timezone,timedelta
 from unified_milestone_awards import awards_due,issue,activity
 
-NOW=datetime(2026,11,18,tzinfo=timezone.utc)
+NOW=datetime(2027,7,18,tzinfo=timezone.utc)
 def empty():return {'schema_version':1,'awards':[],'verified_plays':[]}
 
 def add_day(ledger,kind,day,player='DON',game='101601'):
@@ -65,6 +65,12 @@ class MilestoneTest(unittest.TestCase):
   self.assertNotIn(('RDG','monthly'),activity(ledger))
   ledger['awards'][0]['event_month']='2026-12'
   self.assertEqual({d.isoformat() for d in activity(ledger)[('RDG','monthly')]},{'2026-12-01'})
+ def test_future_dated_verified_entry_cannot_unlock_early(self):
+  ledger=empty()
+  for day in ('2026-11-16','2026-11-17','2026-11-18'):
+   add_day(ledger,'daily',day)
+  self.assertEqual(awards_due(ledger,datetime(2026,11,17,tzinfo=timezone.utc)),[])
+
  def test_candidate_scores_cannot_issue_rewards(self):
   ledger=empty();ledger['candidates']=[{'kind':'thursday','player':'DON','date':'2026-11-12'}]
   self.assertEqual(awards_due(ledger,NOW),[])
