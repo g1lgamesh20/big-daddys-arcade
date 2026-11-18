@@ -66,7 +66,9 @@ def scheduled(daily_archive,daily_live,thursday_state,monthly_public,baselines=N
                      else locked.get('starting_champion_score') if locked.get('game_id')==gid
                      else previous.get('starting_champion_score'))
             events[('daily',day)]={'game_id':gid,'game':str(entry.get('game') or previous.get('game') or ''),
-                'starting_champion_score':baseline}
+                'starting_champion_score':baseline,
+                'starting_champion_observed_at':locked.get('observed_at') if locked.get('game_id')==gid else previous.get('starting_champion_observed_at'),
+                'starting_champion_evidence':locked.get('evidence') if locked.get('game_id')==gid else previous.get('starting_champion_evidence')}
     for day,entry in thursday_state.get('weeks',{}).items():
         if day<START['thursday'] or not isinstance(entry,dict):continue
         gid=str(entry.get('game_id') or '')
@@ -271,6 +273,10 @@ def process(rows,daily_archive,daily_live,thursday_state,monthly_public,ledger,n
                'verified_at':now.isoformat(),'verification_method':'approved_iscored_score_with_24h_generous_grace'}
             if kind=='daily':
                 award['starting_champion_score']=baseline
+                if ev.get('starting_champion_observed_at'):
+                    award['starting_champion_observed_at']=ev['starting_champion_observed_at']
+                if ev.get('starting_champion_evidence'):
+                    award['starting_champion_evidence']=ev['starting_champion_evidence']
                 award['gold_level']=True
                 award['win_rule']='strictly_greater_than_locked_starting_champion_score'
             if kind=='monthly':award['event_month']=day[:7]
