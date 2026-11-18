@@ -603,3 +603,121 @@ async function arcadeSubmitTrash(){
  function open(id=null){close();selectedDelete=id;dialog=document.createElement('div');dialog.className='arcade-community-dialog';dialog.setAttribute('role','dialog');dialog.setAttribute('aria-modal','true');const box=document.createElement('div');box.className='arcade-community-modal';const heading=document.createElement('h3');heading.textContent=id?'DELETE YOUR MESSAGE':'👾 TRASH TALK ALL';box.append(heading);let initials,message;if(!id){const label=document.createElement('label');label.textContent='YOUR INITIALS (1–3)';initials=document.createElement('input');initials.maxLength=3;initials.value=localStorage.getItem('arcade-trash-initials')||'';initials.addEventListener('input',()=>initials.value=initials.value.toUpperCase().replace(/[^A-Z0-9 ]/g,'').slice(0,3));const ml=document.createElement('label');ml.textContent='MESSAGE (160 CHARACTERS MAX)';message=document.createElement('textarea');message.maxLength=160;box.append(label,initials,ml,message)}else{const p=document.createElement('p');p.textContent='Delete the message posted from this device?';box.append(p)}const challenge=document.createElement('div');challenge.style.minHeight='65px';box.append(challenge);const result=document.createElement('p');result.setAttribute('role','status');result.textContent='Complete Cloudflare verification.';const submit=document.createElement('button');submit.textContent=id?'DELETE':'POST MESSAGE';const cancel=document.createElement('button');cancel.textContent='CANCEL';cancel.addEventListener('click',close);submit.addEventListener('click',async()=>{if(!captcha){result.textContent='Complete verification first.';return}const payload={action:id?'delete':'post',device_token:token(),turnstile_token:captcha};if(id)payload.comment_id=id;else{payload.player_initials=initials.value.trim();payload.message=message.value.trim();if(!/^[A-Z0-9 ]{1,3}$/.test(payload.player_initials)||!payload.player_initials||!payload.message||payload.message.length>160){result.textContent='Enter valid initials and a message (1–160 characters).';return}}submit.disabled=true;result.textContent='Saving…';try{const r=await fetch(base+'/social-arcade-community-write',{method:'POST',headers:{'Content-Type':'application/json',apikey:ARCADE_SOCIAL.anon,Authorization:'Bearer '+ARCADE_SOCIAL.anon},body:JSON.stringify(payload)});const d=await r.json();if(!r.ok||!d.success)throw Error(d.error||'Unable to save');if(id)saveOwned(owned().filter(x=>x!==id));else{saveOwned([...owned(),d.comment_id]);localStorage.setItem('arcade-trash-initials',payload.player_initials)}close();await load()}catch(e){result.textContent=e.message;submit.disabled=false;if(widget!==null&&window.turnstile?.reset)window.turnstile.reset(widget);captcha=''}});box.append(result,submit,cancel);dialog.append(box);document.body.append(dialog);document.body.classList.add('arcade-social-open');dialog.addEventListener('click',e=>{if(e.target===dialog)close()});const start=Date.now();const init=()=>{if(!dialog)return;if(window.turnstile?.render){try{widget=window.turnstile.render(challenge,{sitekey:ARCADE_SOCIAL.siteKey,callback:t=>{captcha=t;result.textContent='Ready to submit.'},'expired-callback':()=>{captcha='';result.textContent='Verification expired.'}})}catch{result.textContent='Verification unavailable.'}}else if(Date.now()-start<12000)setTimeout(init,250);else result.textContent='Verification did not load.'};init();cancel.focus()}
  document.getElementById('arcade-community-refresh')?.addEventListener('click',load);document.getElementById('arcade-community-compose')?.addEventListener('click',()=>open());load();
 })();
+
+
+/* Trophy Hunters: read-only leaderboard backed ONLY by permanent verified awards. */
+(function initTrophyHunters(){
+  const section=document.querySelector('#trophy-hunters-section');
+  const podium=document.querySelector('#trophy-hunters-podium');
+  const all=document.querySelector('#trophy-hunters-all');
+  const dialog=document.querySelector('#trophy-hunters-dialog');
+  const openButton=document.querySelector('#trophy-hunters-open');
+  const closeButton=document.querySelector('#trophy-hunters-close');
+  if(!section||!podium||!all||!dialog||!openButton||!closeButton)return;
+  let hunters=[],previousFocus=null;
+
+  // Competition ranks: 1, 1, 3, not dense ranks 1, 1, 2.
+  function rankPlayers(awards){
+    const seen=new Set(),counts=new Map();
+    for(const award of awards){
+      if(!award||typeof award.id!=='string'||!award.id.trim()
+        ||typeof award.player!=='string'||!award.player.trim()
+        ||typeof award.date!=='string'||typeof award.game!=='string')continue;
+      if(seen.has(award.id))continue;
+      seen.add(award.id);
+      const player=award.player.trim().toUpperCase();
+      counts.set(player,(counts.get(player)||0)+1);
+    }
+    const sorted=[...counts.entries()].map(([player,count])=>({player,count}))
+      .filter(x=>x.count>0)
+      .sort((a,b)=>b.count-a.count||a.player.localeCompare(b.player));
+    let previousCount=Infinity,rank=0;
+    return sorted.map((entry,i)=>{
+      if(entry.count!==previousCount)rank=i+1;
+      previousCount=entry.count;
+      return {...entry,rank};
+    });
+  }
+  function playerButton(hunter,small=false){
+    const button=document.createElement('button');
+    button.type='button';
+    button.className=small?'trophy-hunters-podium-card':'trophy-hunters-row';
+    const rank=document.createElement('span');
+    rank.className='trophy-hunters-rank';
+    rank.textContent=hunter.rank===1?'🥇 #1':hunter.rank===2?'🥈 #2':hunter.rank===3?'🥉 #3':'#'+hunter.rank;
+    const name=document.createElement('strong');
+    name.textContent=hunter.player;
+    const count=document.createElement('span');
+    count.className='trophy-hunters-count';
+    count.textContent=hunter.count+' VERIFIED '+(hunter.count===1?'TROPHY':'TROPHIES');
+    button.append(rank,name,count);
+    button.addEventListener('click',()=>{
+      if(!dialog.hidden)dismiss();
+      window.arcadeOpenPlayer?.(hunter.player);
+    });
+    return button;
+  }
+  function render(){
+    podium.replaceChildren();all.replaceChildren();
+    if(!hunters.length){
+      const empty=document.createElement('p');
+      empty.className='trophy-hunters-empty';
+      empty.textContent='THE HUNT IS ON! FIRST VERIFIED TROPHY TAKES THE LEAD.';
+      podium.append(empty);
+      const note=empty.cloneNode(true);all.append(note);
+      openButton.disabled=true;
+      return;
+    }
+    openButton.disabled=false;
+    // Only actual verified leaders get podium positions; never invent placeholders.
+    hunters.filter(h=>h.rank<=3).forEach(h=>podium.append(playerButton(h,true)));
+    hunters.forEach(h=>all.append(playerButton(h)));
+  }
+  async function refresh(){
+    try{
+      const response=await fetch('./verified-challenge-awards.json?hunters='+Date.now(),{cache:'no-store'});
+      if(!response.ok)throw Error('Trophy ledger unavailable');
+      const data=await response.json();
+      if(data.schema_version!==1||!Array.isArray(data.awards))throw Error('Invalid verified trophy ledger');
+      hunters=rankPlayers(data.awards);
+      render();
+    }catch(_){
+      // Keep the last verified snapshot if temporarily offline; never infer new awards.
+      if(!hunters.length){
+        podium.textContent='VERIFIED TROPHY STANDINGS TEMPORARILY UNAVAILABLE';
+        openButton.disabled=true;
+      }
+    }
+  }
+  function open(){
+    if(!hunters.length)return;
+    previousFocus=document.activeElement;
+    dialog.hidden=false;
+    document.body.classList.add('trophy-hunters-dialog-open');
+    closeButton.focus();
+  }
+  function dismiss(){
+    dialog.hidden=true;
+    document.body.classList.remove('trophy-hunters-dialog-open');
+    previousFocus?.focus?.();
+  }
+  openButton.addEventListener('click',open);
+  closeButton.addEventListener('click',dismiss);
+  dialog.addEventListener('click',e=>{if(e.target===dialog)dismiss();});
+  document.addEventListener('keydown',e=>{
+    if(dialog.hidden)return;
+    if(e.key==='Escape'){e.preventDefault();e.stopPropagation();dismiss();}
+    else if(e.key==='Tab'){
+      const controls=[...dialog.querySelectorAll('button:not([disabled])')];
+      if(!controls.length)return;
+      if(e.shiftKey&&document.activeElement===controls[0]){
+        e.preventDefault();controls[controls.length-1].focus();
+      }else if(!e.shiftKey&&document.activeElement===controls[controls.length-1]){
+        e.preventDefault();controls[0].focus();
+      }
+    }
+  });
+  refresh();
+  setInterval(refresh,10*60*1000);
+  document.addEventListener('visibilitychange',()=>{if(!document.hidden)refresh();});
+})();
