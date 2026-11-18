@@ -16,5 +16,71 @@
       "verification_method": "operator_confirmed_iscored_approved_photo_and_time"
     }
   ],
-  "verified_plays": []
+  "verified_plays": [
+    {
+      "event_key": "thursday:2026-11-12:112913:DAY",
+      "kind": "thursday",
+      "date": "2026-11-12",
+      "player": "DAY",
+      "game_id": "112913",
+      "game": "Bosconian",
+      "score": 13150,
+      "score_id": "384386",
+      "verified_at": "2026-11-18",
+      "verification_method": "operator_confirmed_in_person_participation_and_score_submission",
+      "trophy_issued": false
+    },
+    {
+      "event_key": "thursday:2026-11-12:112913:DON",
+      "kind": "thursday",
+      "date": "2026-11-12",
+      "player": "DON",
+      "game_id": "112913",
+      "game": "Bosconian",
+      "score": 45110,
+      "score_id": "384377",
+      "verified_at": "2026-11-18",
+      "verification_method": "operator_confirmed_in_person_participation_and_score_submission",
+      "trophy_issued": false
+    },
+    {
+      "event_key": "thursday:2026-11-12:112913:FO",
+      "kind": "thursday",
+      "date": "2026-11-12",
+      "player": "FO",
+      "game_id": "112913",
+      "game": "Bosconian",
+      "score": 24170,
+      "score_id": "384436",
+      "verified_at": "2026-11-18",
+      "verification_method": "operator_confirmed_in_person_participation_and_score_submission",
+      "trophy_issued": false
+    },
+    {
+      "event_key": "thursday:2026-11-12:112913:POD",
+      "kind": "thursday",
+      "date": "2026-11-12",
+      "player": "POD",
+      "game_id": "112913",
+      "game": "Bosconian",
+      "score": 12660,
+      "score_id": "384472",
+      "verified_at": "2026-11-18",
+      "verification_method": "operator_confirmed_in_person_participation_and_score_submission",
+      "trophy_issued": false
+    },
+    {
+      "event_key": "thursday:2026-11-12:112913:SPC",
+      "kind": "thursday",
+      "date": "2026-11-12",
+      "player": "SPC",
+      "game_id": "112913",
+      "game": "Bosconian",
+      "score": 42770,
+      "score_id": "384385",
+      "verified_at": "2026-11-18",
+      "verification_method": "operator_confirmed_in_person_participation_and_score_submission",
+      "trophy_issued": false
+    }
+  ]
 }
