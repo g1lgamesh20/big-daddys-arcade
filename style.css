@@ -439,3 +439,19 @@ body.achievement-showcase-open{overflow:hidden}
 @media(max-width:470px){.achievement-showcase-panel{width:96vw!important;padding:12px!important;max-height:94dvh!important}.achievement-gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.achievement-tile{padding:10px}.achievement-tile-name{font-size:12px}.achievement-tile-desc{font-size:11px}.achievement-tile-glyph{font-size:27px}.achievement-tile-status{font-size:8px}.achievement-filter{font-size:10px;padding:7px 9px}}
 @media(max-width:345px){.achievement-gallery-grid{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){.achievement-tile,.achievement-tile-earned{transition:none;animation:none}}
+
+
+/* Featured Game of the Month: authentic iScored per-game marquee, never QR art. */
+#showcase-monthly .monthly-marquee{
+  display:block;
+  width:auto;
+  max-width:min(100%,480px);
+  max-height:154px;
+  height:auto;
+  object-fit:contain;
+  margin:4px auto 12px;
+  filter:drop-shadow(0 0 11px rgba(255,46,189,.42));
+}
+@media(max-width:480px){
+  #showcase-monthly .monthly-marquee{max-width:100%;max-height:105px;margin-bottom:9px}
+}
