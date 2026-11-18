@@ -127,6 +127,9 @@
     featured();if(!dialog.hidden)showPlayer(selected);
   }catch(_){/* Preserve previous verified results if network is unavailable. */}}
   refreshWins();setInterval(refreshWins,10*60*1000);
+  // Recheck the permanent verified-awards ledger when players return to the app.
+  // This refresh never writes trophies or triggers push notifications.
+  document.addEventListener('visibilitychange',()=>{if(!document.hidden)refreshWins();});
   setInterval(()=>{if(!document.hidden)featured();},60*1000);
 })();
 
