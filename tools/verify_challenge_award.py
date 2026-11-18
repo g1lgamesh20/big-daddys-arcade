@@ -29,7 +29,7 @@ def daily_play_dates(ledger, player):
         if isinstance(p,dict) and p.get('kind')=='daily'
         and str(p.get('player','')).strip().upper()==player
         and isinstance(p.get('date'),str)
-        and re.fullmatch(r'20\\d\\d-\\d\\d-\\d\\d',p['date'])
+        and re.fullmatch(r'20\d\d-\d\d-\d\d',p['date'])
         and isinstance(p.get('event_key'),str) and p['event_key'].startswith('daily:')}
 
 def issue_daily_milestones(ledger, player, now):
