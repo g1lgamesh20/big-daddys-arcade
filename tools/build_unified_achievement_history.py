@@ -124,7 +124,7 @@ def consecutive_streak(days,kind,ordered_dates):
         return best
     return 0
 
-def build(daily_history,daily_live,thursday_state,thursday_winners,monthly_live,ledger,candidates,as_of=None):
+def build(daily_history,daily_live,thursday_state,thursday_winners,monthly_live,ledger,candidates,as_of=None,monthly_archive=None):
     as_of=as_of or datetime.now(ZoneInfo('America/New_York')).date().isoformat()
     if ledger.get('schema_version')!=1 or not isinstance(ledger.get('awards'),list) or not isinstance(ledger.get('verified_plays'),list):
         raise ValueError('Invalid permanent verified ledger: fail closed')
@@ -157,6 +157,15 @@ def build(daily_history,daily_live,thursday_state,thursday_winners,monthly_live,
             add_event(events,'monthly',day,monthly_live.get('game_id'),
                       monthly_live.get('game',''),'monthly-challenge-live.json',
                       provisional=True)
+    # Once a monthly mystery game has been publicly revealed, its selection
+    # remains on record even after the next month replaces the live display.
+    # This contains ONLY already-public game data, never a sealed selection.
+    if isinstance(monthly_archive,dict):
+        for month,entry in monthly_archive.get('months',{}).items():
+            if not isinstance(month,str) or len(month)!=7 or month<MONTHLY_START or month+'-01'>as_of:continue
+            if not isinstance(entry,dict):continue
+            add_event(events,'monthly',month+'-01',entry.get('game_id'),
+                      entry.get('game',''),'published-monthly-challenge-history.json')
     verified,champions=verified_dates(events,ledger)
     seen=set()
     for c in candidates.get('candidates',[]):
@@ -219,7 +228,8 @@ def main():
         load('verified-challenge-awards.json',{'schema_version':1,'awards':[],'verified_plays':[]}),
         load('challenge-award-candidates.json',{'candidates':[]}),
     ]
-    history=build(*inputs)
+    history=build(*inputs,monthly_archive=load(
+        'published-monthly-challenge-history.json',{'schema_version':1,'months':{}}))
     OUT.write_text(json.dumps(history,indent=2,ensure_ascii=False)+'\n',encoding='utf-8')
     print('Official challenge events:',len(history['events']))
     print('Verified participating players:',len(history['players']))
