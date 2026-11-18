@@ -5,6 +5,7 @@ No use of public iScored API timestamps, pending candidates or provisional
 leaderboards. Call only after a genuine operator-verified ledger mutation.
 """
 from datetime import date
+from zoneinfo import ZoneInfo
 from collections import defaultdict
 
 START={'daily':'2026-11-16','thursday':'2026-11-12','monthly':'2026-12-01'}
@@ -69,8 +70,9 @@ def awards_due(ledger,now):
         raise ValueError('Invalid verified ledger')
     seen={str(a.get('id')) for a in ledger['awards'] if isinstance(a,dict)}
     new=[]
+    as_of=now.astimezone(ZoneInfo('America/New_York')).date()
     for (player,kind),found in sorted(activity(ledger).items()):
-        ordered=sorted(found)
+        ordered=sorted(d for d in found if d<=as_of)
         if kind in MILESTONES:
             for threshold,name in MILESTONES[kind]:
                 if len(ordered)<threshold:continue
