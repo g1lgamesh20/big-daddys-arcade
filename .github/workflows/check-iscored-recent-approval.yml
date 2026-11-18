@@ -12,5 +12,5 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Check public API for DAY Ghostbusters pinball score
+      - name: Compare approved and pending scores in public iScored API
         run: python tools/check_iscored_recent_approval.py
