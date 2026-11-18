@@ -319,6 +319,19 @@ document.addEventListener('keydown',e=>{if(leadersDialog.hidden||!document.query
     const matching=champions.filter(c=>String(c.game_id)===day.game_id);
     const chosen=matching.sort((a,b)=>Number(b.score)-Number(a.score))[0];
     const game=chosen?.game||day.game||'FEATURED GAME';
+    // Reuse iScored's own per-game logo, just like Game of the Month.
+    // Current Daily selection is already public; never request tomorrow's
+    // unrevealed Monthly Challenge or infer artwork from its sealed state.
+    if(/^\d{1,12}$/.test(String(day.game_id))){
+      const marquee=document.createElement('img');
+      marquee.className='arcade-game-marquee';
+      marquee.alt=String(game)+' arcade marquee';
+      marquee.loading='lazy';marquee.decoding='async';
+      marquee.referrerPolicy='no-referrer';
+      marquee.onerror=()=>marquee.remove();
+      marquee.src='https://www.iscored.info/images/games/game'+day.game_id;
+      target.append(marquee);
+    }
     const elements=[['p','arcade-showcase-kicker','CURRENT CHAMPION'],['p','legend-detail',String(game).toUpperCase()]];
     if(chosen){elements.push(['p','legend-headline',String(chosen.player).toUpperCase()],['p','legend-score',Number(chosen.score).toLocaleString('en-US')]);}
     else elements.push(['p','legend-headline','AWAITING CURRENT VERIFIED SCORE']);
