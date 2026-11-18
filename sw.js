@@ -1,11 +1,12 @@
 
-const CACHE = 'hall-of-legends-v3-network-first';
+const CACHE = 'hall-of-legends-v4-achievements';
 
 const FILES = [
   './',
   './index.html',
   './style.css',
   './script.js',
+  './achievement-showcase.js',
   './manifest.webmanifest',
   './assets/arcade-logo.png',
   './assets/icon-192.png',
