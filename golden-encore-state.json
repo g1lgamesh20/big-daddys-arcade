@@ -1,0 +1,3971 @@
+{
+  "schema_version": 1,
+  "gold_by_game": {
+    "86901": {
+      "score": 1335983720,
+      "holders": [
+        "DON"
+      ],
+      "game": "ATTACK from MARS",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 1335983720,
+          "score_id": "349513",
+          "game": "ATTACK from MARS"
+        }
+      ]
+    },
+    "112923": {
+      "score": 319845820,
+      "holders": [
+        "DAY"
+      ],
+      "game": "Batman Forever",
+      "winning_scores": [
+        {
+          "player": "DAY",
+          "score": 319845820,
+          "score_id": "384444",
+          "game": "Batman Forever"
+        }
+      ]
+    },
+    "50055": {
+      "score": 203410810,
+      "holders": [
+        "DON"
+      ],
+      "game": "Star Trek: The Next Generation",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 203410810,
+          "score_id": "239152",
+          "game": "Star Trek: The Next Generation"
+        }
+      ]
+    },
+    "112919": {
+      "score": 181991950,
+      "holders": [
+        "DAY"
+      ],
+      "game": "Demolition Man (Limited Cryo Edition Mod)",
+      "winning_scores": [
+        {
+          "player": "DAY",
+          "score": 181991950,
+          "score_id": "384423",
+          "game": "Demolition Man (Limited Cryo Edition Mod)"
+        }
+      ]
+    },
+    "112920": {
+      "score": 64912340,
+      "holders": [
+        "DAY"
+      ],
+      "game": "Adventures of Rocky and Bullwinkle and Friends",
+      "winning_scores": [
+        {
+          "player": "DAY",
+          "score": 64912340,
+          "score_id": "384421",
+          "game": "Adventures of Rocky and Bullwinkle and Friends"
+        }
+      ]
+    },
+    "112922": {
+      "score": 52477510,
+      "holders": [
+        "DAY"
+      ],
+      "game": "Popeye",
+      "winning_scores": [
+        {
+          "player": "DAY",
+          "score": 52477510,
+          "score_id": "384428",
+          "game": "Popeye"
+        }
+      ]
+    },
+    "58361": {
+      "score": 35921970,
+      "holders": [
+        "DON"
+      ],
+      "game": "Creature from the Black Lagoon",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 35921970,
+          "score_id": "154474",
+          "game": "Creature from the Black Lagoon"
+        }
+      ]
+    },
+    "86266": {
+      "score": 25150393,
+      "holders": [
+        "RPS"
+      ],
+      "game": "Marvel Antman (Zen Pinball)",
+      "winning_scores": [
+        {
+          "player": "RPS",
+          "score": 25150393,
+          "score_id": "237330",
+          "game": "Marvel Antman (Zen Pinball)"
+        }
+      ]
+    },
+    "86388": {
+      "score": 21690720,
+      "holders": [
+        "DON"
+      ],
+      "game": "Killer Instinct",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 21690720,
+          "score_id": "237313",
+          "game": "Killer Instinct"
+        }
+      ]
+    },
+    "86776": {
+      "score": 18795700,
+      "holders": [
+        "DAY"
+      ],
+      "game": "Batman 66",
+      "winning_scores": [
+        {
+          "player": "DAY",
+          "score": 18795700,
+          "score_id": "381130",
+          "game": "Batman 66"
+        }
+      ]
+    },
+    "86258": {
+      "score": 18100629,
+      "holders": [
+        "DAY"
+      ],
+      "game": "Back to the Future",
+      "winning_scores": [
+        {
+          "player": "DAY",
+          "score": 18100629,
+          "score_id": "380828",
+          "game": "Back to the Future"
+        }
+      ]
+    },
+    "86751": {
+      "score": 17169500,
+      "holders": [
+        "DON"
+      ],
+      "game": "Wolverine",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 17169500,
+          "score_id": "239166",
+          "game": "Wolverine"
+        }
+      ]
+    },
+    "86264": {
+      "score": 16745250,
+      "holders": [
+        "DON"
+      ],
+      "game": "Aliens",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 16745250,
+          "score_id": "349506",
+          "game": "Aliens"
+        }
+      ]
+    },
+    "112918": {
+      "score": 16170370,
+      "holders": [
+        "DAY"
+      ],
+      "game": "Jurassic Park",
+      "winning_scores": [
+        {
+          "player": "DAY",
+          "score": 16170370,
+          "score_id": "381800",
+          "game": "Jurassic Park"
+        }
+      ]
+    },
+    "86385": {
+      "score": 15706010,
+      "holders": [
+        "DON"
+      ],
+      "game": "Battletoads Pinball",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 15706010,
+          "score_id": "237301",
+          "game": "Battletoads Pinball"
+        }
+      ]
+    },
+    "58357": {
+      "score": 15560730,
+      "holders": [
+        "DON"
+      ],
+      "game": "Medieval Madness",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 15560730,
+          "score_id": "154473",
+          "game": "Medieval Madness"
+        }
+      ]
+    },
+    "86393": {
+      "score": 15322460,
+      "holders": [
+        "DON"
+      ],
+      "game": "Sea Of Thieves",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 15322460,
+          "score_id": "237323",
+          "game": "Sea Of Thieves"
+        }
+      ]
+    },
+    "62265": {
+      "score": 14957410,
+      "holders": [
+        "SPC"
+      ],
+      "game": "X-Men: Pinball",
+      "winning_scores": [
+        {
+          "player": "SPC",
+          "score": 14957410,
+          "score_id": "380715",
+          "game": "X-Men: Pinball"
+        }
+      ]
+    },
+    "106101": {
+      "score": 11599217,
+      "holders": [
+        "DON"
+      ],
+      "game": "Family Guy FX3",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 11599217,
+          "score_id": "349265",
+          "game": "Family Guy FX3"
+        }
+      ]
+    },
+    "58287": {
+      "score": 10980000,
+      "holders": [
+        "DON"
+      ],
+      "game": "Spider-Man (Zen)",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 10980000,
+          "score_id": "154469",
+          "game": "Spider-Man (Zen)"
+        }
+      ]
+    },
+    "113231": {
+      "score": 10602900,
+      "holders": [
+        "DAY"
+      ],
+      "game": "Ghostbusters",
+      "winning_scores": [
+        {
+          "player": "DAY",
+          "score": 10602900,
+          "score_id": "386318",
+          "game": "Ghostbusters"
+        }
+      ]
+    },
+    "72616": {
+      "score": 8363200,
+      "holders": [
+        "DON"
+      ],
+      "game": "Monster Bash (Williams, 1998)",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 8363200,
+          "score_id": "154472",
+          "game": "Monster Bash (Williams, 1998)"
+        }
+      ]
+    },
+    "86386": {
+      "score": 8053250,
+      "holders": [
+        "RPS"
+      ],
+      "game": "Teenage Mutant Ninja Turtles (Legends)",
+      "winning_scores": [
+        {
+          "player": "RPS",
+          "score": 8053250,
+          "score_id": "237310",
+          "game": "Teenage Mutant Ninja Turtles (Legends)"
+        }
+      ]
+    },
+    "106140": {
+      "score": 7748100,
+      "holders": [
+        "DON"
+      ],
+      "game": "Ghost Rider",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 7748100,
+          "score_id": "349515",
+          "game": "Ghost Rider"
+        }
+      ]
+    },
+    "106681": {
+      "score": 7617236,
+      "holders": [
+        "DAY"
+      ],
+      "game": "Avengers, The: Age of Ultron",
+      "winning_scores": [
+        {
+          "player": "DAY",
+          "score": 7617236,
+          "score_id": "384440",
+          "game": "Avengers, The: Age of Ultron"
+        }
+      ]
+    },
+    "86746": {
+      "score": 7436064,
+      "holders": [
+        "DON"
+      ],
+      "game": "Captain America Pinball",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 7436064,
+          "score_id": "239167",
+          "game": "Captain America Pinball"
+        }
+      ]
+    },
+    "86396": {
+      "score": 6172910,
+      "holders": [
+        "DON"
+      ],
+      "game": "The Walking Dead",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 6172910,
+          "score_id": "238854",
+          "game": "The Walking Dead"
+        }
+      ]
+    },
+    "86395": {
+      "score": 6129884,
+      "holders": [
+        "DON"
+      ],
+      "game": "Skyrim",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 6129884,
+          "score_id": "238853",
+          "game": "Skyrim"
+        }
+      ]
+    },
+    "58362": {
+      "score": 5773180,
+      "holders": [
+        "DON"
+      ],
+      "game": "Tales of the Arabian Nights",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 5773180,
+          "score_id": "87586",
+          "game": "Tales of the Arabian Nights"
+        }
+      ]
+    },
+    "86265": {
+      "score": 5683181,
+      "holders": [
+        "DON"
+      ],
+      "game": "Aliens vs Predator",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 5683181,
+          "score_id": "237333",
+          "game": "Aliens vs Predator"
+        }
+      ]
+    },
+    "86263": {
+      "score": 5379202,
+      "holders": [
+        "DON"
+      ],
+      "game": "Doom Fx3",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 5379202,
+          "score_id": "237336",
+          "game": "Doom Fx3"
+        }
+      ]
+    },
+    "86756": {
+      "score": 4831834,
+      "holders": [
+        "DON"
+      ],
+      "game": "Fantastic Four",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 4831834,
+          "score_id": "239165",
+          "game": "Fantastic Four"
+        }
+      ]
+    },
+    "50050": {
+      "score": 4185460,
+      "holders": [
+        "SPC"
+      ],
+      "game": "Hang On",
+      "winning_scores": [
+        {
+          "player": "SPC",
+          "score": 4185460,
+          "score_id": "380738",
+          "game": "Hang On"
+        }
+      ]
+    },
+    "86260": {
+      "score": 3544401,
+      "holders": [
+        "DON"
+      ],
+      "game": "The Infinity Gauntlet",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 3544401,
+          "score_id": "237072",
+          "game": "The Infinity Gauntlet"
+        }
+      ]
+    },
+    "50328": {
+      "score": 3540140,
+      "holders": [
+        "DON"
+      ],
+      "game": "Turbo Outrun",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 3540140,
+          "score_id": "244667",
+          "game": "Turbo Outrun"
+        }
+      ]
+    },
+    "86267": {
+      "score": 3539890,
+      "holders": [
+        "DON"
+      ],
+      "game": "Marvel Deadpool (Zen Pinball)",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 3539890,
+          "score_id": "237335",
+          "game": "Marvel Deadpool (Zen Pinball)"
+        }
+      ]
+    },
+    "106167": {
+      "score": 3208712,
+      "holders": [
+        "DON"
+      ],
+      "game": "Jurassic Park (FX3)",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 3208712,
+          "score_id": "349738",
+          "game": "Jurassic Park (FX3)"
+        }
+      ]
+    },
+    "50101": {
+      "score": 2955630,
+      "holders": [
+        "SPC"
+      ],
+      "game": "Outrun",
+      "winning_scores": [
+        {
+          "player": "SPC",
+          "score": 2955630,
+          "score_id": "380777",
+          "game": "Outrun"
+        }
+      ]
+    },
+    "106139": {
+      "score": 2733340,
+      "holders": [
+        "DON"
+      ],
+      "game": "No Good Gofers",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 2733340,
+          "score_id": "349514",
+          "game": "No Good Gofers"
+        }
+      ]
+    },
+    "106169": {
+      "score": 2377003,
+      "holders": [
+        "DON"
+      ],
+      "game": "Guardians of the Galaxy",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 2377003,
+          "score_id": "349734",
+          "game": "Guardians of the Galaxy"
+        }
+      ]
+    },
+    "113221": {
+      "score": 2096000,
+      "holders": [
+        "FO"
+      ],
+      "game": "E.T.",
+      "winning_scores": [
+        {
+          "player": "FO",
+          "score": 2096000,
+          "score_id": "384432",
+          "game": "E.T."
+        }
+      ]
+    },
+    "106174": {
+      "score": 2074192,
+      "holders": [
+        "DON"
+      ],
+      "game": "Jaws",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 2074192,
+          "score_id": "349735",
+          "game": "Jaws"
+        }
+      ]
+    },
+    "50327": {
+      "score": 1723020,
+      "holders": [
+        "POD"
+      ],
+      "game": "Super Hang-On",
+      "winning_scores": [
+        {
+          "player": "POD",
+          "score": 1723020,
+          "score_id": "148660",
+          "game": "Super Hang-On"
+        }
+      ]
+    },
+    "106684": {
+      "score": 1533000,
+      "holders": [
+        "DON"
+      ],
+      "game": "Doctor Strange",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 1533000,
+          "score_id": "351846",
+          "game": "Doctor Strange"
+        }
+      ]
+    },
+    "106682": {
+      "score": 1509566,
+      "holders": [
+        "DON"
+      ],
+      "game": "The Avengers",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 1509566,
+          "score_id": "351811",
+          "game": "The Avengers"
+        }
+      ]
+    },
+    "50353": {
+      "score": 1399980,
+      "holders": [
+        "DON"
+      ],
+      "game": "Space Harrier",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 1399980,
+          "score_id": "149072",
+          "game": "Space Harrier"
+        }
+      ]
+    },
+    "106171": {
+      "score": 1375502,
+      "holders": [
+        "DON"
+      ],
+      "game": "Venom 2025",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 1375502,
+          "score_id": "349744",
+          "game": "Venom 2025"
+        }
+      ]
+    },
+    "86262": {
+      "score": 1373758,
+      "holders": [
+        "RPS"
+      ],
+      "game": "Moon Knight",
+      "winning_scores": [
+        {
+          "player": "RPS",
+          "score": 1373758,
+          "score_id": "237337",
+          "game": "Moon Knight"
+        }
+      ]
+    },
+    "58359": {
+      "score": 1281090,
+      "holders": [
+        "DON"
+      ],
+      "game": "Black Knight 2000",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 1281090,
+          "score_id": "153935",
+          "game": "Black Knight 2000"
+        }
+      ]
+    },
+    "70364": {
+      "score": 1110750,
+      "holders": [
+        "DON"
+      ],
+      "game": "Fix it Felix Jr.",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 1110750,
+          "score_id": "138294",
+          "game": "Fix it Felix Jr."
+        }
+      ]
+    },
+    "50012": {
+      "score": 1057640,
+      "holders": [
+        "VJG"
+      ],
+      "game": "afterburner 2",
+      "winning_scores": [
+        {
+          "player": "VJG",
+          "score": 1057640,
+          "score_id": "380775",
+          "game": "afterburner 2"
+        }
+      ]
+    },
+    "113220": {
+      "score": 684300,
+      "holders": [
+        "FO"
+      ],
+      "game": "Tesla",
+      "winning_scores": [
+        {
+          "player": "FO",
+          "score": 684300,
+          "score_id": "384430",
+          "game": "Tesla"
+        }
+      ]
+    },
+    "101607": {
+      "score": 627000,
+      "holders": [
+        "SMS"
+      ],
+      "game": "X-Men Children of the Atom",
+      "winning_scores": [
+        {
+          "player": "SMS",
+          "score": 627000,
+          "score_id": "320699",
+          "game": "X-Men Children of the Atom"
+        }
+      ]
+    },
+    "73894": {
+      "score": 583800,
+      "holders": [
+        "DON"
+      ],
+      "game": "Guilty Gear XX Accent Core Plus",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 583800,
+          "score_id": "160477",
+          "game": "Guilty Gear XX Accent Core Plus"
+        }
+      ]
+    },
+    "101612": {
+      "score": 570000,
+      "holders": [
+        "DAY"
+      ],
+      "game": "IRON MAN",
+      "winning_scores": [
+        {
+          "player": "DAY",
+          "score": 570000,
+          "score_id": "380765",
+          "game": "IRON MAN"
+        }
+      ]
+    },
+    "50001": {
+      "score": 469854,
+      "holders": [
+        "RDG"
+      ],
+      "game": "Star Wars",
+      "winning_scores": [
+        {
+          "player": "RDG",
+          "score": 469854,
+          "score_id": "380769",
+          "game": "Star Wars"
+        }
+      ]
+    },
+    "50022": {
+      "score": 467990,
+      "holders": [
+        "DON"
+      ],
+      "game": "Bubble Bobble",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 467990,
+          "score_id": "145421",
+          "game": "Bubble Bobble"
+        }
+      ]
+    },
+    "50346": {
+      "score": 272600,
+      "holders": [
+        "DON"
+      ],
+      "game": "Super Mario Bros.",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 272600,
+          "score_id": "74537",
+          "game": "Super Mario Bros."
+        }
+      ]
+    },
+    "50239": {
+      "score": 243500,
+      "holders": [
+        "DON"
+      ],
+      "game": "Mighty Pang",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 243500,
+          "score_id": "74468",
+          "game": "Mighty Pang"
+        }
+      ]
+    },
+    "58286": {
+      "score": 234631,
+      "holders": [
+        "DON"
+      ],
+      "game": "Crazy Taxi",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 234631,
+          "score_id": "87508",
+          "game": "Crazy Taxi"
+        }
+      ]
+    },
+    "72478": {
+      "score": 216760,
+      "holders": [
+        "DON"
+      ],
+      "game": "Bubble Bobble II",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 216760,
+          "score_id": "148656",
+          "game": "Bubble Bobble II"
+        }
+      ]
+    },
+    "73288": {
+      "score": 200700,
+      "holders": [
+        "DON"
+      ],
+      "game": "X-Men vs Street Fighter",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 200700,
+          "score_id": "354474",
+          "game": "X-Men vs Street Fighter"
+        }
+      ]
+    },
+    "73284": {
+      "score": 199200,
+      "holders": [
+        "DON"
+      ],
+      "game": "Street Fighter II Championship Edition",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 199200,
+          "score_id": "375710",
+          "game": "Street Fighter II Championship Edition"
+        }
+      ]
+    },
+    "73168": {
+      "score": 185500,
+      "holders": [
+        "DON"
+      ],
+      "game": "Crossbow",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 185500,
+          "score_id": "361954",
+          "game": "Crossbow"
+        }
+      ]
+    },
+    "58360": {
+      "score": 176170,
+      "holders": [
+        "DON"
+      ],
+      "game": "Teenage Mutant Ninja Turtles (Data East 1991)",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 176170,
+          "score_id": "154402",
+          "game": "Teenage Mutant Ninja Turtles (Data East 1991)"
+        }
+      ]
+    },
+    "50010": {
+      "score": 155340,
+      "holders": [
+        "SPC"
+      ],
+      "game": "1942",
+      "winning_scores": [
+        {
+          "player": "SPC",
+          "score": 155340,
+          "score_id": "74148",
+          "game": "1942"
+        }
+      ]
+    },
+    "50348": {
+      "score": 145980,
+      "holders": [
+        "DON"
+      ],
+      "game": "Super Mario Bros. 3",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 145980,
+          "score_id": "161304",
+          "game": "Super Mario Bros. 3"
+        }
+      ]
+    },
+    "50043": {
+      "score": 144000,
+      "holders": [
+        "DON"
+      ],
+      "game": "Ghouls'n Ghosts",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 144000,
+          "score_id": "74471",
+          "game": "Ghouls'n Ghosts"
+        }
+      ]
+    },
+    "50005": {
+      "score": 141500,
+      "holders": [
+        "SPC"
+      ],
+      "game": "Time Pilot",
+      "winning_scores": [
+        {
+          "player": "SPC",
+          "score": 141500,
+          "score_id": "74116",
+          "game": "Time Pilot"
+        }
+      ]
+    },
+    "73126": {
+      "score": 134010,
+      "holders": [
+        "SPC"
+      ],
+      "game": "After Burner Climax",
+      "winning_scores": [
+        {
+          "player": "SPC",
+          "score": 134010,
+          "score_id": "384425",
+          "game": "After Burner Climax"
+        }
+      ]
+    },
+    "112914": {
+      "score": 126850,
+      "holders": [
+        "RDG"
+      ],
+      "game": "Smash T.V.",
+      "winning_scores": [
+        {
+          "player": "RDG",
+          "score": 126850,
+          "score_id": "381768",
+          "game": "Smash T.V."
+        }
+      ]
+    },
+    "50058": {
+      "score": 109080,
+      "holders": [
+        "DON"
+      ],
+      "game": "Super Contra",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 109080,
+          "score_id": "74332",
+          "game": "Super Contra"
+        }
+      ]
+    },
+    "50236": {
+      "score": 107000,
+      "holders": [
+        "DON"
+      ],
+      "game": "The Legend of Kage",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 107000,
+          "score_id": "74465",
+          "game": "The Legend of Kage"
+        }
+      ]
+    },
+    "50046": {
+      "score": 100430,
+      "holders": [
+        "DON"
+      ],
+      "game": "Zookeeper",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 100430,
+          "score_id": "171683",
+          "game": "Zookeeper"
+        }
+      ]
+    },
+    "50041": {
+      "score": 93340,
+      "holders": [
+        "SPC"
+      ],
+      "game": "Galaga",
+      "winning_scores": [
+        {
+          "player": "SPC",
+          "score": 93340,
+          "score_id": "380968",
+          "game": "Galaga"
+        }
+      ]
+    },
+    "50169": {
+      "score": 89165,
+      "holders": [
+        "DON"
+      ],
+      "game": "STUN Runner",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 89165,
+          "score_id": "74341",
+          "game": "STUN Runner"
+        }
+      ]
+    },
+    "112664": {
+      "score": 88500,
+      "holders": [
+        "POD"
+      ],
+      "game": "Bad Dudes Vs. Dragon Ninja",
+      "winning_scores": [
+        {
+          "player": "POD",
+          "score": 88500,
+          "score_id": "381766",
+          "game": "Bad Dudes Vs. Dragon Ninja"
+        }
+      ]
+    },
+    "50164": {
+      "score": 85400,
+      "holders": [
+        "DON"
+      ],
+      "game": "Rastan",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 85400,
+          "score_id": "74337",
+          "game": "Rastan"
+        }
+      ]
+    },
+    "50167": {
+      "score": 83075,
+      "holders": [
+        "DON"
+      ],
+      "game": "ROBOTRON",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 83075,
+          "score_id": "381781",
+          "game": "ROBOTRON"
+        }
+      ]
+    },
+    "50261": {
+      "score": 81800,
+      "holders": [
+        "DON"
+      ],
+      "game": "KID NIKI",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 81800,
+          "score_id": "28264",
+          "game": "KID NIKI"
+        }
+      ]
+    },
+    "50013": {
+      "score": 81000,
+      "holders": [
+        "DON"
+      ],
+      "game": "Alien Syndrome",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 81000,
+          "score_id": "74163",
+          "game": "Alien Syndrome"
+        }
+      ]
+    },
+    "50223": {
+      "score": 73950,
+      "holders": [
+        "RDG"
+      ],
+      "game": "Gyruss",
+      "winning_scores": [
+        {
+          "player": "RDG",
+          "score": 73950,
+          "score_id": "381722",
+          "game": "Gyruss"
+        }
+      ]
+    },
+    "50177": {
+      "score": 71230,
+      "holders": [
+        "RDG"
+      ],
+      "game": "Punch Out",
+      "winning_scores": [
+        {
+          "player": "RDG",
+          "score": 71230,
+          "score_id": "74350",
+          "game": "Punch Out"
+        }
+      ]
+    },
+    "50406": {
+      "score": 70900,
+      "holders": [
+        "DON"
+      ],
+      "game": "Sega Star Wars Trilogy",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 70900,
+          "score_id": "152911",
+          "game": "Sega Star Wars Trilogy"
+        }
+      ]
+    },
+    "50011": {
+      "score": 70800,
+      "holders": [
+        "SPC"
+      ],
+      "game": "1943",
+      "winning_scores": [
+        {
+          "player": "SPC",
+          "score": 70800,
+          "score_id": "74149",
+          "game": "1943"
+        }
+      ]
+    },
+    "62267": {
+      "score": 70800,
+      "holders": [
+        "DON"
+      ],
+      "game": "Altered Beast",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 70800,
+          "score_id": "148369",
+          "game": "Altered Beast"
+        }
+      ]
+    },
+    "50172": {
+      "score": 68870,
+      "holders": [
+        "SPC"
+      ],
+      "game": "JR. PAC-MAN turbo",
+      "winning_scores": [
+        {
+          "player": "SPC",
+          "score": 68870,
+          "score_id": "74344",
+          "game": "JR. PAC-MAN turbo"
+        }
+      ]
+    },
+    "50165": {
+      "score": 68425,
+      "holders": [
+        "DON"
+      ],
+      "game": "Rampage",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 68425,
+          "score_id": "74338",
+          "game": "Rampage"
+        }
+      ]
+    },
+    "50260": {
+      "score": 63720,
+      "holders": [
+        "DON"
+      ],
+      "game": "KARNOV",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 63720,
+          "score_id": "74436",
+          "game": "KARNOV"
+        }
+      ]
+    },
+    "72179": {
+      "score": 63610,
+      "holders": [
+        "DON"
+      ],
+      "game": "Cameltry",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 63610,
+          "score_id": "146531",
+          "game": "Cameltry"
+        }
+      ]
+    },
+    "112913": {
+      "score": 63450,
+      "holders": [
+        "RDG"
+      ],
+      "game": "Bosconian",
+      "winning_scores": [
+        {
+          "player": "RDG",
+          "score": 63450,
+          "score_id": "384380",
+          "game": "Bosconian"
+        }
+      ]
+    },
+    "50341": {
+      "score": 60734,
+      "holders": [
+        "DON"
+      ],
+      "game": "Yars Revenge",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 60734,
+          "score_id": "74526",
+          "game": "Yars Revenge"
+        }
+      ]
+    },
+    "50313": {
+      "score": 59100,
+      "holders": [
+        "DON"
+      ],
+      "game": "Operation Wolf",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 59100,
+          "score_id": "154002",
+          "game": "Operation Wolf"
+        }
+      ]
+    },
+    "50034": {
+      "score": 58100,
+      "holders": [
+        "DON"
+      ],
+      "game": "DONKEY KONG 3",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 58100,
+          "score_id": "74191",
+          "game": "DONKEY KONG 3"
+        }
+      ]
+    },
+    "50168": {
+      "score": 57780,
+      "holders": [
+        "DON"
+      ],
+      "game": "ROLLING THUNDER",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 57780,
+          "score_id": "74340",
+          "game": "ROLLING THUNDER"
+        }
+      ]
+    },
+    "50251": {
+      "score": 57350,
+      "holders": [
+        "DON"
+      ],
+      "game": "POOYAN",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 57350,
+          "score_id": "74442",
+          "game": "POOYAN"
+        }
+      ]
+    },
+    "50242": {
+      "score": 56640,
+      "holders": [
+        "SPC"
+      ],
+      "game": "New Rally-X",
+      "winning_scores": [
+        {
+          "player": "SPC",
+          "score": 56640,
+          "score_id": "58293",
+          "game": "New Rally-X"
+        }
+      ]
+    },
+    "50056": {
+      "score": 56575,
+      "holders": [
+        "DON"
+      ],
+      "game": "Star Trek w/Aurich Translite",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 56575,
+          "score_id": "74156",
+          "game": "Star Trek w/Aurich Translite"
+        }
+      ]
+    },
+    "50230": {
+      "score": 56550,
+      "holders": [
+        "SPC"
+      ],
+      "game": "Mr. Do!",
+      "winning_scores": [
+        {
+          "player": "SPC",
+          "score": 56550,
+          "score_id": "74423",
+          "game": "Mr. Do!"
+        }
+      ]
+    },
+    "50336": {
+      "score": 55863,
+      "holders": [
+        "DON"
+      ],
+      "game": "pitfall",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 55863,
+          "score_id": "74504",
+          "game": "pitfall"
+        }
+      ]
+    },
+    "113225": {
+      "score": 55220,
+      "holders": [
+        "SPC"
+      ],
+      "game": "Solomons Key",
+      "winning_scores": [
+        {
+          "player": "SPC",
+          "score": 55220,
+          "score_id": "384450",
+          "game": "Solomons Key"
+        }
+      ]
+    },
+    "50032": {
+      "score": 55000,
+      "holders": [
+        "VJG"
+      ],
+      "game": "Donkey Kong",
+      "winning_scores": [
+        {
+          "player": "VJG",
+          "score": 55000,
+          "score_id": "232971",
+          "game": "Donkey Kong"
+        }
+      ]
+    },
+    "50045": {
+      "score": 54900,
+      "holders": [
+        "DON"
+      ],
+      "game": "GUN SMOKE",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 54900,
+          "score_id": "74399",
+          "game": "GUN SMOKE"
+        }
+      ]
+    },
+    "50036": {
+      "score": 54900,
+      "holders": [
+        "DON"
+      ],
+      "game": "Elevator Action Returns",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 54900,
+          "score_id": "151687",
+          "game": "Elevator Action Returns"
+        }
+      ]
+    },
+    "73212": {
+      "score": 54550,
+      "holders": [
+        "DON"
+      ],
+      "game": "Terminator 2: Judgement Day",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 54550,
+          "score_id": "154254",
+          "game": "Terminator 2: Judgement Day"
+        }
+      ]
+    },
+    "50003": {
+      "score": 53020,
+      "holders": [
+        "DON"
+      ],
+      "game": "Return of the Jedi",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 53020,
+          "score_id": "162150",
+          "game": "Return of the Jedi"
+        }
+      ]
+    },
+    "50064": {
+      "score": 52720,
+      "holders": [
+        "DON"
+      ],
+      "game": "Mario Bros.",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 52720,
+          "score_id": "74324",
+          "game": "Mario Bros."
+        }
+      ]
+    },
+    "50042": {
+      "score": 51700,
+      "holders": [
+        "DON"
+      ],
+      "game": "Ghosts 'n Goblins",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 51700,
+          "score_id": "74200",
+          "game": "Ghosts 'n Goblins"
+        }
+      ]
+    },
+    "50175": {
+      "score": 51130,
+      "holders": [
+        "DON"
+      ],
+      "game": "VS. Excitebike",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 51130,
+          "score_id": "74347",
+          "game": "VS. Excitebike"
+        }
+      ]
+    },
+    "50315": {
+      "score": 50500,
+      "holders": [
+        "DON"
+      ],
+      "game": "Parodius Da!",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 50500,
+          "score_id": "74493",
+          "game": "Parodius Da!"
+        }
+      ]
+    },
+    "50170": {
+      "score": 49750,
+      "holders": [
+        "KAK"
+      ],
+      "game": "Shinobi",
+      "winning_scores": [
+        {
+          "player": "KAK",
+          "score": 49750,
+          "score_id": "158507",
+          "game": "Shinobi"
+        }
+      ]
+    },
+    "50002": {
+      "score": 49510,
+      "holders": [
+        "DON"
+      ],
+      "game": "The Empire Strikes Back",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 49510,
+          "score_id": "74120",
+          "game": "The Empire Strikes Back"
+        }
+      ]
+    },
+    "50930": {
+      "score": 49090,
+      "holders": [
+        "MAB"
+      ],
+      "game": "Mouse Trap",
+      "winning_scores": [
+        {
+          "player": "MAB",
+          "score": 49090,
+          "score_id": "76224",
+          "game": "Mouse Trap"
+        }
+      ]
+    },
+    "49995": {
+      "score": 48120,
+      "holders": [
+        "DON"
+      ],
+      "game": "Sinistar",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 48120,
+          "score_id": "227712",
+          "game": "Sinistar"
+        }
+      ]
+    },
+    "84699": {
+      "score": 47000,
+      "holders": [
+        "KAK"
+      ],
+      "game": "Contra (Arcade)",
+      "winning_scores": [
+        {
+          "player": "KAK",
+          "score": 47000,
+          "score_id": "228357",
+          "game": "Contra (Arcade)"
+        }
+      ]
+    },
+    "50029": {
+      "score": 46825,
+      "holders": [
+        "DON"
+      ],
+      "game": "Crystal Castles",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 46825,
+          "score_id": "171609",
+          "game": "Crystal Castles"
+        }
+      ]
+    },
+    "101605": {
+      "score": 46740,
+      "holders": [
+        "DON"
+      ],
+      "game": "Super Pac-Man",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 46740,
+          "score_id": "320696",
+          "game": "Super Pac-Man"
+        }
+      ]
+    },
+    "50031": {
+      "score": 46450,
+      "holders": [
+        "DON"
+      ],
+      "game": "Do Run Run!",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 46450,
+          "score_id": "74185",
+          "game": "Do Run Run!"
+        }
+      ]
+    },
+    "49997": {
+      "score": 45900,
+      "holders": [
+        "DON"
+      ],
+      "game": "Tapper",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 45900,
+          "score_id": "232349",
+          "game": "Tapper"
+        }
+      ]
+    },
+    "50166": {
+      "score": 44470,
+      "holders": [
+        "SPC"
+      ],
+      "game": "RoadBlasters",
+      "winning_scores": [
+        {
+          "player": "SPC",
+          "score": 44470,
+          "score_id": "380978",
+          "game": "RoadBlasters"
+        }
+      ]
+    },
+    "49991": {
+      "score": 42840,
+      "holders": [
+        "DON"
+      ],
+      "game": "Dig Dug",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 42840,
+          "score_id": "74138",
+          "game": "Dig Dug"
+        }
+      ]
+    },
+    "50252": {
+      "score": 42700,
+      "holders": [
+        "DON"
+      ],
+      "game": "Tac/Scan",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 42700,
+          "score_id": "74441",
+          "game": "Tac/Scan"
+        }
+      ]
+    },
+    "50221": {
+      "score": 42280,
+      "holders": [
+        "SPC"
+      ],
+      "game": "Bomb jack",
+      "winning_scores": [
+        {
+          "player": "SPC",
+          "score": 42280,
+          "score_id": "384441",
+          "game": "Bomb jack"
+        }
+      ]
+    },
+    "72950": {
+      "score": 42070,
+      "holders": [
+        "DON"
+      ],
+      "game": "Baby Pacman",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 42070,
+          "score_id": "227714",
+          "game": "Baby Pacman"
+        }
+      ]
+    },
+    "50320": {
+      "score": 40875,
+      "holders": [
+        "DON"
+      ],
+      "game": "Q*berts Cubes",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 40875,
+          "score_id": "228358",
+          "game": "Q*berts Cubes"
+        }
+      ]
+    },
+    "84683": {
+      "score": 40440,
+      "holders": [
+        "DON"
+      ],
+      "game": "Barnstorming (Atari2600)",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 40440,
+          "score_id": "228399",
+          "game": "Barnstorming (Atari2600)"
+        }
+      ]
+    },
+    "50237": {
+      "score": 38400,
+      "holders": [
+        "DON"
+      ],
+      "game": "Major Havoc",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 38400,
+          "score_id": "76222",
+          "game": "Major Havoc"
+        }
+      ]
+    },
+    "70348": {
+      "score": 38040,
+      "holders": [
+        "DON"
+      ],
+      "game": "Eyes",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 38040,
+          "score_id": "138291",
+          "game": "Eyes"
+        }
+      ]
+    },
+    "71993": {
+      "score": 37950,
+      "holders": [
+        "DON"
+      ],
+      "game": "Black Hole",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 37950,
+          "score_id": "239675",
+          "game": "Black Hole"
+        }
+      ]
+    },
+    "50234": {
+      "score": 37740,
+      "holders": [
+        "DON"
+      ],
+      "game": "Krull",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 37740,
+          "score_id": "58046",
+          "game": "Krull"
+        }
+      ]
+    },
+    "50048": {
+      "score": 37400,
+      "holders": [
+        "DON"
+      ],
+      "game": "Jackal",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 37400,
+          "score_id": "74204",
+          "game": "Jackal"
+        }
+      ]
+    },
+    "49998": {
+      "score": 36590,
+      "holders": [
+        "VJG"
+      ],
+      "game": "Track & Field",
+      "winning_scores": [
+        {
+          "player": "VJG",
+          "score": 36590,
+          "score_id": "75358",
+          "game": "Track & Field"
+        }
+      ]
+    },
+    "50026": {
+      "score": 36400,
+      "holders": [
+        "SPC"
+      ],
+      "game": "Commando",
+      "winning_scores": [
+        {
+          "player": "SPC",
+          "score": 36400,
+          "score_id": "176836",
+          "game": "Commando"
+        }
+      ]
+    },
+    "50228": {
+      "score": 35900,
+      "holders": [
+        "DON"
+      ],
+      "game": "Hammerin' Harry",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 35900,
+          "score_id": "74415",
+          "game": "Hammerin' Harry"
+        }
+      ]
+    },
+    "50314": {
+      "score": 35000,
+      "holders": [
+        "KAK"
+      ],
+      "game": "Pac & Pal",
+      "winning_scores": [
+        {
+          "player": "KAK",
+          "score": 35000,
+          "score_id": "74492",
+          "game": "Pac & Pal"
+        }
+      ]
+    },
+    "50323": {
+      "score": 34870,
+      "holders": [
+        "DON"
+      ],
+      "game": "Slither",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 34870,
+          "score_id": "73303",
+          "game": "Slither"
+        }
+      ]
+    },
+    "50051": {
+      "score": 34050,
+      "holders": [
+        "VJG"
+      ],
+      "game": "Joust",
+      "winning_scores": [
+        {
+          "player": "VJG",
+          "score": 34050,
+          "score_id": "74159",
+          "game": "Joust"
+        }
+      ]
+    },
+    "50007": {
+      "score": 33800,
+      "holders": [
+        "DON"
+      ],
+      "game": "Dig Dug II",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 33800,
+          "score_id": "74114",
+          "game": "Dig Dug II"
+        }
+      ]
+    },
+    "50219": {
+      "score": 33350,
+      "holders": [
+        "DON"
+      ],
+      "game": "Black Tiger",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 33350,
+          "score_id": "74403",
+          "game": "Black Tiger"
+        }
+      ]
+    },
+    "70346": {
+      "score": 33200,
+      "holders": [
+        "DON"
+      ],
+      "game": "CIRCUS CHARLIE",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 33200,
+          "score_id": "138289",
+          "game": "CIRCUS CHARLIE"
+        }
+      ]
+    },
+    "50322": {
+      "score": 33200,
+      "holders": [
+        "DON"
+      ],
+      "game": "ROLLING THUNDER 2",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 33200,
+          "score_id": "138976",
+          "game": "ROLLING THUNDER 2"
+        }
+      ]
+    },
+    "50021": {
+      "score": 32900,
+      "holders": [
+        "DON"
+      ],
+      "game": "Black widow v2",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 32900,
+          "score_id": "74169",
+          "game": "Black widow v2"
+        }
+      ]
+    },
+    "50224": {
+      "score": 32500,
+      "holders": [
+        "SPC"
+      ],
+      "game": "Gradius",
+      "winning_scores": [
+        {
+          "player": "SPC",
+          "score": 32500,
+          "score_id": "74383",
+          "game": "Gradius"
+        }
+      ]
+    },
+    "50015": {
+      "score": 31630,
+      "holders": [
+        "RDG"
+      ],
+      "game": "Arkanoid",
+      "winning_scores": [
+        {
+          "player": "RDG",
+          "score": 31630,
+          "score_id": "381727",
+          "game": "Arkanoid"
+        }
+      ]
+    },
+    "101598": {
+      "score": 30690,
+      "holders": [
+        "KAK"
+      ],
+      "game": "Ms. Pac-Man",
+      "winning_scores": [
+        {
+          "player": "KAK",
+          "score": 30690,
+          "score_id": "320667",
+          "game": "Ms. Pac-Man"
+        }
+      ]
+    },
+    "49994": {
+      "score": 30480,
+      "holders": [
+        "DON"
+      ],
+      "game": "PAC-MAN",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 30480,
+          "score_id": "74129",
+          "game": "PAC-MAN"
+        }
+      ]
+    },
+    "50019": {
+      "score": 30000,
+      "holders": [
+        "SPC"
+      ],
+      "game": "Battlezone",
+      "winning_scores": [
+        {
+          "player": "SPC",
+          "score": 30000,
+          "score_id": "74167",
+          "game": "Battlezone"
+        }
+      ]
+    },
+    "50008": {
+      "score": 29900,
+      "holders": [
+        "DON"
+      ],
+      "game": "Tutankham",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 29900,
+          "score_id": "74113",
+          "game": "Tutankham"
+        }
+      ]
+    },
+    "50249": {
+      "score": 29540,
+      "holders": [
+        "SPC"
+      ],
+      "game": "Pole Position",
+      "winning_scores": [
+        {
+          "player": "SPC",
+          "score": 29540,
+          "score_id": "380945",
+          "game": "Pole Position"
+        }
+      ]
+    },
+    "50052": {
+      "score": 29301,
+      "holders": [
+        "DON"
+      ],
+      "game": "Millipede",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 29301,
+          "score_id": "74207",
+          "game": "Millipede"
+        }
+      ]
+    },
+    "50391": {
+      "score": 29100,
+      "holders": [
+        "DON"
+      ],
+      "game": "Castlevania",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 29100,
+          "score_id": "74679",
+          "game": "Castlevania"
+        }
+      ]
+    },
+    "73127": {
+      "score": 28600,
+      "holders": [
+        "SMS"
+      ],
+      "game": "Duck Hunt",
+      "winning_scores": [
+        {
+          "player": "SMS",
+          "score": 28600,
+          "score_id": "153925",
+          "game": "Duck Hunt"
+        }
+      ]
+    },
+    "72617": {
+      "score": 27700,
+      "holders": [
+        "DON"
+      ],
+      "game": "Hercules (Atari 1979)",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 27700,
+          "score_id": "153931",
+          "game": "Hercules (Atari 1979)"
+        }
+      ]
+    },
+    "50157": {
+      "score": 27556,
+      "holders": [
+        "SPC"
+      ],
+      "game": "BUMP N JUMP",
+      "winning_scores": [
+        {
+          "player": "SPC",
+          "score": 27556,
+          "score_id": "74308",
+          "game": "BUMP N JUMP"
+        }
+      ]
+    },
+    "50037": {
+      "score": 27550,
+      "holders": [
+        "DON"
+      ],
+      "game": "Flicky",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 27550,
+          "score_id": "74193",
+          "game": "Flicky"
+        }
+      ]
+    },
+    "101603": {
+      "score": 27410,
+      "holders": [
+        "KAK"
+      ],
+      "game": "Kung fu master",
+      "winning_scores": [
+        {
+          "player": "KAK",
+          "score": 27410,
+          "score_id": "320685",
+          "game": "Kung fu master"
+        }
+      ]
+    },
+    "49999": {
+      "score": 27315,
+      "holders": [
+        "DON"
+      ],
+      "game": "Q*bert",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 27315,
+          "score_id": "74122",
+          "game": "Q*bert"
+        }
+      ]
+    },
+    "50025": {
+      "score": 27284,
+      "holders": [
+        "SPC"
+      ],
+      "game": "CENTIPEDE",
+      "winning_scores": [
+        {
+          "player": "SPC",
+          "score": 27284,
+          "score_id": "168569",
+          "game": "CENTIPEDE"
+        }
+      ]
+    },
+    "52039": {
+      "score": 26800,
+      "holders": [
+        "DON"
+      ],
+      "game": "DONKEY KONG (Japan)",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 26800,
+          "score_id": "76232",
+          "game": "DONKEY KONG (Japan)"
+        }
+      ]
+    },
+    "50216": {
+      "score": 26000,
+      "holders": [
+        "DON"
+      ],
+      "game": "Arabian",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 26000,
+          "score_id": "74402",
+          "game": "Arabian"
+        }
+      ]
+    },
+    "50160": {
+      "score": 24900,
+      "holders": [
+        "DON"
+      ],
+      "game": "Crazy Climber",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 24900,
+          "score_id": "74554",
+          "game": "Crazy Climber"
+        }
+      ]
+    },
+    "50009": {
+      "score": 24860,
+      "holders": [
+        "KAK"
+      ],
+      "game": "Marble Madness",
+      "winning_scores": [
+        {
+          "player": "KAK",
+          "score": 24860,
+          "score_id": "74147",
+          "game": "Marble Madness"
+        }
+      ]
+    },
+    "50434": {
+      "score": 23810,
+      "holders": [
+        "DON"
+      ],
+      "game": "Goonies",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 23810,
+          "score_id": "145451",
+          "game": "Goonies"
+        }
+      ]
+    },
+    "50061": {
+      "score": 23580,
+      "holders": [
+        "DON"
+      ],
+      "game": "Popeye (arcade)",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 23580,
+          "score_id": "74327",
+          "game": "Popeye (arcade)"
+        }
+      ]
+    },
+    "50245": {
+      "score": 23547,
+      "holders": [
+        "KAK"
+      ],
+      "game": "Paperboy",
+      "winning_scores": [
+        {
+          "player": "KAK",
+          "score": 23547,
+          "score_id": "380787",
+          "game": "Paperboy"
+        }
+      ]
+    },
+    "50060": {
+      "score": 23476,
+      "holders": [
+        "SPC"
+      ],
+      "game": "Tempest",
+      "winning_scores": [
+        {
+          "player": "SPC",
+          "score": 23476,
+          "score_id": "74305",
+          "game": "Tempest"
+        }
+      ]
+    },
+    "50054": {
+      "score": 23350,
+      "holders": [
+        "DON"
+      ],
+      "game": "Moon Patrol",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 23350,
+          "score_id": "74500",
+          "game": "Moon Patrol"
+        }
+      ]
+    },
+    "50258": {
+      "score": 23000,
+      "holders": [
+        "DON"
+      ],
+      "game": "Joust II",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 23000,
+          "score_id": "74438",
+          "game": "Joust II"
+        }
+      ]
+    },
+    "75251": {
+      "score": 22340,
+      "holders": [
+        "DON"
+      ],
+      "game": "Road Runner",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 22340,
+          "score_id": "175761",
+          "game": "Road Runner"
+        }
+      ]
+    },
+    "50317": {
+      "score": 21790,
+      "holders": [
+        "VJG"
+      ],
+      "game": "Dragons Lair",
+      "winning_scores": [
+        {
+          "player": "VJG",
+          "score": 21790,
+          "score_id": "380161",
+          "game": "Dragons Lair"
+        }
+      ]
+    },
+    "72623": {
+      "score": 20100,
+      "holders": [
+        "DON"
+      ],
+      "game": "Ghostbusters",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 20100,
+          "score_id": "149065",
+          "game": "Ghostbusters"
+        }
+      ]
+    },
+    "50253": {
+      "score": 19988,
+      "holders": [
+        "SPC"
+      ],
+      "game": "Tetris",
+      "winning_scores": [
+        {
+          "player": "SPC",
+          "score": 19988,
+          "score_id": "380951",
+          "game": "Tetris"
+        }
+      ]
+    },
+    "50062": {
+      "score": 19790,
+      "holders": [
+        "DON"
+      ],
+      "game": "Mappy",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 19790,
+          "score_id": "227710",
+          "game": "Mappy"
+        }
+      ]
+    },
+    "50000": {
+      "score": 19600,
+      "holders": [
+        "DON"
+      ],
+      "game": "Kangaroo",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 19600,
+          "score_id": "74121",
+          "game": "Kangaroo"
+        }
+      ]
+    },
+    "50016": {
+      "score": 19550,
+      "holders": [
+        "DON"
+      ],
+      "game": "Arkanoid Revenge of DoH",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 19550,
+          "score_id": "74604",
+          "game": "Arkanoid Revenge of DoH"
+        }
+      ]
+    },
+    "50024": {
+      "score": 19550,
+      "holders": [
+        "KAK"
+      ],
+      "game": "BurgerTime",
+      "winning_scores": [
+        {
+          "player": "KAK",
+          "score": 19550,
+          "score_id": "380796",
+          "game": "BurgerTime"
+        }
+      ]
+    },
+    "50244": {
+      "score": 19380,
+      "holders": [
+        "DON"
+      ],
+      "game": "Pac-Land",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 19380,
+          "score_id": "352251",
+          "game": "Pac-Land"
+        }
+      ]
+    },
+    "50033": {
+      "score": 18300,
+      "holders": [
+        "DON"
+      ],
+      "game": "DONKEY KONG JR.",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 18300,
+          "score_id": "74189",
+          "game": "DONKEY KONG JR."
+        }
+      ]
+    },
+    "50325": {
+      "score": 18180,
+      "holders": [
+        "DON"
+      ],
+      "game": "Solar Fox",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 18180,
+          "score_id": "73302",
+          "game": "Solar Fox"
+        }
+      ]
+    },
+    "70343": {
+      "score": 18000,
+      "holders": [
+        "DON"
+      ],
+      "game": "afterburner",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 18000,
+          "score_id": "148371",
+          "game": "afterburner"
+        }
+      ]
+    },
+    "101606": {
+      "score": 17985,
+      "holders": [
+        "DON"
+      ],
+      "game": "Tempest Tubes",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 17985,
+          "score_id": "320698",
+          "game": "Tempest Tubes"
+        }
+      ]
+    },
+    "101599": {
+      "score": 17300,
+      "holders": [
+        "SPC"
+      ],
+      "game": "Discs of Tron",
+      "winning_scores": [
+        {
+          "player": "SPC",
+          "score": 17300,
+          "score_id": "320674",
+          "game": "Discs of Tron"
+        }
+      ]
+    },
+    "73962": {
+      "score": 17200,
+      "holders": [
+        "DON"
+      ],
+      "game": "Strider",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 17200,
+          "score_id": "387227",
+          "game": "Strider"
+        }
+      ]
+    },
+    "50232": {
+      "score": 17191,
+      "holders": [
+        "KAK"
+      ],
+      "game": "Mr. Do's Wild Ride!",
+      "winning_scores": [
+        {
+          "player": "KAK",
+          "score": 17191,
+          "score_id": "74428",
+          "game": "Mr. Do's Wild Ride!"
+        }
+      ]
+    },
+    "58358": {
+      "score": 16770,
+      "holders": [
+        "DON"
+      ],
+      "game": "Gorgar",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 16770,
+          "score_id": "153934",
+          "game": "Gorgar"
+        }
+      ]
+    },
+    "50049": {
+      "score": 16200,
+      "holders": [
+        "SMS"
+      ],
+      "game": "journey",
+      "winning_scores": [
+        {
+          "player": "SMS",
+          "score": 16200,
+          "score_id": "74206",
+          "game": "journey"
+        }
+      ]
+    },
+    "49996": {
+      "score": 15980,
+      "holders": [
+        "DON"
+      ],
+      "game": "Jungle King",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 15980,
+          "score_id": "227716",
+          "game": "Jungle King"
+        }
+      ]
+    },
+    "50053": {
+      "score": 15675,
+      "holders": [
+        "DON"
+      ],
+      "game": "MISSILE COMMAND",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 15675,
+          "score_id": "74208",
+          "game": "MISSILE COMMAND"
+        }
+      ]
+    },
+    "50017": {
+      "score": 15490,
+      "holders": [
+        "SPC"
+      ],
+      "game": "Asteroids",
+      "winning_scores": [
+        {
+          "player": "SPC",
+          "score": 15490,
+          "score_id": "380702",
+          "game": "Asteroids"
+        }
+      ]
+    },
+    "50059": {
+      "score": 15400,
+      "holders": [
+        "DON"
+      ],
+      "game": "Wizard of Wor",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 15400,
+          "score_id": "176853",
+          "game": "Wizard of Wor"
+        }
+      ]
+    },
+    "50047": {
+      "score": 15100,
+      "holders": [
+        "DON"
+      ],
+      "game": "Indiana Jones and The Temple of Doom",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 15100,
+          "score_id": "74501",
+          "game": "Indiana Jones and The Temple of Doom"
+        }
+      ]
+    },
+    "50231": {
+      "score": 14900,
+      "holders": [
+        "DON"
+      ],
+      "game": "Mr. Do's Castle",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 14900,
+          "score_id": "74425",
+          "game": "Mr. Do's Castle"
+        }
+      ]
+    },
+    "50329": {
+      "score": 14820,
+      "holders": [
+        "DON"
+      ],
+      "game": "Xevious",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 14820,
+          "score_id": "13287",
+          "game": "Xevious"
+        }
+      ]
+    },
+    "50241": {
+      "score": 14800,
+      "holders": [
+        "SMS"
+      ],
+      "game": "RALLY X",
+      "winning_scores": [
+        {
+          "player": "SMS",
+          "score": 14800,
+          "score_id": "148965",
+          "game": "RALLY X"
+        }
+      ]
+    },
+    "50316": {
+      "score": 14275,
+      "holders": [
+        "SMS"
+      ],
+      "game": "Qix",
+      "winning_scores": [
+        {
+          "player": "SMS",
+          "score": 14275,
+          "score_id": "74502",
+          "game": "Qix"
+        }
+      ]
+    },
+    "101604": {
+      "score": 13840,
+      "holders": [
+        "DON"
+      ],
+      "game": "Pac-Man Plus",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 13840,
+          "score_id": "320691",
+          "game": "Pac-Man Plus"
+        }
+      ]
+    },
+    "50171": {
+      "score": 13490,
+      "holders": [
+        "DON"
+      ],
+      "game": "Spy Hunter",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 13490,
+          "score_id": "74343",
+          "game": "Spy Hunter"
+        }
+      ]
+    },
+    "50217": {
+      "score": 13300,
+      "holders": [
+        "DON"
+      ],
+      "game": "Angler Dangler",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 13300,
+          "score_id": "146608",
+          "game": "Angler Dangler"
+        }
+      ]
+    },
+    "50018": {
+      "score": 13010,
+      "holders": [
+        "SPC"
+      ],
+      "game": "Asteroids Deluxe",
+      "winning_scores": [
+        {
+          "player": "SPC",
+          "score": 13010,
+          "score_id": "74165",
+          "game": "Asteroids Deluxe"
+        }
+      ]
+    },
+    "50301": {
+      "score": 13000,
+      "holders": [
+        "DON"
+      ],
+      "game": "Lock n Chase",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 13000,
+          "score_id": "28378",
+          "game": "Lock n Chase"
+        }
+      ]
+    },
+    "50240": {
+      "score": 12740,
+      "holders": [
+        "SPC"
+      ],
+      "game": "NIBBLER",
+      "winning_scores": [
+        {
+          "player": "SPC",
+          "score": 12740,
+          "score_id": "74461",
+          "game": "NIBBLER"
+        }
+      ]
+    },
+    "50307": {
+      "score": 12350,
+      "holders": [
+        "DON"
+      ],
+      "game": "Noahs Ark",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 12350,
+          "score_id": "74450",
+          "game": "Noahs Ark"
+        }
+      ]
+    },
+    "49992": {
+      "score": 12200,
+      "holders": [
+        "VJG"
+      ],
+      "game": "Frogger",
+      "winning_scores": [
+        {
+          "player": "VJG",
+          "score": 12200,
+          "score_id": "74135",
+          "game": "Frogger"
+        }
+      ]
+    },
+    "50057": {
+      "score": 11379,
+      "holders": [
+        "DON"
+      ],
+      "game": "Tron",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 11379,
+          "score_id": "74209",
+          "game": "Tron"
+        }
+      ]
+    },
+    "50254": {
+      "score": 11020,
+      "holders": [
+        "DON"
+      ],
+      "game": "VENTURE",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 11020,
+          "score_id": "74446",
+          "game": "VENTURE"
+        }
+      ]
+    },
+    "50176": {
+      "score": 10950,
+      "holders": [
+        "DON"
+      ],
+      "game": "Zaxxon",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 10950,
+          "score_id": "74348",
+          "game": "Zaxxon"
+        }
+      ]
+    },
+    "101600": {
+      "score": 10800,
+      "holders": [
+        "DON"
+      ],
+      "game": "Captain America and The Avengers - Arcade",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 10800,
+          "score_id": "320675",
+          "game": "Captain America and The Avengers - Arcade"
+        }
+      ]
+    },
+    "50248": {
+      "score": 10680,
+      "holders": [
+        "DON"
+      ],
+      "game": "Phoenix",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 10680,
+          "score_id": "74457",
+          "game": "Phoenix"
+        }
+      ]
+    },
+    "73281": {
+      "score": 10551,
+      "holders": [
+        "DON"
+      ],
+      "game": "Marvel Super Heroes",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 10551,
+          "score_id": "385006",
+          "game": "Marvel Super Heroes"
+        }
+      ]
+    },
+    "50044": {
+      "score": 10440,
+      "holders": [
+        "RDG"
+      ],
+      "game": "Gorf",
+      "winning_scores": [
+        {
+          "player": "RDG",
+          "score": 10440,
+          "score_id": "74203",
+          "game": "Gorf"
+        }
+      ]
+    },
+    "50342": {
+      "score": 10400,
+      "holders": [
+        "DON"
+      ],
+      "game": "Keystone Kapers",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 10400,
+          "score_id": "74521",
+          "game": "Keystone Kapers"
+        }
+      ]
+    },
+    "50220": {
+      "score": 10100,
+      "holders": [
+        "DON"
+      ],
+      "game": "Blue Shark",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 10100,
+          "score_id": "74406",
+          "game": "Blue Shark"
+        }
+      ]
+    },
+    "50340": {
+      "score": 9960,
+      "holders": [
+        "DON"
+      ],
+      "game": "megamania",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 9960,
+          "score_id": "74522",
+          "game": "megamania"
+        }
+      ]
+    },
+    "50014": {
+      "score": 9820,
+      "holders": [
+        "DON"
+      ],
+      "game": "Amidar",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 9820,
+          "score_id": "74162",
+          "game": "Amidar"
+        }
+      ]
+    },
+    "50257": {
+      "score": 9790,
+      "holders": [
+        "DON"
+      ],
+      "game": "I, ROBOT",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 9790,
+          "score_id": "148668",
+          "game": "I, ROBOT"
+        }
+      ]
+    },
+    "101601": {
+      "score": 9700,
+      "holders": [
+        "DON"
+      ],
+      "game": "Food Fight",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 9700,
+          "score_id": "320679",
+          "game": "Food Fight"
+        }
+      ]
+    },
+    "84714": {
+      "score": 9500,
+      "holders": [
+        "DON"
+      ],
+      "game": "Cosmic Ark",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 9500,
+          "score_id": "228400",
+          "game": "Cosmic Ark"
+        }
+      ]
+    },
+    "71977": {
+      "score": 8993,
+      "holders": [
+        "DON"
+      ],
+      "game": "Toobin'",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 8993,
+          "score_id": "319500",
+          "game": "Toobin'"
+        }
+      ]
+    },
+    "50226": {
+      "score": 8700,
+      "holders": [
+        "DON"
+      ],
+      "game": "Crazy Climber 2",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 8700,
+          "score_id": "148658",
+          "game": "Crazy Climber 2"
+        }
+      ]
+    },
+    "50039": {
+      "score": 8600,
+      "holders": [
+        "SPC"
+      ],
+      "game": "Defender",
+      "winning_scores": [
+        {
+          "player": "SPC",
+          "score": 8600,
+          "score_id": "74606",
+          "game": "Defender"
+        }
+      ]
+    },
+    "50023": {
+      "score": 8518,
+      "holders": [
+        "DON"
+      ],
+      "game": "Buck Rogers",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 8518,
+          "score_id": "74172",
+          "game": "Buck Rogers"
+        }
+      ]
+    },
+    "62269": {
+      "score": 8190,
+      "holders": [
+        "DON"
+      ],
+      "game": "ICE COLD BEER",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 8190,
+          "score_id": "373308",
+          "game": "ICE COLD BEER"
+        }
+      ]
+    },
+    "50027": {
+      "score": 7980,
+      "holders": [
+        "DON"
+      ],
+      "game": "Congo Bongo",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 7980,
+          "score_id": "74181",
+          "game": "Congo Bongo"
+        }
+      ]
+    },
+    "50309": {
+      "score": 7500,
+      "holders": [
+        "DON",
+        "SPC"
+      ],
+      "game": "sea wolf",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 7500,
+          "score_id": "74448",
+          "game": "sea wolf"
+        },
+        {
+          "player": "SPC",
+          "score": 7500,
+          "score_id": "49144",
+          "game": "sea wolf"
+        }
+      ]
+    },
+    "50178": {
+      "score": 6760,
+      "holders": [
+        "RDG"
+      ],
+      "game": "Super Punch Out",
+      "winning_scores": [
+        {
+          "player": "RDG",
+          "score": 6760,
+          "score_id": "380832",
+          "game": "Super Punch Out"
+        }
+      ]
+    },
+    "51765": {
+      "score": 6740,
+      "holders": [
+        "DON"
+      ],
+      "game": "Carnival",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 6740,
+          "score_id": "75483",
+          "game": "Carnival"
+        }
+      ]
+    },
+    "50326": {
+      "score": 6710,
+      "holders": [
+        "DON"
+      ],
+      "game": "Star Castle",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 6710,
+          "score_id": "73125",
+          "game": "Star Castle"
+        }
+      ]
+    },
+    "74011": {
+      "score": 6200,
+      "holders": [
+        "DON"
+      ],
+      "game": "Chiller",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 6200,
+          "score_id": "168613",
+          "game": "Chiller"
+        }
+      ]
+    },
+    "50333": {
+      "score": 6012,
+      "holders": [
+        "SPC"
+      ],
+      "game": "Dragster",
+      "winning_scores": [
+        {
+          "player": "SPC",
+          "score": 6012,
+          "score_id": "74507",
+          "game": "Dragster"
+        }
+      ]
+    },
+    "101602": {
+      "score": 5620,
+      "holders": [
+        "SPC"
+      ],
+      "game": "Galaxian",
+      "winning_scores": [
+        {
+          "player": "SPC",
+          "score": 5620,
+          "score_id": "320680",
+          "game": "Galaxian"
+        }
+      ]
+    },
+    "50238": {
+      "score": 5540,
+      "holders": [
+        "DON"
+      ],
+      "game": "Make Trax",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 5540,
+          "score_id": "74462",
+          "game": "Make Trax"
+        }
+      ]
+    },
+    "72188": {
+      "score": 5350,
+      "holders": [
+        "SMS"
+      ],
+      "game": "Munch Mobile",
+      "winning_scores": [
+        {
+          "player": "SMS",
+          "score": 5350,
+          "score_id": "146555",
+          "game": "Munch Mobile"
+        }
+      ]
+    },
+    "50038": {
+      "score": 5323,
+      "holders": [
+        "DON"
+      ],
+      "game": "Frenzy",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 5323,
+          "score_id": "74196",
+          "game": "Frenzy"
+        }
+      ]
+    },
+    "50306": {
+      "score": 4300,
+      "holders": [
+        "SPC"
+      ],
+      "game": "Super Zaxxon",
+      "winning_scores": [
+        {
+          "player": "SPC",
+          "score": 4300,
+          "score_id": "73640",
+          "game": "Super Zaxxon"
+        }
+      ]
+    },
+    "50247": {
+      "score": 4070,
+      "holders": [
+        "DON"
+      ],
+      "game": "PENGO",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 4070,
+          "score_id": "76226",
+          "game": "PENGO"
+        }
+      ]
+    },
+    "50263": {
+      "score": 4040,
+      "holders": [
+        "DON"
+      ],
+      "game": "LIBERATOR",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 4040,
+          "score_id": "74686",
+          "game": "LIBERATOR"
+        }
+      ]
+    },
+    "71989": {
+      "score": 4010,
+      "holders": [
+        "DON"
+      ],
+      "game": "Anteater",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 4010,
+          "score_id": "146550",
+          "game": "Anteater"
+        }
+      ]
+    },
+    "70363": {
+      "score": 3790,
+      "holders": [
+        "DON"
+      ],
+      "game": "Turtles",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 3790,
+          "score_id": "138293",
+          "game": "Turtles"
+        }
+      ]
+    },
+    "50350": {
+      "score": 3600,
+      "holders": [
+        "DAY"
+      ],
+      "game": "Dr. Mario",
+      "winning_scores": [
+        {
+          "player": "DAY",
+          "score": 3600,
+          "score_id": "151688",
+          "game": "Dr. Mario"
+        }
+      ]
+    },
+    "50321": {
+      "score": 3530,
+      "holders": [
+        "DON"
+      ],
+      "game": "Rock n Rope",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 3530,
+          "score_id": "148997",
+          "game": "Rock n Rope"
+        }
+      ]
+    },
+    "50020": {
+      "score": 3330,
+      "holders": [
+        "DON"
+      ],
+      "game": "Berzerk",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 3330,
+          "score_id": "74168",
+          "game": "Berzerk"
+        }
+      ]
+    },
+    "50259": {
+      "score": 3200,
+      "holders": [
+        "DON"
+      ],
+      "game": "Karate Champ",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 3200,
+          "score_id": "148958",
+          "game": "Karate Champ"
+        }
+      ]
+    },
+    "50163": {
+      "score": 2830,
+      "holders": [
+        "GPS"
+      ],
+      "game": "SPACE INVADERS",
+      "winning_scores": [
+        {
+          "player": "GPS",
+          "score": 2830,
+          "score_id": "74333",
+          "game": "SPACE INVADERS"
+        }
+      ]
+    },
+    "50339": {
+      "score": 2311,
+      "holders": [
+        "RDG"
+      ],
+      "game": "pac-man atari 2600",
+      "winning_scores": [
+        {
+          "player": "RDG",
+          "score": 2311,
+          "score_id": "74525",
+          "game": "pac-man atari 2600"
+        }
+      ]
+    },
+    "72620": {
+      "score": 2260,
+      "holders": [
+        "DON"
+      ],
+      "game": "Gauntlet",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 2260,
+          "score_id": "149067",
+          "game": "Gauntlet"
+        }
+      ]
+    },
+    "86253": {
+      "score": 2020,
+      "holders": [
+        "DON"
+      ],
+      "game": "720 Degrees",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 2020,
+          "score_id": "387226",
+          "game": "720 Degrees"
+        }
+      ]
+    },
+    "50229": {
+      "score": 1844,
+      "holders": [
+        "DON"
+      ],
+      "game": "Hopping Mappy",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 1844,
+          "score_id": "175239",
+          "game": "Hopping Mappy"
+        }
+      ]
+    },
+    "70359": {
+      "score": 1804,
+      "holders": [
+        "DON"
+      ],
+      "game": "Reactor",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 1804,
+          "score_id": "145459",
+          "game": "Reactor"
+        }
+      ]
+    },
+    "112915": {
+      "score": 1750,
+      "holders": [
+        "DON"
+      ],
+      "game": "Crater Raider",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 1750,
+          "score_id": "381776",
+          "game": "Crater Raider"
+        }
+      ]
+    },
+    "74010": {
+      "score": 1700,
+      "holders": [
+        "DON"
+      ],
+      "game": "Cheyenne",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 1700,
+          "score_id": "168609",
+          "game": "Cheyenne"
+        }
+      ]
+    },
+    "50035": {
+      "score": 1650,
+      "holders": [
+        "RPS"
+      ],
+      "game": "Elevator Action",
+      "winning_scores": [
+        {
+          "player": "RPS",
+          "score": 1650,
+          "score_id": "74328",
+          "game": "Elevator Action"
+        }
+      ]
+    },
+    "50215": {
+      "score": 1357,
+      "holders": [
+        "DON"
+      ],
+      "game": "A.P.B.",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 1357,
+          "score_id": "171686",
+          "game": "A.P.B."
+        }
+      ]
+    },
+    "50347": {
+      "score": 336,
+      "holders": [
+        "DON"
+      ],
+      "game": "Super Mario 1-1 Speed Run",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 336,
+          "score_id": "74600",
+          "game": "Super Mario 1-1 Speed Run"
+        }
+      ]
+    },
+    "84713": {
+      "score": 300,
+      "holders": [
+        "SMS"
+      ],
+      "game": "Lunar Lander",
+      "winning_scores": [
+        {
+          "player": "SMS",
+          "score": 300,
+          "score_id": "386112",
+          "game": "Lunar Lander"
+        }
+      ]
+    },
+    "112566": {
+      "score": 283,
+      "holders": [
+        "POD"
+      ],
+      "game": "SUPER BREAKOUT",
+      "winning_scores": [
+        {
+          "player": "POD",
+          "score": 283,
+          "score_id": "380791",
+          "game": "SUPER BREAKOUT"
+        }
+      ]
+    },
+    "101611": {
+      "score": 265,
+      "holders": [
+        "DON"
+      ],
+      "game": "Simpsons Bowling",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 265,
+          "score_id": "320702",
+          "game": "Simpsons Bowling"
+        }
+      ]
+    },
+    "50354": {
+      "score": 242,
+      "holders": [
+        "POD"
+      ],
+      "game": "World Class Bowling",
+      "winning_scores": [
+        {
+          "player": "POD",
+          "score": 242,
+          "score_id": "227748",
+          "game": "World Class Bowling"
+        }
+      ]
+    },
+    "73125": {
+      "score": 99,
+      "holders": [
+        "BGR",
+        "DON",
+        "FO",
+        "MAB",
+        "SPC"
+      ],
+      "game": "Fishing Derby",
+      "winning_scores": [
+        {
+          "player": "BGR",
+          "score": 99,
+          "score_id": "152919",
+          "game": "Fishing Derby"
+        },
+        {
+          "player": "DON",
+          "score": 99,
+          "score_id": "152915",
+          "game": "Fishing Derby"
+        },
+        {
+          "player": "FO",
+          "score": 99,
+          "score_id": "152917",
+          "game": "Fishing Derby"
+        },
+        {
+          "player": "MAB",
+          "score": 99,
+          "score_id": "152918",
+          "game": "Fishing Derby"
+        },
+        {
+          "player": "SPC",
+          "score": 99,
+          "score_id": "152916",
+          "game": "Fishing Derby"
+        }
+      ]
+    },
+    "50932": {
+      "score": 72,
+      "holders": [
+        "SPC"
+      ],
+      "game": "Frogs and Flies",
+      "winning_scores": [
+        {
+          "player": "SPC",
+          "score": 72,
+          "score_id": "152912",
+          "game": "Frogs and Flies"
+        }
+      ]
+    },
+    "72621": {
+      "score": 37,
+      "holders": [
+        "DON"
+      ],
+      "game": "X-Men - Arcade",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 37,
+          "score_id": "154265",
+          "game": "X-Men - Arcade"
+        }
+      ]
+    },
+    "50343": {
+      "score": 30,
+      "holders": [
+        "DON"
+      ],
+      "game": "freeway",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 30,
+          "score_id": "74513",
+          "game": "freeway"
+        }
+      ]
+    },
+    "73295": {
+      "score": 2,
+      "holders": [
+        "DAY"
+      ],
+      "game": "Tekken 3",
+      "winning_scores": [
+        {
+          "player": "DAY",
+          "score": 2,
+          "score_id": "380814",
+          "game": "Tekken 3"
+        }
+      ]
+    }
+  },
+  "improvements": []
+}
