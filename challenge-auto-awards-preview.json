@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "mode": "preview_only",
-  "generated_at": "2026-11-18T16:30:49.485659-05:00",
+  "generated_at": "2026-11-18T17:18:41.047628-05:00",
   "approval_source": "public_iScored_feed_only_after_operator_approval_tested_2026-11-18",
   "timestamp_note": "iScored API date appears to reflect approval time; NOT valid original submission evidence",
   "release_blocker": "No independent original submission timestamp; potential matches below are diagnostic only, not award-eligible",
