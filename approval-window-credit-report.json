@@ -9,5 +9,6 @@
   "unparseable_dates": 0,
   "proposed_credits": [],
   "new_championships": [],
-  "no_push_notifications": true
+  "no_push_notifications": true,
+  "new_monthly_trophies": []
 }
