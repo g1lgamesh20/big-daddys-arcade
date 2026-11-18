@@ -20,24 +20,60 @@
     }
     card.append(stats);
     const earned=verifiedAwards[p.player]||[];
-    if(earned.length){
-      const section=document.createElement('section');
-      section.className='player-verified-trophies';
-      section.setAttribute('aria-label','Verified challenge trophies');
-      section.style.cssText='margin:12px 0 2px;padding:10px;border:1px solid #70f6e5;border-radius:10px;background:rgba(14,18,44,.8);text-align:left';
-      const header=document.createElement('strong');
-      header.textContent='🏆 TROPHY COLLECTION • '+earned.length+' VERIFIED';
-      header.style.cssText='display:block;color:#aaff78;font-size:12px;margin-bottom:6px';
-      section.append(header);
-      for(const award of earned.slice(0,8)){
+    const section=document.createElement('section');
+    section.className='player-verified-trophies';
+    section.setAttribute('aria-label','Verified Trophy Room');
+    section.style.cssText='margin:12px 0 2px;padding:12px;border:1px solid #70f6e5;border-radius:10px;background:rgba(14,18,44,.8);text-align:left';
+    const header=document.createElement('strong');
+    header.textContent='🏆 TROPHY ROOM • '+earned.length+' VERIFIED';
+    header.style.cssText='display:block;color:#aaff78;font-size:13px;margin-bottom:7px';
+    section.append(header);
+    if(!earned.length){
+      const empty=document.createElement('p');
+      empty.style.cssText='margin:0;color:#d0d5e9;font-size:12px';
+      empty.textContent='No verified challenge trophies yet. Your collection starts with your first verified achievement!';
+      section.append(empty);
+    }else{
+      const formatAward=(award)=>{
         const entry=document.createElement('div');
-        entry.style.cssText='font-size:12px;margin:5px 0;color:#fff';
-        entry.textContent='🏆 '+String(award.name||'Verified Achievement')+' • '+String(award.game||'')+' • '+String(award.date||'');
-        section.append(entry);
+        entry.style.cssText='padding:8px;margin:5px 0;border:1px solid rgba(112,246,229,.22);border-radius:7px;background:rgba(7,12,29,.75)';
+        const name=document.createElement('strong');
+        name.style.cssText='display:block;color:#ffbaed;font-size:12px';
+        name.textContent='🏆 '+String(award.name||'Verified Achievement');
+        const info=document.createElement('span');
+        info.style.cssText='display:block;color:#e4ecff;font-size:12px;margin-top:3px;overflow-wrap:anywhere';
+        info.textContent=String(award.game||'')+' • '+String(award.date||'');
+        entry.append(name,info);
+        return entry;
+      };
+      for(const award of earned.slice(0,3))section.append(formatAward(award));
+      const room=document.createElement('details');
+      room.className='player-trophy-room-expanded';
+      room.style.cssText='margin-top:10px;border-top:1px solid rgba(112,246,229,.3);padding-top:8px';
+      const toggle=document.createElement('summary');
+      toggle.style.cssText='color:#8fe9ff;font-weight:800;font-size:12px;cursor:pointer;padding:5px;min-height:32px';
+      toggle.textContent='VIEW FULL TROPHY ROOM • '+earned.length+' VERIFIED';
+      room.append(toggle);
+      const categories=[
+        ['Thursday Champions',a=>a.type==='thursday_champion'],
+        ['Daily Challenges',a=>String(a.type||'').startsWith('daily_')],
+        ['Game of the Month',a=>String(a.type||'').startsWith('gotm_')||String(a.type||'').startsWith('monthly_')],
+        ['Other Achievements',a=>!['thursday_champion'].includes(a.type)&&!String(a.type||'').startsWith('daily_')&&!String(a.type||'').startsWith('gotm_')&&!String(a.type||'').startsWith('monthly_')]
+      ];
+      for(const [heading,belongs] of categories){
+        const entries=earned.filter(belongs);
+        if(!entries.length)continue;
+        const group=document.createElement('div');
+        const title=document.createElement('h4');
+        title.style.cssText='font-size:12px;color:#aaff78;letter-spacing:.05em;margin:12px 0 5px';
+        title.textContent=heading+' ('+entries.length+')';
+        group.append(title);
+        for(const award of entries)group.append(formatAward(award));
+        room.append(group);
       }
-      if(earned.length>8){const more=document.createElement('p');more.style.cssText='font-size:11px;color:#9fe8fa;margin:7px 0 0';more.textContent='Showing 8 of '+earned.length+' verified trophies';section.append(more);}
-      card.append(section);
+      section.append(room);
     }
+    card.append(section);
     return card;
   }
   function featured(){
