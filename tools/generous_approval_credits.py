@@ -244,7 +244,7 @@ def main():
     previous_baselines=load('daily-champion-baselines.json',{})
     baselines=capture_daily_baselines(rows,archive,live,previous_baselines,now)
     if baselines!=previous_baselines:
-        BASELINES.write_text(json.dumps(baselines,indent=2)+'\\n',encoding='utf-8')
+        BASELINES.write_text(json.dumps(baselines,indent=2)+'\n',encoding='utf-8')
     result,report,changed=process(rows,
       archive,
       live,
