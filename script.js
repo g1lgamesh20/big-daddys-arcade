@@ -1,4 +1,4 @@
-// Player stat cards: read-only iScored scoreboard and permanent verified Thursday victories.
+// Player stat cards: read-only iScored scoreboard and permanent verified challenge trophy collection.
 (function initArcadePlayerCards(){
   const dialog=document.querySelector('#player-dialog');
   const detail=document.querySelector('#player-card-detail');
@@ -6,14 +6,14 @@
   const spotlight=document.querySelector('#player-spotlight');
   const close=document.querySelector('#player-close');
   const seeAll=document.querySelector('#player-see-all');
-  let players=[], victories={}, verifiedAwards={}, selected='', previousFocus=null;
+  let players=[], victories={}, gotmWins={}, verifiedAwards={}, selected='', previousFocus=null;
   const dateET=()=>new Intl.DateTimeFormat('en-CA',{timeZone:'America/New_York',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
   function makeCard(p){
     const card=document.createElement('article');card.className='player-stat-card';
     const title=document.createElement('h3');title.textContent=p.player.toUpperCase();card.append(title);
     const rank=document.createElement('p');rank.className='player-stat-rank';rank.textContent='CURRENT RANK '+p.rank+' / '+players.length;card.append(rank);
     const stats=document.createElement('div');stats.className='player-stat-grid';
-    for(const [label,value,emoji] of [['GOLD',p.gold,'🥇'],['SILVER',p.silver,'🥈'],['BRONZE',p.bronze,'🥉'],['THURSDAY WINS',victories[p.player]||0,'🏆'],['iSCORED POINTS',p.points,'⭐']]){
+    for(const [label,value,emoji] of [['GOLD',p.gold,'🥇'],['SILVER',p.silver,'🥈'],['BRONZE',p.bronze,'🥉'],['THURSDAY WINS',victories[p.player]||0,'🏆'],['GOTM WINS',gotmWins[p.player]||0,'🌟'],['iSCORED POINTS',p.points,'⭐']]){
       const item=document.createElement('div');item.className='player-stat-cell';
       const number=document.createElement('strong');number.textContent=emoji+' '+Number(value||0).toLocaleString('en-US');
       const text=document.createElement('span');text.textContent=label;item.append(number,text);stats.append(item);
@@ -26,15 +26,16 @@
       section.setAttribute('aria-label','Verified challenge trophies');
       section.style.cssText='margin:12px 0 2px;padding:10px;border:1px solid #70f6e5;border-radius:10px;background:rgba(14,18,44,.8);text-align:left';
       const header=document.createElement('strong');
-      header.textContent='🏆 VERIFIED CHALLENGE TROPHIES';
+      header.textContent='🏆 TROPHY COLLECTION • '+earned.length+' VERIFIED';
       header.style.cssText='display:block;color:#aaff78;font-size:12px;margin-bottom:6px';
       section.append(header);
-      for(const award of earned.slice(-8).reverse()){
+      for(const award of earned.slice(0,8)){
         const entry=document.createElement('div');
         entry.style.cssText='font-size:12px;margin:5px 0;color:#fff';
-        entry.textContent='🏆 '+String(award.name||'Thursday Champion')+' • '+String(award.game||'')+' • '+String(award.date||'');
+        entry.textContent='🏆 '+String(award.name||'Verified Achievement')+' • '+String(award.game||'')+' • '+String(award.date||'');
         section.append(entry);
       }
+      if(earned.length>8){const more=document.createElement('p');more.style.cssText='font-size:11px;color:#9fe8fa;margin:7px 0 0';more.textContent='Showing 8 of '+earned.length+' verified trophies';section.append(more);}
       card.append(section);
     }
     return card;
@@ -73,15 +74,20 @@
     if(!res.ok)return;
     const data=await res.json();
     if(data.schema_version!==1||!Array.isArray(data.awards))return;
-    const counts={}, detail={};
+    const counts={}, monthly={}, detail={}, seen=new Set();
     for(const award of data.awards){
-      if(award?.type!=='thursday_champion'||typeof award.player!=='string'
+      if(!award||typeof award.id!=='string'||!award.id.trim()
+          ||typeof award.player!=='string'||!award.player.trim()
           ||typeof award.date!=='string'||typeof award.game!=='string')continue;
+      if(seen.has(award.id))continue; // A verified award ID counts only once.
+      seen.add(award.id);
       const player=award.player.trim().toUpperCase();
-      counts[player]=(counts[player]||0)+1;
+      if(award.type==='thursday_champion')counts[player]=(counts[player]||0)+1;
+      if(award.type==='gotm_champion')monthly[player]=(monthly[player]||0)+1;
       (detail[player]||(detail[player]=[])).push(award);
     }
-    victories=counts;verifiedAwards=detail;
+    for(const earned of Object.values(detail))earned.sort((a,b)=>b.date.localeCompare(a.date)||a.id.localeCompare(b.id));
+    victories=counts;gotmWins=monthly;verifiedAwards=detail;
     featured();if(!dialog.hidden)showPlayer(selected);
   }catch(_){/* Preserve previous verified results if network is unavailable. */}}
   refreshWins();setInterval(refreshWins,10*60*1000);
