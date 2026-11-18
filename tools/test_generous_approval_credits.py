@@ -166,6 +166,83 @@ class GenerousApprovalTests(unittest.TestCase):
         self.assertEqual(report['new_championships'][0]['player'],'RDG')
         self.assertEqual(out['awards'][0]['event_month'],'2026-12')
         self.assertEqual(len(out['verified_plays']),2)
+    def test_monthly_podium_three_positions_and_75_percent_benchmark(self):
+        public={'status':'provisional','month':'2026-12','game_id':'99',
+                'game':'Robotron','starting_record':1000,'benchmark':750}
+        rows=[row('1','DON',1000,'99','2026-12-08 12:00:00'),
+              row('2','RDG',900,'99','2026-12-09 12:00:00'),
+              row('3','SPC',800,'99','2026-12-10 12:00:00'),
+              row('4','DAY',700,'99','2026-12-11 12:00:00')]
+        out,report,_=self.scan(rows,monthly=public,now=at('2027-01-02T08:00:00'))
+        podium={a['player']:a['rank'] for a in out['awards']
+                if a['type'].startswith('gotm_podium_')}
+        self.assertEqual(podium,{'DON':1,'RDG':2,'SPC':3})
+        above={a['player'] for a in out['awards'] if a['type']=='gotm_beat_average'}
+        self.assertEqual(above,{'DON','RDG','SPC'})
+        self.assertTrue(all(a['locked_benchmark']==750
+                            for a in out['awards'] if a['type']=='gotm_beat_average'))
+        self.assertEqual(len(out['verified_plays']),4)
+        self.assertEqual({a['player'] for a in out['awards'] if a['type']=='gotm_champion'},{'DON'})
+        self.assertEqual(len(report['new_monthly_trophies']),6)
+    def test_monthly_podium_ties_use_1_1_3(self):
+        public={'status':'provisional','month':'2026-12','game_id':'99','game':'Robotron',
+                'starting_record':1000,'benchmark':750}
+        rows=[row('1','DON',1000,'99','2026-12-08 12:00:00'),
+              row('2','RDG',1000,'99','2026-12-09 12:00:00'),
+              row('3','SPC',900,'99','2026-12-10 12:00:00')]
+        out,_,_=self.scan(rows,monthly=public,now=at('2027-01-02T08:00:00'))
+        podium={a['player']:a['rank'] for a in out['awards']
+                if a['type'].startswith('gotm_podium_')}
+        self.assertEqual(podium,{'DON':1,'RDG':1,'SPC':3})
+    def test_monthly_benchmark_equal_does_not_beat_average(self):
+        public={'status':'provisional','month':'2026-12','game_id':'99','game':'Robotron',
+                'starting_record':1000,'benchmark':750}
+        out,_,_=self.scan([row('1','DON',750,'99','2026-12-08 12:00:00')],
+                           monthly=public,now=at('2027-01-02T08:00:00'))
+        self.assertFalse(any(a['type']=='gotm_beat_average' for a in out['awards']))
+        self.assertTrue(any(a['type']=='gotm_podium_1' for a in out['awards']))
+    def test_no_average_trophy_without_valid_locked_benchmark(self):
+        public={'status':'provisional','month':'2026-12','game_id':'99','game':'Robotron'}
+        out,_,_=self.scan([row('1','DON',5000,'99','2026-12-08 12:00:00')],
+                           monthly=public,now=at('2027-01-02T08:00:00'))
+        self.assertFalse(any(a['type']=='gotm_beat_average' for a in out['awards']))
+    def test_monthly_24h_grace_and_idempotent_trophies(self):
+        public={'status':'provisional','month':'2026-12','game_id':'99','game':'Robotron',
+                'starting_record':1000,'benchmark':750}
+        rows=[row('1','DON',900,'99','2026-12-20 12:00:00'),
+              row('2','RDG',800,'99','2027-01-01 12:00:00')]
+        before,_,_=self.scan(rows,monthly=public,now=at('2027-01-01T23:00:00'))
+        self.assertFalse(before['awards'])
+        after,_,_=self.scan(rows,monthly=public,now=at('2027-01-02T08:00:00'))
+        self.assertEqual(len([a for a in after['awards'] if a['type'].startswith('gotm_')]),5)
+        again,report,changed=self.scan(rows,monthly=public,
+                   stored=after,now=at('2027-01-03T09:00:00'))
+        self.assertFalse(changed)
+        self.assertEqual(report['new_monthly_trophies'],[])
+        self.assertEqual(again,after)
+    def test_revealed_benchmark_archived_across_next_month(self):
+        first={'status':'provisional','month':'2026-12','game_id':'99','game':'Robotron',
+               'starting_record':1000,'benchmark':750}
+        archive=capture_monthly_reveals(first,{'schema_version':1,'months':{}})
+        self.assertEqual(archive['months']['2026-12']['benchmark'],750)
+        january={'status':'provisional','month':'2027-01','game_id':'100','game':'New Game',
+                 'starting_record':2000,'benchmark':1500}
+        new_archive=capture_monthly_reveals(january,archive)
+        rows=[row('1','DON',1000,'99','2026-12-20 12:00:00')]
+        out,_,_=self.scan(rows,monthly=january,archive=new_archive,
+                          now=at('2027-01-02T08:00:00'))
+        self.assertEqual([a['type'] for a in out['awards'] if a['type']=='gotm_beat_average'],
+                         ['gotm_beat_average'])
+        self.assertEqual(out['awards'][0]['event_month'],'2026-12')
+        with self.assertRaises(ValueError):
+            capture_monthly_reveals({**first,'benchmark':749},archive)
+    def test_no_early_monthly_game_reveal_or_trophies(self):
+        private={'status':'not_launched','month':'2026-12','game_id':'SECRET',
+                 'starting_record':1000,'benchmark':750}
+        out,report,_=self.scan([row('1','DON',900,'SECRET','2026-12-20 12:00:00')],
+            monthly=private,now=at('2027-01-02T08:00:00'))
+        self.assertEqual(out,ledger())
+        self.assertNotIn('SECRET',str(report))
     def test_monthly_after_new_month_reveal_uses_archived_old_game(self):
         revealed={'status':'provisional','month':'2026-12','game_id':'99','game':'Old Game'}
         archive=capture_monthly_reveals(revealed,{'schema_version':1,'months':{}})
