@@ -44,6 +44,8 @@ jobs:
           python-version: '3.12'
       - name: Run permanent-award safety tests
         run: python tools/test_verified_awards.py
+      - name: Test unified challenge history safeguards
+        run: python tools/test_unified_achievement_history.py
       - name: Validate operator approval against candidate and finalized result
         env:
           TROPHY_ACTION: ${{ inputs.action }}
@@ -52,9 +54,11 @@ jobs:
           TROPHY_SCORE_ID: ${{ inputs.score_id }}
           TROPHY_CONFIRMED: ${{ inputs.confirmed }}
         run: python tools/verify_challenge_award.py
+      - name: Refresh unified verified participation and championship history
+        run: python tools/build_unified_achievement_history.py
       - name: Save permanent verified ledger
         run: |
-          git add verified-challenge-awards.json
+          git add verified-challenge-awards.json unified-achievement-history.json
           if git diff --cached --quiet; then echo "Existing award unchanged"; exit 0; fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
