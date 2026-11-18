@@ -33,11 +33,6 @@
       "champions": [
         "RDG"
       ],
-      "unverified_candidates": [],
-      "result_status": "final",
-      "archived_winner_unverified_by_this_report": "RDG",
-      "verified_participant_count": 6,
-      "verified_champion_count": 1,
       "verified_results": [
         {
           "player": "DAY",
@@ -88,7 +83,12 @@
           "verified": true,
           "evidence_source": "verified-challenge-awards.json:verified_plays"
         }
-      ]
+      ],
+      "unverified_candidates": [],
+      "result_status": "final",
+      "archived_winner_unverified_by_this_report": "RDG",
+      "verified_participant_count": 6,
+      "verified_champion_count": 1
     },
     {
       "event_key": "daily:2026-11-16",
@@ -99,10 +99,10 @@
       "schedule_source": "daily-champion-history.json",
       "participants": [],
       "champions": [],
+      "verified_results": [],
       "unverified_candidates": [],
       "verified_participant_count": 0,
-      "verified_champion_count": 0,
-      "verified_results": []
+      "verified_champion_count": 0
     },
     {
       "event_key": "daily:2026-11-17",
@@ -113,10 +113,10 @@
       "schedule_source": "daily-champion-history.json",
       "participants": [],
       "champions": [],
+      "verified_results": [],
       "unverified_candidates": [],
       "verified_participant_count": 0,
-      "verified_champion_count": 0,
-      "verified_results": []
+      "verified_champion_count": 0
     },
     {
       "event_key": "daily:2026-11-18",
@@ -127,30 +127,13 @@
       "schedule_source": "daily-champion-history.json",
       "participants": [],
       "champions": [],
+      "verified_results": [],
       "unverified_candidates": [],
       "verified_participant_count": 0,
-      "verified_champion_count": 0,
-      "verified_results": []
+      "verified_champion_count": 0
     }
   ],
   "players": {
-    "RDG": {
-      "participation": {
-        "daily": 0,
-        "thursday": 1,
-        "monthly": 0
-      },
-      "championships": {
-        "daily": 0,
-        "thursday": 1,
-        "monthly": 0
-      },
-      "longest_verified_streaks": {
-        "daily": 0,
-        "thursday": 1,
-        "monthly": 0
-      }
-    },
     "DAY": {
       "participation": {
         "daily": 0,
@@ -211,6 +194,23 @@
       "championships": {
         "daily": 0,
         "thursday": 0,
+        "monthly": 0
+      },
+      "longest_verified_streaks": {
+        "daily": 0,
+        "thursday": 1,
+        "monthly": 0
+      }
+    },
+    "RDG": {
+      "participation": {
+        "daily": 0,
+        "thursday": 1,
+        "monthly": 0
+      },
+      "championships": {
+        "daily": 0,
+        "thursday": 1,
         "monthly": 0
       },
       "longest_verified_streaks": {

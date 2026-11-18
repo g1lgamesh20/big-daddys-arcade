@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "mode": "enabled",
+  "policy": "approved_score_within_event_start_to_end_plus_24h",
+  "approval_timezone_assumption": "America/Chicago for naive iScored API timestamps; verify with source",
+  "caveat": "Approval timestamp is NOT original submission time. Grace policy can include scores not originally played during event.",
+  "matches": 6,
+  "new_participation_credits": 0,
+  "unparseable_dates": 0,
+  "proposed_credits": [],
+  "new_championships": [],
+  "no_push_notifications": true
+}
