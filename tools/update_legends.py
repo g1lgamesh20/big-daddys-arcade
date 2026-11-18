@@ -255,7 +255,7 @@ def main():
         load_award_state('daily-champion.json',{'days':[]}),
         prior_baselines,now)
     if next_baselines!=prior_baselines:
-        BASELINES.write_text(json.dumps(next_baselines,indent=2)+'\\n',encoding='utf-8')
+        BASELINES.write_text(json.dumps(next_baselines,indent=2)+'\n',encoding='utf-8')
         print('Refreshed future Daily Champion baseline snapshots before midnight ET')
     OUTPUT.write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     print('Updated',result['total_games'],'games and',result['total_players'],'players')
