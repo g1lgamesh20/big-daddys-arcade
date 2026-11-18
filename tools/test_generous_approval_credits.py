@@ -4,7 +4,7 @@ import copy
 import unittest
 from datetime import datetime,timezone
 from zoneinfo import ZoneInfo
-from generous_approval_credits import process,approval_time,capture_daily_baselines,scheduled
+from generous_approval_credits import process,approval_time,capture_daily_baselines,scheduled,capture_monthly_reveals
 
 NY=ZoneInfo('America/New_York')
 def at(s):return datetime.fromisoformat(s).replace(tzinfo=NY)
@@ -15,10 +15,10 @@ def daily(date,game):
     return {'days':[{'date':date,'game_id':game,'game':'A game'}]}
 
 class GenerousApprovalTests(unittest.TestCase):
-    def scan(self,rows,days=None,thurs=None,monthly=None,stored=None,now=None,enabled=True,baselines=None):
+    def scan(self,rows,days=None,thurs=None,monthly=None,stored=None,now=None,enabled=True,baselines=None,archive=None):
         return process(rows,days or {'days':[]},{'days':[]},
             thurs or {'weeks':{}},monthly or {},stored or ledger(),
-            now or at('2026-11-21T09:00:00'),enabled=enabled,baselines=baselines)
+            now or at('2026-11-21T09:00:00'),enabled=enabled,baselines=baselines,monthly_archive=archive)
     def test_naive_iscored_date_assumed_central_for_window(self):
         value=approval_time('2026-11-19 00:30:00')
         self.assertEqual(value.isoformat(),'2026-11-19T01:30:00-05:00')
@@ -93,6 +93,27 @@ class GenerousApprovalTests(unittest.TestCase):
         self.assertEqual(report['new_championships'][0]['player'],'RDG')
         self.assertEqual(out['awards'][0]['event_month'],'2026-12')
         self.assertEqual(len(out['verified_plays']),2)
+    def test_monthly_after_new_month_reveal_uses_archived_old_game(self):
+        revealed={'status':'provisional','month':'2026-12','game_id':'99','game':'Old Game'}
+        archive=capture_monthly_reveals(revealed,{'schema_version':1,'months':{}})
+        january={'status':'provisional','month':'2027-01','game_id':'100','game':'New Game'}
+        archived=capture_monthly_reveals(january,archive)
+        rows=[row('z','DON',1000,'99','2026-12-28 13:00:00')]
+        out,report,_=self.scan(rows,monthly=january,archive=archived,
+                               now=at('2027-01-02T12:00:00'))
+        self.assertEqual(len(out['verified_plays']),1)
+        self.assertEqual(out['verified_plays'][0]['event_month'],'2026-12')
+        self.assertEqual(report['new_championships'][0]['date'],'2026-12-01')
+    def test_revealed_monthly_archive_immutable(self):
+        base=capture_monthly_reveals({'status':'provisional','month':'2026-12',
+                   'game_id':'99','game':'Game'}, {'schema_version':1,'months':{}})
+        with self.assertRaises(ValueError):
+            capture_monthly_reveals({'status':'provisional','month':'2026-12',
+                'game_id':'100','game':'Wrong Game'},base)
+    def test_unrevealed_game_never_enters_monthly_archive(self):
+        archive=capture_monthly_reveals({'status':'not_launched','month':'2026-12',
+                   'game_id':'SECRET'}, {'schema_version':1,'months':{}})
+        self.assertNotIn('SECRET',str(archive))
     def test_preview_writes_nothing(self):
         state=ledger()
         snapshot=copy.deepcopy(state)
