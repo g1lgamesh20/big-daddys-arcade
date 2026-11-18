@@ -23,48 +23,54 @@
       "game": "Bosconian",
       "schedule_source": "thursday-challenge-state.json",
       "participants": [
-        "RDG"
+        "DAY",
+        "DON",
+        "FO",
+        "POD",
+        "RDG",
+        "SPC"
       ],
       "champions": [
         "RDG"
       ],
-      "unverified_candidates": [
+      "unverified_candidates": [],
+      "result_status": "final",
+      "archived_winner_unverified_by_this_report": "RDG",
+      "verified_participant_count": 6,
+      "verified_champion_count": 1,
+      "verified_results": [
         {
           "player": "DAY",
-          "score_id": "384386",
+          "role": "participant",
           "score": 13150,
-          "status": "ORIGINAL_SUBMISSION_TIME_NOT_VERIFIED"
+          "score_id": "384386",
+          "verified": true,
+          "evidence_source": "verified-challenge-awards.json:verified_plays"
         },
         {
           "player": "DON",
-          "score_id": "384377",
+          "role": "participant",
           "score": 45110,
-          "status": "ORIGINAL_SUBMISSION_TIME_NOT_VERIFIED"
+          "score_id": "384377",
+          "verified": true,
+          "evidence_source": "verified-challenge-awards.json:verified_plays"
         },
         {
           "player": "FO",
-          "score_id": "384436",
+          "role": "participant",
           "score": 24170,
-          "status": "ORIGINAL_SUBMISSION_TIME_NOT_VERIFIED"
+          "score_id": "384436",
+          "verified": true,
+          "evidence_source": "verified-challenge-awards.json:verified_plays"
         },
         {
           "player": "POD",
-          "score_id": "384472",
+          "role": "participant",
           "score": 12660,
-          "status": "ORIGINAL_SUBMISSION_TIME_NOT_VERIFIED"
+          "score_id": "384472",
+          "verified": true,
+          "evidence_source": "verified-challenge-awards.json:verified_plays"
         },
-        {
-          "player": "SPC",
-          "score_id": "384385",
-          "score": 42770,
-          "status": "ORIGINAL_SUBMISSION_TIME_NOT_VERIFIED"
-        }
-      ],
-      "result_status": "final",
-      "archived_winner_unverified_by_this_report": "RDG",
-      "verified_participant_count": 1,
-      "verified_champion_count": 1,
-      "verified_results": [
         {
           "player": "RDG",
           "role": "champion",
@@ -73,6 +79,14 @@
           "verified": true,
           "award_id": "thursday_champion:2026-11-12",
           "evidence_source": "verified-challenge-awards.json:awards"
+        },
+        {
+          "player": "SPC",
+          "role": "participant",
+          "score": 42770,
+          "score_id": "384385",
+          "verified": true,
+          "evidence_source": "verified-challenge-awards.json:verified_plays"
         }
       ]
     },
@@ -129,6 +143,91 @@
       "championships": {
         "daily": 0,
         "thursday": 1,
+        "monthly": 0
+      },
+      "longest_verified_streaks": {
+        "daily": 0,
+        "thursday": 1,
+        "monthly": 0
+      }
+    },
+    "DAY": {
+      "participation": {
+        "daily": 0,
+        "thursday": 1,
+        "monthly": 0
+      },
+      "championships": {
+        "daily": 0,
+        "thursday": 0,
+        "monthly": 0
+      },
+      "longest_verified_streaks": {
+        "daily": 0,
+        "thursday": 1,
+        "monthly": 0
+      }
+    },
+    "DON": {
+      "participation": {
+        "daily": 0,
+        "thursday": 1,
+        "monthly": 0
+      },
+      "championships": {
+        "daily": 0,
+        "thursday": 0,
+        "monthly": 0
+      },
+      "longest_verified_streaks": {
+        "daily": 0,
+        "thursday": 1,
+        "monthly": 0
+      }
+    },
+    "FO": {
+      "participation": {
+        "daily": 0,
+        "thursday": 1,
+        "monthly": 0
+      },
+      "championships": {
+        "daily": 0,
+        "thursday": 0,
+        "monthly": 0
+      },
+      "longest_verified_streaks": {
+        "daily": 0,
+        "thursday": 1,
+        "monthly": 0
+      }
+    },
+    "POD": {
+      "participation": {
+        "daily": 0,
+        "thursday": 1,
+        "monthly": 0
+      },
+      "championships": {
+        "daily": 0,
+        "thursday": 0,
+        "monthly": 0
+      },
+      "longest_verified_streaks": {
+        "daily": 0,
+        "thursday": 1,
+        "monthly": 0
+      }
+    },
+    "SPC": {
+      "participation": {
+        "daily": 0,
+        "thursday": 1,
+        "monthly": 0
+      },
+      "championships": {
+        "daily": 0,
+        "thursday": 0,
         "monthly": 0
       },
       "longest_verified_streaks": {
