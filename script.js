@@ -329,19 +329,8 @@ document.addEventListener('keydown',e=>{if(leadersDialog.hidden||!document.query
     // Reuse iScored's own per-game logo, just like Game of the Month.
     // Current Daily selection is already public; never request tomorrow's
     // unrevealed Monthly Challenge or infer artwork from its sealed state.
-    if(/^\d{1,12}$/.test(String(day.game_id))){
-      const marquee=document.createElement('img');
-      marquee.className='arcade-game-marquee';
-      marquee.alt=String(game)+' arcade marquee';
-      marquee.loading='lazy';marquee.decoding='async';
-      let alternate=false;
-      marquee.onerror=()=>{
-        if(!alternate){alternate=true;marquee.src='https://www.iscored.info/community/images/games/game'+day.game_id;}
-        else marquee.remove();
-      };
-      marquee.src='https://www.iscored.info/images/games/game'+day.game_id;
-      target.append(marquee);
-    }
+    if(window.arcadeShowGameMarquee)
+      window.arcadeShowGameMarquee(target,day.game_id,game);
     const elements=[['p','arcade-showcase-kicker','CURRENT CHAMPION'],['p','legend-detail',String(game).toUpperCase()]];
     if(chosen){elements.push(['p','legend-headline',String(chosen.player).toUpperCase()],['p','legend-score',Number(chosen.score).toLocaleString('en-US')]);}
     else elements.push(['p','legend-headline','AWAITING CURRENT VERIFIED SCORE']);
