@@ -62,7 +62,8 @@ def scheduled(daily_archive,daily_live,thursday_state,monthly_public,baselines=N
             locked=(baselines or {}).get(day,{})
             baseline=(entry.get('starting_champion_score')
                      if type(entry.get('starting_champion_score')) is int
-                     else locked.get('starting_champion_score') if locked.get('game_id')==gid else None)
+                     else locked.get('starting_champion_score') if locked.get('game_id')==gid
+                     else previous.get('starting_champion_score'))
             events[('daily',day)]={'game_id':gid,'game':str(entry.get('game') or previous.get('game') or ''),
                 'starting_champion_score':baseline}
     for day,entry in thursday_state.get('weeks',{}).items():
