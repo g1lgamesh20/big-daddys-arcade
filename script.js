@@ -6,7 +6,7 @@
   const spotlight=document.querySelector('#player-spotlight');
   const close=document.querySelector('#player-close');
   const seeAll=document.querySelector('#player-see-all');
-  let players=[], victories={}, gotmWins={}, verifiedAwards={}, dailyCounts={}, selected='', previousFocus=null;
+  let players=[], victories={}, gotmWins={}, verifiedAwards={}, dailyCounts={}, challengeCounts={thursday:{},monthly:{}}, selected='', previousFocus=null;
   const dailyMilestones=[[5,'Getting Started'],[10,'Dedicated Challenger'],[25,'Champion Chaser'],[50,'Never Back Down']];
   const dateET=()=>new Intl.DateTimeFormat('en-CA',{timeZone:'America/New_York',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
   function makeCard(p){
@@ -50,6 +50,37 @@
     progressHint.textContent='One credit per verified challenge day. Unverified submissions do not count.';
     progress.append(progressHint);
     card.append(progress);
+    // Thursday and GOTM progress use the same permanent verified ledger.
+    // Verified champion awards also imply one participation credit.
+    for(const [kind,heading,emoji,thresholds] of [
+      ['thursday','THURSDAY CHALLENGES','🏆',[3,5,10,25]],
+      ['monthly','GAME OF THE MONTH','🌟',[3,6,12,24,36,60]]]){
+      const total=(challengeCounts[kind]||{})[p.player]||0;
+      const next=thresholds.find(n=>n>total);
+      const panel=document.createElement('section');
+      panel.className='player-challenge-milestone';
+      panel.style.cssText='margin:9px 0;padding:10px 12px;border:1px solid #fc78d5;border-radius:10px;background:rgba(30,8,44,.8);text-align:left';
+      const headingEl=document.createElement('strong');
+      headingEl.style.cssText='color:#ffb7e9;font-size:12px;display:block;margin-bottom:6px';
+      headingEl.textContent=emoji+' '+heading+' • '+total+' VERIFIED';
+      const msg=document.createElement('p');
+      msg.style.cssText='font-size:12px;color:#d9edff;margin:4px 0 8px';
+      msg.textContent=next?'NEXT MILESTONE • '+total+' / '+next:'ALL CURRENT PARTICIPATION MILESTONES UNLOCKED!';
+      panel.append(headingEl,msg);
+      if(next){
+        const track=document.createElement('div');
+        track.setAttribute('role','progressbar');
+        track.setAttribute('aria-label',heading+' progress');
+        track.setAttribute('aria-valuemin','0');
+        track.setAttribute('aria-valuemax',String(next));
+        track.setAttribute('aria-valuenow',String(total));
+        track.style.cssText='width:100%;height:10px;border-radius:10px;overflow:hidden;background:#3d3056';
+        const fill=document.createElement('div');
+        fill.style.cssText='height:100%;border-radius:10px;background:linear-gradient(90deg,#a9fc6e,#ff66cc);width:'+Math.min(100,100*total/next)+'%';
+        track.append(fill);panel.append(track);
+      }
+      card.append(panel);
+    }
     const earned=verifiedAwards[p.player]||[];
     const section=document.createElement('section');
     section.className='player-verified-trophies';
@@ -165,6 +196,28 @@
       }
     }
     dailyCounts=Object.fromEntries(Object.entries(dailyDays).map(([player,days])=>[player,days.size]));
+    // Dedupe by challenge day/month; wins and verified plays are not two credits.
+    const tracked={thursday:{},monthly:{}};
+    function track(kind,player,date){
+      const normalized=String(player||'').trim().toUpperCase();
+      if(!normalized||typeof date!=='string')return;
+      const key=kind==='monthly'?date.slice(0,7):date;
+      if(!/^20\d{2}-\d{2}(-\d{2})?$/.test(key))return;
+      (tracked[kind][normalized]||(tracked[kind][normalized]=new Set())).add(key);
+    }
+    for(const award of data.awards){
+      if(!award||typeof award.player!=='string')continue;
+      if(award.type==='thursday_champion')track('thursday',award.player,award.date);
+      if(award.type==='gotm_champion')track('monthly',award.player,award.event_month||award.date);
+    }
+    if(Array.isArray(data.verified_plays))for(const play of data.verified_plays){
+      if(!play||typeof play.player!=='string')continue;
+      if(play.kind==='thursday')track('thursday',play.player,play.date);
+      if(play.kind==='monthly')track('monthly',play.player,play.event_month||play.date);
+    }
+    challengeCounts=Object.fromEntries(Object.entries(tracked).map(([kind,people])=>[
+      kind,Object.fromEntries(Object.entries(people).map(([player,dates])=>[player,dates.size]))
+    ]));
     for(const earned of Object.values(detail))earned.sort((a,b)=>b.date.localeCompare(a.date)||a.id.localeCompare(b.id));
     victories=counts;gotmWins=monthly;verifiedAwards=detail;
     featured();if(!dialog.hidden)showPlayer(selected);

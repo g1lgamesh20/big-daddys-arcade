@@ -3,12 +3,13 @@ on:
   workflow_dispatch:
     inputs:
       action:
-        description: 'Thursday Champion awards trophy; Daily verified play records evidence (not a trophy)'
+        description: 'Record verified Thursday/Daily participation or Thursday Champion'
         type: choice
         required: true
         options:
           - thursday_champion
           - daily_verified_play
+          - thursday_verified_play
       event_date:
         description: 'Challenge date YYYY-MM-DD'
         type: string
@@ -44,6 +45,8 @@ jobs:
           python-version: '3.12'
       - name: Run permanent-award safety tests
         run: python tools/test_verified_awards.py
+      - name: Test milestone and streak award safeguards
+        run: python tools/test_unified_milestone_awards.py
       - name: Test unified challenge history safeguards
         run: python tools/test_unified_achievement_history.py
       - name: Validate operator approval against candidate and finalized result
