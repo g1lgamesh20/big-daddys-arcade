@@ -1,9 +1,14 @@
 name: Refresh Hall of Legends scores
 on:
   schedule:
-    # Check for newly approved Top-3 medals every 15 minutes.
-    - cron: '2,17,32,47 * * * *'
+    # Best-effort GitHub fallback: 4 times/hour, away from the top of the hour.
+    # GitHub can delay/drop scheduled events; reliable cadence requires an external trigger.
+    - cron: '7,22,37,52 * * * *'
   workflow_dispatch:
+  # Optional independent scheduler can POST repository_dispatch event_type arcade_medal_refresh.
+  # Event payload is deliberately ignored; only trusted live iScored data is processed.
+  repository_dispatch:
+    types: [arcade_medal_refresh]
 permissions:
   contents: write
 concurrency:
