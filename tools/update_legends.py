@@ -212,6 +212,11 @@ def main():
         all_ids.update(known)
     else:
         combined = []  # Initial run is a quiet baseline.
+    # Separate Golden Encore trophies from Gold medal counts/notifications.
+    # Only newly observed score IDs improving a prior observed Gold qualify.
+    # Run BEFORE medal-state.json advances known_ids, so repeat syncs are safe.
+    from golden_encore import sync as sync_golden_encore
+    sync_golden_encore(raw['scores'], known if STATE.exists() else all_ids)
     # Independent, permanent first-place history. Preserve every recorded gold event.
     # Bootstrap from previously observed gold medal alerts; never call baseline scores NEW.
     previous_records = json.loads(RECORDS.read_text(encoding='utf-8')) if RECORDS.exists() else {}
