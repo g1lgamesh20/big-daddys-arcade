@@ -101,7 +101,13 @@
         entry.style.cssText='padding:8px;margin:5px 0;border:1px solid rgba(112,246,229,.22);border-radius:7px;background:rgba(7,12,29,.75)';
         const name=document.createElement('strong');
         name.style.cssText='display:block;color:#ffbaed;font-size:12px';
-        name.textContent='🏆 '+String(award.name||'Verified Achievement');
+        const isDailyGold=award.type==='daily_champion';
+        if(isDailyGold){
+          entry.style.borderColor='rgba(255,215,92,.65)';
+          entry.style.boxShadow='0 0 12px rgba(255,205,86,.17)';
+          name.style.color='#ffe37c';
+        }
+        name.textContent=(isDailyGold?'🥇 ':'🏆 ')+String(award.name||'Verified Achievement')+(isDailyGold?' • GOLD':'');
         const info=document.createElement('span');
         info.style.cssText='display:block;color:#e4ecff;font-size:12px;margin-top:3px;overflow-wrap:anywhere';
         info.textContent=String(award.game||'')+' • '+String(award.date||'');
