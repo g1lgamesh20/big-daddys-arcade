@@ -6,7 +6,8 @@ leaderboards as verified submission evidence. Never issues awards or pushes.
 """
 import json
 from collections import defaultdict
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta
+from zoneinfo import ZoneInfo
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -109,7 +110,8 @@ def consecutive_streak(days,kind,ordered_dates):
         return best
     return 0
 
-def build(daily_history,daily_live,thursday_state,thursday_winners,monthly_live,ledger,candidates):
+def build(daily_history,daily_live,thursday_state,thursday_winners,monthly_live,ledger,candidates,as_of=None):
+    as_of=as_of or datetime.now(ZoneInfo('America/New_York')).date().isoformat()
     if ledger.get('schema_version')!=1 or not isinstance(ledger.get('awards'),list) or not isinstance(ledger.get('verified_plays'),list):
         raise ValueError('Invalid permanent verified ledger: fail closed')
     events={}
@@ -117,16 +119,16 @@ def build(daily_history,daily_live,thursday_state,thursday_winners,monthly_live,
         for row in packet.get('days',[]):
             if not isinstance(row,dict):continue
             day=row.get('date')
-            if isinstance(day,str) and day>=DAILY_START:
+            if isinstance(day,str) and DAILY_START<=day<=as_of:
                 add_event(events,'daily',day,row.get('game_id'),row.get('game',''),source)
     for day,row in thursday_state.get('weeks',{}).items():
-        if day<THURSDAY_START or not isinstance(row,dict):continue
+        if day<THURSDAY_START or day>as_of or not isinstance(row,dict):continue
         add_event(events,'thursday',day,row.get('game_id'),row.get('game',''),'thursday-challenge-state.json')
     # Archived results are historical evidence; do not award new winners from them.
     for row in thursday_winners.get('weeks',[]):
         if not isinstance(row,dict):continue
         day=row.get('week')
-        if not isinstance(day,str) or day<THURSDAY_START:continue
+        if not isinstance(day,str) or day<THURSDAY_START or day>as_of:continue
         add_event(events,'thursday',day,row.get('game_id'),row.get('game',''),'thursday-winners.json')
         key='thursday:'+day
         if key in events:
@@ -136,7 +138,7 @@ def build(daily_history,daily_live,thursday_state,thursday_winners,monthly_live,
     # Never expose sealed monthly selections. Only *published* month/game after reveal.
     if isinstance(monthly_live,dict) and monthly_live.get('status')=='provisional':
         month=monthly_live.get('month')
-        if isinstance(month,str) and month>=MONTHLY_START and len(month)==7:
+        if isinstance(month,str) and month>=MONTHLY_START and len(month)==7 and month+'-01'<=as_of:
             day=month+'-01'
             add_event(events,'monthly',day,monthly_live.get('game_id'),
                       monthly_live.get('game',''),'monthly-challenge-live.json',
