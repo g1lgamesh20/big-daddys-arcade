@@ -1,4 +1,4 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#080509"><meta name="description" content="Big Daddy's Arcade: Hall of Legends — submit arcade high scores with photo proof to iScored."><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="Hall of Legends"><link rel="apple-touch-icon" href="assets/icon-192.png"><link rel="manifest" href="manifest.webmanifest"><title>BIG DADDY'S ARCADE — HALL OF LEGENDS</title><link rel="stylesheet" href="style.css?v=showcase-mobile-marquee-retry-20261118">
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#080509"><meta name="description" content="Big Daddy's Arcade: Hall of Legends — submit arcade high scores with photo proof to iScored."><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="Hall of Legends"><link rel="apple-touch-icon" href="assets/icon-192.png"><link rel="manifest" href="manifest.webmanifest"><title>BIG DADDY'S ARCADE — HALL OF LEGENDS</title><link rel="stylesheet" href="style.css?v=marquee-preload-20261118">
 <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
 <script>
   window.OneSignalDeferred = window.OneSignalDeferred || [];
@@ -526,7 +526,7 @@ See you on the leaderboard! 🏆`;
  });
 })();
 </script>
-<script src="script.js?v=showcase-mobile-marquee-retry-20261118"></script><script>
+<script src="game-marquee.js?v=marquee-preload-20261118"></script><script src="script.js?v=marquee-preload-20261118"></script><script>
 /* Celebrate only newly published medals after an initial baseline. No score writes. */
 (() => {
  const overlay=document.getElementById('arcade-celebrate');
@@ -611,18 +611,8 @@ See you on the leaderboard! 🏆`;
    const id=String(d.game_id||'');
    if(marqueeSlot&&id!==visibleGameId){
      visibleGameId=id;marqueeSlot.replaceChildren();
-     if(/^\d{1,12}$/.test(id)){
-       const img=document.createElement('img');
-       img.className='arcade-game-marquee';img.loading='lazy';img.decoding='async';
-       img.alt=String(d.game||'Featured Thursday game')+' arcade marquee';
-       let alternate=false;
-       img.onerror=()=>{
-         if(!alternate){alternate=true;img.src='https://www.iscored.info/community/images/games/game'+id;}
-         else img.remove();
-       };
-       img.src='https://www.iscored.info/images/games/game'+id;
-       marqueeSlot.append(img);
-     }
+     if(window.arcadeShowGameMarquee)
+       window.arcadeShowGameMarquee(marqueeSlot,id,d.game);
    }
    game.textContent=d.game.toUpperCase();
    date.textContent='★ THURSDAY '+d.thursday_date+' • 11:59 PM ET CUTOFF ★';
@@ -947,4 +937,4 @@ See you on the leaderboard! 🏆`;
     observer.observe(document.body,{childList:true,subtree:true});
   }
 })();
-</script><script src="monthly-challenge-display.js?v=showcase-mobile-marquee-retry-20261118" defer></script><script src="achievement-showcase.js?v=showcase-mobile-marquee-retry-20261118" defer></script><script src="monthly-challenge-display.js" defer></script></body></html>
+</script><script src="monthly-challenge-display.js?v=marquee-preload-20261118" defer></script><script src="achievement-showcase.js?v=showcase-mobile-marquee-retry-20261118" defer></script></body></html>

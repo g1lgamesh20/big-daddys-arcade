@@ -20,6 +20,8 @@ jobs:
           python-version: '3.12'
       - name: Validate Hall of Achievements JavaScript
         run: node --check achievement-showcase.js
+      - name: Test game marquee preloader without network requests
+        run: node tools/test_game_marquee.js
       - name: Test medal detection
         run: python tools/test_medals.py
       - name: Verify Golden Encore score-improvement safeguards

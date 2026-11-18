@@ -58,20 +58,8 @@
   // AND the already-published monthly feed has identified this month's game.
   // Missing or inaccessible logos are optional: preserve neon text instead.
   const id=String(last.game_id||'');
-  if(/^\d{1,12}$/.test(id)){
-    const marquee=document.createElement('img');
-    marquee.className='monthly-marquee';
-    marquee.alt=String(last.game||'Featured game')+' arcade marquee';
-    marquee.loading='lazy';
-    marquee.decoding='async';
-    let alternate=false;
-    marquee.onerror=()=>{
-      if(!alternate){alternate=true;marquee.src='https://www.iscored.info/community/images/games/game'+id;}
-      else marquee.remove();
-    };
-    marquee.src='https://www.iscored.info/images/games/game'+id;
-    spotlight.append(marquee);
-  }
+  if(window.arcadeShowGameMarquee)
+    window.arcadeShowGameMarquee(spotlight,id,last.game,'monthly-marquee');
   add('legend-headline',String(last.game||'FEATURED GAME').toUpperCase());
   add('legend-detail','STARTING RECORD: '+Number(last.starting_record).toLocaleString('en-US'));
   add('legend-score','BEAT THE BENCHMARK: '+Number(last.benchmark).toLocaleString('en-US'));

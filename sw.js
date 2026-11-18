@@ -1,11 +1,12 @@
 
-const CACHE = 'hall-of-legends-v6-showcase-mobile-marquees';
+const CACHE = 'hall-of-legends-v7-marquee-preload';
 
 const FILES = [
   './',
   './index.html',
   './style.css',
   './script.js',
+  './game-marquee.js',
   './achievement-showcase.js',
   './manifest.webmanifest',
   './assets/arcade-logo.png',
