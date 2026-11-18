@@ -103,19 +103,6 @@
       "unverified_candidates": [],
       "verified_participant_count": 0,
       "verified_champion_count": 0
-    },
-    {
-      "event_key": "daily:2026-11-19",
-      "kind": "daily",
-      "date": "2026-11-19",
-      "game_id": "50042",
-      "game": "Ghosts 'n Goblins",
-      "schedule_source": "daily-champion.json",
-      "participants": [],
-      "champions": [],
-      "unverified_candidates": [],
-      "verified_participant_count": 0,
-      "verified_champion_count": 0
     }
   ],
   "players": {
