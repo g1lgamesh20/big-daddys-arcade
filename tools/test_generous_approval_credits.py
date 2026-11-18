@@ -236,6 +236,32 @@ class GenerousApprovalTests(unittest.TestCase):
         self.assertEqual(out['awards'][0]['event_month'],'2026-12')
         with self.assertRaises(ValueError):
             capture_monthly_reveals({**first,'benchmark':749},archive)
+    def test_invalid_newly_revealed_benchmark_rejected(self):
+        public={'status':'provisional','month':'2026-12','game_id':'99',
+                'game':'Robotron','starting_record':1000,'benchmark':749}
+        with self.assertRaisesRegex(ValueError,'Invalid published'):
+            capture_monthly_reveals(public,{'schema_version':1,'months':{}})
+    def test_incomplete_benchmark_cannot_discard_locked_archive(self):
+        first={'status':'provisional','month':'2026-12','game_id':'99',
+               'game':'Robotron','starting_record':1000,'benchmark':750}
+        archived=capture_monthly_reveals(first,{'schema_version':1,'months':{}})
+        self.assertEqual(capture_monthly_reveals(
+            {'status':'provisional','month':'2026-12','game_id':'99','game':'Robotron'},
+            archived)['months']['2026-12']['benchmark'],750)
+        with self.assertRaisesRegex(ValueError,'Invalid published'):
+            capture_monthly_reveals({**first,'starting_record':None},archived)
+        with self.assertRaisesRegex(ValueError,'Invalid published'):
+            capture_monthly_reveals({**first,'benchmark':False},archived)
+    def test_legacy_game_only_archive_can_gain_valid_public_benchmark(self):
+        base=capture_monthly_reveals(
+            {'status':'provisional','month':'2026-12','game_id':'99','game':'Robotron'},
+            {'schema_version':1,'months':{}})
+        self.assertNotIn('benchmark',base['months']['2026-12'])
+        new=capture_monthly_reveals(
+            {'status':'provisional','month':'2026-12','game_id':'99',
+             'game':'Robotron','starting_record':1000,'benchmark':750},base)
+        self.assertEqual(new['months']['2026-12']['benchmark'],750)
+        self.assertNotIn('benchmark',base['months']['2026-12'])
     def test_no_early_monthly_game_reveal_or_trophies(self):
         private={'status':'not_launched','month':'2026-12','game_id':'SECRET',
                  'starting_record':1000,'benchmark':750}
