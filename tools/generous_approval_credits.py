@@ -224,9 +224,10 @@ def process(rows,daily_archive,daily_live,thursday_state,monthly_public,ledger,n
             'verification_method':'approved_iscored_score_with_24h_generous_grace'})
         if kind=='monthly':p['event_month']=day[:7]
         updated['verified_plays'].append(p)
-    # Finalize winners only AFTER the entire generous approval window closes.
-    # Daily champions require an actual LOCKED baseline; no starting score is
-    # present in current Daily schedules, so we never invent one.
+    # Finalize winners only AFTER the full generous approval window closes.
+    # A Daily trophy is Gold-level within the challenge achievement system;
+    # it DOES NOT grant a separate iScored first-place Gold medal.
+    # Never infer a starting threshold from scores approved after kickoff.
     newly_awarded=[]
     for (kind,day),ev in sorted(events.items()):
         _,_,cutoff=interval(kind,day)
@@ -235,10 +236,17 @@ def process(rows,daily_archive,daily_live,thursday_state,monthly_public,ledger,n
         if not attendees:continue
         champion_type={'daily':'daily_champion','thursday':'thursday_champion',
                        'monthly':'gotm_champion'}[kind]
-        if any(a.get('type')==champion_type and (
-              (str(a.get('event_month') or '')==day[:7]) if kind=='monthly'
-              else a.get('date')==day)
-              for a in updated['awards'] if isinstance(a,dict)):continue
+        # Thursday and GOTM have one final podium result per competition
+        # (with ties). Daily is different: EVERY player who beats the locked
+        # starting champion gets one Gold-level Daily Champion trophy.
+        # Never stop scanning other players just because a Daily winner exists.
+        existing_champions=[
+            a for a in updated['awards'] if isinstance(a,dict)
+            and a.get('type')==champion_type and
+            ((str(a.get('event_month') or '')==day[:7]) if kind=='monthly'
+             else a.get('date')==day)
+        ]
+        if kind!='daily' and existing_champions:continue
         if kind=='daily':
             baseline=ev.get('starting_champion_score')
             if type(baseline) is not int or baseline<0:continue
@@ -248,13 +256,23 @@ def process(rows,daily_archive,daily_live,thursday_state,monthly_public,ledger,n
             max_score=max(c['score'] for c in attendees)
             leaders=[c for c in attendees if c['score']==max_score]
         for c in leaders:
+            # The permanent ledger is the authority: a later sync must never
+            # issue a second Gold trophy to the same player for the same date.
+            if any(str(a.get('player') or '').upper()==c['player']
+                   for a in existing_champions):
+                continue
             aid=f"{champion_type}:{day}:{c['player']}"
+            if any(a.get('id')==aid for a in updated['awards']):continue
             award={'id':aid,'event_key':f"{kind}:{day}:{ev['game_id']}:{c['player']}",
                'type':champion_type,'name':{'daily':'Daily Champion',
                     'thursday':'Thursday Champion','monthly':'Game of the Month Champion'}[kind],
                'date':day,'player':c['player'],'game':ev['game'],
                'game_id':ev['game_id'],'score':c['score'],'score_id':c['score_id'],
                'verified_at':now.isoformat(),'verification_method':'approved_iscored_score_with_24h_generous_grace'}
+            if kind=='daily':
+                award['starting_champion_score']=baseline
+                award['gold_level']=True
+                award['win_rule']='strictly_greater_than_locked_starting_champion_score'
             if kind=='monthly':award['event_month']=day[:7]
             updated['awards'].append(award)
             newly_awarded.append({'player':c['player'],'kind':kind,'date':day,'score':c['score']})
