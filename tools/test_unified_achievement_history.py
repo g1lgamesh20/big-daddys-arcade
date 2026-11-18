@@ -31,6 +31,8 @@ class HistoryTest(unittest.TestCase):
         bos=next(x for x in data['events'] if x['event_key']=='thursday:2026-11-12')
         self.assertEqual(bos['champions'],['RDG'])
         self.assertEqual(bos['participants'],['RDG'])
+        self.assertEqual(bos['verified_results'][0]['role'],'champion')
+        self.assertEqual(bos['verified_results'][0]['score_id'],'384380')
         self.assertEqual([c['player'] for c in bos['unverified_candidates']],['DON'])
         self.assertNotIn('DON',data['players'])
     def test_readonly_and_never_create_awards_from_candidates(self):
