@@ -14,6 +14,43 @@ PENDING=ROOT/'challenge-award-candidates.json'
 WINNERS=ROOT/'thursday-winners.json'
 OUT=ROOT/'verified-challenge-awards.json'
 
+# Permanent, one-time rewards for cumulative verified Daily Challenge participation.
+# Award IDs are deterministic; scores and dates are NOT inferred from iScored API timestamps.
+DAILY_MILESTONES=(
+    (5,'Getting Started'),
+    (10,'Dedicated Challenger'),
+    (25,'Champion Chaser'),
+    (50,'Never Back Down'),
+)
+
+def daily_play_dates(ledger, player):
+    """A player earns at most one credit for each explicitly verified Daily date."""
+    return {p['date'] for p in ledger['verified_plays']
+        if isinstance(p,dict) and p.get('kind')=='daily'
+        and str(p.get('player','')).strip().upper()==player
+        and isinstance(p.get('date'),str)
+        and re.fullmatch(r'20\\d\\d-\\d\\d-\\d\\d',p['date'])
+        and isinstance(p.get('event_key'),str) and p['event_key'].startswith('daily:')}
+
+def issue_daily_milestones(ledger, player, now):
+    """Create milestone awards only from permanent operator-verified play records."""
+    days=daily_play_dates(ledger,player)
+    count=len(days)
+    seen={str(a.get('id')) for a in ledger['awards'] if isinstance(a,dict)}
+    for threshold,name in DAILY_MILESTONES:
+        key=f'daily_participation:{player}:{threshold}'
+        if count<threshold or key in seen:
+            continue
+        unlocked_on=sorted(days)[threshold-1]
+        ledger['awards'].append({
+            'id':key,'event_key':key,'type':'daily_participation_milestone',
+            'name':name,'date':unlocked_on,'player':player,'game':'Beat the Champion',
+            'milestone':threshold,'verified_daily_days':count,
+            'verified_at':now.isoformat(),
+            'verification_method':'operator_verified_daily_play_ledger',
+        })
+        seen.add(key)
+
 def read(path, default):
     return json.loads(path.read_text(encoding='utf-8')) if path.exists() else default
 
@@ -74,6 +111,7 @@ def approve(pending, winner_archive, ledger, *, kind, event_date, player, score_
             'date':event_date,'player':player,'game_id':c['game_id'],
             'game':c['game'],'score':c['best_score'],'score_id':score_id.strip(),
             'verified_at':now.isoformat(),'trophy_issued':False})
+        issue_daily_milestones(ledger,player,now)
     ledger['awards'].sort(key=lambda a:(a['date'],a['id']))
     ledger['verified_plays'].sort(key=lambda a:(a['date'],a['event_key']))
     return ledger,True
