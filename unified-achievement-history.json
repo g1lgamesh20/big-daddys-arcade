@@ -63,7 +63,18 @@
       "result_status": "final",
       "archived_winner_unverified_by_this_report": "RDG",
       "verified_participant_count": 1,
-      "verified_champion_count": 1
+      "verified_champion_count": 1,
+      "verified_results": [
+        {
+          "player": "RDG",
+          "role": "champion",
+          "score": 63450,
+          "score_id": "384380",
+          "verified": true,
+          "award_id": "thursday_champion:2026-11-12",
+          "evidence_source": "verified-challenge-awards.json:awards"
+        }
+      ]
     },
     {
       "event_key": "daily:2026-11-16",
@@ -76,7 +87,8 @@
       "champions": [],
       "unverified_candidates": [],
       "verified_participant_count": 0,
-      "verified_champion_count": 0
+      "verified_champion_count": 0,
+      "verified_results": []
     },
     {
       "event_key": "daily:2026-11-17",
@@ -89,7 +101,8 @@
       "champions": [],
       "unverified_candidates": [],
       "verified_participant_count": 0,
-      "verified_champion_count": 0
+      "verified_champion_count": 0,
+      "verified_results": []
     },
     {
       "event_key": "daily:2026-11-18",
@@ -102,7 +115,8 @@
       "champions": [],
       "unverified_candidates": [],
       "verified_participant_count": 0,
-      "verified_champion_count": 0
+      "verified_champion_count": 0,
+      "verified_results": []
     }
   ],
   "players": {
