@@ -20,6 +20,7 @@ ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/'verified-challenge-awards.json'
 AUDIT=ROOT/'approval-window-credit-report.json'
 BASELINES=ROOT/'daily-champion-baselines.json'
+MONTHLY_ARCHIVE=ROOT/'published-monthly-challenge-history.json'
 NY=ZoneInfo('America/New_York')
 # Observed Nov 18 API timestamps were one hour behind ET; Central is a
 # *working assumption*, NOT a proven iScored timezone contract.
@@ -46,7 +47,7 @@ def approval_time(raw):
     if dt.tzinfo is None:dt=dt.replace(tzinfo=SOURCE)
     return dt.astimezone(NY)
 
-def scheduled(daily_archive,daily_live,thursday_state,monthly_public,baselines=None):
+def scheduled(daily_archive,daily_live,thursday_state,monthly_public,baselines=None,monthly_archive=None):
     events={}
     for packet in (daily_archive,daily_live):
         for entry in packet.get('days',[]):
@@ -83,7 +84,40 @@ def scheduled(daily_archive,daily_live,thursday_state,monthly_public,baselines=N
             except ValueError:pass
             else:events[('monthly',month+'-01')]={'game_id':gid,
                     'game':str(monthly_public.get('game') or '')}
+    # Preserve previously REVEALED monthly games across calendar rollovers.
+    # This archive contains no sealed/private game selections.
+    if monthly_archive:
+        for month,entry in monthly_archive.get('months',{}).items():
+            gid=str(entry.get('game_id') or '')
+            if not isinstance(month,str) or len(month)!=7 or month<START['monthly'][:7] or not gid:continue
+            try:datetime.strptime(month+'-01','%Y-%m-%d')
+            except ValueError:continue
+            key=('monthly',month+'-01')
+            if key in events and events[key]['game_id']!=gid:
+                raise ValueError('Revealed monthly game conflict: '+month)
+            events[key]={'game_id':gid,'game':str(entry.get('game') or '')}
     return events
+
+def capture_monthly_reveals(public,previous):
+    """Append immutable PUBLIC monthly reveal identity; never read sealed pool."""
+    out=json.loads(json.dumps(previous))
+    if out.get('schema_version')!=1 or not isinstance(out.get('months'),dict):
+        raise ValueError('Invalid published monthly archive')
+    if not isinstance(public,dict) or public.get('status')!='provisional':
+        return out
+    month=public.get('month')
+    gid=str(public.get('game_id') or '')
+    if not isinstance(month,str) or len(month)!=7 or month<START['monthly'][:7] or not gid:
+        return out
+    try:datetime.strptime(month+'-01','%Y-%m-%d')
+    except ValueError:return out
+    entry={'game_id':gid,'game':str(public.get('game') or ''),
+           'source':'already_public_monthly-challenge-live.json'}
+    previous_entry=out['months'].get(month)
+    if previous_entry and previous_entry['game_id']!=gid:
+        raise ValueError('Published Game of the Month changed: '+month)
+    out['months'].setdefault(month,entry)
+    return out
 
 def capture_daily_baselines(rows,archive,live,previous,now):
     """Snapshot tomorrow's starting champion BEFORE midnight, never retroactively.
@@ -156,10 +190,10 @@ def candidates(rows,events,now):
                     by_event[key]=item
     return by_event,invalid
 
-def process(rows,daily_archive,daily_live,thursday_state,monthly_public,ledger,now,enabled=False,baselines=None):
+def process(rows,daily_archive,daily_live,thursday_state,monthly_public,ledger,now,enabled=False,baselines=None,monthly_archive=None):
     if ledger.get('schema_version')!=1 or not isinstance(ledger.get('verified_plays'),list) or not isinstance(ledger.get('awards'),list):
         raise ValueError('Invalid official verified ledger')
-    events=scheduled(daily_archive,daily_live,thursday_state,monthly_public,baselines)
+    events=scheduled(daily_archive,daily_live,thursday_state,monthly_public,baselines,monthly_archive)
     matched,invalid=candidates(rows,events,now)
     proposed=[]
     for (kind,day,player),c in sorted(matched.items()):
@@ -245,12 +279,19 @@ def main():
     baselines=capture_daily_baselines(rows,archive,live,previous_baselines,now)
     if baselines!=previous_baselines:
         BASELINES.write_text(json.dumps(baselines,indent=2)+'\n',encoding='utf-8')
+    monthly_public=load('monthly-challenge-live.json',{})
+    previous_months=load('published-monthly-challenge-history.json',
+                         {'schema_version':1,'months':{}})
+    published_months=capture_monthly_reveals(monthly_public,previous_months)
+    if published_months!=previous_months:
+        MONTHLY_ARCHIVE.write_text(json.dumps(published_months,indent=2)+'\n',encoding='utf-8')
     result,report,changed=process(rows,
       archive,
       live,
       load('thursday-challenge-state.json',{'weeks':{}}),
-      load('monthly-challenge-live.json',{}),
-      ledger,now,enabled=enabled,baselines=baselines)
+      monthly_public,
+      ledger,now,enabled=enabled,baselines=baselines,
+      monthly_archive=published_months)
     AUDIT.write_text(json.dumps(report,indent=2,ensure_ascii=False)+'\n',encoding='utf-8')
     if changed:
         OUT.write_text(json.dumps(result,indent=2,ensure_ascii=False)+'\n',encoding='utf-8')
