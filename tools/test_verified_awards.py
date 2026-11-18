@@ -29,6 +29,15 @@ class AwardsTest(unittest.TestCase):
   with self.assertRaises(ValueError):self.call(empty(),sid='WRONG')
  def test_unfinalized_rejected(self):
   with self.assertRaises(ValueError):self.call(empty(),winners={'weeks':[]})
+ def test_thursday_verified_participation_without_champion(self):
+  ledger,changed=self.call(empty(),kind='thursday_verified_play')
+  self.assertTrue(changed)
+  self.assertEqual(len(ledger['awards']),0)
+  self.assertEqual(len(ledger['verified_plays']),1)
+  self.assertEqual(ledger['verified_plays'][0]['kind'],'thursday')
+  ledger,changed=self.call(ledger,kind='thursday_verified_play')
+  self.assertFalse(changed)
+  self.assertEqual(len(ledger['verified_plays']),1)
  def test_daily_is_not_trophy(self):
   ledger,changed=self.call(empty(),kind='daily_verified_play',date='2026-11-17',player='DON',sid='888')
   self.assertTrue(changed)
