@@ -60,6 +60,22 @@ class HistoryTest(unittest.TestCase):
         args[4]={'status':'provisional','month':'2026-12','game_id':'10','game':'Revealed'}
         data=build(*args)
         self.assertTrue(any(e['event_key']=='monthly:2026-12-01' for e in data['events']))
+    def test_archived_published_month_survives_next_month_rollover(self):
+        args=list(initial())
+        args[4]={'status':'provisional','month':'2027-01','game_id':'NEW','game':'New'}
+        args[5]['awards'].append({
+            'id':'gotm_champion:2026-12-01:RDG',
+            'event_key':'monthly:2026-12-01:OLD:RDG',
+            'type':'gotm_champion','date':'2026-12-01',
+            'player':'RDG','game_id':'OLD','event_month':'2026-12'})
+        public={'schema_version':1,'months':{'2026-12':{
+            'game_id':'OLD','game':'Old revealed monthly game'}}}
+        data=build(*args,as_of='2027-01-02',monthly_archive=public)
+        month=next(e for e in data['events'] if e['event_key']=='monthly:2026-12-01')
+        self.assertEqual(month['champions'],['RDG'])
+        self.assertEqual(data['players']['RDG']['championships']['monthly'],1)
+        self.assertEqual(data['players']['RDG']['participation']['monthly'],1)
+
     def test_conflicting_archive_fails_closed(self):
         args=list(initial())
         args[1]={'days':[{'date':'2026-11-16','game_id':'WRONG'}]}
