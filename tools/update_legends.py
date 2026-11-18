@@ -242,6 +242,21 @@ def main():
     STATE.write_text(json.dumps({'known_ids':sorted(all_ids)},ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     FEED.write_text(json.dumps({'updated_at':result['updated_at'],'alerts':combined},ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     update_daily_champion(result['champions'], result['updated_at'])
+    # Keep the locked Daily Gold target fresh in the existing 15-minute
+    # scoreboard refresh, instead of relying only on the two-hour award job.
+    # The collector only snapshots FUTURE dates and cannot reconstruct an
+    # already-started challenge's original starting champion.
+    from generous_approval_credits import capture_daily_baselines,load as load_award_state,BASELINES
+    now=datetime.now(timezone.utc)
+    prior_baselines=load_award_state('daily-champion-baselines.json',{})
+    next_baselines=capture_daily_baselines(
+        raw['scores'],
+        load_award_state('daily-champion-history.json',{'days':[]}),
+        load_award_state('daily-champion.json',{'days':[]}),
+        prior_baselines,now)
+    if next_baselines!=prior_baselines:
+        BASELINES.write_text(json.dumps(next_baselines,indent=2)+'\\n',encoding='utf-8')
+        print('Refreshed future Daily Champion baseline snapshots before midnight ET')
     OUTPUT.write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     print('Updated',result['total_games'],'games and',result['total_players'],'players')
 if __name__=='__main__': main()
