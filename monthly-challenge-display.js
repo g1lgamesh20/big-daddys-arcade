@@ -64,8 +64,11 @@
     marquee.alt=String(last.game||'Featured game')+' arcade marquee';
     marquee.loading='lazy';
     marquee.decoding='async';
-    marquee.referrerPolicy='no-referrer';
-    marquee.onerror=()=>{marquee.remove();};
+    let alternate=false;
+    marquee.onerror=()=>{
+      if(!alternate){alternate=true;marquee.src='https://www.iscored.info/community/images/games/game'+id;}
+      else marquee.remove();
+    };
     marquee.src='https://www.iscored.info/images/games/game'+id;
     spotlight.append(marquee);
   }
