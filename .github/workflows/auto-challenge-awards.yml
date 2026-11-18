@@ -39,6 +39,7 @@ jobs:
         run: |
           git add challenge-auto-awards-preview.json unified-achievement-history.json approval-window-credit-report.json
           if [ -f daily-champion-baselines.json ]; then git add daily-champion-baselines.json; fi
+          if [ -f published-monthly-challenge-history.json ]; then git add published-monthly-challenge-history.json; fi
           if [ -f verified-challenge-awards.json ]; then git add verified-challenge-awards.json; fi
           if git diff --cached --quiet; then exit 0; fi
           git config user.name "github-actions[bot]"
