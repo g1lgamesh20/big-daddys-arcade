@@ -73,11 +73,18 @@ def consecutive_streak(days,kind,ordered_dates):
     """Longest consecutive scheduled-event streak, never consecutive approvals."""
     if not days:return 0
     if kind=='daily':
+        # Missing schedule dates must not silently bridge a gap in a streak.
         all_days=[date.fromisoformat(x) for x in ordered_dates]
         valid={x for x in all_days if x.isoformat() in days}
         best=run=0
+        last=None
         for d in all_days:
-            run=run+1 if d in valid else 0
+            if d in valid:
+                run=run+1 if last and (d-last).days==1 else 1
+                last=d
+            else:
+                run=0
+                last=None
             best=max(best,run)
         return best
     if kind=='thursday':
