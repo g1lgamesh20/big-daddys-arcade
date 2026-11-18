@@ -3,12 +3,13 @@ on:
   workflow_dispatch:
     inputs:
       action:
-        description: 'Thursday Champion awards trophy; Daily verified play records evidence (not a trophy)'
+        description: 'Record verified Thursday/Daily participation or Thursday Champion'
         type: choice
         required: true
         options:
           - thursday_champion
           - daily_verified_play
+          - thursday_verified_play
       event_date:
         description: 'Challenge date YYYY-MM-DD'
         type: string
