@@ -48,7 +48,13 @@ def activity(ledger):
         kind=CHAMPION.get(award.get('type'))
         if not kind:continue
         player=str(award.get('player') or '').strip().upper()
-        when=day_for(kind,award.get('date'))
+        # Monthly results may be announced on the 2nd of the next month.
+        # Do not guess the event month from the award/approval date.
+        if kind=='monthly':
+            event_month=award.get('event_month')
+            when=day_for(kind,event_month) if event_month else None
+        else:
+            when=day_for(kind,award.get('date'))
         if player and when and str(award.get('event_key') or '').startswith(kind+':'):
             days[(player,kind)].add(when)
     return days
