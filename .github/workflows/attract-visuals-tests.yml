@@ -1,0 +1,20 @@
+name: Test Attract Mode Neon Visuals
+on:
+  pull_request:
+    paths:
+      - 'index.html'
+      - 'attract-visuals.css'
+      - 'tools/test_attract_visuals.js'
+      - '.github/workflows/attract-visuals-tests.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  visuals:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test Attract Mode and parse inline JavaScript
+        run: node tools/test_attract_visuals.js
+      - name: Existing marquee regression check
+        run: node tools/test_game_marquee.js
