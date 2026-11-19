@@ -3965,6 +3965,21 @@
           "game": "Tekken 3"
         }
       ]
+    },
+    "84662": {
+      "score": 692,
+      "holders": [
+        "DON"
+      ],
+      "game": "Fast Food",
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 692,
+          "score_id": "387560",
+          "game": "Fast Food"
+        }
+      ]
     }
   },
   "improvements": []

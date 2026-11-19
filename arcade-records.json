@@ -1,6 +1,17 @@
 {
-  "updated_at": "2026-11-19T10:48:03.828963+00:00",
+  "updated_at": "2026-11-19T14:42:59.643636+00:00",
   "records": [
+    {
+      "id": "387560",
+      "player": "DON",
+      "game": "Fast Food",
+      "game_id": "84662",
+      "score": 692,
+      "date": "2026-11-18 22:38:14",
+      "rank": 1,
+      "medal": "gold",
+      "record_type": "new_first_place"
+    },
     {
       "id": "387227",
       "player": "DON",

@@ -1,12 +1,7 @@
 {
-  "updated_at": "2026-11-19T02:45:52.826573+00:00",
+  "updated_at": "2026-11-19T14:42:59.643636+00:00",
   "timezone": "America/New_York",
   "days": [
-    {
-      "date": "2026-11-17",
-      "game_id": "86751",
-      "game": "Wolverine"
-    },
     {
       "date": "2026-11-18",
       "game_id": "101601",
@@ -16,6 +11,11 @@
       "date": "2026-11-19",
       "game_id": "50042",
       "game": "Ghosts 'n Goblins"
+    },
+    {
+      "date": "2026-11-20",
+      "game_id": "50930",
+      "game": "Mouse Trap"
     }
   ]
 }

@@ -1,13 +1,13 @@
 {
-  "updated_at": "2026-11-19T02:45:52.826573+00:00",
+  "updated_at": "2026-11-19T14:42:59.643636+00:00",
   "source": "iScored public read API",
   "scoring_note": "PAPA-style estimate: top 1000 games per player; one best score per player per game; competition ties. iScored may handle ties differently.",
   "standings": [
     {
       "player": "DON",
-      "points": 21127,
-      "games": 216,
-      "gold": 176,
+      "points": 21227,
+      "games": 217,
+      "gold": 177,
       "silver": 26,
       "bronze": 12
     },
@@ -37,10 +37,10 @@
     },
     {
       "player": "VJG",
-      "points": 2375,
-      "games": 26,
+      "points": 2465,
+      "games": 27,
       "gold": 6,
-      "silver": 16,
+      "silver": 17,
       "bronze": 0
     },
     {
@@ -888,6 +888,15 @@
       "score": 4831834,
       "date": "2025-11-29 11:31:18",
       "score_id": "239165",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "Fast Food",
+      "game_id": "84662",
+      "score": 692,
+      "date": "2026-11-18 22:38:14",
+      "score_id": "387560",
       "rank": 1
     },
     {
@@ -3382,6 +3391,16 @@
     },
     {
       "kind": "champion",
+      "player": "DON",
+      "game": "Fast Food",
+      "game_id": "84662",
+      "score": 692,
+      "date": "2026-11-18 22:38:14",
+      "score_id": "387560",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
       "player": "BGR",
       "game": "Fishing Derby",
       "game_id": "73125",
@@ -3721,14 +3740,22 @@
       "rank": 1
     },
     {
-      "kind": "champion",
+      "kind": "recent",
+      "player": "VJG",
+      "game": "Altered Beast",
+      "game_id": "62267",
+      "score": 10600,
+      "date": "2026-11-18 22:38:16",
+      "score_id": "387462"
+    },
+    {
+      "kind": "recent",
       "player": "DON",
-      "game": "Indiana Jones and The Temple of Doom",
-      "game_id": "50047",
-      "score": 15100,
-      "date": "2024-01-22 12:17:11",
-      "score_id": "74501",
-      "rank": 1
+      "game": "Fast Food",
+      "game_id": "84662",
+      "score": 692,
+      "date": "2026-11-18 22:38:14",
+      "score_id": "387560"
     },
     {
       "kind": "recent",
@@ -3819,26 +3846,8 @@
       "score": 2020,
       "date": "2026-11-18 10:20:56",
       "score_id": "387226"
-    },
-    {
-      "kind": "recent",
-      "player": "VJG",
-      "game": "Major Havoc",
-      "game_id": "50237",
-      "score": 26003,
-      "date": "2026-11-18 09:58:29",
-      "score_id": "386367"
-    },
-    {
-      "kind": "recent",
-      "player": "DAY",
-      "game": "Ghostbusters",
-      "game_id": "113231",
-      "score": 10602900,
-      "date": "2026-11-17 16:18:46",
-      "score_id": "386318"
     }
   ],
-  "total_games": 262,
+  "total_games": 263,
   "total_players": 15
 }

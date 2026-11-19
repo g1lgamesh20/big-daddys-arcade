@@ -1,6 +1,26 @@
 {
-  "updated_at": "2026-11-19T02:45:52.826573+00:00",
+  "updated_at": "2026-11-19T14:42:59.643636+00:00",
   "alerts": [
+    {
+      "id": "387462",
+      "player": "VJG",
+      "game": "Altered Beast",
+      "game_id": "62267",
+      "score": 10600,
+      "date": "2026-11-18 22:38:16",
+      "rank": 2,
+      "medal": "silver"
+    },
+    {
+      "id": "387560",
+      "player": "DON",
+      "game": "Fast Food",
+      "game_id": "84662",
+      "score": 692,
+      "date": "2026-11-18 22:38:14",
+      "rank": 1,
+      "medal": "gold"
+    },
     {
       "id": "387476",
       "player": "VJG",
