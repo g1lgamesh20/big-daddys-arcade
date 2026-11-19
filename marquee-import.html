@@ -2,88 +2,169 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>iScored Marquee Map Import — Big Daddy's Arcade</title>
+<title>Marquee Map Updater — Big Daddy's Arcade</title>
 <style>
-:root{color-scheme:dark;font-family:system-ui,-apple-system,Segoe UI,sans-serif;background:#090817;color:white}
-*{box-sizing:border-box}body{margin:auto;max-width:750px;padding:20px 16px 70px}
-h1{font-size:clamp(23px,5vw,34px);color:#96ff69}h2{font-size:18px;color:#ff95d8}
-p{line-height:1.55}textarea{display:block;width:100%;height:185px;resize:vertical;background:#18102a;color:white;border:1px solid #fb71ce;border-radius:10px;padding:12px;font-family:ui-monospace,monospace}
-button{display:inline-block;margin:12px 6px 12px 0;padding:13px 15px;color:#08120d;background:#aaff78;border:0;border-radius:10px;font-weight:800;cursor:pointer}
-button:disabled{opacity:.5;cursor:not-allowed}label{display:block;font-weight:700;margin:13px 0 8px}
-#status{padding:12px 0;white-space:pre-wrap;color:#c7f9bb}small{color:#b9b0c9}
-a{color:#a7f4fa}code{color:#ffd3ed}
+:root{color-scheme:dark;font-family:system-ui,-apple-system,Segoe UI,sans-serif;background:#090817;color:#fff}
+*{box-sizing:border-box}body{margin:auto;max-width:860px;padding:20px 16px 75px}
+h1{font-size:clamp(24px,5vw,35px);color:#a5ff78}h2{font-size:20px;color:#ff9bda}
+p,li{line-height:1.55}textarea{display:block;width:100%;height:160px;resize:vertical;background:#18102a;color:white;border:1px solid #fb71ce;border-radius:10px;padding:12px;font-family:ui-monospace,monospace}
+button{display:inline-block;margin:12px 7px 12px 0;padding:13px 15px;color:#08120d;background:#aaff78;border:0;border-radius:10px;font-weight:800;cursor:pointer}
+button:disabled{opacity:.45;cursor:not-allowed}label{display:block;font-weight:700;margin:15px 0 8px}
+#status{padding:12px 0;white-space:pre-wrap;color:#c7f9bb}small{color:#b9b0c9}a{color:#a7f4fa}code{color:#ffd3ed}
+.metrics{display:flex;flex-wrap:wrap;gap:9px}.metric{border:1px solid #504060;border-radius:10px;padding:12px;min-width:105px;flex:1}
+.metric b{display:block;font-size:25px;color:#aaff78}.metric span{color:#d2c9dd;font-size:13px}
+section.results{border-top:1px solid #554262;padding-top:8px;margin-top:12px}
+ul.changes{max-height:250px;overflow:auto;padding-left:23px}li{overflow-wrap:anywhere}
+.notice{border-left:3px solid #ff82cd;padding:8px 12px;background:#1b1028}
+.howto{border-top:2px solid #fb71ce;margin-top:36px;padding-top:15px}
+.howto ol{padding-left:24px}.howto li{margin:12px 0}.howto a,.howto code{overflow-wrap:anywhere}
 </style></head>
 <body>
-<h1>👾 Marquee Map Importer</h1>
-<p>This tool runs entirely in your browser. Paste a batch of iScored <code>GameID</code> / <code>GameLogo</code> records and download a sanitized mapping file. Nothing you paste here is sent to GitHub, iScored, or any server by this page.</p>
-<p><strong>Important:</strong> Use only the JSON response containing game records from iScored Settings → Games. Never paste cookies, account tokens, passwords, or HAR files into this tool.</p>
-<label for="records">iScored Games JSON (array or one game record)</label>
-<textarea id="records" spellcheck="false" placeholder='[{"GameID":101601,"GameLogo":"/community/images/games/game2781","RoomID":1118}]'></textarea>
-<label for="source-file">Or choose a downloaded JSON file</label>
-<input id="source-file" type="file" accept=".json,application/json">
-<div><button id="build" type="button">Build Safe Logo Map</button><button id="download" type="button" disabled>Download game-logo-map.json</button></div>
-<div id="status" role="status" aria-live="polite">Ready. Existing mappings will be preserved.</div>
-<h2>What happens next?</h2>
-<p>Download the file and upload it here in our ChatGPT conversation. I can review it and prepare the GitHub update. This avoids placing a raw iScored settings response in a public repository.</p>
-<p><small>This is a one-time/bulk-import bridge. Fully unattended refreshes still require iScored to expose an authorized source of game-logo metadata. The app's daily score feed does not currently provide that field.</small></p>
+<h1>👾 Marquee Map Updater</h1>
+<p>Compare a fresh iScored Games response with the last imported inventory. See new games, logo changes and missing artwork before downloading <strong>one safe update package</strong> to share here for the next GitHub pull request.</p>
+<p class="notice"><strong>Private by design:</strong> Your pasted Games response stays in this browser. Only game IDs, names, and vetted logo paths are included in the downloaded package. Never paste cookies, passwords, authorization headers or HAR files.</p>
+<h2>1. Paste your iScored game information</h2>
+<p>Copy the full game-list response from iScored and paste it below. Detailed instructions (including the exact request name) are saved at the bottom of this page.</p>
+<label for="records">Paste iScored Games JSON</label>
+<textarea id="records" spellcheck="false" placeholder='[{"gameID":50322,"gameName":"ROLLING THUNDER 2","GameLogo":"/images/games/game50322","RoomID":1118}]'></textarea>
+<label for="source-file">Or select a saved .json / .txt response</label>
+<input id="source-file" type="file" accept=".json,.txt,application/json,text/plain">
+<div><button id="build" type="button" disabled>Compare With Arcade</button><button id="download" type="button" disabled>Download Update Package</button></div>
+<div id="status" role="status" aria-live="polite">Loading current arcade inventory and logo map…</div>
+<div id="report" hidden>
+<h2>2. Review the differences</h2>
+<div class="metrics" id="metrics"></div>
+<div id="details"></div>
+<p><small>Missing logos never erase existing artwork. Games absent from a partial response are not removed. This imports data only; it does not send updates or publish them to GitHub automatically.</small></p>
+<h2>3. Download and upload here</h2>
+<p>Click <strong>Download Update Package</strong>, then attach <code>arcade-marquee-update.json</code> in our ChatGPT conversation. I'll review it and prepare the next GitHub pull request. No other files needed.</p>
+</div>
+<section class="howto" aria-labelledby="instructions-heading">
+<h2 id="instructions-heading">📋 How to get your iScored game information (save these instructions!)</h2>
+<p>Whenever you add a game or change its marquee artwork, use these instructions to update the mapping. <strong>You don't have to remember the Network steps.</strong></p>
+<ol>
+<li>On your computer, sign in to <a href="https://www.iscored.info/" target="_blank" rel="noopener noreferrer">iScored</a> and open <strong>Settings → Games</strong>.</li>
+<li>Press <strong>F12</strong> to open Chrome or Edge Developer Tools (or press Ctrl+Shift+I).</li>
+<li>Click the <strong>Network</strong> tab, then select <strong>Fetch/XHR</strong>.</li>
+<li>Keep Developer Tools open and <strong>refresh</strong> the Games page (F5 or Ctrl+R) so the request appears.</li>
+<li>In the Network request list under <strong>Name</strong>, find <code>roomCommands.php?c=getAllGamesAndScores&amp;roomID=1118</code>. The Name column may show only <code>roomCommands.php?c=getAllGamesAndScores…</code>. Click it and check <strong>Headers → Request URL</strong> if needed.</li>
+<li>Open the request's <strong>Response</strong> tab. It should contain a long JSON list of games with fields like <code>gameID</code>, <code>gameName</code> and <code>GameLogo</code> (not just one game).</li>
+<li>Click inside <strong>Response</strong>, press <strong>Ctrl+A</strong> and <strong>Ctrl+C</strong>. Return to this updater, paste into the large box above with <strong>Ctrl+V</strong>.</li>
+<li>Click <strong>Compare With Arcade</strong>. Review <strong>New games</strong>, <strong>New or changed artwork</strong>, and <strong>Games without a logo</strong>.</li>
+<li>Click <strong>Download Update Package</strong>, then upload <code>arcade-marquee-update.json</code> in our ChatGPT arcade conversation. We'll use it to make the next GitHub Pull Request.</li>
+</ol>
+<p><strong>Exact request URL:</strong></p>
+<p><a href="https://www.iscored.info/roomCommands.php?c=getAllGamesAndScores&amp;roomID=1118" target="_blank" rel="noopener noreferrer">https://www.iscored.info/roomCommands.php?c=getAllGamesAndScores&amp;roomID=1118</a></p>
+<p><small>Shortcut: You can try opening the exact URL directly while signed in to iScored. If it displays the full JSON list, use Ctrl+A → Ctrl+C and paste it above, skipping F12. If not, follow the Network steps. Never copy request headers, cookies, passwords or a HAR export.</small></p>
+</section>
 <a href="./">Back to Hall of Legends</a>
 <script>
 (async()=>{
-  'use strict';
-  const text=document.getElementById('records');
-  const input=document.getElementById('source-file');
-  const status=document.getElementById('status');
-  const download=document.getElementById('download');
-  const validId=/^\d{1,12}$/;
-  const validLogo=/^\/(?:community\/)?images\/games\/game\d{1,12}$/;
-  let existing={}, output=null;
-  try{
-    const r=await fetch('./game-logo-map.json',{cache:'no-store'});
-    if(!r.ok)throw Error('Could not fetch existing mapping');
-    existing=await r.json();
-    if(!existing||Array.isArray(existing)||typeof existing!=='object')throw Error('Invalid existing mapping');
-  }catch(e){status.textContent='Existing map unavailable: '+e.message+'. Import disabled to prevent accidental data loss.';document.getElementById('build').disabled=true;return;}
-  input.addEventListener('change',async()=>{
-    if(input.files?.[0])text.value=await input.files[0].text();
-  });
-  document.getElementById('build').addEventListener('click',()=>{
-    download.disabled=true;output=null;
-    let payload;
-    try{payload=JSON.parse(text.value);}catch(e){status.textContent='Invalid JSON: '+e.message;return;}
-    let rows=Array.isArray(payload)?payload:null;
-    if(!rows && payload&&typeof payload==='object'){
-      if(payload.GameID!==undefined)rows=[payload];
-      else for(const key of ['games','Games','rows','data','result'])
-        if(Array.isArray(payload[key])){rows=payload[key];break;}
-    }
-    if(!rows){status.textContent='Expected a JSON array of iScored game records.';return;}
-    const next={...existing},seen={};
-    let changed=0,valid=0,blank=0,invalid=0,wrongRoom=0;
-    try{
-      for(const row of rows){
-        if(!row||typeof row!=='object'||Array.isArray(row)){invalid++;continue;}
-        const id=String(row.GameID??'').trim(),path=row.GameLogo;
-        if(row.RoomID!==undefined&&row.RoomID!==null&&String(row.RoomID)!=='1118'){wrongRoom++;continue;}
-        if(!validId.test(id)){invalid++;continue;}
-        if(path===null||path===''){blank++;continue;}
-        if(typeof path!=='string'||!validLogo.test(path)){invalid++;continue;}
-        if(Object.hasOwn(seen,id)&&seen[id]!==path)throw Error('Conflicting art entries for GameID '+id);
-        seen[id]=path;valid++;
-        if(next[id]!==path){next[id]=path;changed++;}
-      }
-      if(valid===0)throw Error('No valid GameID/GameLogo entries found. No changes made.');
-      output=Object.fromEntries(Object.entries(next).sort((a,b)=>Number(a[0])-Number(b[0])));
-      status.textContent='Ready! '+valid+' valid entries; '+changed+' new/updated; '+blank+' without logos; '+invalid+' invalid; '+wrongRoom+' from another room. Total mapped: '+Object.keys(output).length+'. Original settings text is not included in the download.';
-      download.disabled=false;
-    }catch(e){status.textContent=e.message;output=null;}
-  });
-  download.addEventListener('click',()=>{
-    if(!output)return;
-    const data=JSON.stringify(output,null,2)+'\n';
-    const url=URL.createObjectURL(new Blob([data],{type:'application/json'}));
-    const a=document.createElement('a');a.href=url;a.download='game-logo-map.json';a.click();
-    URL.revokeObjectURL(url);
-  });
+'use strict';
+const text=document.getElementById('records'),input=document.getElementById('source-file');
+const status=document.getElementById('status'),download=document.getElementById('download');
+const build=document.getElementById('build'),report=document.getElementById('report');
+const metrics=document.getElementById('metrics'),details=document.getElementById('details');
+const validId=/^[0-9]{1,12}$/,validLogo=/^\/(?:community\/)?images\/games\/game[0-9]{1,12}$/;
+let oldLogos,oldGames,packageData=null;
+const has=(obj,key)=>Object.prototype.hasOwnProperty.call(obj,key);
+try{
+const [logoResponse,gameResponse]=await Promise.all([
+ fetch('./game-logo-map.json',{cache:'no-store'}),
+ fetch('./marquee-game-inventory.json',{cache:'no-store'})
+]);
+if(!logoResponse.ok||!gameResponse.ok)throw Error('Current map or inventory could not be loaded');
+const logoJson=await logoResponse.json(),gameJson=await gameResponse.json();
+oldLogos=logoJson;oldGames=gameJson.games;
+if(!oldLogos||Array.isArray(oldLogos)||typeof oldLogos!=='object'||!oldGames||Array.isArray(oldGames)||typeof oldGames!=='object')throw Error('Invalid existing data');
+build.disabled=false;
+status.textContent='Ready. Comparing against '+Object.keys(oldGames).length+' known games and '+Object.keys(oldLogos).length+' artwork mappings.';
+}catch(error){status.textContent='Cannot safely compare: '+error.message+'. No changes will be generated.';return;}
+input.addEventListener('change',async()=>{
+ if(input.files&&input.files[0])text.value=await input.files[0].text();
+});
+function rowsFrom(payload){
+ if(Array.isArray(payload))return payload;
+ if(payload&&typeof payload==='object'){
+  if(payload.gameID!==undefined||payload.GameID!==undefined)return [payload];
+  for(const key of ['games','Games','rows','data','result'])
+   if(Array.isArray(payload[key]))return payload[key];
+ }
+ throw Error('Expected an iScored Games array, not a score-only response');
+}
+function addSection(title,items,formatter){
+ const section=document.createElement('section');section.className='results';
+ const heading=document.createElement('h3');heading.textContent=title+' ('+items.length+')';section.appendChild(heading);
+ if(items.length){
+  const ul=document.createElement('ul');ul.className='changes';
+  for(const item of items){const li=document.createElement('li');li.textContent=formatter(item);ul.appendChild(li);}
+  section.appendChild(ul);
+ }
+ details.appendChild(section);
+}
+function metric(count,label){
+ const el=document.createElement('div');el.className='metric';
+ const num=document.createElement('b');num.textContent=String(count);el.appendChild(num);
+ const name=document.createElement('span');name.textContent=label;el.appendChild(name);
+ metrics.appendChild(el);
+}
+build.addEventListener('click',()=>{
+ packageData=null;download.disabled=true;report.hidden=true;details.replaceChildren();metrics.replaceChildren();
+ let rows;try{rows=rowsFrom(JSON.parse(text.value));}catch(error){status.textContent='Invalid response: '+error.message;return;}
+ const nextGames={...oldGames},nextLogos={...oldLogos},seen={};
+ const added=[],artChanges=[],renamed=[],missing=[],invalid=[];
+ let wrongRoom=0,unchanged=0;
+ try{
+  for(const row of rows){
+   if(!row||typeof row!=='object'||Array.isArray(row)){invalid.push('Invalid record');continue;}
+   const id=String(row.gameID??row.GameID??'').trim();
+   const name=String(row.gameName??row.GameName??'').trim();
+   const logo=row.GameLogo??row.gameLogo??null;
+   if(row.RoomID!==undefined&&row.RoomID!==null&&String(row.RoomID).trim()!=='1118'){wrongRoom++;continue;}
+   if(!validId.test(id)||!name||name.length>160){invalid.push('Invalid game ID or name');continue;}
+   if(logo!==null&&logo!==''&&(typeof logo!=='string'||!validLogo.test(logo))){invalid.push('Invalid logo path for '+id);continue;}
+   if(has(seen,id)){
+    if(seen[id].name!==name||seen[id].logo!==logo)throw Error('Conflicting game records for '+id);
+    continue;
+   }
+   seen[id]={name,logo};
+   if(!has(oldGames,id))added.push({id,name,logo});
+   else if(oldGames[id]!==name)renamed.push({id,name,old:oldGames[id]});
+   nextGames[id]=name;
+   if(!logo){
+    missing.push({id,name,old:has(oldLogos,id)});
+   }else{
+    if(oldLogos[id]!==logo)artChanges.push({id,name,old:oldLogos[id]||null,logo});
+    nextLogos[id]=logo;
+   }
+   if(has(oldGames,id)&&oldGames[id]===name&&(!logo||oldLogos[id]===logo))unchanged++;
+  }
+  if(!Object.keys(seen).length)throw Error('No valid games were found. No changes made.');
+  if(invalid.length)throw Error(invalid.length+' invalid record(s) detected. Review the source before importing.');
+  const sort=(entries)=>Object.fromEntries(Object.entries(entries).sort((a,b)=>Number(a[0])-Number(b[0])));
+  packageData={
+   format:'big-daddys-arcade-marquee-update-v1',
+   games:sort(nextGames),
+   logos:sort(nextLogos),
+   summary:{source_games:Object.keys(seen).length,known_games_before:Object.keys(oldGames).length,new_games:added.length,changed_artwork:artChanges.length,renamed_games:renamed.length,without_logo:missing.length,wrong_room:wrongRoom}
+  };
+  metric(Object.keys(seen).length,'Games in response');metric(added.length,'New games');
+  metric(artChanges.length,'New / changed artwork');metric(missing.length,'No logo selected');
+  addSection('New games',added,x=>x.name+' (ID '+x.id+')'+(x.logo?'':' — no artwork yet'));
+  addSection('New or changed artwork',artChanges,x=>x.name+' (ID '+x.id+')'+(x.old?' — updated selection':' — newly mapped'));
+  addSection('Renamed games',renamed,x=>x.old+' → '+x.name+' (ID '+x.id+')');
+  addSection('Games without a logo',missing,x=>x.name+' (ID '+x.id+')'+(x.old?' — keeping prior artwork':''));
+  status.textContent='Comparison complete: '+unchanged+' unchanged; '+wrongRoom+' records from other rooms skipped. Safe update package ready.';
+  report.hidden=false;download.disabled=false;
+ }catch(error){status.textContent='No package created: '+error.message;}
+});
+download.addEventListener('click',()=>{
+ if(!packageData)return;
+ const blob=new Blob([JSON.stringify(packageData,null,2)+'\n'],{type:'application/json'});
+ const url=URL.createObjectURL(blob),a=document.createElement('a');
+ a.href=url;a.download='arcade-marquee-update.json';a.click();
+ setTimeout(()=>URL.revokeObjectURL(url),2000);
+});
 })();
 </script>
 </body></html>

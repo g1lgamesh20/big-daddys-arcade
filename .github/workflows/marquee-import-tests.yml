@@ -1,0 +1,23 @@
+name: Check Arcade Marquee Importer
+on:
+  pull_request:
+    paths:
+      - 'marquee-import.html'
+      - 'marquee-game-inventory.json'
+      - 'game-logo-map.json'
+      - 'tools/test_marquee_update.js'
+      - '.github/workflows/marquee-import-tests.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test marquee update preview and safe merge
+        run: node tools/test_marquee_update.js
+      - name: Test shared game marquee loader
+        run: node tools/test_game_marquee.js
+      - name: Test iScored logo import safeguards
+        run: python tools/test_import_game_logos.py

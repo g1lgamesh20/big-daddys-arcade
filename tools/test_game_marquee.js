@@ -41,7 +41,9 @@ async function run(){
     a.pending[0].onerror();assert.equal(a.children.length,0,'Failed image never appears');
   }
   {
-    const a=setup();a.load(a.slot,'50042','Unknown');await tick();
+    const unknownId='999999999999';
+    assert.equal(Object.prototype.hasOwnProperty.call(mapping,unknownId),false,'Unknown ID test fixture must remain unmapped');
+    const a=setup();a.load(a.slot,unknownId,'Unknown');await tick();
     assert.equal(a.pending.length,0,'No guesses for unmapped games');
   }
   {
