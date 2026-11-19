@@ -1,7 +1,7 @@
 /* Hall of Legends Attract Mode: original neon green + pink vector effects.
    Decorative only. Never affects feeds, scores, notifications, or showcase timers. */
 .arcade-attract{isolation:isolate;background:radial-gradient(ellipse at 50% 28%,#251049 0%,#090522 53%,#03030d 100%)}
-.arcade-attract-scene{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+.arcade-attract-scene{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
 .arcade-attract-stars{position:absolute;inset:-15%;background-image:radial-gradient(circle,#e8faff 1px,transparent 1.7px),radial-gradient(circle,#77ff66 1px,transparent 2px),radial-gradient(circle,#ff55d2 1.3px,transparent 2px);background-size:83px 91px,157px 139px,223px 201px;background-position:0 0,33px 47px,77px 83px;opacity:.68;animation:arcade-attract-stars-flight 18s linear infinite}
 .arcade-attract-horizon{position:absolute;left:-60%;right:-60%;bottom:-6%;height:66%;transform-origin:50% 5%;transform:perspective(340px) rotateX(66deg);background-image:linear-gradient(90deg,transparent calc(100% - 2px),#61ff7466 calc(100% - 1px)),linear-gradient(0deg,transparent calc(100% - 2px),#fb48c888 calc(100% - 1px));background-size:10% 100%,100% 50px;filter:drop-shadow(0 0 5px #f540a8);mask-image:linear-gradient(transparent 0%,#000 25%,#000 96%);animation:arcade-attract-grid-drive 3.5s linear infinite}
 .arcade-attract-horizon::before{content:'';position:absolute;left:0;right:0;top:-7px;height:3px;background:#ff47c7;box-shadow:0 0 18px #ff47c7}
