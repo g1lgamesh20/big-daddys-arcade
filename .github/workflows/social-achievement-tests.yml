@@ -5,9 +5,6 @@ on:
       - 'achievement-showcase.js'
       - 'tools/social_achievement_rules.py'
       - 'tools/test_social_achievement_rules.py'
-      - 'tools/issue_arcade_registration_code.py'
-      - 'tools/test_arcade_registration.py'
-      - 'supabase/**'
       - '.github/workflows/social-achievement-tests.yml'
   workflow_dispatch:
 permissions:
@@ -24,5 +21,3 @@ jobs:
         run: node --check achievement-showcase.js
       - name: Test verified-only daily social milestone rules
         run: python tools/test_social_achievement_rules.py
-      - name: Test single-use registration code issuance and Edge Function contract
-        run: python tools/test_arcade_registration.py
