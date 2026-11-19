@@ -1,0 +1,24 @@
+name: Verify Monthly Notification Safety
+on:
+  pull_request:
+    paths:
+      - 'tools/send_monthly_notification.py'
+      - 'tools/test_monthly_notification.py'
+      - '.github/workflows/monthly-launch.yml'
+      - '.github/workflows/monthly-winners-notification.yml'
+      - '.github/workflows/monthly-notification-tests.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile monthly notification sender
+        run: python -m py_compile tools/send_monthly_notification.py
+      - name: Run strict offline monthly notification tests
+        run: python tools/test_monthly_notification.py

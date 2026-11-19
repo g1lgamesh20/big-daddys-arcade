@@ -1,0 +1,38 @@
+name: Monthly Challenge - Verified Winners Notification
+on:
+  schedule:
+    # Retry 9 AM ET through late evening on the 2nd across both DST offsets.
+    - cron: '12,42 13-23 2 * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: arcade-monthly-private-selection
+  cancel-in-progress: false
+jobs:
+  winners:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check safe monthly sender tests
+        run: python tools/test_monthly_notification.py
+      - name: Send winners ONLY from independently verified finalized monthly results
+        env:
+          ONESIGNAL_REST_API_KEY: ${{ secrets.ONESIGNAL_REST_API_KEY }}
+        run: python tools/send_monthly_notification.py results
+      - name: Persist accepted notification state
+        run: |
+          if [ ! -f monthly-notification-state.json ]; then exit 0; fi
+          git add monthly-notification-state.json
+          if git diff --cached --quiet; then exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Record verified monthly winners notification"
+          git pull --rebase origin main
+          git push origin HEAD:main

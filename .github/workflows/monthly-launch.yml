@@ -43,3 +43,19 @@ jobs:
           git commit -m 'Refresh monthly challenge safely'
           git pull --rebase origin main
           git push origin HEAD:main
+      - name: Test monthly notification safeguards (no external calls)
+        run: python tools/test_monthly_notification.py
+      - name: Announce newly published monthly game only after live Pages reveal
+        env:
+          ONESIGNAL_REST_API_KEY: ${{ secrets.ONESIGNAL_REST_API_KEY }}
+        run: python tools/send_monthly_notification.py reveal
+      - name: Save OneSignal reveal deduplication state
+        run: |
+          if [ ! -f monthly-notification-state.json ]; then exit 0; fi
+          git add monthly-notification-state.json
+          if git diff --cached --quiet; then exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Record monthly game reveal notification"
+          git pull --rebase origin main
+          git push origin HEAD:main
