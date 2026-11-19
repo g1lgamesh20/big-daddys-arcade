@@ -1,0 +1,30 @@
+name: Test 30-Minute Refresh Resilience
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/update-legends.yml'
+      - '.github/workflows/refresh-resilience-tests.yml'
+      - 'tools/update_legends.py'
+      - 'tools/iscored_fetch_retry.py'
+      - 'tools/test_iscored_fetch_retry.py'
+      - 'tools/refresh_health.py'
+      - 'tools/test_refresh_health.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile Python helpers
+        run: python -m py_compile tools/iscored_fetch_retry.py tools/test_iscored_fetch_retry.py tools/refresh_health.py tools/test_refresh_health.py tools/update_legends.py
+      - name: Run iScored retry tests (no network)
+        run: python tools/test_iscored_fetch_retry.py
+      - name: Run refresh-heartbeat tests (no network)
+        run: python tools/test_refresh_health.py
+      - name: Preserve medal regression behavior (no network)
+        run: python tools/test_medals.py
