@@ -1,8 +1,10 @@
 name: Refresh Hall of Legends scores
 on:
   schedule:
-    # Check for newly approved Top-3 medals every 15 minutes.
-    - cron: '2,17,32,47 * * * *'
+    # Refresh scores and check approved Top-3 medals every 15 minutes.
+    # Use staggered, off-peak minutes to reduce scheduler congestion;
+    # GitHub cron is best effort and can still delay or drop scheduled runs.
+    - cron: '7,22,37,52 * * * *'
   workflow_dispatch:
 permissions:
   contents: write
