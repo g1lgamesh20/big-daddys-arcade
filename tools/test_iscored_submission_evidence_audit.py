@@ -8,13 +8,13 @@ from iscored_submission_evidence_audit import inspect, classify, paths
 
 class EvidenceAuditTests(unittest.TestCase):
  def test_api_date_is_not_original_submission_proof(self):
-  result=inspect({'scores':[{'id':123,'game':'secret','name':'DON','score':5000,'date':'2026-12-31 20:00:00'}]})
+  result=inspect({'scores':[{'id':123,'game':'GAME_MARKER_123','name':'DON','score':5000,'date':'2026-12-31 20:00:00'}]})
   self.assertFalse(result['original_submission_time_verified'])
   self.assertFalse(result['eligible_for_automatic_official_winner_announcement'])
   self.assertIn('date',result['public_field_names'])
   self.assertNotIn('DON',str(result))
   self.assertNotIn('5000',str(result))
-  self.assertNotIn('secret',str(result))
+  self.assertNotIn('GAME_MARKER_123',str(result))
  def test_credible_names_are_only_hints_not_authority(self):
   result=inspect({'scores':[{'submitted_at':'2026-12-31T23:59:00-05:00',
                              'approved_at':'2027-01-01T01:00:00-05:00',
