@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>iScored Marquee Map Import — Big Daddy's Arcade</title>
+<style>
+:root{color-scheme:dark;font-family:system-ui,-apple-system,Segoe UI,sans-serif;background:#090817;color:white}
+*{box-sizing:border-box}body{margin:auto;max-width:750px;padding:20px 16px 70px}
+h1{font-size:clamp(23px,5vw,34px);color:#96ff69}h2{font-size:18px;color:#ff95d8}
+p{line-height:1.55}textarea{display:block;width:100%;height:185px;resize:vertical;background:#18102a;color:white;border:1px solid #fb71ce;border-radius:10px;padding:12px;font-family:ui-monospace,monospace}
+button{display:inline-block;margin:12px 6px 12px 0;padding:13px 15px;color:#08120d;background:#aaff78;border:0;border-radius:10px;font-weight:800;cursor:pointer}
+button:disabled{opacity:.5;cursor:not-allowed}label{display:block;font-weight:700;margin:13px 0 8px}
+#status{padding:12px 0;white-space:pre-wrap;color:#c7f9bb}small{color:#b9b0c9}
+a{color:#a7f4fa}code{color:#ffd3ed}
+</style></head>
+<body>
+<h1>👾 Marquee Map Importer</h1>
+<p>This tool runs entirely in your browser. Paste a batch of iScored <code>GameID</code> / <code>GameLogo</code> records and download a sanitized mapping file. Nothing you paste here is sent to GitHub, iScored, or any server by this page.</p>
+<p><strong>Important:</strong> Use only the JSON response containing game records from iScored Settings → Games. Never paste cookies, account tokens, passwords, or HAR files into this tool.</p>
+<label for="records">iScored Games JSON (array or one game record)</label>
+<textarea id="records" spellcheck="false" placeholder='[{"GameID":101601,"GameLogo":"/community/images/games/game2781","RoomID":1118}]'></textarea>
+<label for="source-file">Or choose a downloaded JSON file</label>
+<input id="source-file" type="file" accept=".json,application/json">
+<div><button id="build" type="button">Build Safe Logo Map</button><button id="download" type="button" disabled>Download game-logo-map.json</button></div>
+<div id="status" role="status" aria-live="polite">Ready. Existing mappings will be preserved.</div>
+<h2>What happens next?</h2>
+<p>Download the file and upload it here in our ChatGPT conversation. I can review it and prepare the GitHub update. This avoids placing a raw iScored settings response in a public repository.</p>
+<p><small>This is a one-time/bulk-import bridge. Fully unattended refreshes still require iScored to expose an authorized source of game-logo metadata. The app's daily score feed does not currently provide that field.</small></p>
+<a href="./">Back to Hall of Legends</a>
+<script>
+(async()=>{
+  'use strict';
+  const text=document.getElementById('records');
+  const input=document.getElementById('source-file');
+  const status=document.getElementById('status');
+  const download=document.getElementById('download');
+  const validId=/^\d{1,12}$/;
+  const validLogo=/^\/(?:community\/)?images\/games\/game\d{1,12}$/;
+  let existing={}, output=null;
+  try{
+    const r=await fetch('./game-logo-map.json',{cache:'no-store'});
+    if(!r.ok)throw Error('Could not fetch existing mapping');
+    existing=await r.json();
+    if(!existing||Array.isArray(existing)||typeof existing!=='object')throw Error('Invalid existing mapping');
+  }catch(e){status.textContent='Existing map unavailable: '+e.message+'. Import disabled to prevent accidental data loss.';document.getElementById('build').disabled=true;return;}
+  input.addEventListener('change',async()=>{
+    if(input.files?.[0])text.value=await input.files[0].text();
+  });
+  document.getElementById('build').addEventListener('click',()=>{
+    download.disabled=true;output=null;
+    let payload;
+    try{payload=JSON.parse(text.value);}catch(e){status.textContent='Invalid JSON: '+e.message;return;}
+    let rows=Array.isArray(payload)?payload:null;
+    if(!rows && payload&&typeof payload==='object'){
+      if(payload.GameID!==undefined)rows=[payload];
+      else for(const key of ['games','Games','rows','data','result'])
+        if(Array.isArray(payload[key])){rows=payload[key];break;}
+    }
+    if(!rows){status.textContent='Expected a JSON array of iScored game records.';return;}
+    const next={...existing},seen={};
+    let changed=0,valid=0,blank=0,invalid=0,wrongRoom=0;
+    try{
+      for(const row of rows){
+        if(!row||typeof row!=='object'||Array.isArray(row)){invalid++;continue;}
+        const id=String(row.GameID??'').trim(),path=row.GameLogo;
+        if(row.RoomID!==undefined&&row.RoomID!==null&&String(row.RoomID)!=='1118'){wrongRoom++;continue;}
+        if(!validId.test(id)){invalid++;continue;}
+        if(path===null||path===''){blank++;continue;}
+        if(typeof path!=='string'||!validLogo.test(path)){invalid++;continue;}
+        if(Object.hasOwn(seen,id)&&seen[id]!==path)throw Error('Conflicting art entries for GameID '+id);
+        seen[id]=path;valid++;
+        if(next[id]!==path){next[id]=path;changed++;}
+      }
+      if(valid===0)throw Error('No valid GameID/GameLogo entries found. No changes made.');
+      output=Object.fromEntries(Object.entries(next).sort((a,b)=>Number(a[0])-Number(b[0])));
+      status.textContent='Ready! '+valid+' valid entries; '+changed+' new/updated; '+blank+' without logos; '+invalid+' invalid; '+wrongRoom+' from another room. Total mapped: '+Object.keys(output).length+'. Original settings text is not included in the download.';
+      download.disabled=false;
+    }catch(e){status.textContent=e.message;output=null;}
+  });
+  download.addEventListener('click',()=>{
+    if(!output)return;
+    const data=JSON.stringify(output,null,2)+'\n';
+    const url=URL.createObjectURL(new Blob([data],{type:'application/json'}));
+    const a=document.createElement('a');a.href=url;a.download='game-logo-map.json';a.click();
+    URL.revokeObjectURL(url);
+  });
+})();
+</script>
+</body></html>
