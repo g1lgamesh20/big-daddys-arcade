@@ -1,0 +1,29 @@
+name: Monthly Challenge - iScored Original Submission Evidence Audit
+on:
+  workflow_dispatch:
+  schedule:
+    # Read-only field contract check on the 2nd, after possible approvals.
+    - cron: '15 15 2 * *'
+permissions:
+  contents: read
+jobs:
+  evidence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify audit cannot infer original timestamps from field names
+        run: python tools/test_iscored_submission_evidence_audit.py
+      - name: Inspect public iScored schema without player-level data
+        run: python tools/iscored_submission_evidence_audit.py
+      - name: Upload aggregate audit only
+        uses: actions/upload-artifact@v4
+        with:
+          name: iscored-submission-evidence-audit
+          path: submission-evidence-private.json
+          retention-days: 7
