@@ -1,0 +1,25 @@
+name: Test Private Monthly Launch Readiness
+on:
+  pull_request:
+    paths:
+      - 'tools/monthly_readiness.py'
+      - 'tools/test_monthly_readiness.py'
+      - '.github/workflows/monthly-readiness.yml'
+      - '.github/workflows/monthly-readiness-tests.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install test dependency
+        run: python -m pip install 'cryptography>=43,<47'
+      - name: Compile private audit scripts
+        run: python -m py_compile tools/monthly_readiness.py tools/test_monthly_readiness.py
+      - name: Run offline tests without any secrets or iScored calls
+        run: python tools/test_monthly_readiness.py
