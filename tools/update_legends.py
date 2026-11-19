@@ -157,9 +157,8 @@ def update_daily_champion(champions, updated_at):
 
 def main():
     req = Request(URL,headers={'User-Agent':'BigDaddysArcadeLegends/1.7','Accept':'application/json'})
-    with urlopen(req,timeout=25) as response:
-        if response.status != 200: raise RuntimeError('iScored returned HTTP '+str(response.status))
-        raw = json.load(response)
+    from iscored_fetch_retry import read_scores
+    raw = read_scores(req, opener=urlopen)
     from sync_game_catalog import sync_games
     sync_games(raw['scores'])
     result = build(raw)
