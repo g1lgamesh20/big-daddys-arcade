@@ -1,0 +1,21 @@
+/* Hall of Legends Attract Mode: original neon green + pink vector effects.
+   Decorative only. Never affects feeds, scores, notifications, or showcase timers. */
+.arcade-attract{isolation:isolate;background:radial-gradient(ellipse at 50% 28%,#251049 0%,#090522 53%,#03030d 100%)}
+.arcade-attract-scene{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.arcade-attract-stars{position:absolute;inset:-15%;background-image:radial-gradient(circle,#e8faff 1px,transparent 1.7px),radial-gradient(circle,#77ff66 1px,transparent 2px),radial-gradient(circle,#ff55d2 1.3px,transparent 2px);background-size:83px 91px,157px 139px,223px 201px;background-position:0 0,33px 47px,77px 83px;opacity:.68;animation:arcade-attract-stars-flight 18s linear infinite}
+.arcade-attract-horizon{position:absolute;left:-60%;right:-60%;bottom:-6%;height:66%;transform-origin:50% 5%;transform:perspective(340px) rotateX(66deg);background-image:linear-gradient(90deg,transparent calc(100% - 2px),#61ff7466 calc(100% - 1px)),linear-gradient(0deg,transparent calc(100% - 2px),#fb48c888 calc(100% - 1px));background-size:10% 100%,100% 50px;filter:drop-shadow(0 0 5px #f540a8);mask-image:linear-gradient(transparent 0%,#000 25%,#000 96%);animation:arcade-attract-grid-drive 3.5s linear infinite}
+.arcade-attract-horizon::before{content:'';position:absolute;left:0;right:0;top:-7px;height:3px;background:#ff47c7;box-shadow:0 0 18px #ff47c7}
+.arcade-attract-sweep{position:absolute;inset:-10% 0;background:linear-gradient(transparent 0%,transparent 45%,#86ff8a08 48%,#76ffab26 50%,#ff48bd19 52%,transparent 57%);mix-blend-mode:screen;animation:arcade-attract-sweep 7s linear infinite}
+.arcade-attract-pixels{position:absolute;width:clamp(76px,15vw,150px);height:auto;right:8%;top:12%;overflow:visible;image-rendering:pixelated;filter:drop-shadow(0 0 8px #7dff64);opacity:.87;animation:arcade-attract-pixel-flight 13s steps(24,end) infinite alternate}
+.arcade-attract-pixels .alien-a{fill:#76ff60;animation:arcade-attract-pixel-a .75s steps(1,end) infinite}
+.arcade-attract-pixels .alien-b{fill:#ff4abf;animation:arcade-attract-pixel-b .75s steps(1,end) infinite}
+.arcade-attract-inner{z-index:1;box-shadow:0 0 26px #ff39c4,0 0 80px #5cff4b1f,inset 0 0 35px #ff39c42a;background:#090719d9}
+.arcade-attract-inner::before{content:'';position:absolute;inset:9px;border:1px solid #69ff7140;border-radius:14px;pointer-events:none}
+@keyframes arcade-attract-stars-flight{from{transform:translateY(-65px) scale(1)}to{transform:translateY(85px) scale(1.08)}}
+@keyframes arcade-attract-grid-drive{from{background-position:0 0,0 0}to{background-position:0 0,0 50px}}
+@keyframes arcade-attract-sweep{from{transform:translateY(-120%)}to{transform:translateY(120%)}}
+@keyframes arcade-attract-pixel-flight{from{transform:translate(-12px,9px)}to{transform:translate(25px,-15px)}}
+@keyframes arcade-attract-pixel-a{0%,49%{opacity:1}50%,100%{opacity:0}}
+@keyframes arcade-attract-pixel-b{0%,49%{opacity:0}50%,100%{opacity:1}}
+@media(max-width:520px){.arcade-attract-pixels{right:3%;top:4%;width:70px;opacity:.5}.arcade-attract-inner{padding-top:28px}}
+@media(prefers-reduced-motion:reduce){.arcade-attract-stars,.arcade-attract-horizon,.arcade-attract-sweep,.arcade-attract-pixels,.arcade-attract-pixels .alien-a,.arcade-attract-pixels .alien-b{animation:none!important}.arcade-attract-sweep,.arcade-attract-pixels .alien-b{display:none}.arcade-attract-pixels .alien-a{opacity:1}}
