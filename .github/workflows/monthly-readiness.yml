@@ -1,0 +1,33 @@
+name: Monthly Challenge - Private Prelaunch Readiness
+on:
+  schedule:
+    # Check upcoming month's encrypted game on 25th, 28th, and 30th.
+    - cron: '27 17 25,28,30 * *'
+  workflow_dispatch:
+    inputs:
+      month:
+        description: 'Optional YYYY-MM target month. Blank checks next Eastern month.'
+        required: false
+        type: string
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install sealed-selection dependency
+        run: python -m pip install 'cryptography>=43,<47'
+      - name: Test private readiness against fake sealed game
+        run: python tools/test_monthly_readiness.py
+      - name: Verify real encrypted upcoming game privately (no reveal or modifications)
+        env:
+          MONTHLY_SELECTION_KEY: ${{ secrets.MONTHLY_SELECTION_KEY }}
+          MONTHLY_READINESS_MONTH: ${{ inputs.month }}
+        run: python tools/monthly_readiness.py
