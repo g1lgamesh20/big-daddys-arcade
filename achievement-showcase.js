@@ -17,6 +17,7 @@
     {id:'monthly',name:'🌟 Game of the Month'},
     {id:'participation',name:'🎮 Participation & Streaks'},
     {id:'gold',name:'🥇 Gold Mastery'},
+    {id:'social',name:'💬 Social Achievements'},
     {id:'special',name:'❓ Special Achievements'},
   ];
   const entries=[];
@@ -63,6 +64,28 @@
     add('golden_encore:'+threshold,'gold',emoji,name,
         'Improve an already-held Gold-leading score on '+threshold+' qualifying occasion'+(threshold===1?'':'s')+'. First-time Gold does not count.',
         'golden_encore',threshold);
+  // Social trophies are catalogued as planned until an authenticated,
+  // server-verifiable social audit and player identity mapping are deployed.
+  // The existing browser-entered initials and device token are NOT award proof.
+  const socialMilestones=[
+    [1,'Trash Talk Rookie','Props Giver'],
+    [5,'Trash Talk Regular','High Five'],
+    [10,'Trash Talk Veteran','Good Sport'],
+    [25,'Trash Talk Legend','Hype Squad'],
+    [50,'Master of Banter','Community Champion'],
+    [100,'Arcade Mouthpiece','Props Legend']
+  ];
+  for(const [days,talkName,propsName] of socialMilestones){
+    for(const [kind,name,emoji,description] of [
+      ['trash_talk',talkName,'💬','Post qualifying Trash Talk (including community-wide posts)'],
+      ['give_props',propsName,'🪙','Give a qualifying positive reaction to another player']
+    ]){
+      add('social_'+kind+':'+days,'social',emoji,name,
+        description+' on '+days+' different Eastern calendar day'+(days===1?'':'s')+'. Only one credit per player per day for this activity; extra posts or reactions that day do not increase progress.',
+        'social_'+kind,days,'planned',
+        'Server-verified player identity and activity evidence required. Historical posts do not automatically unlock trophies.');
+    }
+  }
   add('easter_egg','special','❓','Easter Egg',"It's a Secret to Everybody.",'easter_egg',0,
       'planned','Secret discovery achievement. Unlocking mechanism is not displayed.');
 
