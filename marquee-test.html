@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Arcade Marquee Diagnostic</title>
+<style>
+:root{color-scheme:dark;font-family:system-ui,sans-serif;background:#09091e;color:white}
+body{margin:0;padding:26px 14px;max-width:640px;margin-inline:auto}
+h1{color:#aaff78;font-size:clamp(21px,5vw,29px)}
+article{padding:18px;margin:16px 0;border:1px solid #f55cc2;border-radius:14px;background:#1e1132;text-align:center}
+h2{font-size:20px;color:#ffb0e9}
+img{max-width:100%;max-height:175px;height:auto;margin:12px auto;object-fit:contain;display:block}
+.status{color:#b9ff99;font-size:14px}.error{color:#ffb6b6}
+small{color:#cac4d9}a{color:#a8f9ff}
+</style></head><body>
+<h1>🕹️ Marquee Test Lab</h1>
+<p>This page tests two <strong>verified</strong> iScored artwork mappings directly from GitHub Pages. No account sign-in or private data.</p>
+<article id="pac"><h2>Pac-Man</h2><small>Game ID 49994 → /images/games/game49994</small><p class="status">Checking...</p><div class="picture"></div></article>
+<article id="food"><h2>Food Fight</h2><small>Game ID 101601 → /community/images/games/game2781</small><p class="status">Checking...</p><div class="picture"></div></article>
+<p><small>If a test says blocked, the image couldn't load in this page. It does not by itself distinguish a 403, 404, or network problem. The main arcade continues showing game titles safely when artwork is unavailable.</small></p>
+<p><a href="./">Back to Hall of Legends</a></p>
+<script>
+(async()=>{
+  let map={};
+  try{
+    const r=await fetch('./game-logo-map.json',{cache:'no-store'});
+    if(!r.ok)throw Error('Map not available');
+    map=await r.json();
+  }catch(_){
+    for(const node of document.querySelectorAll('.status')){node.textContent='Could not load game-logo-map.json';node.classList.add('error');}
+    return;
+  }
+  for(const [id,selector] of [['49994','#pac'],['101601','#food']]){
+    const card=document.querySelector(selector);
+    const label=card.querySelector('.status');
+    const path=map[id];
+    if(typeof path!=='string'||!/^\/(?:community\/)?images\/games\/game\d{1,12}$/.test(path)){
+      label.textContent='No valid image mapping found';label.classList.add('error');continue;
+    }
+    const img=new Image();
+    img.alt=selector==='#pac'?'Pac-Man marquee':'Food Fight marquee';
+    img.onload=()=>{if(img.naturalWidth>0){card.querySelector('.picture').append(img);label.textContent='✓ Image loaded successfully';}else{label.textContent='Image decoded without dimensions';label.classList.add('error');}};
+    img.onerror=()=>{label.textContent='Image failed to load from this website';label.classList.add('error');};
+    img.src='https://www.iscored.info'+path;
+  }
+})();
+</script>
+</body></html>
