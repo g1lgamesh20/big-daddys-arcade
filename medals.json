@@ -1,6 +1,76 @@
 {
-  "updated_at": "2026-11-18T22:44:24.609075+00:00",
+  "updated_at": "2026-11-19T02:15:40.310997+00:00",
   "alerts": [
+    {
+      "id": "387476",
+      "player": "VJG",
+      "game": "Black widow v2",
+      "game_id": "50021",
+      "score": 8050,
+      "date": "2026-11-18 19:51:16",
+      "rank": 2,
+      "medal": "silver"
+    },
+    {
+      "id": "387474",
+      "player": "VJG",
+      "game": "Frenzy",
+      "game_id": "50038",
+      "score": 2333,
+      "date": "2026-11-18 19:41:04",
+      "rank": 2,
+      "medal": "silver"
+    },
+    {
+      "id": "387470",
+      "player": "VJG",
+      "game": "Berzerk",
+      "game_id": "50020",
+      "score": 2450,
+      "date": "2026-11-18 19:40:15",
+      "rank": 2,
+      "medal": "silver"
+    },
+    {
+      "id": "387468",
+      "player": "VJG",
+      "game": "720 Degrees",
+      "game_id": "86253",
+      "score": 1800,
+      "date": "2026-11-18 19:39:25",
+      "rank": 2,
+      "medal": "silver"
+    },
+    {
+      "id": "387466",
+      "player": "VJG",
+      "game": "Bad Dudes Vs. Dragon Ninja",
+      "game_id": "112664",
+      "score": 85200,
+      "date": "2026-11-18 19:39:06",
+      "rank": 2,
+      "medal": "silver"
+    },
+    {
+      "id": "387463",
+      "player": "VJG",
+      "game": "Arabian",
+      "game_id": "50216",
+      "score": 7000,
+      "date": "2026-11-18 19:38:12",
+      "rank": 2,
+      "medal": "silver"
+    },
+    {
+      "id": "387461",
+      "player": "VJG",
+      "game": "Anteater",
+      "game_id": "71989",
+      "score": 3220,
+      "date": "2026-11-18 19:36:49",
+      "rank": 2,
+      "medal": "silver"
+    },
     {
       "id": "387301",
       "player": "VJG",

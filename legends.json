@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-18T22:44:24.609075+00:00",
+  "updated_at": "2026-11-19T02:15:40.310997+00:00",
   "source": "iScored public read API",
   "scoring_note": "PAPA-style estimate: top 1000 games per player; one best score per player per game; competition ties. iScored may handle ties differently.",
   "standings": [
@@ -36,6 +36,14 @@
       "bronze": 4
     },
     {
+      "player": "VJG",
+      "points": 2375,
+      "games": 26,
+      "gold": 6,
+      "silver": 16,
+      "bronze": 0
+    },
+    {
       "player": "RDG",
       "points": 2193,
       "games": 24,
@@ -50,14 +58,6 @@
       "gold": 4,
       "silver": 7,
       "bronze": 6
-    },
-    {
-      "player": "VJG",
-      "points": 1745,
-      "games": 19,
-      "gold": 6,
-      "silver": 9,
-      "bronze": 0
     },
     {
       "player": "POD",
@@ -3733,6 +3733,69 @@
     {
       "kind": "recent",
       "player": "VJG",
+      "game": "Black widow v2",
+      "game_id": "50021",
+      "score": 8050,
+      "date": "2026-11-18 19:51:16",
+      "score_id": "387476"
+    },
+    {
+      "kind": "recent",
+      "player": "VJG",
+      "game": "Frenzy",
+      "game_id": "50038",
+      "score": 2333,
+      "date": "2026-11-18 19:41:04",
+      "score_id": "387474"
+    },
+    {
+      "kind": "recent",
+      "player": "VJG",
+      "game": "Berzerk",
+      "game_id": "50020",
+      "score": 2450,
+      "date": "2026-11-18 19:40:15",
+      "score_id": "387470"
+    },
+    {
+      "kind": "recent",
+      "player": "VJG",
+      "game": "720 Degrees",
+      "game_id": "86253",
+      "score": 1800,
+      "date": "2026-11-18 19:39:25",
+      "score_id": "387468"
+    },
+    {
+      "kind": "recent",
+      "player": "VJG",
+      "game": "Bad Dudes Vs. Dragon Ninja",
+      "game_id": "112664",
+      "score": 85200,
+      "date": "2026-11-18 19:39:06",
+      "score_id": "387466"
+    },
+    {
+      "kind": "recent",
+      "player": "VJG",
+      "game": "Arabian",
+      "game_id": "50216",
+      "score": 7000,
+      "date": "2026-11-18 19:38:12",
+      "score_id": "387463"
+    },
+    {
+      "kind": "recent",
+      "player": "VJG",
+      "game": "Anteater",
+      "game_id": "71989",
+      "score": 3220,
+      "date": "2026-11-18 19:36:49",
+      "score_id": "387461"
+    },
+    {
+      "kind": "recent",
+      "player": "VJG",
       "game": "Tempest",
       "game_id": "50060",
       "score": 15378,
@@ -3774,69 +3837,6 @@
       "score": 10602900,
       "date": "2026-11-17 16:18:46",
       "score_id": "386318"
-    },
-    {
-      "kind": "recent",
-      "player": "SMS",
-      "game": "Lunar Lander",
-      "game_id": "84713",
-      "score": 300,
-      "date": "2026-11-15 19:56:24",
-      "score_id": "386112"
-    },
-    {
-      "kind": "recent",
-      "player": "DON",
-      "game": "Lunar Lander",
-      "game_id": "84713",
-      "score": 270,
-      "date": "2026-11-15 19:56:16",
-      "score_id": "386106"
-    },
-    {
-      "kind": "recent",
-      "player": "LEY",
-      "game": "1943",
-      "game_id": "50011",
-      "score": 50200,
-      "date": "2026-11-14 18:09:22",
-      "score_id": "385604"
-    },
-    {
-      "kind": "recent",
-      "player": "LEY",
-      "game": "1943",
-      "game_id": "50011",
-      "score": 30100,
-      "date": "2026-11-14 18:04:26",
-      "score_id": "385602"
-    },
-    {
-      "kind": "recent",
-      "player": "LEY",
-      "game": "1942",
-      "game_id": "50010",
-      "score": 19060,
-      "date": "2026-11-14 17:58:14",
-      "score_id": "385597"
-    },
-    {
-      "kind": "recent",
-      "player": "DON",
-      "game": "Marvel Super Heroes",
-      "game_id": "73281",
-      "score": 10551,
-      "date": "2026-11-13 20:00:45",
-      "score_id": "385006"
-    },
-    {
-      "kind": "recent",
-      "player": "SPC",
-      "game": "Solomons Key",
-      "game_id": "113225",
-      "score": 55220,
-      "date": "2026-11-12 23:01:38",
-      "score_id": "384450"
     }
   ],
   "total_games": 262,
