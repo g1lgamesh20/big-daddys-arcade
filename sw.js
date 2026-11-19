@@ -1,5 +1,5 @@
 
-const CACHE = 'hall-of-legends-v7-marquee-preload';
+const CACHE = 'hall-of-legends-v8-verified-logo-map';
 
 const FILES = [
   './',
@@ -7,6 +7,7 @@ const FILES = [
   './style.css',
   './script.js',
   './game-marquee.js',
+  './game-logo-map.json',
   './achievement-showcase.js',
   './manifest.webmanifest',
   './assets/arcade-logo.png',
