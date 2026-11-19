@@ -60,3 +60,46 @@ social event export is stored in this GitHub repo.
 }
 ```
 This JSON shape alone does **not** confer trust and is not a public award API.
+
+## November 19 decision: **one-time linking, no player accounts**
+This is a private arcade with roughly 15 regular players. The owner explicitly
+rejected recurring sign-ins, conventional player passwords and per-action PINs.
+**Players still use normal 1–3-character iScored initials and existing social
+forms.** Registration is only a future one-time eligibility step for identity-
+sensitive trophies and later personalized push notifications.
+
+Staged source files:
+- `supabase/social-registration.sql` — server-owned registration codes and
+  linked device table, with revoked public grants and atomic one-use redemption.
+- `supabase/functions/arcade-register/index.ts` — a **not yet deployed** server
+  endpoint requiring a valid Cloudflare Turnstile response. No service-role key
+  goes into browser code or GitHub. Operator issues each code privately.
+- `tools/issue_arcade_registration_code.py` — securely random 128-bit, Base32,
+  single-use enrollment code, defaults to 7-day expiry. Shows the plaintext
+  code exactly once on the operator's own computer and the SHA-256 digest INSERT
+  for the private Supabase SQL Editor. Never commit the printed output.
+
+Example **future** operator workflow:
+1. From an operator-only computer run:
+   `python tools/issue_arcade_registration_code.py DON`
+2. Copy the SQL INSERT into the authenticated Supabase SQL Editor **after**
+   deploying/reviewing the migration, and give the plaintext code privately to DON.
+3. Once the Edge Function and a safe one-time link UI are deployed, DON enters
+   the code once on the device they use. No recurring login.
+4. Social write functions must resolve registered device identity server-side,
+   reject actor mismatches and self-reactions, and record authoritative events.
+   Existing social interactions keep working for unlinked users; only verified
+   activity can earn new achievements.
+5. Operator can revoke a linked device and issue a replacement code if it is
+   lost or changed. Reinstallation/new device may require a new one-time code.
+
+**Do not run the SQL or deploy the Edge Function just because this PR merges.**
+Review Supabase permissions, rate limiting, replay handling, CORS, Turnstile,
+data retention, revocation, and operator auditing in an isolated test first.
+The current repo doesn't include the existing social Edge Function source,
+so no live write path has been changed or made to grant awards. This phase
+does **not** establish trustworthy social-event ownership by itself.
+
+Code login is deliberately not tied to a public score display or free-text
+initials submission. The code's entropy (128 random bits), expiry and one-use
+server transaction mitigate guessing and replay without burdening players.
