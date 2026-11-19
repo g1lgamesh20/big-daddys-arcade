@@ -19,3 +19,56 @@
 @keyframes arcade-attract-pixel-b{0%,49%{opacity:0}50%,100%{opacity:1}}
 @media(max-width:520px){.arcade-attract-pixels{right:3%;top:4%;width:70px;opacity:.5}.arcade-attract-inner{padding-top:28px}}
 @media(prefers-reduced-motion:reduce){.arcade-attract-stars,.arcade-attract-horizon,.arcade-attract-sweep,.arcade-attract-pixels,.arcade-attract-pixels .alien-a,.arcade-attract-pixels .alien-b{animation:none!important}.arcade-attract-sweep,.arcade-attract-pixels .alien-b{display:none}.arcade-attract-pixels .alien-a{opacity:1}}
+
+/* Phase 2 — genuine screen-crossing Invader flyby, not a corner wiggle. */
+.arcade-attract-pixels{left:-165px;right:auto;top:12%;width:clamp(74px,12vw,132px);animation:arcade-attract-invader-cross 17s linear infinite;will-change:transform}
+@keyframes arcade-attract-invader-cross{
+  0%{transform:translate(-15px,5vh) rotate(-5deg)}
+  22%{transform:translate(calc(24vw + 30px),16vh) rotate(5deg)}
+  48%{transform:translate(calc(52vw + 55px),-3vh) rotate(-6deg)}
+  73%{transform:translate(calc(78vw + 90px),20vh) rotate(6deg)}
+  100%{transform:translate(calc(100vw + 245px),3vh) rotate(-2deg)}
+}
+/* Four distinctive arcade cabinet-style screens, all read-only. */
+.arcade-attract-inner{width:min(94vw,820px);min-height:min(560px,78vh);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:6px;padding:clamp(14px,3vh,30px) clamp(12px,3vw,30px)}
+.attract-stage{width:100%;min-height:0;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(7px,1.6vh,16px)}
+.attract-stage[hidden]{display:none!important}
+.attract-original-logo{display:block;max-width:min(66%,430px);max-height:min(35vh,255px);width:auto;height:auto;object-fit:contain;filter:drop-shadow(0 0 14px #ff46bf) drop-shadow(0 0 9px #65ff72);animation:attract-logo-glow 4s ease-in-out infinite}
+.attract-stage-caption{margin:0;color:#8aff79;font:900 clamp(13px,2vw,21px) system-ui,sans-serif;letter-spacing:.14em;text-shadow:0 0 8px #6eff66}
+@keyframes attract-logo-glow{50%{filter:drop-shadow(0 0 27px #ff46bf) drop-shadow(0 0 20px #65ff72);transform:scale(1.025)}}
+.attract-crt-stage{justify-content:center}
+.attract-crt-bezel{width:min(100%,660px);padding:clamp(9px,2vw,23px);border:5px solid #433b49;border-radius:clamp(18px,5vw,44px);background:linear-gradient(145deg,#4e4551,#16121d 44%,#302a33);box-shadow:0 0 25px #000,0 0 18px #ff48c166,inset 0 0 18px #000}
+.attract-crt-screen{position:relative;overflow:hidden;min-height:270px;border:3px solid #7aff6d88;border-radius:28px/38px;padding:clamp(14px,2vw,26px);background:radial-gradient(ellipse at center,#0b2114 0%,#06150c 70%,#010502 100%);box-shadow:inset 0 0 45px #000,0 0 16px #6dff6838;color:#9eff8c;text-align:left;text-shadow:0 0 7px #6fff76;font:700 clamp(12px,2vw,19px)/1.4 'Courier New',monospace;letter-spacing:.065em}
+.attract-crt-screen::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(to bottom,transparent 0px,transparent 3px,#0007 4px,#0007 5px);pointer-events:none;opacity:.52}
+.attract-crt-screen h2{font:900 clamp(17px,3vw,29px)/1.2 'Courier New',monospace;letter-spacing:.09em;color:#d3ffb8;text-shadow:0 0 13px #7cff6a;text-align:center;margin:4px 0 14px}
+.attract-crt-top,.attract-crt-footer{color:#ff70cc;text-align:center;text-shadow:0 0 11px #ff40bd;font-size:clamp(11px,1.8vw,15px)}
+.attract-crt-footer{margin-top:12px}
+.attract-crt-columns,.attract-crt-row{display:grid;grid-template-columns:2.3em minmax(0,1fr) auto;column-gap:12px;align-items:baseline}
+.attract-crt-columns{color:#ff84d0;border-bottom:1px solid #77ff7e88;padding-bottom:5px;margin-bottom:5px}
+.attract-crt-rows{display:grid;gap:2px;max-height:min(38vh,340px);overflow:hidden}
+.attract-crt-row{white-space:nowrap}
+.attract-crt-player{overflow:hidden;text-overflow:ellipsis}
+.attract-crt-points{font-variant-numeric:tabular-nums;text-align:right}
+.attract-crt-row:first-child{color:#e2ffbe}
+.attract-crt-empty{text-align:center;font-size:clamp(12px,2vw,18px)}
+.attract-medal-emblem{font-size:clamp(55px,11vw,100px);filter:drop-shadow(0 0 16px #ffcf55);animation:attract-medal-pulse 2s ease-in-out infinite}
+@keyframes attract-medal-pulse{50%{transform:scale(1.08);filter:drop-shadow(0 0 24px #ff57c7)}}
+.attract-challenge-line{width:min(100%,550px);padding:clamp(8px,1.7vh,17px);border:1px solid #6eff83;border-radius:12px;color:#fff;font:900 clamp(13px,2.7vw,23px) system-ui,sans-serif;background:#100c29db;text-shadow:0 0 9px #ff48c5;box-shadow:0 0 12px #ff4ac63e}
+.attract-challenge-line:nth-of-type(even){border-color:#ff5cc9}
+.arcade-attract-prompt{margin-top:8px}
+.arcade-attract-exit{margin-top:5px}
+@media(max-width:540px){
+ .arcade-attract-inner{width:96vw;min-height:min(530px,83vh);padding:12px 10px}
+ .attract-original-logo{max-width:79%;max-height:30vh}
+ .arcade-attract-pixels{width:78px;top:7%;opacity:.8;animation-duration:14s}
+ .attract-crt-bezel{padding:8px;border-width:3px}
+ .attract-crt-screen{padding:10px 8px;border-radius:20px/28px;font-size:clamp(10px,2.4vw,14px)}
+ .attract-crt-screen h2{margin-bottom:7px}
+ .attract-crt-rows{gap:1px;max-height:36vh}
+ .attract-crt-columns,.attract-crt-row{column-gap:5px;grid-template-columns:1.7em minmax(0,1fr) auto}
+ .attract-crt-top,.attract-crt-footer{font-size:10px}
+}
+@media(prefers-reduced-motion:reduce){
+ .arcade-attract-pixels,.attract-original-logo,.attract-medal-emblem{animation:none!important;transform:none!important}
+ .arcade-attract-pixels{left:auto;right:4%;top:5%}
+}
