@@ -1,0 +1,21 @@
+name: Test Attract Mode Phase 2
+on:
+  pull_request:
+    paths:
+      - 'index.html'
+      - 'attract-visuals.css'
+      - 'attract-mode.js'
+      - 'tools/test_attract_phase2.js'
+      - '.github/workflows/attract-phase2-tests.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  attract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate four-stage Attract Mode and safe data handling
+        run: node tools/test_attract_phase2.js
+      - name: Existing visual regression test
+        run: node tools/test_attract_visuals.js
