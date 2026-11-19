@@ -563,40 +563,43 @@ See you on the leaderboard! 🏆`;
  }catch(_){} }
  check();setInterval(check,2*60*1000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)check();});
 })();
-</script><div id="arcade-attract" class="arcade-attract" hidden role="dialog" aria-modal="true" aria-label="Arcade attract mode"><div class="arcade-attract-scene" aria-hidden="true"><div class="arcade-attract-stars"></div><div class="arcade-attract-horizon"></div><div class="arcade-attract-sweep"></div><svg class="arcade-attract-pixels" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><g class="alien-a"><path d="M20 8h8v4h8V8h8v4h4v4h4v16h-4v8h-8v-8h-4v12h-8V32h-4v12h-8V32h-4v8H4v-8H0V16h4v-4h4V8h8v4h4zM12 20v8h8v-8zm24 0v8h8v-8z" fill-rule="evenodd"/></g><g class="alien-b"><path d="M16 8h8v4h16V8h8v8h4v4h4v16h-8v8h-8V32h-8v12h-8V32h-8v12H8v-8H0V20h4v-4h4v-4h8zM12 20v8h8v-8zm32 0v8h8v-8z" fill-rule="evenodd"/></g></svg></div><div class="arcade-attract-inner"><div class="arcade-attract-kicker">★ BIG DADDY'S ARCADE ★</div><div class="arcade-attract-heading">HALL OF LEGENDS</div><div id="arcade-attract-type" class="arcade-attract-type">CAN YOU BEAT THE LEGENDS?</div><div id="arcade-attract-name" class="arcade-attract-name">INSERT COIN • MAKE HISTORY</div><div id="arcade-attract-detail" class="arcade-attract-detail">YOUR SCORE. YOUR LEGACY.</div><div class="arcade-attract-prompt">★ TAP ANYWHERE TO PLAY ★</div><button id="arcade-attract-exit" class="arcade-attract-exit" type="button">BACK TO THE ARCADE</button></div></div><script>
-/* Attract mode uses already-rendered public leaderboard/medal content. */
-(()=>{
- const overlay=document.getElementById('arcade-attract'),toggle=document.getElementById('arcade-attract-enabled');
- const kind=document.getElementById('arcade-attract-type'),name=document.getElementById('arcade-attract-name'),detail=document.getElementById('arcade-attract-detail');
- const storageKey='big-daddys-arcade-attract-enabled-v1';
- let enabled=true,idleTimer=null,rotation=null,index=0,priorFocus=null;
- try{enabled=localStorage.getItem(storageKey)!=='false';}catch(_){} toggle.checked=enabled;
- function isBlocked(){return document.getElementById('arcade-settings-panel').open||document.getElementById('arcade-test-lab-panel')?.open||document.hidden||!document.getElementById('arcade-celebrate').hidden||!document.getElementById('leaders-dialog').hidden||document.activeElement?.matches('input,textarea,select')}
- function slides(){
-  const items=[];
-  document.querySelectorAll('#leaders-all .leaders-full-row').forEach(row=>{
-   const spans=row.querySelectorAll('span');if(spans.length>1)items.push({type:'🏆 OVERALL LEGEND',name:spans[0].textContent,detail:spans[1].textContent});
-  });
-  document.querySelectorAll('#medal-feed .medal-card').forEach(card=>{
-   const player=card.querySelector('.medal-player'),game=card.querySelector('.medal-game'),medal=card.querySelector('.medal-label');
-   if(player&&game)items.push({type:'🥇 MEDAL CLUB',name:player.textContent,detail:game.textContent+' • '+(medal?.textContent||'MEDAL')});
-  });
-  if(!items.length)items.push({type:'👾 READY PLAYER ONE',name:'CAN YOU BEAT THE LEGENDS?',detail:'YOUR SCORE. YOUR LEGACY.'});
-  return items;
- }
- function showSlide(){const all=slides(),s=all[index++%all.length];kind.textContent=s.type;name.textContent=s.name;detail.textContent=s.detail;}
- function stop(){if(overlay.hidden)return;overlay.hidden=true;clearInterval(rotation);rotation=null;if(priorFocus?.isConnected)priorFocus.focus({preventScroll:true});}
- function start(){if(!enabled||isBlocked()||!overlay.hidden)return;priorFocus=document.activeElement;index=0;showSlide();overlay.hidden=false;document.getElementById('arcade-attract-exit').focus({preventScroll:true});rotation=setInterval(showSlide,5000);}
- function resetIdle(){clearTimeout(idleTimer);if(!overlay.hidden)return;if(enabled)idleTimer=setTimeout(()=>{if(isBlocked()){resetIdle();return;}start();},60000);}
- function exit(){stop();resetIdle();}
- toggle.addEventListener('change',()=>{enabled=toggle.checked;try{localStorage.setItem(storageKey,String(enabled));}catch(_){}if(!enabled){clearTimeout(idleTimer);stop();}else resetIdle();});
- overlay.addEventListener('pointerdown',exit);
- document.addEventListener('keydown',e=>{if(!overlay.hidden){if(e.key!=='Tab'){e.preventDefault();exit();}return;}resetIdle();},{capture:true});
- ['pointerdown','pointermove','touchstart','scroll'].forEach(event=>document.addEventListener(event,()=>{if(overlay.hidden)resetIdle();},{passive:true}));
- document.addEventListener('visibilitychange',()=>{if(document.hidden){clearTimeout(idleTimer);stop();}else resetIdle();});
- resetIdle();
-})();
-</script><script>
+</script><div id="arcade-attract" class="arcade-attract" hidden role="dialog" aria-modal="true" aria-label="Arcade attract mode"><div class="arcade-attract-scene" aria-hidden="true"><div class="arcade-attract-stars"></div><div class="arcade-attract-horizon"></div><div class="arcade-attract-sweep"></div><svg class="arcade-attract-pixels" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><g class="alien-a"><path d="M20 8h8v4h8V8h8v4h4v4h4v16h-4v8h-8v-8h-4v12h-8V32h-4v12h-8V32h-4v8H4v-8H0V16h4v-4h4V8h8v4h4zM12 20v8h8v-8zm24 0v8h8v-8z" fill-rule="evenodd"/></g><g class="alien-b"><path d="M16 8h8v4h16V8h8v8h4v4h4v16h-8v8h-8V32h-8v12h-8V32h-8v12H8v-8H0V20h4v-4h4v-4h8zM12 20v8h8v-8zm32 0v8h8v-8z" fill-rule="evenodd"/></g></svg></div><div class="arcade-attract-inner">
+  <section class="attract-stage attract-logo-stage" data-attract-stage="logo" aria-label="Big Daddy's Arcade title screen">
+    <div class="arcade-attract-kicker">★ BIG DADDY'S ARCADE ★</div>
+    <img class="attract-original-logo" src="assets/arcade-logo.png" alt="Big Daddy's Arcade original logo">
+    <div class="arcade-attract-heading">HALL OF LEGENDS</div>
+    <p class="attract-stage-caption">YOUR SCORE. YOUR LEGACY.</p>
+  </section>
+  <section class="attract-stage attract-crt-stage" data-attract-stage="crt" aria-label="Overall leaders high-score table" hidden>
+    <div class="attract-crt-bezel">
+      <div class="attract-crt-screen">
+        <div class="attract-crt-top">★ HALL OF LEGENDS ★</div>
+        <h2>OVERALL HIGH SCORES</h2>
+        <div class="attract-crt-columns"><span>RK</span><span>PLAYER</span><span>POINTS</span></div>
+        <div id="attract-crt-rows" class="attract-crt-rows"><p class="attract-crt-empty">AWAITING LIVE HALL OF LEGENDS SCORES</p></div>
+        <div class="attract-crt-footer">★ TOP PLAYERS • ALL GAMES ★</div>
+      </div>
+    </div>
+  </section>
+  <section class="attract-stage attract-medal-stage" data-attract-stage="medals" aria-label="Medal Club spotlight" hidden>
+    <div class="arcade-attract-kicker">🥇 THE MEDAL CLUB 🥈🥉</div>
+    <div class="attract-medal-emblem" aria-hidden="true">🏆</div>
+    <div id="attract-medal-heading" class="arcade-attract-type">GOLD • SILVER • BRONZE</div>
+    <div id="attract-medal-player" class="arcade-attract-name">NEXT LEGEND WANTED</div>
+    <div id="attract-medal-game" class="arcade-attract-detail">BE THE NEXT PLAYER ON THE PODIUM</div>
+  </section>
+  <section class="attract-stage attract-challenge-stage" data-attract-stage="challenge" aria-label="Arcade challenge invitations" hidden>
+    <div class="arcade-attract-kicker">★ READY PLAYER ONE ★</div>
+    <div class="arcade-attract-heading">TAKE THE CHALLENGE!</div>
+    <div class="attract-challenge-line">⚔️ BEAT THE CHAMPION</div>
+    <div class="attract-challenge-line">🏆 THURSDAY ARCADE CHALLENGE</div>
+    <div class="attract-challenge-line">👑 GAME OF THE MONTH</div>
+    <div class="arcade-attract-detail">ONE CREDIT ONLY • NO CONTINUES</div>
+  </section>
+  <div class="arcade-attract-prompt">★ TAP ANYWHERE TO PLAY ★</div>
+  <button id="arcade-attract-exit" class="arcade-attract-exit" type="button">BACK TO THE ARCADE</button>
+</div></div>
+<script src="attract-mode.js?v=20261119-phase2" defer></script><script>
 /* Thursday Challenge: server-selected game, Thursday-only results and champion. */
 (() => {
  const get=id=>document.getElementById(id);
