@@ -22,7 +22,8 @@ ul.changes{max-height:250px;overflow:auto;padding-left:23px}li{overflow-wrap:any
 <p>Compare a fresh iScored Games response with the last imported inventory. See new games, logo changes and missing artwork before downloading <strong>one safe update package</strong> to share here for the next GitHub pull request.</p>
 <p class="notice"><strong>Private by design:</strong> Your pasted Games response stays in this browser. Only game IDs, names, and vetted logo paths are included in the downloaded package. Never paste cookies, passwords, authorization headers or HAR files.</p>
 <h2>1. Copy the latest Games response</h2>
-<p>In iScored <strong>Settings → Games</strong>, open F12 → Network → Fetch/XHR, refresh the page and copy the <strong>Response</strong> of the request containing the full game list (not an individual game).</p>
+<p><a href="https://www.iscored.info/roomCommands.php?c=getAllGamesAndScores&amp;roomID=1118" target="_blank" rel="noopener noreferrer"><strong>Open your iScored All Games JSON</strong></a>, select all (Ctrl+A), copy (Ctrl+C), then paste below. If iScored asks you to sign in, sign in on iScored first. Never share cookies, passwords or headers.</p>
+<p><small>Fallback: iScored Settings → Games → F12 → Network → Fetch/XHR → refresh, then copy the Response containing the full game list.</small></p>
 <label for="records">Paste iScored Games JSON</label>
 <textarea id="records" spellcheck="false" placeholder='[{"gameID":50322,"gameName":"ROLLING THUNDER 2","GameLogo":"/images/games/game50322","RoomID":1118}]'></textarea>
 <label for="source-file">Or select a saved .json / .txt response</label>
