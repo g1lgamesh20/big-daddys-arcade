@@ -135,8 +135,8 @@ def build(kind, now, root=ROOT, public_fetch=None):
         reminder = (' 🏆 '+month_title(previous_month(month))+
                     ' winners and awards are scheduled for TOMORROW, the 2nd, at 9 AM Eastern!'
                     if month >= '2027-01' else '')
-        message = ('The '+month_title(month)+' mystery game is '+game.strip()+
-                   '! Open the Hall of Legends to see the challenge and benchmark.'+reminder)
+        message = (month_title(month)+': '+game.strip()[:55]+
+                   '! Play the new challenge in the Hall of Legends.'+reminder)
         return month, '🎮 GAME OF THE MONTH REVEALED!', message[:240]
     if kind == 'results':
         if now.day != 2 or now.hour < 9 or month < '2027-01':
