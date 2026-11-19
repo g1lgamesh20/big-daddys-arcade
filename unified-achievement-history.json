@@ -138,7 +138,7 @@
       "date": "2026-11-19",
       "game_id": "50042",
       "game": "Ghosts 'n Goblins",
-      "schedule_source": "daily-champion.json",
+      "schedule_source": "daily-champion-history.json",
       "participants": [],
       "champions": [],
       "verified_results": [],
