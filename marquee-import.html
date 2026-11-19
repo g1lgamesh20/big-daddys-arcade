@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Update Arcade Marquees — Big Daddy's Arcade</title>
+<title>Marquee Map Updater — Big Daddy's Arcade</title>
 <style>
 :root{color-scheme:dark;font-family:system-ui,-apple-system,Segoe UI,sans-serif;background:#090817;color:#fff}
 *{box-sizing:border-box}body{margin:auto;max-width:860px;padding:20px 16px 75px}
@@ -16,14 +16,15 @@ button:disabled{opacity:.45;cursor:not-allowed}label{display:block;font-weight:7
 section.results{border-top:1px solid #554262;padding-top:8px;margin-top:12px}
 ul.changes{max-height:250px;overflow:auto;padding-left:23px}li{overflow-wrap:anywhere}
 .notice{border-left:3px solid #ff82cd;padding:8px 12px;background:#1b1028}
+.howto{border-top:2px solid #fb71ce;margin-top:36px;padding-top:15px}
+.howto ol{padding-left:24px}.howto li{margin:12px 0}.howto a,.howto code{overflow-wrap:anywhere}
 </style></head>
 <body>
-<h1>👾 Update Arcade Marquees</h1>
+<h1>👾 Marquee Map Updater</h1>
 <p>Compare a fresh iScored Games response with the last imported inventory. See new games, logo changes and missing artwork before downloading <strong>one safe update package</strong> to share here for the next GitHub pull request.</p>
 <p class="notice"><strong>Private by design:</strong> Your pasted Games response stays in this browser. Only game IDs, names, and vetted logo paths are included in the downloaded package. Never paste cookies, passwords, authorization headers or HAR files.</p>
-<h2>1. Copy the latest Games response</h2>
-<p><a href="https://www.iscored.info/roomCommands.php?c=getAllGamesAndScores&amp;roomID=1118" target="_blank" rel="noopener noreferrer"><strong>Open your iScored All Games JSON</strong></a>, select all (Ctrl+A), copy (Ctrl+C), then paste below. If iScored asks you to sign in, sign in on iScored first. Never share cookies, passwords or headers.</p>
-<p><small>Fallback: iScored Settings → Games → F12 → Network → Fetch/XHR → refresh, then copy the Response containing the full game list.</small></p>
+<h2>1. Paste your iScored game information</h2>
+<p>Copy the full game-list response from iScored and paste it below. Detailed instructions (including the exact request name) are saved at the bottom of this page.</p>
 <label for="records">Paste iScored Games JSON</label>
 <textarea id="records" spellcheck="false" placeholder='[{"gameID":50322,"gameName":"ROLLING THUNDER 2","GameLogo":"/images/games/game50322","RoomID":1118}]'></textarea>
 <label for="source-file">Or select a saved .json / .txt response</label>
@@ -38,6 +39,24 @@ ul.changes{max-height:250px;overflow:auto;padding-left:23px}li{overflow-wrap:any
 <h2>3. Download and upload here</h2>
 <p>Click <strong>Download Update Package</strong>, then attach <code>arcade-marquee-update.json</code> in our ChatGPT conversation. I'll review it and prepare the next GitHub pull request. No other files needed.</p>
 </div>
+<section class="howto" aria-labelledby="instructions-heading">
+<h2 id="instructions-heading">📋 How to get your iScored game information (save these instructions!)</h2>
+<p>Whenever you add a game or change its marquee artwork, use these instructions to update the mapping. <strong>You don't have to remember the Network steps.</strong></p>
+<ol>
+<li>On your computer, sign in to <a href="https://www.iscored.info/" target="_blank" rel="noopener noreferrer">iScored</a> and open <strong>Settings → Games</strong>.</li>
+<li>Press <strong>F12</strong> to open Chrome or Edge Developer Tools (or press Ctrl+Shift+I).</li>
+<li>Click the <strong>Network</strong> tab, then select <strong>Fetch/XHR</strong>.</li>
+<li>Keep Developer Tools open and <strong>refresh</strong> the Games page (F5 or Ctrl+R) so the request appears.</li>
+<li>In the Network request list under <strong>Name</strong>, find <code>roomCommands.php?c=getAllGamesAndScores&amp;roomID=1118</code>. The Name column may show only <code>roomCommands.php?c=getAllGamesAndScores…</code>. Click it and check <strong>Headers → Request URL</strong> if needed.</li>
+<li>Open the request's <strong>Response</strong> tab. It should contain a long JSON list of games with fields like <code>gameID</code>, <code>gameName</code> and <code>GameLogo</code> (not just one game).</li>
+<li>Click inside <strong>Response</strong>, press <strong>Ctrl+A</strong> and <strong>Ctrl+C</strong>. Return to this updater, paste into the large box above with <strong>Ctrl+V</strong>.</li>
+<li>Click <strong>Compare With Arcade</strong>. Review <strong>New games</strong>, <strong>New or changed artwork</strong>, and <strong>Games without a logo</strong>.</li>
+<li>Click <strong>Download Update Package</strong>, then upload <code>arcade-marquee-update.json</code> in our ChatGPT arcade conversation. We'll use it to make the next GitHub Pull Request.</li>
+</ol>
+<p><strong>Exact request URL:</strong></p>
+<p><a href="https://www.iscored.info/roomCommands.php?c=getAllGamesAndScores&amp;roomID=1118" target="_blank" rel="noopener noreferrer">https://www.iscored.info/roomCommands.php?c=getAllGamesAndScores&amp;roomID=1118</a></p>
+<p><small>Shortcut: You can try opening the exact URL directly while signed in to iScored. If it displays the full JSON list, use Ctrl+A → Ctrl+C and paste it above, skipping F12. If not, follow the Network steps. Never copy request headers, cookies, passwords or a HAR export.</small></p>
+</section>
 <a href="./">Back to Hall of Legends</a>
 <script>
 (async()=>{
