@@ -1,0 +1,23 @@
+name: Test Social Achievement Rules
+on:
+  pull_request:
+    paths:
+      - 'achievement-showcase.js'
+      - 'tools/social_achievement_rules.py'
+      - 'tools/test_social_achievement_rules.py'
+      - '.github/workflows/social-achievement-tests.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check gallery JavaScript syntax
+        run: node --check achievement-showcase.js
+      - name: Test verified-only daily social milestone rules
+        run: python tools/test_social_achievement_rules.py
