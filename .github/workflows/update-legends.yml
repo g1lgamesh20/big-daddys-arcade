@@ -22,6 +22,8 @@ jobs:
         run: node --check achievement-showcase.js
       - name: Test game marquee preloader without network requests
         run: node tools/test_game_marquee.js
+      - name: Test bulk iScored logo metadata import safeguards
+        run: python tools/test_import_game_logos.py
       - name: Test medal detection
         run: python tools/test_medals.py
       - name: Verify Golden Encore score-improvement safeguards
