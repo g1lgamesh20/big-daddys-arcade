@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "mode": "enabled",
+  "policy": "approved_public_score_original_submission_timestamp_within_Eastern_event_day",
+  "score_date_timezone": "America/Chicago when iScored omits explicit offset",
+  "provider_fix_confirmed_on": "2026-11-19",
+  "earliest_eligible_submission_et": "2026-11-20T00:00:00-05:00",
+  "historical_policy": "Keep existing credits unchanged; never backfill pre-cutover records",
+  "scope": [
+    "daily_participation",
+    "thursday_participation"
+  ],
+  "new_participation_credits": 0,
+  "new_daily_credits": 0,
+  "new_thursday_credits": 0,
+  "no_championship_or_monthly_awards": true,
+  "no_push_notifications": true,
+  "counters": {
+    "parsed_approved_scores": 532,
+    "missing_or_bad_timestamps": 0,
+    "pre_cutover_ignored": 532,
+    "future_timestamps_ignored": 0,
+    "wrong_game_or_day": 0
+  }
+}

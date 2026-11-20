@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "mode": "enabled",
+  "policy": "postfix_original_submission_time_Eastern_midnight_cutoff_next_day_9am_operator_approval",
+  "earliest_event_start_et": "2026-11-20T00:00:00-05:00",
+  "no_monthly_trophies_or_push": true,
+  "pending_approval_visibility": "unavailable_from_public_iscored_feed",
+  "evaluated_events": 0,
+  "events_waiting_for_9am": 2,
+  "events_missing_baseline": 0,
+  "events_held_bad_dates": 0,
+  "existing_champion_events": 0,
+  "thursday_result_conflicts": 0,
+  "new_daily_champions": 0,
+  "new_thursday_champions": 0
+}
