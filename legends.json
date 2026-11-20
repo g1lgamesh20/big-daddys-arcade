@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-19T16:08:09.573926+00:00",
+  "updated_at": "2026-11-20T00:43:09.463868+00:00",
   "source": "iScored public read API",
   "scoring_note": "PAPA-style estimate: top 1000 games per player; one best score per player per game; competition ties. iScored may handle ties differently.",
   "standings": [
@@ -3741,6 +3741,15 @@
     },
     {
       "kind": "recent",
+      "player": "DON",
+      "game": "Ghosts 'n Goblins",
+      "game_id": "50042",
+      "score": 31600,
+      "date": "2026-11-19 18:13:07",
+      "score_id": "387940"
+    },
+    {
+      "kind": "recent",
       "player": "VJG",
       "game": "Altered Beast",
       "game_id": "62267",
@@ -3837,15 +3846,6 @@
       "score": 17200,
       "date": "2026-11-18 10:28:11",
       "score_id": "387227"
-    },
-    {
-      "kind": "recent",
-      "player": "DON",
-      "game": "720 Degrees",
-      "game_id": "86253",
-      "score": 2020,
-      "date": "2026-11-18 10:20:56",
-      "score_id": "387226"
     }
   ],
   "total_games": 263,
