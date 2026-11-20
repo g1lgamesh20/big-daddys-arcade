@@ -36,12 +36,12 @@ class ChampionshipTests(unittest.TestCase):
   self.assertEqual({a['player'] for a in result['awards']},{'DON','RDG'})
   self.assertEqual(report['new_daily_champions'],2)
   self.assertTrue(all(a['gold_level'] for a in result['awards']))
- def test_daily_does_not_award_until_24_hour_grace(self):
+ def test_daily_waits_until_9am_next_morning(self):
   rows=[row('1','DON',1200,'D','2026-11-20 18:00:00')]
-  before,report,_=self.scan(rows,now=date('2026-11-21T23:59:59-05:00'))
+  before,report,_=self.scan(rows,now=date('2026-11-21T08:59:59-05:00'))
   self.assertEqual(before['awards'],[])
-  self.assertGreater(report['events_waiting_for_grace'],0)
-  after,_,_=self.scan(rows,now=date('2026-11-22T00:00:00-05:00'))
+  self.assertGreater(report['events_waiting_for_9am'],0)
+  after,_,_=self.scan(rows,now=date('2026-11-21T09:00:00-05:00'))
   self.assertEqual(len(after['awards']),1)
  def test_daily_missing_or_late_baseline_blocks(self):
   rows=[row('1','DON',1200,'D','2026-11-20 18:00:00')]
@@ -64,19 +64,19 @@ class ChampionshipTests(unittest.TestCase):
   rows=[row('1','DON',3000,'T','2026-11-26 16:00:00'),
         row('2','RDG',4000,'T','2026-11-26 18:00:00')]
   before,report,_=self.scan(rows,days={'days':[]},thu=thursday(),
-    now=date('2026-11-27T11:30:00-05:00'))
+    now=date('2026-11-27T08:59:59-05:00'))
   self.assertEqual(before['awards'],[])
   after,report,_=self.scan(rows,days={'days':[]},thu=thursday(),
-    now=date('2026-11-28T00:30:00-05:00'))
+    now=date('2026-11-27T09:00:00-05:00'))
   self.assertEqual(report['new_thursday_champions'],1)
   self.assertEqual(after['awards'][0]['player'],'RDG')
-  self.assertEqual(after['awards'][0]['grace_ended_at_et'],'2026-11-28T00:00:00-05:00')
+  self.assertEqual(after['awards'][0]['approval_cutoff_et'],'2026-11-27T09:00:00-05:00')
  def test_late_approval_after_midnight_keeps_original_event(self):
   # Row appears on a later fetch, but original score time remains Nov 26.
   rows=[row('1','DON',3000,'T','2026-11-26 21:00:00')]
-  early,_,_=self.scan([],days={'days':[]},thu=thursday(),now=date('2026-11-27T23:00:00-05:00'))
+  early,_,_=self.scan([],days={'days':[]},thu=thursday(),now=date('2026-11-27T08:59:00-05:00'))
   self.assertEqual(early['awards'],[])
-  later,_,_=self.scan(rows,days={'days':[]},thu=thursday(),now=date('2026-11-28T01:00:00-05:00'))
+  later,_,_=self.scan(rows,days={'days':[]},thu=thursday(),now=date('2026-11-27T09:05:00-05:00'))
   self.assertEqual(later['awards'][0]['player'],'DON')
  def test_after_midnight_central_is_next_eastern_day(self):
   rows=[row('before','DON',1200,'D','2026-11-20 22:59:59'),
@@ -96,7 +96,7 @@ class ChampionshipTests(unittest.TestCase):
                            now=date('2026-11-28T01:00:00-05:00'))
   later=rows+[row('2','RDG',6000,'T','2026-11-26 17:00:00')]
   second,report,changed=self.scan(later,days={'days':[]},thu=thursday(),ledger=first,
-                             now=date('2026-11-29T01:00:00-05:00'))
+                             now=date('2026-11-27T11:00:00-05:00'))
   self.assertFalse(changed)
   self.assertEqual(report['thursday_result_conflicts'],1)
   self.assertEqual(second,first)
@@ -104,7 +104,7 @@ class ChampionshipTests(unittest.TestCase):
   rows=[row('1','DON',3000,'T','2026-11-26 16:00:00'),
         row('2','RDG',9999,'T','unparseable')]
   result,report,_=self.scan(rows,days={'days':[]},thu=thursday(),
-                             now=date('2026-11-28T00:01:00-05:00'))
+                             now=date('2026-11-27T09:01:00-05:00'))
   self.assertEqual(result['awards'],[])
   self.assertEqual(report['events_held_bad_dates'],1)
  def test_preview_never_modifies_permanent_ledger(self):
