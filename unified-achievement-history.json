@@ -233,7 +233,23 @@
         }
       ],
       "unverified_candidates": [],
+      "result_status": "final",
+      "archived_winner_unverified_by_this_report": "DON",
       "verified_participant_count": 4,
+      "verified_champion_count": 0
+    },
+    {
+      "event_key": "daily:2026-11-20",
+      "kind": "daily",
+      "date": "2026-11-20",
+      "game_id": "50930",
+      "game": "Mouse Trap",
+      "schedule_source": "daily-champion-history.json",
+      "participants": [],
+      "champions": [],
+      "verified_results": [],
+      "unverified_candidates": [],
+      "verified_participant_count": 0,
       "verified_champion_count": 0
     }
   ],
