@@ -3,10 +3,10 @@
 
 iScored confirmed that score dates now represent original submissions in
 Central server time. The feed includes only approved scores, and exposes no
-count of pending scores. The existing 24-hour *approval grace* is retained:
-championships are assessed only after the whole Eastern event day plus 24h.
-This protects typical late approvals but cannot guarantee that an approval
-arriving after that window won't change a previously issued Thursday result.
+count of pending scores. Operator policy: all scores submitted by midnight
+Eastern are approved before 9 AM Eastern the following morning. Championship
+awards never finalize before 9 AM Eastern; delayed GitHub runs can catch up.
+Late changes must not silently overwrite a previously recorded winner.
 Never silently change an existing Thursday champion; report a conflict.
 
 Only events beginning at or after the Nov 20, 2026 Eastern cutover are
@@ -26,14 +26,17 @@ ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'verified-challenge-awards.json'
 REPORT = ROOT / 'postfix-champion-report.json'
 NY = ZoneInfo('America/New_York')
-GRACE = timedelta(hours=24)
+ANNOUNCEMENT_HOUR_ET = 9
 KINDS = ('daily', 'thursday')
 AWARD_TYPES = {'daily':'daily_champion', 'thursday':'thursday_champion'}
 
 def window(day):
     start = datetime.combine(date.fromisoformat(day),time.min,tzinfo=NY)
     end = datetime.combine(date.fromisoformat(day)+timedelta(days=1),time.min,tzinfo=NY)
-    return start,end,end+GRACE
+    # Local 9 AM next day; using the Eastern timezone preserves DST changes.
+    announcement = datetime.combine(date.fromisoformat(day)+timedelta(days=1),
+                                    time(ANNOUNCEMENT_HOUR_ET),tzinfo=NY)
+    return start,end,announcement
 
 def eligible_rows(rows, kind, day, gid, now):
     start,end,_ = window(day)
@@ -69,11 +72,11 @@ def finalize(rows, daily_archive, daily_live, thursday_state, baselines, ledger,
     events=scheduled(daily_archive,daily_live,thursday_state,{},baselines=baselines)
     updated=json.loads(json.dumps(ledger))
     report={'schema_version':1,'mode':'enabled' if enabled else 'preview',
-            'policy':'postfix_original_submission_time_Eastern_event_day_plus_24h_approval_grace',
+            'policy':'postfix_original_submission_time_Eastern_midnight_cutoff_next_day_9am_operator_approval',
             'earliest_event_start_et':CUTOVER.isoformat(),
             'no_monthly_trophies_or_push':True,
             'pending_approval_visibility':'unavailable_from_public_iscored_feed',
-            'evaluated_events':0,'events_waiting_for_grace':0,
+            'evaluated_events':0,'events_waiting_for_9am':0,
             'events_missing_baseline':0,'events_held_bad_dates':0,
             'existing_champion_events':0,'thursday_result_conflicts':0,
             'new_daily_champions':0,'new_thursday_champions':0}
@@ -83,7 +86,7 @@ def finalize(rows, daily_archive, daily_live, thursday_state, baselines, ledger,
         start,end,ready=window(day)
         if start<CUTOVER:continue
         if now<ready:
-            report['events_waiting_for_grace']+=1
+            report['events_waiting_for_9am']+=1
             continue
         gid=str(ev.get('game_id') or '')
         if not gid:continue
@@ -151,8 +154,8 @@ def finalize(rows, daily_archive, daily_live, thursday_state, baselines, ledger,
                    'score':winner['score'],'score_id':winner['score_id'],
                    'verified_at':now.isoformat(),
                    'original_submitted_at_et':winner['submitted_at_et'],
-                   'verification_method':'iscored_postfix_submission_time_after_24h_approval_grace',
-                   'grace_ended_at_et':ready.isoformat()}
+                   'verification_method':'iscored_postfix_submission_time_operator_9am_approval_cutoff',
+                   'approval_cutoff_et':ready.isoformat()}
             if enabled:updated['awards'].append(award)
             report['new_thursday_champions']+=1
     if enabled and updated!=ledger:
