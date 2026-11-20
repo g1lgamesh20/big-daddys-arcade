@@ -27,7 +27,9 @@ jobs:
         run: python tools/test_generous_approval_credits.py
       - name: Test post-fix original submission participation rules (offline)
         run: python tools/test_submission_time_participation.py
-      - name: Scan live iScored score feed (preview-only until approved API semantics verified)
+      - name: Test post-fix Daily and Thursday champion safeguards (offline)
+        run: python tools/test_postfix_champion_awards.py
+      - name: Scan legacy candidate feed (preview-only; no old automatic issuance)
         env:
           AUTO_CHALLENGE_AWARDS_ENABLED: ${{ vars.AUTO_CHALLENGE_AWARDS_ENABLED }}
         run: python tools/auto_verified_challenge_awards.py
@@ -37,11 +39,13 @@ jobs:
         run: python tools/generous_approval_credits.py
       - name: Record post-fix Daily and Thursday participation by original submission time
         run: python tools/submission_time_participation.py
+      - name: Award eligible post-fix Daily and Thursday Champions after 24-hour grace
+        run: python tools/postfix_champion_awards.py
       - name: Refresh unified history after automatic participation and champion updates
         run: python tools/build_unified_achievement_history.py
       - name: Save diagnostic summary and any enabled verified awards
         run: |
-          git add challenge-auto-awards-preview.json unified-achievement-history.json approval-window-credit-report.json submission-time-participation-report.json
+          git add challenge-auto-awards-preview.json unified-achievement-history.json approval-window-credit-report.json submission-time-participation-report.json postfix-champion-report.json
           if [ -f daily-champion-baselines.json ]; then git add daily-champion-baselines.json; fi
           if [ -f published-monthly-challenge-history.json ]; then git add published-monthly-challenge-history.json; fi
           if [ -f verified-challenge-awards.json ]; then git add verified-challenge-awards.json; fi
