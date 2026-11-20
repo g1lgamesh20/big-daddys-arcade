@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Announce a finalized Thursday champion on Friday at 9 AM New York time.
+"""Announce a finalized Thursday champion no earlier than Friday 9 AM New York time.
 Uses existing Thursday challenge feed and a separate committed deduplication state.
 """
 import json
@@ -18,8 +18,11 @@ URL = 'https://g1lgamesh20.github.io/big-daddys-arcade/'
 
 def run(now=None, sender=None):
     now = (now or datetime.now(timezone.utc)).astimezone(NY)
-    if now.weekday() != 4 or now.hour != 9:
-        print('Not Friday 9 AM Eastern; no champion notification sent')
+    # GitHub schedule events are best-effort and sometimes never start.
+    # Permit catch-up during the rest of Friday, but never before 9 AM ET
+    # and never on Saturday; the committed state prevents duplicates.
+    if now.weekday() != 4 or now.hour < 9:
+        print('Outside Friday 9 AM-to-midnight Eastern catch-up window; no champion notification sent')
         return 'outside_window'
 
     expected_thursday = (now.date() - timedelta(days=1)).isoformat()
