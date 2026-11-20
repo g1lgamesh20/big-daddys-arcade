@@ -1,0 +1,27 @@
+name: Test Post-Fix Submission-Time Participation
+on:
+  pull_request:
+    paths:
+      - 'tools/submission_time_participation.py'
+      - 'tools/test_submission_time_participation.py'
+      - '.github/workflows/auto-challenge-awards.yml'
+      - '.github/workflows/submission-participation-tests.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  participation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Parse Python and run offline participation tests
+        run: |
+          python -m py_compile tools/submission_time_participation.py tools/test_submission_time_participation.py
+          python tools/test_submission_time_participation.py
+      - name: Confirm current legacy award regression behavior remains isolated
+        run: python tools/test_generous_approval_credits.py
+      - name: Verify history projection regression
+        run: python tools/test_unified_achievement_history.py
