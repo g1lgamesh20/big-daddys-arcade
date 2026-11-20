@@ -1,6 +1,16 @@
 {
-  "updated_at": "2026-11-20T00:43:09.463868+00:00",
+  "updated_at": "2026-11-20T01:45:26.795729+00:00",
   "alerts": [
+    {
+      "id": "387964",
+      "player": "RDG",
+      "game": "Ghosts 'n Goblins",
+      "game_id": "50042",
+      "score": 29100,
+      "date": "2026-11-19 19:37:36",
+      "rank": 3,
+      "medal": "bronze"
+    },
     {
       "id": "387462",
       "player": "VJG",

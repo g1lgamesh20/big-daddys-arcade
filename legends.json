@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-20T00:43:09.463868+00:00",
+  "updated_at": "2026-11-20T01:45:26.795729+00:00",
   "source": "iScored public read API",
   "scoring_note": "PAPA-style estimate: top 1000 games per player; one best score per player per game; competition ties. iScored may handle ties differently.",
   "standings": [
@@ -29,8 +29,8 @@
     },
     {
       "player": "KAK",
-      "points": 2550,
-      "games": 28,
+      "points": 2632,
+      "games": 29,
       "gold": 9,
       "silver": 9,
       "bronze": 4
@@ -45,11 +45,11 @@
     },
     {
       "player": "RDG",
-      "points": 2193,
-      "games": 24,
+      "points": 2278,
+      "games": 25,
       "gold": 9,
       "silver": 6,
-      "bronze": 3
+      "bronze": 4
     },
     {
       "player": "RPS",
@@ -101,8 +101,8 @@
     },
     {
       "player": "BGR",
-      "points": 535,
-      "games": 6,
+      "points": 619,
+      "games": 7,
       "gold": 1,
       "silver": 3,
       "bronze": 0
@@ -3741,6 +3741,42 @@
     },
     {
       "kind": "recent",
+      "player": "BGR",
+      "game": "Ghosts 'n Goblins",
+      "game_id": "50042",
+      "score": 17200,
+      "date": "2026-11-19 19:44:07",
+      "score_id": "387967"
+    },
+    {
+      "kind": "recent",
+      "player": "RDG",
+      "game": "Ghosts 'n Goblins",
+      "game_id": "50042",
+      "score": 29100,
+      "date": "2026-11-19 19:37:36",
+      "score_id": "387964"
+    },
+    {
+      "kind": "recent",
+      "player": "KAK",
+      "game": "Ghosts 'n Goblins",
+      "game_id": "50042",
+      "score": 15500,
+      "date": "2026-11-19 19:28:18",
+      "score_id": "387959"
+    },
+    {
+      "kind": "recent",
+      "player": "KAK",
+      "game": "After Burner Climax",
+      "game_id": "73126",
+      "score": 32820,
+      "date": "2026-11-19 19:19:22",
+      "score_id": "387956"
+    },
+    {
+      "kind": "recent",
       "player": "DON",
       "game": "Ghosts 'n Goblins",
       "game_id": "50042",
@@ -3810,42 +3846,6 @@
       "score": 85200,
       "date": "2026-11-18 19:39:06",
       "score_id": "387466"
-    },
-    {
-      "kind": "recent",
-      "player": "VJG",
-      "game": "Arabian",
-      "game_id": "50216",
-      "score": 7000,
-      "date": "2026-11-18 19:38:12",
-      "score_id": "387463"
-    },
-    {
-      "kind": "recent",
-      "player": "VJG",
-      "game": "Anteater",
-      "game_id": "71989",
-      "score": 3220,
-      "date": "2026-11-18 19:36:49",
-      "score_id": "387461"
-    },
-    {
-      "kind": "recent",
-      "player": "VJG",
-      "game": "Tempest",
-      "game_id": "50060",
-      "score": 15378,
-      "date": "2026-11-18 11:30:46",
-      "score_id": "387301"
-    },
-    {
-      "kind": "recent",
-      "player": "DON",
-      "game": "Strider",
-      "game_id": "73962",
-      "score": 17200,
-      "date": "2026-11-18 10:28:11",
-      "score_id": "387227"
     }
   ],
   "total_games": 263,
