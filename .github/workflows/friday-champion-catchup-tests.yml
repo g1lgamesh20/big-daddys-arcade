@@ -1,0 +1,19 @@
+name: Verify Friday Champion Catch-up
+on:
+  pull_request:
+    paths:
+      - 'tools/send_friday_champion_notification.py'
+      - 'tools/test_friday_champion_catchup.py'
+      - '.github/workflows/friday-champion-catchup-tests.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python tools/test_friday_champion_catchup.py
