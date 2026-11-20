@@ -17,6 +17,17 @@
         "submitted_at": "2026-11-12T21:01:29-05:00"
       },
       "status": "final"
+    },
+    {
+      "week": "2026-11-19",
+      "game_id": "73126",
+      "game": "After Burner Climax",
+      "winner": {
+        "player": "DON",
+        "score": 161470,
+        "submitted_at": "2026-11-19T19:42:10-05:00"
+      },
+      "status": "final"
     }
   ]
 }

@@ -4,8 +4,12 @@
   "game": "After Burner Climax",
   "thursday_date": "2026-11-19",
   "cutoff": "Thursday 11:59 PM America/New_York",
-  "status": "live",
-  "winner": null,
+  "status": "final",
+  "winner": {
+    "player": "DON",
+    "score": 161470,
+    "submitted_at": "2026-11-19T19:42:10-05:00"
+  },
   "standings": [
     {
       "player": "DON",
@@ -30,5 +34,5 @@
   ],
   "eligible_scores": 4,
   "unparseable_game_dates": 0,
-  "updated_at": "2026-11-20T03:41:55.147947+00:00"
+  "updated_at": "2026-11-20T13:31:30.074520+00:00"
 }
