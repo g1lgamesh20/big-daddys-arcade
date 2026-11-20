@@ -1,0 +1,27 @@
+name: Test Post-Fix Daily Thursday Champions
+on:
+  pull_request:
+    paths:
+      - 'tools/postfix_champion_awards.py'
+      - 'tools/test_postfix_champion_awards.py'
+      - '.github/workflows/auto-challenge-awards.yml'
+      - '.github/workflows/postfix-champion-tests.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  championship:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate original-time championship engine
+        run: |
+          python -m py_compile tools/postfix_champion_awards.py tools/test_postfix_champion_awards.py
+          python tools/test_postfix_champion_awards.py
+      - name: Preserve participation and history regression coverage
+        run: |
+          python tools/test_submission_time_participation.py
+          python tools/test_unified_achievement_history.py
