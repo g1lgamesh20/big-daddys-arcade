@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Publish weekly Thursday challenge and Thursday-only standings from iScored.
-Uses persisted selection, no database. Times are America/New_York; date parsing
-must be verified against the live iScored API before trusting winner results.
+Uses persisted selection, no database. Challenge cutoffs are Eastern;
+iScored's offset-free score dates are Central, confirmed by the developer.
+Older dates may have been rewritten on approval before the provider's bug fix.
 """
 import json, os, hashlib
 from datetime import datetime, date, timedelta, timezone
@@ -20,19 +21,12 @@ def get_week(now):
     today=now.astimezone(NY).date()
     return today-timedelta(days=(today.weekday()-3)%7)
 
+from iscored_timestamp import parse_iscored_time
+
+# Legacy import name retained for callers; timestamps without offsets are
+# iScored server-local America/Chicago, per iScored developer confirmation.
 def parse_time(value):
-    if not value:return None
-    s=str(value).strip()
-    try:
-        d=datetime.fromisoformat(s.replace('Z','+00:00'))
-        # iScored dates without a timezone are assumed to be Eastern local time.
-        # Confirm this against the actual API before awarding winners.
-        return (d.replace(tzinfo=NY) if d.tzinfo is None else d).astimezone(NY)
-    except ValueError:pass
-    for fmt in ('%m/%d/%Y %I:%M:%S %p','%m/%d/%Y %I:%M %p','%m/%d/%Y %H:%M:%S','%Y-%m-%d %H:%M:%S'):
-        try:return datetime.strptime(s,fmt).replace(tzinfo=NY)
-        except ValueError:pass
-    return None
+    return parse_iscored_time(value)
 
 def fetch():
     req=Request(URL,headers={'Accept':'application/json','User-Agent':'BigDaddysArcadeThursdayChallenge/1.0'})
