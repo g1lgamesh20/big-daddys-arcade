@@ -1,0 +1,28 @@
+name: Verify Score Refresh Backstop
+on:
+  pull_request:
+    paths:
+      - 'tools/refresh_backstop.py'
+      - 'tools/test_refresh_backstop.py'
+      - '.github/workflows/score-refresh-backstop.yml'
+      - '.github/workflows/score-refresh-backstop-tests.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check syntax and backstop threshold safety
+        run: |
+          python -m py_compile tools/refresh_backstop.py tools/test_refresh_backstop.py
+          python tools/test_refresh_backstop.py
+          python tools/test_refresh_health.py
+      - name: Revalidate existing medal notification safeguards
+        run: |
+          python tools/test_medals.py
+          python tools/test_golden_encore.py
