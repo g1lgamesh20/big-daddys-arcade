@@ -8,31 +8,31 @@
   "winner": {
     "player": "DON",
     "score": 161470,
-    "submitted_at": "2026-11-19T19:42:10-05:00"
+    "submitted_at": "2026-11-19T20:42:10-05:00"
   },
   "standings": [
     {
       "player": "DON",
       "score": 161470,
-      "submitted_at": "2026-11-19T19:42:10-05:00"
+      "submitted_at": "2026-11-19T20:42:10-05:00"
     },
     {
       "player": "RDG",
       "score": 108120,
-      "submitted_at": "2026-11-19T19:26:01-05:00"
+      "submitted_at": "2026-11-19T20:26:01-05:00"
     },
     {
       "player": "KAK",
       "score": 32820,
-      "submitted_at": "2026-11-19T19:19:22-05:00"
+      "submitted_at": "2026-11-19T20:19:22-05:00"
     },
     {
       "player": "BGR",
       "score": 22890,
-      "submitted_at": "2026-11-19T19:53:01-05:00"
+      "submitted_at": "2026-11-19T20:53:01-05:00"
     }
   ],
   "eligible_scores": 4,
   "unparseable_game_dates": 0,
-  "updated_at": "2026-11-20T14:51:39.728077+00:00"
+  "updated_at": "2026-11-20T20:51:47.280159+00:00"
 }
