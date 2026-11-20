@@ -1,0 +1,54 @@
+name: Score Refresh Backstop - Independent Recovery
+on:
+  schedule:
+    # Staggered from primary refresh (:13/:43); GitHub schedule is best-effort.
+    - cron: '28,58 * * * *'
+  workflow_run:
+    workflows:
+      - 'Automatic Challenge Awards - Public iScored Approval Feed'
+      - 'Thursday Challenge Announcement'
+      - 'Monthly Challenge - Safe Launch and Provisional Board'
+    types:
+      - completed
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: write
+concurrency:
+  group: arcade-score-refresh-backstop
+  cancel-in-progress: false
+jobs:
+  maybe-refresh:
+    # Ignore other branches and PR-triggered test runs.
+    if: ${{ github.event_name != 'workflow_run' || (github.event.workflow_run.head_branch == 'main' && github.event.workflow_run.event == 'schedule') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - name: Checkout current primary branch
+        uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify stale-refresh fallback gate offline
+        run: python tools/test_refresh_backstop.py
+      - name: Check scoreboard heartbeat freshness
+        id: gate
+        run: python tools/refresh_backstop.py --github-output "$GITHUB_OUTPUT"
+      - name: Check for an already-running primary refresh
+        if: steps.gate.outputs.dispatch == 'true'
+        id: running
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          pending=$(gh run list --repo "$GITHUB_REPOSITORY" --workflow update-legends.yml --limit 25 --json status --jq '[.[] | select(.status == "queued" or .status == "in_progress" or .status == "waiting" or .status == "pending" or .status == "requested")] | length')
+          echo "pending=$pending" >> "$GITHUB_OUTPUT"
+          echo "Primary refresh queued/running: $pending"
+      - name: Recover stale scoreboard through existing primary workflow
+        if: steps.gate.outputs.dispatch == 'true' && steps.running.outputs.pending == '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh workflow run update-legends.yml --repo "$GITHUB_REPOSITORY" --ref main
+          echo 'Dispatched existing refresh workflow. Its own concurrency guard, medal deduplication and score updating remain authoritative.'
