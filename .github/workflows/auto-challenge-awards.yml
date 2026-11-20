@@ -23,21 +23,25 @@ jobs:
         run: python tools/test_auto_challenge_awards.py
       - name: Test unified history safeguards
         run: python tools/test_unified_achievement_history.py
-      - name: Test generous approval-window credits and locked champion baselines
+      - name: Test legacy credit parser and locked champion baselines
         run: python tools/test_generous_approval_credits.py
+      - name: Test post-fix original submission participation rules (offline)
+        run: python tools/test_submission_time_participation.py
       - name: Scan live iScored score feed (preview-only until approved API semantics verified)
         env:
           AUTO_CHALLENGE_AWARDS_ENABLED: ${{ vars.AUTO_CHALLENGE_AWARDS_ENABLED }}
         run: python tools/auto_verified_challenge_awards.py
-      - name: Automatically credit qualifying approved scores (24-hour grace policy)
+      - name: Preserve baseline snapshots and public monthly reveal archive (legacy awards disabled)
         env:
-          GENEROUS_CREDIT_ENABLED: 'true'
+          GENEROUS_CREDIT_ENABLED: 'false'
         run: python tools/generous_approval_credits.py
+      - name: Record post-fix Daily and Thursday participation by original submission time
+        run: python tools/submission_time_participation.py
       - name: Refresh unified history after automatic participation and champion updates
         run: python tools/build_unified_achievement_history.py
       - name: Save diagnostic summary and any enabled verified awards
         run: |
-          git add challenge-auto-awards-preview.json unified-achievement-history.json approval-window-credit-report.json
+          git add challenge-auto-awards-preview.json unified-achievement-history.json approval-window-credit-report.json submission-time-participation-report.json
           if [ -f daily-champion-baselines.json ]; then git add daily-champion-baselines.json; fi
           if [ -f published-monthly-challenge-history.json ]; then git add published-monthly-challenge-history.json; fi
           if [ -f verified-challenge-awards.json ]; then git add verified-challenge-awards.json; fi
