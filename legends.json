@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-20T21:57:07.596339+00:00",
+  "updated_at": "2026-11-20T23:43:45.114399+00:00",
   "source": "iScored public read API",
   "scoring_note": "PAPA-style estimate: top 1000 games per player; one best score per player per game; competition ties. iScored may handle ties differently.",
   "standings": [
@@ -21,10 +21,10 @@
     },
     {
       "player": "VJG",
-      "points": 2825,
-      "games": 31,
+      "points": 2915,
+      "games": 32,
       "gold": 6,
-      "silver": 21,
+      "silver": 22,
       "bronze": 0
     },
     {
@@ -3741,6 +3741,24 @@
     },
     {
       "kind": "recent",
+      "player": "DON",
+      "game": "Mouse Trap",
+      "game_id": "50930",
+      "score": 14440,
+      "date": "2026-11-20 17:41:43",
+      "score_id": "388256"
+    },
+    {
+      "kind": "recent",
+      "player": "VJG",
+      "game": "Eyes",
+      "game_id": "70348",
+      "score": 19990,
+      "date": "2026-11-20 17:06:58",
+      "score_id": "388243"
+    },
+    {
+      "kind": "recent",
       "player": "VJG",
       "game": "ROBOTRON",
       "game_id": "50167",
@@ -3828,24 +3846,6 @@
       "score": 29100,
       "date": "2026-11-19 19:37:36",
       "score_id": "387964"
-    },
-    {
-      "kind": "recent",
-      "player": "KAK",
-      "game": "Ghosts 'n Goblins",
-      "game_id": "50042",
-      "score": 15500,
-      "date": "2026-11-19 19:28:18",
-      "score_id": "387959"
-    },
-    {
-      "kind": "recent",
-      "player": "RDG",
-      "game": "After Burner Climax",
-      "game_id": "73126",
-      "score": 108120,
-      "date": "2026-11-19 19:26:01",
-      "score_id": "387957"
     }
   ],
   "total_games": 263,
