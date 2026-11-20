@@ -22,7 +22,22 @@ jobs:
           python-version: '3.12'
       - name: Check safe monthly sender tests
         run: python tools/test_monthly_notification.py
-      - name: Send winners ONLY from independently verified finalized monthly results
+      - name: Validate monthly finalization rules offline
+        run: python tools/test_monthly_finalization.py
+      - name: Create official monthly results and trophies after operator 9 AM cutoff
+        run: python tools/monthly_finalization.py
+      - name: Commit results and trophies together BEFORE attempting push
+        run: |
+          git add monthly-finalization-report.json
+          if [ -f monthly-final-results.json ]; then git add monthly-final-results.json; fi
+          if [ -f verified-challenge-awards.json ]; then git add verified-challenge-awards.json; fi
+          if git diff --cached --quiet; then exit 0; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Finalize operator-approved monthly results at 9 AM Eastern'
+          git pull --rebase origin main
+          git push origin HEAD:main
+      - name: Send winners ONLY from verified finalized monthly results
         env:
           ONESIGNAL_REST_API_KEY: ${{ secrets.ONESIGNAL_REST_API_KEY }}
         run: python tools/send_monthly_notification.py results
