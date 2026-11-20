@@ -1,6 +1,17 @@
 {
-  "updated_at": "2026-11-20T01:45:26.795729+00:00",
+  "updated_at": "2026-11-20T09:57:29.811003+00:00",
   "records": [
+    {
+      "id": "387965",
+      "player": "DON",
+      "game": "After Burner Climax",
+      "game_id": "73126",
+      "score": 161470,
+      "date": "2026-11-19 19:42:10",
+      "rank": 1,
+      "medal": "gold",
+      "record_type": "new_first_place"
+    },
     {
       "id": "387560",
       "player": "DON",

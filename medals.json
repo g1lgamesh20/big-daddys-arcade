@@ -1,6 +1,56 @@
 {
-  "updated_at": "2026-11-20T01:45:26.795729+00:00",
+  "updated_at": "2026-11-20T09:57:29.811003+00:00",
   "alerts": [
+    {
+      "id": "388047",
+      "player": "VJG",
+      "game": "ROBOTRON",
+      "game_id": "50167",
+      "score": 20400,
+      "date": "2026-11-19 21:36:56",
+      "rank": 2,
+      "medal": "silver"
+    },
+    {
+      "id": "388036",
+      "player": "VJG",
+      "game": "Reactor",
+      "game_id": "70359",
+      "score": 1609,
+      "date": "2026-11-19 21:21:18",
+      "rank": 2,
+      "medal": "silver"
+    },
+    {
+      "id": "388028",
+      "player": "VJG",
+      "game": "Q*berts Cubes",
+      "game_id": "50320",
+      "score": 33140,
+      "date": "2026-11-19 21:13:00",
+      "rank": 2,
+      "medal": "silver"
+    },
+    {
+      "id": "388020",
+      "player": "VJG",
+      "game": "Q*bert",
+      "game_id": "49999",
+      "score": 16190,
+      "date": "2026-11-19 21:03:20",
+      "rank": 2,
+      "medal": "silver"
+    },
+    {
+      "id": "387965",
+      "player": "DON",
+      "game": "After Burner Climax",
+      "game_id": "73126",
+      "score": 161470,
+      "date": "2026-11-19 19:42:10",
+      "rank": 1,
+      "medal": "gold"
+    },
     {
       "id": "387964",
       "player": "RDG",

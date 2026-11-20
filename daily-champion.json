@@ -1,12 +1,7 @@
 {
-  "updated_at": "2026-11-20T01:45:26.795729+00:00",
+  "updated_at": "2026-11-20T09:57:29.811003+00:00",
   "timezone": "America/New_York",
   "days": [
-    {
-      "date": "2026-11-18",
-      "game_id": "101601",
-      "game": "Food Fight"
-    },
     {
       "date": "2026-11-19",
       "game_id": "50042",
@@ -16,6 +11,11 @@
       "date": "2026-11-20",
       "game_id": "50930",
       "game": "Mouse Trap"
+    },
+    {
+      "date": "2026-11-21",
+      "game_id": "84699",
+      "game": "Contra (Arcade)"
     }
   ]
 }

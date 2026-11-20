@@ -1,31 +1,39 @@
 {
-  "updated_at": "2026-11-20T01:45:26.795729+00:00",
+  "updated_at": "2026-11-20T09:57:29.811003+00:00",
   "source": "iScored public read API",
   "scoring_note": "PAPA-style estimate: top 1000 games per player; one best score per player per game; competition ties. iScored may handle ties differently.",
   "standings": [
     {
       "player": "DON",
-      "points": 21227,
+      "points": 21242,
       "games": 217,
-      "gold": 177,
+      "gold": 178,
       "silver": 26,
-      "bronze": 12
+      "bronze": 11
     },
     {
       "player": "SPC",
-      "points": 5248,
+      "points": 5238,
       "games": 55,
-      "gold": 33,
-      "silver": 16,
+      "gold": 32,
+      "silver": 17,
       "bronze": 5
     },
     {
+      "player": "VJG",
+      "points": 2825,
+      "games": 31,
+      "gold": 6,
+      "silver": 21,
+      "bronze": 0
+    },
+    {
       "player": "DAY",
-      "points": 2822,
+      "points": 2821,
       "games": 31,
       "gold": 12,
       "silver": 4,
-      "bronze": 7
+      "bronze": 6
     },
     {
       "player": "KAK",
@@ -36,20 +44,12 @@
       "bronze": 4
     },
     {
-      "player": "VJG",
-      "points": 2465,
-      "games": 27,
-      "gold": 6,
-      "silver": 17,
-      "bronze": 0
-    },
-    {
       "player": "RDG",
-      "points": 2278,
+      "points": 2268,
       "games": 25,
       "gold": 9,
-      "silver": 6,
-      "bronze": 4
+      "silver": 4,
+      "bronze": 6
     },
     {
       "player": "RPS",
@@ -84,6 +84,14 @@
       "bronze": 2
     },
     {
+      "player": "BGR",
+      "points": 700,
+      "games": 8,
+      "gold": 1,
+      "silver": 3,
+      "bronze": 0
+    },
+    {
       "player": "BOB",
       "points": 683,
       "games": 8,
@@ -98,14 +106,6 @@
       "gold": 2,
       "silver": 3,
       "bronze": 1
-    },
-    {
-      "player": "BGR",
-      "points": 619,
-      "games": 7,
-      "gold": 1,
-      "silver": 3,
-      "bronze": 0
     },
     {
       "player": "LEY",
@@ -171,12 +171,12 @@
       "rank": 1
     },
     {
-      "player": "SPC",
+      "player": "DON",
       "game": "After Burner Climax",
       "game_id": "73126",
-      "score": 134010,
-      "date": "2026-11-12 21:33:56",
-      "score_id": "384425",
+      "score": 161470,
+      "date": "2026-11-19 19:42:10",
+      "score_id": "387965",
       "rank": 1
     },
     {
@@ -2591,12 +2591,12 @@
     },
     {
       "kind": "champion",
-      "player": "SPC",
+      "player": "DON",
       "game": "After Burner Climax",
       "game_id": "73126",
-      "score": 134010,
-      "date": "2026-11-12 21:33:56",
-      "score_id": "384425",
+      "score": 161470,
+      "date": "2026-11-19 19:42:10",
+      "score_id": "387965",
       "rank": 1
     },
     {
@@ -3741,12 +3741,84 @@
     },
     {
       "kind": "recent",
+      "player": "VJG",
+      "game": "ROBOTRON",
+      "game_id": "50167",
+      "score": 20400,
+      "date": "2026-11-19 21:36:56",
+      "score_id": "388047"
+    },
+    {
+      "kind": "recent",
+      "player": "VJG",
+      "game": "Reactor",
+      "game_id": "70359",
+      "score": 1609,
+      "date": "2026-11-19 21:21:18",
+      "score_id": "388036"
+    },
+    {
+      "kind": "recent",
+      "player": "VJG",
+      "game": "Q*berts Cubes",
+      "game_id": "50320",
+      "score": 33140,
+      "date": "2026-11-19 21:13:00",
+      "score_id": "388028"
+    },
+    {
+      "kind": "recent",
+      "player": "VJG",
+      "game": "Q*bert",
+      "game_id": "49999",
+      "score": 16190,
+      "date": "2026-11-19 21:03:20",
+      "score_id": "388020"
+    },
+    {
+      "kind": "recent",
+      "player": "KAK",
+      "game": "DONKEY KONG JR.",
+      "game_id": "50033",
+      "score": 14000,
+      "date": "2026-11-19 20:33:01",
+      "score_id": "387978"
+    },
+    {
+      "kind": "recent",
+      "player": "BGR",
+      "game": "After Burner Climax",
+      "game_id": "73126",
+      "score": 22890,
+      "date": "2026-11-19 19:53:01",
+      "score_id": "387970"
+    },
+    {
+      "kind": "recent",
+      "player": "KAK",
+      "game": "DONKEY KONG JR.",
+      "game_id": "50033",
+      "score": 9600,
+      "date": "2026-11-19 19:51:30",
+      "score_id": "387969"
+    },
+    {
+      "kind": "recent",
       "player": "BGR",
       "game": "Ghosts 'n Goblins",
       "game_id": "50042",
       "score": 17200,
       "date": "2026-11-19 19:44:07",
       "score_id": "387967"
+    },
+    {
+      "kind": "recent",
+      "player": "DON",
+      "game": "After Burner Climax",
+      "game_id": "73126",
+      "score": 161470,
+      "date": "2026-11-19 19:42:10",
+      "score_id": "387965"
     },
     {
       "kind": "recent",
@@ -3768,84 +3840,12 @@
     },
     {
       "kind": "recent",
-      "player": "KAK",
+      "player": "RDG",
       "game": "After Burner Climax",
       "game_id": "73126",
-      "score": 32820,
-      "date": "2026-11-19 19:19:22",
-      "score_id": "387956"
-    },
-    {
-      "kind": "recent",
-      "player": "DON",
-      "game": "Ghosts 'n Goblins",
-      "game_id": "50042",
-      "score": 31600,
-      "date": "2026-11-19 18:13:07",
-      "score_id": "387940"
-    },
-    {
-      "kind": "recent",
-      "player": "VJG",
-      "game": "Altered Beast",
-      "game_id": "62267",
-      "score": 10600,
-      "date": "2026-11-18 22:38:16",
-      "score_id": "387462"
-    },
-    {
-      "kind": "recent",
-      "player": "DON",
-      "game": "Fast Food",
-      "game_id": "84662",
-      "score": 692,
-      "date": "2026-11-18 22:38:14",
-      "score_id": "387560"
-    },
-    {
-      "kind": "recent",
-      "player": "VJG",
-      "game": "Black widow v2",
-      "game_id": "50021",
-      "score": 8050,
-      "date": "2026-11-18 19:51:16",
-      "score_id": "387476"
-    },
-    {
-      "kind": "recent",
-      "player": "VJG",
-      "game": "Frenzy",
-      "game_id": "50038",
-      "score": 2333,
-      "date": "2026-11-18 19:41:04",
-      "score_id": "387474"
-    },
-    {
-      "kind": "recent",
-      "player": "VJG",
-      "game": "Berzerk",
-      "game_id": "50020",
-      "score": 2450,
-      "date": "2026-11-18 19:40:15",
-      "score_id": "387470"
-    },
-    {
-      "kind": "recent",
-      "player": "VJG",
-      "game": "720 Degrees",
-      "game_id": "86253",
-      "score": 1800,
-      "date": "2026-11-18 19:39:25",
-      "score_id": "387468"
-    },
-    {
-      "kind": "recent",
-      "player": "VJG",
-      "game": "Bad Dudes Vs. Dragon Ninja",
-      "game_id": "112664",
-      "score": 85200,
-      "date": "2026-11-18 19:39:06",
-      "score_id": "387466"
+      "score": 108120,
+      "date": "2026-11-19 19:26:01",
+      "score_id": "387957"
     }
   ],
   "total_games": 263,
