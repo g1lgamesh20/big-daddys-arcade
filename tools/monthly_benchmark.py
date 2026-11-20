@@ -2,7 +2,7 @@
 """Stage 4: safely audit and privately lock monthly benchmark.
 
 No plaintext identity/record, awards, leaderboard, or notifications are published.
-The iScored score feed lacks confirmed approval flags and explicit timezones.
+iScored confirmed Central server-local timestamps; historical approval-overwrite\nrecords may remain tainted. Baselines are still private and provisional.
 """
 import json
 import os
@@ -14,7 +14,7 @@ from zoneinfo import ZoneInfo
 
 from cryptography.hazmat.primitives.ciphers.aead import AESGCM
 from monthly_private_selection import ROOT, STATE, key_from_secret, read_json, seal, unseal
-from thursday_challenge import parse_time
+from iscored_timestamp import parse_iscored_time as parse_time
 
 NY = ZoneInfo('America/New_York')
 URL = os.environ.get('ISCORED_READ_URL', 'https://www.iScored.info/api/G1LGAMESH/getAllScores')
@@ -154,7 +154,7 @@ def run(now=None, rows=None):
     packet['selections'][month] = seal(aes, payload)
     STATE.write_text(json.dumps(packet, indent=2) + '\n', encoding='utf-8')
     print('Encrypted benchmark locked for', month, '(identity and scores concealed)')
-    print('Approval semantics and naive iScored timestamps still require verification')
+    print('Older iScored scores may have approval-overwritten dates; benchmark remains provisional')
     return {'status':'locked'}
 
 
