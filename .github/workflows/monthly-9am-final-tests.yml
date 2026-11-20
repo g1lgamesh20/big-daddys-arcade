@@ -1,0 +1,27 @@
+name: Test Monthly 9AM Verified Finals
+on:
+  pull_request:
+    paths:
+      - 'tools/monthly_finalization.py'
+      - 'tools/test_monthly_finalization.py'
+      - '.github/workflows/monthly-winners-notification.yml'
+      - '.github/workflows/monthly-9am-final-tests.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  monthly:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test monthly official finalization
+        run: |
+          python -m py_compile tools/monthly_finalization.py tools/test_monthly_finalization.py
+          python tools/test_monthly_finalization.py
+      - name: Verify existing notification and milestone safeguards
+        run: |
+          python tools/test_monthly_notification.py
+          python tools/test_unified_achievement_history.py
