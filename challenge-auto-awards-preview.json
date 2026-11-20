@@ -1,14 +1,14 @@
 {
   "schema_version": 1,
   "mode": "preview_only",
-  "generated_at": "2026-11-19T17:29:25.180922-05:00",
+  "generated_at": "2026-11-19T22:45:23.924392-05:00",
   "approval_source": "public_iScored_feed_only_after_operator_approval_tested_2026-11-18",
   "timestamp_note": "iScored API date appears to reflect approval time; NOT valid original submission evidence",
   "release_blocker": "No independent original submission timestamp; potential matches below are diagnostic only, not award-eligible",
   "eligible_new_thursday_trophies": 0,
   "eligible_new_daily_play_records": 0,
   "potential_thursday_matches_without_submission_proof": 0,
-  "potential_daily_matches_without_submission_proof": 0,
+  "potential_daily_matches_without_submission_proof": 4,
   "blocked_thursday_events": [
     "2026-11-05:no_live_feed_score"
   ],

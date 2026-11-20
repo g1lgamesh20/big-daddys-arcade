@@ -139,11 +139,49 @@
       "game_id": "50042",
       "game": "Ghosts 'n Goblins",
       "schedule_source": "daily-champion-history.json",
-      "participants": [],
+      "participants": [
+        "BGR",
+        "DON",
+        "KAK",
+        "RDG"
+      ],
       "champions": [],
-      "verified_results": [],
+      "verified_results": [
+        {
+          "player": "BGR",
+          "role": "participant",
+          "score": 17200,
+          "score_id": "387967",
+          "verified": true,
+          "evidence_source": "verified-challenge-awards.json:verified_plays"
+        },
+        {
+          "player": "DON",
+          "role": "participant",
+          "score": 31600,
+          "score_id": "387940",
+          "verified": true,
+          "evidence_source": "verified-challenge-awards.json:verified_plays"
+        },
+        {
+          "player": "KAK",
+          "role": "participant",
+          "score": 15500,
+          "score_id": "387959",
+          "verified": true,
+          "evidence_source": "verified-challenge-awards.json:verified_plays"
+        },
+        {
+          "player": "RDG",
+          "role": "participant",
+          "score": 29100,
+          "score_id": "387964",
+          "verified": true,
+          "evidence_source": "verified-challenge-awards.json:verified_plays"
+        }
+      ],
       "unverified_candidates": [],
-      "verified_participant_count": 0,
+      "verified_participant_count": 4,
       "verified_champion_count": 0
     },
     {
@@ -153,15 +191,70 @@
       "game_id": "73126",
       "game": "After Burner Climax",
       "schedule_source": "thursday-challenge-state.json",
-      "participants": [],
+      "participants": [
+        "BGR",
+        "DON",
+        "KAK",
+        "RDG"
+      ],
       "champions": [],
-      "verified_results": [],
+      "verified_results": [
+        {
+          "player": "BGR",
+          "role": "participant",
+          "score": 22890,
+          "score_id": "387970",
+          "verified": true,
+          "evidence_source": "verified-challenge-awards.json:verified_plays"
+        },
+        {
+          "player": "DON",
+          "role": "participant",
+          "score": 161470,
+          "score_id": "387965",
+          "verified": true,
+          "evidence_source": "verified-challenge-awards.json:verified_plays"
+        },
+        {
+          "player": "KAK",
+          "role": "participant",
+          "score": 32820,
+          "score_id": "387956",
+          "verified": true,
+          "evidence_source": "verified-challenge-awards.json:verified_plays"
+        },
+        {
+          "player": "RDG",
+          "role": "participant",
+          "score": 108120,
+          "score_id": "387957",
+          "verified": true,
+          "evidence_source": "verified-challenge-awards.json:verified_plays"
+        }
+      ],
       "unverified_candidates": [],
-      "verified_participant_count": 0,
+      "verified_participant_count": 4,
       "verified_champion_count": 0
     }
   ],
   "players": {
+    "BGR": {
+      "participation": {
+        "daily": 1,
+        "thursday": 1,
+        "monthly": 0
+      },
+      "championships": {
+        "daily": 0,
+        "thursday": 0,
+        "monthly": 0
+      },
+      "longest_verified_streaks": {
+        "daily": 1,
+        "thursday": 1,
+        "monthly": 0
+      }
+    },
     "DAY": {
       "participation": {
         "daily": 0,
@@ -181,8 +274,8 @@
     },
     "DON": {
       "participation": {
-        "daily": 0,
-        "thursday": 1,
+        "daily": 1,
+        "thursday": 2,
         "monthly": 0
       },
       "championships": {
@@ -191,8 +284,8 @@
         "monthly": 0
       },
       "longest_verified_streaks": {
-        "daily": 0,
-        "thursday": 1,
+        "daily": 1,
+        "thursday": 2,
         "monthly": 0
       }
     },
@@ -209,6 +302,23 @@
       },
       "longest_verified_streaks": {
         "daily": 0,
+        "thursday": 1,
+        "monthly": 0
+      }
+    },
+    "KAK": {
+      "participation": {
+        "daily": 1,
+        "thursday": 1,
+        "monthly": 0
+      },
+      "championships": {
+        "daily": 0,
+        "thursday": 0,
+        "monthly": 0
+      },
+      "longest_verified_streaks": {
+        "daily": 1,
         "thursday": 1,
         "monthly": 0
       }
@@ -232,8 +342,8 @@
     },
     "RDG": {
       "participation": {
-        "daily": 0,
-        "thursday": 1,
+        "daily": 1,
+        "thursday": 2,
         "monthly": 0
       },
       "championships": {
@@ -242,8 +352,8 @@
         "monthly": 0
       },
       "longest_verified_streaks": {
-        "daily": 0,
-        "thursday": 1,
+        "daily": 1,
+        "thursday": 2,
         "monthly": 0
       }
     },
