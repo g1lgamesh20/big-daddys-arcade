@@ -6,8 +6,29 @@
   "cutoff": "Thursday 11:59 PM America/New_York",
   "status": "live",
   "winner": null,
-  "standings": [],
-  "eligible_scores": 0,
+  "standings": [
+    {
+      "player": "DON",
+      "score": 161470,
+      "submitted_at": "2026-11-19T19:42:10-05:00"
+    },
+    {
+      "player": "RDG",
+      "score": 108120,
+      "submitted_at": "2026-11-19T19:26:01-05:00"
+    },
+    {
+      "player": "KAK",
+      "score": 32820,
+      "submitted_at": "2026-11-19T19:19:22-05:00"
+    },
+    {
+      "player": "BGR",
+      "score": 22890,
+      "submitted_at": "2026-11-19T19:53:01-05:00"
+    }
+  ],
+  "eligible_scores": 4,
   "unparseable_game_dates": 0,
-  "updated_at": "2026-11-19T14:10:17.554046+00:00"
+  "updated_at": "2026-11-20T03:41:55.147947+00:00"
 }
