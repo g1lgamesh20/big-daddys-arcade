@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-21T21:07:50.743143+00:00",
+  "updated_at": "2026-11-21T22:16:10.773167+00:00",
   "source": "iScored public read API",
   "scoring_note": "PAPA-style estimate: top 1000 games per player; one best score per player per game; competition ties. iScored may handle ties differently.",
   "standings": [
@@ -21,19 +21,19 @@
     },
     {
       "player": "VJG",
-      "points": 3115,
-      "games": 34,
-      "gold": 8,
-      "silver": 22,
-      "bronze": 0
+      "points": 3660,
+      "games": 40,
+      "gold": 9,
+      "silver": 26,
+      "bronze": 1
     },
     {
       "player": "DAY",
-      "points": 2821,
+      "points": 2820,
       "games": 31,
       "gold": 12,
       "silver": 4,
-      "bronze": 6
+      "bronze": 5
     },
     {
       "player": "KAK",
@@ -1077,6 +1077,15 @@
       "score": 144000,
       "date": "2024-01-25 12:57:59",
       "score_id": "74471",
+      "rank": 1
+    },
+    {
+      "player": "VJG",
+      "game": "Golden Tee Fore!",
+      "game_id": "73335",
+      "score": 79,
+      "date": "2026-11-20 18:49:38",
+      "score_id": "388296",
       "rank": 1
     },
     {
@@ -3601,6 +3610,16 @@
     },
     {
       "kind": "champion",
+      "player": "VJG",
+      "game": "Golden Tee Fore!",
+      "game_id": "73335",
+      "score": 79,
+      "date": "2026-11-20 18:49:38",
+      "score_id": "388296",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
       "player": "DON",
       "game": "Goonies",
       "game_id": "50434",
@@ -3730,14 +3749,67 @@
       "rank": 1
     },
     {
-      "kind": "champion",
-      "player": "DON",
-      "game": "ICE COLD BEER",
-      "game_id": "62269",
-      "score": 8190,
-      "date": "2026-10-20 21:43:56",
-      "score_id": "373308",
-      "rank": 1
+      "kind": "recent",
+      "player": "VJG",
+      "game": "Hammerin' Harry",
+      "game_id": "50228",
+      "score": 9800,
+      "date": "2026-11-21 13:47:08",
+      "score_id": "388602"
+    },
+    {
+      "kind": "recent",
+      "player": "VJG",
+      "game": "GUN SMOKE",
+      "game_id": "50045",
+      "score": 3350,
+      "date": "2026-11-21 13:27:31",
+      "score_id": "388595"
+    },
+    {
+      "kind": "recent",
+      "player": "VJG",
+      "game": "Gradius",
+      "game_id": "50224",
+      "score": 15500,
+      "date": "2026-11-21 11:27:04",
+      "score_id": "388539"
+    },
+    {
+      "kind": "recent",
+      "player": "VJG",
+      "game": "Gorf",
+      "game_id": "50044",
+      "score": 4620,
+      "date": "2026-11-21 11:17:15",
+      "score_id": "388533"
+    },
+    {
+      "kind": "recent",
+      "player": "VJG",
+      "game": "Gorf",
+      "game_id": "50044",
+      "score": 2600,
+      "date": "2026-11-21 11:04:19",
+      "score_id": "388523"
+    },
+    {
+      "kind": "recent",
+      "player": "VJG",
+      "game": "Goonies",
+      "game_id": "50434",
+      "score": 11020,
+      "date": "2026-11-21 10:58:32",
+      "score_id": "388513"
+    },
+    {
+      "kind": "recent",
+      "player": "VJG",
+      "game": "Golden Tee Fore!",
+      "game_id": "73335",
+      "score": 79,
+      "date": "2026-11-20 18:49:38",
+      "score_id": "388296"
     },
     {
       "kind": "recent",
@@ -3783,71 +3855,8 @@
       "score": 20400,
       "date": "2026-11-19 21:36:56",
       "score_id": "388047"
-    },
-    {
-      "kind": "recent",
-      "player": "VJG",
-      "game": "Reactor",
-      "game_id": "70359",
-      "score": 1609,
-      "date": "2026-11-19 21:21:18",
-      "score_id": "388036"
-    },
-    {
-      "kind": "recent",
-      "player": "VJG",
-      "game": "Q*berts Cubes",
-      "game_id": "50320",
-      "score": 33140,
-      "date": "2026-11-19 21:13:00",
-      "score_id": "388028"
-    },
-    {
-      "kind": "recent",
-      "player": "VJG",
-      "game": "Q*bert",
-      "game_id": "49999",
-      "score": 16190,
-      "date": "2026-11-19 21:03:20",
-      "score_id": "388020"
-    },
-    {
-      "kind": "recent",
-      "player": "KAK",
-      "game": "DONKEY KONG JR.",
-      "game_id": "50033",
-      "score": 14000,
-      "date": "2026-11-19 20:33:01",
-      "score_id": "387978"
-    },
-    {
-      "kind": "recent",
-      "player": "BGR",
-      "game": "After Burner Climax",
-      "game_id": "73126",
-      "score": 22890,
-      "date": "2026-11-19 19:53:01",
-      "score_id": "387970"
-    },
-    {
-      "kind": "recent",
-      "player": "KAK",
-      "game": "DONKEY KONG JR.",
-      "game_id": "50033",
-      "score": 9600,
-      "date": "2026-11-19 19:51:30",
-      "score_id": "387969"
-    },
-    {
-      "kind": "recent",
-      "player": "BGR",
-      "game": "Ghosts 'n Goblins",
-      "game_id": "50042",
-      "score": 17200,
-      "date": "2026-11-19 19:44:07",
-      "score_id": "387967"
     }
   ],
-  "total_games": 263,
+  "total_games": 264,
   "total_players": 15
 }

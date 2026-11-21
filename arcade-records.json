@@ -1,6 +1,17 @@
 {
-  "updated_at": "2026-11-21T21:07:50.743143+00:00",
+  "updated_at": "2026-11-21T22:16:10.773167+00:00",
   "records": [
+    {
+      "id": "388296",
+      "player": "VJG",
+      "game": "Golden Tee Fore!",
+      "game_id": "73335",
+      "score": 79,
+      "date": "2026-11-20 18:49:38",
+      "rank": 1,
+      "medal": "gold",
+      "record_type": "new_first_place"
+    },
     {
       "id": "388283",
       "player": "VJG",

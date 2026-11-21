@@ -3980,6 +3980,21 @@
           "game": "Fast Food"
         }
       ]
+    },
+    "73335": {
+      "score": 79,
+      "holders": [
+        "VJG"
+      ],
+      "game": "Golden Tee Fore!",
+      "winning_scores": [
+        {
+          "player": "VJG",
+          "score": 79,
+          "score_id": "388296",
+          "game": "Golden Tee Fore!"
+        }
+      ]
     }
   },
   "improvements": []

@@ -1,6 +1,66 @@
 {
-  "updated_at": "2026-11-21T21:07:50.743143+00:00",
+  "updated_at": "2026-11-21T22:16:10.773167+00:00",
   "alerts": [
+    {
+      "id": "388602",
+      "player": "VJG",
+      "game": "Hammerin' Harry",
+      "game_id": "50228",
+      "score": 9800,
+      "date": "2026-11-21 13:47:08",
+      "rank": 2,
+      "medal": "silver"
+    },
+    {
+      "id": "388595",
+      "player": "VJG",
+      "game": "GUN SMOKE",
+      "game_id": "50045",
+      "score": 3350,
+      "date": "2026-11-21 13:27:31",
+      "rank": 2,
+      "medal": "silver"
+    },
+    {
+      "id": "388539",
+      "player": "VJG",
+      "game": "Gradius",
+      "game_id": "50224",
+      "score": 15500,
+      "date": "2026-11-21 11:27:04",
+      "rank": 2,
+      "medal": "silver"
+    },
+    {
+      "id": "388533",
+      "player": "VJG",
+      "game": "Gorf",
+      "game_id": "50044",
+      "score": 4620,
+      "date": "2026-11-21 11:17:15",
+      "rank": 3,
+      "medal": "bronze"
+    },
+    {
+      "id": "388513",
+      "player": "VJG",
+      "game": "Goonies",
+      "game_id": "50434",
+      "score": 11020,
+      "date": "2026-11-21 10:58:32",
+      "rank": 2,
+      "medal": "silver"
+    },
+    {
+      "id": "388296",
+      "player": "VJG",
+      "game": "Golden Tee Fore!",
+      "game_id": "73335",
+      "score": 79,
+      "date": "2026-11-20 18:49:38",
+      "rank": 1,
+      "medal": "gold"
+    },
     {
       "id": "388283",
       "player": "VJG",
@@ -938,46 +998,6 @@
       "game_id": "62265",
       "score": 14957410,
       "date": "2026-11-05 20:14:02",
-      "rank": 1,
-      "medal": "gold"
-    },
-    {
-      "id": "380703",
-      "player": "SPC",
-      "game": "Contra (Arcade)",
-      "game_id": "84699",
-      "score": 45300,
-      "date": "2026-11-05 20:13:50",
-      "rank": 2,
-      "medal": "silver"
-    },
-    {
-      "id": "380702",
-      "player": "SPC",
-      "game": "Asteroids",
-      "game_id": "50017",
-      "score": 15490,
-      "date": "2026-11-05 19:46:29",
-      "rank": 1,
-      "medal": "gold"
-    },
-    {
-      "id": "380161",
-      "player": "VJG",
-      "game": "Dragons Lair",
-      "game_id": "50317",
-      "score": 21790,
-      "date": "2026-11-04 23:14:27",
-      "rank": 1,
-      "medal": "gold"
-    },
-    {
-      "id": "380117",
-      "player": "DON",
-      "game": "Dragons Lair",
-      "game_id": "50317",
-      "score": 100,
-      "date": "2026-11-04 19:16:50",
       "rank": 1,
       "medal": "gold"
     }
