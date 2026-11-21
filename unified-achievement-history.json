@@ -273,6 +273,20 @@
       "unverified_candidates": [],
       "verified_participant_count": 1,
       "verified_champion_count": 0
+    },
+    {
+      "event_key": "daily:2026-11-21",
+      "kind": "daily",
+      "date": "2026-11-21",
+      "game_id": "84699",
+      "game": "Contra (Arcade)",
+      "schedule_source": "daily-champion.json",
+      "participants": [],
+      "champions": [],
+      "verified_results": [],
+      "unverified_candidates": [],
+      "verified_participant_count": 0,
+      "verified_champion_count": 0
     }
   ],
   "players": {
