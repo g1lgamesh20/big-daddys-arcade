@@ -1,14 +1,14 @@
 {
-  "updated_at": "2026-11-21T00:11:46.013497+00:00",
+  "updated_at": "2026-11-21T01:09:22.059150+00:00",
   "source": "iScored public read API",
   "scoring_note": "PAPA-style estimate: top 1000 games per player; one best score per player per game; competition ties. iScored may handle ties differently.",
   "standings": [
     {
       "player": "DON",
-      "points": 21242,
+      "points": 21222,
       "games": 217,
-      "gold": 178,
-      "silver": 26,
+      "gold": 176,
+      "silver": 28,
       "bronze": 11
     },
     {
@@ -21,9 +21,9 @@
     },
     {
       "player": "VJG",
-      "points": 2915,
-      "games": 32,
-      "gold": 6,
+      "points": 3115,
+      "games": 34,
+      "gold": 8,
       "silver": 22,
       "bronze": 0
     },
@@ -1026,12 +1026,12 @@
       "rank": 1
     },
     {
-      "player": "DON",
+      "player": "VJG",
       "game": "Gauntlet",
       "game_id": "72620",
-      "score": 2260,
-      "date": "2025-02-21 22:50:26",
-      "score_id": "149067",
+      "score": 2700,
+      "date": "2026-11-20 18:22:19",
+      "score_id": "388280",
       "rank": 1
     },
     {
@@ -1053,12 +1053,12 @@
       "rank": 1
     },
     {
-      "player": "DON",
+      "player": "VJG",
       "game": "Ghostbusters",
       "game_id": "72623",
-      "score": 20100,
-      "date": "2025-02-21 22:43:14",
-      "score_id": "149065",
+      "score": 40400,
+      "date": "2026-11-20 18:28:00",
+      "score_id": "388283",
       "rank": 1
     },
     {
@@ -3541,12 +3541,12 @@
     },
     {
       "kind": "champion",
-      "player": "DON",
+      "player": "VJG",
       "game": "Gauntlet",
       "game_id": "72620",
-      "score": 2260,
-      "date": "2025-02-21 22:50:26",
-      "score_id": "149067",
+      "score": 2700,
+      "date": "2026-11-20 18:22:19",
+      "score_id": "388280",
       "rank": 1
     },
     {
@@ -3571,12 +3571,12 @@
     },
     {
       "kind": "champion",
-      "player": "DON",
+      "player": "VJG",
       "game": "Ghostbusters",
       "game_id": "72623",
-      "score": 20100,
-      "date": "2025-02-21 22:43:14",
-      "score_id": "149065",
+      "score": 40400,
+      "date": "2026-11-20 18:28:00",
+      "score_id": "388283",
       "rank": 1
     },
     {
@@ -3741,6 +3741,24 @@
     },
     {
       "kind": "recent",
+      "player": "VJG",
+      "game": "Ghostbusters",
+      "game_id": "72623",
+      "score": 40400,
+      "date": "2026-11-20 18:28:00",
+      "score_id": "388283"
+    },
+    {
+      "kind": "recent",
+      "player": "VJG",
+      "game": "Gauntlet",
+      "game_id": "72620",
+      "score": 2700,
+      "date": "2026-11-20 18:22:19",
+      "score_id": "388280"
+    },
+    {
+      "kind": "recent",
       "player": "DON",
       "game": "Mouse Trap",
       "game_id": "50930",
@@ -3828,24 +3846,6 @@
       "score": 17200,
       "date": "2026-11-19 19:44:07",
       "score_id": "387967"
-    },
-    {
-      "kind": "recent",
-      "player": "DON",
-      "game": "After Burner Climax",
-      "game_id": "73126",
-      "score": 161470,
-      "date": "2026-11-19 19:42:10",
-      "score_id": "387965"
-    },
-    {
-      "kind": "recent",
-      "player": "RDG",
-      "game": "Ghosts 'n Goblins",
-      "game_id": "50042",
-      "score": 29100,
-      "date": "2026-11-19 19:37:36",
-      "score_id": "387964"
     }
   ],
   "total_games": 263,

@@ -2552,16 +2552,16 @@
       ]
     },
     "72623": {
-      "score": 20100,
+      "score": 40400,
       "holders": [
-        "DON"
+        "VJG"
       ],
       "game": "Ghostbusters",
       "winning_scores": [
         {
-          "player": "DON",
-          "score": 20100,
-          "score_id": "149065",
+          "player": "VJG",
+          "score": 40400,
+          "score_id": "388283",
           "game": "Ghostbusters"
         }
       ]
@@ -3669,16 +3669,16 @@
       ]
     },
     "72620": {
-      "score": 2260,
+      "score": 2700,
       "holders": [
-        "DON"
+        "VJG"
       ],
       "game": "Gauntlet",
       "winning_scores": [
         {
-          "player": "DON",
-          "score": 2260,
-          "score_id": "149067",
+          "player": "VJG",
+          "score": 2700,
+          "score_id": "388280",
           "game": "Gauntlet"
         }
       ]

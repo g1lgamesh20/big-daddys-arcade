@@ -1,6 +1,28 @@
 {
-  "updated_at": "2026-11-21T00:11:46.013497+00:00",
+  "updated_at": "2026-11-21T01:09:22.059150+00:00",
   "records": [
+    {
+      "id": "388283",
+      "player": "VJG",
+      "game": "Ghostbusters",
+      "game_id": "72623",
+      "score": 40400,
+      "date": "2026-11-20 18:28:00",
+      "rank": 1,
+      "medal": "gold",
+      "record_type": "new_first_place"
+    },
+    {
+      "id": "388280",
+      "player": "VJG",
+      "game": "Gauntlet",
+      "game_id": "72620",
+      "score": 2700,
+      "date": "2026-11-20 18:22:19",
+      "rank": 1,
+      "medal": "gold",
+      "record_type": "new_first_place"
+    },
     {
       "id": "387965",
       "player": "DON",
