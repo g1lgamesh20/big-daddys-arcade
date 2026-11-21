@@ -197,7 +197,9 @@
         "KAK",
         "RDG"
       ],
-      "champions": [],
+      "champions": [
+        "DON"
+      ],
       "verified_results": [
         {
           "player": "BGR",
@@ -206,6 +208,15 @@
           "score_id": "387970",
           "verified": true,
           "evidence_source": "verified-challenge-awards.json:verified_plays"
+        },
+        {
+          "player": "DON",
+          "role": "champion",
+          "score": 161470,
+          "score_id": "387965",
+          "verified": true,
+          "award_id": "thursday_champion:2026-11-19",
+          "evidence_source": "verified-challenge-awards.json:awards"
         },
         {
           "player": "DON",
@@ -236,7 +247,7 @@
       "result_status": "final",
       "archived_winner_unverified_by_this_report": "DON",
       "verified_participant_count": 4,
-      "verified_champion_count": 0
+      "verified_champion_count": 1
     },
     {
       "event_key": "daily:2026-11-20",
@@ -296,7 +307,7 @@
       },
       "championships": {
         "daily": 0,
-        "thursday": 0,
+        "thursday": 1,
         "monthly": 0
       },
       "longest_verified_streaks": {
