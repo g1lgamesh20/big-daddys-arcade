@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "warning": "Pending evidence only: not verified trophies. Timestamps assumed Eastern; iScored approval status unconfirmed.",
-  "updated_at": "2026-11-20T21:59:10.579921+00:00",
+  "updated_at": "2026-11-21T03:32:00.561095+00:00",
   "unparseable_feed_dates": 0,
   "candidates": [
     {
@@ -211,6 +211,21 @@
       "submitted_at_assumed_et": "2026-11-19T19:26:01-05:00",
       "first_seen_at": "2026-11-20T03:44:38.184873+00:00",
       "last_seen_at": "2026-11-20T03:44:38.184873+00:00",
+      "verification": "pending_iscored_approval_and_timezone_review",
+      "awarded": false
+    },
+    {
+      "key": "daily:2026-11-20:50930:DON",
+      "kind": "daily",
+      "date": "2026-11-20",
+      "game_id": "50930",
+      "game": "Mouse Trap",
+      "player": "DON",
+      "best_score": 14440,
+      "score_id": "388256",
+      "submitted_at_assumed_et": "2026-11-20T18:41:43-05:00",
+      "first_seen_at": "2026-11-21T03:32:00.561095+00:00",
+      "last_seen_at": "2026-11-21T03:32:00.561095+00:00",
       "verification": "pending_iscored_approval_and_timezone_review",
       "awarded": false
     }
