@@ -28,6 +28,18 @@
       "score_id": "387965",
       "verified_at": "2026-11-21T01:45:10.414799+00:00",
       "verification_method": "operator_confirmed_iscored_approved_photo_and_time"
+    },
+    {
+      "id": "daily_streak:DON:3",
+      "event_key": "daily_streak:DON:3",
+      "type": "daily_streak",
+      "name": "Three-Day Streak",
+      "date": "2026-11-21",
+      "player": "DON",
+      "game": "Beat the Champion",
+      "milestone": 3,
+      "verified_at": "2026-11-21T18:31:45.568534-05:00",
+      "verification_method": "permanent_verified_event_history"
     }
   ],
   "verified_plays": [
@@ -220,6 +232,20 @@
       "verified_at": "2026-11-20T20:53:14.593415-05:00",
       "trophy_issued": false,
       "original_submitted_at_et": "2026-11-20T18:41:43-05:00",
+      "verification_method": "iscored_developer_confirmed_original_submission_timestamp_post_fix"
+    },
+    {
+      "kind": "daily",
+      "date": "2026-11-21",
+      "player": "DON",
+      "game_id": "84699",
+      "game": "Contra (Arcade)",
+      "score": 76800,
+      "score_id": "388652",
+      "event_key": "daily:2026-11-21:84699:DON",
+      "verified_at": "2026-11-21T18:31:45.568534-05:00",
+      "trophy_issued": false,
+      "original_submitted_at_et": "2026-11-21T16:46:04-05:00",
       "verification_method": "iscored_developer_confirmed_original_submission_timestamp_post_fix"
     }
   ]
