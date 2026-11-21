@@ -10,8 +10,8 @@
     "daily_participation",
     "thursday_participation"
   ],
-  "new_participation_credits": 1,
-  "new_daily_credits": 1,
+  "new_participation_credits": 0,
+  "new_daily_credits": 0,
   "new_thursday_credits": 0,
   "no_championship_or_monthly_awards": true,
   "no_push_notifications": true,
