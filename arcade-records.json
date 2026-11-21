@@ -1,6 +1,28 @@
 {
-  "updated_at": "2026-11-21T22:16:10.773167+00:00",
+  "updated_at": "2026-11-21T23:31:16.142912+00:00",
   "records": [
+    {
+      "id": "388693",
+      "player": "DON",
+      "game": "Contra (Arcade)",
+      "game_id": "84699",
+      "score": 76800,
+      "date": "2026-11-21 17:12:19",
+      "rank": 1,
+      "medal": "gold",
+      "record_type": "new_first_place"
+    },
+    {
+      "id": "388649",
+      "player": "VJG",
+      "game": "Ikari Warriors",
+      "game_id": "90287",
+      "score": 3200,
+      "date": "2026-11-21 15:39:21",
+      "rank": 1,
+      "medal": "gold",
+      "record_type": "new_first_place"
+    },
     {
       "id": "388296",
       "player": "VJG",

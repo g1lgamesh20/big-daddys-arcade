@@ -1712,16 +1712,16 @@
       ]
     },
     "84699": {
-      "score": 47000,
+      "score": 76800,
       "holders": [
-        "KAK"
+        "DON"
       ],
       "game": "Contra (Arcade)",
       "winning_scores": [
         {
-          "player": "KAK",
-          "score": 47000,
-          "score_id": "228357",
+          "player": "DON",
+          "score": 76800,
+          "score_id": "388693",
           "game": "Contra (Arcade)"
         }
       ]
@@ -3993,6 +3993,21 @@
           "score": 79,
           "score_id": "388296",
           "game": "Golden Tee Fore!"
+        }
+      ]
+    },
+    "90287": {
+      "score": 3200,
+      "holders": [
+        "VJG"
+      ],
+      "game": "Ikari Warriors",
+      "winning_scores": [
+        {
+          "player": "VJG",
+          "score": 3200,
+          "score_id": "388649",
+          "game": "Ikari Warriors"
         }
       ]
     }

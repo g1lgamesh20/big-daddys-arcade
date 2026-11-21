@@ -1,6 +1,56 @@
 {
-  "updated_at": "2026-11-21T22:16:10.773167+00:00",
+  "updated_at": "2026-11-21T23:31:16.142912+00:00",
   "alerts": [
+    {
+      "id": "388693",
+      "player": "DON",
+      "game": "Contra (Arcade)",
+      "game_id": "84699",
+      "score": 76800,
+      "date": "2026-11-21 17:12:19",
+      "rank": 1,
+      "medal": "gold"
+    },
+    {
+      "id": "388678",
+      "player": "VJG",
+      "game": "Joust II",
+      "game_id": "50258",
+      "score": 13750,
+      "date": "2026-11-21 16:41:22",
+      "rank": 2,
+      "medal": "silver"
+    },
+    {
+      "id": "388669",
+      "player": "VJG",
+      "game": "Jackal",
+      "game_id": "50048",
+      "score": 4400,
+      "date": "2026-11-21 16:12:12",
+      "rank": 2,
+      "medal": "silver"
+    },
+    {
+      "id": "388657",
+      "player": "VJG",
+      "game": "Indiana Jones and The Temple of Doom",
+      "game_id": "50047",
+      "score": 11850,
+      "date": "2026-11-21 16:03:34",
+      "rank": 2,
+      "medal": "silver"
+    },
+    {
+      "id": "388649",
+      "player": "VJG",
+      "game": "Ikari Warriors",
+      "game_id": "90287",
+      "score": 3200,
+      "date": "2026-11-21 15:39:21",
+      "rank": 1,
+      "medal": "gold"
+    },
     {
       "id": "388602",
       "player": "VJG",
@@ -950,56 +1000,6 @@
       "date": "2026-11-05 20:39:08",
       "rank": 3,
       "medal": "bronze"
-    },
-    {
-      "id": "380730",
-      "player": "KAK",
-      "game": "SUPER BREAKOUT",
-      "game_id": "112566",
-      "score": 145,
-      "date": "2026-11-05 20:38:53",
-      "rank": 2,
-      "medal": "silver"
-    },
-    {
-      "id": "380726",
-      "player": "KAK",
-      "game": "Paperboy",
-      "game_id": "50245",
-      "score": 8525,
-      "date": "2026-11-05 20:15:58",
-      "rank": 3,
-      "medal": "bronze"
-    },
-    {
-      "id": "380721",
-      "player": "VJG",
-      "game": "Outrun",
-      "game_id": "50101",
-      "score": 2727820,
-      "date": "2026-11-05 20:14:58",
-      "rank": 1,
-      "medal": "gold"
-    },
-    {
-      "id": "380718",
-      "player": "DON",
-      "game": "Star Wars",
-      "game_id": "50001",
-      "score": 469854,
-      "date": "2026-11-05 20:14:12",
-      "rank": 1,
-      "medal": "gold"
-    },
-    {
-      "id": "380715",
-      "player": "SPC",
-      "game": "X-Men: Pinball",
-      "game_id": "62265",
-      "score": 14957410,
-      "date": "2026-11-05 20:14:02",
-      "rank": 1,
-      "medal": "gold"
     }
   ]
 }

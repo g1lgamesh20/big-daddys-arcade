@@ -1,30 +1,30 @@
 {
-  "updated_at": "2026-11-21T22:16:10.773167+00:00",
+  "updated_at": "2026-11-21T23:31:16.142912+00:00",
   "source": "iScored public read API",
   "scoring_note": "PAPA-style estimate: top 1000 games per player; one best score per player per game; competition ties. iScored may handle ties differently.",
   "standings": [
     {
       "player": "DON",
-      "points": 21222,
-      "games": 217,
-      "gold": 176,
+      "points": 21322,
+      "games": 218,
+      "gold": 177,
       "silver": 28,
       "bronze": 11
     },
     {
       "player": "SPC",
-      "points": 5238,
+      "points": 5233,
       "games": 55,
       "gold": 32,
-      "silver": 17,
-      "bronze": 5
+      "silver": 16,
+      "bronze": 6
     },
     {
       "player": "VJG",
-      "points": 3660,
-      "games": 40,
-      "gold": 9,
-      "silver": 26,
+      "points": 4030,
+      "games": 44,
+      "gold": 10,
+      "silver": 29,
       "bronze": 1
     },
     {
@@ -37,10 +37,10 @@
     },
     {
       "player": "KAK",
-      "points": 2632,
+      "points": 2622,
       "games": 29,
-      "gold": 9,
-      "silver": 9,
+      "gold": 8,
+      "silver": 10,
       "bronze": 4
     },
     {
@@ -612,12 +612,12 @@
       "rank": 1
     },
     {
-      "player": "KAK",
+      "player": "DON",
       "game": "Contra (Arcade)",
       "game_id": "84699",
-      "score": 47000,
-      "date": "2025-10-31 19:15:42",
-      "score_id": "228357",
+      "score": 76800,
+      "date": "2026-11-21 15:46:04",
+      "score_id": "388652",
       "rank": 1
     },
     {
@@ -1212,6 +1212,15 @@
       "score": 8190,
       "date": "2026-10-20 21:43:56",
       "score_id": "373308",
+      "rank": 1
+    },
+    {
+      "player": "VJG",
+      "game": "Ikari Warriors",
+      "game_id": "90287",
+      "score": 3200,
+      "date": "2026-11-21 15:39:21",
+      "score_id": "388649",
       "rank": 1
     },
     {
@@ -3090,12 +3099,12 @@
     },
     {
       "kind": "champion",
-      "player": "KAK",
+      "player": "DON",
       "game": "Contra (Arcade)",
       "game_id": "84699",
-      "score": 47000,
-      "date": "2025-10-31 19:15:42",
-      "score_id": "228357",
+      "score": 76800,
+      "date": "2026-11-21 15:46:04",
+      "score_id": "388652",
       "rank": 1
     },
     {
@@ -3750,6 +3759,69 @@
     },
     {
       "kind": "recent",
+      "player": "DON",
+      "game": "Contra (Arcade)",
+      "game_id": "84699",
+      "score": 76800,
+      "date": "2026-11-21 17:12:19",
+      "score_id": "388693"
+    },
+    {
+      "kind": "recent",
+      "player": "VJG",
+      "game": "Joust II",
+      "game_id": "50258",
+      "score": 13750,
+      "date": "2026-11-21 16:41:22",
+      "score_id": "388678"
+    },
+    {
+      "kind": "recent",
+      "player": "VJG",
+      "game": "Joust II",
+      "game_id": "50258",
+      "score": 2250,
+      "date": "2026-11-21 16:26:03",
+      "score_id": "388674"
+    },
+    {
+      "kind": "recent",
+      "player": "VJG",
+      "game": "Jackal",
+      "game_id": "50048",
+      "score": 4400,
+      "date": "2026-11-21 16:12:12",
+      "score_id": "388669"
+    },
+    {
+      "kind": "recent",
+      "player": "VJG",
+      "game": "Indiana Jones and The Temple of Doom",
+      "game_id": "50047",
+      "score": 11850,
+      "date": "2026-11-21 16:03:34",
+      "score_id": "388657"
+    },
+    {
+      "kind": "recent",
+      "player": "DON",
+      "game": "Contra (Arcade)",
+      "game_id": "84699",
+      "score": 76800,
+      "date": "2026-11-21 15:46:04",
+      "score_id": "388652"
+    },
+    {
+      "kind": "recent",
+      "player": "VJG",
+      "game": "Ikari Warriors",
+      "game_id": "90287",
+      "score": 3200,
+      "date": "2026-11-21 15:39:21",
+      "score_id": "388649"
+    },
+    {
+      "kind": "recent",
       "player": "VJG",
       "game": "Hammerin' Harry",
       "game_id": "50228",
@@ -3792,71 +3864,8 @@
       "score": 2600,
       "date": "2026-11-21 11:04:19",
       "score_id": "388523"
-    },
-    {
-      "kind": "recent",
-      "player": "VJG",
-      "game": "Goonies",
-      "game_id": "50434",
-      "score": 11020,
-      "date": "2026-11-21 10:58:32",
-      "score_id": "388513"
-    },
-    {
-      "kind": "recent",
-      "player": "VJG",
-      "game": "Golden Tee Fore!",
-      "game_id": "73335",
-      "score": 79,
-      "date": "2026-11-20 18:49:38",
-      "score_id": "388296"
-    },
-    {
-      "kind": "recent",
-      "player": "VJG",
-      "game": "Ghostbusters",
-      "game_id": "72623",
-      "score": 40400,
-      "date": "2026-11-20 18:28:00",
-      "score_id": "388283"
-    },
-    {
-      "kind": "recent",
-      "player": "VJG",
-      "game": "Gauntlet",
-      "game_id": "72620",
-      "score": 2700,
-      "date": "2026-11-20 18:22:19",
-      "score_id": "388280"
-    },
-    {
-      "kind": "recent",
-      "player": "DON",
-      "game": "Mouse Trap",
-      "game_id": "50930",
-      "score": 14440,
-      "date": "2026-11-20 17:41:43",
-      "score_id": "388256"
-    },
-    {
-      "kind": "recent",
-      "player": "VJG",
-      "game": "Eyes",
-      "game_id": "70348",
-      "score": 19990,
-      "date": "2026-11-20 17:06:58",
-      "score_id": "388243"
-    },
-    {
-      "kind": "recent",
-      "player": "VJG",
-      "game": "ROBOTRON",
-      "game_id": "50167",
-      "score": 20400,
-      "date": "2026-11-19 21:36:56",
-      "score_id": "388047"
     }
   ],
-  "total_games": 264,
+  "total_games": 265,
   "total_players": 15
 }
