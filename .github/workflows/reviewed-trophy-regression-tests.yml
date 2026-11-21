@@ -1,0 +1,24 @@
+name: Verify Reviewed Trophy Milestone Tests
+on:
+  pull_request:
+    paths:
+      - 'tools/test_unified_milestone_awards.py'
+      - 'tools/unified_milestone_awards.py'
+      - '.github/workflows/reviewed-trophy-regression-tests.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate verified milestone and streak logic
+        run: python tools/test_unified_milestone_awards.py
+      - name: Validate manual trophy issuance safeguards
+        run: python tools/test_verified_awards.py
+      - name: Validate unified history generation
+        run: python tools/test_unified_achievement_history.py

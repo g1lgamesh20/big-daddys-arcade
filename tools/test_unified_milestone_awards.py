@@ -29,9 +29,10 @@ class MilestoneTest(unittest.TestCase):
   original=copy.deepcopy(ledger)
   due=awards_due(ledger,NOW)
   self.assertEqual([(a['type'],a['milestone']) for a in due],
-       [('thursday_participation_milestone',3),('thursday_participation_milestone',5)])
+       [('thursday_participation_milestone',3),('thursday_participation_milestone',5),
+        ('thursday_streak',3),('thursday_streak',5)])
   self.assertEqual(ledger,original)
-  self.assertEqual(issue(ledger,NOW),2)
+  self.assertEqual(issue(ledger,NOW),4)
   self.assertEqual(issue(ledger,NOW),0)
  def test_thursday_streak_breaks_at_skipped_week(self):
   ledger=empty()
