@@ -1,0 +1,28 @@
+name: Verify Automatic Award Recovery
+on:
+  pull_request:
+    paths:
+      - 'tools/award_run_backstop.py'
+      - 'tools/test_award_run_backstop.py'
+      - '.github/workflows/award-run-backstop.yml'
+      - '.github/workflows/award-run-backstop-tests.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate backup decision logic
+        run: |
+          python -m py_compile tools/award_run_backstop.py tools/test_award_run_backstop.py
+          python tools/test_award_run_backstop.py
+      - name: Validate permanent score award safeguards
+        run: |
+          python tools/test_submission_time_participation.py
+          python tools/test_postfix_champion_awards.py
+          python tools/test_unified_milestone_awards.py

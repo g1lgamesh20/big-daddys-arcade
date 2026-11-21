@@ -1,0 +1,47 @@
+name: Automatic Achievement Awards - Missed Run Recovery
+on:
+  schedule:
+    # Independent GitHub timer, offset from the :52 every-two-hour primary.
+    - cron: '21,51 * * * *'
+  workflow_run:
+    workflows:
+      - 'Refresh Hall of Legends scores'
+    types:
+      - completed
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: write
+concurrency:
+  group: arcade-award-run-backstop
+  cancel-in-progress: false
+jobs:
+  recover:
+    # A PR workflow or failed score refresh must never launch award issuance.
+    if: ${{ github.event_name != 'workflow_run' || (github.event.workflow_run.head_branch == 'main' && github.event.workflow_run.conclusion == 'success') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test recovery gate without calling iScored or OneSignal
+        run: python tools/test_award_run_backstop.py
+      - name: Inspect recent automatic achievement runs
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh run list --repo "$GITHUB_REPOSITORY" --workflow auto-challenge-awards.yml --limit 30 --json status,conclusion,createdAt > "$RUNNER_TEMP/award-runs.json"
+      - name: Determine whether automatic achievement issuance was missed
+        id: gate
+        run: python tools/award_run_backstop.py --runs-json "$RUNNER_TEMP/award-runs.json" --github-output "$GITHUB_OUTPUT"
+      - name: Invoke EXISTING guarded trophy workflow when stale
+        if: steps.gate.outputs.dispatch == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh workflow run auto-challenge-awards.yml --repo "$GITHUB_REPOSITORY" --ref main
+          echo 'Automatic Challenge Awards recovery queued. Original workflow owns approvals, dedupe, concurrency and score validation.'
