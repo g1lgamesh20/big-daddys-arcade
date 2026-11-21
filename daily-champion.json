@@ -1,12 +1,7 @@
 {
-  "updated_at": "2026-11-21T04:46:32.994591+00:00",
+  "updated_at": "2026-11-21T06:01:13.393493+00:00",
   "timezone": "America/New_York",
   "days": [
-    {
-      "date": "2026-11-19",
-      "game_id": "50042",
-      "game": "Ghosts 'n Goblins"
-    },
     {
       "date": "2026-11-20",
       "game_id": "50930",
@@ -16,6 +11,11 @@
       "date": "2026-11-21",
       "game_id": "84699",
       "game": "Contra (Arcade)"
+    },
+    {
+      "date": "2026-11-22",
+      "game_id": "50045",
+      "game": "GUN SMOKE"
     }
   ]
 }

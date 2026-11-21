@@ -16,5 +16,11 @@
     "starting_champion_score": 47000,
     "observed_at": "2026-11-21T04:46:33.003562+00:00",
     "evidence": "pre_start_approved_iscored_score_snapshot"
+  },
+  "2026-11-22": {
+    "game_id": "50045",
+    "starting_champion_score": 54900,
+    "observed_at": "2026-11-21T06:01:13.400687+00:00",
+    "evidence": "pre_start_approved_iscored_score_snapshot"
   }
 }
