@@ -256,11 +256,22 @@
       "game_id": "50930",
       "game": "Mouse Trap",
       "schedule_source": "daily-champion-history.json",
-      "participants": [],
+      "participants": [
+        "DON"
+      ],
       "champions": [],
-      "verified_results": [],
+      "verified_results": [
+        {
+          "player": "DON",
+          "role": "participant",
+          "score": 14440,
+          "score_id": "388256",
+          "verified": true,
+          "evidence_source": "verified-challenge-awards.json:verified_plays"
+        }
+      ],
       "unverified_candidates": [],
-      "verified_participant_count": 0,
+      "verified_participant_count": 1,
       "verified_champion_count": 0
     }
   ],
@@ -301,7 +312,7 @@
     },
     "DON": {
       "participation": {
-        "daily": 1,
+        "daily": 2,
         "thursday": 2,
         "monthly": 0
       },
@@ -311,7 +322,7 @@
         "monthly": 0
       },
       "longest_verified_streaks": {
-        "daily": 1,
+        "daily": 2,
         "thursday": 2,
         "monthly": 0
       }
