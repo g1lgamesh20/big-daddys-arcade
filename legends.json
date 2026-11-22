@@ -1,14 +1,14 @@
 {
-  "updated_at": "2026-11-21T23:31:16.142912+00:00",
+  "updated_at": "2026-11-22T00:42:25.864917+00:00",
   "source": "iScored public read API",
   "scoring_note": "PAPA-style estimate: top 1000 games per player; one best score per player per game; competition ties. iScored may handle ties differently.",
   "standings": [
     {
       "player": "DON",
-      "points": 21322,
+      "points": 21332,
       "games": 218,
-      "gold": 177,
-      "silver": 28,
+      "gold": 178,
+      "silver": 27,
       "bronze": 11
     },
     {
@@ -21,10 +21,10 @@
     },
     {
       "player": "VJG",
-      "points": 4030,
-      "games": 44,
+      "points": 4120,
+      "games": 45,
       "gold": 10,
-      "silver": 29,
+      "silver": 30,
       "bronze": 1
     },
     {
@@ -45,9 +45,9 @@
     },
     {
       "player": "RDG",
-      "points": 2268,
-      "games": 25,
-      "gold": 9,
+      "points": 2168,
+      "games": 24,
+      "gold": 8,
       "silver": 4,
       "bronze": 6
     },
@@ -2106,12 +2106,12 @@
       "rank": 1
     },
     {
-      "player": "RDG",
+      "player": "DON",
       "game": "Star Wars",
       "game_id": "50001",
-      "score": 469854,
-      "date": "2026-11-05 21:08:43",
-      "score_id": "380769",
+      "score": 183214,
+      "date": "2024-01-19 15:25:25",
+      "score_id": "74118",
       "rank": 1
     },
     {
@@ -3759,6 +3759,15 @@
     },
     {
       "kind": "recent",
+      "player": "VJG",
+      "game": "Jungle King",
+      "game_id": "49996",
+      "score": 6500,
+      "date": "2026-11-21 18:22:07",
+      "score_id": "388717"
+    },
+    {
+      "kind": "recent",
       "player": "DON",
       "game": "Contra (Arcade)",
       "game_id": "84699",
@@ -3855,15 +3864,6 @@
       "score": 4620,
       "date": "2026-11-21 11:17:15",
       "score_id": "388533"
-    },
-    {
-      "kind": "recent",
-      "player": "VJG",
-      "game": "Gorf",
-      "game_id": "50044",
-      "score": 2600,
-      "date": "2026-11-21 11:04:19",
-      "score_id": "388523"
     }
   ],
   "total_games": 265,

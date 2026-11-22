@@ -827,16 +827,16 @@
       ]
     },
     "50001": {
-      "score": 469854,
+      "score": 183214,
       "holders": [
-        "RDG"
+        "DON"
       ],
       "game": "Star Wars",
       "winning_scores": [
         {
-          "player": "RDG",
-          "score": 469854,
-          "score_id": "380769",
+          "player": "DON",
+          "score": 183214,
+          "score_id": "74118",
           "game": "Star Wars"
         }
       ]
