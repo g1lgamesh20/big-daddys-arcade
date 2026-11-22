@@ -247,6 +247,20 @@
       "trophy_issued": false,
       "original_submitted_at_et": "2026-11-21T16:46:04-05:00",
       "verification_method": "iscored_developer_confirmed_original_submission_timestamp_post_fix"
+    },
+    {
+      "kind": "daily",
+      "date": "2026-11-21",
+      "player": "VJG",
+      "game_id": "84699",
+      "game": "Contra (Arcade)",
+      "score": 32300,
+      "score_id": "388778",
+      "event_key": "daily:2026-11-21:84699:VJG",
+      "verified_at": "2026-11-21T21:31:48.142918-05:00",
+      "trophy_issued": false,
+      "original_submitted_at_et": "2026-11-21T20:19:02-05:00",
+      "verification_method": "iscored_developer_confirmed_original_submission_timestamp_post_fix"
     }
   ]
 }

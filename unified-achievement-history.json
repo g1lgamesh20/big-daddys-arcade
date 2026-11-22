@@ -282,7 +282,8 @@
       "game": "Contra (Arcade)",
       "schedule_source": "daily-champion-history.json",
       "participants": [
-        "DON"
+        "DON",
+        "VJG"
       ],
       "champions": [],
       "verified_results": [
@@ -293,10 +294,18 @@
           "score_id": "388652",
           "verified": true,
           "evidence_source": "verified-challenge-awards.json:verified_plays"
+        },
+        {
+          "player": "VJG",
+          "role": "participant",
+          "score": 32300,
+          "score_id": "388778",
+          "verified": true,
+          "evidence_source": "verified-challenge-awards.json:verified_plays"
         }
       ],
       "unverified_candidates": [],
-      "verified_participant_count": 1,
+      "verified_participant_count": 2,
       "verified_champion_count": 0
     }
   ],
@@ -434,6 +443,23 @@
       "longest_verified_streaks": {
         "daily": 0,
         "thursday": 1,
+        "monthly": 0
+      }
+    },
+    "VJG": {
+      "participation": {
+        "daily": 1,
+        "thursday": 0,
+        "monthly": 0
+      },
+      "championships": {
+        "daily": 0,
+        "thursday": 0,
+        "monthly": 0
+      },
+      "longest_verified_streaks": {
+        "daily": 1,
+        "thursday": 0,
         "monthly": 0
       }
     }
