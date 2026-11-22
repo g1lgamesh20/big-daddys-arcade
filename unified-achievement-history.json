@@ -307,6 +307,20 @@
       "unverified_candidates": [],
       "verified_participant_count": 2,
       "verified_champion_count": 0
+    },
+    {
+      "event_key": "daily:2026-11-22",
+      "kind": "daily",
+      "date": "2026-11-22",
+      "game_id": "50045",
+      "game": "GUN SMOKE",
+      "schedule_source": "daily-champion-history.json",
+      "participants": [],
+      "champions": [],
+      "verified_results": [],
+      "unverified_candidates": [],
+      "verified_participant_count": 0,
+      "verified_champion_count": 0
     }
   ],
   "players": {
