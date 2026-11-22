@@ -1,46 +1,46 @@
 {
-  "updated_at": "2026-11-22T01:13:36.792626+00:00",
+  "updated_at": "2026-11-22T02:31:09.108626+00:00",
   "source": "iScored public read API",
   "scoring_note": "PAPA-style estimate: top 1000 games per player; one best score per player per game; competition ties. iScored may handle ties differently.",
   "standings": [
     {
       "player": "DON",
-      "points": 21332,
-      "games": 218,
+      "points": 21422,
+      "games": 219,
       "gold": 178,
-      "silver": 27,
+      "silver": 28,
       "bronze": 11
     },
     {
       "player": "SPC",
-      "points": 5233,
-      "games": 55,
+      "points": 5323,
+      "games": 56,
       "gold": 32,
-      "silver": 16,
+      "silver": 17,
       "bronze": 6
     },
     {
       "player": "VJG",
-      "points": 4300,
-      "games": 47,
-      "gold": 10,
+      "points": 4569,
+      "games": 50,
+      "gold": 11,
       "silver": 32,
-      "bronze": 1
+      "bronze": 2
     },
     {
       "player": "DAY",
-      "points": 2820,
+      "points": 2814,
       "games": 31,
       "gold": 12,
-      "silver": 4,
+      "silver": 3,
       "bronze": 5
     },
     {
       "player": "KAK",
-      "points": 2622,
+      "points": 2612,
       "games": 29,
-      "gold": 8,
-      "silver": 10,
+      "gold": 7,
+      "silver": 11,
       "bronze": 4
     },
     {
@@ -53,11 +53,11 @@
     },
     {
       "player": "RPS",
-      "points": 1955,
+      "points": 1954,
       "games": 22,
       "gold": 4,
       "silver": 7,
-      "bronze": 6
+      "bronze": 5
     },
     {
       "player": "POD",
@@ -1386,12 +1386,12 @@
       "rank": 1
     },
     {
-      "player": "KAK",
+      "player": "VJG",
       "game": "Kung fu master",
       "game_id": "101603",
-      "score": 27410,
-      "date": "2026-06-23 21:27:33",
-      "score_id": "320685",
+      "score": 31930,
+      "date": "2026-11-21 19:09:13",
+      "score_id": "388766",
       "rank": 1
     },
     {
@@ -3759,6 +3759,51 @@
     },
     {
       "kind": "recent",
+      "player": "DON",
+      "game": "Ms. Pac-Man",
+      "game_id": "101598",
+      "score": 20620,
+      "date": "2026-11-21 20:22:15",
+      "score_id": "388870"
+    },
+    {
+      "kind": "recent",
+      "player": "SPC",
+      "game": "Bubble Bobble",
+      "game_id": "50022",
+      "score": 180760,
+      "date": "2026-11-21 19:22:59",
+      "score_id": "388782"
+    },
+    {
+      "kind": "recent",
+      "player": "VJG",
+      "game": "Contra (Arcade)",
+      "game_id": "84699",
+      "score": 32300,
+      "date": "2026-11-21 19:19:02",
+      "score_id": "388778"
+    },
+    {
+      "kind": "recent",
+      "player": "VJG",
+      "game": "Kung fu master",
+      "game_id": "101603",
+      "score": 31930,
+      "date": "2026-11-21 19:09:13",
+      "score_id": "388766"
+    },
+    {
+      "kind": "recent",
+      "player": "VJG",
+      "game": "KID NIKI",
+      "game_id": "50261",
+      "score": 26400,
+      "date": "2026-11-21 18:54:29",
+      "score_id": "388749"
+    },
+    {
+      "kind": "recent",
       "player": "VJG",
       "game": "Karate Champ",
       "game_id": "50259",
@@ -3819,51 +3864,6 @@
       "score": 4400,
       "date": "2026-11-21 16:12:12",
       "score_id": "388669"
-    },
-    {
-      "kind": "recent",
-      "player": "VJG",
-      "game": "Indiana Jones and The Temple of Doom",
-      "game_id": "50047",
-      "score": 11850,
-      "date": "2026-11-21 16:03:34",
-      "score_id": "388657"
-    },
-    {
-      "kind": "recent",
-      "player": "DON",
-      "game": "Contra (Arcade)",
-      "game_id": "84699",
-      "score": 76800,
-      "date": "2026-11-21 15:46:04",
-      "score_id": "388652"
-    },
-    {
-      "kind": "recent",
-      "player": "VJG",
-      "game": "Ikari Warriors",
-      "game_id": "90287",
-      "score": 3200,
-      "date": "2026-11-21 15:39:21",
-      "score_id": "388649"
-    },
-    {
-      "kind": "recent",
-      "player": "VJG",
-      "game": "Hammerin' Harry",
-      "game_id": "50228",
-      "score": 9800,
-      "date": "2026-11-21 13:47:08",
-      "score_id": "388602"
-    },
-    {
-      "kind": "recent",
-      "player": "VJG",
-      "game": "GUN SMOKE",
-      "game_id": "50045",
-      "score": 3350,
-      "date": "2026-11-21 13:27:31",
-      "score_id": "388595"
     }
   ],
   "total_games": 265,

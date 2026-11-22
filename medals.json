@@ -1,6 +1,46 @@
 {
-  "updated_at": "2026-11-22T01:13:36.792626+00:00",
+  "updated_at": "2026-11-22T02:31:09.108626+00:00",
   "alerts": [
+    {
+      "id": "388870",
+      "player": "DON",
+      "game": "Ms. Pac-Man",
+      "game_id": "101598",
+      "score": 20620,
+      "date": "2026-11-21 20:22:15",
+      "rank": 2,
+      "medal": "silver"
+    },
+    {
+      "id": "388782",
+      "player": "SPC",
+      "game": "Bubble Bobble",
+      "game_id": "50022",
+      "score": 180760,
+      "date": "2026-11-21 19:22:59",
+      "rank": 2,
+      "medal": "silver"
+    },
+    {
+      "id": "388766",
+      "player": "VJG",
+      "game": "Kung fu master",
+      "game_id": "101603",
+      "score": 31930,
+      "date": "2026-11-21 19:09:13",
+      "rank": 1,
+      "medal": "gold"
+    },
+    {
+      "id": "388749",
+      "player": "VJG",
+      "game": "KID NIKI",
+      "game_id": "50261",
+      "score": 26400,
+      "date": "2026-11-21 18:54:29",
+      "rank": 2,
+      "medal": "silver"
+    },
     {
       "id": "388744",
       "player": "VJG",
@@ -958,46 +998,6 @@
       "game_id": "112566",
       "score": 94,
       "date": "2026-11-05 20:41:23",
-      "rank": 3,
-      "medal": "bronze"
-    },
-    {
-      "id": "380743",
-      "player": "FO",
-      "game": "X-Men: Pinball",
-      "game_id": "62265",
-      "score": 3835110,
-      "date": "2026-11-05 20:40:59",
-      "rank": 3,
-      "medal": "bronze"
-    },
-    {
-      "id": "380742",
-      "player": "RDG",
-      "game": "Q*bert",
-      "game_id": "49999",
-      "score": 7725,
-      "date": "2026-11-05 20:40:16",
-      "rank": 2,
-      "medal": "silver"
-    },
-    {
-      "id": "380738",
-      "player": "SPC",
-      "game": "Hang On",
-      "game_id": "50050",
-      "score": 4185460,
-      "date": "2026-11-05 20:40:08",
-      "rank": 1,
-      "medal": "gold"
-    },
-    {
-      "id": "380737",
-      "player": "DAY",
-      "game": "Q*bert",
-      "game_id": "49999",
-      "score": 6525,
-      "date": "2026-11-05 20:39:50",
       "rank": 3,
       "medal": "bronze"
     }

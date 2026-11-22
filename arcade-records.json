@@ -1,6 +1,17 @@
 {
-  "updated_at": "2026-11-22T01:13:36.792626+00:00",
+  "updated_at": "2026-11-22T02:31:09.108626+00:00",
   "records": [
+    {
+      "id": "388766",
+      "player": "VJG",
+      "game": "Kung fu master",
+      "game_id": "101603",
+      "score": 31930,
+      "date": "2026-11-21 19:09:13",
+      "rank": 1,
+      "medal": "gold",
+      "record_type": "new_first_place"
+    },
     {
       "id": "388693",
       "player": "DON",
