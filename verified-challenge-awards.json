@@ -30,6 +30,26 @@
       "verification_method": "operator_confirmed_iscored_approved_photo_and_time"
     },
     {
+      "id": "daily_champion:2026-11-21:DON",
+      "event_key": "daily:2026-11-21:84699:DON",
+      "type": "daily_champion",
+      "name": "Daily Champion",
+      "date": "2026-11-21",
+      "player": "DON",
+      "game_id": "84699",
+      "game": "Contra (Arcade)",
+      "score": 76800,
+      "score_id": "388652",
+      "verified_at": "2026-11-22T09:46:35.319872-05:00",
+      "original_submitted_at_et": "2026-11-21T16:46:04-05:00",
+      "verification_method": "iscored_postfix_submission_time_and_locked_prestart_baseline",
+      "starting_champion_score": 47000,
+      "starting_champion_observed_at": "2026-11-21T04:46:33.003562+00:00",
+      "starting_champion_evidence": "pre_start_approved_iscored_score_snapshot",
+      "gold_level": true,
+      "win_rule": "strictly_greater_than_locked_starting_champion_score"
+    },
+    {
       "id": "daily_streak:DON:3",
       "event_key": "daily_streak:DON:3",
       "type": "daily_streak",

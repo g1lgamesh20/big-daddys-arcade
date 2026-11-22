@@ -285,8 +285,19 @@
         "DON",
         "VJG"
       ],
-      "champions": [],
+      "champions": [
+        "DON"
+      ],
       "verified_results": [
+        {
+          "player": "DON",
+          "role": "champion",
+          "score": 76800,
+          "score_id": "388652",
+          "verified": true,
+          "award_id": "daily_champion:2026-11-21:DON",
+          "evidence_source": "verified-challenge-awards.json:awards"
+        },
         {
           "player": "DON",
           "role": "participant",
@@ -306,7 +317,7 @@
       ],
       "unverified_candidates": [],
       "verified_participant_count": 2,
-      "verified_champion_count": 0
+      "verified_champion_count": 1
     },
     {
       "event_key": "daily:2026-11-22",
@@ -365,7 +376,7 @@
         "monthly": 0
       },
       "championships": {
-        "daily": 0,
+        "daily": 1,
         "thursday": 1,
         "monthly": 0
       },
