@@ -5,20 +5,9 @@
   "approval_timezone_assumption": "America/Chicago for naive iScored API timestamps; verify with source",
   "caveat": "Approval timestamp is NOT original submission time. Grace policy can include scores not originally played during event.",
   "matches": 18,
-  "new_participation_credits": 1,
+  "new_participation_credits": 0,
   "unparseable_dates": 0,
-  "proposed_credits": [
-    {
-      "kind": "daily",
-      "date": "2026-11-22",
-      "player": "DON",
-      "game_id": "50045",
-      "game": "GUN SMOKE",
-      "score": 24750,
-      "score_id": "389160",
-      "approved_at_policy_et": "2026-11-22T14:21:34-05:00"
-    }
-  ],
+  "proposed_credits": [],
   "new_championships": [],
   "no_push_notifications": true
 }
