@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-22T19:31:11.436601+00:00",
+  "updated_at": "2026-11-22T20:46:13.372581+00:00",
   "source": "iScored public read API",
   "scoring_note": "PAPA-style estimate: top 1000 games per player; one best score per player per game; competition ties. iScored may handle ties differently.",
   "standings": [
@@ -3778,6 +3778,15 @@
     {
       "kind": "recent",
       "player": "DON",
+      "game": "GUN SMOKE",
+      "game_id": "50045",
+      "score": 24750,
+      "date": "2026-11-22 13:21:34",
+      "score_id": "389160"
+    },
+    {
+      "kind": "recent",
+      "player": "DON",
       "game": "LADYBUG",
       "game_id": "113424",
       "score": 9770,
@@ -3873,15 +3882,6 @@
       "score": 76800,
       "date": "2026-11-21 17:12:19",
       "score_id": "388693"
-    },
-    {
-      "kind": "recent",
-      "player": "VJG",
-      "game": "Joust II",
-      "game_id": "50258",
-      "score": 13750,
-      "date": "2026-11-21 16:41:22",
-      "score_id": "388678"
     }
   ],
   "total_games": 267,
