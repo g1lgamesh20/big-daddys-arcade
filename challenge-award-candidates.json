@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "warning": "Pending evidence only: not verified trophies. Timestamps assumed Eastern; iScored approval status unconfirmed.",
-  "updated_at": "2026-11-21T20:40:30.523288+00:00",
+  "updated_at": "2026-11-22T00:42:32.200208+00:00",
   "unparseable_feed_dates": 0,
   "candidates": [
     {
@@ -226,6 +226,21 @@
       "submitted_at_assumed_et": "2026-11-20T18:41:43-05:00",
       "first_seen_at": "2026-11-21T03:32:00.561095+00:00",
       "last_seen_at": "2026-11-21T03:32:00.561095+00:00",
+      "verification": "pending_iscored_approval_and_timezone_review",
+      "awarded": false
+    },
+    {
+      "key": "daily:2026-11-21:84699:DON",
+      "kind": "daily",
+      "date": "2026-11-21",
+      "game_id": "84699",
+      "game": "Contra (Arcade)",
+      "player": "DON",
+      "best_score": 76800,
+      "score_id": "388652",
+      "submitted_at_assumed_et": "2026-11-21T16:46:04-05:00",
+      "first_seen_at": "2026-11-22T00:42:32.200208+00:00",
+      "last_seen_at": "2026-11-22T00:42:32.200208+00:00",
       "verification": "pending_iscored_approval_and_timezone_review",
       "awarded": false
     }
