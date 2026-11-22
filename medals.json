@@ -1,6 +1,26 @@
 {
-  "updated_at": "2026-11-22T02:31:09.108626+00:00",
+  "updated_at": "2026-11-22T03:46:09.920916+00:00",
   "alerts": [
+    {
+      "id": "388878",
+      "player": "DON",
+      "game": "LADYBUG",
+      "game_id": "113424",
+      "score": 9770,
+      "date": "2026-11-21 20:34:49",
+      "rank": 1,
+      "medal": "gold"
+    },
+    {
+      "id": "388874",
+      "player": "DON",
+      "game": "Guzzler",
+      "game_id": "113422",
+      "score": 14020,
+      "date": "2026-11-21 20:30:13",
+      "rank": 1,
+      "medal": "gold"
+    },
     {
       "id": "388870",
       "player": "DON",
@@ -980,26 +1000,6 @@
       "date": "2026-11-05 20:43:55",
       "rank": 2,
       "medal": "silver"
-    },
-    {
-      "id": "380748",
-      "player": "SPC",
-      "game": "Paperboy",
-      "game_id": "50245",
-      "score": 13395,
-      "date": "2026-11-05 20:43:11",
-      "rank": 1,
-      "medal": "gold"
-    },
-    {
-      "id": "380752",
-      "player": "DAY",
-      "game": "SUPER BREAKOUT",
-      "game_id": "112566",
-      "score": 94,
-      "date": "2026-11-05 20:41:23",
-      "rank": 3,
-      "medal": "bronze"
     }
   ]
 }

@@ -1,13 +1,13 @@
 {
-  "updated_at": "2026-11-22T02:31:09.108626+00:00",
+  "updated_at": "2026-11-22T03:46:09.920916+00:00",
   "source": "iScored public read API",
   "scoring_note": "PAPA-style estimate: top 1000 games per player; one best score per player per game; competition ties. iScored may handle ties differently.",
   "standings": [
     {
       "player": "DON",
-      "points": 21422,
-      "games": 219,
-      "gold": 178,
+      "points": 21622,
+      "games": 221,
+      "gold": 180,
       "silver": 28,
       "bronze": 11
     },
@@ -1152,6 +1152,15 @@
       "rank": 1
     },
     {
+      "player": "DON",
+      "game": "Guzzler",
+      "game_id": "113422",
+      "score": 14020,
+      "date": "2026-11-21 20:30:13",
+      "score_id": "388874",
+      "rank": 1
+    },
+    {
       "player": "RDG",
       "game": "Gyruss",
       "game_id": "50223",
@@ -1392,6 +1401,15 @@
       "score": 31930,
       "date": "2026-11-21 19:09:13",
       "score_id": "388766",
+      "rank": 1
+    },
+    {
+      "player": "DON",
+      "game": "LADYBUG",
+      "game_id": "113424",
+      "score": 9770,
+      "date": "2026-11-21 20:34:49",
+      "score_id": "388878",
       "rank": 1
     },
     {
@@ -3699,6 +3717,16 @@
     },
     {
       "kind": "champion",
+      "player": "DON",
+      "game": "Guzzler",
+      "game_id": "113422",
+      "score": 14020,
+      "date": "2026-11-21 20:30:13",
+      "score_id": "388874",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
       "player": "RDG",
       "game": "Gyruss",
       "game_id": "50223",
@@ -3748,14 +3776,22 @@
       "rank": 1
     },
     {
-      "kind": "champion",
+      "kind": "recent",
       "player": "DON",
-      "game": "I, ROBOT",
-      "game_id": "50257",
-      "score": 9790,
-      "date": "2025-02-20 22:42:46",
-      "score_id": "148668",
-      "rank": 1
+      "game": "LADYBUG",
+      "game_id": "113424",
+      "score": 9770,
+      "date": "2026-11-21 20:34:49",
+      "score_id": "388878"
+    },
+    {
+      "kind": "recent",
+      "player": "DON",
+      "game": "Guzzler",
+      "game_id": "113422",
+      "score": 14020,
+      "date": "2026-11-21 20:30:13",
+      "score_id": "388874"
     },
     {
       "kind": "recent",
@@ -3846,26 +3882,8 @@
       "score": 13750,
       "date": "2026-11-21 16:41:22",
       "score_id": "388678"
-    },
-    {
-      "kind": "recent",
-      "player": "VJG",
-      "game": "Joust II",
-      "game_id": "50258",
-      "score": 2250,
-      "date": "2026-11-21 16:26:03",
-      "score_id": "388674"
-    },
-    {
-      "kind": "recent",
-      "player": "VJG",
-      "game": "Jackal",
-      "game_id": "50048",
-      "score": 4400,
-      "date": "2026-11-21 16:12:12",
-      "score_id": "388669"
     }
   ],
-  "total_games": 265,
+  "total_games": 267,
   "total_players": 15
 }

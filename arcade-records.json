@@ -1,6 +1,28 @@
 {
-  "updated_at": "2026-11-22T02:31:09.108626+00:00",
+  "updated_at": "2026-11-22T03:46:09.920916+00:00",
   "records": [
+    {
+      "id": "388878",
+      "player": "DON",
+      "game": "LADYBUG",
+      "game_id": "113424",
+      "score": 9770,
+      "date": "2026-11-21 20:34:49",
+      "rank": 1,
+      "medal": "gold",
+      "record_type": "new_first_place"
+    },
+    {
+      "id": "388874",
+      "player": "DON",
+      "game": "Guzzler",
+      "game_id": "113422",
+      "score": 14020,
+      "date": "2026-11-21 20:30:13",
+      "rank": 1,
+      "medal": "gold",
+      "record_type": "new_first_place"
+    },
     {
       "id": "388766",
       "player": "VJG",
