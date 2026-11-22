@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "warning": "Pending evidence only: not verified trophies. Timestamps assumed Eastern; iScored approval status unconfirmed.",
-  "updated_at": "2026-11-22T16:40:06.571309+00:00",
+  "updated_at": "2026-11-22T22:08:10.782607+00:00",
   "unparseable_feed_dates": 0,
   "candidates": [
     {
@@ -256,6 +256,21 @@
       "submitted_at_assumed_et": "2026-11-21T20:19:02-05:00",
       "first_seen_at": "2026-11-22T07:30:36.123692+00:00",
       "last_seen_at": "2026-11-22T07:30:36.123692+00:00",
+      "verification": "pending_iscored_approval_and_timezone_review",
+      "awarded": false
+    },
+    {
+      "key": "daily:2026-11-22:50045:DON",
+      "kind": "daily",
+      "date": "2026-11-22",
+      "game_id": "50045",
+      "game": "GUN SMOKE",
+      "player": "DON",
+      "best_score": 24750,
+      "score_id": "389160",
+      "submitted_at_assumed_et": "2026-11-22T14:21:34-05:00",
+      "first_seen_at": "2026-11-22T22:08:10.782607+00:00",
+      "last_seen_at": "2026-11-22T22:08:10.782607+00:00",
       "verification": "pending_iscored_approval_and_timezone_review",
       "awarded": false
     }
