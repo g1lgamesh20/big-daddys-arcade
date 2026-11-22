@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "target_interval_minutes": 30,
-  "last_success_at": "2026-11-22T14:46:11.327792+00:00",
+  "last_success_at": "2026-11-22T16:01:11.102968+00:00",
   "last_trigger": "workflow_dispatch",
   "last_scheduled_success_at": "2026-11-22T08:49:18.393265+00:00",
   "previous_success_gap_minutes": 75.0,
