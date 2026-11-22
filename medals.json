@@ -1,6 +1,26 @@
 {
-  "updated_at": "2026-11-22T00:42:25.864917+00:00",
+  "updated_at": "2026-11-22T01:13:36.792626+00:00",
   "alerts": [
+    {
+      "id": "388744",
+      "player": "VJG",
+      "game": "Karate Champ",
+      "game_id": "50259",
+      "score": 1900,
+      "date": "2026-11-21 18:44:42",
+      "rank": 2,
+      "medal": "silver"
+    },
+    {
+      "id": "388730",
+      "player": "VJG",
+      "game": "Kangaroo",
+      "game_id": "50000",
+      "score": 6500,
+      "date": "2026-11-21 18:34:34",
+      "rank": 2,
+      "medal": "silver"
+    },
     {
       "id": "388717",
       "player": "VJG",
@@ -980,26 +1000,6 @@
       "date": "2026-11-05 20:39:50",
       "rank": 3,
       "medal": "bronze"
-    },
-    {
-      "id": "380733",
-      "player": "RDG",
-      "game": "Paperboy",
-      "game_id": "50245",
-      "score": 12275,
-      "date": "2026-11-05 20:39:30",
-      "rank": 2,
-      "medal": "silver"
-    },
-    {
-      "id": "380732",
-      "player": "SPC",
-      "game": "SUPER BREAKOUT",
-      "game_id": "112566",
-      "score": 168,
-      "date": "2026-11-05 20:39:20",
-      "rank": 1,
-      "medal": "gold"
     }
   ]
 }

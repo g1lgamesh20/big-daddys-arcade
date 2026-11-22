@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-22T00:42:25.864917+00:00",
+  "updated_at": "2026-11-22T01:13:36.792626+00:00",
   "source": "iScored public read API",
   "scoring_note": "PAPA-style estimate: top 1000 games per player; one best score per player per game; competition ties. iScored may handle ties differently.",
   "standings": [
@@ -21,10 +21,10 @@
     },
     {
       "player": "VJG",
-      "points": 4120,
-      "games": 45,
+      "points": 4300,
+      "games": 47,
       "gold": 10,
-      "silver": 30,
+      "silver": 32,
       "bronze": 1
     },
     {
@@ -3760,6 +3760,24 @@
     {
       "kind": "recent",
       "player": "VJG",
+      "game": "Karate Champ",
+      "game_id": "50259",
+      "score": 1900,
+      "date": "2026-11-21 18:44:42",
+      "score_id": "388744"
+    },
+    {
+      "kind": "recent",
+      "player": "VJG",
+      "game": "Kangaroo",
+      "game_id": "50000",
+      "score": 6500,
+      "date": "2026-11-21 18:34:34",
+      "score_id": "388730"
+    },
+    {
+      "kind": "recent",
+      "player": "VJG",
       "game": "Jungle King",
       "game_id": "49996",
       "score": 6500,
@@ -3846,24 +3864,6 @@
       "score": 3350,
       "date": "2026-11-21 13:27:31",
       "score_id": "388595"
-    },
-    {
-      "kind": "recent",
-      "player": "VJG",
-      "game": "Gradius",
-      "game_id": "50224",
-      "score": 15500,
-      "date": "2026-11-21 11:27:04",
-      "score_id": "388539"
-    },
-    {
-      "kind": "recent",
-      "player": "VJG",
-      "game": "Gorf",
-      "game_id": "50044",
-      "score": 4620,
-      "date": "2026-11-21 11:17:15",
-      "score_id": "388533"
     }
   ],
   "total_games": 265,
