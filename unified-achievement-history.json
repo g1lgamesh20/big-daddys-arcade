@@ -326,11 +326,22 @@
       "game_id": "50045",
       "game": "GUN SMOKE",
       "schedule_source": "daily-champion-history.json",
-      "participants": [],
+      "participants": [
+        "DON"
+      ],
       "champions": [],
-      "verified_results": [],
+      "verified_results": [
+        {
+          "player": "DON",
+          "role": "participant",
+          "score": 24750,
+          "score_id": "389160",
+          "verified": true,
+          "evidence_source": "verified-challenge-awards.json:verified_plays"
+        }
+      ],
       "unverified_candidates": [],
-      "verified_participant_count": 0,
+      "verified_participant_count": 1,
       "verified_champion_count": 0
     }
   ],
@@ -371,7 +382,7 @@
     },
     "DON": {
       "participation": {
-        "daily": 3,
+        "daily": 4,
         "thursday": 2,
         "monthly": 0
       },
@@ -381,7 +392,7 @@
         "monthly": 0
       },
       "longest_verified_streaks": {
-        "daily": 3,
+        "daily": 4,
         "thursday": 2,
         "monthly": 0
       }
