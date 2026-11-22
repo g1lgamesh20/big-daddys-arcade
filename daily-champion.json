@@ -1,12 +1,7 @@
 {
-  "updated_at": "2026-11-22T03:46:09.920916+00:00",
+  "updated_at": "2026-11-22T05:01:08.933914+00:00",
   "timezone": "America/New_York",
   "days": [
-    {
-      "date": "2026-11-20",
-      "game_id": "50930",
-      "game": "Mouse Trap"
-    },
     {
       "date": "2026-11-21",
       "game_id": "84699",
@@ -16,6 +11,11 @@
       "date": "2026-11-22",
       "game_id": "50045",
       "game": "GUN SMOKE"
+    },
+    {
+      "date": "2026-11-23",
+      "game_id": "50327",
+      "game": "Super Hang-On"
     }
   ]
 }

@@ -1296,13 +1296,13 @@
       "holders": [
         "SPC"
       ],
-      "game": "JR. PAC-MAN turbo",
+      "game": "JR. PAC-MAN",
       "winning_scores": [
         {
           "player": "SPC",
           "score": 68870,
           "score_id": "74344",
-          "game": "JR. PAC-MAN turbo"
+          "game": "JR. PAC-MAN"
         }
       ]
     },
@@ -1461,13 +1461,13 @@
       "holders": [
         "DON"
       ],
-      "game": "Star Trek w/Aurich Translite",
+      "game": "Star Trek",
       "winning_scores": [
         {
           "player": "DON",
           "score": 56575,
           "score_id": "74156",
-          "game": "Star Trek w/Aurich Translite"
+          "game": "Star Trek"
         }
       ]
     },

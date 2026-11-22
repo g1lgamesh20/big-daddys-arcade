@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-22T03:46:09.920916+00:00",
+  "updated_at": "2026-11-22T05:01:08.933914+00:00",
   "source": "iScored public read API",
   "scoring_note": "PAPA-style estimate: top 1000 games per player; one best score per player per game; competition ties. iScored may handle ties differently.",
   "standings": [
@@ -1297,7 +1297,7 @@
     },
     {
       "player": "SPC",
-      "game": "JR. PAC-MAN turbo",
+      "game": "JR. PAC-MAN",
       "game_id": "50172",
       "score": 68870,
       "date": "2024-01-21 00:23:56",
@@ -2107,7 +2107,7 @@
     },
     {
       "player": "DON",
-      "game": "Star Trek w/Aurich Translite",
+      "game": "Star Trek",
       "game_id": "50056",
       "score": 56575,
       "date": "2024-01-19 21:10:42",
