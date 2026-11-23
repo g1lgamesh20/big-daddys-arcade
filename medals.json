@@ -1,6 +1,66 @@
 {
-  "updated_at": "2026-11-23T00:32:26.554213+00:00",
+  "updated_at": "2026-11-23T01:46:09.332940+00:00",
   "alerts": [
+    {
+      "id": "389265",
+      "player": "VJG",
+      "game": "Moon Patrol",
+      "game_id": "50054",
+      "score": 9860,
+      "date": "2026-11-22 19:28:48",
+      "rank": 2,
+      "medal": "silver"
+    },
+    {
+      "id": "389247",
+      "player": "VJG",
+      "game": "LIBERATOR",
+      "game_id": "50263",
+      "score": 160,
+      "date": "2026-11-22 18:15:27",
+      "rank": 2,
+      "medal": "silver"
+    },
+    {
+      "id": "389245",
+      "player": "VJG",
+      "game": "MISSILE COMMAND",
+      "game_id": "50053",
+      "score": 2050,
+      "date": "2026-11-22 18:05:43",
+      "rank": 2,
+      "medal": "silver"
+    },
+    {
+      "id": "389243",
+      "player": "VJG",
+      "game": "Mario Bros.",
+      "game_id": "50064",
+      "score": 8940,
+      "date": "2026-11-22 18:01:48",
+      "rank": 2,
+      "medal": "silver"
+    },
+    {
+      "id": "389234",
+      "player": "VJG",
+      "game": "The Legend of Kage",
+      "game_id": "50236",
+      "score": 44500,
+      "date": "2026-11-22 17:44:28",
+      "rank": 2,
+      "medal": "silver"
+    },
+    {
+      "id": "389233",
+      "player": "VJG",
+      "game": "LADYBUG",
+      "game_id": "113424",
+      "score": 8430,
+      "date": "2026-11-22 17:40:26",
+      "rank": 2,
+      "medal": "silver"
+    },
     {
       "id": "388878",
       "player": "DON",
@@ -938,66 +998,6 @@
       "game_id": "86258",
       "score": 16260297,
       "date": "2026-11-05 21:26:11",
-      "rank": 2,
-      "medal": "silver"
-    },
-    {
-      "id": "380777",
-      "player": "SPC",
-      "game": "Outrun",
-      "game_id": "50101",
-      "score": 2955630,
-      "date": "2026-11-05 21:09:24",
-      "rank": 1,
-      "medal": "gold"
-    },
-    {
-      "id": "380775",
-      "player": "VJG",
-      "game": "afterburner 2",
-      "game_id": "50012",
-      "score": 1057640,
-      "date": "2026-11-05 21:09:12",
-      "rank": 1,
-      "medal": "gold"
-    },
-    {
-      "id": "380769",
-      "player": "RDG",
-      "game": "Star Wars",
-      "game_id": "50001",
-      "score": 469854,
-      "date": "2026-11-05 21:08:43",
-      "rank": 1,
-      "medal": "gold"
-    },
-    {
-      "id": "380760",
-      "player": "FO",
-      "game": "Outrun",
-      "game_id": "50101",
-      "score": 2756100,
-      "date": "2026-11-05 21:00:04",
-      "rank": 3,
-      "medal": "bronze"
-    },
-    {
-      "id": "380765",
-      "player": "DAY",
-      "game": "IRON MAN",
-      "game_id": "101612",
-      "score": 570000,
-      "date": "2026-11-05 20:59:37",
-      "rank": 1,
-      "medal": "gold"
-    },
-    {
-      "id": "380753",
-      "player": "DAY",
-      "game": "IRON MAN",
-      "game_id": "101612",
-      "score": 397000,
-      "date": "2026-11-05 20:43:55",
       "rank": 2,
       "medal": "silver"
     }

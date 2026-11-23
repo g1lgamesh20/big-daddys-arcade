@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-23T00:32:26.554213+00:00",
+  "updated_at": "2026-11-23T01:46:09.332940+00:00",
   "source": "iScored public read API",
   "scoring_note": "PAPA-style estimate: top 1000 games per player; one best score per player per game; competition ties. iScored may handle ties differently.",
   "standings": [
@@ -21,10 +21,10 @@
     },
     {
       "player": "VJG",
-      "points": 4569,
-      "games": 50,
+      "points": 5109,
+      "games": 56,
       "gold": 11,
-      "silver": 32,
+      "silver": 38,
       "bronze": 2
     },
     {
@@ -3777,6 +3777,60 @@
     },
     {
       "kind": "recent",
+      "player": "VJG",
+      "game": "Moon Patrol",
+      "game_id": "50054",
+      "score": 9860,
+      "date": "2026-11-22 19:28:48",
+      "score_id": "389265"
+    },
+    {
+      "kind": "recent",
+      "player": "VJG",
+      "game": "LIBERATOR",
+      "game_id": "50263",
+      "score": 160,
+      "date": "2026-11-22 18:15:27",
+      "score_id": "389247"
+    },
+    {
+      "kind": "recent",
+      "player": "VJG",
+      "game": "MISSILE COMMAND",
+      "game_id": "50053",
+      "score": 2050,
+      "date": "2026-11-22 18:05:43",
+      "score_id": "389245"
+    },
+    {
+      "kind": "recent",
+      "player": "VJG",
+      "game": "Mario Bros.",
+      "game_id": "50064",
+      "score": 8940,
+      "date": "2026-11-22 18:01:48",
+      "score_id": "389243"
+    },
+    {
+      "kind": "recent",
+      "player": "VJG",
+      "game": "The Legend of Kage",
+      "game_id": "50236",
+      "score": 44500,
+      "date": "2026-11-22 17:44:28",
+      "score_id": "389234"
+    },
+    {
+      "kind": "recent",
+      "player": "VJG",
+      "game": "LADYBUG",
+      "game_id": "113424",
+      "score": 8430,
+      "date": "2026-11-22 17:40:26",
+      "score_id": "389233"
+    },
+    {
+      "kind": "recent",
       "player": "DON",
       "game": "GUN SMOKE",
       "game_id": "50045",
@@ -3828,60 +3882,6 @@
       "score": 32300,
       "date": "2026-11-21 19:19:02",
       "score_id": "388778"
-    },
-    {
-      "kind": "recent",
-      "player": "VJG",
-      "game": "Kung fu master",
-      "game_id": "101603",
-      "score": 31930,
-      "date": "2026-11-21 19:09:13",
-      "score_id": "388766"
-    },
-    {
-      "kind": "recent",
-      "player": "VJG",
-      "game": "KID NIKI",
-      "game_id": "50261",
-      "score": 26400,
-      "date": "2026-11-21 18:54:29",
-      "score_id": "388749"
-    },
-    {
-      "kind": "recent",
-      "player": "VJG",
-      "game": "Karate Champ",
-      "game_id": "50259",
-      "score": 1900,
-      "date": "2026-11-21 18:44:42",
-      "score_id": "388744"
-    },
-    {
-      "kind": "recent",
-      "player": "VJG",
-      "game": "Kangaroo",
-      "game_id": "50000",
-      "score": 6500,
-      "date": "2026-11-21 18:34:34",
-      "score_id": "388730"
-    },
-    {
-      "kind": "recent",
-      "player": "VJG",
-      "game": "Jungle King",
-      "game_id": "49996",
-      "score": 6500,
-      "date": "2026-11-21 18:22:07",
-      "score_id": "388717"
-    },
-    {
-      "kind": "recent",
-      "player": "DON",
-      "game": "Contra (Arcade)",
-      "game_id": "84699",
-      "score": 76800,
-      "date": "2026-11-21 17:12:19",
-      "score_id": "388693"
     }
   ],
   "total_games": 267,
