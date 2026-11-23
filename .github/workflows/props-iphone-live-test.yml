@@ -1,0 +1,45 @@
+name: Give Props — LIVE iPhone Test (MANUAL APPROVAL)
+on:
+  workflow_dispatch:
+    inputs:
+      test_subscription_id:
+        description: 'Paste exact iPhone OneSignal Test Subscription UUID'
+        required: true
+        type: string
+      send_confirmation:
+        description: 'Type exactly: SEND TEST TO MY IPHONE ONLY'
+        required: true
+        type: string
+permissions:
+  contents: read
+concurrency:
+  group: props-iphone-manual-live-test
+  cancel-in-progress: false
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate target and confirmation offline
+        env:
+          TEST_SUBSCRIPTION_ID: ${{ inputs.test_subscription_id }}
+          SEND_CONFIRMATION: ${{ inputs.send_confirmation }}
+        run: |
+          python3 -m unittest discover -s tests -p 'test_props_iphone_live_test.py'
+          python3 - <<'PY'
+          import os,sys
+          sys.path.insert(0, 'tools')
+          from send_props_iphone_test import prepare
+          prepare(os.environ['TEST_SUBSCRIPTION_ID'], os.environ['SEND_CONFIRMATION'], os.environ['GITHUB_RUN_ID'])
+          print('PASS: exact iPhone subscription and explicit approval verified.')
+          PY
+      - name: Send ONE targeted test notification
+        env:
+          TEST_SUBSCRIPTION_ID: ${{ inputs.test_subscription_id }}
+          SEND_CONFIRMATION: ${{ inputs.send_confirmation }}
+          ONESIGNAL_REST_API_KEY: ${{ secrets.ONESIGNAL_REST_API_KEY }}
+        run: python3 tools/send_props_iphone_test.py
