@@ -53,5 +53,19 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git commit -m "Audit or record automatically verified challenge awards"
-          git pull --rebase origin main
-          git push origin HEAD:main
+          # Retry a fast-moving main branch, but fail closed on overlapping award edits.
+          for attempt in 1 2 3; do
+            git fetch origin main
+            if ! git rebase origin/main; then
+              git rebase --abort
+              echo 'Conflicting award update; refusing to overwrite verified trophy history.'
+              exit 1
+            fi
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            echo "Concurrent push rejected (attempt $attempt/3); retrying."
+            sleep $((attempt * 2))
+          done
+          echo 'Award push failed after three attempts.'
+          exit 1

@@ -39,6 +39,7 @@ jobs:
       - name: Test refresh heartbeat and gap calculations (offline)
         run: python tools/test_refresh_health.py
       - name: Download scores and update medal feed
+        id: score_download
         run: python tools/update_legends.py
       - name: Send new medal notifications
         env:
@@ -49,7 +50,8 @@ jobs:
           GITHUB_EVENT_NAME: ${{ github.event_name }}
         run: python tools/refresh_health.py
       - name: Commit updated scoreboard and notification state
-        if: always()
+        # Preserve notification dedupe state if sending fails, but never commit a failed score download.
+        if: ${{ always() && steps.score_download.outcome == 'success' }}
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
@@ -58,6 +60,21 @@ jobs:
           if [ -f refresh-health.json ]; then git add refresh-health.json; fi
           if ! git diff --cached --quiet; then
             git commit -m 'Refresh arcade legends and notification state'
-            git pull --rebase origin main
-            git push
+            # Other scheduled workflows also write to main. Retry non-conflicting push races;
+            # never auto-resolve a real merge conflict or repeat OneSignal sends.
+            for attempt in 1 2 3; do
+              git fetch origin main
+              if ! git rebase origin/main; then
+                git rebase --abort
+                echo 'Conflicting scoreboard update; refusing to overwrite another workflow.'
+                exit 1
+              fi
+              if git push origin HEAD:main; then
+                exit 0
+              fi
+              echo "Concurrent push rejected (attempt $attempt/3); retrying."
+              sleep $((attempt * 2))
+            done
+            echo 'Scoreboard push failed after three attempts.'
+            exit 1
           fi
