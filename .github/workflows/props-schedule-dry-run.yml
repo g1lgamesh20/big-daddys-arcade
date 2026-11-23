@@ -1,0 +1,28 @@
+name: Give Props Digest — Scheduler Dry Run
+on:
+  workflow_dispatch:
+  schedule:
+    # UTC 13:30–16:45 covers 09:30–11:00 ET in both EDT and EST.
+    # Python enforces the actual Eastern window. Cron runs may be delayed.
+    - cron: '30,45 13-16 * * *'
+    - cron: '0,15 14-16 * * *'
+permissions:
+  contents: read
+concurrency:
+  group: give-props-digest-dry-run
+  cancel-in-progress: false
+jobs:
+  dry-run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test Eastern schedule and state check
+        run: python3 -m unittest discover -s tests -p 'test_props_schedule.py'
+      - name: Dry-run scheduled digest (NO PUSH)
+        env:
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: python3 tools/dry_run_props_schedule.py ${{ github.event_name == 'workflow_dispatch' && '--manual-preview' || '' }}
