@@ -1,0 +1,21 @@
+name: Give Props Digest — Atomic Reservation Tests (Offline)
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'tools/test_props_reservation.py'
+      - 'supabase/props_digest_atomic_reservation.sql'
+      - '.github/workflows/props-atomic-reservation-tests.yml'
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Simulate concurrent claims without database writes
+        run: python3 tools/test_props_reservation.py
