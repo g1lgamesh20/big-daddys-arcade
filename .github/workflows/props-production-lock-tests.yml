@@ -1,0 +1,28 @@
+name: Give Props — Production Lock Tests (NO SEND)
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - '.github/workflows/props-production-broadcast.yml'
+      - '.github/workflows/props-production-lock-tests.yml'
+      - 'tests/test_props_production_workflow_lock.py'
+permissions:
+  contents: read
+jobs:
+  test-lock:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify broadcast remains locked by default
+        run: python3 -m unittest discover -s tests -p 'test_props_production_workflow_lock.py'
+      - name: Verify sender refuses unapproved execution
+        run: |
+          if python3 tools/send_props_digest.py; then
+            echo "FAIL: sender unexpectedly executed"
+            exit 1
+          fi
+          echo "PASS: sender remains disabled"
