@@ -15,7 +15,7 @@ def format_digest(day, entries):
     """Deterministic, bounded OneSignal-sized copy; no send side effects."""
     if not entries:
         return None
-    title = "🏆 Yesterday's Give Props!"
+    title = "👾 Yesterday's Arcade Reactions!"
     lines = [f"{giver} {EMOJI[reaction]} {recipient} — {game}"
              for giver, recipient, game, reaction in entries]
     body = ""
@@ -29,7 +29,7 @@ def format_digest(day, entries):
         body = candidate
         shown += 1
     if shown == 0:
-        body = f"{len(lines)} Give Props shared yesterday! 🕹️"
+        body = f"{len(lines)} arcade reactions shared yesterday! 🕹️"
     elif shown < len(lines):
         body += f" (+{len(lines) - shown} more)"
     return title, body
