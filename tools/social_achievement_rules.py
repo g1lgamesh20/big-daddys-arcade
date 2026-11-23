@@ -25,7 +25,7 @@ NAMES = {
         25: 'Trash Talk Legend', 50: 'Master of Banter', 100: 'Arcade Mouthpiece',
     },
     'give_props': {
-        1: 'Props Giver', 5: 'High Five', 10: 'Good Sport',
+        1: 'Props Giver', 5: 'Hi 5!', 10: 'Good Sport',
         25: 'Hype Squad', 50: 'Community Champion', 100: 'Props Legend',
     },
 }
