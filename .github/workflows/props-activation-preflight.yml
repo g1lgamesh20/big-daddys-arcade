@@ -1,0 +1,26 @@
+name: Give Props — Activation Preflight (NO SEND)
+on:
+  workflow_dispatch:
+  schedule:
+    # Frequent UTC slots cover 09:30–11:00 in EDT and EST.
+    # Actual time gate is in Python; scheduled runs can be delayed/skipped.
+    - cron: '30,45 13-15 * * *'
+    - cron: '0,15 14-16 * * *'
+permissions:
+  contents: read
+concurrency:
+  group: props-activation-preflight
+  cancel-in-progress: false
+jobs:
+  preflight:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test Eastern windows, DST, duplicate and delayed runs
+        run: python3 -m unittest discover -s tests -p 'test_props_activation_preflight.py'
+      - name: Schedule preflight (no credentials, no network)
+        run: python3 tools/props_activation_preflight.py
