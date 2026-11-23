@@ -343,6 +343,20 @@
       "unverified_candidates": [],
       "verified_participant_count": 1,
       "verified_champion_count": 0
+    },
+    {
+      "event_key": "daily:2026-11-23",
+      "kind": "daily",
+      "date": "2026-11-23",
+      "game_id": "50327",
+      "game": "Super Hang-On",
+      "schedule_source": "daily-champion.json",
+      "participants": [],
+      "champions": [],
+      "verified_results": [],
+      "unverified_candidates": [],
+      "verified_participant_count": 0,
+      "verified_champion_count": 0
     }
   ],
   "players": {
