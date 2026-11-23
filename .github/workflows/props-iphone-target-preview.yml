@@ -1,0 +1,25 @@
+name: Give Props — iPhone Single-Subscription Preview (NO SEND)
+on:
+  workflow_dispatch:
+    inputs:
+      test_subscription_id:
+        description: 'Exact OneSignal Subscription ID of your iPhone Test Subscription (UUID)'
+        required: true
+        type: string
+permissions:
+  contents: read
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Offline iPhone target tests
+        run: python3 -m unittest discover -s tests -p 'test_props_iphone_test.py'
+      - name: Preview single-target request (NO SEND)
+        env:
+          TEST_SUBSCRIPTION_ID: ${{ inputs.test_subscription_id }}
+        run: python3 tools/preview_props_iphone_test.py
