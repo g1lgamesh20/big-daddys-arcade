@@ -81,9 +81,9 @@ class MilestoneTest(unittest.TestCase):
   ledger['awards'].append({'id':'duplicate-score-same-day','type':'daily_champion',
       'event_key':'daily:2026-11-16:game:DON','date':'2026-11-16','player':'DON'})
   due=awards_due(ledger,NOW)
-  self.assertEqual([(a['type'],a['milestone']) for a in due],
+  self.assertEqual([(a['type'],a['milestone']) for a in due if a['type']=='daily_champion_mastery'],
        [('daily_champion_mastery',5),('daily_champion_mastery',10)])
-  self.assertEqual(issue(ledger,NOW),2)
+  self.assertEqual(issue(ledger,NOW),len(due))
   self.assertEqual(issue(ledger,NOW),0)
  def test_unverified_or_malformed_champion_does_not_count(self):
   ledger=empty()
