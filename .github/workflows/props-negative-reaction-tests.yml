@@ -1,0 +1,26 @@
+name: Arcade Reactions — Inclusive Digest Tests (NO SEND)
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'tools/preview_props_reconciliation.py'
+      - 'tools/preview_props_message.py'
+      - 'tools/props_delivery_integration.py'
+      - 'tests/test_props_negative_reactions.py'
+      - 'tests/test_props_reconciliation_edges.py'
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test inclusive digest and reconciliation
+        run: |
+          python3 -m unittest discover -s tests -p 'test_props_negative_reactions.py'
+          python3 -m unittest discover -s tests -p 'test_props_reconciliation_edges.py'
+          python3 -m unittest discover -s tests -p 'test_props_delivery_integration.py'
