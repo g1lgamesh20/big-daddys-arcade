@@ -41,7 +41,7 @@ def plan_delivery(day, entries, conflicts, ledger_rows):
         return "BLOCKED: " + state, None
     payload = build_payload(day, entries)
     if payload is None:
-        return "SKIP: no eligible positive Props", None
+        return "SKIP: no eligible arcade reactions", None
     validate_payload(payload, day)
     return "READY FOR FUTURE RESERVATION (NOT AUTHORIZED TO SEND)", payload
 
