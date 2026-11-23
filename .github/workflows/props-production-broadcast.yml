@@ -1,0 +1,48 @@
+name: Give Props — Production Broadcast (LOCKED)
+on:
+  workflow_dispatch:
+  schedule:
+    # UTC slots covering 09:30–11:00 ET in EST and EDT.
+    # The sender enforces the actual Eastern window.
+    - cron: '30,45 13-15 * * *'
+    - cron: '0,15 14-16 * * *'
+permissions:
+  contents: read
+concurrency:
+  group: give-props-production-broadcast
+  cancel-in-progress: false
+jobs:
+  activation-status:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Report lock state without secrets
+        env:
+          BROADCAST_ENABLED: ${{ vars.PROPS_DIGEST_BROADCAST_ENABLED }}
+        run: |
+          if [ "$BROADCAST_ENABLED" = "true" ]; then
+            echo "Activation variable is enabled. Sender's Eastern time and database gates still apply."
+          else
+            echo "LOCKED: PROPS_DIGEST_BROADCAST_ENABLED is not true. No production job will start."
+          fi
+
+  production-send:
+    needs: activation-status
+    if: ${{ vars.PROPS_DIGEST_BROADCAST_ENABLED == 'true' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    environment: props-digest-production
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run fail-closed sender unit tests
+        run: python3 -m unittest discover -s tests -p 'test_props_sender.py'
+      - name: Send at most one eligible digest for previous Eastern day
+        env:
+          ENABLE_PROPS_COMMUNITY_SEND: 'true'
+          PROPS_SEND_CONFIRMATION: 'ENABLE COMMUNITY GIVE PROPS DIGEST'
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          ONESIGNAL_REST_API_KEY: ${{ secrets.ONESIGNAL_REST_API_KEY }}
+        run: python3 tools/send_props_digest.py
