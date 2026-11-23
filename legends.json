@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-23T01:46:09.332940+00:00",
+  "updated_at": "2026-11-23T03:01:11.598958+00:00",
   "source": "iScored public read API",
   "scoring_note": "PAPA-style estimate: top 1000 games per player; one best score per player per game; competition ties. iScored may handle ties differently.",
   "standings": [
@@ -21,8 +21,8 @@
     },
     {
       "player": "VJG",
-      "points": 5109,
-      "games": 56,
+      "points": 5193,
+      "games": 57,
       "gold": 11,
       "silver": 38,
       "bronze": 2
@@ -53,7 +53,7 @@
     },
     {
       "player": "RPS",
-      "points": 1954,
+      "points": 1953,
       "games": 22,
       "gold": 4,
       "silver": 7,
@@ -3778,6 +3778,15 @@
     {
       "kind": "recent",
       "player": "VJG",
+      "game": "Ms. Pac-Man",
+      "game_id": "101598",
+      "score": 17340,
+      "date": "2026-11-22 19:47:14",
+      "score_id": "389268"
+    },
+    {
+      "kind": "recent",
+      "player": "VJG",
       "game": "Moon Patrol",
       "game_id": "50054",
       "score": 9860,
@@ -3873,15 +3882,6 @@
       "score": 180760,
       "date": "2026-11-21 19:22:59",
       "score_id": "388782"
-    },
-    {
-      "kind": "recent",
-      "player": "VJG",
-      "game": "Contra (Arcade)",
-      "game_id": "84699",
-      "score": 32300,
-      "date": "2026-11-21 19:19:02",
-      "score_id": "388778"
     }
   ],
   "total_games": 267,
