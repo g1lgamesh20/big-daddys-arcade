@@ -1,0 +1,20 @@
+name: Give Props — Production Integration Preview (NO SEND)
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Offline fail-closed integration tests
+        run: python3 -m unittest discover -s tests -p 'test_props_delivery_integration.py'
+      - name: Live read-only reconciliation and delivery planning
+        env:
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: python3 tools/props_delivery_integration.py
