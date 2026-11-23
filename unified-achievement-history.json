@@ -350,7 +350,7 @@
       "date": "2026-11-23",
       "game_id": "50327",
       "game": "Super Hang-On",
-      "schedule_source": "daily-champion.json",
+      "schedule_source": "daily-champion-history.json",
       "participants": [],
       "champions": [],
       "verified_results": [],
