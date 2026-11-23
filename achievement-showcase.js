@@ -89,6 +89,23 @@
   add('easter_egg','special','❓','Easter Egg',"It's a Secret to Everybody.",'easter_egg',0,
       'planned','Secret discovery achievement. Unlocking mechanism is not displayed.');
 
+  // Wave 2 secret trophies: catalog-only until trustworthy immutable score
+  // submission/record-history evidence is available. Never infer from current rank.
+  const secretWave2=[
+    ['high_five','🖐️','HIGH FIVE!','Five different games. One legendary day. HIGH FIVE!'],
+    ['night_owl','🦉','NIGHT OWL','Legends never sleep.'],
+    ['back_from_the_dead','🔥','BACK FROM THE DEAD','You thought I was finished?'],
+    ['double_trouble','🎮','DOUBLE TROUBLE','Two games. Two crowns. One legend.'],
+    ['photo_finish','🎯','PHOTO FINISH','Missed it by THAT much!'],
+    ['king_for_a_day','👑','KING FOR A DAY','Enjoy the view while it lasts.'],
+    ['treasure_hunter','💎','TREASURE HUNTER','Nobody saw that coming.'],
+    ['arcade_hopper','🕹️','ARCADE HOPPER',"Can't pick a favorite!"],
+    ['just_in_time','⏰','JUST IN TIME','Talk about cutting it close!']
+  ];
+  for(const [id,emoji,name,description] of secretWave2)
+    add('secret_'+id,'special',emoji,name,description,'secret_'+id,0,'planned',
+      'Hidden Wave 2 trophy. Awaiting verified historical evidence before automatic issuance.');
+
   let awards=[],plays=[],history={},goldState={},players=[],selected='',category='all',previousFocus=null,loading=false;
   const el=(tag,cls,text)=>{
     const node=document.createElement(tag);
@@ -135,6 +152,8 @@
       return playerAwards.some(a=>a.id==='golden_encore:'+player+':'+entry.threshold);
     if(entry.kind.endsWith('_participation')||entry.kind.endsWith('_streak'))
       return playerAwards.some(a=>a.id===entry.kind.replace('_participation','_participation').replace('_streak','_streak')+':'+player+':'+entry.threshold);
+    if(entry.kind.startsWith('secret_') || entry.kind==='easter_egg')
+      return playerAwards.some(a=>a.type===entry.kind || a.id===entry.kind+':'+player);
     return false;
   }
   function progress(player,entry){
@@ -146,17 +165,19 @@
   function createTile(entry){
     const won=Boolean(selected)&&unlocked(selected,entry);
     const planned=entry.status==='planned';
+    const secret=entry.kind.startsWith('secret_') || entry.kind==='easter_egg';
+    const concealed=secret&&!won;
     const tile=el('article','achievement-tile'+(won?' achievement-tile-earned':'')+(planned?' achievement-tile-planned':''));
     // Compact by default: no descriptions, progress bars or notes are
     // mounted until the player actually taps an achievement.
     const toggle=el('button','achievement-tile-toggle');
     toggle.type='button';
     toggle.setAttribute('aria-expanded','false');
-    toggle.setAttribute('aria-label','Show how to earn '+entry.name);
-    const glyph=el('span','achievement-tile-glyph',entry.emoji);
+    toggle.setAttribute('aria-label',concealed?'Show mystery achievement':'Show details for '+entry.name);
+    const glyph=el('span','achievement-tile-glyph',concealed?'❓':entry.emoji);
     glyph.setAttribute('aria-hidden','true');
-    const title=el('span','achievement-tile-name',entry.name);
-    const status=el('span','achievement-tile-status',planned?'COMING SOON':won?'★ UNLOCKED':'🔒 LOCKED');
+    const title=el('span','achievement-tile-name',concealed?'Secret Achievement':entry.name);
+    const status=el('span','achievement-tile-status',won?'★ UNLOCKED':planned?'COMING SOON':'🔒 LOCKED');
     const chevron=el('span','achievement-tile-chevron','⌄');
     chevron.setAttribute('aria-hidden','true');
     toggle.append(glyph,title,status,chevron);
@@ -165,7 +186,7 @@
     toggle.addEventListener('click',()=>{
       const expanding=detail.hidden;
       if(expanding&&!detail.dataset.built){
-        detail.append(el('p','achievement-tile-desc',entry.description));
+        detail.append(el('p','achievement-tile-desc',concealed?'A mystery trophy. Its name and unlock condition are hidden until earned.':entry.description));
         if(entry.threshold&&!planned&&(entry.kind==='golden_encore'||entry.kind.endsWith('_participation')||entry.kind.endsWith('_streak'))){
           const n=selected?progress(selected,entry):0;
           detail.append(el('p','achievement-tile-progress',
@@ -192,12 +213,12 @@
           });
           if(matches[0]?.date)detail.append(el('p','achievement-tile-earned-date','EARNED '+matches[0].date));
         }
-        if(entry.note)detail.append(el('p','achievement-tile-note',entry.note));
+        if(entry.note&&!concealed)detail.append(el('p','achievement-tile-note',entry.note));
         detail.dataset.built='yes';
       }
       detail.hidden=!expanding;
       toggle.setAttribute('aria-expanded',String(expanding));
-      toggle.setAttribute('aria-label',(expanding?'Hide details for ':'Show how to earn ')+entry.name);
+      toggle.setAttribute('aria-label',concealed?'Mystery achievement':(expanding?'Hide details for ':'Show details for ')+entry.name);
       tile.classList.toggle('achievement-tile-expanded',expanding);
     });
     tile.append(toggle,detail);
