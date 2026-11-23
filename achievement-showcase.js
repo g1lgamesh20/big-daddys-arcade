@@ -106,10 +106,25 @@
     ['arcade_hopper','🕹️','ARCADE HOPPER',"Can't pick a favorite!"],
     ['just_in_time','⏰','JUST IN TIME','Talk about cutting it close!']
   ];
+  secretWave2.push(['props_machine','🙌','PROPS MACHINE!','Three cheers in one day!']);
   for(const [id,emoji,name,description] of secretWave2)
     add('secret_'+id,'special',emoji,name,description,'secret_'+id,0,'planned',
       'Hidden Wave 2 trophy. Awaiting verified historical evidence before automatic issuance.');
 
+  // These are discovery hints only; no client-side action can award a trophy.
+  const SECRET_GOALS={
+    secret_high_five:'Submit approved scores on five different games in one Eastern day.',
+    secret_night_owl:'Submit an approved score between midnight and 3:00 AM Eastern.',
+    secret_back_from_the_dead:'Regain a #1 record you previously held and lost.',
+    secret_double_trouble:'Take #1 on two different games in one Eastern day.',
+    secret_photo_finish:'Finish strictly below, but within 1% of, the verified #1 score at submission time.',
+    secret_king_for_a_day:'Hold a #1 record for a full day before someone overtakes it.',
+    secret_treasure_hunter:'Earn the first verified #1 on a game with no previous medal holders.',
+    secret_arcade_hopper:'Submit approved scores on ten different games within seven consecutive days.',
+    secret_just_in_time:'Beat the locked starting Daily Champion in the last five minutes before Eastern midnight.',
+    secret_props_machine:'Give Props to three different players on one Eastern calendar day.'
+  };
+  const revealedSecrets=new Set(); // Temporary for this open session, never persisted.
   let awards=[],plays=[],history={},goldState={},players=[],selected='',category='all',previousFocus=null,loading=false;
   const el=(tag,cls,text)=>{
     const node=document.createElement(tag);
@@ -173,7 +188,7 @@
     const won=Boolean(selected)&&unlocked(selected,entry);
     const planned=entry.status==='planned';
     const secret=entry.kind.startsWith('secret_') || entry.kind==='easter_egg';
-    const concealed=secret&&!won;
+    const concealed=secret&&!won&&!revealedSecrets.has(entry.id);
     const tile=el('article','achievement-tile'+(won?' achievement-tile-earned':'')+(planned?' achievement-tile-planned':''));
     // Compact by default: no descriptions, progress bars or notes are
     // mounted until the player actually taps an achievement.
@@ -190,10 +205,32 @@
     toggle.append(glyph,title,status,chevron);
     const detail=el('div','achievement-tile-details');
     detail.hidden=true;
+    const reveal=()=>{
+      if(!secret||won||revealedSecrets.has(entry.id))return;
+      revealedSecrets.add(entry.id);
+      // Rebuild this tile so the newly revealed title and goal appear together.
+      tile.replaceWith(createTile(entry));
+      const refreshed=[...gallery.querySelectorAll('.achievement-tile')].find(t=>t.querySelector('.achievement-tile-name')?.textContent===entry.name);
+      if(refreshed){const b=refreshed.querySelector('.achievement-tile-toggle');b?.focus();b?.click();}
+    };
+    if(secret&&!won){
+      let holdTimer=null;
+      const cancel=()=>{if(holdTimer!==null){clearTimeout(holdTimer);holdTimer=null;}};
+      const start=()=>{cancel();if(!revealedSecrets.has(entry.id))holdTimer=setTimeout(()=>{holdTimer=null;reveal();},7000);};
+      toggle.addEventListener('pointerdown',e=>{if(e.button!==0)return;start();});
+      for(const event of ['pointerup','pointercancel','pointerleave','blur','contextmenu'])toggle.addEventListener(event,cancel);
+      toggle.addEventListener('contextmenu',e=>{e.preventDefault();});
+      toggle.addEventListener('keydown',e=>{if(e.key===' '||e.key==='Enter'){if(e.repeat)return;start();}});
+      toggle.addEventListener('keyup',e=>{if(e.key===' '||e.key==='Enter')cancel();});
+      toggle.style.userSelect='none';toggle.style.webkitUserSelect='none';
+      toggle.style.webkitTouchCallout='none';
+    }
     toggle.addEventListener('click',()=>{
       const expanding=detail.hidden;
       if(expanding&&!detail.dataset.built){
         detail.append(el('p','achievement-tile-desc',concealed?'A mystery trophy. Its name and unlock condition are hidden until earned.':entry.description));
+        if(secret&&!concealed&&entry.kind!=='easter_egg'&&SECRET_GOALS[entry.id])
+          detail.append(el('p','achievement-tile-desc',SECRET_GOALS[entry.id]));
         if(entry.threshold&&!planned&&(entry.kind==='golden_encore'||entry.kind==='daily_champion_mastery'||entry.kind.endsWith('_participation')||entry.kind.endsWith('_streak'))){
           const n=selected?progress(selected,entry):0;
           detail.append(el('p','achievement-tile-progress',
@@ -220,7 +257,7 @@
           });
           if(matches[0]?.date)detail.append(el('p','achievement-tile-earned-date','EARNED '+matches[0].date));
         }
-        if(entry.note&&!concealed)detail.append(el('p','achievement-tile-note',entry.note));
+        if(entry.note&&!concealed&&(!secret||won))detail.append(el('p','achievement-tile-note',entry.note));
         detail.dataset.built='yes';
       }
       detail.hidden=!expanding;
