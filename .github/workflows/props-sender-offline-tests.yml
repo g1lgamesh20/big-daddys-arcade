@@ -1,0 +1,28 @@
+name: Give Props — Production Sender OFFLINE Tests (DISABLED)
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'tools/send_props_digest.py'
+      - 'tests/test_props_sender.py'
+      - '.github/workflows/props-sender-offline-tests.yml'
+permissions:
+  contents: read
+jobs:
+  offline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run sender tests with mock network functions
+        run: python3 -m unittest discover -s tests -p 'test_props_sender.py'
+      - name: Verify disabled sender refuses execution before credentials or network
+        run: |
+          if python3 tools/send_props_digest.py; then
+            echo "FAIL: sender must be disabled"
+            exit 1
+          fi
+          echo "PASS: production sender remains disabled"
