@@ -60,6 +60,10 @@
           'Participate in '+threshold+' consecutive '+label+'. Streaks count verified challenge events, not approval dates.',
           kind+'_streak',threshold);
   }
+  for(const [threshold,name,emoji] of [[5,'Champion Slayer','⚔️'],[10,'Champion Hunter','🔥'],[25,'Champion Crusher','👑'],[50,'Legend of Champions','🏆'],[100,'The Unstoppable','💎']])
+    add('daily_champion_mastery:'+threshold,'gold',emoji,name,
+        'Defeat the locked starting Daily Champion on '+threshold+' different Eastern calendar days with qualifying approved scores. Earlier milestones remain earned.',
+        'daily_champion_mastery',threshold);
   for(const [threshold,name,emoji] of [[1,'Golden Encore','🥇'],[5,'Gold Rush','🔥'],[10,'Untouchable','👑']])
     add('golden_encore:'+threshold,'gold',emoji,name,
         'Improve an already-held Gold-leading score on '+threshold+' qualifying occasion'+(threshold===1?'':'s')+'. First-time Gold does not count.',
@@ -148,6 +152,8 @@
       return playerAwards.some(a=>a.type==='gotm_beat_average');
     if(entry.kind==='monthly_podium')
       return playerAwards.some(a=>a.type==='gotm_podium_'+entry.threshold);
+    if(entry.kind==='daily_champion_mastery')
+      return playerAwards.some(a=>a.id==='daily_champion_mastery:'+player+':'+entry.threshold);
     if(entry.kind==='golden_encore')
       return playerAwards.some(a=>a.id==='golden_encore:'+player+':'+entry.threshold);
     if(entry.kind.endsWith('_participation')||entry.kind.endsWith('_streak'))
@@ -157,6 +163,7 @@
     return false;
   }
   function progress(player,entry){
+    if(entry.kind==='daily_champion_mastery')return new Set(awardsOf(player,'daily_champion').map(a=>String(a.date||'')).filter(Boolean)).size;
     if(entry.kind==='golden_encore')return goldImprovements(player);
     if(entry.kind.endsWith('_participation'))return count(player,entry.kind.split('_')[0]);
     if(entry.kind.endsWith('_streak'))return streak(player,entry.kind.split('_')[0]);
@@ -187,7 +194,7 @@
       const expanding=detail.hidden;
       if(expanding&&!detail.dataset.built){
         detail.append(el('p','achievement-tile-desc',concealed?'A mystery trophy. Its name and unlock condition are hidden until earned.':entry.description));
-        if(entry.threshold&&!planned&&(entry.kind==='golden_encore'||entry.kind.endsWith('_participation')||entry.kind.endsWith('_streak'))){
+        if(entry.threshold&&!planned&&(entry.kind==='golden_encore'||entry.kind==='daily_champion_mastery'||entry.kind.endsWith('_participation')||entry.kind.endsWith('_streak'))){
           const n=selected?progress(selected,entry):0;
           detail.append(el('p','achievement-tile-progress',
             selected?'PROGRESS: '+Math.min(n,entry.threshold)+' / '+entry.threshold:'SELECT A PLAYER TO SEE PROGRESS'));

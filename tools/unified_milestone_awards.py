@@ -20,6 +20,7 @@ STREAKS={
   'thursday':((3,'Three-Thursday Streak'),(5,'Five-Thursday Streak')),
   'monthly':((3,'Three-Month Streak'),(6,'Six-Month Streak')),
 }
+DAILY_CHAMPION_MILESTONES=((5,'Champion Slayer'),(10,'Champion Hunter'),(25,'Champion Crusher'),(50,'Legend of Champions'),(100,'The Unstoppable'))
 CHAMPION={'daily_champion':'daily','thursday_champion':'thursday','gotm_champion':'monthly'}
 
 def day_for(kind,value):
@@ -71,6 +72,27 @@ def awards_due(ledger,now):
     seen={str(a.get('id')) for a in ledger['awards'] if isinstance(a,dict)}
     new=[]
     as_of=now.astimezone(ZoneInfo('America/New_York')).date()
+    # Each operator-verified Daily Champion award counts once per player/event day.
+    champion_days=defaultdict(set)
+    for award in ledger['awards']:
+        if not isinstance(award,dict) or award.get('type')!='daily_champion':continue
+        player=str(award.get('player') or '').strip().upper()
+        day=day_for('daily',award.get('date'))
+        event_key=award.get('event_key')
+        if player and day and isinstance(event_key,str) and event_key.startswith('daily:'+day.isoformat()+':') and day<=as_of:
+            champion_days[player].add(day)
+    for player,found in sorted(champion_days.items()):
+        ordered=sorted(found)
+        for threshold,name in DAILY_CHAMPION_MILESTONES:
+            if len(ordered)<threshold:continue
+            key=f'daily_champion_mastery:{player}:{threshold}'
+            if key in seen:continue
+            new.append({'id':key,'event_key':key,'type':'daily_champion_mastery',
+                'name':name,'date':ordered[threshold-1].isoformat(),'player':player,
+                'game':'Beat the Champion','milestone':threshold,
+                'verified_at':now.isoformat(),
+                'verification_method':'permanent_verified_daily_champion_award_history'})
+            seen.add(key)
     for (player,kind),found in sorted(activity(ledger).items()):
         ordered=sorted(d for d in found if d<=as_of)
         if kind in MILESTONES:

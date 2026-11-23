@@ -72,6 +72,26 @@ class MilestoneTest(unittest.TestCase):
    add_day(ledger,'daily',day)
   self.assertEqual(awards_due(ledger,datetime(2026,11,17,tzinfo=timezone.utc)),[])
 
+ def test_daily_champion_gold_mastery_stacks_and_deduplicates(self):
+  ledger=empty()
+  for n in range(10):
+   day=(datetime(2026,11,16,tzinfo=timezone.utc)+timedelta(days=n)).date().isoformat()
+   ledger['awards'].append({'id':f'daily_champion:{day}:DON','type':'daily_champion',
+       'event_key':f'daily:{day}:game:DON','date':day,'player':'DON'})
+  ledger['awards'].append({'id':'duplicate-score-same-day','type':'daily_champion',
+      'event_key':'daily:2026-11-16:game:DON','date':'2026-11-16','player':'DON'})
+  due=awards_due(ledger,NOW)
+  self.assertEqual([(a['type'],a['milestone']) for a in due if a['type']=='daily_champion_mastery'],
+       [('daily_champion_mastery',5),('daily_champion_mastery',10)])
+  self.assertEqual(issue(ledger,NOW),len(due))
+  self.assertEqual(issue(ledger,NOW),0)
+ def test_unverified_or_malformed_champion_does_not_count(self):
+  ledger=empty()
+  for n in range(6):
+   day=(datetime(2026,11,16,tzinfo=timezone.utc)+timedelta(days=n)).date().isoformat()
+   ledger['awards'].append({'type':'daily_champion','date':day,'player':'DON',
+       'event_key':'unverified:'+day})
+  self.assertEqual(awards_due(ledger,NOW),[])
  def test_candidate_scores_cannot_issue_rewards(self):
   ledger=empty();ledger['candidates']=[{'kind':'thursday','player':'DON','date':'2026-11-12'}]
   self.assertEqual(awards_due(ledger,NOW),[])
