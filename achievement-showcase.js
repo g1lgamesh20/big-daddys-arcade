@@ -69,7 +69,7 @@
   // The existing browser-entered initials and device token are NOT award proof.
   const socialMilestones=[
     [1,'Trash Talk Rookie','Props Giver'],
-    [5,'Trash Talk Regular','High Five'],
+    [5,'Trash Talk Regular','Hi 5!'],
     [10,'Trash Talk Veteran','Good Sport'],
     [25,'Trash Talk Legend','Hype Squad'],
     [50,'Master of Banter','Community Champion'],
