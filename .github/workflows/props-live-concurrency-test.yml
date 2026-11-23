@@ -1,0 +1,21 @@
+name: Give Props Digest — Isolated Live Concurrency Test
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: props-isolated-concurrency-test
+  cancel-in-progress: false
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test concurrent database claims in isolated probe table
+        env:
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: python3 tools/test_props_live_concurrency.py
