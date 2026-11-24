@@ -1,4 +1,4 @@
-name: Refresh Hall of Legends scores
+name: Refresh Hall of Legends Scores
 on:
   schedule:
     - cron: '13,43 * * * *'
