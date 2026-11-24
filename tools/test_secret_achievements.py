@@ -44,7 +44,8 @@ class Secrets(unittest.TestCase):
         # Use historical dates (not future dates) so this actually tests the window.
         days=[20,20,21,22,23,24,25,27,27,27]
         rows=[score(i,i,'2026-11-%02dT12:00:00-05:00'%day) for i,day in enumerate(days)]
-        _,awards=run(rows)
+        future_now=datetime(2026,11,28,12,tzinfo=ET)
+        _,awards=evaluate(rows,ledger(),future_now,trusted_approved_feed=True)
         self.assertNotIn('secret_arcade_hopper',[a['type'] for a in awards])
     def test_seven_day_window_inclusive(self):
         days=[20,20,21,22,23,24,25,26,26,26]
