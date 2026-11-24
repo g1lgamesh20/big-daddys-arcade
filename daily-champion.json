@@ -1,12 +1,7 @@
 {
-  "updated_at": "2026-11-24T04:54:49.427377+00:00",
+  "updated_at": "2026-11-24T06:01:09.878187+00:00",
   "timezone": "America/New_York",
   "days": [
-    {
-      "date": "2026-11-22",
-      "game_id": "50045",
-      "game": "GUN SMOKE"
-    },
     {
       "date": "2026-11-23",
       "game_id": "50327",
@@ -16,6 +11,11 @@
       "date": "2026-11-24",
       "game_id": "50165",
       "game": "Rampage"
+    },
+    {
+      "date": "2026-11-25",
+      "game_id": "50062",
+      "game": "Mappy"
     }
   ]
 }
