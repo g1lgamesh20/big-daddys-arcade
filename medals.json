@@ -1,6 +1,56 @@
 {
-  "updated_at": "2026-11-24T00:20:57.353517+00:00",
+  "updated_at": "2026-11-24T01:31:14.901993+00:00",
   "alerts": [
+    {
+      "id": "389442",
+      "player": "VJG",
+      "game": "Super Hang-On",
+      "game_id": "50327",
+      "score": 1812500,
+      "date": "2026-11-23 19:00:12",
+      "rank": 1,
+      "medal": "gold"
+    },
+    {
+      "id": "389440",
+      "player": "DON",
+      "game": "Super Hang-On",
+      "game_id": "50327",
+      "score": 1783950,
+      "date": "2026-11-23 18:58:18",
+      "rank": 2,
+      "medal": "silver"
+    },
+    {
+      "id": "389429",
+      "player": "VJG",
+      "game": "Mortal Kombat - Arcade",
+      "game_id": "73289",
+      "score": 857000,
+      "date": "2026-11-23 18:40:59",
+      "rank": 1,
+      "medal": "gold"
+    },
+    {
+      "id": "389427",
+      "player": "VJG",
+      "game": "Mr. Do's Castle",
+      "game_id": "50231",
+      "score": 8260,
+      "date": "2026-11-23 18:40:00",
+      "rank": 2,
+      "medal": "silver"
+    },
+    {
+      "id": "389426",
+      "player": "VJG",
+      "game": "NIBBLER",
+      "game_id": "50240",
+      "score": 6540,
+      "date": "2026-11-23 18:39:07",
+      "rank": 2,
+      "medal": "silver"
+    },
     {
       "id": "389265",
       "player": "VJG",
@@ -948,56 +998,6 @@
       "game_id": "50101",
       "score": 2884800,
       "date": "2026-11-05 21:30:33",
-      "rank": 2,
-      "medal": "silver"
-    },
-    {
-      "id": "380796",
-      "player": "KAK",
-      "game": "BurgerTime",
-      "game_id": "50024",
-      "score": 19550,
-      "date": "2026-11-05 21:27:45",
-      "rank": 1,
-      "medal": "gold"
-    },
-    {
-      "id": "380785",
-      "player": "FO",
-      "game": "Aliens",
-      "game_id": "86264",
-      "score": 2474000,
-      "date": "2026-11-05 21:27:08",
-      "rank": 2,
-      "medal": "silver"
-    },
-    {
-      "id": "380787",
-      "player": "KAK",
-      "game": "Paperboy",
-      "game_id": "50245",
-      "score": 23547,
-      "date": "2026-11-05 21:26:51",
-      "rank": 1,
-      "medal": "gold"
-    },
-    {
-      "id": "380791",
-      "player": "POD",
-      "game": "SUPER BREAKOUT",
-      "game_id": "112566",
-      "score": 283,
-      "date": "2026-11-05 21:26:20",
-      "rank": 1,
-      "medal": "gold"
-    },
-    {
-      "id": "380794",
-      "player": "FO",
-      "game": "Back to the Future",
-      "game_id": "86258",
-      "score": 16260297,
-      "date": "2026-11-05 21:26:11",
       "rank": 2,
       "medal": "silver"
     }

@@ -632,16 +632,16 @@
       ]
     },
     "50327": {
-      "score": 1723020,
+      "score": 1812500,
       "holders": [
-        "POD"
+        "VJG"
       ],
       "game": "Super Hang-On",
       "winning_scores": [
         {
-          "player": "POD",
-          "score": 1723020,
-          "score_id": "148660",
+          "player": "VJG",
+          "score": 1812500,
+          "score_id": "389442",
           "game": "Super Hang-On"
         }
       ]
@@ -4038,6 +4038,21 @@
           "score": 9770,
           "score_id": "388878",
           "game": "LADYBUG"
+        }
+      ]
+    },
+    "73289": {
+      "score": 857000,
+      "holders": [
+        "VJG"
+      ],
+      "game": "Mortal Kombat - Arcade",
+      "winning_scores": [
+        {
+          "player": "VJG",
+          "score": 857000,
+          "score_id": "389429",
+          "game": "Mortal Kombat - Arcade"
         }
       ]
     }

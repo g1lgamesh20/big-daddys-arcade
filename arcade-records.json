@@ -1,6 +1,28 @@
 {
-  "updated_at": "2026-11-24T00:20:57.353517+00:00",
+  "updated_at": "2026-11-24T01:31:14.901993+00:00",
   "records": [
+    {
+      "id": "389442",
+      "player": "VJG",
+      "game": "Super Hang-On",
+      "game_id": "50327",
+      "score": 1812500,
+      "date": "2026-11-23 19:00:12",
+      "rank": 1,
+      "medal": "gold",
+      "record_type": "new_first_place"
+    },
+    {
+      "id": "389429",
+      "player": "VJG",
+      "game": "Mortal Kombat - Arcade",
+      "game_id": "73289",
+      "score": 857000,
+      "date": "2026-11-23 18:40:59",
+      "rank": 1,
+      "medal": "gold",
+      "record_type": "new_first_place"
+    },
     {
       "id": "388878",
       "player": "DON",

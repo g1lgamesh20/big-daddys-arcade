@@ -1,15 +1,23 @@
 {
-  "updated_at": "2026-11-24T00:20:57.353517+00:00",
+  "updated_at": "2026-11-24T01:31:14.901993+00:00",
   "source": "iScored public read API",
   "scoring_note": "PAPA-style estimate: top 1000 games per player; one best score per player per game; competition ties. iScored may handle ties differently.",
   "standings": [
     {
       "player": "DON",
-      "points": 21622,
-      "games": 221,
+      "points": 21712,
+      "games": 222,
       "gold": 180,
-      "silver": 28,
+      "silver": 29,
       "bronze": 11
+    },
+    {
+      "player": "VJG",
+      "points": 5573,
+      "games": 61,
+      "gold": 13,
+      "silver": 40,
+      "bronze": 2
     },
     {
       "player": "SPC",
@@ -18,14 +26,6 @@
       "gold": 32,
       "silver": 17,
       "bronze": 6
-    },
-    {
-      "player": "VJG",
-      "points": 5193,
-      "games": 57,
-      "gold": 11,
-      "silver": 38,
-      "bronze": 2
     },
     {
       "player": "DAY",
@@ -60,20 +60,20 @@
       "bronze": 5
     },
     {
-      "player": "POD",
-      "points": 1252,
-      "games": 14,
-      "gold": 4,
-      "silver": 2,
-      "bronze": 4
-    },
-    {
       "player": "FO",
       "points": 1246,
       "games": 14,
       "gold": 3,
       "silver": 3,
       "bronze": 4
+    },
+    {
+      "player": "POD",
+      "points": 1237,
+      "games": 14,
+      "gold": 3,
+      "silver": 2,
+      "bronze": 5
     },
     {
       "player": "SMS",
@@ -1584,6 +1584,15 @@
       "rank": 1
     },
     {
+      "player": "VJG",
+      "game": "Mortal Kombat - Arcade",
+      "game_id": "73289",
+      "score": 857000,
+      "date": "2026-11-23 18:40:59",
+      "score_id": "389429",
+      "rank": 1
+    },
+    {
       "player": "MAB",
       "game": "Mouse Trap",
       "game_id": "50930",
@@ -2178,12 +2187,12 @@
       "rank": 1
     },
     {
-      "player": "POD",
+      "player": "VJG",
       "game": "Super Hang-On",
       "game_id": "50327",
-      "score": 1723020,
-      "date": "2025-02-20 22:09:05",
-      "score_id": "148660",
+      "score": 1812500,
+      "date": "2026-11-23 19:00:12",
+      "score_id": "389442",
       "rank": 1
     },
     {
@@ -3778,6 +3787,51 @@
     {
       "kind": "recent",
       "player": "VJG",
+      "game": "Super Hang-On",
+      "game_id": "50327",
+      "score": 1812500,
+      "date": "2026-11-23 19:00:12",
+      "score_id": "389442"
+    },
+    {
+      "kind": "recent",
+      "player": "DON",
+      "game": "Super Hang-On",
+      "game_id": "50327",
+      "score": 1783950,
+      "date": "2026-11-23 18:58:18",
+      "score_id": "389440"
+    },
+    {
+      "kind": "recent",
+      "player": "VJG",
+      "game": "Mortal Kombat - Arcade",
+      "game_id": "73289",
+      "score": 857000,
+      "date": "2026-11-23 18:40:59",
+      "score_id": "389429"
+    },
+    {
+      "kind": "recent",
+      "player": "VJG",
+      "game": "Mr. Do's Castle",
+      "game_id": "50231",
+      "score": 8260,
+      "date": "2026-11-23 18:40:00",
+      "score_id": "389427"
+    },
+    {
+      "kind": "recent",
+      "player": "VJG",
+      "game": "NIBBLER",
+      "game_id": "50240",
+      "score": 6540,
+      "date": "2026-11-23 18:39:07",
+      "score_id": "389426"
+    },
+    {
+      "kind": "recent",
+      "player": "VJG",
       "game": "Ms. Pac-Man",
       "game_id": "101598",
       "score": 17340,
@@ -3837,53 +3891,8 @@
       "score": 8430,
       "date": "2026-11-22 17:40:26",
       "score_id": "389233"
-    },
-    {
-      "kind": "recent",
-      "player": "DON",
-      "game": "GUN SMOKE",
-      "game_id": "50045",
-      "score": 24750,
-      "date": "2026-11-22 13:21:34",
-      "score_id": "389160"
-    },
-    {
-      "kind": "recent",
-      "player": "DON",
-      "game": "LADYBUG",
-      "game_id": "113424",
-      "score": 9770,
-      "date": "2026-11-21 20:34:49",
-      "score_id": "388878"
-    },
-    {
-      "kind": "recent",
-      "player": "DON",
-      "game": "Guzzler",
-      "game_id": "113422",
-      "score": 14020,
-      "date": "2026-11-21 20:30:13",
-      "score_id": "388874"
-    },
-    {
-      "kind": "recent",
-      "player": "DON",
-      "game": "Ms. Pac-Man",
-      "game_id": "101598",
-      "score": 20620,
-      "date": "2026-11-21 20:22:15",
-      "score_id": "388870"
-    },
-    {
-      "kind": "recent",
-      "player": "SPC",
-      "game": "Bubble Bobble",
-      "game_id": "50022",
-      "score": 180760,
-      "date": "2026-11-21 19:22:59",
-      "score_id": "388782"
     }
   ],
-  "total_games": 267,
+  "total_games": 268,
   "total_players": 15
 }
