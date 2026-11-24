@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
   "target_interval_minutes": 30,
-  "last_success_at": "2026-11-24T14:01:10.587130+00:00",
+  "last_success_at": "2026-11-24T15:16:48.010546+00:00",
   "last_trigger": "workflow_dispatch",
   "last_scheduled_success_at": "2026-11-24T10:25:34.605998+00:00",
-  "previous_success_gap_minutes": 74.9,
+  "previous_success_gap_minutes": 75.6,
   "estimated_missed_intervals_since_previous_success": 1,
   "monitoring_note": "Missing schedule events cannot create an alert by themselves. Check the age of last_success_at; only successful completed refreshes write this file."
 }
