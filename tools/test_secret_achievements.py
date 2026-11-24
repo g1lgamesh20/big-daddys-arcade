@@ -40,6 +40,22 @@ class Secrets(unittest.TestCase):
         rows += [score(20,20,'2026-11-27T12:00:00-05:00'),score(21,21,'2026-11-27T12:00:00-05:00')]
         _,awards=run(rows)
         self.assertEqual(awards,[])
+    def test_ten_games_spread_over_eight_days_does_not_unlock_hopper(self):
+        # Use historical dates (not future dates) so this actually tests the window.
+        days=[20,20,21,22,23,24,25,27,27,27]
+        rows=[score(i,i,'2026-11-%02dT12:00:00-05:00'%day) for i,day in enumerate(days)]
+        _,awards=run(rows)
+        self.assertNotIn('secret_arcade_hopper',[a['type'] for a in awards])
+    def test_seven_day_window_inclusive(self):
+        days=[20,20,21,22,23,24,25,26,26,26]
+        rows=[score(i,i,'2026-11-%02dT12:00:00-05:00'%day) for i,day in enumerate(days)]
+        future_now=datetime(2026,11,27,12,tzinfo=ET)
+        _,awards=evaluate(rows,ledger(),future_now,trusted_approved_feed=True)
+        self.assertIn('secret_arcade_hopper',[a['type'] for a in awards])
+    def test_five_games_across_midnight_do_not_unlock_high_five(self):
+        rows=[score(i,i,'2026-11-%02dT%02d:30:00-05:00'%(22 if i<3 else 23,23 if i<3 else 4)) for i in range(5)]
+        _,awards=run(rows)
+        self.assertNotIn('secret_high_five',[a['type'] for a in awards])
     def test_cutover_and_future_rejected(self):
         _,awards=run([score(1,1,'2026-11-19T01:00:00-05:00'),score(2,2,'2026-12-01T01:00:00-05:00')])
         self.assertEqual(awards,[])
