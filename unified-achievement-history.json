@@ -351,11 +351,31 @@
       "game_id": "50327",
       "game": "Super Hang-On",
       "schedule_source": "daily-champion-history.json",
-      "participants": [],
+      "participants": [
+        "DON",
+        "VJG"
+      ],
       "champions": [],
-      "verified_results": [],
+      "verified_results": [
+        {
+          "player": "DON",
+          "role": "participant",
+          "score": 1783950,
+          "score_id": "389440",
+          "verified": true,
+          "evidence_source": "verified-challenge-awards.json:verified_plays"
+        },
+        {
+          "player": "VJG",
+          "role": "participant",
+          "score": 1812500,
+          "score_id": "389442",
+          "verified": true,
+          "evidence_source": "verified-challenge-awards.json:verified_plays"
+        }
+      ],
       "unverified_candidates": [],
-      "verified_participant_count": 0,
+      "verified_participant_count": 2,
       "verified_champion_count": 0
     }
   ],
@@ -396,7 +416,7 @@
     },
     "DON": {
       "participation": {
-        "daily": 4,
+        "daily": 5,
         "thursday": 2,
         "monthly": 0
       },
@@ -406,7 +426,7 @@
         "monthly": 0
       },
       "longest_verified_streaks": {
-        "daily": 4,
+        "daily": 5,
         "thursday": 2,
         "monthly": 0
       }
@@ -498,7 +518,7 @@
     },
     "VJG": {
       "participation": {
-        "daily": 1,
+        "daily": 2,
         "thursday": 0,
         "monthly": 0
       },

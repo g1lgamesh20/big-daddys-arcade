@@ -60,6 +60,19 @@
       "milestone": 3,
       "verified_at": "2026-11-21T18:31:45.568534-05:00",
       "verification_method": "permanent_verified_event_history"
+    },
+    {
+      "id": "daily_participation:DON:5",
+      "event_key": "daily_participation:DON:5",
+      "type": "daily_participation_milestone",
+      "name": "Getting Started",
+      "date": "2026-11-23",
+      "player": "DON",
+      "game": "Beat the Champion",
+      "milestone": 5,
+      "verified_daily_days": 5,
+      "verified_at": "2026-11-23T20:16:10.992707-05:00",
+      "verification_method": "operator_verified_daily_play_ledger"
     }
   ],
   "verified_plays": [
@@ -294,6 +307,34 @@
       "verified_at": "2026-11-22T15:46:40.574735-05:00",
       "trophy_issued": false,
       "original_submitted_at_et": "2026-11-22T14:21:34-05:00",
+      "verification_method": "iscored_developer_confirmed_original_submission_timestamp_post_fix"
+    },
+    {
+      "kind": "daily",
+      "date": "2026-11-23",
+      "player": "DON",
+      "game_id": "50327",
+      "game": "Super Hang-On",
+      "score": 1783950,
+      "score_id": "389440",
+      "event_key": "daily:2026-11-23:50327:DON",
+      "verified_at": "2026-11-23T20:16:10.992707-05:00",
+      "trophy_issued": false,
+      "original_submitted_at_et": "2026-11-23T19:58:18-05:00",
+      "verification_method": "iscored_developer_confirmed_original_submission_timestamp_post_fix"
+    },
+    {
+      "kind": "daily",
+      "date": "2026-11-23",
+      "player": "VJG",
+      "game_id": "50327",
+      "game": "Super Hang-On",
+      "score": 1812500,
+      "score_id": "389442",
+      "event_key": "daily:2026-11-23:50327:VJG",
+      "verified_at": "2026-11-23T20:16:10.992707-05:00",
+      "trophy_issued": false,
+      "original_submitted_at_et": "2026-11-23T20:00:12-05:00",
       "verification_method": "iscored_developer_confirmed_original_submission_timestamp_post_fix"
     }
   ]
