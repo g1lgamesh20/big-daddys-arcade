@@ -355,8 +355,20 @@
         "DON",
         "VJG"
       ],
-      "champions": [],
+      "champions": [
+        "DON",
+        "VJG"
+      ],
       "verified_results": [
+        {
+          "player": "DON",
+          "role": "champion",
+          "score": 1783950,
+          "score_id": "389440",
+          "verified": true,
+          "award_id": "daily_champion:2026-11-23:DON",
+          "evidence_source": "verified-challenge-awards.json:awards"
+        },
         {
           "player": "DON",
           "role": "participant",
@@ -364,6 +376,15 @@
           "score_id": "389440",
           "verified": true,
           "evidence_source": "verified-challenge-awards.json:verified_plays"
+        },
+        {
+          "player": "VJG",
+          "role": "champion",
+          "score": 1812500,
+          "score_id": "389442",
+          "verified": true,
+          "award_id": "daily_champion:2026-11-23:VJG",
+          "evidence_source": "verified-challenge-awards.json:awards"
         },
         {
           "player": "VJG",
@@ -376,7 +397,7 @@
       ],
       "unverified_candidates": [],
       "verified_participant_count": 2,
-      "verified_champion_count": 0
+      "verified_champion_count": 2
     },
     {
       "event_key": "daily:2026-11-24",
@@ -435,7 +456,7 @@
         "monthly": 0
       },
       "championships": {
-        "daily": 1,
+        "daily": 2,
         "thursday": 1,
         "monthly": 0
       },
@@ -537,7 +558,7 @@
         "monthly": 0
       },
       "championships": {
-        "daily": 0,
+        "daily": 1,
         "thursday": 0,
         "monthly": 0
       },
