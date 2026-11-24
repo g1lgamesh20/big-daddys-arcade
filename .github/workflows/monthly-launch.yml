@@ -24,6 +24,12 @@ jobs:
           python-version: '3.12'
       - name: Install sealed-selection dependency
         run: python -m pip install 'cryptography>=43,<47'
+      - name: Compile launch and notification scripts (offline)
+        run: python -m py_compile tools/monthly_launch.py tools/send_monthly_notification.py tools/monthly_private_selection.py
+      - name: Test monthly notification safeguards before publishing (no external calls)
+        run: python tools/test_monthly_notification.py
+      - name: Test monthly private readiness rules before publishing (offline)
+        run: python tools/test_monthly_readiness.py
       - name: Insert monthly display loader without replacing operator menu
         run: python tools/install_monthly_display.py
       - name: Safely lock or publish at Eastern Time gate
@@ -43,8 +49,6 @@ jobs:
           git commit -m 'Refresh monthly challenge safely'
           git pull --rebase origin main
           git push origin HEAD:main
-      - name: Test monthly notification safeguards (no external calls)
-        run: python tools/test_monthly_notification.py
       - name: Announce newly published monthly game only after live Pages reveal
         env:
           ONESIGNAL_REST_API_KEY: ${{ secrets.ONESIGNAL_REST_API_KEY }}
