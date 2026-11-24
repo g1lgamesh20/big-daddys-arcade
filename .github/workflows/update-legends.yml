@@ -1,9 +1,6 @@
 name: Refresh Hall of Legends scores
 on:
   schedule:
-    # 30-minute GitHub-only scheduling experiment; monitor actual successes.
-    # Use staggered, off-peak minutes to reduce scheduler congestion;
-    # GitHub cron is best effort and can still delay or drop scheduled runs.
     - cron: '13,43 * * * *'
   workflow_dispatch:
 permissions:
@@ -38,9 +35,14 @@ jobs:
         run: python tools/test_iscored_fetch_retry.py
       - name: Test refresh heartbeat and gap calculations (offline)
         run: python tools/test_refresh_health.py
+      - name: Test secret award evaluator and immutable evidence journal (offline)
+        run: python -m unittest discover -s tools -p 'test_secret*.py'
       - name: Download scores and update medal feed
         id: score_download
         run: python tools/update_legends.py
+      - name: Capture permanent approved-score evidence (PREVIEW ONLY)
+        id: secret_journal
+        run: python tools/secret_evidence_journal.py
       - name: Send new medal notifications
         env:
           ONESIGNAL_REST_API_KEY: ${{ secrets.ONESIGNAL_REST_API_KEY }}
@@ -50,7 +52,6 @@ jobs:
           GITHUB_EVENT_NAME: ${{ github.event_name }}
         run: python tools/refresh_health.py
       - name: Commit updated scoreboard and notification state
-        # Preserve notification dedupe state if sending fails, but never commit a failed score download.
         if: ${{ always() && steps.score_download.outcome == 'success' }}
         run: |
           git config user.name 'github-actions[bot]'
@@ -58,10 +59,12 @@ jobs:
           git add daily-champion-history.json monthly-game-catalog.json legends.json medals.json medal-state.json arcade-records.json daily-champion.json medal-notification-state.json golden-encore-state.json verified-challenge-awards.json
           if [ -f daily-champion-baselines.json ]; then git add daily-champion-baselines.json; fi
           if [ -f refresh-health.json ]; then git add refresh-health.json; fi
+          # Only commit the journal when its complete validation and preview succeeded.
+          if [ "${{ steps.secret_journal.outcome }}" = 'success' ]; then
+            git add secret-score-evidence.json secret-achievement-preview.json
+          fi
           if ! git diff --cached --quiet; then
             git commit -m 'Refresh arcade legends and notification state'
-            # Other scheduled workflows also write to main. Retry non-conflicting push races;
-            # never auto-resolve a real merge conflict or repeat OneSignal sends.
             for attempt in 1 2 3; do
               git fetch origin main
               if ! git rebase origin/main; then
