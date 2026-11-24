@@ -43,6 +43,11 @@ jobs:
       - name: Capture permanent approved-score evidence (PREVIEW ONLY)
         id: secret_journal
         run: python tools/secret_evidence_journal.py
+      - name: Activate Stage 4 verified secret awards (default OFF, no notifications)
+        if: ${{ github.ref == 'refs/heads/main' && steps.secret_journal.outcome == 'success' }}
+        env:
+          STAGE4_AWARDS_ENABLED: ${{ vars.STAGE4_AWARDS_ENABLED || '0' }}
+        run: python tools/secret_activate.py
       - name: Send new medal notifications
         if: ${{ github.ref == 'refs/heads/main' }}
         env:
