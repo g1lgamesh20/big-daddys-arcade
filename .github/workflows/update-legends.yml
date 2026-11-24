@@ -29,7 +29,9 @@ jobs:
         run: python tools/test_medals.py
       - name: Verify Golden Encore score-improvement safeguards
         run: python tools/test_golden_encore.py
-      - name: Verify observed Gold holder history safeguards (offline)\n        run: python tools/test_gold_holder_history.py\n      - name: Verify Daily selection history safeguards
+      - name: Verify observed Gold holder history safeguards (offline)
+        run: python tools/test_gold_holder_history.py
+      - name: Verify Daily selection history safeguards
         run: python tools/test_daily_history.py
       - name: Test bounded iScored read retries (offline)
         run: python tools/test_iscored_fetch_retry.py
