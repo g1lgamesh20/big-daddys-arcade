@@ -38,7 +38,7 @@ class Tests(unittest.TestCase):
   self.assertEqual([(p['player'],p['rank']) for p in f['months']['2026-12']['podium']],
                    [('DON',1),('RDG',1),('DAY',3)])
   self.assertEqual({a['player'] for a in l['awards'] if a['type']=='gotm_champion'},{'DON','RDG'})
-  self.assertEqual({a['player'] for a in l['awards'] if a['type']=='gotm_beat_average'},{'DON'})
+  self.assertEqual({a['player'] for a in l['awards'] if a['type']=='gotm_beat_average'},{'DON','RDG'})
   self.assertEqual(len(l['verified_plays']),3)
   self.assertIsNotNone(safe_result(f,'2026-12',at('2027-01-02T09:00:00-05:00'),archive()))
  def test_player_mean_separate_from_locked_benchmark(self):
