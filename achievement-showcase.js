@@ -257,7 +257,14 @@
               return a.type===entry.kind;
             if(entry.kind==='monthly_average')return a.type==='gotm_beat_average';
             if(entry.kind==='monthly_podium')return a.type==='gotm_podium_'+entry.threshold;
-            return a.id===entry.id.replace(':',':'+selected+':');
+            // Award IDs are kind:PLAYER:threshold for milestones, but
+            // secret achievements use kind:PLAYER without a threshold.
+            if(entry.kind.startsWith('secret_') || entry.kind==='easter_egg')
+              return a.type===entry.kind || a.id===entry.kind+':'+selected;
+            if(entry.kind==='daily_champion_mastery'||entry.kind==='golden_encore'||
+               entry.kind.endsWith('_participation')||entry.kind.endsWith('_streak'))
+              return a.id===entry.kind+':'+selected+':'+entry.threshold;
+            return a.id===entry.id;
           });
           if(matches[0]?.date)detail.append(el('p','achievement-tile-earned-date','EARNED '+matches[0].date));
         }
