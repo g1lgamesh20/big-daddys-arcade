@@ -46,14 +46,15 @@ def preview(journal):
         records.sort()
         best = None
         best_id = None
+        best_time = None
         for submitted, sid, score, game_name in records:
-            if best is not None and score > best:
+            if best is not None and submitted > best_time and score > best:
                 improvements.append({'player': player, 'game_id': game,
                     'game': game_name, 'previous_best': best, 'new_best': score,
                     'previous_score_id': best_id, 'improved_score_id': sid,
                     'submitted_at': submitted.isoformat()})
             if best is None or score > best:
-                best, best_id = score, sid
+                best, best_id, best_time = score, sid, submitted
     return {'mode': 'PREVIEW_ONLY_NO_AWARDS', 'approved_scores': len(journal['scores']),
             'player_game_pairs': len(groups), 'improvement_events': len(improvements),
             'players_with_improvements': len({x['player'] for x in improvements}),
