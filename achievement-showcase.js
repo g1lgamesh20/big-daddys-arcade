@@ -107,9 +107,13 @@
     ['just_in_time','⏰','JUST IN TIME','Talk about cutting it close!']
   ];
   secretWave2.push(['props_machine','🙌','PROPS MACHINE!','Three cheers in one day!']);
-  for(const [id,emoji,name,description] of secretWave2)
-    add('secret_'+id,'special',emoji,name,description,'secret_'+id,0,'planned',
+  for(const [id,emoji,name,description] of secretWave2){
+    const activated=['high_five','night_owl','arcade_hopper'].includes(id);
+    add('secret_'+id,'special',emoji,name,description,'secret_'+id,0,
+      activated?'live':'planned',
+      activated?'Verified approved-score achievement; unlocks automatically when earned.':
       'Hidden Wave 2 trophy. Awaiting verified historical evidence before automatic issuance.');
+  }
 
   // These are discovery hints only; no client-side action can award a trophy.
   const SECRET_GOALS={
