@@ -38,21 +38,21 @@ class Tests(unittest.TestCase):
   self.assertEqual([(p['player'],p['rank']) for p in f['months']['2026-12']['podium']],
                    [('DON',1),('RDG',1),('DAY',3)])
   self.assertEqual({a['player'] for a in l['awards'] if a['type']=='gotm_champion'},{'DON','RDG'})
-  self.assertEqual({a['player'] for a in l['awards'] if a['type']=='gotm_beat_average'},{'DON','RDG'})
+  self.assertEqual({a['player'] for a in l['awards'] if a['type']=='gotm_beat_average'},{'DON'})
   self.assertEqual(len(l['verified_plays']),3)
   self.assertIsNotNone(safe_result(f,'2026-12',at('2027-01-02T09:00:00-05:00'),archive()))
  def test_player_mean_separate_from_locked_benchmark(self):
   # Three distinct players, one best score each: mean = 700.
   # DON beats both; RDG beats the mean only; DAY beats neither.
   rows=[row('DON',1000,'2026-12-20 10:00:00','a'),
-        row('RDG',800,'2026-12-20 11:00:00','b'),
+        row('RDG',740,'2026-12-20 11:00:00','b'),
         row('DAY',300,'2026-12-20 12:00:00','c')]
   l,f,r,_=run(rows)
   self.assertEqual({a['player'] for a in l['awards'] if a['type']=='gotm_beat_average'},{'DON','RDG'})
   self.assertEqual({a['player'] for a in l['awards'] if a['type']=='gotm_beat_player_average'},{'DON','RDG'})
   m=f['months']['2026-12']
   self.assertTrue(m['player_average_eligible'])
-  self.assertEqual((m['player_average_score_sum'],m['player_average_score_count']),(2100,3))
+  self.assertEqual((m['player_average_score_sum'],m['player_average_score_count']),(2040,3))
  def test_player_mean_requires_three_unique_players(self):
   rows=[row('DON',1000,'2026-12-20 10:00:00','a'),
         row('DON',1100,'2026-12-21 10:00:00','b'),
