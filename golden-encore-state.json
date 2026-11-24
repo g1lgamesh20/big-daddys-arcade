@@ -2117,16 +2117,16 @@
       ]
     },
     "50021": {
-      "score": 32900,
+      "score": 37750,
       "holders": [
-        "DON"
+        "SPC"
       ],
       "game": "Black widow v2",
       "winning_scores": [
         {
-          "player": "DON",
-          "score": 32900,
-          "score_id": "74169",
+          "player": "SPC",
+          "score": 37750,
+          "score_id": "389547",
           "game": "Black widow v2"
         }
       ]

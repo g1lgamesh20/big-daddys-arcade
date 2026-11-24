@@ -1,30 +1,30 @@
 {
-  "updated_at": "2026-11-24T21:56:11.550638+00:00",
+  "updated_at": "2026-11-24T22:40:53.013050+00:00",
   "source": "iScored public read API",
   "scoring_note": "PAPA-style estimate: top 1000 games per player; one best score per player per game; competition ties. iScored may handle ties differently.",
   "standings": [
     {
       "player": "DON",
-      "points": 21712,
+      "points": 21702,
       "games": 222,
-      "gold": 180,
-      "silver": 29,
+      "gold": 179,
+      "silver": 30,
       "bronze": 11
     },
     {
       "player": "VJG",
-      "points": 5573,
+      "points": 5568,
       "games": 61,
       "gold": 13,
-      "silver": 40,
-      "bronze": 2
+      "silver": 39,
+      "bronze": 3
     },
     {
       "player": "SPC",
-      "points": 5323,
-      "games": 56,
-      "gold": 32,
-      "silver": 17,
+      "points": 5513,
+      "games": 58,
+      "gold": 33,
+      "silver": 18,
       "bronze": 6
     },
     {
@@ -61,11 +61,11 @@
     },
     {
       "player": "FO",
-      "points": 1246,
+      "points": 1241,
       "games": 14,
       "gold": 3,
-      "silver": 3,
-      "bronze": 4
+      "silver": 2,
+      "bronze": 5
     },
     {
       "player": "POD",
@@ -93,11 +93,11 @@
     },
     {
       "player": "BOB",
-      "points": 683,
+      "points": 682,
       "games": 8,
       "gold": 0,
       "silver": 2,
-      "bronze": 2
+      "bronze": 1
     },
     {
       "player": "MAB",
@@ -432,12 +432,12 @@
       "rank": 1
     },
     {
-      "player": "DON",
+      "player": "SPC",
       "game": "Black widow v2",
       "game_id": "50021",
-      "score": 32900,
-      "date": "2024-01-19 21:32:51",
-      "score_id": "74169",
+      "score": 37750,
+      "date": "2026-11-24 16:14:44",
+      "score_id": "389547",
       "rank": 1
     },
     {
@@ -2926,12 +2926,12 @@
     },
     {
       "kind": "champion",
-      "player": "DON",
+      "player": "SPC",
       "game": "Black widow v2",
       "game_id": "50021",
-      "score": 32900,
-      "date": "2024-01-19 21:32:51",
-      "score_id": "74169",
+      "score": 37750,
+      "date": "2026-11-24 16:14:44",
+      "score_id": "389547",
       "rank": 1
     },
     {
@@ -3786,6 +3786,24 @@
     },
     {
       "kind": "recent",
+      "player": "SPC",
+      "game": "Crystal Castles",
+      "game_id": "50029",
+      "score": 39301,
+      "date": "2026-11-24 16:25:01",
+      "score_id": "389549"
+    },
+    {
+      "kind": "recent",
+      "player": "SPC",
+      "game": "Black widow v2",
+      "game_id": "50021",
+      "score": 37750,
+      "date": "2026-11-24 16:14:44",
+      "score_id": "389547"
+    },
+    {
+      "kind": "recent",
       "player": "VJG",
       "game": "Super Hang-On",
       "game_id": "50327",
@@ -3873,24 +3891,6 @@
       "score": 8940,
       "date": "2026-11-22 18:01:48",
       "score_id": "389243"
-    },
-    {
-      "kind": "recent",
-      "player": "VJG",
-      "game": "The Legend of Kage",
-      "game_id": "50236",
-      "score": 44500,
-      "date": "2026-11-22 17:44:28",
-      "score_id": "389234"
-    },
-    {
-      "kind": "recent",
-      "player": "VJG",
-      "game": "LADYBUG",
-      "game_id": "113424",
-      "score": 8430,
-      "date": "2026-11-22 17:40:26",
-      "score_id": "389233"
     }
   ],
   "total_games": 268,

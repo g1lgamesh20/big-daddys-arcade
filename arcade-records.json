@@ -1,6 +1,17 @@
 {
-  "updated_at": "2026-11-24T21:56:11.550638+00:00",
+  "updated_at": "2026-11-24T22:40:53.013050+00:00",
   "records": [
+    {
+      "id": "389547",
+      "player": "SPC",
+      "game": "Black widow v2",
+      "game_id": "50021",
+      "score": 37750,
+      "date": "2026-11-24 16:14:44",
+      "rank": 1,
+      "medal": "gold",
+      "record_type": "new_first_place"
+    },
     {
       "id": "389442",
       "player": "VJG",
