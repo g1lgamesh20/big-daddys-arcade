@@ -62,6 +62,34 @@
       "verification_method": "permanent_verified_event_history"
     },
     {
+      "id": "secret_arcade_hopper:VJG",
+      "event_key": "secret:388778",
+      "type": "secret_arcade_hopper",
+      "name": "ARCADE HOPPER",
+      "player": "VJG",
+      "date": "2026-11-21",
+      "game": "Contra (Arcade)",
+      "game_id": "84699",
+      "score_id": "388778",
+      "original_submitted_at_et": "2026-11-21T20:19:02-05:00",
+      "verified_at": "2026-11-24T19:01:12.730473+00:00",
+      "verification_method": "postfix_approved_iscored_original_submission_time"
+    },
+    {
+      "id": "secret_high_five:VJG",
+      "event_key": "secret:388778",
+      "type": "secret_high_five",
+      "name": "HIGH FIVE!",
+      "player": "VJG",
+      "date": "2026-11-21",
+      "game": "Contra (Arcade)",
+      "game_id": "84699",
+      "score_id": "388778",
+      "original_submitted_at_et": "2026-11-21T20:19:02-05:00",
+      "verified_at": "2026-11-24T19:01:12.730473+00:00",
+      "verification_method": "postfix_approved_iscored_original_submission_time"
+    },
+    {
       "id": "daily_champion:2026-11-23:DON",
       "event_key": "daily:2026-11-23:50327:DON",
       "type": "daily_champion",
