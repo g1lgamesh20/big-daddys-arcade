@@ -44,15 +44,17 @@ jobs:
         id: secret_journal
         run: python tools/secret_evidence_journal.py
       - name: Send new medal notifications
+        if: ${{ github.ref == 'refs/heads/main' }}
         env:
           ONESIGNAL_REST_API_KEY: ${{ secrets.ONESIGNAL_REST_API_KEY }}
         run: python tools/send_medal_notifications.py
       - name: Record successful refresh and scheduler freshness gap
+        if: ${{ github.ref == 'refs/heads/main' }}
         env:
           GITHUB_EVENT_NAME: ${{ github.event_name }}
         run: python tools/refresh_health.py
       - name: Commit updated scoreboard and notification state
-        if: ${{ always() && steps.score_download.outcome == 'success' }}
+        if: ${{ always() && github.ref == 'refs/heads/main' && steps.score_download.outcome == 'success' }}
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
