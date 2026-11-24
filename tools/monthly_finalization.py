@@ -190,13 +190,10 @@ def main():
         load('verified-challenge-awards.json',{'schema_version':1,'awards':[],'verified_plays':[]}),
         load('monthly-final-results.json',{'schema_version':1,'months':{}}),
         now,enabled=True)
-    REPORT.write_text(json.dumps(report,indent=2,ensure_ascii=False)+'
-',encoding='utf-8')
+    REPORT.write_text(json.dumps(report,indent=2,ensure_ascii=False)+'\n',encoding='utf-8')
     if changed:
-        LEDGER.write_text(json.dumps(result,indent=2,ensure_ascii=False)+'
-',encoding='utf-8')
-        FINAL.write_text(json.dumps(final,indent=2,ensure_ascii=False)+'
-',encoding='utf-8')
+        LEDGER.write_text(json.dumps(result,indent=2,ensure_ascii=False)+'\n',encoding='utf-8')
+        FINAL.write_text(json.dumps(final,indent=2,ensure_ascii=False)+'\n',encoding='utf-8')
     print('Monthly finalization status:',report['status'])
     print('New verified participation:',report['participation_added'])
     print('New awards:',report['awards_added'])
