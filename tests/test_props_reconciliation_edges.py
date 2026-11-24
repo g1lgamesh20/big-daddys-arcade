@@ -35,19 +35,19 @@ class ReconciliationEdgeTests(unittest.TestCase):
         self.assertEqual(entries, [("DON", "VJG", "Ikari Warriors", "joystick")])
         self.assertEqual(count, 1)
 
-    def test_changed_to_negative_before_midnight_excluded(self):
+    def test_changed_to_negative_before_midnight_included(self):
         entries, excluded, _ = reconcile([
             event(1, "added", "heart"), event(2, "changed", "angry"),
         ], active("angry"), SCORES, PLAYERS)
-        self.assertEqual(entries, [])
-        self.assertEqual(excluded["not_positive_at_day_end"], 1)
+        self.assertEqual(entries, [("DON", "VJG", "Ikari Warriors", "angry")])
+        self.assertEqual(sum(excluded.values()), 0)
 
     def test_removed_before_midnight_excluded(self):
         entries, excluded, _ = reconcile([
             event(1, "added", "heart"), event(2, "removed", None),
         ], {}, SCORES, PLAYERS)
         self.assertEqual(entries, [])
-        self.assertEqual(excluded["not_positive_at_day_end"], 1)
+        self.assertEqual(excluded["not_eligible_at_day_end"], 1)
 
     def test_removed_after_midnight_before_send_excluded(self):
         entries, excluded, _ = reconcile([event(1, "added", "heart")],
@@ -63,7 +63,7 @@ class ReconciliationEdgeTests(unittest.TestCase):
         self.assertEqual(entries, [])
         self.assertEqual(excluded["since_changed"], 1)
 
-    def test_changed_after_midnight_to_negative_excluded(self):
+    def test_changed_after_midnight_to_negative_excluded_as_changed(self):
         entries, excluded, _ = reconcile([event(1, "added", "heart")],
                                          active("poop"), SCORES, PLAYERS)
         self.assertEqual(entries, [])

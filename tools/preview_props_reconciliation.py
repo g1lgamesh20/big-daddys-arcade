@@ -2,7 +2,7 @@
 """Preview yesterday's active Give Props, with no writes or push delivery.
 
 One row per reaction identity; read current arcade_reactions to exclude deleted,
-negative, or subsequently changed Props. This is NOT a notification sender.
+subsequently changed Props. This is NOT a notification sender.
 """
 import json
 import os
@@ -12,10 +12,13 @@ from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 
 from preview_props_digest import BASE, PAGE_SIZE, POSITIVE, target_window
+
+NEGATIVE = {"poop", "angry"}
+ELIGIBLE = POSITIVE | NEGATIVE
 from preview_props_score_lookup import INITIALS, score_index
 
 EMOJI = {"heart": "❤️", "invader": "👾", "joystick": "🕹️",
-         "gamepad": "🎮", "quarter": "🪙", "trophy": "🏆"}
+         "gamepad": "🎮", "quarter": "🪙", "trophy": "🏆", "poop": "💩", "angry": "😡"}
 
 
 def supabase_rows(key, table, params):
@@ -82,8 +85,8 @@ def reconcile(events, active, scores, players):
     counts = Counter()
     entries = []
     for rid, event in latest.items():
-        if event.get("event_action") == "removed" or event.get("new_reaction") not in POSITIVE:
-            counts["not_positive_at_day_end"] += 1
+        if event.get("event_action") == "removed" or event.get("new_reaction") not in ELIGIBLE:
+            counts["not_eligible_at_day_end"] += 1
             continue
         row = active.get(rid)
         if row is None:
@@ -121,7 +124,7 @@ def main():
     entries, excluded, unique = reconcile(history, active, scores, players)
     print(f"READ-ONLY RECONCILIATION — Eastern day: {day}; NO PUSH")
     print(f"History events: {len(history)}; unique reaction identities: {unique}")
-    print(f"Eligible active positive Props: {len(entries)}")
+    print(f"Eligible active arcade reactions: {len(entries)}")
     print(f"Excluded: {dict(sorted(excluded.items()))}")
     print(f"Conflicting iScored IDs: {conflicts}")
     print("Preview only (not sent):")
