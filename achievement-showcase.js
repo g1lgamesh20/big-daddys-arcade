@@ -31,9 +31,12 @@
       'Finish with the highest qualifying score for the Thursday Arcade Challenge.','thursday_champion');
   add('gotm_champion','monthly','🌟','Game of the Month Champion',
       'Finish with the top qualifying score in the revealed monthly competition.','gotm_champion');
-  add('monthly_average','monthly','🎯','Beat the Average',
+  add('monthly_benchmark','monthly','🎯','Beat the Benchmark',
       'Exceed 75% of the featured game’s locked starting record with a qualifying approved score.',
-      'monthly_average',0,'live','The target is frozen at monthly launch. An exact tie does not beat it.');
+      'monthly_benchmark',0,'live','The target is frozen at monthly launch. An exact tie does not beat it.');
+  add('monthly_average','monthly','📊','Beat the Average',
+      'Beat the arithmetic mean of the best qualifying approved score from each player in the finalized monthly competition.',
+      'monthly_average',0,'live','Requires at least three distinct verified participants. Each player counts once; an exact tie with the average does not qualify.');
   for(const [place,name,emoji] of [[1,'Monthly Gold','🥇'],[2,'Monthly Silver','🥈'],[3,'Monthly Bronze','🥉']]){
     add('monthly_podium_'+place,'monthly',emoji,name,
       'Finish in '+(place===1?'first':place===2?'second':'third')+' place in the finalized Game of the Month. Tied players share a rank (1, 1, 3).',
@@ -167,8 +170,10 @@
     const playerAwards=uniqueAwards(player);
     if(entry.kind==='daily_champion'||entry.kind==='thursday_champion'||entry.kind==='gotm_champion')
       return playerAwards.some(a=>a.type===entry.kind);
-    if(entry.kind==='monthly_average')
+    if(entry.kind==='monthly_benchmark')
       return playerAwards.some(a=>a.type==='gotm_beat_average');
+    if(entry.kind==='monthly_average')
+      return playerAwards.some(a=>a.type==='gotm_beat_player_average');
     if(entry.kind==='monthly_podium')
       return playerAwards.some(a=>a.type==='gotm_podium_'+entry.threshold);
     if(entry.kind==='daily_champion_mastery')
@@ -255,7 +260,8 @@
           const matches=uniqueAwards(selected).filter(a=>{
             if(entry.kind==='daily_champion'||entry.kind==='thursday_champion'||entry.kind==='gotm_champion')
               return a.type===entry.kind;
-            if(entry.kind==='monthly_average')return a.type==='gotm_beat_average';
+            if(entry.kind==='monthly_benchmark')return a.type==='gotm_beat_average';
+            if(entry.kind==='monthly_average')return a.type==='gotm_beat_player_average';
             if(entry.kind==='monthly_podium')return a.type==='gotm_podium_'+entry.threshold;
             // Award IDs are kind:PLAYER:threshold for milestones, but
             // secret achievements use kind:PLAYER without a threshold.
