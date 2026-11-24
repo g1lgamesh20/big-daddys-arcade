@@ -42,13 +42,13 @@ class Tests(unittest.TestCase):
   self.assertEqual(len(l['verified_plays']),3)
   self.assertIsNotNone(safe_result(f,'2026-12',at('2027-01-02T09:00:00-05:00'),archive()))
  def test_player_mean_separate_from_locked_benchmark(self):
-  # Three distinct players, one best score each: mean = 700.
+  # Three distinct players, one best score each: mean = 680.
   # DON beats both; RDG beats the mean only; DAY beats neither.
   rows=[row('DON',1000,'2026-12-20 10:00:00','a'),
         row('RDG',740,'2026-12-20 11:00:00','b'),
         row('DAY',300,'2026-12-20 12:00:00','c')]
   l,f,r,_=run(rows)
-  self.assertEqual({a['player'] for a in l['awards'] if a['type']=='gotm_beat_average'},{'DON','RDG'})
+  self.assertEqual({a['player'] for a in l['awards'] if a['type']=='gotm_beat_average'},{'DON'})
   self.assertEqual({a['player'] for a in l['awards'] if a['type']=='gotm_beat_player_average'},{'DON','RDG'})
   m=f['months']['2026-12']
   self.assertTrue(m['player_average_eligible'])
