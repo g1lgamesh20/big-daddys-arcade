@@ -109,7 +109,7 @@ def finalize(rows, archive, ledger, final, now, enabled=False):
         report['status']='too_many_podium_ties';return ledger,final,report,False
     if any(len(p['player'])>3 or not all(c.isupper() or c.isdigit() or c==' ' for c in p['player']) for p in podium):
         report['status']='unsupported_podium_handle';return ledger,final,report,False
-    final_record={'status':'final_verified',
+    # Exact arithmetic mean of each verified entrant's best qualifying score.\n    # Integer cross-multiplication avoids floating-point rounding at the boundary.\n    entrant_count=len(standings)\n    total_best_scores=sum(c['score'] for c in standings)\n    final_record={'status':'final_verified',
                   'eligibility_source':'original_submission_timestamps_verified',
                   'all_pending_resolved':True,
                   'approval_attestation':'operator_assumes_all_eligible_scores_approved_by_2nd_9am_ET',
@@ -117,7 +117,7 @@ def finalize(rows, archive, ledger, final, now, enabled=False):
                   'locked_benchmark':target,'finalized_at':now.isoformat(),
                   'submission_cutoff_et':end.isoformat(),
                   'podium':podium,'no_verified_entrants':not bool(standings),
-                  'entrant_count':len(standings)}
+                  'entrant_count':entrant_count,\n                  'player_average_eligible':entrant_count>=3,\n                  'player_average_score_sum':total_best_scores if entrant_count>=3 else None,\n                  'player_average_score_count':entrant_count if entrant_count>=3 else None}
     result=json.loads(json.dumps(ledger))
     already={(p.get('kind'),str(p.get('date') or '')[:7],str(p.get('player') or '').upper())
              for p in result['verified_plays'] if isinstance(p,dict)}
@@ -148,9 +148,9 @@ def finalize(rows, archive, ledger, final, now, enabled=False):
         if c['rank']<=3:
             candidates.append((f"gotm_podium_{c['rank']}",{1:'Monthly Gold',2:'Monthly Silver',3:'Monthly Bronze'}[c['rank']],{'rank':c['rank']}))
         if c['score']>target:
-            candidates.append(('gotm_beat_average','Beat the Average',
+            candidates.append(('gotm_beat_average','Beat the Benchmark',
                                {'starting_record':record,'locked_benchmark':target,
-                                'comparison':'strictly_greater_than_locked_75_percent_benchmark'}))
+                                'comparison':'strictly_greater_than_locked_75_percent_benchmark'}))\n        if entrant_count>=3 and c['score']*entrant_count>total_best_scores:\n            candidates.append(('gotm_beat_player_average','Beat the Average',\n                               {'average_score_sum':total_best_scores,\n                                'average_score_count':entrant_count,\n                                'comparison':'strictly_greater_than_final_verified_player_mean'}))
         for typ,name,extra in candidates:
             aid=f"{typ}:{month}-01:{c['player']}"
             if aid in seen:continue
