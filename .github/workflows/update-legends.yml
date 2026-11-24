@@ -31,6 +31,8 @@ jobs:
         run: python tools/test_golden_encore.py
       - name: Verify observed Gold holder history safeguards (offline)
         run: python tools/test_gold_holder_history.py
+      - name: Verify Gold-history secret evidence preview (offline)
+        run: python tools/test_gold_history_secret_preview.py
       - name: Verify Daily selection history safeguards
         run: python tools/test_daily_history.py
       - name: Test bounded iScored read retries (offline)
@@ -44,6 +46,8 @@ jobs:
       - name: Download scores and update medal feed
         id: score_download
         run: python tools/update_legends.py
+      - name: Preview Gold history secret evidence (NO awards or pushes)
+        run: python tools/gold_history_secret_preview.py
       - name: Capture permanent approved-score evidence (PREVIEW ONLY)
         id: secret_journal
         run: python tools/secret_evidence_journal.py
