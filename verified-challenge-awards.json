@@ -62,6 +62,20 @@
       "verification_method": "permanent_verified_event_history"
     },
     {
+      "id": "personal_best_milestone:VJG:1",
+      "event_key": "personal_best:388533",
+      "type": "personal_best_milestone",
+      "name": "Personal Best!",
+      "player": "VJG",
+      "date": "2026-11-21",
+      "game": "Personal Best Challenge",
+      "milestone": 1,
+      "score_id": "388533",
+      "original_submitted_at_et": "2026-11-21T12:17:15-05:00",
+      "verified_at": "2026-11-25T06:03:39.110866+00:00",
+      "verification_method": "postcutover_approved_iscored_personal_best_evidence"
+    },
+    {
       "id": "secret_arcade_hopper:VJG",
       "event_key": "secret:388778",
       "type": "secret_arcade_hopper",
