@@ -155,6 +155,43 @@
       "verified_daily_days": 5,
       "verified_at": "2026-11-23T20:16:10.992707-05:00",
       "verification_method": "operator_verified_daily_play_ledger"
+    },
+    {
+      "id": "easter_egg:DON",
+      "event_key": "easter_egg:DON",
+      "type": "easter_egg",
+      "name": "Easter Egg",
+      "player": "DON",
+      "date": "2026-11-25",
+      "verified_at": "2026-11-25T19:41:49.366732+00:00",
+      "verification_method": "player_claimed_secret_discovery_no_identity_verification"
+    },
+    {
+      "id": "social_give_props:DON:1",
+      "type": "social_give_props",
+      "name": "Props Giver",
+      "player": "DON",
+      "date": "2026-11-25",
+      "verification_method": "prospective_server_recorded_social_event_self_entered_initials",
+      "milestone": 1
+    },
+    {
+      "id": "social_trash_talk:DON:1",
+      "type": "social_trash_talk",
+      "name": "Trash Talk Rookie",
+      "player": "DON",
+      "date": "2026-11-25",
+      "verification_method": "prospective_server_recorded_social_event_self_entered_initials",
+      "milestone": 1
+    },
+    {
+      "id": "social_trash_talk:VJG:1",
+      "type": "social_trash_talk",
+      "name": "Trash Talk Rookie",
+      "player": "VJG",
+      "date": "2026-11-25",
+      "verification_method": "prospective_server_recorded_social_event_self_entered_initials",
+      "milestone": 1
     }
   ],
   "verified_plays": [
