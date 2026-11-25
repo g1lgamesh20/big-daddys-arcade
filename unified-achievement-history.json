@@ -412,6 +412,20 @@
       "unverified_candidates": [],
       "verified_participant_count": 0,
       "verified_champion_count": 0
+    },
+    {
+      "event_key": "daily:2026-11-25",
+      "kind": "daily",
+      "date": "2026-11-25",
+      "game_id": "50062",
+      "game": "Mappy",
+      "schedule_source": "daily-champion-history.json",
+      "participants": [],
+      "champions": [],
+      "verified_results": [],
+      "unverified_candidates": [],
+      "verified_participant_count": 0,
+      "verified_champion_count": 0
     }
   ],
   "players": {
