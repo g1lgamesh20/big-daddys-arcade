@@ -120,7 +120,7 @@
   ];
   secretWave2.push(['props_machine','🙌','PROPS MACHINE!','Three cheers in one day!']);
   for(const [id,emoji,name,description] of secretWave2){
-    const activated=['high_five','night_owl','arcade_hopper','back_from_the_dead','king_for_a_day','double_trouble'].includes(id);
+    const activated=['high_five','night_owl','arcade_hopper','back_from_the_dead','king_for_a_day','double_trouble','photo_finish'].includes(id);
     add('secret_'+id,'special',emoji,name,description,'secret_'+id,0,
       activated?'live':'planned',
       activated?'Verified approved-score achievement; unlocks automatically when earned.':
@@ -133,7 +133,7 @@
     secret_night_owl:'Submit an approved score between midnight and 3:00 AM Eastern.',
     secret_back_from_the_dead:'Regain a #1 record you previously held and lost.',
     secret_double_trouble:'Take #1 on two different games in one Eastern day.',
-    secret_photo_finish:'Finish strictly below, but within 1% of, the verified #1 score at submission time.',
+    secret_photo_finish:'Submit an approved score strictly below, but within 1% of, an already observed #1 record. The Gold record must have been observed before submission.',
     secret_king_for_a_day:'Be observed holding a #1 record at least 24 hours apart, without a recorded loss of Gold.',
     secret_treasure_hunter:'Earn the first verified #1 on a game with no previous medal holders.',
     secret_arcade_hopper:'Submit approved scores on ten different games within seven consecutive days.',
