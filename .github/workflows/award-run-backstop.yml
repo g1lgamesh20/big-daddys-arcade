@@ -30,11 +30,28 @@ jobs:
           python-version: '3.12'
       - name: Test recovery gate without calling iScored or OneSignal
         run: python tools/test_award_run_backstop.py
-      - name: Inspect recent automatic achievement runs
+      - name: Inspect recent automatic achievement runs (retry temporary GitHub API failures)
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh run list --repo "$GITHUB_REPOSITORY" --workflow auto-challenge-awards.yml --limit 30 --json status,conclusion,createdAt > "$RUNNER_TEMP/award-runs.json"
+          set -euo pipefail
+          tmp="$RUNNER_TEMP/award-runs.json.tmp"
+          rm -f "$tmp" "$RUNNER_TEMP/award-runs.json"
+          for attempt in 1 2 3 4 5; do
+            if gh run list --repo "$GITHUB_REPOSITORY" --workflow auto-challenge-awards.yml --limit 30 --json status,conclusion,createdAt > "$tmp"; then
+              python -m json.tool "$tmp" > /dev/null
+              mv "$tmp" "$RUNNER_TEMP/award-runs.json"
+              echo 'Verified GitHub award-run history; recovery gate may proceed.'
+              exit 0
+            fi
+            rm -f "$tmp"
+            if [ "$attempt" -eq 5 ]; then
+              echo 'GitHub API unavailable after 5 attempts; fail closed without dispatching duplicate awards.' >&2
+              exit 1
+            fi
+            echo "Temporary GitHub API error (attempt $attempt/5); retrying."
+            sleep $((attempt * 3))
+          done
       - name: Determine whether automatic achievement issuance was missed
         id: gate
         run: python tools/award_run_backstop.py --runs-json "$RUNNER_TEMP/award-runs.json" --github-output "$GITHUB_OUTPUT"
