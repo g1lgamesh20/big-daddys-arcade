@@ -782,6 +782,7 @@ See you on the leaderboard! 🏆`;
    timer=null;active=false;invader.classList.remove('is-holding');
    control.open=true;lab.hidden=false;lab.open=true;
    lab.scrollIntoView({block:'nearest',behavior:'smooth'});
+   window.dispatchEvent(new Event('arcade-easter-egg-discovered'));
  };
  invader.addEventListener('pointerdown',e=>{
    if(e.button!==0 || !e.isPrimary)return;
