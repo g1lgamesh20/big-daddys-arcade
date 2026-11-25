@@ -18,6 +18,7 @@
     {id:'participation',name:'🎮 Participation & Streaks'},
     {id:'gold',name:'🥇 Gold Mastery'},
     {id:'social',name:'💬 Social Achievements'},
+    {id:'holiday',name:'🗓️ Holiday Legends'},
     {id:'special',name:'❓ Special Achievements'},
   ];
   const entries=[];
@@ -104,6 +105,10 @@
   }
   add('easter_egg','special','❓','Easter Egg',"It's a Secret to Everybody.",'easter_egg',0,
       'live','Secret discovery achievement. Unlocking mechanism is not displayed.');
+  add('holiday_thanksgiving','holiday','🦃','TURKEY DAY GAMER',
+      "Pass the stuffing. I'm going for the high score! Submit an approved arcade score on Thanksgiving Day (Eastern time).",
+      'holiday_thanksgiving',0,'live',
+      'One lifetime trophy per player. Any approved score qualifies; no personal best required. An original Thanksgiving submission counts even if approved afterward.');
 
   // Wave 2 secret trophies: catalog-only until trustworthy immutable score
   // submission/record-history evidence is available. Never infer from current rank.
@@ -190,6 +195,8 @@
     const playerAwards=uniqueAwards(player);
     if(entry.kind==='daily_champion'||entry.kind==='thursday_champion'||entry.kind==='gotm_champion')
       return playerAwards.some(a=>a.type===entry.kind);
+    if(entry.kind==='holiday_thanksgiving')
+      return playerAwards.some(a=>a.type==='holiday_thanksgiving' || a.id==='holiday_thanksgiving:'+player);
     if(entry.kind==='monthly_benchmark')
       return playerAwards.some(a=>a.type==='gotm_beat_average');
     if(entry.kind==='monthly_average')
@@ -322,6 +329,7 @@
           const matches=uniqueAwards(selected).filter(a=>{
             if(entry.kind==='daily_champion'||entry.kind==='thursday_champion'||entry.kind==='gotm_champion')
               return a.type===entry.kind;
+            if(entry.kind==='holiday_thanksgiving')return a.type==='holiday_thanksgiving'||a.id==='holiday_thanksgiving:'+selected;
             if(entry.kind==='monthly_benchmark')return a.type==='gotm_beat_average';
             if(entry.kind==='monthly_average')return a.type==='gotm_beat_player_average';
             if(entry.kind==='monthly_podium')return a.type==='gotm_podium_'+entry.threshold;
