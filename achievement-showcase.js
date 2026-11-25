@@ -142,6 +142,17 @@
   };
   const revealedSecrets=new Set(); // Temporary for this open session, never persisted.
   let awards=[],plays=[],history={},goldState={},players=[],selected='',category='all',previousFocus=null,loading=false;
+  let roomMode=false;
+  const roomButton=document.createElement('button');
+  roomButton.type='button';roomButton.className='achievement-room-toggle';
+  roomButton.setAttribute('aria-pressed','false');roomButton.hidden=true;
+  select.insertAdjacentElement('afterend',roomButton);
+  function updateRoomButton(){
+    roomButton.hidden=!selected;
+    roomButton.textContent=roomMode?'🏆 SHOW ALL ACHIEVEMENTS':'🏆 MY TROPHY ROOM';
+    roomButton.setAttribute('aria-pressed',String(roomMode));
+  }
+  roomButton.addEventListener('click',()=>{if(!selected)return;roomMode=!roomMode;category='all';drawFilters();draw();});
   const el=(tag,cls,text)=>{
     const node=document.createElement(tag);
     if(cls)node.className=cls;
@@ -315,17 +326,24 @@
     gallery.replaceChildren();
     const available=entries.filter(e=>e.status==='live');
     const total=selected?available.filter(e=>unlocked(selected,e)).length:0;
-    summary.textContent=selected?
+    const lifetime=selected?uniqueAwards(selected).length:0;
+    updateRoomButton();
+    summary.textContent=selected&&roomMode?
+      '🏆 '+selected+'’S TROPHY ROOM • '+lifetime+' VERIFIED AWARDS • '+total+' / '+available.length+' ACTIVE TROPHY TYPES UNLOCKED':selected?
       selected+' • '+total+' / '+available.length+' ACTIVE ACHIEVEMENTS UNLOCKED • '+entries.filter(e=>e.status==='planned').length+' COMING SOON':
       'SELECT A PLAYER TO EXPLORE PERSONAL TROPHY PROGRESS • '+available.length+' ACTIVE ACHIEVEMENTS • '+entries.filter(e=>e.status==='planned').length+' COMING SOON';
     for(const group of CATEGORIES){
       if(category!=='all'&&category!==group.id)continue;
-      const list=entries.filter(e=>e.category===group.id);
+      const list=entries.filter(e=>e.category===group.id && (!roomMode || (selected && unlocked(selected,e))));
+      if(roomMode&&!list.length)continue;
       const section=el('section','achievement-gallery-group');
       section.append(el('h3','achievement-gallery-heading',group.name));
       const grid=el('div','achievement-gallery-grid');
       for(const entry of list)grid.append(createTile(entry));
       section.append(grid);gallery.append(section);
+    }
+    if(roomMode&&selected&&total===0){
+      gallery.append(el('p','achievement-room-empty','No verified trophies yet. Play challenges and submit approved scores to start your collection!'));
     }
   }
   async function loadData(){
@@ -359,6 +377,7 @@
       select.firstChild.value='';
       for(const name of players){const option=el('option','',name);option.value=name;select.append(option);}
       selected=players.includes(previous)?previous:'';
+      if(!selected)roomMode=false;
       select.value=selected;
     }finally{loading=false;draw();}
   }
@@ -376,7 +395,7 @@
   open.addEventListener('click',show);
   close.addEventListener('click',hide);
   dialog.addEventListener('click',e=>{if(e.target===dialog)hide();});
-  select.addEventListener('change',()=>{selected=select.value;draw();});
+  select.addEventListener('change',()=>{selected=select.value;roomMode=Boolean(selected);category='all';drawFilters();draw();});
   dialog.addEventListener('keydown',e=>{
     if(e.key==='Escape'){e.preventDefault();hide();return;}
     if(e.key!=='Tab')return;
