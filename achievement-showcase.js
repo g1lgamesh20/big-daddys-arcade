@@ -120,7 +120,7 @@
   ];
   secretWave2.push(['props_machine','🙌','PROPS MACHINE!','Three cheers in one day!']);
   for(const [id,emoji,name,description] of secretWave2){
-    const activated=['high_five','night_owl','arcade_hopper','back_from_the_dead','king_for_a_day'].includes(id);
+    const activated=['high_five','night_owl','arcade_hopper','back_from_the_dead','king_for_a_day','double_trouble'].includes(id);
     add('secret_'+id,'special',emoji,name,description,'secret_'+id,0,
       activated?'live':'planned',
       activated?'Verified approved-score achievement; unlocks automatically when earned.':
