@@ -35,6 +35,16 @@ class PersonalBestPreviewTests(unittest.TestCase):
     def test_bad_journal_fails_closed(self):
         with self.assertRaises(ValueError):
             preview({'schema_version':1,'scores':{}})
+    def test_first_milestone_only_at_two_improvements(self):
+        data=journal([row(1,100),row(2,200,'2026-11-22T12:00:00-05:00'),row(3,300,'2026-11-23T12:00:00-05:00')])
+        self.assertEqual([a['milestone'] for a in preview(data)['milestones']],[1])
+    def test_five_and_ten_milestones_and_unique_ids(self):
+        rows=[row(i,100+i,f'2026-12-{i:02d}T12:00:00-05:00') for i in range(1,12)]
+        for r in rows:r['first_observed_at']='2026-12-05T12:00:00+00:00'
+        data=journal(rows)
+        result=preview(data)
+        self.assertEqual([a['milestone'] for a in result['milestones']],[1,5,10])
+        self.assertEqual(len({a['id'] for a in result['milestones']}),3)
     def test_same_timestamp_is_not_proof_of_sequence(self):
         self.assertEqual(preview(journal([row(1,100),row(2,200)]))['improvement_events'],0)
 
