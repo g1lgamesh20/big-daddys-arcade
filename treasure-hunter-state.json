@@ -1,0 +1,5141 @@
+{
+  "schema_version": 1,
+  "empty_games": {
+    "50344": {
+      "game": "Cosmic Ark",
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00"
+    }
+  },
+  "first_gold": [
+    {
+      "game_id": "101598",
+      "game": "Ms. Pac-Man",
+      "score": 30690,
+      "holders": [
+        "KAK"
+      ],
+      "winning_scores": [
+        {
+          "player": "KAK",
+          "score": 30690,
+          "score_id": "320667",
+          "game": "Ms. Pac-Man"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "101599",
+      "game": "Discs of Tron",
+      "score": 17300,
+      "holders": [
+        "SPC"
+      ],
+      "winning_scores": [
+        {
+          "player": "SPC",
+          "score": 17300,
+          "score_id": "320674",
+          "game": "Discs of Tron"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "101600",
+      "game": "Captain America and The Avengers - Arcade",
+      "score": 10800,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 10800,
+          "score_id": "320675",
+          "game": "Captain America and The Avengers - Arcade"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "101601",
+      "game": "Food Fight",
+      "score": 9700,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 9700,
+          "score_id": "320679",
+          "game": "Food Fight"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "101602",
+      "game": "Galaxian",
+      "score": 5620,
+      "holders": [
+        "SPC"
+      ],
+      "winning_scores": [
+        {
+          "player": "SPC",
+          "score": 5620,
+          "score_id": "320680",
+          "game": "Galaxian"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "101603",
+      "game": "Kung fu master",
+      "score": 31930,
+      "holders": [
+        "VJG"
+      ],
+      "winning_scores": [
+        {
+          "player": "VJG",
+          "score": 31930,
+          "score_id": "388766",
+          "game": "Kung fu master"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "101604",
+      "game": "Pac-Man Plus",
+      "score": 13840,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 13840,
+          "score_id": "320691",
+          "game": "Pac-Man Plus"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "101605",
+      "game": "Super Pac-Man",
+      "score": 46740,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 46740,
+          "score_id": "320696",
+          "game": "Super Pac-Man"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "101606",
+      "game": "Tempest Tubes",
+      "score": 17985,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 17985,
+          "score_id": "320698",
+          "game": "Tempest Tubes"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "101607",
+      "game": "X-Men Children of the Atom",
+      "score": 627000,
+      "holders": [
+        "SMS"
+      ],
+      "winning_scores": [
+        {
+          "player": "SMS",
+          "score": 627000,
+          "score_id": "320699",
+          "game": "X-Men Children of the Atom"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "101611",
+      "game": "Simpsons Bowling",
+      "score": 265,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 265,
+          "score_id": "320702",
+          "game": "Simpsons Bowling"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "101612",
+      "game": "IRON MAN",
+      "score": 570000,
+      "holders": [
+        "DAY"
+      ],
+      "winning_scores": [
+        {
+          "player": "DAY",
+          "score": 570000,
+          "score_id": "380765",
+          "game": "IRON MAN"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "106101",
+      "game": "Family Guy FX3",
+      "score": 11599217,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 11599217,
+          "score_id": "349265",
+          "game": "Family Guy FX3"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "106139",
+      "game": "No Good Gofers",
+      "score": 2733340,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 2733340,
+          "score_id": "349514",
+          "game": "No Good Gofers"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "106140",
+      "game": "Ghost Rider",
+      "score": 7748100,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 7748100,
+          "score_id": "349515",
+          "game": "Ghost Rider"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "106167",
+      "game": "Jurassic Park (FX3)",
+      "score": 3208712,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 3208712,
+          "score_id": "349738",
+          "game": "Jurassic Park (FX3)"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "106169",
+      "game": "Guardians of the Galaxy",
+      "score": 2377003,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 2377003,
+          "score_id": "349734",
+          "game": "Guardians of the Galaxy"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "106171",
+      "game": "Venom 2025",
+      "score": 1375502,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 1375502,
+          "score_id": "349744",
+          "game": "Venom 2025"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "106174",
+      "game": "Jaws",
+      "score": 2074192,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 2074192,
+          "score_id": "349735",
+          "game": "Jaws"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "106681",
+      "game": "Avengers, The: Age of Ultron",
+      "score": 7617236,
+      "holders": [
+        "DAY"
+      ],
+      "winning_scores": [
+        {
+          "player": "DAY",
+          "score": 7617236,
+          "score_id": "384440",
+          "game": "Avengers, The: Age of Ultron"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "106682",
+      "game": "The Avengers",
+      "score": 1509566,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 1509566,
+          "score_id": "351811",
+          "game": "The Avengers"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "106684",
+      "game": "Doctor Strange",
+      "score": 1533000,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 1533000,
+          "score_id": "351846",
+          "game": "Doctor Strange"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "112566",
+      "game": "SUPER BREAKOUT",
+      "score": 283,
+      "holders": [
+        "POD"
+      ],
+      "winning_scores": [
+        {
+          "player": "POD",
+          "score": 283,
+          "score_id": "380791",
+          "game": "SUPER BREAKOUT"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "112664",
+      "game": "Bad Dudes Vs. Dragon Ninja",
+      "score": 88500,
+      "holders": [
+        "POD"
+      ],
+      "winning_scores": [
+        {
+          "player": "POD",
+          "score": 88500,
+          "score_id": "381766",
+          "game": "Bad Dudes Vs. Dragon Ninja"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "112913",
+      "game": "Bosconian",
+      "score": 63450,
+      "holders": [
+        "RDG"
+      ],
+      "winning_scores": [
+        {
+          "player": "RDG",
+          "score": 63450,
+          "score_id": "384380",
+          "game": "Bosconian"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "112914",
+      "game": "Smash T.V.",
+      "score": 126850,
+      "holders": [
+        "RDG"
+      ],
+      "winning_scores": [
+        {
+          "player": "RDG",
+          "score": 126850,
+          "score_id": "381768",
+          "game": "Smash T.V."
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "112915",
+      "game": "Crater Raider",
+      "score": 1750,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 1750,
+          "score_id": "381776",
+          "game": "Crater Raider"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "112918",
+      "game": "Jurassic Park",
+      "score": 16170370,
+      "holders": [
+        "DAY"
+      ],
+      "winning_scores": [
+        {
+          "player": "DAY",
+          "score": 16170370,
+          "score_id": "381800",
+          "game": "Jurassic Park"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "112919",
+      "game": "Demolition Man",
+      "score": 181991950,
+      "holders": [
+        "DAY"
+      ],
+      "winning_scores": [
+        {
+          "player": "DAY",
+          "score": 181991950,
+          "score_id": "384423",
+          "game": "Demolition Man"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "112920",
+      "game": "Adventures of Rocky and Bullwinkle and Friends",
+      "score": 64912340,
+      "holders": [
+        "DAY"
+      ],
+      "winning_scores": [
+        {
+          "player": "DAY",
+          "score": 64912340,
+          "score_id": "384421",
+          "game": "Adventures of Rocky and Bullwinkle and Friends"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "112922",
+      "game": "Popeye",
+      "score": 52477510,
+      "holders": [
+        "DAY"
+      ],
+      "winning_scores": [
+        {
+          "player": "DAY",
+          "score": 52477510,
+          "score_id": "384428",
+          "game": "Popeye"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "112923",
+      "game": "Batman Forever",
+      "score": 319845820,
+      "holders": [
+        "DAY"
+      ],
+      "winning_scores": [
+        {
+          "player": "DAY",
+          "score": 319845820,
+          "score_id": "384444",
+          "game": "Batman Forever"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "113220",
+      "game": "Tesla",
+      "score": 684300,
+      "holders": [
+        "FO"
+      ],
+      "winning_scores": [
+        {
+          "player": "FO",
+          "score": 684300,
+          "score_id": "384430",
+          "game": "Tesla"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "113221",
+      "game": "E.T.",
+      "score": 2096000,
+      "holders": [
+        "FO"
+      ],
+      "winning_scores": [
+        {
+          "player": "FO",
+          "score": 2096000,
+          "score_id": "384432",
+          "game": "E.T."
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "113225",
+      "game": "Solomons Key",
+      "score": 55220,
+      "holders": [
+        "SPC"
+      ],
+      "winning_scores": [
+        {
+          "player": "SPC",
+          "score": 55220,
+          "score_id": "384450",
+          "game": "Solomons Key"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "113231",
+      "game": "Ghostbusters",
+      "score": 10602900,
+      "holders": [
+        "DAY"
+      ],
+      "winning_scores": [
+        {
+          "player": "DAY",
+          "score": 10602900,
+          "score_id": "386318",
+          "game": "Ghostbusters"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "113422",
+      "game": "Guzzler",
+      "score": 14020,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 14020,
+          "score_id": "388874",
+          "game": "Guzzler"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "113424",
+      "game": "LADYBUG",
+      "score": 9770,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 9770,
+          "score_id": "388878",
+          "game": "LADYBUG"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "49991",
+      "game": "Dig Dug",
+      "score": 42840,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 42840,
+          "score_id": "74138",
+          "game": "Dig Dug"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "49992",
+      "game": "Frogger",
+      "score": 12200,
+      "holders": [
+        "VJG"
+      ],
+      "winning_scores": [
+        {
+          "player": "VJG",
+          "score": 12200,
+          "score_id": "74135",
+          "game": "Frogger"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "49994",
+      "game": "PAC-MAN",
+      "score": 30480,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 30480,
+          "score_id": "74129",
+          "game": "PAC-MAN"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "49995",
+      "game": "Sinistar",
+      "score": 48120,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 48120,
+          "score_id": "227712",
+          "game": "Sinistar"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "49996",
+      "game": "Jungle King",
+      "score": 15980,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 15980,
+          "score_id": "227716",
+          "game": "Jungle King"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "49997",
+      "game": "Tapper",
+      "score": 45900,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 45900,
+          "score_id": "232349",
+          "game": "Tapper"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "49998",
+      "game": "Track & Field",
+      "score": 36590,
+      "holders": [
+        "VJG"
+      ],
+      "winning_scores": [
+        {
+          "player": "VJG",
+          "score": 36590,
+          "score_id": "75358",
+          "game": "Track & Field"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "49999",
+      "game": "Q*bert",
+      "score": 27315,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 27315,
+          "score_id": "74122",
+          "game": "Q*bert"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50000",
+      "game": "Kangaroo",
+      "score": 19600,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 19600,
+          "score_id": "74121",
+          "game": "Kangaroo"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50001",
+      "game": "Star Wars",
+      "score": 183214,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 183214,
+          "score_id": "74118",
+          "game": "Star Wars"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50002",
+      "game": "The Empire Strikes Back",
+      "score": 49510,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 49510,
+          "score_id": "74120",
+          "game": "The Empire Strikes Back"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50003",
+      "game": "Return of the Jedi",
+      "score": 53020,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 53020,
+          "score_id": "162150",
+          "game": "Return of the Jedi"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50005",
+      "game": "Time Pilot",
+      "score": 141500,
+      "holders": [
+        "SPC"
+      ],
+      "winning_scores": [
+        {
+          "player": "SPC",
+          "score": 141500,
+          "score_id": "74116",
+          "game": "Time Pilot"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50007",
+      "game": "Dig Dug II",
+      "score": 33800,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 33800,
+          "score_id": "74114",
+          "game": "Dig Dug II"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50008",
+      "game": "Tutankham",
+      "score": 29900,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 29900,
+          "score_id": "74113",
+          "game": "Tutankham"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50009",
+      "game": "Marble Madness",
+      "score": 24860,
+      "holders": [
+        "KAK"
+      ],
+      "winning_scores": [
+        {
+          "player": "KAK",
+          "score": 24860,
+          "score_id": "74147",
+          "game": "Marble Madness"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50010",
+      "game": "1942",
+      "score": 155340,
+      "holders": [
+        "SPC"
+      ],
+      "winning_scores": [
+        {
+          "player": "SPC",
+          "score": 155340,
+          "score_id": "74148",
+          "game": "1942"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50011",
+      "game": "1943",
+      "score": 70800,
+      "holders": [
+        "SPC"
+      ],
+      "winning_scores": [
+        {
+          "player": "SPC",
+          "score": 70800,
+          "score_id": "74149",
+          "game": "1943"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50012",
+      "game": "afterburner 2",
+      "score": 1057640,
+      "holders": [
+        "VJG"
+      ],
+      "winning_scores": [
+        {
+          "player": "VJG",
+          "score": 1057640,
+          "score_id": "380775",
+          "game": "afterburner 2"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50013",
+      "game": "Alien Syndrome",
+      "score": 81000,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 81000,
+          "score_id": "74163",
+          "game": "Alien Syndrome"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50014",
+      "game": "Amidar",
+      "score": 9820,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 9820,
+          "score_id": "74162",
+          "game": "Amidar"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50015",
+      "game": "Arkanoid",
+      "score": 31630,
+      "holders": [
+        "RDG"
+      ],
+      "winning_scores": [
+        {
+          "player": "RDG",
+          "score": 31630,
+          "score_id": "381727",
+          "game": "Arkanoid"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50016",
+      "game": "Arkanoid Revenge of DoH",
+      "score": 19550,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 19550,
+          "score_id": "74604",
+          "game": "Arkanoid Revenge of DoH"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50017",
+      "game": "Asteroids",
+      "score": 15490,
+      "holders": [
+        "SPC"
+      ],
+      "winning_scores": [
+        {
+          "player": "SPC",
+          "score": 15490,
+          "score_id": "380702",
+          "game": "Asteroids"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50018",
+      "game": "Asteroids Deluxe",
+      "score": 13010,
+      "holders": [
+        "SPC"
+      ],
+      "winning_scores": [
+        {
+          "player": "SPC",
+          "score": 13010,
+          "score_id": "74165",
+          "game": "Asteroids Deluxe"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50019",
+      "game": "Battlezone",
+      "score": 30000,
+      "holders": [
+        "SPC"
+      ],
+      "winning_scores": [
+        {
+          "player": "SPC",
+          "score": 30000,
+          "score_id": "74167",
+          "game": "Battlezone"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50020",
+      "game": "Berzerk",
+      "score": 3330,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 3330,
+          "score_id": "74168",
+          "game": "Berzerk"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50021",
+      "game": "Black widow v2",
+      "score": 37750,
+      "holders": [
+        "SPC"
+      ],
+      "winning_scores": [
+        {
+          "player": "SPC",
+          "score": 37750,
+          "score_id": "389547",
+          "game": "Black widow v2"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50022",
+      "game": "Bubble Bobble",
+      "score": 467990,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 467990,
+          "score_id": "145421",
+          "game": "Bubble Bobble"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50023",
+      "game": "Buck Rogers",
+      "score": 8518,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 8518,
+          "score_id": "74172",
+          "game": "Buck Rogers"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50024",
+      "game": "BurgerTime",
+      "score": 19550,
+      "holders": [
+        "KAK"
+      ],
+      "winning_scores": [
+        {
+          "player": "KAK",
+          "score": 19550,
+          "score_id": "380796",
+          "game": "BurgerTime"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50025",
+      "game": "CENTIPEDE",
+      "score": 27284,
+      "holders": [
+        "SPC"
+      ],
+      "winning_scores": [
+        {
+          "player": "SPC",
+          "score": 27284,
+          "score_id": "168569",
+          "game": "CENTIPEDE"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50026",
+      "game": "Commando",
+      "score": 36400,
+      "holders": [
+        "SPC"
+      ],
+      "winning_scores": [
+        {
+          "player": "SPC",
+          "score": 36400,
+          "score_id": "176836",
+          "game": "Commando"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50027",
+      "game": "Congo Bongo",
+      "score": 7980,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 7980,
+          "score_id": "74181",
+          "game": "Congo Bongo"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50029",
+      "game": "Crystal Castles",
+      "score": 46825,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 46825,
+          "score_id": "171609",
+          "game": "Crystal Castles"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50031",
+      "game": "Do Run Run!",
+      "score": 46450,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 46450,
+          "score_id": "74185",
+          "game": "Do Run Run!"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50032",
+      "game": "Donkey Kong",
+      "score": 55000,
+      "holders": [
+        "VJG"
+      ],
+      "winning_scores": [
+        {
+          "player": "VJG",
+          "score": 55000,
+          "score_id": "232971",
+          "game": "Donkey Kong"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50033",
+      "game": "DONKEY KONG JR.",
+      "score": 18300,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 18300,
+          "score_id": "74189",
+          "game": "DONKEY KONG JR."
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50034",
+      "game": "DONKEY KONG 3",
+      "score": 58100,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 58100,
+          "score_id": "74191",
+          "game": "DONKEY KONG 3"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50035",
+      "game": "Elevator Action",
+      "score": 1650,
+      "holders": [
+        "RPS"
+      ],
+      "winning_scores": [
+        {
+          "player": "RPS",
+          "score": 1650,
+          "score_id": "74328",
+          "game": "Elevator Action"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50036",
+      "game": "Elevator Action Returns",
+      "score": 54900,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 54900,
+          "score_id": "151687",
+          "game": "Elevator Action Returns"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50037",
+      "game": "Flicky",
+      "score": 27550,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 27550,
+          "score_id": "74193",
+          "game": "Flicky"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50038",
+      "game": "Frenzy",
+      "score": 5323,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 5323,
+          "score_id": "74196",
+          "game": "Frenzy"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50039",
+      "game": "Defender",
+      "score": 8600,
+      "holders": [
+        "SPC"
+      ],
+      "winning_scores": [
+        {
+          "player": "SPC",
+          "score": 8600,
+          "score_id": "74606",
+          "game": "Defender"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50041",
+      "game": "Galaga",
+      "score": 93340,
+      "holders": [
+        "SPC"
+      ],
+      "winning_scores": [
+        {
+          "player": "SPC",
+          "score": 93340,
+          "score_id": "380968",
+          "game": "Galaga"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50042",
+      "game": "Ghosts 'n Goblins",
+      "score": 51700,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 51700,
+          "score_id": "74200",
+          "game": "Ghosts 'n Goblins"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50043",
+      "game": "Ghouls'n Ghosts",
+      "score": 144000,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 144000,
+          "score_id": "74471",
+          "game": "Ghouls'n Ghosts"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50044",
+      "game": "Gorf",
+      "score": 10440,
+      "holders": [
+        "RDG"
+      ],
+      "winning_scores": [
+        {
+          "player": "RDG",
+          "score": 10440,
+          "score_id": "74203",
+          "game": "Gorf"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50045",
+      "game": "GUN SMOKE",
+      "score": 54900,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 54900,
+          "score_id": "74399",
+          "game": "GUN SMOKE"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50046",
+      "game": "Zookeeper",
+      "score": 100430,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 100430,
+          "score_id": "171683",
+          "game": "Zookeeper"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50047",
+      "game": "Indiana Jones and The Temple of Doom",
+      "score": 15100,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 15100,
+          "score_id": "74501",
+          "game": "Indiana Jones and The Temple of Doom"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50048",
+      "game": "Jackal",
+      "score": 37400,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 37400,
+          "score_id": "74204",
+          "game": "Jackal"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50049",
+      "game": "journey",
+      "score": 16200,
+      "holders": [
+        "SMS"
+      ],
+      "winning_scores": [
+        {
+          "player": "SMS",
+          "score": 16200,
+          "score_id": "74206",
+          "game": "journey"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50050",
+      "game": "Hang On",
+      "score": 4185460,
+      "holders": [
+        "SPC"
+      ],
+      "winning_scores": [
+        {
+          "player": "SPC",
+          "score": 4185460,
+          "score_id": "380738",
+          "game": "Hang On"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50051",
+      "game": "Joust",
+      "score": 34050,
+      "holders": [
+        "VJG"
+      ],
+      "winning_scores": [
+        {
+          "player": "VJG",
+          "score": 34050,
+          "score_id": "74159",
+          "game": "Joust"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50052",
+      "game": "Millipede",
+      "score": 29301,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 29301,
+          "score_id": "74207",
+          "game": "Millipede"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50053",
+      "game": "MISSILE COMMAND",
+      "score": 15675,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 15675,
+          "score_id": "74208",
+          "game": "MISSILE COMMAND"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50054",
+      "game": "Moon Patrol",
+      "score": 23350,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 23350,
+          "score_id": "74500",
+          "game": "Moon Patrol"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50055",
+      "game": "Star Trek: The Next Generation",
+      "score": 203410810,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 203410810,
+          "score_id": "239152",
+          "game": "Star Trek: The Next Generation"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50056",
+      "game": "Star Trek",
+      "score": 56575,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 56575,
+          "score_id": "74156",
+          "game": "Star Trek"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50057",
+      "game": "Tron",
+      "score": 11379,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 11379,
+          "score_id": "74209",
+          "game": "Tron"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50058",
+      "game": "Super Contra",
+      "score": 109080,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 109080,
+          "score_id": "74332",
+          "game": "Super Contra"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50059",
+      "game": "Wizard of Wor",
+      "score": 15400,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 15400,
+          "score_id": "176853",
+          "game": "Wizard of Wor"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50060",
+      "game": "Tempest",
+      "score": 23476,
+      "holders": [
+        "SPC"
+      ],
+      "winning_scores": [
+        {
+          "player": "SPC",
+          "score": 23476,
+          "score_id": "74305",
+          "game": "Tempest"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50061",
+      "game": "Popeye (arcade)",
+      "score": 23580,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 23580,
+          "score_id": "74327",
+          "game": "Popeye (arcade)"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50062",
+      "game": "Mappy",
+      "score": 19790,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 19790,
+          "score_id": "227710",
+          "game": "Mappy"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50064",
+      "game": "Mario Bros.",
+      "score": 52720,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 52720,
+          "score_id": "74324",
+          "game": "Mario Bros."
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50101",
+      "game": "Outrun",
+      "score": 2955630,
+      "holders": [
+        "SPC"
+      ],
+      "winning_scores": [
+        {
+          "player": "SPC",
+          "score": 2955630,
+          "score_id": "380777",
+          "game": "Outrun"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50157",
+      "game": "BUMP N JUMP",
+      "score": 27556,
+      "holders": [
+        "SPC"
+      ],
+      "winning_scores": [
+        {
+          "player": "SPC",
+          "score": 27556,
+          "score_id": "74308",
+          "game": "BUMP N JUMP"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50160",
+      "game": "Crazy Climber",
+      "score": 24900,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 24900,
+          "score_id": "74554",
+          "game": "Crazy Climber"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50163",
+      "game": "SPACE INVADERS",
+      "score": 2830,
+      "holders": [
+        "GPS"
+      ],
+      "winning_scores": [
+        {
+          "player": "GPS",
+          "score": 2830,
+          "score_id": "74333",
+          "game": "SPACE INVADERS"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50164",
+      "game": "Rastan",
+      "score": 85400,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 85400,
+          "score_id": "74337",
+          "game": "Rastan"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50165",
+      "game": "Rampage",
+      "score": 68425,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 68425,
+          "score_id": "74338",
+          "game": "Rampage"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50166",
+      "game": "RoadBlasters",
+      "score": 44470,
+      "holders": [
+        "SPC"
+      ],
+      "winning_scores": [
+        {
+          "player": "SPC",
+          "score": 44470,
+          "score_id": "380978",
+          "game": "RoadBlasters"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50167",
+      "game": "ROBOTRON",
+      "score": 83075,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 83075,
+          "score_id": "381781",
+          "game": "ROBOTRON"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50168",
+      "game": "ROLLING THUNDER",
+      "score": 57780,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 57780,
+          "score_id": "74340",
+          "game": "ROLLING THUNDER"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50169",
+      "game": "STUN Runner",
+      "score": 89165,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 89165,
+          "score_id": "74341",
+          "game": "STUN Runner"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50170",
+      "game": "Shinobi",
+      "score": 49750,
+      "holders": [
+        "KAK"
+      ],
+      "winning_scores": [
+        {
+          "player": "KAK",
+          "score": 49750,
+          "score_id": "158507",
+          "game": "Shinobi"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50171",
+      "game": "Spy Hunter",
+      "score": 13490,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 13490,
+          "score_id": "74343",
+          "game": "Spy Hunter"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50172",
+      "game": "JR. PAC-MAN",
+      "score": 68870,
+      "holders": [
+        "SPC"
+      ],
+      "winning_scores": [
+        {
+          "player": "SPC",
+          "score": 68870,
+          "score_id": "74344",
+          "game": "JR. PAC-MAN"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50175",
+      "game": "VS. Excitebike",
+      "score": 51130,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 51130,
+          "score_id": "74347",
+          "game": "VS. Excitebike"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50176",
+      "game": "Zaxxon",
+      "score": 10950,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 10950,
+          "score_id": "74348",
+          "game": "Zaxxon"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50177",
+      "game": "Punch Out",
+      "score": 71230,
+      "holders": [
+        "RDG"
+      ],
+      "winning_scores": [
+        {
+          "player": "RDG",
+          "score": 71230,
+          "score_id": "74350",
+          "game": "Punch Out"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50178",
+      "game": "Super Punch Out",
+      "score": 6760,
+      "holders": [
+        "RDG"
+      ],
+      "winning_scores": [
+        {
+          "player": "RDG",
+          "score": 6760,
+          "score_id": "380832",
+          "game": "Super Punch Out"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50215",
+      "game": "A.P.B.",
+      "score": 1357,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 1357,
+          "score_id": "171686",
+          "game": "A.P.B."
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50216",
+      "game": "Arabian",
+      "score": 26000,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 26000,
+          "score_id": "74402",
+          "game": "Arabian"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50217",
+      "game": "Angler Dangler",
+      "score": 13300,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 13300,
+          "score_id": "146608",
+          "game": "Angler Dangler"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50219",
+      "game": "Black Tiger",
+      "score": 33350,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 33350,
+          "score_id": "74403",
+          "game": "Black Tiger"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50220",
+      "game": "Blue Shark",
+      "score": 10100,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 10100,
+          "score_id": "74406",
+          "game": "Blue Shark"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50221",
+      "game": "Bomb jack",
+      "score": 42280,
+      "holders": [
+        "SPC"
+      ],
+      "winning_scores": [
+        {
+          "player": "SPC",
+          "score": 42280,
+          "score_id": "384441",
+          "game": "Bomb jack"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50223",
+      "game": "Gyruss",
+      "score": 73950,
+      "holders": [
+        "RDG"
+      ],
+      "winning_scores": [
+        {
+          "player": "RDG",
+          "score": 73950,
+          "score_id": "381722",
+          "game": "Gyruss"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50224",
+      "game": "Gradius",
+      "score": 32500,
+      "holders": [
+        "SPC"
+      ],
+      "winning_scores": [
+        {
+          "player": "SPC",
+          "score": 32500,
+          "score_id": "74383",
+          "game": "Gradius"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50226",
+      "game": "Crazy Climber 2",
+      "score": 8700,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 8700,
+          "score_id": "148658",
+          "game": "Crazy Climber 2"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50228",
+      "game": "Hammerin' Harry",
+      "score": 35900,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 35900,
+          "score_id": "74415",
+          "game": "Hammerin' Harry"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50229",
+      "game": "Hopping Mappy",
+      "score": 1844,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 1844,
+          "score_id": "175239",
+          "game": "Hopping Mappy"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50230",
+      "game": "Mr. Do!",
+      "score": 56550,
+      "holders": [
+        "SPC"
+      ],
+      "winning_scores": [
+        {
+          "player": "SPC",
+          "score": 56550,
+          "score_id": "74423",
+          "game": "Mr. Do!"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50231",
+      "game": "Mr. Do's Castle",
+      "score": 14900,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 14900,
+          "score_id": "74425",
+          "game": "Mr. Do's Castle"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50232",
+      "game": "Mr. Do's Wild Ride!",
+      "score": 17191,
+      "holders": [
+        "KAK"
+      ],
+      "winning_scores": [
+        {
+          "player": "KAK",
+          "score": 17191,
+          "score_id": "74428",
+          "game": "Mr. Do's Wild Ride!"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50234",
+      "game": "Krull",
+      "score": 37740,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 37740,
+          "score_id": "58046",
+          "game": "Krull"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50236",
+      "game": "The Legend of Kage",
+      "score": 107000,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 107000,
+          "score_id": "74465",
+          "game": "The Legend of Kage"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50237",
+      "game": "Major Havoc",
+      "score": 38400,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 38400,
+          "score_id": "76222",
+          "game": "Major Havoc"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50238",
+      "game": "Make Trax",
+      "score": 5540,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 5540,
+          "score_id": "74462",
+          "game": "Make Trax"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50239",
+      "game": "Mighty Pang",
+      "score": 243500,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 243500,
+          "score_id": "74468",
+          "game": "Mighty Pang"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50240",
+      "game": "NIBBLER",
+      "score": 12740,
+      "holders": [
+        "SPC"
+      ],
+      "winning_scores": [
+        {
+          "player": "SPC",
+          "score": 12740,
+          "score_id": "74461",
+          "game": "NIBBLER"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50241",
+      "game": "RALLY X",
+      "score": 14800,
+      "holders": [
+        "SMS"
+      ],
+      "winning_scores": [
+        {
+          "player": "SMS",
+          "score": 14800,
+          "score_id": "148965",
+          "game": "RALLY X"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50242",
+      "game": "New Rally-X",
+      "score": 56640,
+      "holders": [
+        "SPC"
+      ],
+      "winning_scores": [
+        {
+          "player": "SPC",
+          "score": 56640,
+          "score_id": "58293",
+          "game": "New Rally-X"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50244",
+      "game": "Pac-Land",
+      "score": 19380,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 19380,
+          "score_id": "352251",
+          "game": "Pac-Land"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50245",
+      "game": "Paperboy",
+      "score": 23547,
+      "holders": [
+        "KAK"
+      ],
+      "winning_scores": [
+        {
+          "player": "KAK",
+          "score": 23547,
+          "score_id": "380787",
+          "game": "Paperboy"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50247",
+      "game": "PENGO",
+      "score": 4070,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 4070,
+          "score_id": "76226",
+          "game": "PENGO"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50248",
+      "game": "Phoenix",
+      "score": 10680,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 10680,
+          "score_id": "74457",
+          "game": "Phoenix"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50249",
+      "game": "Pole Position",
+      "score": 29540,
+      "holders": [
+        "SPC"
+      ],
+      "winning_scores": [
+        {
+          "player": "SPC",
+          "score": 29540,
+          "score_id": "380945",
+          "game": "Pole Position"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50251",
+      "game": "POOYAN",
+      "score": 57350,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 57350,
+          "score_id": "74442",
+          "game": "POOYAN"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50252",
+      "game": "Tac/Scan",
+      "score": 42700,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 42700,
+          "score_id": "74441",
+          "game": "Tac/Scan"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50253",
+      "game": "Tetris",
+      "score": 19988,
+      "holders": [
+        "SPC"
+      ],
+      "winning_scores": [
+        {
+          "player": "SPC",
+          "score": 19988,
+          "score_id": "380951",
+          "game": "Tetris"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50254",
+      "game": "VENTURE",
+      "score": 11020,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 11020,
+          "score_id": "74446",
+          "game": "VENTURE"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50257",
+      "game": "I, ROBOT",
+      "score": 9790,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 9790,
+          "score_id": "148668",
+          "game": "I, ROBOT"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50258",
+      "game": "Joust II",
+      "score": 23000,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 23000,
+          "score_id": "74438",
+          "game": "Joust II"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50259",
+      "game": "Karate Champ",
+      "score": 3200,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 3200,
+          "score_id": "148958",
+          "game": "Karate Champ"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50260",
+      "game": "KARNOV",
+      "score": 63720,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 63720,
+          "score_id": "74436",
+          "game": "KARNOV"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50261",
+      "game": "KID NIKI",
+      "score": 81800,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 81800,
+          "score_id": "28264",
+          "game": "KID NIKI"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50263",
+      "game": "LIBERATOR",
+      "score": 4040,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 4040,
+          "score_id": "74686",
+          "game": "LIBERATOR"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50301",
+      "game": "Lock n Chase",
+      "score": 13000,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 13000,
+          "score_id": "28378",
+          "game": "Lock n Chase"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50306",
+      "game": "Super Zaxxon",
+      "score": 4300,
+      "holders": [
+        "SPC"
+      ],
+      "winning_scores": [
+        {
+          "player": "SPC",
+          "score": 4300,
+          "score_id": "73640",
+          "game": "Super Zaxxon"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50307",
+      "game": "Noahs Ark",
+      "score": 12350,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 12350,
+          "score_id": "74450",
+          "game": "Noahs Ark"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50309",
+      "game": "sea wolf",
+      "score": 7500,
+      "holders": [
+        "DON",
+        "SPC"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 7500,
+          "score_id": "74448",
+          "game": "sea wolf"
+        },
+        {
+          "player": "SPC",
+          "score": 7500,
+          "score_id": "49144",
+          "game": "sea wolf"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50313",
+      "game": "Operation Wolf",
+      "score": 59100,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 59100,
+          "score_id": "154002",
+          "game": "Operation Wolf"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50314",
+      "game": "Pac & Pal",
+      "score": 35000,
+      "holders": [
+        "KAK"
+      ],
+      "winning_scores": [
+        {
+          "player": "KAK",
+          "score": 35000,
+          "score_id": "74492",
+          "game": "Pac & Pal"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50315",
+      "game": "Parodius Da!",
+      "score": 50500,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 50500,
+          "score_id": "74493",
+          "game": "Parodius Da!"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50316",
+      "game": "Qix",
+      "score": 14275,
+      "holders": [
+        "SMS"
+      ],
+      "winning_scores": [
+        {
+          "player": "SMS",
+          "score": 14275,
+          "score_id": "74502",
+          "game": "Qix"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50317",
+      "game": "Dragons Lair",
+      "score": 21790,
+      "holders": [
+        "VJG"
+      ],
+      "winning_scores": [
+        {
+          "player": "VJG",
+          "score": 21790,
+          "score_id": "380161",
+          "game": "Dragons Lair"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50320",
+      "game": "Q*berts Cubes",
+      "score": 40875,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 40875,
+          "score_id": "228358",
+          "game": "Q*berts Cubes"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50321",
+      "game": "Rock n Rope",
+      "score": 3530,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 3530,
+          "score_id": "148997",
+          "game": "Rock n Rope"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50322",
+      "game": "ROLLING THUNDER 2",
+      "score": 33200,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 33200,
+          "score_id": "138976",
+          "game": "ROLLING THUNDER 2"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50323",
+      "game": "Slither",
+      "score": 34870,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 34870,
+          "score_id": "73303",
+          "game": "Slither"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50325",
+      "game": "Solar Fox",
+      "score": 18180,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 18180,
+          "score_id": "73302",
+          "game": "Solar Fox"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50326",
+      "game": "Star Castle",
+      "score": 6710,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 6710,
+          "score_id": "73125",
+          "game": "Star Castle"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50327",
+      "game": "Super Hang-On",
+      "score": 1812500,
+      "holders": [
+        "VJG"
+      ],
+      "winning_scores": [
+        {
+          "player": "VJG",
+          "score": 1812500,
+          "score_id": "389442",
+          "game": "Super Hang-On"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50328",
+      "game": "Turbo Outrun",
+      "score": 3540140,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 3540140,
+          "score_id": "244667",
+          "game": "Turbo Outrun"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50329",
+      "game": "Xevious",
+      "score": 14820,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 14820,
+          "score_id": "13287",
+          "game": "Xevious"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50333",
+      "game": "Dragster",
+      "score": 6012,
+      "holders": [
+        "SPC"
+      ],
+      "winning_scores": [
+        {
+          "player": "SPC",
+          "score": 6012,
+          "score_id": "74507",
+          "game": "Dragster"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50336",
+      "game": "pitfall",
+      "score": 55863,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 55863,
+          "score_id": "74504",
+          "game": "pitfall"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50339",
+      "game": "pac-man atari 2600",
+      "score": 2311,
+      "holders": [
+        "RDG"
+      ],
+      "winning_scores": [
+        {
+          "player": "RDG",
+          "score": 2311,
+          "score_id": "74525",
+          "game": "pac-man atari 2600"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50340",
+      "game": "megamania",
+      "score": 9960,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 9960,
+          "score_id": "74522",
+          "game": "megamania"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50341",
+      "game": "Yars Revenge",
+      "score": 60734,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 60734,
+          "score_id": "74526",
+          "game": "Yars Revenge"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50342",
+      "game": "Keystone Kapers",
+      "score": 10400,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 10400,
+          "score_id": "74521",
+          "game": "Keystone Kapers"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50343",
+      "game": "freeway",
+      "score": 30,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 30,
+          "score_id": "74513",
+          "game": "freeway"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50346",
+      "game": "Super Mario Bros.",
+      "score": 272600,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 272600,
+          "score_id": "74537",
+          "game": "Super Mario Bros."
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50347",
+      "game": "Super Mario 1-1 Speed Run",
+      "score": 336,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 336,
+          "score_id": "74600",
+          "game": "Super Mario 1-1 Speed Run"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50348",
+      "game": "Super Mario Bros. 3",
+      "score": 145980,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 145980,
+          "score_id": "161304",
+          "game": "Super Mario Bros. 3"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50350",
+      "game": "Dr. Mario",
+      "score": 3600,
+      "holders": [
+        "DAY"
+      ],
+      "winning_scores": [
+        {
+          "player": "DAY",
+          "score": 3600,
+          "score_id": "151688",
+          "game": "Dr. Mario"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50353",
+      "game": "Space Harrier",
+      "score": 1399980,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 1399980,
+          "score_id": "149072",
+          "game": "Space Harrier"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50354",
+      "game": "World Class Bowling",
+      "score": 242,
+      "holders": [
+        "POD"
+      ],
+      "winning_scores": [
+        {
+          "player": "POD",
+          "score": 242,
+          "score_id": "227748",
+          "game": "World Class Bowling"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50391",
+      "game": "Castlevania",
+      "score": 29100,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 29100,
+          "score_id": "74679",
+          "game": "Castlevania"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50406",
+      "game": "Sega Star Wars Trilogy",
+      "score": 70900,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 70900,
+          "score_id": "152911",
+          "game": "Sega Star Wars Trilogy"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50434",
+      "game": "Goonies",
+      "score": 23810,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 23810,
+          "score_id": "145451",
+          "game": "Goonies"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50930",
+      "game": "Mouse Trap",
+      "score": 49090,
+      "holders": [
+        "MAB"
+      ],
+      "winning_scores": [
+        {
+          "player": "MAB",
+          "score": 49090,
+          "score_id": "76224",
+          "game": "Mouse Trap"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "50932",
+      "game": "Frogs and Flies",
+      "score": 72,
+      "holders": [
+        "SPC"
+      ],
+      "winning_scores": [
+        {
+          "player": "SPC",
+          "score": 72,
+          "score_id": "152912",
+          "game": "Frogs and Flies"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "51765",
+      "game": "Carnival",
+      "score": 6740,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 6740,
+          "score_id": "75483",
+          "game": "Carnival"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "52039",
+      "game": "DONKEY KONG (Japan)",
+      "score": 26800,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 26800,
+          "score_id": "76232",
+          "game": "DONKEY KONG (Japan)"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "58286",
+      "game": "Crazy Taxi",
+      "score": 234631,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 234631,
+          "score_id": "87508",
+          "game": "Crazy Taxi"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "58287",
+      "game": "Spider-Man (Zen)",
+      "score": 10980000,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 10980000,
+          "score_id": "154469",
+          "game": "Spider-Man (Zen)"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "58357",
+      "game": "Medieval Madness",
+      "score": 15560730,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 15560730,
+          "score_id": "154473",
+          "game": "Medieval Madness"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "58358",
+      "game": "Gorgar",
+      "score": 16770,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 16770,
+          "score_id": "153934",
+          "game": "Gorgar"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "58359",
+      "game": "Black Knight 2000",
+      "score": 1281090,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 1281090,
+          "score_id": "153935",
+          "game": "Black Knight 2000"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "58360",
+      "game": "Teenage Mutant Ninja Turtles (Data East 1991)",
+      "score": 176170,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 176170,
+          "score_id": "154402",
+          "game": "Teenage Mutant Ninja Turtles (Data East 1991)"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "58361",
+      "game": "Creature from the Black Lagoon",
+      "score": 35921970,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 35921970,
+          "score_id": "154474",
+          "game": "Creature from the Black Lagoon"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "58362",
+      "game": "Tales of the Arabian Nights",
+      "score": 5773180,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 5773180,
+          "score_id": "87586",
+          "game": "Tales of the Arabian Nights"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "62265",
+      "game": "X-Men: Pinball",
+      "score": 14957410,
+      "holders": [
+        "SPC"
+      ],
+      "winning_scores": [
+        {
+          "player": "SPC",
+          "score": 14957410,
+          "score_id": "380715",
+          "game": "X-Men: Pinball"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "62267",
+      "game": "Altered Beast",
+      "score": 70800,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 70800,
+          "score_id": "148369",
+          "game": "Altered Beast"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "62269",
+      "game": "ICE COLD BEER",
+      "score": 8190,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 8190,
+          "score_id": "373308",
+          "game": "ICE COLD BEER"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "70343",
+      "game": "afterburner",
+      "score": 18000,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 18000,
+          "score_id": "148371",
+          "game": "afterburner"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "70346",
+      "game": "CIRCUS CHARLIE",
+      "score": 33200,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 33200,
+          "score_id": "138289",
+          "game": "CIRCUS CHARLIE"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "70348",
+      "game": "Eyes",
+      "score": 38040,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 38040,
+          "score_id": "138291",
+          "game": "Eyes"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "70359",
+      "game": "Reactor",
+      "score": 1804,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 1804,
+          "score_id": "145459",
+          "game": "Reactor"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "70363",
+      "game": "Turtles",
+      "score": 3790,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 3790,
+          "score_id": "138293",
+          "game": "Turtles"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "70364",
+      "game": "Fix it Felix Jr.",
+      "score": 1110750,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 1110750,
+          "score_id": "138294",
+          "game": "Fix it Felix Jr."
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "71977",
+      "game": "Toobin'",
+      "score": 8993,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 8993,
+          "score_id": "319500",
+          "game": "Toobin'"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "71989",
+      "game": "Anteater",
+      "score": 4010,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 4010,
+          "score_id": "146550",
+          "game": "Anteater"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "71993",
+      "game": "Black Hole",
+      "score": 37950,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 37950,
+          "score_id": "239675",
+          "game": "Black Hole"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "72179",
+      "game": "Cameltry",
+      "score": 63610,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 63610,
+          "score_id": "146531",
+          "game": "Cameltry"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "72188",
+      "game": "Munch Mobile",
+      "score": 5350,
+      "holders": [
+        "SMS"
+      ],
+      "winning_scores": [
+        {
+          "player": "SMS",
+          "score": 5350,
+          "score_id": "146555",
+          "game": "Munch Mobile"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "72478",
+      "game": "Bubble Bobble II",
+      "score": 216760,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 216760,
+          "score_id": "148656",
+          "game": "Bubble Bobble II"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "72616",
+      "game": "Monster Bash (Williams, 1998)",
+      "score": 8363200,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 8363200,
+          "score_id": "154472",
+          "game": "Monster Bash (Williams, 1998)"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "72617",
+      "game": "Hercules (Atari 1979)",
+      "score": 27700,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 27700,
+          "score_id": "153931",
+          "game": "Hercules (Atari 1979)"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "72620",
+      "game": "Gauntlet",
+      "score": 2700,
+      "holders": [
+        "VJG"
+      ],
+      "winning_scores": [
+        {
+          "player": "VJG",
+          "score": 2700,
+          "score_id": "388280",
+          "game": "Gauntlet"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "72621",
+      "game": "X-Men - Arcade",
+      "score": 37,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 37,
+          "score_id": "154265",
+          "game": "X-Men - Arcade"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "72623",
+      "game": "Ghostbusters",
+      "score": 40400,
+      "holders": [
+        "VJG"
+      ],
+      "winning_scores": [
+        {
+          "player": "VJG",
+          "score": 40400,
+          "score_id": "388283",
+          "game": "Ghostbusters"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "72950",
+      "game": "Baby Pacman",
+      "score": 42070,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 42070,
+          "score_id": "227714",
+          "game": "Baby Pacman"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "73125",
+      "game": "Fishing Derby",
+      "score": 99,
+      "holders": [
+        "BGR",
+        "DON",
+        "FO",
+        "MAB",
+        "SPC"
+      ],
+      "winning_scores": [
+        {
+          "player": "BGR",
+          "score": 99,
+          "score_id": "152919",
+          "game": "Fishing Derby"
+        },
+        {
+          "player": "DON",
+          "score": 99,
+          "score_id": "152915",
+          "game": "Fishing Derby"
+        },
+        {
+          "player": "FO",
+          "score": 99,
+          "score_id": "152917",
+          "game": "Fishing Derby"
+        },
+        {
+          "player": "MAB",
+          "score": 99,
+          "score_id": "152918",
+          "game": "Fishing Derby"
+        },
+        {
+          "player": "SPC",
+          "score": 99,
+          "score_id": "152916",
+          "game": "Fishing Derby"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "73126",
+      "game": "After Burner Climax",
+      "score": 161470,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 161470,
+          "score_id": "387965",
+          "game": "After Burner Climax"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "73127",
+      "game": "Duck Hunt",
+      "score": 28600,
+      "holders": [
+        "SMS"
+      ],
+      "winning_scores": [
+        {
+          "player": "SMS",
+          "score": 28600,
+          "score_id": "153925",
+          "game": "Duck Hunt"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "73168",
+      "game": "Crossbow",
+      "score": 185500,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 185500,
+          "score_id": "361954",
+          "game": "Crossbow"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "73212",
+      "game": "Terminator 2: Judgement Day",
+      "score": 54550,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 54550,
+          "score_id": "154254",
+          "game": "Terminator 2: Judgement Day"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "73281",
+      "game": "Marvel Super Heroes",
+      "score": 10551,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 10551,
+          "score_id": "385006",
+          "game": "Marvel Super Heroes"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "73284",
+      "game": "Street Fighter II Championship Edition",
+      "score": 199200,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 199200,
+          "score_id": "375710",
+          "game": "Street Fighter II Championship Edition"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "73288",
+      "game": "X-Men vs Street Fighter",
+      "score": 200700,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 200700,
+          "score_id": "354474",
+          "game": "X-Men vs Street Fighter"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "73289",
+      "game": "Mortal Kombat - Arcade",
+      "score": 857000,
+      "holders": [
+        "VJG"
+      ],
+      "winning_scores": [
+        {
+          "player": "VJG",
+          "score": 857000,
+          "score_id": "389429",
+          "game": "Mortal Kombat - Arcade"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "73295",
+      "game": "Tekken 3",
+      "score": 2,
+      "holders": [
+        "DAY"
+      ],
+      "winning_scores": [
+        {
+          "player": "DAY",
+          "score": 2,
+          "score_id": "380814",
+          "game": "Tekken 3"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "73335",
+      "game": "Golden Tee Fore!",
+      "score": 79,
+      "holders": [
+        "VJG"
+      ],
+      "winning_scores": [
+        {
+          "player": "VJG",
+          "score": 79,
+          "score_id": "388296",
+          "game": "Golden Tee Fore!"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "73894",
+      "game": "Guilty Gear XX Accent Core Plus",
+      "score": 583800,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 583800,
+          "score_id": "160477",
+          "game": "Guilty Gear XX Accent Core Plus"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "73962",
+      "game": "Strider",
+      "score": 17200,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 17200,
+          "score_id": "387227",
+          "game": "Strider"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "74010",
+      "game": "Cheyenne",
+      "score": 1700,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 1700,
+          "score_id": "168609",
+          "game": "Cheyenne"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "74011",
+      "game": "Chiller",
+      "score": 6200,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 6200,
+          "score_id": "168613",
+          "game": "Chiller"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "75251",
+      "game": "Road Runner",
+      "score": 22340,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 22340,
+          "score_id": "175761",
+          "game": "Road Runner"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "84662",
+      "game": "Fast Food",
+      "score": 692,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 692,
+          "score_id": "387560",
+          "game": "Fast Food"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "84683",
+      "game": "Barnstorming (Atari2600)",
+      "score": 40440,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 40440,
+          "score_id": "228399",
+          "game": "Barnstorming (Atari2600)"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "84699",
+      "game": "Contra (Arcade)",
+      "score": 76800,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 76800,
+          "score_id": "388693",
+          "game": "Contra (Arcade)"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "84713",
+      "game": "Lunar Lander",
+      "score": 300,
+      "holders": [
+        "SMS"
+      ],
+      "winning_scores": [
+        {
+          "player": "SMS",
+          "score": 300,
+          "score_id": "386112",
+          "game": "Lunar Lander"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "84714",
+      "game": "Cosmic Ark",
+      "score": 9500,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 9500,
+          "score_id": "228400",
+          "game": "Cosmic Ark"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "86253",
+      "game": "720 Degrees",
+      "score": 2020,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 2020,
+          "score_id": "387226",
+          "game": "720 Degrees"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "86258",
+      "game": "Back to the Future",
+      "score": 18100629,
+      "holders": [
+        "DAY"
+      ],
+      "winning_scores": [
+        {
+          "player": "DAY",
+          "score": 18100629,
+          "score_id": "380828",
+          "game": "Back to the Future"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "86260",
+      "game": "The Infinity Gauntlet",
+      "score": 3544401,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 3544401,
+          "score_id": "237072",
+          "game": "The Infinity Gauntlet"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "86262",
+      "game": "Moon Knight",
+      "score": 1373758,
+      "holders": [
+        "RPS"
+      ],
+      "winning_scores": [
+        {
+          "player": "RPS",
+          "score": 1373758,
+          "score_id": "237337",
+          "game": "Moon Knight"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "86263",
+      "game": "Doom Fx3",
+      "score": 5379202,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 5379202,
+          "score_id": "237336",
+          "game": "Doom Fx3"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "86264",
+      "game": "Aliens",
+      "score": 16745250,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 16745250,
+          "score_id": "349506",
+          "game": "Aliens"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "86265",
+      "game": "Aliens vs Predator",
+      "score": 5683181,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 5683181,
+          "score_id": "237333",
+          "game": "Aliens vs Predator"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "86266",
+      "game": "Marvel Antman (Zen Pinball)",
+      "score": 25150393,
+      "holders": [
+        "RPS"
+      ],
+      "winning_scores": [
+        {
+          "player": "RPS",
+          "score": 25150393,
+          "score_id": "237330",
+          "game": "Marvel Antman (Zen Pinball)"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "86267",
+      "game": "Marvel Deadpool (Zen Pinball)",
+      "score": 3539890,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 3539890,
+          "score_id": "237335",
+          "game": "Marvel Deadpool (Zen Pinball)"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "86385",
+      "game": "Battletoads Pinball",
+      "score": 15706010,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 15706010,
+          "score_id": "237301",
+          "game": "Battletoads Pinball"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "86386",
+      "game": "Teenage Mutant Ninja Turtles (Legends)",
+      "score": 8053250,
+      "holders": [
+        "RPS"
+      ],
+      "winning_scores": [
+        {
+          "player": "RPS",
+          "score": 8053250,
+          "score_id": "237310",
+          "game": "Teenage Mutant Ninja Turtles (Legends)"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "86388",
+      "game": "Killer Instinct",
+      "score": 21690720,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 21690720,
+          "score_id": "237313",
+          "game": "Killer Instinct"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "86393",
+      "game": "Sea Of Thieves",
+      "score": 15322460,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 15322460,
+          "score_id": "237323",
+          "game": "Sea Of Thieves"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "86395",
+      "game": "Skyrim",
+      "score": 6129884,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 6129884,
+          "score_id": "238853",
+          "game": "Skyrim"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "86396",
+      "game": "The Walking Dead",
+      "score": 6172910,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 6172910,
+          "score_id": "238854",
+          "game": "The Walking Dead"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "86746",
+      "game": "Captain America Pinball",
+      "score": 7436064,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 7436064,
+          "score_id": "239167",
+          "game": "Captain America Pinball"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "86751",
+      "game": "Wolverine",
+      "score": 17169500,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 17169500,
+          "score_id": "239166",
+          "game": "Wolverine"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "86756",
+      "game": "Fantastic Four",
+      "score": 4831834,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 4831834,
+          "score_id": "239165",
+          "game": "Fantastic Four"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "86776",
+      "game": "Batman 66",
+      "score": 18795700,
+      "holders": [
+        "DAY"
+      ],
+      "winning_scores": [
+        {
+          "player": "DAY",
+          "score": 18795700,
+          "score_id": "381130",
+          "game": "Batman 66"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "86901",
+      "game": "ATTACK from MARS",
+      "score": 1335983720,
+      "holders": [
+        "DON"
+      ],
+      "winning_scores": [
+        {
+          "player": "DON",
+          "score": 1335983720,
+          "score_id": "349513",
+          "game": "ATTACK from MARS"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    },
+    {
+      "game_id": "90287",
+      "game": "Ikari Warriors",
+      "score": 3200,
+      "holders": [
+        "VJG"
+      ],
+      "winning_scores": [
+        {
+          "player": "VJG",
+          "score": 3200,
+          "score_id": "388649",
+          "game": "Ikari Warriors"
+        }
+      ],
+      "observed_empty_at": "2026-11-25T17:47:36.951951+00:00",
+      "observed_gold_at": "2026-11-25T17:47:39.143645+00:00"
+    }
+  ],
+  "seen_scored_games": [
+    "1",
+    "101598",
+    "101599",
+    "101600",
+    "101601",
+    "101602",
+    "101603",
+    "101604",
+    "101605",
+    "101606",
+    "101607",
+    "101611",
+    "101612",
+    "106101",
+    "106139",
+    "106140",
+    "106167",
+    "106169",
+    "106171",
+    "106174",
+    "106681",
+    "106682",
+    "106684",
+    "112566",
+    "112664",
+    "112913",
+    "112914",
+    "112915",
+    "112918",
+    "112919",
+    "112920",
+    "112922",
+    "112923",
+    "113220",
+    "113221",
+    "113225",
+    "113231",
+    "113422",
+    "113424",
+    "49991",
+    "49992",
+    "49994",
+    "49995",
+    "49996",
+    "49997",
+    "49998",
+    "49999",
+    "50000",
+    "50001",
+    "50002",
+    "50003",
+    "50005",
+    "50007",
+    "50008",
+    "50009",
+    "50010",
+    "50011",
+    "50012",
+    "50013",
+    "50014",
+    "50015",
+    "50016",
+    "50017",
+    "50018",
+    "50019",
+    "50020",
+    "50021",
+    "50022",
+    "50023",
+    "50024",
+    "50025",
+    "50026",
+    "50027",
+    "50029",
+    "50031",
+    "50032",
+    "50033",
+    "50034",
+    "50035",
+    "50036",
+    "50037",
+    "50038",
+    "50039",
+    "50041",
+    "50042",
+    "50043",
+    "50044",
+    "50045",
+    "50046",
+    "50047",
+    "50048",
+    "50049",
+    "50050",
+    "50051",
+    "50052",
+    "50053",
+    "50054",
+    "50055",
+    "50056",
+    "50057",
+    "50058",
+    "50059",
+    "50060",
+    "50061",
+    "50062",
+    "50064",
+    "50101",
+    "50157",
+    "50160",
+    "50163",
+    "50164",
+    "50165",
+    "50166",
+    "50167",
+    "50168",
+    "50169",
+    "50170",
+    "50171",
+    "50172",
+    "50175",
+    "50176",
+    "50177",
+    "50178",
+    "50215",
+    "50216",
+    "50217",
+    "50219",
+    "50220",
+    "50221",
+    "50223",
+    "50224",
+    "50226",
+    "50228",
+    "50229",
+    "50230",
+    "50231",
+    "50232",
+    "50234",
+    "50236",
+    "50237",
+    "50238",
+    "50239",
+    "50240",
+    "50241",
+    "50242",
+    "50244",
+    "50245",
+    "50247",
+    "50248",
+    "50249",
+    "50251",
+    "50252",
+    "50253",
+    "50254",
+    "50257",
+    "50258",
+    "50259",
+    "50260",
+    "50261",
+    "50263",
+    "50301",
+    "50306",
+    "50307",
+    "50309",
+    "50313",
+    "50314",
+    "50315",
+    "50316",
+    "50317",
+    "50320",
+    "50321",
+    "50322",
+    "50323",
+    "50325",
+    "50326",
+    "50327",
+    "50328",
+    "50329",
+    "50333",
+    "50336",
+    "50339",
+    "50340",
+    "50341",
+    "50342",
+    "50343",
+    "50346",
+    "50347",
+    "50348",
+    "50350",
+    "50353",
+    "50354",
+    "50391",
+    "50406",
+    "50434",
+    "50930",
+    "50932",
+    "51765",
+    "52039",
+    "58286",
+    "58287",
+    "58357",
+    "58358",
+    "58359",
+    "58360",
+    "58361",
+    "58362",
+    "62265",
+    "62267",
+    "62269",
+    "70343",
+    "70346",
+    "70348",
+    "70359",
+    "70363",
+    "70364",
+    "71977",
+    "71989",
+    "71993",
+    "72179",
+    "72188",
+    "72478",
+    "72616",
+    "72617",
+    "72620",
+    "72621",
+    "72623",
+    "72950",
+    "73125",
+    "73126",
+    "73127",
+    "73168",
+    "73212",
+    "73281",
+    "73284",
+    "73288",
+    "73289",
+    "73295",
+    "73335",
+    "73894",
+    "73962",
+    "74010",
+    "74011",
+    "75251",
+    "84662",
+    "84683",
+    "84699",
+    "84713",
+    "84714",
+    "86253",
+    "86258",
+    "86260",
+    "86262",
+    "86263",
+    "86264",
+    "86265",
+    "86266",
+    "86267",
+    "86385",
+    "86386",
+    "86388",
+    "86393",
+    "86395",
+    "86396",
+    "86746",
+    "86751",
+    "86756",
+    "86776",
+    "86901",
+    "90287"
+  ]
+}
