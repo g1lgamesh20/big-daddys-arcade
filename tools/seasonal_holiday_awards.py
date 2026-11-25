@@ -26,14 +26,16 @@ PLAYER = re.compile(r"^[A-Z0-9 ]{1,3}$")
 FIRST_ELIGIBLE_YEAR = 2026
 
 # IDs from the existing iScored Hall of Legends game catalog, verified Nov 25 2026.
-# Donkey Kong games are deliberately excluded from MAR10: these are Mario-titled
-# arcade entries, not every game in which Mario makes a cameo.
+# Original Donkey Kong and Donkey Kong Jr. are included because Mario appears
+# in both. Donkey Kong 3 and the Japanese variant remain outside this list.
 MARIO_GAME_IDS = frozenset({
     "50350",  # Dr. Mario
     "50064",  # Mario Bros.
     "50347",  # Super Mario 1-1 Speed Run
     "50346",  # Super Mario Bros.
     "50348",  # Super Mario Bros. 3
+    "50032",  # Donkey Kong (original; Mario appears as Jumpman)
+    "50033",  # Donkey Kong Jr. (Mario is the antagonist)
 })
 STAR_WARS_GAME_IDS = frozenset({
     "50001",  # Star Wars
