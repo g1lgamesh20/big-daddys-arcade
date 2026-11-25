@@ -98,8 +98,8 @@
     ]){
       add('social_'+kind+':'+days,'social',emoji,name,
         description+' on '+days+' different Eastern calendar day'+(days===1?'':'s')+'. Only one credit per player per day for this activity; extra posts or reactions that day do not increase progress.',
-        'social_'+kind,days,'planned',
-        'Server-verified player identity and activity evidence required. Historical posts do not automatically unlock trophies.');
+        'social_'+kind,days,'live',
+        'Prospective server-recorded activity; player initials are self-entered. Historical posts do not automatically unlock trophies.');
     }
   }
   add('easter_egg','special','❓','Easter Egg',"It's a Secret to Everybody.",'easter_egg',0,
@@ -120,10 +120,10 @@
   ];
   secretWave2.push(['props_machine','🙌','PROPS MACHINE!','Three cheers in one day!']);
   for(const [id,emoji,name,description] of secretWave2){
-    const activated=['high_five','night_owl','arcade_hopper','back_from_the_dead','king_for_a_day','double_trouble','photo_finish','treasure_hunter','just_in_time'].includes(id);
+    const activated=['high_five','night_owl','arcade_hopper','back_from_the_dead','king_for_a_day','double_trouble','photo_finish','treasure_hunter','just_in_time','props_machine'].includes(id);
     add('secret_'+id,'special',emoji,name,description,'secret_'+id,0,
       activated?'live':'planned',
-      activated?'Verified approved-score achievement; unlocks automatically when earned.':
+      activated?(id==='props_machine'?'Server-recorded social achievement; unlocks automatically when earned.':'Verified approved-score achievement; unlocks automatically when earned.'):
       'Hidden Wave 2 trophy. Awaiting verified historical evidence before automatic issuance.');
   }
 
@@ -200,6 +200,8 @@
       return playerAwards.some(a=>a.id==='personal_best_milestone:'+player+':'+entry.threshold);
     if(entry.kind==='never_give_up')
       return playerAwards.some(a=>a.type==='never_give_up'||a.id==='never_give_up:'+player);
+    if(entry.kind==='social_trash_talk'||entry.kind==='social_give_props')
+      return playerAwards.some(a=>a.id===entry.kind+':'+player+':'+entry.threshold);
     if(entry.kind==='daily_champion_mastery')
       return playerAwards.some(a=>a.id==='daily_champion_mastery:'+player+':'+entry.threshold);
     if(entry.kind==='golden_encore')
@@ -331,6 +333,8 @@
               return a.id==='personal_best_milestone:'+selected+':'+entry.threshold;
             if(entry.kind==='never_give_up')
               return a.type==='never_give_up'||a.id==='never_give_up:'+selected;
+            if(entry.kind==='social_trash_talk'||entry.kind==='social_give_props')
+              return a.id===entry.kind+':'+selected+':'+entry.threshold;
             if(entry.kind==='daily_champion_mastery'||entry.kind==='golden_encore'||
                entry.kind.endsWith('_participation')||entry.kind.endsWith('_streak'))
               return a.id===entry.kind+':'+selected+':'+entry.threshold;
@@ -392,12 +396,13 @@
     if(loading)return;
     loading=true;
     try{
-      const [rawAwards,rawHistory,rawLegends,rawGold,rawEggs]=await Promise.all([
+      const [rawAwards,rawHistory,rawLegends,rawGold,rawEggs,rawSocial]=await Promise.all([
         fetch('./verified-challenge-awards.json?showcase='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.json():null).catch(()=>null),
         fetch('./unified-achievement-history.json?showcase='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.json():{}).catch(()=>({})),
         fetch('./legends.json?showcase='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.json():{}).catch(()=>({})),
         fetch('./golden-encore-state.json?showcase='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.json():{}).catch(()=>({})),
         fetch('https://jrqzwlowxofnyqpmjgkg.supabase.co/functions/v1/arcade-easter-egg',{cache:'no-store'}).then(r=>r.ok?r.json():null).catch(()=>null),
+        fetch('https://jrqzwlowxofnyqpmjgkg.supabase.co/functions/v1/arcade-social-awards',{cache:'no-store'}).then(r=>r.ok?r.json():null).catch(()=>null),
       ]);
       if(rawAwards?.schema_version===1&&Array.isArray(rawAwards.awards)){
         const seen=new Set();
@@ -418,6 +423,15 @@
           if(seenIds.has(id))continue;
           seenIds.add(id);
           awards.push({id,type:'easter_egg',name:'Easter Egg',player,date:String(claim.claimed_at||'').slice(0,10),verification_method:'player_claimed_discovery'});
+        }
+      }
+      // Server-side social activity audit; never award from browser button clicks.
+      if(rawSocial?.schema_version===1 && Array.isArray(rawSocial.awards)){
+        const seenIds=new Set(awards.map(a=>a.id));
+        for(const entry of rawSocial.awards){
+          if(!entry || typeof entry.id!=='string'||seenIds.has(entry.id) ||
+              !/^(social_(trash_talk|give_props):[A-Z0-9 ]{1,3}:(1|5|10|25|50|100)|secret_props_machine:[A-Z0-9 ]{1,3})$/.test(entry.id))continue;
+          seenIds.add(entry.id);awards.push(entry);
         }
       }
       history=rawHistory?.schema_version===1?rawHistory:{};
