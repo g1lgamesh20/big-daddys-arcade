@@ -36,6 +36,37 @@ class SeasonalHolidayTests(unittest.TestCase):
         self.assertEqual(self.ledger, before)
         self.assertEqual(updated["verified_plays"], before["verified_plays"])
 
+    def test_two_day_holiday_windows_and_no_double_trophy(self):
+        # First minute of Christmas Eve and last second of Christmas Day count.
+        # Same player playing both days earns only the same single lifetime trophy.
+        j=self.journal({
+            1:("DON","50010","2026-12-24T05:00:00Z"),
+            2:("DON","50010","2026-12-25T18:00:00Z"),
+            3:("VJG","50010","2026-12-26T04:59:59Z"),
+            4:("SPC","50010","2026-12-24T04:59:59Z"), # Dec 23 ET
+            5:("DAY","50010","2026-12-31T05:00:00Z"), # Dec 31 00:00 ET
+            6:("DAY","50010","2027-01-01T17:00:00Z"),
+            7:("BGR","50010","2027-01-02T04:59:59Z"),
+            8:("RDG","50010","2027-01-02T05:00:00Z"), # Jan 2 ET
+        })
+        _,awards=activate(j,self.ledger,self.now,enabled=True)
+        self.assertEqual({(a["player"],a["type"]) for a in awards},{
+            ("DON","holiday_christmas"),("VJG","holiday_christmas"),
+            ("DAY","holiday_new_years_day"),("BGR","holiday_new_years_day")})
+        self.assertEqual(len(awards),4)
+        self.assertEqual(next(a["date"] for a in awards if a["player"]=="DON"),"2026-12-24")
+        self.assertEqual(next(a["date"] for a in awards if a["player"]=="DAY"),"2026-12-31")
+
+    def test_eve_only_as_of_its_date_and_later_approval(self):
+        j=self.journal({
+            1:("DON","50010","2026-12-24T12:00:00-05:00"),
+            2:("VJG","50010","2026-12-31T15:00:00-05:00"),
+        })
+        _,christmas=activate(j,self.ledger,datetime(2026,12,24,21,0,tzinfo=timezone.utc),enabled=True)
+        self.assertEqual([(a["player"],a["type"]) for a in christmas],[("DON","holiday_christmas")])
+        _,both=activate(j,self.ledger,datetime(2027,1,3,tzinfo=timezone.utc),enabled=True)
+        self.assertEqual({a["player"] for a in both},{"DON","VJG"})
+
     def test_mario_day_game_whitelist(self):
         self.assertEqual(len(MARIO_GAME_IDS), 5)
         rows = {i + 1: ("DON", gid, "2027-03-10T12:00:00-05:00") for i, gid in enumerate(MARIO_GAME_IDS)}
