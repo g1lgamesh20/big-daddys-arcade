@@ -103,7 +103,7 @@
     }
   }
   add('easter_egg','special','❓','Easter Egg',"It's a Secret to Everybody.",'easter_egg',0,
-      'planned','Secret discovery achievement. Unlocking mechanism is not displayed.');
+      'live','Secret discovery achievement. Unlocking mechanism is not displayed.');
 
   // Wave 2 secret trophies: catalog-only until trustworthy immutable score
   // submission/record-history evidence is available. Never infer from current rank.
@@ -392,11 +392,12 @@
     if(loading)return;
     loading=true;
     try{
-      const [rawAwards,rawHistory,rawLegends,rawGold]=await Promise.all([
+      const [rawAwards,rawHistory,rawLegends,rawGold,rawEggs]=await Promise.all([
         fetch('./verified-challenge-awards.json?showcase='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.json():null).catch(()=>null),
         fetch('./unified-achievement-history.json?showcase='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.json():{}).catch(()=>({})),
         fetch('./legends.json?showcase='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.json():{}).catch(()=>({})),
         fetch('./golden-encore-state.json?showcase='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.json():{}).catch(()=>({})),
+        fetch('https://jrqzwlowxofnyqpmjgkg.supabase.co/functions/v1/arcade-easter-egg',{cache:'no-store'}).then(r=>r.ok?r.json():null).catch(()=>null),
       ]);
       if(rawAwards?.schema_version===1&&Array.isArray(rawAwards.awards)){
         const seen=new Set();
@@ -405,6 +406,19 @@
           seen.add(a.id);return true;
         });
         plays=Array.isArray(rawAwards.verified_plays)?rawAwards.verified_plays:[];
+      }
+      // Mirror claims directly while the periodic GitHub ledger sync catches up.
+      // Dedupe against existing permanent ledger IDs.
+      if(rawEggs?.schema_version===1 && Array.isArray(rawEggs.claims)){
+        const seenIds=new Set(awards.map(a=>a.id));
+        for(const claim of rawEggs.claims){
+          const player=String(claim?.player_initials||'').trim().toUpperCase();
+          if(!/^[A-Z0-9 ]{1,3}$/.test(player)||!player)continue;
+          const id='easter_egg:'+player;
+          if(seenIds.has(id))continue;
+          seenIds.add(id);
+          awards.push({id,type:'easter_egg',name:'Easter Egg',player,date:String(claim.claimed_at||'').slice(0,10),verification_method:'player_claimed_discovery'});
+        }
       }
       history=rawHistory?.schema_version===1?rawHistory:{};
       goldState=rawGold?.schema_version===1?rawGold:{};
@@ -450,4 +464,5 @@
     else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}
   });
   document.addEventListener('visibilitychange',()=>{if(!document.hidden&&!dialog.hidden)loadData();});
+  window.addEventListener('arcade-easter-egg-earned',()=>{if(!dialog.hidden)loadData();});
 })();
