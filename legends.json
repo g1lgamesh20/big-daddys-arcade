@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-25T05:02:09.688045+00:00",
+  "updated_at": "2026-11-25T05:58:17.836750+00:00",
   "source": "iScored public read API",
   "scoring_note": "PAPA-style estimate: top 1000 games per player; one best score per player per game; competition ties. iScored may handle ties differently.",
   "standings": [
@@ -13,11 +13,11 @@
     },
     {
       "player": "VJG",
-      "points": 5568,
-      "games": 61,
+      "points": 5923,
+      "games": 65,
       "gold": 13,
-      "silver": 39,
-      "bronze": 3
+      "silver": 42,
+      "bronze": 4
     },
     {
       "player": "SPC",
@@ -109,11 +109,11 @@
     },
     {
       "player": "LEY",
-      "points": 265,
+      "points": 260,
       "games": 3,
       "gold": 0,
-      "silver": 2,
-      "bronze": 1
+      "silver": 1,
+      "bronze": 2
     },
     {
       "player": "GPS",
@@ -3786,6 +3786,51 @@
     },
     {
       "kind": "recent",
+      "player": "VJG",
+      "game": "Angler Dangler",
+      "game_id": "50217",
+      "score": 1900,
+      "date": "2026-11-24 20:44:51",
+      "score_id": "389641"
+    },
+    {
+      "kind": "recent",
+      "player": "VJG",
+      "game": "Angler Dangler",
+      "game_id": "50217",
+      "score": 1000,
+      "date": "2026-11-24 20:40:42",
+      "score_id": "389637"
+    },
+    {
+      "kind": "recent",
+      "player": "VJG",
+      "game": "1943",
+      "game_id": "50011",
+      "score": 29500,
+      "date": "2026-11-24 20:18:14",
+      "score_id": "389603"
+    },
+    {
+      "kind": "recent",
+      "player": "VJG",
+      "game": "1942",
+      "game_id": "50010",
+      "score": 35000,
+      "date": "2026-11-24 20:10:49",
+      "score_id": "389595"
+    },
+    {
+      "kind": "recent",
+      "player": "VJG",
+      "game": "Captain America and The Avengers - Arcade",
+      "game_id": "101600",
+      "score": 5200,
+      "date": "2026-11-24 20:03:29",
+      "score_id": "389588"
+    },
+    {
+      "kind": "recent",
       "player": "SPC",
       "game": "Crystal Castles",
       "game_id": "50029",
@@ -3846,51 +3891,6 @@
       "score": 6540,
       "date": "2026-11-23 18:39:07",
       "score_id": "389426"
-    },
-    {
-      "kind": "recent",
-      "player": "VJG",
-      "game": "Ms. Pac-Man",
-      "game_id": "101598",
-      "score": 17340,
-      "date": "2026-11-22 19:47:14",
-      "score_id": "389268"
-    },
-    {
-      "kind": "recent",
-      "player": "VJG",
-      "game": "Moon Patrol",
-      "game_id": "50054",
-      "score": 9860,
-      "date": "2026-11-22 19:28:48",
-      "score_id": "389265"
-    },
-    {
-      "kind": "recent",
-      "player": "VJG",
-      "game": "LIBERATOR",
-      "game_id": "50263",
-      "score": 160,
-      "date": "2026-11-22 18:15:27",
-      "score_id": "389247"
-    },
-    {
-      "kind": "recent",
-      "player": "VJG",
-      "game": "MISSILE COMMAND",
-      "game_id": "50053",
-      "score": 2050,
-      "date": "2026-11-22 18:05:43",
-      "score_id": "389245"
-    },
-    {
-      "kind": "recent",
-      "player": "VJG",
-      "game": "Mario Bros.",
-      "game_id": "50064",
-      "score": 8940,
-      "date": "2026-11-22 18:01:48",
-      "score_id": "389243"
     }
   ],
   "total_games": 268,

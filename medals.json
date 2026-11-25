@@ -1,6 +1,46 @@
 {
-  "updated_at": "2026-11-25T05:02:09.688045+00:00",
+  "updated_at": "2026-11-25T05:58:17.836750+00:00",
   "alerts": [
+    {
+      "id": "389641",
+      "player": "VJG",
+      "game": "Angler Dangler",
+      "game_id": "50217",
+      "score": 1900,
+      "date": "2026-11-24 20:44:51",
+      "rank": 2,
+      "medal": "silver"
+    },
+    {
+      "id": "389603",
+      "player": "VJG",
+      "game": "1943",
+      "game_id": "50011",
+      "score": 29500,
+      "date": "2026-11-24 20:18:14",
+      "rank": 3,
+      "medal": "bronze"
+    },
+    {
+      "id": "389595",
+      "player": "VJG",
+      "game": "1942",
+      "game_id": "50010",
+      "score": 35000,
+      "date": "2026-11-24 20:10:49",
+      "rank": 2,
+      "medal": "silver"
+    },
+    {
+      "id": "389588",
+      "player": "VJG",
+      "game": "Captain America and The Avengers - Arcade",
+      "game_id": "101600",
+      "score": 5200,
+      "date": "2026-11-24 20:03:29",
+      "rank": 2,
+      "medal": "silver"
+    },
     {
       "id": "389549",
       "player": "SPC",
@@ -960,46 +1000,6 @@
       "date": "2026-11-07 17:40:12",
       "rank": 3,
       "medal": "bronze"
-    },
-    {
-      "id": "381722",
-      "player": "RDG",
-      "game": "Gyruss",
-      "game_id": "50223",
-      "score": 73950,
-      "date": "2026-11-07 17:39:47",
-      "rank": 1,
-      "medal": "gold"
-    },
-    {
-      "id": "381725",
-      "player": "RDG",
-      "game": "Galaga",
-      "game_id": "50041",
-      "score": 70380,
-      "date": "2026-11-07 17:39:34",
-      "rank": 1,
-      "medal": "gold"
-    },
-    {
-      "id": "381727",
-      "player": "RDG",
-      "game": "Arkanoid",
-      "game_id": "50015",
-      "score": 31630,
-      "date": "2026-11-07 17:37:42",
-      "rank": 1,
-      "medal": "gold"
-    },
-    {
-      "id": "380828",
-      "player": "DAY",
-      "game": "Back to the Future",
-      "game_id": "86258",
-      "score": 18100629,
-      "date": "2026-11-05 22:00:26",
-      "rank": 1,
-      "medal": "gold"
     }
   ]
 }
