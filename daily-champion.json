@@ -1,12 +1,7 @@
 {
-  "updated_at": "2026-11-25T03:46:10.669982+00:00",
+  "updated_at": "2026-11-25T05:01:21.128899+00:00",
   "timezone": "America/New_York",
   "days": [
-    {
-      "date": "2026-11-23",
-      "game_id": "50327",
-      "game": "Super Hang-On"
-    },
     {
       "date": "2026-11-24",
       "game_id": "50165",
@@ -16,6 +11,11 @@
       "date": "2026-11-25",
       "game_id": "50062",
       "game": "Mappy"
+    },
+    {
+      "date": "2026-11-26",
+      "game_id": "50254",
+      "game": "VENTURE"
     }
   ]
 }
