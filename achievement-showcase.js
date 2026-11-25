@@ -110,6 +110,19 @@
       'holiday_thanksgiving',0,'live',
       'One lifetime trophy per player. Any approved score qualifies; no personal best required. An original Thanksgiving submission counts even if approved afterward.');
 
+  add('holiday_christmas','holiday','🎅',"SANTA'S HIGH SCORE HELPER",
+      'All I want for Christmas is GOLD! Submit any approved arcade score on December 25, Eastern time.',
+      'holiday_christmas',0,'live','One lifetime trophy. Submissions originally made on Christmas count even when approved later.');
+  add('holiday_new_years_day','holiday','🎆','NEW YEAR, NEW HIGH SCORE!',
+      'Start the year with an arcade score! Submit any approved arcade score on January 1, Eastern time.',
+      'holiday_new_years_day',0,'live','One lifetime trophy. New Year’s Day begins at midnight Eastern; New Year’s Eve is not included.');
+  add('holiday_mar10','holiday','🍄','MAR10 DAY HERO',
+      'Celebrate Mario Day on March 10 with a qualifying approved score on a Mario game!',
+      'holiday_mar10',0,'live','Eligible games: Dr. Mario, Mario Bros., Super Mario Bros., Super Mario Bros. 3 and Super Mario 1-1 Speed Run. Donkey Kong games are excluded.');
+  add('holiday_may_the_fourth','holiday','🌌','MAY THE FOURTH BE WITH YOU!',
+      'Celebrate May the 4th with an approved high score on a Star Wars arcade game.',
+      'holiday_may_the_fourth',0,'live','Eligible games: Star Wars, The Empire Strikes Back, Return of the Jedi, and Sega Star Wars Trilogy. One lifetime trophy.');
+
   // Wave 2 secret trophies: catalog-only until trustworthy immutable score
   // submission/record-history evidence is available. Never infer from current rank.
   const secretWave2=[
@@ -195,8 +208,8 @@
     const playerAwards=uniqueAwards(player);
     if(entry.kind==='daily_champion'||entry.kind==='thursday_champion'||entry.kind==='gotm_champion')
       return playerAwards.some(a=>a.type===entry.kind);
-    if(entry.kind==='holiday_thanksgiving')
-      return playerAwards.some(a=>a.type==='holiday_thanksgiving' || a.id==='holiday_thanksgiving:'+player);
+    if(entry.kind.startsWith('holiday_'))
+      return playerAwards.some(a=>a.type===entry.kind || a.id===entry.kind+':'+player);
     if(entry.kind==='monthly_benchmark')
       return playerAwards.some(a=>a.type==='gotm_beat_average');
     if(entry.kind==='monthly_average')
@@ -329,7 +342,7 @@
           const matches=uniqueAwards(selected).filter(a=>{
             if(entry.kind==='daily_champion'||entry.kind==='thursday_champion'||entry.kind==='gotm_champion')
               return a.type===entry.kind;
-            if(entry.kind==='holiday_thanksgiving')return a.type==='holiday_thanksgiving'||a.id==='holiday_thanksgiving:'+selected;
+            if(entry.kind.startsWith('holiday_'))return a.type===entry.kind||a.id===entry.kind+':'+selected;
             if(entry.kind==='monthly_benchmark')return a.type==='gotm_beat_average';
             if(entry.kind==='monthly_average')return a.type==='gotm_beat_player_average';
             if(entry.kind==='monthly_podium')return a.type==='gotm_podium_'+entry.threshold;
