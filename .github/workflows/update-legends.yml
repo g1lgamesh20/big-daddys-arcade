@@ -69,6 +69,8 @@ jobs:
         run: python -m unittest discover -s tools -p 'test_monthly_finalization.py'
       - name: Verify Easter Egg sync and duplicate safeguards (offline)
         run: python tools/test_easter_egg_sync.py
+      - name: Validate prospective social trophy synchronization (offline)
+        run: python tools/test_social_trophy_sync.py
       - name: Download scores and update medal feed
         id: score_download
         run: python tools/update_legends.py
@@ -152,6 +154,10 @@ jobs:
         if: ${{ github.ref == 'refs/heads/main' }}
         continue-on-error: true
         run: python tools/easter_egg_sync.py
+      - name: Synchronize prospective social milestones (no notifications)
+        if: ${{ github.ref == 'refs/heads/main' }}
+        continue-on-error: true
+        run: python tools/social_trophy_sync.py
       - name: Record successful refresh and scheduler freshness gap
         if: ${{ github.ref == 'refs/heads/main' }}
         env:
