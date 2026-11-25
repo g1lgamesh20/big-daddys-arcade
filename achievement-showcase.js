@@ -19,6 +19,7 @@
     {id:'gold',name:'🥇 Gold Mastery'},
     {id:'social',name:'💬 Social Achievements'},
     {id:'holiday',name:'🗓️ Holiday Legends'},
+    {id:'olympics',name:'🏛️ Arcade Olympics'},
     {id:'special',name:'❓ Special Achievements'},
   ];
   const entries=[];
@@ -123,6 +124,40 @@
       'Celebrate May the 4th with an approved high score on a Star Wars arcade game.',
       'holiday_may_the_fourth',0,'live','Eligible games: Star Wars, The Empire Strikes Back, Return of the Jedi, and Sega Star Wars Trilogy. One lifetime trophy.');
 
+  // Holiday Legends Wave 2 — verified approved-score submissions; one lifetime
+  // individual holiday badge, repeated calendar-year occasions count to milestones.
+  for(const [kind,emoji,name,date,detail] of [
+    ['holiday_valentines','💘','LOVE AT FIRST BYTE','February 14','Any approved arcade score.'],
+    ['holiday_st_patricks','☘️','LUCK OF THE ARCADE','March 17','Any approved arcade score.'],
+    ['holiday_easter','🐰','EGG-STRA LIFE!','Easter Sunday (varies)','Any approved arcade score.'],
+    ['holiday_independence','🇺🇸','RED, WHITE & HIGH SCORE!','July 4','Any approved arcade score.'],
+    ['holiday_columbus','🧭','THE HIGH SCORE EXPLORER','Columbus Day (second Monday in October)','Any approved arcade score.'],
+    ['holiday_halloween','🎃','MONSTER MASHER','October 31','Any approved arcade score.'],
+    ['holiday_video_games','🕹️','BORN TO GAME!','September 12','Any approved arcade score.'],
+    ['holiday_star_trek','🖖','LIVE LONG AND HIGH SCORE!','Star Trek Day, September 8','Only Star Trek (iScored 50056) or Star Trek: The Next Generation (iScored 50055).'],
+    ['holiday_fathers','👨','DAD\'S GOT GAME!','Father\'s Day (third Sunday in June)','Any approved arcade score.'],
+    ['holiday_friday_13','😱','UNLUCKY FOR SOME!','Every Friday the 13th','Any approved arcade score.']
+  ]) add(kind,'holiday',emoji,name,'Play on '+date+'. '+detail,
+      kind,0,'live','Lifetime trophy from post-fix approved score submission; Eastern calendar date applies.');
+  for(const [days,name,emoji] of [
+    [5,'THE HOLIDAY REGULAR','📅'],[10,'HOLIDAY WARRIOR','🎊'],
+    [25,'HOLIDAY HERO','🥉'],[50,'HOLIDAY SUPERSTAR','🥈'],
+    [100,'THE HOLIDAY IMMORTAL','🥇']
+  ]) add('holiday_milestone:'+days,'holiday',emoji,name,
+      'Play on '+days+' distinct eligible Holiday Legends occasions across years. Each holiday counts once per annual occurrence; each Friday the 13th may count independently. A single score can earn other eligible trophies too.',
+      'holiday_milestone',days,'live','Calendar-aware lifetime progress. Holiday Eve/Day windows count as one event. April Fools and Olympics do not count.');
+  add('holiday_grand_slam','holiday','👑','HOLIDAY GRAND SLAM!',
+      'Complete all designated Holiday Legends event types in the same calendar year. Friday the 13th requires one appearance that year. Repeatable by qualifying year.',
+      'holiday_grand_slam',0,'live','Awarded after the calendar year ends; New Year’s Eve credits the following New Year celebration.');
+  add('arcade_olympics_participation','olympics','🎖️','ARCADE OLYMPIAN',
+      'Submit any approved arcade score on Holy Thursday, the Thursday before Easter. Earn an annual participation record for every year you qualify.',
+      'arcade_olympics_participation',0,'live','Annual participation only. Five-game competition rankings are tallied separately.');
+  for(const [years,name,emoji] of [[1,'FIRST OLYMPICS','🎖️'],[3,'OLYMPIC VETERAN','🏛️'],
+                                  [5,'OLYMPIC LEGEND','🔥'],[10,'OLYMPIC IMMORTAL','👑']])
+    add('arcade_olympics_milestone:'+years,'olympics',emoji,name,
+        'Submit an approved score on Holy Thursday in '+years+' different year'+(years===1?'':'s')+'.',
+        'arcade_olympics_milestone',years,'live','Stackable milestones; one participation credit per year.');
+
   // Wave 2 secret trophies: catalog-only until trustworthy immutable score
   // submission/record-history evidence is available. Never infer from current rank.
   const secretWave2=[
@@ -207,6 +242,10 @@
   function unlocked(player,entry){
     const playerAwards=uniqueAwards(player);
     if(entry.kind==='daily_champion'||entry.kind==='thursday_champion'||entry.kind==='gotm_champion')
+      return playerAwards.some(a=>a.type===entry.kind);
+    if(entry.kind==='holiday_milestone'||entry.kind==='arcade_olympics_milestone')
+      return playerAwards.some(a=>a.id===entry.kind+':'+player+':'+entry.threshold);
+    if(entry.kind==='holiday_grand_slam'||entry.kind==='arcade_olympics_participation')
       return playerAwards.some(a=>a.type===entry.kind);
     if(entry.kind.startsWith('holiday_'))
       return playerAwards.some(a=>a.type===entry.kind || a.id===entry.kind+':'+player);
@@ -341,6 +380,10 @@
         if(won){
           const matches=uniqueAwards(selected).filter(a=>{
             if(entry.kind==='daily_champion'||entry.kind==='thursday_champion'||entry.kind==='gotm_champion')
+              return a.type===entry.kind;
+            if(entry.kind==='holiday_milestone'||entry.kind==='arcade_olympics_milestone')
+              return a.id===entry.kind+':'+selected+':'+entry.threshold;
+            if(entry.kind==='holiday_grand_slam'||entry.kind==='arcade_olympics_participation')
               return a.type===entry.kind;
             if(entry.kind.startsWith('holiday_'))return a.type===entry.kind||a.id===entry.kind+':'+selected;
             if(entry.kind==='monthly_benchmark')return a.type==='gotm_beat_average';
