@@ -14,26 +14,11 @@
  const dismiss=()=>{mask.hidden=true;feedback.textContent='';form.hidden=false;submit.disabled=false;};
  close.addEventListener('click',dismiss);
  mask.addEventListener('keydown',e=>{if(e.key==='Escape'){e.preventDefault();dismiss()}});
- let alreadyOpened=false;
  const launch=()=>{
-   if(!alreadyOpened)alreadyOpened=true;
    mask.hidden=false; form.hidden=false; feedback.textContent='';submit.disabled=false;input.value='';
    input.focus();
  };
- // The existing handler unlocks the Test Lab at exactly 5 seconds.
- // A short additional delay lets its original behavior finish unchanged.
- let timer=null,originX=0,originY=0,active=false;
- const cancel=()=>{if(timer!==null)clearTimeout(timer);timer=null;active=false};
- invader.addEventListener('pointerdown',e=>{
-   if(e.button!==0||!e.isPrimary)return;
-   cancel();active=true;originX=e.clientX;originY=e.clientY;
-   timer=setTimeout(()=>{timer=null;if(active){active=false;launch()}},5100);
- });
- invader.addEventListener('pointermove',e=>{if(active&&Math.hypot(e.clientX-originX,e.clientY-originY)>24)cancel()});
- ['pointerup','pointercancel','lostpointercapture','contextmenu','blur'].forEach(t=>invader.addEventListener(t,cancel));
- invader.addEventListener('keydown',e=>{if(e.repeat||(e.key!=='Enter'&&e.key!==' '))return;cancel();active=true;timer=setTimeout(()=>{timer=null;if(active){active=false;launch()}},5100)});
- invader.addEventListener('keyup',cancel);
- document.addEventListener('visibilitychange',()=>{if(document.hidden)cancel()});
+ window.addEventListener('arcade-easter-egg-discovered',launch);
  form.addEventListener('submit',async e=>{
    e.preventDefault();const initials=input.value.trim().toUpperCase();
    if(!/^[A-Z0-9 ]{1,3}$/.test(initials)||!initials.trim()){feedback.textContent='Enter your iScored initials.';return}
