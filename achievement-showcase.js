@@ -111,11 +111,11 @@
       'One lifetime trophy per player. Any approved score qualifies; no personal best required. An original Thanksgiving submission counts even if approved afterward.');
 
   add('holiday_christmas','holiday','🎅',"SANTA'S HIGH SCORE HELPER",
-      'All I want for Christmas is GOLD! Submit any approved arcade score on December 25, Eastern time.',
-      'holiday_christmas',0,'live','One lifetime trophy. Submissions originally made on Christmas count even when approved later.');
+      'All I want for Christmas is GOLD! Submit any approved arcade score on Christmas Eve or Christmas Day (December 24–25, Eastern time).',
+      'holiday_christmas',0,'live','One lifetime trophy for either day, not two trophies. Christmas Eve and Christmas Day submissions count even when approved afterward.');
   add('holiday_new_years_day','holiday','🎆','NEW YEAR, NEW HIGH SCORE!',
-      'Start the year with an arcade score! Submit any approved arcade score on January 1, Eastern time.',
-      'holiday_new_years_day',0,'live','One lifetime trophy. New Year’s Day begins at midnight Eastern; New Year’s Eve is not included.');
+      'Ring in the new year with an arcade score! Submit any approved arcade score on New Year’s Eve or New Year’s Day (December 31–January 1, Eastern time).',
+      'holiday_new_years_day',0,'live','One lifetime trophy for either day, not two trophies. Original submission date counts even when approved afterward.');
   add('holiday_mar10','holiday','🍄','MAR10 DAY HERO',
       'Celebrate Mario Day on March 10 with a qualifying approved score on a Mario game!',
       'holiday_mar10',0,'live','Eligible games: Dr. Mario, Mario Bros., Super Mario Bros., Super Mario Bros. 3 and Super Mario 1-1 Speed Run. Donkey Kong games are excluded.');
