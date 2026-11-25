@@ -118,7 +118,7 @@
       'holiday_new_years_day',0,'live','One lifetime trophy for either day, not two trophies. Original submission date counts even when approved afterward.');
   add('holiday_mar10','holiday','🍄','MAR10 DAY HERO',
       'Celebrate Mario Day on March 10 with a qualifying approved score on a Mario game!',
-      'holiday_mar10',0,'live','Eligible games: Donkey Kong, Donkey Kong Jr., Dr. Mario, Mario Bros., Super Mario Bros., Super Mario Bros. 3 and Super Mario 1-1 Speed Run.');
+      'holiday_mar10',0,'live','Eligible games: Donkey Kong, Donkey Kong (Japan), Donkey Kong Jr., Dr. Mario, Mario Bros., Super Mario Bros., Super Mario Bros. 3 and Super Mario 1-1 Speed Run.');
   add('holiday_may_the_fourth','holiday','🌌','MAY THE FOURTH BE WITH YOU!',
       'Celebrate May the 4th with an approved high score on a Star Wars arcade game.',
       'holiday_may_the_fourth',0,'live','Eligible games: Star Wars, The Empire Strikes Back, Return of the Jedi, and Sega Star Wars Trilogy. One lifetime trophy.');
