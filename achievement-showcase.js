@@ -120,7 +120,7 @@
   ];
   secretWave2.push(['props_machine','🙌','PROPS MACHINE!','Three cheers in one day!']);
   for(const [id,emoji,name,description] of secretWave2){
-    const activated=['high_five','night_owl','arcade_hopper','back_from_the_dead','king_for_a_day','double_trouble','photo_finish'].includes(id);
+    const activated=['high_five','night_owl','arcade_hopper','back_from_the_dead','king_for_a_day','double_trouble','photo_finish','treasure_hunter'].includes(id);
     add('secret_'+id,'special',emoji,name,description,'secret_'+id,0,
       activated?'live':'planned',
       activated?'Verified approved-score achievement; unlocks automatically when earned.':
@@ -135,7 +135,7 @@
     secret_double_trouble:'Take #1 on two different games in one Eastern day.',
     secret_photo_finish:'Submit an approved score strictly below, but within 1% of, an already observed #1 record. The Gold record must have been observed before submission.',
     secret_king_for_a_day:'Be observed holding a #1 record at least 24 hours apart, without a recorded loss of Gold.',
-    secret_treasure_hunter:'Earn the first verified #1 on a game with no previous medal holders.',
+    secret_treasure_hunter:'Establish the first verified #1 on a game previously observed with no approved scores.',
     secret_arcade_hopper:'Submit approved scores on ten different games within seven consecutive days.',
     secret_just_in_time:'Beat the locked starting Daily Champion in the last five minutes before Eastern midnight.',
     secret_props_machine:'Give Props to three different players on one Eastern calendar day.'
