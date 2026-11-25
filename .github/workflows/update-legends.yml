@@ -73,6 +73,8 @@ jobs:
         run: python tools/test_easter_egg_sync.py
       - name: Validate prospective social trophy synchronization (offline)
         run: python tools/test_social_trophy_sync.py
+      - name: Test Thanksgiving-only lifetime achievement and Eastern midnight boundaries (offline)
+        run: python tools/test_thanksgiving_awards.py
       - name: Download scores and update medal feed
         id: score_download
         run: python tools/update_legends.py
@@ -147,6 +149,11 @@ jobs:
         env:
           STAGE4_AWARDS_ENABLED: '1'
         run: python tools/secret_activate.py
+      - name: Award Thanksgiving-approved submissions from original submit time (no notifications)
+        if: ${{ github.ref == 'refs/heads/main' && steps.secret_journal.outcome == 'success' }}
+        env:
+          THANKSGIVING_AWARDS_ENABLED: '1'
+        run: python tools/thanksgiving_awards.py
       - name: Send new medal notifications
         if: ${{ github.ref == 'refs/heads/main' }}
         env:
