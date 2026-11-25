@@ -45,6 +45,8 @@ jobs:
         run: python tools/test_back_from_the_dead_preview.py
       - name: Verify NEVER GIVE UP evidence safeguards (offline)
         run: python tools/test_never_give_up_preview.py
+      - name: Verify TREASURE HUNTER prospective first Gold safeguards (offline)
+        run: python tools/test_treasure_hunter.py
       - name: Verify PHOTO FINISH evidence and lifetime safeguards (offline)
         run: python tools/test_photo_finish.py
       - name: Verify DOUBLE TROUBLE evidence and lifetime safeguards (offline)
@@ -82,6 +84,14 @@ jobs:
         env:
           KING_FOR_A_DAY_AWARDS_ENABLED: '1'
         run: python tools/king_for_a_day_activate.py
+      - name: Preview TREASURE HUNTER first Gold evidence (NO awards or pushes)
+        if: ${{ steps.secret_journal.outcome == 'success' }}
+        run: python tools/treasure_hunter_preview.py
+      - name: Activate verified TREASURE HUNTER lifetime awards (no notifications)
+        if: ${{ github.ref == 'refs/heads/main' && steps.secret_journal.outcome == 'success' }}
+        env:
+          TREASURE_HUNTER_AWARDS_ENABLED: '1'
+        run: python tools/treasure_hunter_activate.py
       - name: Preview PHOTO FINISH near-miss evidence (NO awards or pushes)
         if: ${{ steps.secret_journal.outcome == 'success' }}
         run: python tools/photo_finish_preview.py
@@ -134,7 +144,7 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add daily-champion-history.json monthly-game-catalog.json legends.json medals.json medal-state.json arcade-records.json daily-champion.json medal-notification-state.json golden-encore-state.json gold-holder-history.json verified-challenge-awards.json
+          git add daily-champion-history.json monthly-game-catalog.json legends.json medals.json medal-state.json arcade-records.json daily-champion.json medal-notification-state.json golden-encore-state.json gold-holder-history.json treasure-hunter-state.json verified-challenge-awards.json
           if [ -f daily-champion-baselines.json ]; then git add daily-champion-baselines.json; fi
           if [ -f refresh-health.json ]; then git add refresh-health.json; fi
           # Only commit the journal when its complete validation and preview succeeded.
