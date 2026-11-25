@@ -58,7 +58,10 @@ jobs:
       - name: Preview approved Personal Best improvements (NO awards or pushes)
         if: ${{ steps.secret_journal.outcome == 'success' }}
         run: python tools/personal_best_preview.py
-      - name: Personal Best award activation safeguard (OFF; no awards or pushes)
+      - name: Activate verified Personal Best milestones (no notifications)
+        if: ${{ github.ref == 'refs/heads/main' && steps.secret_journal.outcome == 'success' }}
+        env:
+          PERSONAL_BEST_AWARDS_ENABLED: '1'
         run: python tools/personal_best_activate.py
       - name: Activate Stage 4 verified secret awards (no notifications)
         if: ${{ github.ref == 'refs/heads/main' && steps.secret_journal.outcome == 'success' }}
