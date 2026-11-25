@@ -27,7 +27,7 @@ FIRST_ELIGIBLE_YEAR = 2026
 
 # IDs from the existing iScored Hall of Legends game catalog, verified Nov 25 2026.
 # Original Donkey Kong and Donkey Kong Jr. are included because Mario appears
-# in both. Donkey Kong 3 and the Japanese variant remain outside this list.
+# in both. The original Donkey Kong (Japan) variant also qualifies; Donkey Kong 3 does not.
 MARIO_GAME_IDS = frozenset({
     "50350",  # Dr. Mario
     "50064",  # Mario Bros.
@@ -36,6 +36,7 @@ MARIO_GAME_IDS = frozenset({
     "50348",  # Super Mario Bros. 3
     "50032",  # Donkey Kong (original; Mario appears as Jumpman)
     "50033",  # Donkey Kong Jr. (Mario is the antagonist)
+    "52039",  # Donkey Kong (Japan)
 })
 STAR_WARS_GAME_IDS = frozenset({
     "50001",  # Star Wars
