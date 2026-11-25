@@ -71,6 +71,15 @@
     add('golden_encore:'+threshold,'gold',emoji,name,
         'Improve an already-held Gold-leading score on '+threshold+' qualifying occasion'+(threshold===1?'':'s')+'. First-time Gold does not count.',
         'golden_encore',threshold);
+  for(const [threshold,name,emoji] of [[1,'Personal Best!','📈'],[5,'Personal Best! x5','🌟'],[10,'Personal Best! x10','💎']])
+    add('personal_best_milestone:'+threshold,'gold',emoji,name,
+      'Earn '+threshold+' verified score improvement'+(threshold===1?'':'s')+' on your own previous approved scores. Only post-November 20, 2026 evidence counts.',
+      'personal_best_milestone',threshold,'live',
+      'Each improvement must be a new approved score strictly higher than your earlier recorded best for that game.');
+  add('never_give_up','gold','💪','NEVER GIVE UP!',
+      'Make five distinct verified unsuccessful score submissions on the same game, then take Gold (#1) with a new verified score.',
+      'never_give_up',0,'live',
+      'One trophy per player lifetime. Requires an observed Gold takeover and five earlier approved attempts below the previous Gold score.');
   // Social trophies are catalogued as planned until an authenticated,
   // server-verifiable social audit and player identity mapping are deployed.
   // The existing browser-entered initials and device token are NOT award proof.
@@ -176,6 +185,10 @@
       return playerAwards.some(a=>a.type==='gotm_beat_player_average');
     if(entry.kind==='monthly_podium')
       return playerAwards.some(a=>a.type==='gotm_podium_'+entry.threshold);
+    if(entry.kind==='personal_best_milestone')
+      return playerAwards.some(a=>a.id==='personal_best_milestone:'+player+':'+entry.threshold);
+    if(entry.kind==='never_give_up')
+      return playerAwards.some(a=>a.type==='never_give_up'||a.id==='never_give_up:'+player);
     if(entry.kind==='daily_champion_mastery')
       return playerAwards.some(a=>a.id==='daily_champion_mastery:'+player+':'+entry.threshold);
     if(entry.kind==='golden_encore')
@@ -267,6 +280,10 @@
             // secret achievements use kind:PLAYER without a threshold.
             if(entry.kind.startsWith('secret_') || entry.kind==='easter_egg')
               return a.type===entry.kind || a.id===entry.kind+':'+selected;
+            if(entry.kind==='personal_best_milestone')
+              return a.id==='personal_best_milestone:'+selected+':'+entry.threshold;
+            if(entry.kind==='never_give_up')
+              return a.type==='never_give_up'||a.id==='never_give_up:'+selected;
             if(entry.kind==='daily_champion_mastery'||entry.kind==='golden_encore'||
                entry.kind.endsWith('_participation')||entry.kind.endsWith('_streak'))
               return a.id===entry.kind+':'+selected+':'+entry.threshold;
