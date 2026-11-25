@@ -217,6 +217,42 @@
     if(entry.kind.endsWith('_streak'))return streak(player,entry.kind.split('_')[0]);
     return 0;
   }
+  let celebrationTimer=null;
+  function celebrateTrophy(entry){
+    if(!selected||!unlocked(selected,entry)||dialog.hidden)return;
+    const old=dialog.querySelector('.achievement-victory');
+    if(old)old.remove();
+    if(celebrationTimer!==null){clearTimeout(celebrationTimer);celebrationTimer=null;}
+    const overlay=el('div','achievement-victory');
+    overlay.setAttribute('role','status');
+    overlay.setAttribute('aria-live','polite');
+    const inner=el('div','achievement-victory-inner');
+    inner.append(el('span','achievement-victory-glyph',entry.emoji));
+    inner.append(el('strong','achievement-victory-heading','🏆 TROPHY CELEBRATION!'));
+    inner.append(el('span','achievement-victory-name',entry.name));
+    inner.append(el('span','achievement-victory-player',selected+' • VERIFIED ACHIEVEMENT'));
+    const dismiss=el('button','achievement-victory-dismiss','CONTINUE ▶');
+    dismiss.type='button';
+    dismiss.setAttribute('aria-label','Close trophy celebration');
+    const stop=()=>{if(celebrationTimer!==null){clearTimeout(celebrationTimer);celebrationTimer=null;}overlay.remove();};
+    dismiss.addEventListener('click',stop);
+    inner.append(dismiss);
+    overlay.append(inner);
+    if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      const sparks=el('div','achievement-victory-sparks');
+      sparks.setAttribute('aria-hidden','true');
+      for(let i=0;i<18;i++){
+        const spark=el('span','achievement-victory-spark',i%3===0?'✦':'★');
+        spark.style.setProperty('--spark-index',String(i));
+        spark.style.setProperty('--spark-angle',(i*20)+'deg');
+        sparks.append(spark);
+      }
+      overlay.append(sparks);
+    }
+    dialog.append(overlay);
+    dismiss.focus();
+    celebrationTimer=setTimeout(stop,5500);
+  }
   function createTile(entry){
     const won=Boolean(selected)&&unlocked(selected,entry);
     const planned=entry.status==='planned';
@@ -301,6 +337,12 @@
             return a.id===entry.id;
           });
           if(matches[0]?.date)detail.append(el('p','achievement-tile-earned-date','EARNED '+matches[0].date));
+        }
+        if(won){
+          const replay=el('button','achievement-celebrate-button','✨ CELEBRATE THIS TROPHY');
+          replay.type='button';
+          replay.addEventListener('click',()=>celebrateTrophy(entry));
+          detail.append(replay);
         }
         if(entry.note&&!concealed&&(!secret||won))detail.append(el('p','achievement-tile-note',entry.note));
         detail.dataset.built='yes';
@@ -388,6 +430,8 @@
     drawFilters();draw();close.focus();loadData();
   }
   function hide(){
+    if(celebrationTimer!==null){clearTimeout(celebrationTimer);celebrationTimer=null;}
+    dialog.querySelector('.achievement-victory')?.remove();
     dialog.hidden=true;
     document.body.classList.remove('achievement-showcase-open');
     previousFocus?.focus?.();
