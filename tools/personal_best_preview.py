@@ -20,6 +20,8 @@ def timestamp(value):
         raise ValueError('Submission time must have a timezone')
     return d
 
+MILESTONES = ((1, 'Personal Best!'), (5, 'Personal Best! x5'), (10, 'Personal Best! x10'))
+
 def preview(journal):
     if (not isinstance(journal, dict) or journal.get('schema_version') != 1
             or journal.get('policy') != 'post_2026_11_19_approved_iscored_scores'
@@ -55,7 +57,20 @@ def preview(journal):
                     'submitted_at': submitted.isoformat()})
             if best is None or score > best:
                 best, best_id, best_time = score, sid, submitted
-    return {'mode': 'PREVIEW_ONLY_NO_AWARDS', 'approved_scores': len(journal['scores']),
+    by_player = defaultdict(list)
+    for item in improvements:
+        by_player[item['player']].append(item)
+    milestones = []
+    for player, events in sorted(by_player.items()):
+        events.sort(key=lambda x:(x['submitted_at'], x['improved_score_id']))
+        for threshold, name in MILESTONES:
+            if len(events) >= threshold:
+                event = events[threshold - 1]
+                milestones.append({'id':f'personal_best_milestone:{player}:{threshold}',
+                    'player':player, 'milestone':threshold, 'name':name,
+                    'qualifying_score_id':event['improved_score_id'],
+                    'unlocked_at':event['submitted_at']})
+    return {'mode': 'PREVIEW_ONLY_NO_AWARDS', 'milestones':milestones, 'approved_scores': len(journal['scores']),
             'player_game_pairs': len(groups), 'improvement_events': len(improvements),
             'players_with_improvements': len({x['player'] for x in improvements}),
             'examples': improvements[:10]}
@@ -67,6 +82,9 @@ def main():
           result['approved_scores'], 'approved scores,',
           result['improvement_events'], 'improvements,',
           result['players_with_improvements'], 'players')
+    for award in result['milestones']:
+        print('  Milestone candidate:', award['player'], award['name'],
+              '(score ID', award['qualifying_score_id'] + ')')
     for item in result['examples']:
         print('  ', item['player'], item['game'], item['previous_best'],
               '->', item['new_best'], '(score IDs', item['previous_score_id'],
