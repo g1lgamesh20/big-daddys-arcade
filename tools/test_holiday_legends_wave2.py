@@ -74,6 +74,36 @@ class Wave2Tests(unittest.TestCase):
         self.assertEqual(repeat,[])
         self.assertEqual(later,updated)
 
+    def test_grand_slam_complete_calendar_year_repeatable(self):
+        # Complete each of 15 approved holiday types during 2027.
+        dates=[
+            ("2027-01-01T12:00:00-05:00","50010"),
+            ("2027-02-14T12:00:00-05:00","50010"),
+            ("2027-03-10T12:00:00-05:00","50350"),
+            ("2027-03-17T12:00:00-04:00","50010"),
+            ("2027-03-28T12:00:00-04:00","50010"),
+            ("2027-05-04T12:00:00-04:00","50001"),
+            ("2027-06-20T12:00:00-04:00","50010"),
+            ("2027-07-04T12:00:00-04:00","50010"),
+            ("2027-08-13T12:00:00-04:00","50010"),
+            ("2027-09-08T12:00:00-04:00","50055"),
+            ("2027-09-12T12:00:00-04:00","50010"),
+            ("2027-10-11T12:00:00-04:00","50010"),
+            ("2027-10-31T12:00:00-04:00","50010"),
+            ("2027-11-25T12:00:00-05:00","50010"),
+            ("2027-12-25T12:00:00-05:00","50010"),
+        ]
+        j=sample([("DON",dt,gid) for dt,gid in dates])
+        _,during=activate(j,blank(),datetime(2027,12,31,21,tzinfo=timezone.utc),enabled=True)
+        self.assertFalse(any(a["type"]=="holiday_grand_slam" for a in during))
+        next_year,after=activate(j,blank(),datetime(2028,1,2,tzinfo=timezone.utc),enabled=True)
+        self.assertIn("holiday_grand_slam:DON:2027",{a["id"] for a in after})
+        _,again=activate(j,next_year,datetime(2028,1,2,tzinfo=timezone.utc),enabled=True)
+        self.assertEqual(again,[])
+        incomplete=sample([("DON",dt,gid) for dt,gid in dates[:-1]])
+        _,partial=activate(incomplete,blank(),datetime(2028,1,2,tzinfo=timezone.utc),enabled=True)
+        self.assertFalse(any(a["type"]=="holiday_grand_slam" for a in partial))
+
     def test_future_dates_and_no_april_fools(self):
         j=sample([("DON","2027-04-01T12:00:00-04:00","50010"),
                   ("VJG","2027-10-31T12:00:00-04:00","50010")])
