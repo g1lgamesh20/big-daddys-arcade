@@ -45,6 +45,8 @@ jobs:
         run: python tools/test_back_from_the_dead_preview.py
       - name: Verify NEVER GIVE UP evidence safeguards (offline)
         run: python tools/test_never_give_up_preview.py
+      - name: Verify PHOTO FINISH evidence and lifetime safeguards (offline)
+        run: python tools/test_photo_finish.py
       - name: Verify DOUBLE TROUBLE evidence and lifetime safeguards (offline)
         run: python tools/test_double_trouble.py
       - name: Verify KING FOR A DAY award activation safeguards (offline)
@@ -80,6 +82,14 @@ jobs:
         env:
           KING_FOR_A_DAY_AWARDS_ENABLED: '1'
         run: python tools/king_for_a_day_activate.py
+      - name: Preview PHOTO FINISH near-miss evidence (NO awards or pushes)
+        if: ${{ steps.secret_journal.outcome == 'success' }}
+        run: python tools/photo_finish_preview.py
+      - name: Activate verified PHOTO FINISH lifetime awards (no notifications)
+        if: ${{ github.ref == 'refs/heads/main' && steps.secret_journal.outcome == 'success' }}
+        env:
+          PHOTO_FINISH_AWARDS_ENABLED: '1'
+        run: python tools/photo_finish_activate.py
       - name: Preview DOUBLE TROUBLE verified Gold takeovers (NO awards or pushes)
         if: ${{ steps.secret_journal.outcome == 'success' }}
         run: python tools/double_trouble_preview.py
