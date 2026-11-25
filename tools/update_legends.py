@@ -218,6 +218,8 @@ def main():
     # This journal never issues awards or notifications.
     from gold_holder_history import sync as sync_gold_holder_history
     sync_gold_holder_history(raw['scores'], known if STATE.exists() else all_ids)
+    from treasure_hunter_state import sync as sync_treasure_hunter
+    sync_treasure_hunter(raw['scores'])
     from golden_encore import sync as sync_golden_encore
     sync_golden_encore(raw['scores'], known if STATE.exists() else all_ids)
     # Independent, permanent first-place history. Preserve every recorded gold event.
