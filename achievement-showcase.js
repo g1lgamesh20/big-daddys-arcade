@@ -152,7 +152,7 @@
   add('arcade_olympics_participation','olympics','🎖️','ARCADE OLYMPIAN',
       'Submit any approved arcade score on Holy Thursday, the Thursday before Easter. Earn an annual participation record for every year you qualify.',
       'arcade_olympics_participation',0,'live','Annual participation only. Five-game competition rankings are tallied separately.');
-  for(const [years,name,emoji] of [[1,'FIRST OLYMPICS','🎖️'],[3,'OLYMPIC VETERAN','🏛️'],
+  for(const [years,name,emoji] of [[3,'OLYMPIC VETERAN','🏛️'],
                                   [5,'OLYMPIC LEGEND','🔥'],[10,'OLYMPIC IMMORTAL','👑']])
     add('arcade_olympics_milestone:'+years,'olympics',emoji,name,
         'Submit an approved score on Holy Thursday in '+years+' different year'+(years===1?'':'s')+'.',
