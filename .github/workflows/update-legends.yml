@@ -77,6 +77,8 @@ jobs:
         run: python tools/test_thanksgiving_awards.py
       - name: Test Christmas, New Year's, MAR10 and May Fourth holiday awards
         run: python tools/test_seasonal_holiday_awards.py
+      - name: Test Wave 2 Holiday Legends and Holy Thursday Olympics (offline)
+        run: python tools/test_holiday_legends_wave2.py
       - name: Download scores and update medal feed
         id: score_download
         run: python tools/update_legends.py
@@ -161,6 +163,11 @@ jobs:
         env:
           SEASONAL_HOLIDAY_AWARDS_ENABLED: '1'
         run: python tools/seasonal_holiday_awards.py
+      - name: Award Wave 2 holidays, lifetime holiday milestones, and Holy Thursday participation
+        if: ${{ github.ref == 'refs/heads/main' && steps.secret_journal.outcome == 'success' }}
+        env:
+          HOLIDAY_WAVE2_AWARDS_ENABLED: '1'
+        run: python tools/holiday_legends_wave2.py
       - name: Send new medal notifications
         if: ${{ github.ref == 'refs/heads/main' }}
         env:
