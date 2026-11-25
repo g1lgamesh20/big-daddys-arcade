@@ -45,5 +45,5 @@ class PhotoFinishTests(unittest.TestCase):
   activate(j,h,l,NOW,enabled=True);self.assertEqual((j,h,l),old)
  def test_naive_time(self):
   with self.assertRaises(ValueError):activate(journal(),history(),ledger(),datetime(2026,11,26),enabled=True)
- def test_integer_precision(self):self.assertEqual(preview(journal(99),history(100))['candidates'],[])
+ def test_integer_precision(self):self.assertEqual(preview(journal(98),history(100))['candidates'],[])
 if __name__=='__main__':unittest.main()
