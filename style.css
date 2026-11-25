@@ -560,3 +560,19 @@ body.achievement-showcase-open{overflow:hidden}
     order:4;margin-left:auto
   }
 }
+
+/* Player Trophy Room: reuse the Hall's compact neon achievement tiles. */
+#achievement-showcase-dialog .achievement-room-toggle{
+ display:block;margin:9px 0 12px;padding:11px 15px;min-height:44px;
+ border:2px solid #aaff76;border-radius:12px;background:#1c3024;
+ color:#e4ffcb;font:800 12px/1.3 system-ui,sans-serif;cursor:pointer;
+ touch-action:manipulation;
+}
+#achievement-showcase-dialog .achievement-room-toggle[hidden]{display:none}
+#achievement-showcase-dialog .achievement-room-toggle:focus-visible{
+ outline:3px solid #ff8fdf;outline-offset:3px;
+}
+#achievement-showcase-dialog .achievement-room-empty{
+ text-align:center;color:#f4d7ff;font:700 13px/1.6 system-ui,sans-serif;
+ padding:22px 12px;border:1px dashed #8763a5;border-radius:12px;
+}
