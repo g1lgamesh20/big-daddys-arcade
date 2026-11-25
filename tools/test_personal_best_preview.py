@@ -40,7 +40,7 @@ class PersonalBestPreviewTests(unittest.TestCase):
         self.assertEqual([a['milestone'] for a in preview(data)['milestones']],[1])
     def test_five_and_ten_milestones_and_unique_ids(self):
         rows=[row(i,100+i,f'2026-12-{i:02d}T12:00:00-05:00') for i in range(1,12)]
-        for r in rows:r['first_observed_at']='2026-12-05T12:00:00+00:00'
+        for r in rows:r['first_observed_at']='2027-01-05T12:00:00+00:00'
         data=journal(rows)
         result=preview(data)
         self.assertEqual([a['milestone'] for a in result['milestones']],[1,5,10])
