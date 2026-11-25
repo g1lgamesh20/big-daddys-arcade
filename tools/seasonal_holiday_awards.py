@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Additional Hall of Legends holiday awards from approved iScored score evidence.
 
-Christmas and New Year's Day: any approved arcade score on that Eastern day.
+Christmas Eve/Day and New Year's Eve/Day: any approved score on either Eastern day.
 MAR10 and May the Fourth: approved scores on explicitly eligible game IDs.
 All trophies are once per player lifetime, with no notifications, no client claims.
 The post-fix journal stores original submission time; subsequent approval is fine.
@@ -43,7 +43,9 @@ STAR_WARS_GAME_IDS = frozenset({
 })
 # (month,day): (award type, public name, optional approved iScored game IDs).
 HOLIDAYS = {
+    (12, 24): ("holiday_christmas", "SANTA'S HIGH SCORE HELPER", None),
     (12, 25): ("holiday_christmas", "SANTA'S HIGH SCORE HELPER", None),
+    (12, 31): ("holiday_new_years_day", "NEW YEAR, NEW HIGH SCORE!", None),
     (1, 1): ("holiday_new_years_day", "NEW YEAR, NEW HIGH SCORE!", None),
     (3, 10): ("holiday_mar10", "MAR10 DAY HERO", MARIO_GAME_IDS),
     (5, 4): ("holiday_may_the_fourth", "MAY THE FOURTH BE WITH YOU!", STAR_WARS_GAME_IDS),
@@ -52,9 +54,12 @@ HOLIDAYS = {
 
 def active_on(day, kind):
     # First actual calendar occurrence after feature activation.
-    # January / March / May first qualify in 2027; Christmas first in 2026.
+    # First eligible eves are December 24 and 31, 2026.
+    # MAR10 and May Fourth first qualify in 2027.
     if kind == "holiday_christmas":
-        return day >= date(2026, 12, 25)
+        return day >= date(2026, 12, 24)
+    if kind == "holiday_new_years_day":
+        return day >= date(2026, 12, 31)
     return day >= date(2027, 1, 1)
 
 
