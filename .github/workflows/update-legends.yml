@@ -6,7 +6,9 @@ on:
 permissions:
   contents: write
 concurrency:
-  group: arcade-medal-refresh
+  # Share the verified-award issuance lock with auto-challenge-awards.yml and
+  # verify-challenge-award.yml. All three write the same permanent trophy ledger.
+  group: arcade-verified-trophy-issuance
   cancel-in-progress: false
 jobs:
   update:
