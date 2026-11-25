@@ -49,7 +49,7 @@ def preview(journal,history):
                 winners=[]
                 for sid in event['new_score_ids']:
                     row=scores.get(str(sid))
-                    if row and row[0]==player and row[1]==gid and row[2]==event['new_score'] and row[3]<=observed and row[4]<=observed:
+                    if row and row[0]==player and row[1]==gid and row[2]==event['new_score'] and row[3]>timestamp(loss['observed_at']) and row[3]<=observed and row[4]<=observed:
                         winners.append((row[3],str(sid)))
                 if not winners:continue
                 _,sid=min(winners)
