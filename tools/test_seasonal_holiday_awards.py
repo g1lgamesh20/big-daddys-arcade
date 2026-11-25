@@ -68,11 +68,11 @@ class SeasonalHolidayTests(unittest.TestCase):
         self.assertEqual({a["player"] for a in both},{"DON","VJG"})
 
     def test_mario_day_game_whitelist(self):
-        self.assertEqual(len(MARIO_GAME_IDS), 7)
+        self.assertEqual(len(MARIO_GAME_IDS), 8)
         self.assertIn("50032", MARIO_GAME_IDS)  # original Donkey Kong
         self.assertIn("50033", MARIO_GAME_IDS)  # Donkey Kong Jr.
         self.assertNotIn("50034", MARIO_GAME_IDS)  # Donkey Kong 3
-        self.assertNotIn("52039", MARIO_GAME_IDS)  # separate Japan variant
+        self.assertIn("52039", MARIO_GAME_IDS)  # original Japan variant
         rows = {i + 1: ("DON", gid, "2027-03-10T12:00:00-05:00") for i, gid in enumerate(MARIO_GAME_IDS)}
         rows[20] = ("VJG", "50032", "2027-03-10T12:00:00-05:00")
         rows[21] = ("DAY", "50033", "2027-03-10T12:00:00-05:00")
@@ -81,7 +81,7 @@ class SeasonalHolidayTests(unittest.TestCase):
         rows[24] = ("RDG", "50010", "2027-03-10T12:00:00-05:00")
         _,new = activate(self.journal(rows),self.ledger,self.now,enabled=True)
         self.assertEqual({(x["player"],x["type"]) for x in new},{
-            ("DON","holiday_mar10"),("VJG","holiday_mar10"),("DAY","holiday_mar10")})
+            ("DON","holiday_mar10"),("VJG","holiday_mar10"),("DAY","holiday_mar10"),("SPC","holiday_mar10")})
 
     def test_star_wars_day_game_whitelist(self):
         self.assertEqual(len(STAR_WARS_GAME_IDS), 4)
