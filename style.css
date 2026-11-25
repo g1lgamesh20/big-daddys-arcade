@@ -576,3 +576,68 @@ body.achievement-showcase-open{overflow:hidden}
  text-align:center;color:#f4d7ff;font:700 13px/1.6 system-ui,sans-serif;
  padding:22px 12px;border:1px dashed #8763a5;border-radius:12px;
 }
+
+/* Verified trophy celebrations: user-triggered, no pushes or score changes. */
+#achievement-showcase-dialog .achievement-celebrate-button{
+ display:block;width:100%;margin:12px 0 2px;padding:10px 8px;min-height:44px;
+ border:1px solid #aaff76;border-radius:10px;background:#253728;
+ color:#d8ffc4;font:800 11px system-ui,sans-serif;cursor:pointer;
+}
+#achievement-showcase-dialog .achievement-victory{
+ position:fixed;inset:0;z-index:100;display:flex;align-items:center;
+ justify-content:center;padding:24px;background:rgba(5,2,17,.94);
+ overflow:hidden;isolation:isolate;
+}
+#achievement-showcase-dialog .achievement-victory-inner{
+ position:relative;z-index:2;display:flex;flex-direction:column;
+ align-items:center;gap:13px;text-align:center;width:min(100%,410px);
+ padding:28px 20px;border:2px solid #ff6bd4;border-radius:22px;
+ background:linear-gradient(145deg,#1b0d34,#101d25);
+ box-shadow:0 0 22px #ff55ba, inset 0 0 25px #3d1453;
+ animation:achievement-victory-pop .45s ease-out both;
+}
+#achievement-showcase-dialog .achievement-victory-glyph{
+ font-size:clamp(58px,17vw,100px);filter:drop-shadow(0 0 12px #aaff76);
+}
+#achievement-showcase-dialog .achievement-victory-heading{
+ color:#aaff76;font:900 clamp(17px,5vw,27px)/1.2 system-ui,sans-serif;
+ text-shadow:0 0 14px #55ff66;
+}
+#achievement-showcase-dialog .achievement-victory-name{
+ color:#fff;font:900 clamp(18px,5vw,28px)/1.2 system-ui,sans-serif;
+ text-shadow:0 0 13px #ff58ce;
+}
+#achievement-showcase-dialog .achievement-victory-player{
+ color:#ffd6f4;font:800 11px/1.5 system-ui,sans-serif;
+}
+#achievement-showcase-dialog .achievement-victory-dismiss{
+ min-height:46px;padding:10px 25px;border:2px solid #aaff76;
+ border-radius:12px;background:#193b26;color:#e8ffe1;
+ font:900 13px system-ui,sans-serif;cursor:pointer;
+}
+#achievement-showcase-dialog .achievement-victory-dismiss:focus-visible,
+#achievement-showcase-dialog .achievement-celebrate-button:focus-visible{
+ outline:3px solid #fff;outline-offset:3px;
+}
+#achievement-showcase-dialog .achievement-victory-sparks{
+ position:absolute;inset:0;pointer-events:none;overflow:hidden;
+}
+#achievement-showcase-dialog .achievement-victory-spark{
+ position:absolute;left:50%;top:50%;font-size:25px;color:#ff76d9;
+ text-shadow:0 0 12px currentColor;
+ animation:achievement-victory-spark 1.9s ease-out both;
+ animation-delay:calc(var(--spark-index) * 35ms);
+}
+#achievement-showcase-dialog .achievement-victory-spark:nth-child(even){color:#aaff76}
+@keyframes achievement-victory-pop{
+ from{opacity:0;transform:scale(.72)}to{opacity:1;transform:scale(1)}
+}
+@keyframes achievement-victory-spark{
+ 0%{opacity:0;transform:rotate(var(--spark-angle)) translateX(20px) scale(.3)}
+ 20%{opacity:1}
+ 100%{opacity:0;transform:rotate(var(--spark-angle)) translateX(min(43vw,240px)) scale(1.3)}
+}
+@media(prefers-reduced-motion:reduce){
+ #achievement-showcase-dialog .achievement-victory-inner,
+ #achievement-showcase-dialog .achievement-victory-spark{animation:none!important}
+}
