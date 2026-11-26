@@ -167,6 +167,34 @@
       "verification_method": "player_claimed_secret_discovery_no_identity_verification"
     },
     {
+      "id": "personal_best_milestone:KAK:1",
+      "event_key": "personal_best:389956",
+      "type": "personal_best_milestone",
+      "name": "Personal Best!",
+      "player": "KAK",
+      "date": "2026-11-25",
+      "game": "Personal Best Challenge",
+      "milestone": 1,
+      "score_id": "389956",
+      "original_submitted_at_et": "2026-11-25T19:22:35-05:00",
+      "verified_at": "2026-11-26T03:01:11.357749+00:00",
+      "verification_method": "postcutover_approved_iscored_personal_best_evidence"
+    },
+    {
+      "id": "personal_best_milestone:SPC:1",
+      "event_key": "personal_best:389960",
+      "type": "personal_best_milestone",
+      "name": "Personal Best!",
+      "player": "SPC",
+      "date": "2026-11-25",
+      "game": "Personal Best Challenge",
+      "milestone": 1,
+      "score_id": "389960",
+      "original_submitted_at_et": "2026-11-25T19:28:44-05:00",
+      "verified_at": "2026-11-26T03:01:11.357749+00:00",
+      "verification_method": "postcutover_approved_iscored_personal_best_evidence"
+    },
+    {
       "id": "secret_king_for_a_day:BGR",
       "type": "secret_king_for_a_day",
       "name": "KING FOR A DAY",

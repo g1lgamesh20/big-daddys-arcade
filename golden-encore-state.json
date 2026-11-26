@@ -2087,16 +2087,16 @@
       ]
     },
     "70346": {
-      "score": 33200,
+      "score": 34240,
       "holders": [
-        "DON"
+        "KAK"
       ],
       "game": "CIRCUS CHARLIE",
       "winning_scores": [
         {
-          "player": "DON",
-          "score": 33200,
-          "score_id": "138289",
+          "player": "KAK",
+          "score": 34240,
+          "score_id": "389972",
           "game": "CIRCUS CHARLIE"
         }
       ]
@@ -2582,16 +2582,16 @@
       ]
     },
     "50062": {
-      "score": 19790,
+      "score": 27120,
       "holders": [
-        "DON"
+        "SPC"
       ],
       "game": "Mappy",
       "winning_scores": [
         {
-          "player": "DON",
-          "score": 19790,
-          "score_id": "227710",
+          "player": "SPC",
+          "score": 27120,
+          "score_id": "389887",
           "game": "Mappy"
         }
       ]
@@ -3047,16 +3047,16 @@
       ]
     },
     "50057": {
-      "score": 11379,
+      "score": 18076,
       "holders": [
-        "DON"
+        "SPC"
       ],
       "game": "Tron",
       "winning_scores": [
         {
-          "player": "DON",
-          "score": 11379,
-          "score_id": "74209",
+          "player": "SPC",
+          "score": 18076,
+          "score_id": "389965",
           "game": "Tron"
         }
       ]

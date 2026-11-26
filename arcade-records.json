@@ -1,6 +1,39 @@
 {
-  "updated_at": "2026-11-26T01:46:13.142888+00:00",
+  "updated_at": "2026-11-26T03:01:10.485280+00:00",
   "records": [
+    {
+      "id": "389972",
+      "player": "KAK",
+      "game": "CIRCUS CHARLIE",
+      "game_id": "70346",
+      "score": 34240,
+      "date": "2026-11-25 18:55:00",
+      "rank": 1,
+      "medal": "gold",
+      "record_type": "new_first_place"
+    },
+    {
+      "id": "389965",
+      "player": "SPC",
+      "game": "Tron",
+      "game_id": "50057",
+      "score": 18076,
+      "date": "2026-11-25 18:38:57",
+      "rank": 1,
+      "medal": "gold",
+      "record_type": "new_first_place"
+    },
+    {
+      "id": "389887",
+      "player": "SPC",
+      "game": "Mappy",
+      "game_id": "50062",
+      "score": 27120,
+      "date": "2026-11-25 14:49:23",
+      "rank": 1,
+      "medal": "gold",
+      "record_type": "new_first_place"
+    },
     {
       "id": "389547",
       "player": "SPC",

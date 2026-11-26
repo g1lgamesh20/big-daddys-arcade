@@ -1,6 +1,66 @@
 {
-  "updated_at": "2026-11-26T01:46:13.142888+00:00",
+  "updated_at": "2026-11-26T03:01:10.485280+00:00",
   "alerts": [
+    {
+      "id": "389998",
+      "player": "VJG",
+      "game": "Tron",
+      "game_id": "50057",
+      "score": 2807,
+      "date": "2026-11-25 20:29:24",
+      "rank": 3,
+      "medal": "bronze"
+    },
+    {
+      "id": "389972",
+      "player": "KAK",
+      "game": "CIRCUS CHARLIE",
+      "game_id": "70346",
+      "score": 34240,
+      "date": "2026-11-25 18:55:00",
+      "rank": 1,
+      "medal": "gold"
+    },
+    {
+      "id": "389965",
+      "player": "SPC",
+      "game": "Tron",
+      "game_id": "50057",
+      "score": 18076,
+      "date": "2026-11-25 18:38:57",
+      "rank": 1,
+      "medal": "gold"
+    },
+    {
+      "id": "389960",
+      "player": "SPC",
+      "game": "Bubble Bobble",
+      "game_id": "50022",
+      "score": 330330,
+      "date": "2026-11-25 18:28:44",
+      "rank": 2,
+      "medal": "silver"
+    },
+    {
+      "id": "389955",
+      "player": "SPC",
+      "game": "Street Fighter II Championship Edition",
+      "game_id": "73284",
+      "score": 63300,
+      "date": "2026-11-25 18:22:31",
+      "rank": 2,
+      "medal": "silver"
+    },
+    {
+      "id": "389887",
+      "player": "SPC",
+      "game": "Mappy",
+      "game_id": "50062",
+      "score": 27120,
+      "date": "2026-11-25 14:49:23",
+      "rank": 1,
+      "medal": "gold"
+    },
     {
       "id": "389641",
       "player": "VJG",
@@ -940,66 +1000,6 @@
       "date": "2026-11-07 17:43:17",
       "rank": 1,
       "medal": "gold"
-    },
-    {
-      "id": "380945",
-      "player": "SPC",
-      "game": "Pole Position",
-      "game_id": "50249",
-      "score": 29540,
-      "date": "2026-11-07 17:43:06",
-      "rank": 1,
-      "medal": "gold"
-    },
-    {
-      "id": "380951",
-      "player": "SPC",
-      "game": "Tetris",
-      "game_id": "50253",
-      "score": 19988,
-      "date": "2026-11-07 17:42:51",
-      "rank": 1,
-      "medal": "gold"
-    },
-    {
-      "id": "381006",
-      "player": "DAY",
-      "game": "Rampage",
-      "game_id": "50165",
-      "score": 27250,
-      "date": "2026-11-07 17:42:04",
-      "rank": 2,
-      "medal": "silver"
-    },
-    {
-      "id": "381124",
-      "player": "DAY",
-      "game": "Q*bert",
-      "game_id": "49999",
-      "score": 7425,
-      "date": "2026-11-07 17:40:42",
-      "rank": 3,
-      "medal": "bronze"
-    },
-    {
-      "id": "381127",
-      "player": "DAY",
-      "game": "Donkey Kong",
-      "game_id": "50032",
-      "score": 7200,
-      "date": "2026-11-07 17:40:24",
-      "rank": 3,
-      "medal": "bronze"
-    },
-    {
-      "id": "381128",
-      "player": "DAY",
-      "game": "Gorf",
-      "game_id": "50044",
-      "score": 2400,
-      "date": "2026-11-07 17:40:12",
-      "rank": 3,
-      "medal": "bronze"
     }
   ]
 }

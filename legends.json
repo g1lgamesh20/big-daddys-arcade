@@ -1,31 +1,31 @@
 {
-  "updated_at": "2026-11-26T01:46:13.142888+00:00",
+  "updated_at": "2026-11-26T03:01:10.485280+00:00",
   "source": "iScored public read API",
   "scoring_note": "PAPA-style estimate: top 1000 games per player; one best score per player per game; competition ties. iScored may handle ties differently.",
   "standings": [
     {
       "player": "DON",
-      "points": 21702,
+      "points": 21672,
       "games": 222,
-      "gold": 179,
-      "silver": 30,
+      "gold": 176,
+      "silver": 33,
       "bronze": 11
     },
     {
       "player": "VJG",
-      "points": 5923,
-      "games": 65,
+      "points": 6008,
+      "games": 66,
       "gold": 13,
       "silver": 42,
-      "bronze": 4
+      "bronze": 5
     },
     {
       "player": "SPC",
-      "points": 5513,
-      "games": 58,
-      "gold": 33,
-      "silver": 18,
-      "bronze": 6
+      "points": 5718,
+      "games": 60,
+      "gold": 35,
+      "silver": 19,
+      "bronze": 5
     },
     {
       "player": "DAY",
@@ -37,9 +37,9 @@
     },
     {
       "player": "KAK",
-      "points": 2612,
-      "games": 29,
-      "gold": 7,
+      "points": 2712,
+      "games": 30,
+      "gold": 8,
       "silver": 11,
       "bronze": 4
     },
@@ -53,11 +53,11 @@
     },
     {
       "player": "RPS",
-      "points": 1953,
+      "points": 1948,
       "games": 22,
       "gold": 4,
-      "silver": 7,
-      "bronze": 5
+      "silver": 6,
+      "bronze": 6
     },
     {
       "player": "FO",
@@ -585,12 +585,12 @@
       "rank": 1
     },
     {
-      "player": "DON",
+      "player": "KAK",
       "game": "CIRCUS CHARLIE",
       "game_id": "70346",
-      "score": 33200,
-      "date": "2025-01-14 08:56:15",
-      "score_id": "138289",
+      "score": 34240,
+      "date": "2026-11-25 18:55:00",
+      "score_id": "389972",
       "rank": 1
     },
     {
@@ -1458,12 +1458,12 @@
       "rank": 1
     },
     {
-      "player": "DON",
+      "player": "SPC",
       "game": "Mappy",
       "game_id": "50062",
-      "score": 19790,
-      "date": "2025-10-28 16:23:28",
-      "score_id": "227710",
+      "score": 27120,
+      "date": "2026-11-25 14:49:23",
+      "score_id": "389887",
       "rank": 1
     },
     {
@@ -2421,12 +2421,12 @@
       "rank": 1
     },
     {
-      "player": "DON",
+      "player": "SPC",
       "game": "Tron",
       "game_id": "50057",
-      "score": 11379,
-      "date": "2024-01-19 21:53:16",
-      "score_id": "74209",
+      "score": 18076,
+      "date": "2026-11-25 18:38:57",
+      "score_id": "389965",
       "rank": 1
     },
     {
@@ -3096,12 +3096,12 @@
     },
     {
       "kind": "champion",
-      "player": "DON",
+      "player": "KAK",
       "game": "CIRCUS CHARLIE",
       "game_id": "70346",
-      "score": 33200,
-      "date": "2025-01-14 08:56:15",
-      "score_id": "138289",
+      "score": 34240,
+      "date": "2026-11-25 18:55:00",
+      "score_id": "389972",
       "rank": 1
     },
     {
@@ -3787,110 +3787,110 @@
     {
       "kind": "recent",
       "player": "VJG",
+      "game": "Tron",
+      "game_id": "50057",
+      "score": 2807,
+      "date": "2026-11-25 20:29:24",
+      "score_id": "389998"
+    },
+    {
+      "kind": "recent",
+      "player": "KAK",
+      "game": "CIRCUS CHARLIE",
+      "game_id": "70346",
+      "score": 34240,
+      "date": "2026-11-25 18:55:00",
+      "score_id": "389972"
+    },
+    {
+      "kind": "recent",
+      "player": "KAK",
+      "game": "CIRCUS CHARLIE",
+      "game_id": "70346",
+      "score": 23840,
+      "date": "2026-11-25 18:44:04",
+      "score_id": "389968"
+    },
+    {
+      "kind": "recent",
+      "player": "SPC",
+      "game": "Tron",
+      "game_id": "50057",
+      "score": 18076,
+      "date": "2026-11-25 18:38:57",
+      "score_id": "389965"
+    },
+    {
+      "kind": "recent",
+      "player": "KAK",
+      "game": "CIRCUS CHARLIE",
+      "game_id": "70346",
+      "score": 16640,
+      "date": "2026-11-25 18:35:37",
+      "score_id": "389963"
+    },
+    {
+      "kind": "recent",
+      "player": "SPC",
+      "game": "Bubble Bobble",
+      "game_id": "50022",
+      "score": 330330,
+      "date": "2026-11-25 18:28:44",
+      "score_id": "389960"
+    },
+    {
+      "kind": "recent",
+      "player": "KAK",
+      "game": "CIRCUS CHARLIE",
+      "game_id": "70346",
+      "score": 15040,
+      "date": "2026-11-25 18:22:35",
+      "score_id": "389956"
+    },
+    {
+      "kind": "recent",
+      "player": "SPC",
+      "game": "Street Fighter II Championship Edition",
+      "game_id": "73284",
+      "score": 63300,
+      "date": "2026-11-25 18:22:31",
+      "score_id": "389955"
+    },
+    {
+      "kind": "recent",
+      "player": "KAK",
+      "game": "CIRCUS CHARLIE",
+      "game_id": "70346",
+      "score": 6600,
+      "date": "2026-11-25 18:19:52",
+      "score_id": "389954"
+    },
+    {
+      "kind": "recent",
+      "player": "KAK",
+      "game": "BurgerTime",
+      "game_id": "50024",
+      "score": 10500,
+      "date": "2026-11-25 18:12:36",
+      "score_id": "389950"
+    },
+    {
+      "kind": "recent",
+      "player": "SPC",
+      "game": "Mappy",
+      "game_id": "50062",
+      "score": 27120,
+      "date": "2026-11-25 14:49:23",
+      "score_id": "389887"
+    },
+    {
+      "kind": "recent",
+      "player": "VJG",
       "game": "Angler Dangler",
       "game_id": "50217",
       "score": 1900,
       "date": "2026-11-24 20:44:51",
       "score_id": "389641"
-    },
-    {
-      "kind": "recent",
-      "player": "VJG",
-      "game": "Angler Dangler",
-      "game_id": "50217",
-      "score": 1000,
-      "date": "2026-11-24 20:40:42",
-      "score_id": "389637"
-    },
-    {
-      "kind": "recent",
-      "player": "VJG",
-      "game": "1943",
-      "game_id": "50011",
-      "score": 29500,
-      "date": "2026-11-24 20:18:14",
-      "score_id": "389603"
-    },
-    {
-      "kind": "recent",
-      "player": "VJG",
-      "game": "1942",
-      "game_id": "50010",
-      "score": 35000,
-      "date": "2026-11-24 20:10:49",
-      "score_id": "389595"
-    },
-    {
-      "kind": "recent",
-      "player": "VJG",
-      "game": "Captain America and The Avengers - Arcade",
-      "game_id": "101600",
-      "score": 5200,
-      "date": "2026-11-24 20:03:29",
-      "score_id": "389588"
-    },
-    {
-      "kind": "recent",
-      "player": "SPC",
-      "game": "Crystal Castles",
-      "game_id": "50029",
-      "score": 39301,
-      "date": "2026-11-24 16:25:01",
-      "score_id": "389549"
-    },
-    {
-      "kind": "recent",
-      "player": "SPC",
-      "game": "Black widow v2",
-      "game_id": "50021",
-      "score": 37750,
-      "date": "2026-11-24 16:14:44",
-      "score_id": "389547"
-    },
-    {
-      "kind": "recent",
-      "player": "VJG",
-      "game": "Super Hang-On",
-      "game_id": "50327",
-      "score": 1812500,
-      "date": "2026-11-23 19:00:12",
-      "score_id": "389442"
-    },
-    {
-      "kind": "recent",
-      "player": "DON",
-      "game": "Super Hang-On",
-      "game_id": "50327",
-      "score": 1783950,
-      "date": "2026-11-23 18:58:18",
-      "score_id": "389440"
-    },
-    {
-      "kind": "recent",
-      "player": "VJG",
-      "game": "Mortal Kombat - Arcade",
-      "game_id": "73289",
-      "score": 857000,
-      "date": "2026-11-23 18:40:59",
-      "score_id": "389429"
-    },
-    {
-      "kind": "recent",
-      "player": "VJG",
-      "game": "Mr. Do's Castle",
-      "game_id": "50231",
-      "score": 8260,
-      "date": "2026-11-23 18:40:00",
-      "score_id": "389427"
-    },
-    {
-      "kind": "recent",
-      "player": "VJG",
-      "game": "NIBBLER",
-      "game_id": "50240",
-      "score": 6540,
-      "date": "2026-11-23 18:39:07",
-      "score_id": "389426"
     }
   ],
   "total_games": 268,
