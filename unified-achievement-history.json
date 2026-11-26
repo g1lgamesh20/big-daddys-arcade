@@ -424,7 +424,9 @@
         "DON",
         "SPC"
       ],
-      "champions": [],
+      "champions": [
+        "SPC"
+      ],
       "verified_results": [
         {
           "player": "DON",
@@ -433,6 +435,15 @@
           "score_id": "390094",
           "verified": true,
           "evidence_source": "verified-challenge-awards.json:verified_plays"
+        },
+        {
+          "player": "SPC",
+          "role": "champion",
+          "score": 27120,
+          "score_id": "389887",
+          "verified": true,
+          "award_id": "daily_champion:2026-11-25:SPC",
+          "evidence_source": "verified-challenge-awards.json:awards"
         },
         {
           "player": "SPC",
@@ -445,7 +456,7 @@
       ],
       "unverified_candidates": [],
       "verified_participant_count": 2,
-      "verified_champion_count": 0
+      "verified_champion_count": 1
     },
     {
       "event_key": "daily:2026-11-26",
@@ -614,7 +625,7 @@
         "monthly": 0
       },
       "championships": {
-        "daily": 0,
+        "daily": 1,
         "thursday": 0,
         "monthly": 0
       },

@@ -157,6 +157,26 @@
       "verification_method": "operator_verified_daily_play_ledger"
     },
     {
+      "id": "daily_champion:2026-11-25:SPC",
+      "event_key": "daily:2026-11-25:50062:SPC",
+      "type": "daily_champion",
+      "name": "Daily Champion",
+      "date": "2026-11-25",
+      "player": "SPC",
+      "game_id": "50062",
+      "game": "Mappy",
+      "score": 27120,
+      "score_id": "389887",
+      "verified_at": "2026-11-26T09:31:11.215762-05:00",
+      "original_submitted_at_et": "2026-11-25T15:49:23-05:00",
+      "verification_method": "iscored_postfix_submission_time_and_locked_prestart_baseline",
+      "starting_champion_score": 19790,
+      "starting_champion_observed_at": "2026-11-25T03:46:50.002409+00:00",
+      "starting_champion_evidence": "pre_start_approved_iscored_score_snapshot",
+      "gold_level": true,
+      "win_rule": "strictly_greater_than_locked_starting_champion_score"
+    },
+    {
       "id": "easter_egg:DON",
       "event_key": "easter_egg:DON",
       "type": "easter_egg",
