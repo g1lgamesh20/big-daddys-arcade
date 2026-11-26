@@ -421,10 +421,19 @@
       "game": "Mappy",
       "schedule_source": "daily-champion-history.json",
       "participants": [
+        "DON",
         "SPC"
       ],
       "champions": [],
       "verified_results": [
+        {
+          "player": "DON",
+          "role": "participant",
+          "score": 10560,
+          "score_id": "390094",
+          "verified": true,
+          "evidence_source": "verified-challenge-awards.json:verified_plays"
+        },
         {
           "player": "SPC",
           "role": "participant",
@@ -435,7 +444,21 @@
         }
       ],
       "unverified_candidates": [],
-      "verified_participant_count": 1,
+      "verified_participant_count": 2,
+      "verified_champion_count": 0
+    },
+    {
+      "event_key": "daily:2026-11-26",
+      "kind": "daily",
+      "date": "2026-11-26",
+      "game_id": "50254",
+      "game": "VENTURE",
+      "schedule_source": "daily-champion-history.json",
+      "participants": [],
+      "champions": [],
+      "verified_results": [],
+      "unverified_candidates": [],
+      "verified_participant_count": 0,
       "verified_champion_count": 0
     }
   ],
@@ -476,7 +499,7 @@
     },
     "DON": {
       "participation": {
-        "daily": 5,
+        "daily": 6,
         "thursday": 2,
         "monthly": 0
       },

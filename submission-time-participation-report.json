@@ -10,13 +10,13 @@
     "daily_participation",
     "thursday_participation"
   ],
-  "new_participation_credits": 0,
-  "new_daily_credits": 0,
+  "new_participation_credits": 1,
+  "new_daily_credits": 1,
   "new_thursday_credits": 0,
   "no_championship_or_monthly_awards": true,
   "no_push_notifications": true,
   "counters": {
-    "parsed_approved_scores": 597,
+    "parsed_approved_scores": 598,
     "missing_or_bad_timestamps": 0,
     "pre_cutover_ignored": 531,
     "future_timestamps_ignored": 0,
