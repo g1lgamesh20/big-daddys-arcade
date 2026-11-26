@@ -1,6 +1,12 @@
 {
   "bulletins": [
     {
+      "id": "719afabc-7433-4a31-b165-a070bc580800",
+      "title": "Achievements 2.0!",
+      "message": "Check out all the new  features! New achievements, new trophy room, trophy hunters and more!",
+      "created_at": "2026-11-26T03:19:09.308597+00:00"
+    },
+    {
       "id": "d8be05b9-d004-4246-bb8a-9140c7781e57",
       "title": "Arcade News",
       "message": "New features! Come explore!",
