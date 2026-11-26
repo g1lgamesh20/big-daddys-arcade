@@ -11,12 +11,27 @@ def journal(date='2026-11-25T13:00:00+00:00'):
 def ledger():return {'schema_version':1,'awards':[],'verified_plays':[]}
 def seeded():
  empty=evaluate([],catalog(),None,T0)
- return evaluate(rows(),catalog(),empty,T0+timedelta(hours=2))
+ confirmed=evaluate([],catalog(),empty,T0+timedelta(hours=1))
+ return evaluate(rows(),catalog(),confirmed,T0+timedelta(hours=2))
 class TreasureTests(unittest.TestCase):
  def test_initial_empty(self):
   x=evaluate([],catalog(),None,T0);self.assertEqual(set(x['empty_games']),{'A','B'})
  def test_initial_scored_never_first(self):
   x=evaluate(rows(),catalog(),None,T0);self.assertEqual(x['first_gold'],[])
+ def test_single_empty_snapshot_cannot_award(self):
+  x=evaluate([],catalog(),None,T0)
+  y=evaluate(rows(),catalog(),x,T0+timedelta(minutes=1))
+  self.assertEqual(y['first_gold'],[])
+  self.assertIn('A',y['seen_scored_games'])
+ def test_two_rapid_empty_snapshots_cannot_award(self):
+  x=evaluate([],catalog(),None,T0)
+  x=evaluate([],catalog(),x,T0+timedelta(seconds=2))
+  y=evaluate(rows(),catalog(),x,T0+timedelta(minutes=2))
+  self.assertEqual(y['first_gold'],[])
+ def test_removed_game_cannot_qualify(self):
+  x=evaluate([],catalog(),None,T0)
+  x=evaluate([],{'games':{'B':'Galaga','C':'Test Game'}},x,T0+timedelta(hours=2))
+  self.assertNotIn('A',x['empty_games'])
  def test_first_gold(self):self.assertEqual(len(seeded()['first_gold']),1)
  def test_preview(self):self.assertEqual(len(preview(journal(),seeded())['candidates']),1)
  def test_award(self):
