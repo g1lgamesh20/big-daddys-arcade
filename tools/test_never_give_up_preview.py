@@ -21,6 +21,7 @@ def history(event_type='takeover',winner='99',before=100):
         'transitions':[{'id':'gold_transition:A:99','type':event_type,'game_id':'A',
             'game':'Robotron','previous_score':before,'new_score':200,
             'gained_holders':['DON'],'new_score_ids':[winner],
+            'previous_observed_at':'2026-11-19T20:00:00+00:00',
             'observed_at':'2026-12-01T01:00:00+00:00'}]}
 
 class NeverGiveUpTests(unittest.TestCase):
@@ -42,6 +43,18 @@ class NeverGiveUpTests(unittest.TestCase):
         self.assertEqual(preview(journal(),h)['candidates'],[])
     def test_prior_scores_must_be_below_previous_gold(self):
         self.assertEqual(preview(journal(scores=[101,102,103,104,105]),history())['candidates'],[])
+    def test_attempts_before_gold_was_observed_do_not_count(self):
+        h=history()
+        h['transitions'][0]['previous_observed_at']='2026-11-23T20:00:00+00:00'
+        self.assertEqual(preview(journal(),h)['candidates'],[])
+    def test_missing_previous_gold_observation_fails_closed(self):
+        h=history()
+        del h['transitions'][0]['previous_observed_at']
+        self.assertEqual(preview(journal(),h)['candidates'],[])
+    def test_invalid_previous_gold_observation_fails_closed(self):
+        h=history()
+        h['transitions'][0]['previous_observed_at']='2026-12-02T00:00:00+00:00'
+        with self.assertRaises(ValueError):preview(journal(),h)
     def test_invalid_journal_fails_closed(self):
         with self.assertRaises(ValueError):preview({},history())
     def test_duplicate_transition_fails_closed(self):
