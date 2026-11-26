@@ -249,7 +249,7 @@ document.addEventListener('keydown',e=>{if(leadersDialog.hidden||!document.query
  let entries=[],position=0,updatedAt=null;
   let lastManualLegendBrowse=0;
   const showcase=document.querySelector('#arcade-showcase');
-  const slides=[document.querySelector('#showcase-champion'),document.querySelector('#showcase-monthly'),document.querySelector('#showcase-legends'),document.querySelector('#showcase-records'),document.querySelector('#showcase-player'),document.querySelector('#showcase-trophy-hunters')];
+  const slides=[document.querySelector('#showcase-champion'),document.querySelector('#showcase-monthly'),document.querySelector('#showcase-legends'),document.querySelector('#showcase-records'),document.querySelector('#showcase-trophy-hunters')];
   let activePage=0, lastManualSwitch=0;
   const reducedMotion=()=>window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function switchPage(page,manual=false){
