@@ -652,6 +652,20 @@
       "trophy_issued": false,
       "original_submitted_at_et": "2026-11-23T20:00:12-05:00",
       "verification_method": "iscored_developer_confirmed_original_submission_timestamp_post_fix"
+    },
+    {
+      "kind": "daily",
+      "date": "2026-11-25",
+      "player": "SPC",
+      "game_id": "50062",
+      "game": "Mappy",
+      "score": 27120,
+      "score_id": "389887",
+      "event_key": "daily:2026-11-25:50062:SPC",
+      "verified_at": "2026-11-25T22:01:29.720708-05:00",
+      "trophy_issued": false,
+      "original_submitted_at_et": "2026-11-25T15:49:23-05:00",
+      "verification_method": "iscored_developer_confirmed_original_submission_timestamp_post_fix"
     }
   ]
 }

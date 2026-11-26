@@ -4,10 +4,21 @@
   "policy": "approved_score_within_event_start_to_end_plus_24h",
   "approval_timezone_assumption": "America/Chicago for naive iScored API timestamps; verify with source",
   "caveat": "Approval timestamp is NOT original submission time. Grace policy can include scores not originally played during event.",
-  "matches": 20,
-  "new_participation_credits": 0,
+  "matches": 21,
+  "new_participation_credits": 1,
   "unparseable_dates": 0,
-  "proposed_credits": [],
+  "proposed_credits": [
+    {
+      "kind": "daily",
+      "date": "2026-11-25",
+      "player": "SPC",
+      "game_id": "50062",
+      "game": "Mappy",
+      "score": 27120,
+      "score_id": "389887",
+      "approved_at_policy_et": "2026-11-25T15:49:23-05:00"
+    }
+  ],
   "new_championships": [],
   "no_push_notifications": true
 }

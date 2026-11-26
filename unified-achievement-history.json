@@ -420,11 +420,22 @@
       "game_id": "50062",
       "game": "Mappy",
       "schedule_source": "daily-champion-history.json",
-      "participants": [],
+      "participants": [
+        "SPC"
+      ],
       "champions": [],
-      "verified_results": [],
+      "verified_results": [
+        {
+          "player": "SPC",
+          "role": "participant",
+          "score": 27120,
+          "score_id": "389887",
+          "verified": true,
+          "evidence_source": "verified-challenge-awards.json:verified_plays"
+        }
+      ],
       "unverified_candidates": [],
-      "verified_participant_count": 0,
+      "verified_participant_count": 1,
       "verified_champion_count": 0
     }
   ],
@@ -550,7 +561,7 @@
     },
     "SPC": {
       "participation": {
-        "daily": 0,
+        "daily": 1,
         "thursday": 1,
         "monthly": 0
       },
@@ -560,7 +571,7 @@
         "monthly": 0
       },
       "longest_verified_streaks": {
-        "daily": 0,
+        "daily": 1,
         "thursday": 1,
         "monthly": 0
       }
