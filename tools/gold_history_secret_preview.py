@@ -69,7 +69,12 @@ def preview(history, now):
             # this game; otherwise a start cannot be safely reconstructed.
             if latest is None and not events:
                 latest = entry['observed_at']
-            if latest is not None and now.astimezone(timezone.utc) - parsed(latest) >= timedelta(hours=24):
+            confirmed = entry.get('last_confirmed_at')
+            # Require a second actual complete observation, not merely wall-clock
+            # time since the first observation. Missing winners never confirm.
+            if (latest is not None and confirmed is not None
+                    and parsed(confirmed) >= parsed(latest) + timedelta(hours=24)
+                    and parsed(confirmed) <= now.astimezone(timezone.utc)) :
                 candidates.append({'player':player,'game_id':gid,'game':entry['game'],
                     'first_observed_at':latest,
                     'note':'observed_duration only; not exact record-holder duration'})
