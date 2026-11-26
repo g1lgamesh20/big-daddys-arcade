@@ -454,11 +454,22 @@
       "game_id": "50254",
       "game": "VENTURE",
       "schedule_source": "daily-champion-history.json",
-      "participants": [],
+      "participants": [
+        "DON"
+      ],
       "champions": [],
-      "verified_results": [],
+      "verified_results": [
+        {
+          "player": "DON",
+          "role": "participant",
+          "score": 1060,
+          "score_id": "390134",
+          "verified": true,
+          "evidence_source": "verified-challenge-awards.json:verified_plays"
+        }
+      ],
       "unverified_candidates": [],
-      "verified_participant_count": 0,
+      "verified_participant_count": 1,
       "verified_champion_count": 0
     }
   ],
@@ -499,7 +510,7 @@
     },
     "DON": {
       "participation": {
-        "daily": 6,
+        "daily": 7,
         "thursday": 2,
         "monthly": 0
       },

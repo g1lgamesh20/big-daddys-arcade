@@ -4,19 +4,19 @@
   "policy": "approved_score_within_event_start_to_end_plus_24h",
   "approval_timezone_assumption": "America/Chicago for naive iScored API timestamps; verify with source",
   "caveat": "Approval timestamp is NOT original submission time. Grace policy can include scores not originally played during event.",
-  "matches": 22,
+  "matches": 23,
   "new_participation_credits": 1,
   "unparseable_dates": 0,
   "proposed_credits": [
     {
       "kind": "daily",
-      "date": "2026-11-25",
+      "date": "2026-11-26",
       "player": "DON",
-      "game_id": "50062",
-      "game": "Mappy",
-      "score": 10560,
-      "score_id": "390094",
-      "approved_at_policy_et": "2026-11-25T23:56:44-05:00"
+      "game_id": "50254",
+      "game": "VENTURE",
+      "score": 1060,
+      "score_id": "390134",
+      "approved_at_policy_et": "2026-11-26T01:44:23-05:00"
     }
   ],
   "new_championships": [],

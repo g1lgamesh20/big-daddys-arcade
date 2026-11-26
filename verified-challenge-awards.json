@@ -717,6 +717,20 @@
       "trophy_issued": false,
       "original_submitted_at_et": "2026-11-25T15:49:23-05:00",
       "verification_method": "iscored_developer_confirmed_original_submission_timestamp_post_fix"
+    },
+    {
+      "kind": "daily",
+      "date": "2026-11-26",
+      "player": "DON",
+      "game_id": "50254",
+      "game": "VENTURE",
+      "score": 1060,
+      "score_id": "390134",
+      "event_key": "daily:2026-11-26:50254:DON",
+      "verified_at": "2026-11-26T03:01:11.078073-05:00",
+      "trophy_issued": false,
+      "original_submitted_at_et": "2026-11-26T01:44:23-05:00",
+      "verification_method": "iscored_developer_confirmed_original_submission_timestamp_post_fix"
     }
   ]
 }
