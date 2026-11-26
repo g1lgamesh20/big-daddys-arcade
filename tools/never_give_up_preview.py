@@ -56,6 +56,12 @@ def preview(journal, history):
                 or not isinstance(gained,list) or not isinstance(winning_ids,list)):
             raise ValueError('Malformed takeover evidence')
         observed_at = timestamp(event['observed_at'])
+        # The previous Gold must have been observed before an attempt.
+        # Otherwise a later record could retroactively turn a former Gold
+        # score into a supposed failed attempt.
+        previous_at = timestamp(event['previous_observed_at']) if event.get('previous_observed_at') else None
+        if previous_at is not None and previous_at >= observed_at:
+            raise ValueError('Invalid previous Gold observation time')
         for player in gained:
             if not isinstance(player,str) or not player or player != player.strip().upper():
                 raise ValueError('Malformed gained holder')
@@ -68,7 +74,8 @@ def preview(journal, history):
                 if winner['submitted'] > observed_at:
                     continue
                 failed = sorted((r for r in by_player_game[(player,gid)]
-                    if r['id'] != winner['id'] and r['submitted'] < winner['submitted']
+                    if previous_at is not None and r['submitted'] > previous_at
+                    and r['id'] != winner['id'] and r['submitted'] < winner['submitted']
                     and r['observed'] <= observed_at and r['score'] < before),
                     key=lambda x:(x['submitted'],x['id']))
                 if len(failed) >= 5:
