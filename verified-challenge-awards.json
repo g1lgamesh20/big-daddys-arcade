@@ -364,6 +364,14 @@
       "time_policy": "two_observations_not_continuous_monitoring"
     },
     {
+      "id": "secret_props_machine:DON",
+      "type": "secret_props_machine",
+      "name": "PROPS MACHINE!",
+      "player": "DON",
+      "date": "2026-11-25",
+      "verification_method": "prospective_server_recorded_social_event_self_entered_initials"
+    },
+    {
       "id": "social_give_props:DON:1",
       "type": "social_give_props",
       "name": "Props Giver",
@@ -389,14 +397,6 @@
       "date": "2026-11-25",
       "verification_method": "prospective_server_recorded_social_event_self_entered_initials",
       "milestone": 1
-    },
-    {
-      "id": "secret_props_machine:DON",
-      "type": "secret_props_machine",
-      "name": "PROPS MACHINE!",
-      "player": "DON",
-      "date": "2026-11-25",
-      "verification_method": "prospective_server_recorded_social_event_self_entered_initials"
     }
   ],
   "verified_plays": [
