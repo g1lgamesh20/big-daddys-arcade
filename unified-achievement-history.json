@@ -471,6 +471,20 @@
       "unverified_candidates": [],
       "verified_participant_count": 1,
       "verified_champion_count": 0
+    },
+    {
+      "event_key": "thursday:2026-11-26",
+      "kind": "thursday",
+      "date": "2026-11-26",
+      "game_id": "50244",
+      "game": "Pac-Land",
+      "schedule_source": "thursday-challenge-state.json",
+      "participants": [],
+      "champions": [],
+      "verified_results": [],
+      "unverified_candidates": [],
+      "verified_participant_count": 0,
+      "verified_champion_count": 0
     }
   ],
   "players": {
