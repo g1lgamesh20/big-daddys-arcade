@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-26T04:25:06.441103+00:00",
+  "updated_at": "2026-11-26T05:31:12.611785+00:00",
   "source": "iScored public read API",
   "scoring_note": "PAPA-style estimate: top 1000 games per player; one best score per player per game; competition ties. iScored may handle ties differently.",
   "standings": [
@@ -3822,6 +3822,15 @@
     },
     {
       "kind": "recent",
+      "player": "DON",
+      "game": "Mappy",
+      "game_id": "50062",
+      "score": 10560,
+      "date": "2026-11-25 22:56:44",
+      "score_id": "390094"
+    },
+    {
+      "kind": "recent",
       "player": "VJG",
       "game": "Toobin'",
       "game_id": "71977",
@@ -3918,15 +3927,6 @@
       "score": 18076,
       "date": "2026-11-25 18:38:57",
       "score_id": "389965"
-    },
-    {
-      "kind": "recent",
-      "player": "KAK",
-      "game": "CIRCUS CHARLIE",
-      "game_id": "70346",
-      "score": 16640,
-      "date": "2026-11-25 18:35:37",
-      "score_id": "389963"
     }
   ],
   "total_games": 272,
