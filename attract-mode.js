@@ -81,12 +81,27 @@
     item.append(value,label);stats.append(item);
   });
  }
+ let trophyIndex=0;
+ function refreshTrophy(){
+  // Reuse the verified trophy collection already rendered by player cards.
+  // Never display an unverified submission as an earned award.
+  const source=document.querySelector('#player-spotlight .player-stat-card');
+  const awards=Array.from(source?.querySelectorAll('.player-verified-trophies > div')||[]);
+  const entry=awards.length?awards[trophyIndex++%awards.length]:null;
+  const name=document.getElementById('attract-trophy-name');
+  const player=document.getElementById('attract-trophy-player');
+  const detail=document.getElementById('attract-trophy-detail');
+  if(name)name.textContent=entry?.querySelector('strong')?.textContent||'NEXT TROPHY AWAITS';
+  if(player)player.textContent=entry?(source?.querySelector('h3')?.textContent||'ARCADE LEGEND'):'YOUR NAME COULD BE HERE';
+  if(detail)detail.textContent=entry?.querySelector('span')?.textContent||'EARN A VERIFIED ACHIEVEMENT';
+ }
  function showStage(){
   if(!stages.length)return;
   const stage=stages[stageIndex++%stages.length];
   if(stage.dataset.attractStage==='crt')refreshCRT();
   if(stage.dataset.attractStage==='medals')refreshMedal();
   if(stage.dataset.attractStage==='player')refreshPlayer();
+  if(stage.dataset.attractStage==='trophy')refreshTrophy();
   for(const item of stages)item.hidden=item!==stage;
   overlay.dataset.attractMode=stage.dataset.attractStage;
  }
@@ -99,7 +114,7 @@
  function start(){
   if(!enabled||isBlocked()||!overlay.hidden)return;
   priorFocus=document.activeElement;
-  stageIndex=0;medalIndex=0;
+  stageIndex=0;medalIndex=0;trophyIndex=0;
   overlay.hidden=false;showStage();
   exitButton?.focus({preventScroll:true});
   rotation=setInterval(showStage,STAGE_MS);
