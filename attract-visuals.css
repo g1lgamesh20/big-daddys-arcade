@@ -79,3 +79,18 @@
 .attract-player-stat strong{font-size:clamp(14px,3.2vw,23px);color:#8aff78;overflow-wrap:anywhere}
 .attract-player-stat span{font-size:clamp(9px,1.8vw,12px);color:#ffe0f5;font-weight:800}
 @media(max-width:420px){.attract-player-stats{gap:5px}.attract-player-stat{padding:8px 3px}}
+
+/* Attract-only trophy celebration and original CSS pixel-shooter intermission. */
+.attract-trophy-stage{position:relative;overflow:hidden}
+.attract-trophy-icon{font-size:clamp(68px,17vw,128px);filter:drop-shadow(0 0 20px #ffe16e);animation:attract-trophy-entrance 2.8s ease-in-out infinite}
+.attract-trophy-burst{font-size:clamp(22px,5vw,40px);color:#8bff70;letter-spacing:1em;text-shadow:0 0 18px #ff55d4;animation:attract-burst 1.8s ease-in-out infinite alternate}
+@keyframes attract-trophy-entrance{0%,100%{transform:scale(.94) rotate(-4deg)}50%{transform:scale(1.09) rotate(4deg)}}
+@keyframes attract-burst{from{opacity:.35;transform:scale(.8)}to{opacity:1;transform:scale(1.2)}}
+.attract-pixel-arena{position:relative;width:min(100%,540px);height:clamp(145px,27vh,230px);overflow:hidden;border:3px solid #76ff79;border-radius:12px;background:repeating-linear-gradient(0deg,#080f22 0 18px,#0b1930 19px 20px);box-shadow:inset 0 0 28px #ff49c12a,0 0 18px #75ff7c55}
+.attract-pixel-enemies{position:absolute;top:15%;left:0;display:flex;gap:clamp(18px,5vw,42px);color:#ff58c8;font:900 clamp(25px,6vw,48px)/1 monospace;text-shadow:0 0 14px #ff55c9;animation:attract-enemy-march 3.8s steps(7,end) infinite alternate}
+.attract-pixel-ship{position:absolute;bottom:6px;left:0;color:#78ff68;font:900 48px/1 monospace;text-shadow:0 0 16px #80ff73;animation:attract-ship-patrol 5s linear infinite alternate}
+.attract-pixel-shot{position:absolute;bottom:38px;width:5px;height:22px;background:#fff5a1;box-shadow:0 0 14px #fff5a1;animation:attract-laser 1.5s linear infinite}
+@keyframes attract-enemy-march{from{transform:translateX(5%)}to{transform:translateX(45%)}}
+@keyframes attract-ship-patrol{from{transform:translateX(30px)}to{transform:translateX(min(420px,75vw))}}
+@keyframes attract-laser{0%{left:25%;bottom:38px;opacity:0}12%{opacity:1}90%{opacity:1}100%{left:25%;bottom:92%;opacity:0}}
+@media(prefers-reduced-motion:reduce){.attract-trophy-icon,.attract-trophy-burst,.attract-pixel-enemies,.attract-pixel-ship,.attract-pixel-shot{animation:none!important}.attract-pixel-shot{display:none}.attract-pixel-ship{left:45%}}
