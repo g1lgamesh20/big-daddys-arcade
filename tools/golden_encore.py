@@ -72,9 +72,18 @@ def evaluate(rows, old_state, known_score_ids, ledger, now):
     historical_ids = {str(e.get('score_id')) for e in saved['improvements'] if isinstance(e, dict)}
     seen_awards = {str(a.get('id')) for a in updated_ledger['awards'] if isinstance(a, dict)}
     earned = []
+    # Track games absent from a feed snapshot. Their first reappearance is a
+    # recovery baseline, not evidence of a newly earned Gold improvement.
+    missing = set(saved.get('missing_games', []))
+    missing.update(set(saved['gold_by_game']) - set(current))
     for game_id, winner in sorted(current.items()):
         previous = saved['gold_by_game'].get(game_id)
-        if previous and type(previous.get('score')) is int and winner['score'] > previous['score']:
+        recovering = game_id in missing
+        if previous and type(previous.get('score')) is int and winner['score'] < previous['score']:
+            # A lower Gold can reflect a deleted score or a truncated feed.
+            # Accept it only as a new baseline; never award on this snapshot.
+            recovering = True
+        if not recovering and previous and type(previous.get('score')) is int and winner['score'] > previous['score']:
             old_holders = set(previous.get('holders', []))
             for entry in winner['winning_scores']:
                 player = entry['player']
@@ -111,6 +120,8 @@ def evaluate(rows, old_state, known_score_ids, ledger, now):
                     seen_awards.add(award_id)
         # Update observed Gold only after evaluating the prior snapshot.
         saved['gold_by_game'][game_id] = winner
+        missing.discard(game_id)
+    saved['missing_games'] = sorted(missing)
     updated_ledger['awards'].sort(key=lambda a: (str(a.get('date', '')), str(a.get('id', ''))))
     return saved, updated_ledger, earned
 
