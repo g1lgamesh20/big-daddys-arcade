@@ -702,7 +702,7 @@ async function arcadeSubmitTrash(){
     for(const award of awards){
       if(!award||typeof award.id!=='string'||!award.id.trim()
         ||typeof award.player!=='string'||!award.player.trim()
-        ||typeof award.date!=='string'||typeof award.game!=='string')continue;
+        )continue;
       if(seen.has(award.id))continue;
       seen.add(award.id);
       const player=award.player.trim().toUpperCase();
