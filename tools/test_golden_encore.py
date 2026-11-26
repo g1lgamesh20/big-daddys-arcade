@@ -84,6 +84,29 @@ class GoldenEncoreTests(unittest.TestCase):
         self.assertEqual(base,before)
         self.assertEqual(updated['awards'][0],before['awards'][0])
         self.assertEqual(len(events),1)
+    def test_missing_game_reappearance_does_not_award(self):
+        old=state([row('1','DON','A',100)])
+        missing,ledger,events=evaluate([],old,{'1'},empty(),NOW)
+        self.assertEqual(events,[])
+        self.assertIn('A',missing['missing_games'])
+        recovered,ledger,events=evaluate([row('2','DON','A',150)],missing,{'1'},ledger,NOW)
+        self.assertEqual(events,[])
+        self.assertEqual(ledger['awards'],[])
+        self.assertNotIn('A',recovered['missing_games'])
+        _,ledger,events=evaluate([row('3','DON','A',160)],recovered,{'1','2'},ledger,NOW)
+        self.assertEqual(len(events),1)
+    def test_lower_gold_snapshot_never_awards(self):
+        old=state([row('1','DON','A',200)])
+        lowered,ledger,events=evaluate([row('2','DON','A',100)],old,{'1'},empty(),NOW)
+        self.assertEqual(events,[])
+        self.assertEqual(lowered['gold_by_game']['A']['score'],100)
+        _,ledger,events=evaluate([row('3','DON','A',150)],lowered,{'1','2'},ledger,NOW)
+        self.assertEqual(len(events),1)
+    def test_missing_one_game_does_not_block_another(self):
+        old=state([row('1','DON','A',100),row('2','RDG','B',100)])
+        _,ledger,events=evaluate([row('3','RDG','B',150)],old,{'1','2'},empty(),NOW)
+        self.assertEqual(len(events),1)
+        self.assertEqual(ledger['awards'][0]['player'],'RDG')
     def test_bad_state_refuses_to_start_over(self):
         with self.assertRaises(ValueError):
             evaluate([],{'schema_version':1,'improvements':[]},set(),empty(),NOW)
