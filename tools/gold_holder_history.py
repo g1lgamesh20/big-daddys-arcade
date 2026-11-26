@@ -38,7 +38,8 @@ def evaluate(rows, previous, known_ids, now):
         old = state['holders_by_game'].get(gid)
         new = {'score': champion['score'], 'holders': champion['holders'],
                'winning_scores': champion['winning_scores'],
-               'game': champion['game'], 'observed_at': observed_at}
+               'game': champion['game'], 'observed_at': observed_at,
+               'last_confirmed_at': observed_at}
         if old is None:
             state['holders_by_game'][gid] = new
             continue
@@ -54,6 +55,7 @@ def evaluate(rows, previous, known_ids, now):
         if champion['score'] < old['score']:
             continue
         if champion['score'] == old['score'] and champion['holders'] == old['holders']:
+            old['last_confirmed_at'] = observed_at
             continue
         # Never interpret already-known scores as new holder changes.
         new_winners = [w for w in champion['winning_scores']
