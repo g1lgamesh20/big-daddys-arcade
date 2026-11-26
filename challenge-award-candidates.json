@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "warning": "Pending evidence only: not verified trophies. Timestamps assumed Eastern; iScored approval status unconfirmed.",
-  "updated_at": "2026-11-26T04:27:51.170426+00:00",
+  "updated_at": "2026-11-26T14:30:30.820780+00:00",
   "unparseable_feed_dates": 0,
   "candidates": [
     {
@@ -305,6 +305,21 @@
       "awarded": false
     },
     {
+      "key": "daily:2026-11-25:50062:DON",
+      "kind": "daily",
+      "date": "2026-11-25",
+      "game_id": "50062",
+      "game": "Mappy",
+      "player": "DON",
+      "best_score": 10560,
+      "score_id": "390094",
+      "submitted_at_assumed_et": "2026-11-25T23:56:44-05:00",
+      "first_seen_at": "2026-11-26T14:30:30.820780+00:00",
+      "last_seen_at": "2026-11-26T14:30:30.820780+00:00",
+      "verification": "pending_iscored_approval_and_timezone_review",
+      "awarded": false
+    },
+    {
       "key": "daily:2026-11-25:50062:SPC",
       "kind": "daily",
       "date": "2026-11-25",
@@ -316,6 +331,21 @@
       "submitted_at_assumed_et": "2026-11-25T15:49:23-05:00",
       "first_seen_at": "2026-11-26T04:27:51.170426+00:00",
       "last_seen_at": "2026-11-26T04:27:51.170426+00:00",
+      "verification": "pending_iscored_approval_and_timezone_review",
+      "awarded": false
+    },
+    {
+      "key": "daily:2026-11-26:50254:DON",
+      "kind": "daily",
+      "date": "2026-11-26",
+      "game_id": "50254",
+      "game": "VENTURE",
+      "player": "DON",
+      "best_score": 1060,
+      "score_id": "390134",
+      "submitted_at_assumed_et": "2026-11-26T01:44:23-05:00",
+      "first_seen_at": "2026-11-26T14:30:30.820780+00:00",
+      "last_seen_at": "2026-11-26T14:30:30.820780+00:00",
       "verification": "pending_iscored_approval_and_timezone_review",
       "awarded": false
     }
