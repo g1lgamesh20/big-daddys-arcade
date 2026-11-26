@@ -18,9 +18,9 @@ def evaluate(rows,catalog,prior,now):
     # Existing scored IDs are permanently ineligible for a first-ever Gold.
     # A missing score in one API response is NOT proof that a game is empty.
     valid_games={str(gid) for gid,name in catalog['games'].items() if str(name).strip().casefold()!='test game'}
-    state['empty_games']={gid:item for gid,item in state['empty_games'].items() if gid in valid_games and gid not in seen and gid not in scored}
+    state['empty_games']={gid:item for gid,item in state['empty_games'].items() if gid in valid_games and gid not in seen}
     for gid,item in list(state['empty_games'].items()):
-        if item.get('confirmed_empty_at'):continue
+        if gid in scored or item.get('confirmed_empty_at'):continue
         first=datetime.fromisoformat(item['observed_empty_at'])
         if first.tzinfo is None:raise ValueError('Invalid empty observation timestamp')
         # Require a separate snapshot at least one hour later, still empty.
