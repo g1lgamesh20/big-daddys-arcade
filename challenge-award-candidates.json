@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "warning": "Pending evidence only: not verified trophies. Timestamps assumed Eastern; iScored approval status unconfirmed.",
-  "updated_at": "2026-11-25T21:59:52.412542+00:00",
+  "updated_at": "2026-11-26T04:27:51.170426+00:00",
   "unparseable_feed_dates": 0,
   "candidates": [
     {
@@ -301,6 +301,21 @@
       "submitted_at_assumed_et": "2026-11-23T20:00:12-05:00",
       "first_seen_at": "2026-11-24T03:04:09.754885+00:00",
       "last_seen_at": "2026-11-24T03:04:09.754885+00:00",
+      "verification": "pending_iscored_approval_and_timezone_review",
+      "awarded": false
+    },
+    {
+      "key": "daily:2026-11-25:50062:SPC",
+      "kind": "daily",
+      "date": "2026-11-25",
+      "game_id": "50062",
+      "game": "Mappy",
+      "player": "SPC",
+      "best_score": 27120,
+      "score_id": "389887",
+      "submitted_at_assumed_et": "2026-11-25T15:49:23-05:00",
+      "first_seen_at": "2026-11-26T04:27:51.170426+00:00",
+      "last_seen_at": "2026-11-26T04:27:51.170426+00:00",
       "verification": "pending_iscored_approval_and_timezone_review",
       "awarded": false
     }
