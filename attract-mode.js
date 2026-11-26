@@ -65,11 +65,28 @@
   if(medalGame)medalGame.textContent=game||'BE THE NEXT PLAYER ON THE PODIUM';
   if(medalHeading)medalHeading.textContent=medal||'GOLD • SILVER • BRONZE';
  }
+ function refreshPlayer(){
+  const source=document.querySelector('#player-spotlight .player-stat-card');
+  const name=document.getElementById('attract-player-name');
+  const rank=document.getElementById('attract-player-rank');
+  const stats=document.getElementById('attract-player-stats');
+  if(!name||!rank||!stats)return;
+  name.textContent=source?.querySelector('h3')?.textContent||'AWAITING PLAYER DATA';
+  rank.textContent=source?.querySelector('.player-stat-rank')?.textContent||'';
+  stats.replaceChildren();
+  source?.querySelectorAll('.player-stat-cell')?.forEach(cell=>{
+    const item=document.createElement('div');item.className='attract-player-stat';
+    const value=document.createElement('strong');value.textContent=cell.querySelector('strong')?.textContent||'';
+    const label=document.createElement('span');label.textContent=cell.querySelector('span')?.textContent||'';
+    item.append(value,label);stats.append(item);
+  });
+ }
  function showStage(){
   if(!stages.length)return;
   const stage=stages[stageIndex++%stages.length];
   if(stage.dataset.attractStage==='crt')refreshCRT();
   if(stage.dataset.attractStage==='medals')refreshMedal();
+  if(stage.dataset.attractStage==='player')refreshPlayer();
   for(const item of stages)item.hidden=item!==stage;
   overlay.dataset.attractMode=stage.dataset.attractStage;
  }
