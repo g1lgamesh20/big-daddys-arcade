@@ -81,8 +81,10 @@ def evaluate(rows, old_state, known_score_ids, ledger, now):
         recovering = game_id in missing
         if previous and type(previous.get('score')) is int and winner['score'] < previous['score']:
             # A lower Gold can reflect a deleted score or a truncated feed.
-            # Accept it only as a new baseline; never award on this snapshot.
-            recovering = True
+            # Preserve the trusted high-water mark. A truncated feed must not
+            # lower the threshold for a later, false improvement trophy.
+            missing.add(game_id)
+            continue
         if not recovering and previous and type(previous.get('score')) is int and winner['score'] > previous['score']:
             old_holders = set(previous.get('holders', []))
             for entry in winner['winning_scores']:
