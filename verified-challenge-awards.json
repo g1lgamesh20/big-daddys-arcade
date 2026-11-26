@@ -397,6 +397,35 @@
       "date": "2026-11-25",
       "verification_method": "prospective_server_recorded_social_event_self_entered_initials",
       "milestone": 1
+    },
+    {
+      "id": "holiday_thanksgiving:DON",
+      "event_key": "thanksgiving:2026-11-26:DON",
+      "type": "holiday_thanksgiving",
+      "name": "TURKEY DAY GAMER",
+      "player": "DON",
+      "date": "2026-11-26",
+      "game": "VENTURE",
+      "game_id": "50254",
+      "score": 1060,
+      "score_id": "390134",
+      "original_submitted_at_et": "2026-11-26T01:44:23-05:00",
+      "verified_at": "2026-11-26T06:46:14.712239+00:00",
+      "verification_method": "postfix_approved_iscored_original_submission_time"
+    },
+    {
+      "id": "secret_night_owl:DON",
+      "event_key": "secret:390134",
+      "type": "secret_night_owl",
+      "name": "NIGHT OWL",
+      "player": "DON",
+      "date": "2026-11-26",
+      "game": "VENTURE",
+      "game_id": "50254",
+      "score_id": "390134",
+      "original_submitted_at_et": "2026-11-26T01:44:23-05:00",
+      "verified_at": "2026-11-26T06:46:14.651823+00:00",
+      "verification_method": "postfix_approved_iscored_original_submission_time"
     }
   ],
   "verified_plays": [

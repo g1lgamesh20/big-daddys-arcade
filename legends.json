@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-26T05:36:18.858081+00:00",
+  "updated_at": "2026-11-26T06:46:13.357002+00:00",
   "source": "iScored public read API",
   "scoring_note": "PAPA-style estimate: top 1000 games per player; one best score per player per game; competition ties. iScored may handle ties differently.",
   "standings": [
@@ -3823,6 +3823,15 @@
     {
       "kind": "recent",
       "player": "DON",
+      "game": "VENTURE",
+      "game_id": "50254",
+      "score": 1060,
+      "date": "2026-11-26 00:44:23",
+      "score_id": "390134"
+    },
+    {
+      "kind": "recent",
+      "player": "DON",
       "game": "Mappy",
       "game_id": "50062",
       "score": 10560,
@@ -3918,15 +3927,6 @@
       "score": 23840,
       "date": "2026-11-25 18:44:04",
       "score_id": "389968"
-    },
-    {
-      "kind": "recent",
-      "player": "SPC",
-      "game": "Tron",
-      "game_id": "50057",
-      "score": 18076,
-      "date": "2026-11-25 18:38:57",
-      "score_id": "389965"
     }
   ],
   "total_games": 272,
