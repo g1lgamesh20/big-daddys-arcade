@@ -641,3 +641,9 @@ body.achievement-showcase-open{overflow:hidden}
  #achievement-showcase-dialog .achievement-victory-inner,
  #achievement-showcase-dialog .achievement-victory-spark{animation:none!important}
 }
+
+/* iOS page-level horizontal overflow guard: keep vertical scrolling and showcase gestures. */
+html, body { max-width: 100%; overflow-x: clip; }
+@supports not (overflow: clip) {
+  html, body { overflow-x: hidden; }
+}
