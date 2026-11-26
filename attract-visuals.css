@@ -72,3 +72,10 @@
  .arcade-attract-pixels,.attract-original-logo,.attract-medal-emblem{animation:none!important;transform:none!important}
  .arcade-attract-pixels{left:auto;right:4%;top:5%}
 }
+
+/* Player Spotlight is now an attract-only display, sourced from existing player cards. */
+.attract-player-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;width:min(100%,590px)}
+.attract-player-stat{min-width:0;padding:11px 5px;border:1px solid #ff61c9;border-radius:10px;background:#190e2c;display:flex;flex-direction:column;gap:5px}
+.attract-player-stat strong{font-size:clamp(14px,3.2vw,23px);color:#8aff78;overflow-wrap:anywhere}
+.attract-player-stat span{font-size:clamp(9px,1.8vw,12px);color:#ffe0f5;font-weight:800}
+@media(max-width:420px){.attract-player-stats{gap:5px}.attract-player-stat{padding:8px 3px}}
