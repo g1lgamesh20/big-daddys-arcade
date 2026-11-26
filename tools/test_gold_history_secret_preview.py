@@ -29,6 +29,8 @@ class GoldHistorySecretPreviewTests(unittest.TestCase):
     def test_24_hour_candidate_only_after_24h(self):
         s=history()
         self.assertEqual(preview(s,T0+timedelta(hours=23))['king_day_candidates'],[])
+        self.assertEqual(preview(s,T0+timedelta(hours=24))['king_day_candidates'],[])
+        s=advance(s,[row(1,'DON',100),row(2,'RDG',90)],[1,2],1440)
         result=preview(s,T0+timedelta(hours=24))
         self.assertEqual([x['player'] for x in result['king_day_candidates']],['DON'])
         self.assertEqual(result['mode'],'PREVIEW_ONLY_NO_AWARDS')
@@ -36,7 +38,13 @@ class GoldHistorySecretPreviewTests(unittest.TestCase):
         s=history()
         s=advance(s,[row(1,'DON',100),row(2,'RDG',90),row(3,'RDG',150)],[1,2],60)
         self.assertEqual(preview(s,T0+timedelta(hours=24))['king_day_candidates'],[])
+        self.assertEqual(preview(s,T0+timedelta(hours=25))['king_day_candidates'],[])
+        s=advance(s,[row(1,'DON',100),row(2,'RDG',90),row(3,'RDG',150)],[1,2,3],1500)
         self.assertEqual(preview(s,T0+timedelta(hours=25))['king_day_candidates'][0]['player'],'RDG')
+    def test_missing_winner_cannot_confirm_tenure(self):
+        s=history()
+        s=advance(s,[row(3,'RDG',150)],[1,2],1500)
+        self.assertEqual(preview(s,T0+timedelta(hours=25))['king_day_candidates'],[])
     def test_invalid_history_fails_closed(self):
         with self.assertRaises(ValueError):preview({'schema_version':1,'transitions':[]},T0)
     def test_does_not_mutate_history(self):
