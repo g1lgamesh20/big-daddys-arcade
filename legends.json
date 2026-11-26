@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-26T03:01:10.485280+00:00",
+  "updated_at": "2026-11-26T04:08:48.433478+00:00",
   "source": "iScored public read API",
   "scoring_note": "PAPA-style estimate: top 1000 games per player; one best score per player per game; competition ties. iScored may handle ties differently.",
   "standings": [
@@ -13,10 +13,10 @@
     },
     {
       "player": "VJG",
-      "points": 6008,
-      "games": 66,
-      "gold": 13,
-      "silver": 42,
+      "points": 6666,
+      "games": 73,
+      "gold": 17,
+      "silver": 43,
       "bronze": 5
     },
     {
@@ -29,7 +29,7 @@
     },
     {
       "player": "DAY",
-      "points": 2814,
+      "points": 2813,
       "games": 31,
       "gold": 12,
       "silver": 3,
@@ -53,7 +53,7 @@
     },
     {
       "player": "RPS",
-      "points": 1948,
+      "points": 1947,
       "games": 22,
       "gold": 4,
       "silver": 6,
@@ -101,7 +101,7 @@
     },
     {
       "player": "MAB",
-      "points": 639,
+      "points": 638,
       "games": 7,
       "gold": 2,
       "silver": 3,
@@ -510,6 +510,15 @@
       "score": 19550,
       "date": "2026-11-05 21:27:45",
       "score_id": "380796",
+      "rank": 1
+    },
+    {
+      "player": "VJG",
+      "game": "Cactus Canyon",
+      "game_id": "113816",
+      "score": 3707950,
+      "date": "2026-11-25 21:37:48",
+      "score_id": "390046",
       "rank": 1
     },
     {
@@ -1266,6 +1275,15 @@
       "score": 2074192,
       "date": "2026-08-28 18:14:16",
       "score_id": "349735",
+      "rank": 1
+    },
+    {
+      "player": "VJG",
+      "game": "JAWS (LE) (Stern 2024)",
+      "game_id": "113819",
+      "score": 14091630,
+      "date": "2026-11-25 21:36:13",
+      "score_id": "390043",
       "rank": 1
     },
     {
@@ -2223,6 +2241,15 @@
       "rank": 1
     },
     {
+      "player": "VJG",
+      "game": "Super Off-Road",
+      "game_id": "113815",
+      "score": 630000,
+      "date": "2026-11-25 21:42:16",
+      "score_id": "390050",
+      "rank": 1
+    },
+    {
       "player": "DON",
       "game": "Super Pac-Man",
       "game_id": "101605",
@@ -2418,6 +2445,15 @@
       "score": 36590,
       "date": "2024-02-18 07:11:24",
       "score_id": "75358",
+      "rank": 1
+    },
+    {
+      "player": "VJG",
+      "game": "Transformers: More Than Meets the Eye (2026)",
+      "game_id": "113817",
+      "score": 25515480,
+      "date": "2026-11-25 21:40:20",
+      "score_id": "390049",
       "rank": 1
     },
     {
@@ -3012,6 +3048,16 @@
       "score": 19550,
       "date": "2026-11-05 21:27:45",
       "score_id": "380796",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "VJG",
+      "game": "Cactus Canyon",
+      "game_id": "113816",
+      "score": 3707950,
+      "date": "2026-11-25 21:37:48",
+      "score_id": "390046",
       "rank": 1
     },
     {
@@ -3775,14 +3821,67 @@
       "rank": 1
     },
     {
-      "kind": "champion",
-      "player": "DON",
-      "game": "Hopping Mappy",
-      "game_id": "50229",
-      "score": 1844,
-      "date": "2025-04-12 20:11:43",
-      "score_id": "175239",
-      "rank": 1
+      "kind": "recent",
+      "player": "VJG",
+      "game": "Toobin'",
+      "game_id": "71977",
+      "score": 5613,
+      "date": "2026-11-25 21:54:38",
+      "score_id": "390059"
+    },
+    {
+      "kind": "recent",
+      "player": "VJG",
+      "game": "BurgerTime",
+      "game_id": "50024",
+      "score": 8300,
+      "date": "2026-11-25 21:51:37",
+      "score_id": "390057"
+    },
+    {
+      "kind": "recent",
+      "player": "VJG",
+      "game": "Arkanoid",
+      "game_id": "50015",
+      "score": 11750,
+      "date": "2026-11-25 21:48:01",
+      "score_id": "390054"
+    },
+    {
+      "kind": "recent",
+      "player": "VJG",
+      "game": "Super Off-Road",
+      "game_id": "113815",
+      "score": 630000,
+      "date": "2026-11-25 21:42:16",
+      "score_id": "390050"
+    },
+    {
+      "kind": "recent",
+      "player": "VJG",
+      "game": "Transformers: More Than Meets the Eye (2026)",
+      "game_id": "113817",
+      "score": 25515480,
+      "date": "2026-11-25 21:40:20",
+      "score_id": "390049"
+    },
+    {
+      "kind": "recent",
+      "player": "VJG",
+      "game": "Cactus Canyon",
+      "game_id": "113816",
+      "score": 3707950,
+      "date": "2026-11-25 21:37:48",
+      "score_id": "390046"
+    },
+    {
+      "kind": "recent",
+      "player": "VJG",
+      "game": "JAWS (LE) (Stern 2024)",
+      "game_id": "113819",
+      "score": 14091630,
+      "date": "2026-11-25 21:36:13",
+      "score_id": "390043"
     },
     {
       "kind": "recent",
@@ -3828,71 +3927,8 @@
       "score": 16640,
       "date": "2026-11-25 18:35:37",
       "score_id": "389963"
-    },
-    {
-      "kind": "recent",
-      "player": "SPC",
-      "game": "Bubble Bobble",
-      "game_id": "50022",
-      "score": 330330,
-      "date": "2026-11-25 18:28:44",
-      "score_id": "389960"
-    },
-    {
-      "kind": "recent",
-      "player": "KAK",
-      "game": "CIRCUS CHARLIE",
-      "game_id": "70346",
-      "score": 15040,
-      "date": "2026-11-25 18:22:35",
-      "score_id": "389956"
-    },
-    {
-      "kind": "recent",
-      "player": "SPC",
-      "game": "Street Fighter II Championship Edition",
-      "game_id": "73284",
-      "score": 63300,
-      "date": "2026-11-25 18:22:31",
-      "score_id": "389955"
-    },
-    {
-      "kind": "recent",
-      "player": "KAK",
-      "game": "CIRCUS CHARLIE",
-      "game_id": "70346",
-      "score": 6600,
-      "date": "2026-11-25 18:19:52",
-      "score_id": "389954"
-    },
-    {
-      "kind": "recent",
-      "player": "KAK",
-      "game": "BurgerTime",
-      "game_id": "50024",
-      "score": 10500,
-      "date": "2026-11-25 18:12:36",
-      "score_id": "389950"
-    },
-    {
-      "kind": "recent",
-      "player": "SPC",
-      "game": "Mappy",
-      "game_id": "50062",
-      "score": 27120,
-      "date": "2026-11-25 14:49:23",
-      "score_id": "389887"
-    },
-    {
-      "kind": "recent",
-      "player": "VJG",
-      "game": "Angler Dangler",
-      "game_id": "50217",
-      "score": 1900,
-      "date": "2026-11-24 20:44:51",
-      "score_id": "389641"
     }
   ],
-  "total_games": 268,
+  "total_games": 272,
   "total_players": 15
 }

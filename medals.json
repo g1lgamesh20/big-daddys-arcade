@@ -1,6 +1,56 @@
 {
-  "updated_at": "2026-11-26T03:01:10.485280+00:00",
+  "updated_at": "2026-11-26T04:08:48.433478+00:00",
   "alerts": [
+    {
+      "id": "390059",
+      "player": "VJG",
+      "game": "Toobin'",
+      "game_id": "71977",
+      "score": 5613,
+      "date": "2026-11-25 21:54:38",
+      "rank": 2,
+      "medal": "silver"
+    },
+    {
+      "id": "390050",
+      "player": "VJG",
+      "game": "Super Off-Road",
+      "game_id": "113815",
+      "score": 630000,
+      "date": "2026-11-25 21:42:16",
+      "rank": 1,
+      "medal": "gold"
+    },
+    {
+      "id": "390049",
+      "player": "VJG",
+      "game": "Transformers: More Than Meets the Eye (2026)",
+      "game_id": "113817",
+      "score": 25515480,
+      "date": "2026-11-25 21:40:20",
+      "rank": 1,
+      "medal": "gold"
+    },
+    {
+      "id": "390046",
+      "player": "VJG",
+      "game": "Cactus Canyon",
+      "game_id": "113816",
+      "score": 3707950,
+      "date": "2026-11-25 21:37:48",
+      "rank": 1,
+      "medal": "gold"
+    },
+    {
+      "id": "390043",
+      "player": "VJG",
+      "game": "JAWS (LE) (Stern 2024)",
+      "game_id": "113819",
+      "score": 14091630,
+      "date": "2026-11-25 21:36:13",
+      "rank": 1,
+      "medal": "gold"
+    },
     {
       "id": "389998",
       "player": "VJG",
@@ -948,56 +998,6 @@
       "game_id": "112913",
       "score": 49880,
       "date": "2026-11-07 18:10:58",
-      "rank": 1,
-      "medal": "gold"
-    },
-    {
-      "id": "381776",
-      "player": "DON",
-      "game": "crater raider",
-      "game_id": "112915",
-      "score": 1750,
-      "date": "2026-11-07 18:10:46",
-      "rank": 1,
-      "medal": "gold"
-    },
-    {
-      "id": "381769",
-      "player": "DON",
-      "game": "Bosconian",
-      "game_id": "112913",
-      "score": 27670,
-      "date": "2026-11-07 18:10:44",
-      "rank": 2,
-      "medal": "silver"
-    },
-    {
-      "id": "380978",
-      "player": "SPC",
-      "game": "RoadBlasters",
-      "game_id": "50166",
-      "score": 44470,
-      "date": "2026-11-07 17:45:19",
-      "rank": 1,
-      "medal": "gold"
-    },
-    {
-      "id": "380980",
-      "player": "SPC",
-      "game": "SPACE INVADERS",
-      "game_id": "50163",
-      "score": 2170,
-      "date": "2026-11-07 17:45:09",
-      "rank": 2,
-      "medal": "silver"
-    },
-    {
-      "id": "380832",
-      "player": "RDG",
-      "game": "Super Punch Out",
-      "game_id": "50178",
-      "score": 6760,
-      "date": "2026-11-07 17:43:17",
       "rank": 1,
       "medal": "gold"
     }

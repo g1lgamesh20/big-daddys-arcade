@@ -4055,6 +4055,66 @@
           "game": "Mortal Kombat - Arcade"
         }
       ]
+    },
+    "113815": {
+      "score": 630000,
+      "holders": [
+        "VJG"
+      ],
+      "game": "Super Off-Road",
+      "winning_scores": [
+        {
+          "player": "VJG",
+          "score": 630000,
+          "score_id": "390050",
+          "game": "Super Off-Road"
+        }
+      ]
+    },
+    "113816": {
+      "score": 3707950,
+      "holders": [
+        "VJG"
+      ],
+      "game": "Cactus Canyon",
+      "winning_scores": [
+        {
+          "player": "VJG",
+          "score": 3707950,
+          "score_id": "390046",
+          "game": "Cactus Canyon"
+        }
+      ]
+    },
+    "113817": {
+      "score": 25515480,
+      "holders": [
+        "VJG"
+      ],
+      "game": "Transformers: More Than Meets the Eye (2026)",
+      "winning_scores": [
+        {
+          "player": "VJG",
+          "score": 25515480,
+          "score_id": "390049",
+          "game": "Transformers: More Than Meets the Eye (2026)"
+        }
+      ]
+    },
+    "113819": {
+      "score": 14091630,
+      "holders": [
+        "VJG"
+      ],
+      "game": "JAWS (LE) (Stern 2024)",
+      "winning_scores": [
+        {
+          "player": "VJG",
+          "score": 14091630,
+          "score_id": "390043",
+          "game": "JAWS (LE) (Stern 2024)"
+        }
+      ]
     }
   },
   "improvements": []

@@ -389,6 +389,14 @@
       "date": "2026-11-25",
       "verification_method": "prospective_server_recorded_social_event_self_entered_initials",
       "milestone": 1
+    },
+    {
+      "id": "secret_props_machine:DON",
+      "type": "secret_props_machine",
+      "name": "PROPS MACHINE!",
+      "player": "DON",
+      "date": "2026-11-25",
+      "verification_method": "prospective_server_recorded_social_event_self_entered_initials"
     }
   ],
   "verified_plays": [
