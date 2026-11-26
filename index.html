@@ -228,7 +228,7 @@
 .arcade-rules-panel h2{color:#ff61c5;font-size:clamp(19px,5vw,26px);margin:0 0 19px}.arcade-rules-panel p{font-size:15px;line-height:1.5;margin:15px 0}.arcade-rules-panel .arcade-rules-first{padding:13px 7px;border:1px solid #ffcf4b;border-radius:9px;background:#36203a;color:#ffdb59;font-size:clamp(15px,4.3vw,19px);font-weight:900}
 .arcade-rules-skip{display:flex;align-items:center;justify-content:center;gap:8px;font-size:12px;margin:22px 0 16px;color:#e4d8ef}.arcade-rules-skip input{width:18px;height:18px;accent-color:#75ff4c}
 .arcade-rules-buttons{display:flex;flex-direction:column;gap:10px;align-items:center}.arcade-rules-buttons button{cursor:pointer;border-radius:9px;padding:12px 15px;font:800 13px system-ui,sans-serif;min-height:44px}.arcade-rules-buttons #arcade-rules-continue{background:#ee3ab1;color:#fff;border:2px solid #ff8ddf;width:100%}.arcade-rules-buttons #arcade-rules-cancel{background:transparent;color:#aeefff;border:1px solid #6deeff}
-</style><link rel="stylesheet" href="arcade-news.css"><link rel="stylesheet" href="attract-visuals.css?v=player-spotlight-attract-20261126"><style id="arcade-easter-egg-styles">
+</style><link rel="stylesheet" href="arcade-news.css"><link rel="stylesheet" href="attract-visuals.css?v=trophy-intermission-20261126"><style id="arcade-easter-egg-styles">
 #arcade-egg-backdrop[hidden]{display:none!important}
 #arcade-egg-backdrop{position:fixed;inset:0;z-index:2147483645;background:#05020def;display:flex;align-items:center;justify-content:center;padding:18px;box-sizing:border-box}
 .arcade-egg-panel{width:min(420px,100%);border:2px solid #69ff56;box-shadow:0 0 28px #65ff5777,0 0 50px #ff50b844;border-radius:16px;background:#140a27;color:#fff;text-align:center;padding:22px 18px;font-family:system-ui,sans-serif}
@@ -605,6 +605,24 @@ See you on the leaderboard! 🏆`;
     <div id="attract-player-stats" class="attract-player-stats"></div>
     <p class="attract-stage-caption">A DIFFERENT ARCADE LEGEND EVERY DAY</p>
   </section>
+  <section class="attract-stage attract-trophy-stage" data-attract-stage="trophy" aria-label="Verified trophy celebration" hidden>
+    <div class="arcade-attract-kicker">★ TROPHY SHOWCASE ★</div>
+    <div class="attract-trophy-icon" aria-hidden="true">🏆</div>
+    <div id="attract-trophy-name" class="arcade-attract-name">NEXT TROPHY AWAITS</div>
+    <div id="attract-trophy-player" class="arcade-attract-type">YOUR NAME COULD BE HERE</div>
+    <div id="attract-trophy-detail" class="arcade-attract-detail">EARN A VERIFIED ACHIEVEMENT</div>
+    <div class="attract-trophy-burst" aria-hidden="true">✦ ★ ✦</div>
+  </section>
+  <section class="attract-stage attract-intermission-stage" data-attract-stage="intermission" aria-label="Retro arcade animated intermission" hidden>
+    <div class="arcade-attract-kicker">★ BONUS ROUND ★</div>
+    <div class="attract-pixel-arena" aria-hidden="true">
+      <div class="attract-pixel-enemies"><span>▟█▙</span><span>▟█▙</span><span>▟█▙</span><span>▟█▙</span></div>
+      <div class="attract-pixel-shot"></div>
+      <div class="attract-pixel-ship">▲</div>
+    </div>
+    <div class="arcade-attract-heading">READY PLAYER ONE?</div>
+    <p class="attract-stage-caption">INSERT COIN • CHASE THE HIGH SCORE</p>
+  </section>
   <section class="attract-stage attract-challenge-stage" data-attract-stage="challenge" aria-label="Arcade challenge invitations" hidden>
     <div class="arcade-attract-kicker">★ READY PLAYER ONE ★</div>
     <div class="arcade-attract-heading">TAKE THE CHALLENGE!</div>
@@ -616,7 +634,7 @@ See you on the leaderboard! 🏆`;
   <div class="arcade-attract-prompt">★ TAP ANYWHERE TO PLAY ★</div>
   <button id="arcade-attract-exit" class="arcade-attract-exit" type="button">BACK TO THE ARCADE</button>
 </div></div>
-<script src="attract-mode.js?v=player-spotlight-attract-20261126" defer></script><script>
+<script src="attract-mode.js?v=trophy-intermission-20261126" defer></script><script>
 /* Thursday Challenge: server-selected game, Thursday-only results and champion. */
 (() => {
  const get=id=>document.getElementById(id);
