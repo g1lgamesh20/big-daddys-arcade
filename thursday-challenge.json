@@ -1,38 +1,13 @@
 {
-  "week": "2026-11-19",
-  "game_id": "73126",
-  "game": "After Burner Climax",
-  "thursday_date": "2026-11-19",
+  "week": "2026-11-26",
+  "game_id": "50244",
+  "game": "Pac-Land",
+  "thursday_date": "2026-11-26",
   "cutoff": "Thursday 11:59 PM America/New_York",
-  "status": "final",
-  "winner": {
-    "player": "DON",
-    "score": 161470,
-    "submitted_at": "2026-11-19T20:42:10-05:00"
-  },
-  "standings": [
-    {
-      "player": "DON",
-      "score": 161470,
-      "submitted_at": "2026-11-19T20:42:10-05:00"
-    },
-    {
-      "player": "RDG",
-      "score": 108120,
-      "submitted_at": "2026-11-19T20:26:01-05:00"
-    },
-    {
-      "player": "KAK",
-      "score": 32820,
-      "submitted_at": "2026-11-19T20:19:22-05:00"
-    },
-    {
-      "player": "BGR",
-      "score": 22890,
-      "submitted_at": "2026-11-19T20:53:01-05:00"
-    }
-  ],
-  "eligible_scores": 4,
+  "status": "live",
+  "winner": null,
+  "standings": [],
+  "eligible_scores": 0,
   "unparseable_game_dates": 0,
-  "updated_at": "2026-11-26T00:38:07.142477+00:00"
+  "updated_at": "2026-11-26T11:26:48.469873+00:00"
 }
