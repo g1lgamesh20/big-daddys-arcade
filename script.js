@@ -151,6 +151,78 @@
     card.append(section);
     return card;
   }
+
+  // Character-select profile: reuse the existing verified card, without changing the homepage Spotlight.
+  function makeProfile(p){
+    const card=makeCard(p), shell=document.createElement('section');
+    shell.className='arcade-character-profile';
+    shell.style.cssText='border:2px solid #ff55c8;border-radius:15px;padding:13px;background:linear-gradient(145deg,#1a0a34,#060b22);box-shadow:0 0 22px #ff46b73d;color:white';
+    const heading=document.createElement('div');
+    heading.style.cssText='text-align:center;margin-bottom:12px;padding:12px;border:1px solid #7dff65;border-radius:10px;background:radial-gradient(ellipse at top,#32204b,#0b0b20)';
+    const kicker=document.createElement('p');
+    kicker.textContent='★ SELECT YOUR LEGEND ★';
+    kicker.style.cssText='color:#80ff65;font:900 12px system-ui,sans-serif;letter-spacing:.15em;margin:0 0 8px';
+    const portrait=card.querySelector('.player-card-portrait');
+    if(portrait){portrait.style.cssText='display:block;max-width:150px;max-height:150px;object-fit:contain;margin:0 auto 8px;image-rendering:pixelated';heading.append(kicker,portrait);}
+    else heading.append(kicker);
+    const name=document.createElement('h3');name.textContent=p.player;
+    name.style.cssText='font:900 clamp(23px,6vw,38px) Impact,system-ui,sans-serif;letter-spacing:.09em;color:#fff;text-shadow:0 0 12px #ff54c8;margin:4px 0';
+    const rank=document.createElement('p');rank.textContent='PLAYER '+String(p.rank).padStart(2,'0')+' / '+players.length;
+    rank.style.cssText='font:800 12px system-ui,sans-serif;color:#7beeff;margin:0';
+    heading.append(name,rank);
+    const tabs=document.createElement('div');tabs.setAttribute('role','tablist');tabs.setAttribute('aria-label','Player profile views');
+    tabs.style.cssText='display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;margin:12px 0';
+    const panels=document.createElement('div');
+    const overview=document.createElement('section'),achievements=document.createElement('section'),history=document.createElement('section');
+    const sections=[overview,achievements,history],labels=['OVERVIEW','ACHIEVEMENTS','HISTORY'];
+    const stat=card.querySelector('.player-stat-grid');
+    if(stat)overview.append(stat);
+    for(const item of [...card.children]){
+      if(item.classList?.contains('player-verified-trophies'))achievements.append(item);
+      else if(item.tagName==='SECTION'&&item!==stat)overview.append(item);
+    }
+    const earned=[...(verifiedAwards[p.player]||[])].sort((a,b)=>String(b.date||'').localeCompare(String(a.date||''))||String(a.id||'').localeCompare(String(b.id||'')));
+    const featured=document.createElement('section');featured.style.cssText='margin:12px 0;padding:12px;border:1px solid #ffcb55;border-radius:10px;background:#18102b';
+    const title=document.createElement('h4');title.textContent='🏆 FEATURED TROPHIES';title.style.cssText='color:#ffda6d;font:900 14px system-ui,sans-serif;margin:0 0 9px';
+    featured.append(title);
+    // Prefer scarce champion/mastery awards; break ties by newest verified date.
+    const priority=a=>({gotm_champion:6,thursday_champion:5,daily_champion:4,golden_encore_milestone:3,monthly_benchmark:2,monthly_average:2})[a.type]||1;
+    const picks=[...earned].sort((a,b)=>priority(b)-priority(a)||String(b.date||'').localeCompare(String(a.date||''))||String(a.id||'').localeCompare(String(b.id||''))).slice(0,3);
+    if(!picks.length){const empty=document.createElement('p');empty.textContent='YOUR FIRST VERIFIED TROPHY IS WAITING!';empty.style.cssText='color:#b7e9ff;font-size:12px';featured.append(empty);}
+    for(const award of picks){
+      const entry=document.createElement('div');entry.style.cssText='padding:9px 7px;border-top:1px solid #ffcc5540;font:700 12px/1.5 system-ui,sans-serif';
+      const strong=document.createElement('strong');strong.textContent='★ '+String(award.name||'VERIFIED TROPHY');strong.style.color='#ffb5eb';
+      const sub=document.createElement('div');sub.textContent=[award.game,award.date].filter(Boolean).join(' • ');sub.style.color='#bce9ff';
+      entry.append(strong,sub);featured.append(entry);
+    }
+    overview.prepend(featured);
+    const h=document.createElement('h4');h.textContent='★ VERIFIED CAREER HIGHLIGHTS';h.style.cssText='color:#7dff65;font:900 14px system-ui,sans-serif';
+    history.append(h);
+    if(!earned.length){const empty=document.createElement('p');empty.textContent='NO VERIFIED TROPHY HISTORY YET.';history.append(empty);}
+    else for(const award of earned){
+      const item=document.createElement('article');item.style.cssText='margin:7px 0;padding:10px;border-left:3px solid #ff60c7;background:#10102b;border-radius:5px;font:600 12px/1.6 system-ui,sans-serif';
+      const date=document.createElement('div');date.textContent=String(award.date||'DATE UNKNOWN');date.style.color='#7dff65';
+      const label=document.createElement('strong');label.textContent=String(award.name||'VERIFIED TROPHY');label.style.color='#ffb5eb';
+      const game=document.createElement('div');game.textContent=String(award.game||'');game.style.color='#c3e9ff';
+      item.append(date,label,game);history.append(item);
+    }
+    const buttons=labels.map((label,i)=>{
+      const btn=document.createElement('button');btn.type='button';btn.textContent=label;btn.id='arcade-profile-tab-'+i;
+      btn.setAttribute('role','tab');btn.setAttribute('aria-controls','arcade-profile-panel-'+i);
+      btn.style.cssText='min-width:0;padding:12px 3px;border:1px solid #ff55c8;border-radius:7px;background:#190b2d;color:#fff;font:900 clamp(9px,2.5vw,12px) system-ui,sans-serif;cursor:pointer';
+      tabs.append(btn);return btn;
+    });
+    function activate(index,focus=false){
+      buttons.forEach((btn,i)=>{const on=i===index;btn.setAttribute('aria-selected',String(on));btn.tabIndex=on?0:-1;btn.style.background=on?'#71316f':'#190b2d';btn.style.borderColor=on?'#8cff6e':'#ff55c8';sections[i].hidden=!on;});
+      if(focus)buttons[index].focus();
+    }
+    buttons.forEach((btn,i)=>btn.addEventListener('click',()=>activate(i)));
+    tabs.addEventListener('keydown',event=>{if(!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;event.preventDefault();const active=buttons.findIndex(b=>b.getAttribute('aria-selected')==='true');activate(event.key==='Home'?0:event.key==='End'?2:(active+(event.key==='ArrowRight'?1:2))%3,true);});
+    sections.forEach((section,i)=>{section.id='arcade-profile-panel-'+i;section.setAttribute('role','tabpanel');section.setAttribute('aria-labelledby',buttons[i].id);section.tabIndex=0;panels.append(section);});
+    activate(0);
+    shell.append(heading,tabs,panels);
+    return shell;
+  }
   function featured(){
     if(!players.length){spotlight.textContent='AWAITING VERIFIED PLAYER DATA';return;}
     // Rotate fairly: every eligible player appears once before the cycle repeats.
@@ -161,7 +233,7 @@
   }
   function showPlayer(name){
     const p=players.find(x=>x.player===String(name).trim().toUpperCase())||players[0];if(!p)return;
-    selected=p.player;detail.replaceChildren(makeCard(p));
+    selected=p.player;detail.replaceChildren(makeProfile(p));
     list.querySelectorAll('button').forEach(b=>b.setAttribute('aria-current',b.dataset.player===selected?'true':'false'));
   }
   function open(name){if(!players.length)return;previousFocus=document.activeElement;dialog.hidden=false;document.body.classList.add('player-dialog-open');showPlayer(name||players[0].player);close.focus();}
