@@ -10,7 +10,7 @@ gid=os.environ.get('GAME_ID','').strip()
 label=os.environ.get('DISPLAY_LABEL','').strip()
 category=os.environ.get('GAME_CATEGORY','Uncategorized').strip()
 if gid not in catalog:raise SystemExit('Unknown game ID')
-if category not in ('Arcade','Pinball','Console','Other','Uncategorized'):raise SystemExit('Invalid category')
+if category not in ('Arcade','Pinball','Console','Driving','Gun','Other','Uncategorized'):raise SystemExit('Invalid category')
 if len(label)>100:raise SystemExit('Label too long')
 if not label and category=='Uncategorized':state['labels'].pop(gid,None)
 else:state['labels'][gid]={'label':label,'category':category}
