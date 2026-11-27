@@ -1,0 +1,46 @@
+name: Holiday Legends Event Push
+on:
+  schedule:
+    # 9 AM Eastern: 14 UTC in winter, 13 UTC in summer.
+    - cron: '0 13,14 * * *'
+  workflow_dispatch:
+    inputs:
+      preview_date:
+        description: 'Optional Eastern date YYYY-MM-DD (preview only)'
+        required: false
+        type: string
+      send_push:
+        description: 'Send a real push for TODAY at 9 AM Eastern (otherwise preview)'
+        required: true
+        default: false
+        type: boolean
+permissions:
+  contents: read
+concurrency:
+  group: holiday-legends-event-push
+  cancel-in-progress: false
+jobs:
+  holiday-push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test holiday dates and windows
+        run: python3 tools/test_holiday_event_push.py
+      - name: Announce holiday (scheduled 9 AM Eastern only)
+        if: github.event_name == 'schedule' || inputs.send_push == true
+        env:
+          ONESIGNAL_REST_API_KEY: ${{ secrets.ONESIGNAL_REST_API_KEY }}
+        run: python3 tools/send_holiday_event_push.py --send
+      - name: Preview event without sending
+        if: github.event_name == 'workflow_dispatch' && inputs.send_push != true
+        env:
+          PREVIEW_DATE: ${{ inputs.preview_date }}
+        run: |
+          if [ -n "$PREVIEW_DATE" ]; then
+            python3 tools/send_holiday_event_push.py --date "$PREVIEW_DATE"
+          else
+            python3 tools/send_holiday_event_push.py
+          fi
