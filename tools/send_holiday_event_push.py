@@ -30,7 +30,6 @@ def easter(year):
 def event_for(day):
     y,m,d=day.year,day.month,day.day
     events={
-      (1,1):("new_year","🎆 HAPPY NEW YEAR!","New year, new high scores, same old rivalries! Play today to chase the NEW YEAR, NEW HIGH SCORE! achievement."),
       (2,14):("valentines","💘 HAPPY VALENTINE'S DAY!","Love at first byte! Play today for a shot at LOVE AT FIRST BYTE."),
       (3,10):("mar10","🍄 HAPPY MAR10 DAY!","It's-a me, high score! Play an eligible Mario game today to chase MAR10 DAY HERO."),
       (3,17):("st_patricks","☘️ HAPPY ST. PATRICK'S DAY!","Feeling lucky? Chase LUCK OF THE ARCADE with a score today!"),
