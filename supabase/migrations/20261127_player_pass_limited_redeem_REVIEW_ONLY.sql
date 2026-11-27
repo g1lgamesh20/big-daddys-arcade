@@ -1,7 +1,7 @@
 -- REVIEW ONLY. Apply AFTER private schema migration; do not run before Edge Function review.
 -- Database-backed attempt counting survives edge instance restarts.
 create table if not exists arcade_private.player_pass_attempts (
-  scope text not null check (scope in ('user','ip')),
+  scope text not null check (scope in ('user','ip','handle')),
   subject_hash text not null,
   window_start timestamptz not null,
   attempts integer not null default 0,
@@ -23,6 +23,8 @@ declare
   v_user_hash text;
   v_user_attempts integer;
   v_ip_attempts integer;
+  v_handle_attempts integer;
+  v_handle_hash text;
   v_code arcade_private.player_pass_codes%rowtype;
   v_player arcade_private.player_pass_players%rowtype;
   v_device uuid;
@@ -32,10 +34,12 @@ begin
      p_code_digest !~ '^[a-f0-9]{64}$' or p_ip_digest !~ '^[a-f0-9]{64}$'
   then return; end if;
   v_user_hash := md5(p_auth_user_id::text);
+  v_handle_hash := md5(upper(trim(p_iscored_handle)));
 
   -- Serialize requests per user AND per IP, preventing concurrent guess bursts.
   perform pg_catalog.pg_advisory_xact_lock(pg_catalog.hashtextextended('pass-user:' || v_user_hash,0));
   perform pg_catalog.pg_advisory_xact_lock(pg_catalog.hashtextextended('pass-ip:' || p_ip_digest,0));
+  perform pg_catalog.pg_advisory_xact_lock(pg_catalog.hashtextextended('pass-handle:' || v_handle_hash,0));
 
   insert into arcade_private.player_pass_attempts(scope,subject_hash,window_start,attempts)
     values('user',v_user_hash,v_window,1)
@@ -47,8 +51,15 @@ begin
     on conflict(scope,subject_hash,window_start)
     do update set attempts=arcade_private.player_pass_attempts.attempts+1
     returning attempts into v_ip_attempts;
-  -- 5 attempts per user per hour, 20 per IP per hour.
-  if v_user_attempts > 5 or v_ip_attempts > 20 then return; end if;
+  -- Per-handle throttling prevents anonymous-account churn and distributed
+  -- IP changes from bypassing all limits for a targeted player's short code.
+  insert into arcade_private.player_pass_attempts(scope,subject_hash,window_start,attempts)
+    values('handle',v_handle_hash,v_window,1)
+    on conflict(scope,subject_hash,window_start)
+    do update set attempts=arcade_private.player_pass_attempts.attempts+1
+    returning attempts into v_handle_attempts;
+  -- 5 attempts/user, 20/IP, 10/target handle per hour.
+  if v_user_attempts > 5 or v_ip_attempts > 20 or v_handle_attempts > 10 then return; end if;
 
   select * into v_code from arcade_private.player_pass_codes c
     where c.code_digest=p_code_digest for update;
@@ -84,5 +95,7 @@ $$;
 revoke all on function public.arcade_redeem_player_pass_limited(uuid,text,text,text) from public,anon,authenticated;
 grant execute on function public.arcade_redeem_player_pass_limited(uuid,text,text,text) to service_role;
 -- NOTE: Before deployment review all SECURITY DEFINER privileges and public schema exposure.
--- NOTE: Rate limits are per auth account; require CAPTCHA and global throttling
--- against unlimited anonymous account creation before enabling four-character codes.
+-- NOTE: Rate limits now also apply per target handle across accounts/IPs.
+-- CAPTCHA and abuse monitoring remain mandatory for four-character codes.
+-- Targeted handle throttling can cause temporary denial of service; operator
+-- should have a controlled recovery/issuance path before production activation.
