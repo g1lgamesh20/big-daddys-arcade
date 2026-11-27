@@ -50,6 +50,9 @@ Deno.serve(async (req: Request) => {
   const auth = createClient(url, publicKey, { auth: { persistSession: false, autoRefreshToken: false } });
   const { data: authData, error: authError } = await auth.auth.getUser(token);
   if (authError || !authData.user) return respond(401, { error: "Sign in required" });
+  // DON must redeem using the explicitly approved GitHub OAuth account,
+  // never a self-claimed anonymous identity. Other players stay anonymous.
+  const approvedOperatorId = Deno.env.get("PLAYER_PASS_OPERATOR_USER_ID");
 
   let body: { initials?: unknown; code?: unknown; turnstile_token?: unknown };
   try {
@@ -63,6 +66,13 @@ Deno.serve(async (req: Request) => {
 
   const initials = typeof body.initials === "string" ? body.initials.trim().toUpperCase() : "";
   const code = typeof body.code === "string" ? body.code.trim().toUpperCase() : "";
+  if (initials === "DON" && (
+    !approvedOperatorId ||
+    authData.user.id !== approvedOperatorId ||
+    authData.user.is_anonymous === true ||
+    !authData.user.app_metadata?.providers?.includes("github")
+  )) return respond(403, { error: "Operator verification required" });
+
   if (!/^[A-Z0-9 ]{1,24}$/.test(initials) || !/^[A-Z]{3,12}-[A-Z0-9]{4}$/.test(code)) {
     return respond(400, { error: "Invalid request" });
   }
