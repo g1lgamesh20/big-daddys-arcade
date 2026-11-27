@@ -319,7 +319,15 @@
     const planned=entry.status==='planned';
     const secret=entry.kind.startsWith('secret_') || entry.kind==='easter_egg';
     const concealed=secret&&!won&&!revealedSecrets.has(entry.id);
-    const tile=el('article','achievement-tile'+(won?' achievement-tile-earned':'')+(planned?' achievement-tile-planned':''));
+    // Fixed difficulty rarity, independent of whether this player has earned it.
+    const rarity=(()=>{
+      const n=Number(entry.threshold)||0;
+      if(entry.kind==='easter_egg'||entry.kind==='never_give_up'||/grand_slam|immortal|unstoppable|legend/i.test(entry.id)||n>=50)return 'legendary';
+      if(/champion|monthly_average|monthly_benchmark|podium|golden_encore|personal_best|streak|olympic/i.test(entry.kind)||n>=12)return 'epic';
+      if(n>=5||/holiday|social|thursday|monthly/i.test(entry.category))return 'rare';
+      return 'common';
+    })();
+    const tile=el('article','achievement-tile achievement-rarity-'+rarity+(won?' achievement-tile-earned':'')+(planned?' achievement-tile-planned':''));
     // Compact by default: no descriptions, progress bars or notes are
     // mounted until the player actually taps an achievement.
     const toggle=el('button','achievement-tile-toggle');
