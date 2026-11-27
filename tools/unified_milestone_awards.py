@@ -16,7 +16,8 @@ MILESTONES={
              (24,'Two-Year Titan'),(36,'Three-Year Legend'),(60,'Five-Year Immortal')),
 }
 STREAKS={
-  'daily':((3,'Three-Day Streak'),(7,'Seven-Day Streak'),(14,'Two-Week Streak')),
+  'daily':((3,'Three-Day Streak'),(7,'Seven-Day Streak'),(14,'Two-Week Streak'),
+           (21,'Three-Week Streak'),(30,'Thirty-Day Streak')),
   'thursday':((3,'Three-Thursday Streak'),(5,'Five-Thursday Streak')),
   'monthly':((3,'Three-Month Streak'),(6,'Six-Month Streak')),
 }
