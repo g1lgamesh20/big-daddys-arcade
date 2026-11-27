@@ -31,8 +31,6 @@
       'daily_champion',0,'live','Requires a pre-event locked champion score. First place in iScored is separate.');
   add('thursday_champion','thursday','🏆','Thursday Champion',
       'Finish with the highest qualifying score for the Thursday Arcade Challenge.','thursday_champion');
-  add('gotm_champion','monthly','🌟','Game of the Month Champion',
-      'Finish with the top qualifying score in the revealed monthly competition.','gotm_champion');
   add('monthly_benchmark','monthly','🎯','Beat the Benchmark',
       'Exceed 75% of the featured game’s locked starting record with a qualifying approved score.',
       'monthly_benchmark',0,'live','The target is frozen at monthly launch. An exact tie does not beat it.');
@@ -44,6 +42,99 @@
       'Finish in '+(place===1?'first':place===2?'second':'third')+' place in the finalized Game of the Month. Tied players share a rank (1, 1, 3).',
       'monthly_podium',place,'live','Based on highest qualifying approved score per player, after the approval grace period.');
   }
+  // Explicit, operator-approved display rarities. Award types and histories are unchanged.
+  const APPROVED_RARITY=Object.freeze({
+    "daily_champion": "epic",
+    "monthly_benchmark": "epic",
+    "monthly_podium_2": "epic",
+    "daily_participation:25": "epic",
+    "thursday_participation:10": "epic",
+    "monthly_participation:12": "epic",
+    "monthly_participation:24": "epic",
+    "daily_streak:7": "epic",
+    "thursday_streak:5": "epic",
+    "monthly_streak:6": "epic",
+    "daily_champion_mastery:10": "epic",
+    "golden_encore:5": "epic",
+    "personal_best_milestone:10": "epic",
+    "social_trash_talk:50": "epic",
+    "social_give_props:50": "epic",
+    "holiday_milestone:25": "epic",
+    "arcade_olympics_milestone:5": "epic",
+    "secret_high_five": "epic",
+    "secret_photo_finish": "epic",
+    "secret_arcade_hopper": "epic",
+    "thursday_champion": "legendary",
+    "monthly_podium_1": "legendary",
+    "daily_participation:50": "legendary",
+    "thursday_participation:25": "legendary",
+    "monthly_participation:36": "legendary",
+    "monthly_participation:60": "legendary",
+    "daily_streak:14": "legendary",
+    "daily_champion_mastery:25": "legendary",
+    "daily_champion_mastery:50": "legendary",
+    "daily_champion_mastery:100": "legendary",
+    "golden_encore:10": "legendary",
+    "never_give_up": "legendary",
+    "social_trash_talk:100": "legendary",
+    "social_give_props:100": "legendary",
+    "holiday_milestone:50": "legendary",
+    "holiday_milestone:100": "legendary",
+    "holiday_grand_slam": "legendary",
+    "arcade_olympics_milestone:10": "legendary",
+    "secret_back_from_the_dead": "legendary",
+    "secret_double_trouble": "legendary",
+    "secret_just_in_time": "legendary",
+    "monthly_average": "rare",
+    "monthly_podium_3": "rare",
+    "daily_participation:10": "rare",
+    "thursday_participation:5": "rare",
+    "monthly_participation:6": "rare",
+    "daily_streak:3": "rare",
+    "thursday_streak:3": "rare",
+    "monthly_streak:3": "rare",
+    "daily_champion_mastery:5": "rare",
+    "golden_encore:1": "rare",
+    "personal_best_milestone:5": "rare",
+    "social_trash_talk:10": "rare",
+    "social_trash_talk:25": "rare",
+    "social_give_props:10": "rare",
+    "social_give_props:25": "rare",
+    "holiday_mar10": "rare",
+    "holiday_may_the_fourth": "rare",
+    "holiday_star_trek": "rare",
+    "holiday_milestone:10": "rare",
+    "arcade_olympics_milestone:3": "rare",
+    "easter_egg": "rare",
+    "secret_night_owl": "rare",
+    "secret_king_for_a_day": "rare",
+    "secret_treasure_hunter": "rare",
+    "daily_participation:5": "common",
+    "thursday_participation:3": "common",
+    "monthly_participation:3": "common",
+    "personal_best_milestone:1": "common",
+    "social_trash_talk:1": "common",
+    "social_trash_talk:5": "common",
+    "social_give_props:1": "common",
+    "social_give_props:5": "common",
+    "holiday_thanksgiving": "common",
+    "holiday_christmas": "common",
+    "holiday_new_years_day": "common",
+    "holiday_valentines": "common",
+    "holiday_st_patricks": "common",
+    "holiday_easter": "common",
+    "holiday_independence": "common",
+    "holiday_columbus": "common",
+    "holiday_halloween": "common",
+    "holiday_video_games": "common",
+    "holiday_fathers": "common",
+    "holiday_friday_13": "common",
+    "holiday_milestone:5": "common",
+    "arcade_olympics_participation": "common",
+    "secret_props_machine": "common"
+  });
+  const unknownRarities=entries.filter(entry=>!Object.hasOwn(APPROVED_RARITY,entry.id));
+  if(unknownRarities.length)throw new Error('Missing approved achievement rarity: '+unknownRarities.map(entry=>entry.id).join(', '));
   const daily=[[5,'Getting Started'],[10,'Dedicated Challenger'],[25,'Champion Chaser'],[50,'Never Back Down']];
   const thursday=[[3,'Thursday Regular'],[5,'Thursday Devotee'],[10,'Thursday Veteran'],[25,'Thursday Legend']];
   const monthly=[[3,'Monthly Challenger'],[6,'Half-Year Hero'],[12,'Year-Round Legend'],[24,'Two-Year Titan'],[36,'Three-Year Legend'],[60,'Five-Year Immortal']];
@@ -320,13 +411,7 @@
     const secret=entry.kind.startsWith('secret_') || entry.kind==='easter_egg';
     const concealed=secret&&!won&&!revealedSecrets.has(entry.id);
     // Fixed difficulty rarity, independent of whether this player has earned it.
-    const rarity=(()=>{
-      const n=Number(entry.threshold)||0;
-      if(entry.kind==='easter_egg'||entry.kind==='never_give_up'||/grand_slam|immortal|unstoppable|legend/i.test(entry.id)||n>=50)return 'legendary';
-      if(/champion|monthly_average|monthly_benchmark|podium|golden_encore|personal_best|streak|olympic/i.test(entry.kind)||n>=12)return 'epic';
-      if(n>=5||/holiday|social|thursday|monthly/i.test(entry.category))return 'rare';
-      return 'common';
-    })();
+    const rarity=APPROVED_RARITY[entry.id];
     const tile=el('article','achievement-tile achievement-rarity-'+rarity+(won?' achievement-tile-earned':'')+(planned?' achievement-tile-planned':''));
     // Compact by default: no descriptions, progress bars or notes are
     // mounted until the player actually taps an achievement.
