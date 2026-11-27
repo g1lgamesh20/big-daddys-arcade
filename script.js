@@ -13,16 +13,19 @@
   const PLAYER_CARD_STYLE_KEY='arcade-player-card-style-v1';
   const playerStyleSelect=document.querySelector('#arcade-player-card-style');
   const validPlayerStyles=new Set(['classic','arcade','flip']);
-  function playerCardStyle(){
-    let saved=null;
-    try{saved=localStorage.getItem(PLAYER_CARD_STYLE_KEY);}catch(_){}
-    return validPlayerStyles.has(saved)?saved:PLAYER_CARD_DEFAULT_STYLE;
-  }
+  // One authoritative runtime style. Old ?profilePreview links no longer control the design.
+  let activePlayerCardStyle=PLAYER_CARD_DEFAULT_STYLE;
+  try{
+    const saved=localStorage.getItem(PLAYER_CARD_STYLE_KEY);
+    if(validPlayerStyles.has(saved))activePlayerCardStyle=saved;
+  }catch(_){}
   if(playerStyleSelect){
-    playerStyleSelect.value=playerCardStyle();
+    playerStyleSelect.value=activePlayerCardStyle;
     playerStyleSelect.addEventListener('change',()=>{
-      if(!validPlayerStyles.has(playerStyleSelect.value))return;
-      try{localStorage.setItem(PLAYER_CARD_STYLE_KEY,playerStyleSelect.value);}catch(_){}
+      const next=playerStyleSelect.value;
+      if(!validPlayerStyles.has(next))return;
+      activePlayerCardStyle=next;
+      try{localStorage.setItem(PLAYER_CARD_STYLE_KEY,next);}catch(_){}
       if(selected&&detail)showPlayer(selected);
     });
   }
@@ -241,12 +244,12 @@
     activate(0);
     shell.append(heading,tabs,panels);
     // Opt-in visual comparison: default player cards remain completely unchanged.
-    const requestedPreview=new URLSearchParams(window.location.search).get('profilePreview');
-    // The Control Panel is authoritative. Old comparison links may still
-    // preselect a style on first visit, but never override a saved choice.
-    let savedStyle=null;
-    try{savedStyle=localStorage.getItem(PLAYER_CARD_STYLE_KEY);}catch(_){}
-    const preview=validPlayerStyles.has(savedStyle)?savedStyle:(validPlayerStyles.has(requestedPreview)?requestedPreview:playerCardStyle());
+    const preview=activePlayerCardStyle;
+    shell.dataset.playerCardStyle=preview;
+    const styleLabel=document.createElement('div');
+    styleLabel.className='arcade-player-style-indicator';
+    styleLabel.textContent='CARD STYLE: '+({classic:'CLASSIC • 3 TABS',arcade:'ARCADE • 3 TABS',flip:'COLLECTOR • FLIP CARD'})[preview];
+    shell.prepend(styleLabel);
     if(preview==='arcade'||preview==='flip'){
       shell.classList.add('arcade-profile-preview','arcade-profile-preview-'+preview);
       const notice=document.createElement('div');
@@ -281,7 +284,7 @@
         const tabTitle=document.createElement('div');
         tabTitle.className='arcade-preview-tab-title';
         tabTitle.textContent='★ SELECT PROFILE SCREEN ★';
-        tabs.before(tabTitle);
+        shell.insertBefore(tabTitle,tabs);
       }
       const footer=document.createElement('div');
       footer.className='arcade-profile-preview-footer';
