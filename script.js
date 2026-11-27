@@ -236,6 +236,29 @@
         trophy.classList.add('arcade-preview-featured');
         trophy.querySelectorAll('div').forEach(el=>el.classList.add('arcade-preview-trophy-slot'));
       }
+      if(preview==='arcade'){
+        // Visibly different cabinet layout: portrait/name marquee above a two-column
+        // stat-and-trophy dashboard. Preserve all three existing tab panels.
+        const marquee=document.createElement('div');
+        marquee.className='arcade-preview-select-marquee';
+        marquee.textContent='◀ PLAYER SELECTED ▶';
+        heading.append(marquee);
+        const overviewDashboard=document.createElement('div');
+        overviewDashboard.className='arcade-preview-dashboard';
+        const statsPanel=document.createElement('section');
+        statsPanel.className='arcade-preview-stats-panel';
+        const statsHeading=document.createElement('h4');
+        statsHeading.textContent='⚡ PLAYER STATS';
+        statsPanel.append(statsHeading);
+        if(stat)statsPanel.append(stat);
+        overviewDashboard.append(statsPanel);
+        if(trophy)overviewDashboard.append(trophy);
+        overview.prepend(overviewDashboard);
+        const tabTitle=document.createElement('div');
+        tabTitle.className='arcade-preview-tab-title';
+        tabTitle.textContent='★ SELECT PROFILE SCREEN ★';
+        tabs.before(tabTitle);
+      }
       const footer=document.createElement('div');
       footer.className='arcade-profile-preview-footer';
       footer.textContent='👾 INSERT COIN • BECOME A LEGEND 👾';
