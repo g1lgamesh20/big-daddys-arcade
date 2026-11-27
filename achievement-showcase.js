@@ -133,8 +133,6 @@
     "arcade_olympics_participation": "common",
     "secret_props_machine": "common"
   });
-  const unknownRarities=entries.filter(entry=>!Object.hasOwn(APPROVED_RARITY,entry.id));
-  if(unknownRarities.length)throw new Error('Missing approved achievement rarity: '+unknownRarities.map(entry=>entry.id).join(', '));
   const daily=[[5,'Getting Started'],[10,'Dedicated Challenger'],[25,'Champion Chaser'],[50,'Never Back Down']];
   const thursday=[[3,'Thursday Regular'],[5,'Thursday Devotee'],[10,'Thursday Veteran'],[25,'Thursday Legend']];
   const monthly=[[3,'Monthly Challenger'],[6,'Half-Year Hero'],[12,'Year-Round Legend'],[24,'Two-Year Titan'],[36,'Three-Year Legend'],[60,'Five-Year Immortal']];
@@ -270,6 +268,12 @@
       activated?(id==='props_machine'?'Server-recorded social achievement; unlocks automatically when earned.':'Verified approved-score achievement; unlocks automatically when earned.'):
       'Hidden Wave 2 trophy. Awaiting verified historical evidence before automatic issuance.');
   }
+
+  // Validate the full catalog after every achievement has been registered.
+  const unknownRarities=entries.filter(entry=>!Object.prototype.hasOwnProperty.call(APPROVED_RARITY,entry.id));
+  const unusedRarities=Object.keys(APPROVED_RARITY).filter(id=>!entries.some(entry=>entry.id===id));
+  if(unknownRarities.length||unusedRarities.length||entries.length!==88)
+    throw new Error('Achievement rarity catalog mismatch: missing='+unknownRarities.map(entry=>entry.id).join(',')+' unused='+unusedRarities.join(',')+' count='+entries.length);
 
   // These are discovery hints only; no client-side action can award a trophy.
   const SECRET_GOALS={
