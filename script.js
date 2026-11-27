@@ -11,6 +11,12 @@
   const dateET=()=>new Intl.DateTimeFormat('en-CA',{timeZone:'America/New_York',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
   function makeCard(p){
     const card=document.createElement('article');card.className='player-stat-card';
+    const portraitKey=String(p.player||'').trim().toUpperCase();
+    if(/^(DON|SPC|VJG|POD|DAY|GPS|FO|KAK|RDG|BGR|MAB|RPS|SMS|LEY|BOB)$/.test(portraitKey)){
+      const portrait=document.createElement('img');portrait.className='player-card-portrait';
+      portrait.src='player-portraits/'+portraitKey+'.png';portrait.alt='Pixel-art portrait of '+portraitKey;
+      portrait.loading='lazy';portrait.decoding='async';card.append(portrait);
+    }
     const title=document.createElement('h3');title.textContent=p.player.toUpperCase();card.append(title);
     const rank=document.createElement('p');rank.className='player-stat-rank';rank.textContent='CURRENT RANK '+p.rank+' / '+players.length;card.append(rank);
     const stats=document.createElement('div');stats.className='player-stat-grid';
