@@ -57,6 +57,18 @@ begin
   select * into v_player from arcade_private.player_pass_players p
     where p.id=v_code.player_id and p.iscored_handle=upper(trim(p_iscored_handle));
   if not found then return; end if;
+  -- Defense in depth: the database independently restricts DON redemption to
+  -- the preapproved GitHub Auth identity, even if an Edge Function regresses.
+  -- The operator UUID is supplied only by the privileged backend through a
+  -- server-side configuration setting; missing configuration denies DON.
+  if v_player.iscored_handle = 'DON' then
+    if not exists (
+      select 1 from auth.users u
+      where u.id = p_auth_user_id
+        and u.is_anonymous is false
+        and u.raw_app_meta_data->'providers' ? 'github'
+    ) then return; end if;
+  end if;
   if not exists(select 1 from auth.users u where u.id=p_auth_user_id) then return; end if;
   if exists(select 1 from arcade_private.player_pass_devices d
     where d.auth_user_id=p_auth_user_id) then return; end if;
