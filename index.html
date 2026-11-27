@@ -294,12 +294,16 @@
 <input id="monthly-pool-search" type="search" placeholder="Search games…" style="display:block;width:100%;padding:9px;margin:6px 0;background:#211532;color:white;border:1px solid #6deeff;border-radius:6px">
 <label for="monthly-pool-filter">Show</label>
 <select id="monthly-pool-filter" style="padding:7px;background:#211532;color:white;border:1px solid #6deeff;border-radius:6px"><option value="all">All games</option><option value="eligible">Eligible only</option><option value="excluded">Excluded only</option></select>
-<select id="monthly-pool-category" aria-label="Filter by game type" style="padding:7px;background:#211532;color:white;border:1px solid #6deeff;border-radius:6px"><option value="all">All types</option><option value="Arcade">Arcade</option><option value="Pinball">Pinball</option><option value="Console">Console</option><option value="Other">Other</option><option value="Uncategorized">Uncategorized</option></select>
+<select id="monthly-pool-category" aria-label="Filter by game type" style="padding:7px;background:#211532;color:white;border:1px solid #6deeff;border-radius:6px"><option value="all">All types</option><option value="Arcade">Arcade</option><option value="Pinball">Pinball</option><option value="Console">Console</option><option value="Driving">Driving</option><option value="Gun">Gun</option><option value="Other">Other</option><option value="Uncategorized">Uncategorized</option></select>
 <p id="monthly-pool-status" role="status" aria-live="polite" style="font-size:12px">Open this section to load games.</p>
 <div id="monthly-pool-list" style="height:270px;overflow-y:auto;overflow-anchor:none;overscroll-behavior:contain;border:1px solid #61457a;border-radius:6px;padding:8px"></div>
+<p style="font-size:12px;color:#b8f9ff">Choose a category beside each game. Changes remain in this session until you copy them and run the Category Save workflow; this does not change eligibility checkboxes.</p>
+<p id="monthly-pool-category-status" role="status" aria-live="polite" style="font-size:12px">Category changes: 0 unsaved</p>
+<button type="button" id="monthly-pool-category-copy" style="margin-top:10px;padding:10px;background:#5b3488;color:#fff;border:0;border-radius:6px">🏷️ COPY CATEGORY CHANGES FOR GITHUB</button>
+<a href="https://github.com/g1lgamesh20/big-daddys-arcade/actions/workflows/monthly-game-categories-save.yml" target="_blank" rel="noopener noreferrer" style="display:inline-block;margin:8px;color:#8beaff">🔐 OPEN CATEGORY SAVE WORKFLOW</a>
 <button type="button" id="monthly-pool-copy" style="margin-top:10px;padding:10px;background:#246e59;color:#fff;border:0;border-radius:6px">📋 COPY EXCLUSIONS FOR GITHUB</button>
 <a href="https://github.com/g1lgamesh20/big-daddys-arcade/actions/workflows/monthly-game-pool-save.yml" target="_blank" rel="noopener noreferrer" style="display:inline-block;margin:8px;color:#8beaff">🔐 OPEN SAVE WORKFLOW</a>
-<p style="font-size:12px">Paste copied IDs into <strong>excluded_ids</strong>, check <strong>confirm_replace</strong>, and run the GitHub workflow. Refresh the app after deployment to see saved changes. For category or clearer names use the <a href="https://github.com/g1lgamesh20/big-daddys-arcade/actions/workflows/arcade-label-game.yml" target="_blank" rel="noopener noreferrer">🏷️ Label Game workflow</a>. No changes are saved until the workflow succeeds.</p>
+<p style="font-size:12px">Paste copied IDs into <strong>excluded_ids</strong>, check <strong>confirm_replace</strong>, and run the GitHub workflow. Refresh the app after deployment to see saved changes. For individual categories or clearer names use the <a href="https://github.com/g1lgamesh20/big-daddys-arcade/actions/workflows/arcade-label-game.yml" target="_blank" rel="noopener noreferrer">🏷️ Label Game workflow</a>. No changes are saved until the workflow succeeds.</p>
 </details>
 <a href="./marquee-import.html" aria-label="Open Marquee Map Updater">🖼️ MARQUEE MAP UPDATER — ADD NEW GAMES &amp; ARTWORK</a>
 <a href="https://github.com/g1lgamesh20/big-daddys-arcade/actions/workflows/update-legends.yml" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub Actions to manually refresh Hall of Legends scores">🔄 REFRESH SCORES NOW (GITHUB)</a>
@@ -903,6 +907,10 @@ See you on the leaderboard! 🏆`;
     const status=panel.querySelector('#monthly-pool-status');
     const list=panel.querySelector('#monthly-pool-list');
     const copy=panel.querySelector('#monthly-pool-copy');
+    const categoryCopy=panel.querySelector('#monthly-pool-category-copy');
+    const categoryStatus=panel.querySelector('#monthly-pool-category-status');
+    const categoryChoices=['Uncategorized','Arcade','Pinball','Console','Driving','Gun','Other'];
+    const categoryEdits=new Map();
     let games={},labels={},excluded=new Set(),loaded=false;
     function updateStatus(shownCount){
       const total=Object.keys(games).length;
@@ -915,14 +923,14 @@ See you on the leaderboard! 🏆`;
       const shown=entries.filter(([id,name])=>{
         const meta=labels[id]||{};
         const match=(name+' '+(meta.label||'')+' '+id).toLocaleLowerCase().includes(query);
-        return match && (mode.value==='all'||(mode.value==='excluded')===excluded.has(id)) && (category.value==='all'||(meta.category||'Uncategorized')===category.value);
+        return match && (mode.value==='all'||(mode.value==='excluded')===excluded.has(id)) && (category.value==='all'||(categoryEdits.get(id)||meta.category||'Uncategorized')===category.value);
       });
       updateStatus(shown.length);
       const priorScroll=list.scrollTop;
       const fragment=document.createDocumentFragment();
       for(const [id,name] of shown){
         const meta=labels[id]||{};
-        const line=document.createElement('label');
+        const line=document.createElement('div');
         line.style.cssText='display:flex;align-items:center;gap:8px;padding:7px 2px;border-bottom:1px solid #443455;cursor:pointer;font-size:13px;';
         const checkbox=document.createElement('input');
         checkbox.type='checkbox';
@@ -935,11 +943,22 @@ See you on the leaderboard! 🏆`;
           updateStatus(shown.length);
         });
         const text=document.createElement('span');
-        text.textContent=(meta.label||name)+' ('+(meta.category||'Uncategorized')+')';
+        text.textContent=meta.label||name;
         const number=document.createElement('small');
         number.textContent=' #'+id;
         number.style.color='#b9a8cb';
-        line.append(checkbox,text,number);
+        const categoryPicker=document.createElement('select');
+        categoryPicker.setAttribute('aria-label','Category for '+name);
+        categoryPicker.style.cssText='margin-left:auto;min-width:105px;max-width:145px;padding:6px;background:#211532;color:white;border:1px solid #6deeff;border-radius:5px;font-size:12px;';
+        for(const value of categoryChoices){const option=document.createElement('option');option.value=value;option.textContent=value;categoryPicker.append(option);}
+        categoryPicker.value=categoryEdits.get(id)||meta.category||'Uncategorized';
+        categoryPicker.addEventListener('change',()=>{
+          const original=meta.category||'Uncategorized';
+          if(categoryPicker.value===original)categoryEdits.delete(id);
+          else categoryEdits.set(id,categoryPicker.value);
+          categoryStatus.textContent='Category changes: '+categoryEdits.size+' unsaved';
+        });
+        line.append(checkbox,text,number,categoryPicker);
         fragment.append(line);
       }
       list.replaceChildren(fragment);
@@ -967,6 +986,17 @@ See you on the leaderboard! 🏆`;
     search.addEventListener('input',draw);
     mode.addEventListener('change',draw);
     category.addEventListener('change',draw);
+    categoryCopy.addEventListener('click',async()=>{
+      if(!loaded){categoryStatus.textContent='Load games before copying categories.';return;}
+      if(!categoryEdits.size){categoryStatus.textContent='No category changes to save.';return;}
+      const changes=JSON.stringify(Object.fromEntries([...categoryEdits].sort(([a],[b])=>a.localeCompare(b))));
+      try{await navigator.clipboard.writeText(changes);categoryStatus.textContent='Copied '+categoryEdits.size+' category changes. Paste into category_changes in GitHub, confirm and run.';}
+      catch(_){
+        let area=panel.querySelector('#monthly-pool-category-manual-copy');
+        if(!area){area=document.createElement('textarea');area.id='monthly-pool-category-manual-copy';area.style.cssText='display:block;width:100%;min-height:80px;margin:8px 0;';categoryCopy.after(area);}
+        area.value=changes;area.select();categoryStatus.textContent='Copy the selected JSON, then paste into GitHub category_changes.';
+      }
+    });
     copy.addEventListener('click',async()=>{
       if(!loaded){status.textContent='Load the list before copying exclusions.';return;}
       const ids=Array.from(excluded).sort().join(',');

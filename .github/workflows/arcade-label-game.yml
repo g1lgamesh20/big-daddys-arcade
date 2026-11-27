@@ -14,7 +14,7 @@ on:
         description: 'Operator-assigned category'
         required: true
         type: choice
-        options: [Uncategorized, Arcade, Pinball, Console, Other]
+        options: [Uncategorized, Arcade, Pinball, Console, Driving, Gun, Other]
 permissions:
   contents: write
 concurrency:

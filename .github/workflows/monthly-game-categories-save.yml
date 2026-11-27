@@ -1,0 +1,42 @@
+name: Arcade - Save Monthly Game Categories
+on:
+  workflow_dispatch:
+    inputs:
+      category_changes:
+        description: 'Paste JSON copied from the robot category editor (game ID to category)'
+        required: true
+        type: string
+      confirm_save:
+        description: 'Confirm saving these category changes'
+        required: true
+        type: boolean
+        default: false
+permissions:
+  contents: write
+concurrency:
+  group: monthly-game-pool
+  cancel-in-progress: false
+jobs:
+  save:
+    if: ${{ inputs.confirm_save }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Apply category changes
+        env:
+          CATEGORY_CHANGES: ${{ inputs.category_changes }}
+        run: python3 tools/batch_label_arcade_games.py
+      - name: Commit
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add monthly-game-labels.json
+          git diff --cached --quiet && exit 0
+          git commit -m 'Update monthly game categories'
+          git pull --rebase origin main
+          git push origin HEAD:main
