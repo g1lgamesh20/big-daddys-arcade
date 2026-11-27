@@ -63,27 +63,23 @@ Deno.serve(async (req: Request) => {
   const prefix = typeof body.prefix === "string" ? body.prefix.toUpperCase() : "PACMAN";
   if (!PREFIXES.includes(prefix)) return reply(400, { error: "Invalid arcade prefix" });
   const db = createClient(url, serviceKey, { auth: { persistSession: false, autoRefreshToken: false } });
-  // Player identities must be provisioned from verified iScored handles; never create
-  // a new claimed identity merely because a caller supplied arbitrary initials.
-  const { data: player, error: playerError } = await db.schema("arcade_private")
-    .from("player_pass_players").select("id,iscored_handle").eq("iscored_handle", initials).maybeSingle();
-  if (playerError) return reply(503, { error: "Player directory unavailable" });
-  if (!player) return reply(404, { error: "Player not registered in verified directory" });
-
+  // Player existence and issuance are checked atomically by a service-only RPC.
+  // Do not expose arcade_private in the Supabase Data API.
   // Four characters provide only 32^4 possibilities per prefix. Require a
   // separate global anti-automation gate before production activation.
   for (let i = 0; i < 5; i++) {
     const code = prefix + "-" + randomSuffix();
     const codeDigest = await digest(pepper, code);
     const expiresAt = new Date(Date.now() + 7 * 86400_000).toISOString();
-    const { error: insertError } = await db.schema("arcade_private").from("player_pass_codes")
-      .insert({ player_id: player.id, code_digest: codeDigest, expires_at: expiresAt, created_by: operatorId });
-    if (!insertError) {
-      // Raw code is returned only once over HTTPS, never stored in the database.
+    const { data: issued, error: insertError } = await db.rpc("arcade_issue_player_pass", {
+      p_handle: initials, p_digest: codeDigest, p_expires_at: expiresAt, p_operator_id: operatorId,
+    });
+    if (!insertError && issued === true) {
       return reply(200, { code, initials, expires_at: expiresAt });
     }
-    if (insertError.code !== "23505") {
-      console.error("Player Pass issuance failed", insertError.code);
+    if (!insertError && issued === false) return reply(404, { error: "Player not registered in verified directory" });
+    if (insertError?.code !== "23505") {
+      console.error("Player Pass issuance failed", insertError?.code || "unknown");
       return reply(503, { error: "Unable to issue Player Pass" });
     }
   }
