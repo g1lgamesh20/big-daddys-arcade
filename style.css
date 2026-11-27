@@ -650,3 +650,15 @@ html, body { max-width: 100%; overflow-x: clip; }
 
 /* Approved player portraits: presentation only; no score or award changes. */
 .player-card-portrait{display:block;width:clamp(110px,35vw,175px);aspect-ratio:1;object-fit:contain;margin:0 auto 10px;border-radius:9px;image-rendering:auto;box-shadow:0 0 14px #ff48bd66}
+
+/* Fixed achievement difficulty colors: Common silver, Rare electric blue,
+   Epic neon purple, Legendary gold. Earned glows; locked stays subdued. */
+.achievement-tile.achievement-rarity-common{--rarity:#bfc8d5;--rarity-rgb:191,200,213}
+.achievement-tile.achievement-rarity-rare{--rarity:#36b9ff;--rarity-rgb:54,185,255}
+.achievement-tile.achievement-rarity-epic{--rarity:#c084fc;--rarity-rgb:192,132,252}
+.achievement-tile.achievement-rarity-legendary{--rarity:#ffd35c;--rarity-rgb:255,211,92}
+.achievement-tile[class*="achievement-rarity-"]{border:2px solid var(--rarity);background:linear-gradient(140deg,rgba(var(--rarity-rgb),.10),#141027 80%);box-shadow:0 0 5px rgba(var(--rarity-rgb),.17)}
+.achievement-tile[class*="achievement-rarity-"] .achievement-tile-name{color:var(--rarity)}
+.achievement-tile[class*="achievement-rarity-"].achievement-tile-earned{box-shadow:0 0 18px rgba(var(--rarity-rgb),.65),inset 0 0 13px rgba(var(--rarity-rgb),.18)}
+.achievement-tile[class*="achievement-rarity-"]:not(.achievement-tile-earned){filter:saturate(.68)}
+.achievement-tile[class*="achievement-rarity-"].achievement-tile-planned{border-style:dashed}
