@@ -7,6 +7,25 @@
   const close=document.querySelector('#player-close');
   const seeAll=document.querySelector('#player-see-all');
   let players=[], victories={}, gotmWins={}, verifiedAwards={}, dailyCounts={}, challengeCounts={thursday:{},monthly:{}}, selected='', previousFocus=null;
+  // Operator will set this global default after today's visual comparison.
+  // Saved per-device choices override it.
+  const PLAYER_CARD_DEFAULT_STYLE='classic';
+  const PLAYER_CARD_STYLE_KEY='arcade-player-card-style-v1';
+  const playerStyleSelect=document.querySelector('#arcade-player-card-style');
+  const validPlayerStyles=new Set(['classic','arcade','flip']);
+  function playerCardStyle(){
+    let saved=null;
+    try{saved=localStorage.getItem(PLAYER_CARD_STYLE_KEY);}catch(_){}
+    return validPlayerStyles.has(saved)?saved:PLAYER_CARD_DEFAULT_STYLE;
+  }
+  if(playerStyleSelect){
+    playerStyleSelect.value=playerCardStyle();
+    playerStyleSelect.addEventListener('change',()=>{
+      if(!validPlayerStyles.has(playerStyleSelect.value))return;
+      try{localStorage.setItem(PLAYER_CARD_STYLE_KEY,playerStyleSelect.value);}catch(_){}
+      if(selected&&detail)showPlayer(selected);
+    });
+  }
   const dailyMilestones=[[5,'Getting Started'],[10,'Dedicated Challenger'],[25,'Champion Chaser'],[50,'Never Back Down']];
   const dateET=()=>new Intl.DateTimeFormat('en-CA',{timeZone:'America/New_York',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
   function makeCard(p){
@@ -222,7 +241,8 @@
     activate(0);
     shell.append(heading,tabs,panels);
     // Opt-in visual comparison: default player cards remain completely unchanged.
-    const preview=new URLSearchParams(window.location.search).get('profilePreview');
+    const requestedPreview=new URLSearchParams(window.location.search).get('profilePreview');
+    const preview=validPlayerStyles.has(requestedPreview)?requestedPreview:playerCardStyle();
     if(preview==='arcade'||preview==='flip'){
       shell.classList.add('arcade-profile-preview','arcade-profile-preview-'+preview);
       const notice=document.createElement('div');
@@ -287,6 +307,7 @@
           const isBack=side==='back';
           front.hidden=isBack;back.hidden=!isBack;
           activate(isBack?1:0);
+          overview.hidden=isBack;
         }
         flipFront.addEventListener('click',()=>{showSide('back');flipBack.focus();});
         flipBack.addEventListener('click',()=>{showSide('front');flipFront.focus();});
