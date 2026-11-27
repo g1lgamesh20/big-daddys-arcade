@@ -39,3 +39,6 @@ Status: DEVELOPMENT BRANCH ONLY — no production authentication changes yet.
 
 ## Open design items before Duel penalty automation
 - Fair-notice evidence and reasonable response window; Thursday play start; ties; score-direction edge cases.
+
+## Approved code format (Nov 27)
+Arcade-themed prefix plus exactly four randomly generated uppercase alphanumeric characters, e.g. `PACMAN-1A2B`. Short codes have low entropy; require aggressive server-side throttling, lockout, short expiry, and one-use redemption before activation is enabled. Do not treat the prefix as secret.
