@@ -58,9 +58,8 @@ begin
     where p.id=v_code.player_id and p.iscored_handle=upper(trim(p_iscored_handle));
   if not found then return; end if;
   -- Defense in depth: the database independently restricts DON redemption to
-  -- the preapproved GitHub Auth identity, even if an Edge Function regresses.
-  -- The operator UUID is supplied only by the privileged backend through a
-  -- server-side configuration setting; missing configuration denies DON.
+  -- a GitHub-backed Auth identity. The Edge Function must additionally
+  -- enforce the exact operator UUID from its server-only allowlist.
   if v_player.iscored_handle = 'DON' then
     if not exists (
       select 1 from auth.users u
