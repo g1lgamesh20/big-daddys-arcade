@@ -9,7 +9,10 @@ assert event("2026-12-24")[0]=="christmas"
 assert event("2026-12-25") is None # Christmas is one announcement for the two-day window
 assert event("2026-12-31")[0]=="new_year"
 assert event("2027-01-01") is None # One event-start push on December 31 only
-assert event("2027-04-04")[0]=="easter"
+assert easter(2027) == dt.date(2027, 3, 28)
+assert event("2027-03-28")[0]=="easter"
+assert event("2027-04-04") is None
+assert event("2027-03-10")[0]=="mar10"
 assert event("2027-06-20")[0]=="fathers"
 assert event("2027-05-04")[0]=="may_fourth"
 assert event("2027-09-08")[0]=="star_trek"
