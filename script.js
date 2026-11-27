@@ -263,7 +263,7 @@
         function showSide(side){
           const isBack=side==='back';
           front.hidden=isBack;back.hidden=!isBack;
-          if(isBack)activate(1);
+          activate(isBack?1:0);
         }
         flipFront.addEventListener('click',()=>{showSide('back');flipBack.focus();});
         flipBack.addEventListener('click',()=>{showSide('front');flipFront.focus();});
