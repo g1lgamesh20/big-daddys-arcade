@@ -494,6 +494,7 @@
       "champions": [],
       "verified_results": [],
       "unverified_candidates": [],
+      "result_status": "final",
       "verified_participant_count": 0,
       "verified_champion_count": 0
     },
