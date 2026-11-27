@@ -21,3 +21,20 @@
 .arcade-profile-preview-flip .arcade-preview-front>.player-stat-grid{margin:10px auto}
 @media(prefers-reduced-motion:no-preference){.arcade-profile-preview .arcade-preview-portrait{animation:arcadePortraitGlow 2.8s ease-in-out infinite alternate}@keyframes arcadePortraitGlow{from{box-shadow:0 0 10px #7eff52,0 0 18px #ff4ec755}to{box-shadow:0 0 24px #7eff52,0 0 31px #ff4ec799}}}
 @media(max-width:440px){.arcade-profile-preview{padding:9px!important}.arcade-profile-preview .arcade-preview-portrait{max-height:135px!important}.arcade-preview-back{padding:8px 2px}}
+
+/* Character-select preview gets a different structure, not merely a brighter border. */
+.arcade-profile-preview-arcade{border:3px solid #77ff50!important;border-radius:4px!important;background:repeating-linear-gradient(0deg,transparent 0 3px,#0003 4px),radial-gradient(ellipse at 50% 0,#301046,#08091a 75%)!important;box-shadow:inset 0 0 25px #ff40b34f,0 0 18px #78ff526b!important}
+.arcade-profile-preview-arcade .arcade-profile-preview-notice{font-size:clamp(14px,4vw,21px);background:#170826;color:#ffcc55;border:2px solid #ff56c7;border-radius:3px;padding:12px 4px;text-shadow:0 0 9px #ffc34e}
+.arcade-profile-preview-arcade .arcade-preview-select-marquee{font:900 clamp(12px,3.4vw,17px) system-ui,sans-serif;letter-spacing:.09em;color:#7fff5b;background:#080d1d;border-top:2px solid #ff55c8;border-bottom:2px solid #ff55c8;padding:8px 3px;margin-top:10px;text-shadow:0 0 10px #7fff5b}
+.arcade-profile-preview-arcade .arcade-preview-tab-title{text-align:center;margin:14px 0 6px;color:#ffcb64;letter-spacing:.12em;font:900 clamp(11px,2.8vw,14px) system-ui,sans-serif}
+.arcade-profile-preview-arcade [role=tablist]{margin:6px 0 16px!important;gap:7px!important}
+.arcade-profile-preview-arcade [role=tablist] button{border-radius:2px!important;min-height:52px!important;background:linear-gradient(#33113f,#110a23)!important;letter-spacing:.03em}
+.arcade-profile-preview-arcade [role=tablist] button[aria-selected=true]{background:linear-gradient(#387a27,#122a1d)!important;box-shadow:0 0 17px #8dff6b!important}
+.arcade-profile-preview-arcade .arcade-preview-dashboard{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px;align-items:start}
+.arcade-profile-preview-arcade .arcade-preview-stats-panel{border:2px solid #7fff5b;border-radius:4px;padding:12px 8px;background:#0a1226;box-shadow:inset 0 0 14px #80ff5b24,0 0 10px #80ff5b3d}
+.arcade-profile-preview-arcade .arcade-preview-stats-panel h4{text-align:center;color:#7fff5b;margin:0 0 12px;font:900 15px system-ui,sans-serif;letter-spacing:.08em}
+.arcade-profile-preview-arcade .arcade-preview-stats-panel .player-stat-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+.arcade-profile-preview-arcade .arcade-preview-stats-panel .player-stat-cell{min-width:0}
+.arcade-profile-preview-arcade .arcade-preview-featured{margin:0!important;border-radius:4px!important}
+.arcade-profile-preview-arcade .arcade-preview-trophy-slot{border-radius:3px!important}
+@media(max-width:590px){.arcade-profile-preview-arcade .arcade-preview-dashboard{grid-template-columns:1fr}.arcade-profile-preview-arcade .arcade-preview-stats-panel .player-stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
