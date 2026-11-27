@@ -7,7 +7,7 @@
 <button id="login">SIGN IN WITH GITHUB</button>
 <button id="check">CHECK MY SIGN-IN</button>
 <p id="status" role="status" aria-live="polite">Not checked yet.</p>
-<p>After GitHub redirects you to the arcade home page, return to this page and click <strong>CHECK MY SIGN-IN</strong>.</p>
+<p>After GitHub returns you to this page, click <strong>CHECK MY SIGN-IN</strong>.</p>
 </main>
 <script type="module">
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.57.4";
@@ -15,7 +15,7 @@ const supabase=createClient("https://jrqzwlowxofnyqpmjgkg.supabase.co","sb_publi
 const status=document.querySelector("#status");
 document.querySelector("#login").addEventListener("click",async()=>{
   status.textContent="Opening GitHub…";
-  const {error}=await supabase.auth.signInWithOAuth({provider:"github",options:{redirectTo:"https://g1lgamesh20.github.io/big-daddys-arcade/",scopes:"read:user"}});
+  const {error}=await supabase.auth.signInWithOAuth({provider:"github",options:{redirectTo:"https://g1lgamesh20.github.io/big-daddys-arcade/don-github-identity-check.html",scopes:"read:user"}});
   if(error)status.textContent="Sign-in could not start: "+error.message;
 });
 document.querySelector("#check").addEventListener("click",async()=>{
