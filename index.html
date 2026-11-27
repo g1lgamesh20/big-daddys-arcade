@@ -901,6 +901,67 @@ See you on the leaderboard! 🏆`;
     const panel=document.getElementById('monthly-pool-manager');
     if(!panel || panel.dataset.poolReady==='yes') return false;
     panel.dataset.poolReady='yes';
+    // Portal the operator editor out of the rotating showcase's layout.
+    // Moving the existing node preserves filters, staged edits and event handlers.
+    const originalPanelStyle=panel.getAttribute('style');
+    const home=document.createComment('monthly-pool-editor-home');
+    panel.before(home);
+    const overlay=document.createElement('div');
+    overlay.id='monthly-pool-overlay';
+    overlay.setAttribute('role','dialog');
+    overlay.setAttribute('aria-modal','true');
+    overlay.setAttribute('aria-label','Monthly Game Pool editor');
+    overlay.hidden=true;
+    overlay.style.cssText='position:fixed;inset:0;z-index:2147483000;background:rgba(4,2,12,.94);padding:max(12px,env(safe-area-inset-top)) max(12px,env(safe-area-inset-right)) max(12px,env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left));box-sizing:border-box;overflow:hidden;display:none;flex-direction:column;align-items:center;';
+    const toolbar=document.createElement('div');
+    toolbar.style.cssText='width:min(100%,850px);display:flex;align-items:center;justify-content:space-between;gap:12px;color:#8cff7b;font-weight:700;padding:5px 0 12px;';
+    const heading=document.createElement('span');
+    heading.textContent='🎮 MONTHLY GAME POOL';
+    const close=document.createElement('button');
+    close.type='button';close.textContent='✕ CLOSE';
+    close.setAttribute('aria-label','Close Monthly Game Pool editor');
+    close.style.cssText='background:#40204f;color:#fff;border:1px solid #6deeff;border-radius:8px;padding:10px 14px;cursor:pointer;';
+    toolbar.append(heading,close);
+    overlay.append(toolbar);
+    document.body.append(overlay);
+    const previousOverflow={html:'',body:''};
+    const originalListHeight=panel.querySelector('#monthly-pool-list')?.style.height;
+    function closeEditor(){panel.open=false;}
+    function showEditor(){
+      previousOverflow.html=document.documentElement.style.overflow;
+      previousOverflow.body=document.body.style.overflow;
+      document.documentElement.style.overflow='hidden';
+      document.body.style.overflow='hidden';
+      overlay.hidden=false;overlay.style.display='flex';
+      overlay.append(panel);
+      panel.style.cssText='display:block;box-sizing:border-box;width:min(100%,850px);max-height:calc(100dvh - 90px);min-height:0;overflow-y:auto;overscroll-behavior:contain;overflow-anchor:none;margin:0;padding:14px;border:1px solid #6deeff;border-radius:10px;background:#140d25;color:#fff;';
+      const list=panel.querySelector('#monthly-pool-list');
+      if(list)list.style.height='min(48dvh,440px)';
+      close.focus({preventScroll:true});
+    }
+    function hideEditor(){
+      home.after(panel);
+      if(originalPanelStyle===null)panel.removeAttribute('style');else panel.setAttribute('style',originalPanelStyle);
+      const list=panel.querySelector('#monthly-pool-list');
+      if(list && originalListHeight!==undefined)list.style.height=originalListHeight;
+      overlay.style.display='none';overlay.hidden=true;
+      document.documentElement.style.overflow=previousOverflow.html;
+      document.body.style.overflow=previousOverflow.body;
+    }
+    close.addEventListener('click',closeEditor);
+    overlay.addEventListener('click',event=>{if(event.target===overlay)closeEditor();});
+    document.addEventListener('keydown',event=>{
+      if(!overlay.hidden && event.key==='Escape'){event.preventDefault();closeEditor();}
+      if(!overlay.hidden && event.key==='Tab'){
+        const focusables=[...overlay.querySelectorAll('button:not([disabled]),a[href],input:not([disabled]),select:not([disabled]),textarea:not([disabled]),summary')].filter(el=>el.getClientRects().length);
+        if(focusables.length){
+          const first=focusables[0],last=focusables[focusables.length-1];
+          if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus();}
+          else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus();}
+        }
+      }
+    });
+
     const search=panel.querySelector('#monthly-pool-search');
     const mode=panel.querySelector('#monthly-pool-filter');
     const category=panel.querySelector('#monthly-pool-category');
@@ -982,7 +1043,7 @@ See you on the leaderboard! 🏆`;
         loaded=true;draw();
       }catch(e){status.textContent='Unable to load game pool: '+e.message;}
     }
-    panel.addEventListener('toggle',()=>{if(panel.open)load();});
+    panel.addEventListener('toggle',()=>{if(panel.open){showEditor();load();}else if(!overlay.hidden){hideEditor();}});
     search.addEventListener('input',draw);
     mode.addEventListener('change',draw);
     category.addEventListener('change',draw);
