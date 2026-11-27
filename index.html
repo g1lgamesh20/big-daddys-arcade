@@ -261,7 +261,7 @@
 <div class="arcade-settings-body">
 <p class="arcade-settings-intro">★ OPERATOR OPTIONS ★</p>
 <div class="arcade-settings-item"><h3>🔊 ARCADE AUDIO</h3><p style="font:500 12px/1.5 system-ui,sans-serif;color:#86eaff;margin:3px 0 10px">Retro button sounds, menu blips, and arcade fanfares use the same sound toggle.</p><div class="arcade-sound-controls"><label class="arcade-audio-label" for="arcade-audio-enabled"><input type="checkbox" id="arcade-audio-enabled" checked> ENABLE ARCADE AUDIO</label></div></div>
-<div class="arcade-settings-item"><h3>🃏 PLAYER CARD STYLE</h3><p style="font:500 12px/1.5 system-ui,sans-serif;color:#86eaff;margin:3px 0 9px">Choose how player profiles appear on this device. Your selection is remembered; scores and trophies stay the same.</p><label for="arcade-player-card-style" style="display:block;color:#aaff80;font:800 12px system-ui,sans-serif;margin-bottom:6px">PROFILE DESIGN</label><select id="arcade-player-card-style" aria-label="Player card style" style="width:100%;max-width:360px;background:#1c1031;color:#fff;border:2px solid #ff68c8;border-radius:8px;padding:11px;font:800 13px system-ui,sans-serif"><option value="classic">🕹️ CLASSIC • THREE TABS</option><option value="arcade">👾 ARCADE • CHARACTER SELECT</option><option value="flip">🏆 COLLECTOR'S CARD • FLIP</option></select></div>
+<div class="arcade-settings-item"><h3>🃏 PLAYER CARD STYLE</h3><p style="font:500 12px/1.5 system-ui,sans-serif;color:#86eaff;margin:3px 0 9px">Choose how player profiles appear on this device. Your selection is remembered; scores and trophies stay the same.</p><label for="arcade-player-card-style" style="display:block;color:#aaff80;font:800 12px system-ui,sans-serif;margin-bottom:6px">PROFILE DESIGN</label><select id="arcade-player-card-style" aria-label="Player card style" style="width:100%;max-width:360px;background:#1c1031;color:#fff;border:2px solid #ff68c8;border-radius:8px;padding:11px;font:800 13px system-ui,sans-serif"><option value="classic">🕹️ CLASSIC • THREE TABS</option><option value="arcade">👾 ARCADE • CHARACTER SELECT (DEFAULT)</option><option value="flip">🏆 COLLECTOR'S CARD • FLIP</option></select></div>
 <div class="arcade-settings-item"><h3>👾 ATTRACT MODE</h3><div class="arcade-attract-settings"><label for="arcade-attract-enabled"><input type="checkbox" id="arcade-attract-enabled" checked> ENABLE ATTRACT MODE (AFTER 60 SECONDS)</label></div></div>
 <div class="arcade-settings-item arcade-settings-install"><section class="arcade-install" aria-labelledby="arcade-install-title"><h2 id="arcade-install-title">🕹️ TAKE THE ARCADE HOME!</h2><p>YOUR POCKET-SIZED HALL OF LEGENDS</p><button type="button" id="arcade-install-button" class="arcade-install-button">⬇ INSTALL THE ARCADE</button><button type="button" id="arcade-share-button" class="arcade-share-button" aria-label="Share Big Daddy’s Arcade" title="Share the Arcade"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.7 10.7 6.6-4.4M8.7 13.3l6.6 4.4"/></svg></button><p class="arcade-install-small">FREE • iPHONE • ANDROID</p><div id="arcade-install-help" class="arcade-install-help" hidden role="status" aria-live="polite"></div><div id="arcade-share-fallback" class="arcade-share-fallback" hidden aria-live="polite"></div></section></div>
 <details id="arcade-test-lab-panel" class="arcade-test-lab-panel arcade-settings-item" hidden>
@@ -296,7 +296,7 @@
 <select id="monthly-pool-filter" style="padding:7px;background:#211532;color:white;border:1px solid #6deeff;border-radius:6px"><option value="all">All games</option><option value="eligible">Eligible only</option><option value="excluded">Excluded only</option></select>
 <select id="monthly-pool-category" aria-label="Filter by game type" style="padding:7px;background:#211532;color:white;border:1px solid #6deeff;border-radius:6px"><option value="all">All types</option><option value="Arcade">Arcade</option><option value="Pinball">Pinball</option><option value="Console">Console</option><option value="Other">Other</option><option value="Uncategorized">Uncategorized</option></select>
 <p id="monthly-pool-status" role="status" aria-live="polite" style="font-size:12px">Open this section to load games.</p>
-<div id="monthly-pool-list" style="max-height:270px;overflow-y:auto;border:1px solid #61457a;border-radius:6px;padding:8px"></div>
+<div id="monthly-pool-list" style="height:270px;overflow-y:auto;overflow-anchor:none;overscroll-behavior:contain;border:1px solid #61457a;border-radius:6px;padding:8px"></div>
 <button type="button" id="monthly-pool-copy" style="margin-top:10px;padding:10px;background:#246e59;color:#fff;border:0;border-radius:6px">📋 COPY EXCLUSIONS FOR GITHUB</button>
 <a href="https://github.com/g1lgamesh20/big-daddys-arcade/actions/workflows/monthly-game-pool-save.yml" target="_blank" rel="noopener noreferrer" style="display:inline-block;margin:8px;color:#8beaff">🔐 OPEN SAVE WORKFLOW</a>
 <p style="font-size:12px">Paste copied IDs into <strong>excluded_ids</strong>, check <strong>confirm_replace</strong>, and run the GitHub workflow. Refresh the app after deployment to see saved changes. For category or clearer names use the <a href="https://github.com/g1lgamesh20/big-daddys-arcade/actions/workflows/arcade-label-game.yml" target="_blank" rel="noopener noreferrer">🏷️ Label Game workflow</a>. No changes are saved until the workflow succeeds.</p>
@@ -904,6 +904,10 @@ See you on the leaderboard! 🏆`;
     const list=panel.querySelector('#monthly-pool-list');
     const copy=panel.querySelector('#monthly-pool-copy');
     let games={},labels={},excluded=new Set(),loaded=false;
+    function updateStatus(shownCount){
+      const total=Object.keys(games).length;
+      status.textContent=(total-excluded.size)+' eligible • '+excluded.size+' excluded • '+shownCount+' shown';
+    }
     function draw(){
       if(!loaded) return;
       const query=search.value.trim().toLocaleLowerCase();
@@ -913,7 +917,7 @@ See you on the leaderboard! 🏆`;
         const match=(name+' '+(meta.label||'')+' '+id).toLocaleLowerCase().includes(query);
         return match && (mode.value==='all'||(mode.value==='excluded')===excluded.has(id)) && (category.value==='all'||(meta.category||'Uncategorized')===category.value);
       });
-      status.textContent=(entries.length-excluded.size)+' eligible • '+excluded.size+' excluded • '+shown.length+' shown';
+      updateStatus(shown.length);
       const priorScroll=list.scrollTop;
       const fragment=document.createDocumentFragment();
       for(const [id,name] of shown){
@@ -924,7 +928,12 @@ See you on the leaderboard! 🏆`;
         checkbox.type='checkbox';
         checkbox.checked=excluded.has(id);
         checkbox.setAttribute('aria-label','Exclude '+name+' (game '+id+')');
-        checkbox.addEventListener('change',()=>{checkbox.checked?excluded.add(id):excluded.delete(id);draw();});
+        checkbox.addEventListener('change',()=>{
+          if(checkbox.checked)excluded.add(id);else excluded.delete(id);
+          // Keep the existing rows and scroll position untouched while selecting.
+          // Filter changes/search still explicitly rebuild the visible list.
+          updateStatus(shown.length);
+        });
         const text=document.createElement('span');
         text.textContent=(meta.label||name)+' ('+(meta.category||'Uncategorized')+')';
         const number=document.createElement('small');
