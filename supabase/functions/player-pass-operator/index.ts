@@ -63,6 +63,10 @@ Deno.serve(async (req: Request) => {
   const prefix = typeof body.prefix === "string" ? body.prefix.toUpperCase() : "PACMAN";
   if (!PREFIXES.includes(prefix)) return reply(400, { error: "Invalid arcade prefix" });
   const db = createClient(url, serviceKey, { auth: { persistSession: false, autoRefreshToken: false } });
+  // Require a live, non-revoked DON Player Pass binding and server-assigned admin role.
+  // A matching operator UUID by itself is insufficient after a device is revoked.
+  const { data: authorized, error: roleError } = await db.rpc("arcade_operator_is_active_admin", { p_auth_user_id: data.user.id });
+  if (roleError || authorized !== true) return reply(403, { error: "Operator Player Pass required" });
   // Player existence and issuance are checked atomically by a service-only RPC.
   // Do not expose arcade_private in the Supabase Data API.
   // Four characters provide only 32^4 possibilities per prefix. Require a
