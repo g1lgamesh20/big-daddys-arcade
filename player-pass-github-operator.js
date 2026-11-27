@@ -19,10 +19,10 @@ export function mountOperatorGitHubLogin({ host, operatorSupabase, redirectTo, o
     button.hidden = false;
     try {
       const { data: userData, error: userError } = await operatorSupabase.auth.getUser();
-      if (userError || !userData?.user || userData.user.is_anonymous) return false;
+      if (userError || !userData?.user || userData.user.is_anonymous ||\n          !userData.user.app_metadata?.providers?.includes("github")) return false;
       const { data, error } = await operatorSupabase.rpc("arcade_my_player_pass_role");
       const role = Array.isArray(data) ? data[0] : data;
-      if (error || role?.iscored_handle !== "DON" || role?.is_admin !== true) return false;
+      if (error || role?.iscored_handle !== "DON" || role?.is_admin !== true) {\n        button.hidden = true;\n        status.textContent = "GitHub signed in. DON Player Pass activation and administrator approval are still required.";\n        return false;\n      }
       button.hidden = true;
       status.textContent = "🤖 DON — administrator session verified";
       if (typeof onVerified === "function") onVerified();
