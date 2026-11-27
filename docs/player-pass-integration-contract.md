@@ -41,3 +41,12 @@ The 4-character suffix uses a 32-symbol unambiguous alphabet: 32^4 = 1,048,576 s
 - Test replay, expiry, wrong player, parallel redemption, IP/account rate limits, and captcha bypass.
 - Test that an unverified user cannot call operator issuance even by bypassing the UI.
 - Confirm all previous public features remain usable without Player Pass.
+
+## Approved operator UX: DON admin (Nov 27)
+- DON is the designated administrator. The Player Pass identity must be verified and bound to an active, non-revoked device before operator privileges are recognized.
+- Add a one-tap 🤖 Developer Control Room entry at the **bottom of the Arcade Control Panel**, visible only for an authenticated DON account with a server-confirmed admin role.
+- Keep the Developer Control Room contents in their existing location; replace the second five-second robot hold for DON with direct tap access after authentication is enabled.
+- Hide the control for all other players. Hiding a control is not authorization: every operator API must independently verify the authenticated identity, active device binding, and admin role.
+- Preserve the Space Invader five-second Test Lab shortcut and fun demos. Do not expose developer tools through it to other players.
+- Do not activate this behavior before the role model and authentication are deployed and tested. The existing hidden robot path remains unchanged on the live site in the meantime.
+- Avoid using a hardcoded string comparison with initials DON as sole proof of administrator identity; use a server-assigned role tied to verified player ID.
