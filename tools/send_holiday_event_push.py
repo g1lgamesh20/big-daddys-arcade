@@ -27,7 +27,7 @@ def easter(year):
     day=(h+l-7*m+114)%31+1
     return dt.date(year,month,day)
 
-def event_for(day):
+def events_for(day):
     y,m,d=day.year,day.month,day.day
     events={
       (2,14):("valentines","💘 HAPPY VALENTINE'S DAY!","Love at first byte! Play today for a shot at LOVE AT FIRST BYTE."),
@@ -41,13 +41,19 @@ def event_for(day):
       (12,24):("christmas","🎄 MERRY CHRISTMAS!","Santa checks his list; we check the leaderboards! Play Dec 24–25 to chase SANTA'S HIGH SCORE HELPER."),
       (12,31):("new_year","🎆 HAPPY NEW YEAR'S EVE!","New year, new high scores, same old rivalries! Play Dec 31–Jan 1 to chase NEW YEAR, NEW HIGH SCORE!"),
     }
-    if (m,d) in events: return events[m,d]
-    if day==easter(y): return ("easter","🐰 HAPPY EASTER!","Hop to the leaderboard! Play today for the EGG-STRA LIFE! achievement.")
-    if day==nth_weekday(y,6,6,3): return ("fathers","👨 HAPPY FATHER'S DAY!","Dad's got game! Put up a score today and chase DAD'S GOT GAME!")
-    if day==nth_weekday(y,10,0,2): return ("columbus","🧭 HAPPY COLUMBUS DAY!","Explore a new high score today and chase THE HIGH SCORE EXPLORER!")
-    if day==nth_weekday(y,11,3,4): return ("thanksgiving","🦃 HAPPY THANKSGIVING!","Stuff your face, then stuff the leaderboard! Play today for TURKEY DAY GAMER.")
-    if d==13 and day.weekday()==4: return ("friday_13","😱 HAPPY FRIDAY THE 13TH!","Unlucky for some, legendary for you! Play today for UNLUCKY FOR SOME!")
-    return None
+    matches = []
+    if (m,d) in events: matches.append(events[m,d])
+    if day==easter(y): matches.append(("easter","🐰 HAPPY EASTER!","Hop to the leaderboard! Play today for the EGG-STRA LIFE! achievement."))
+    if day==nth_weekday(y,6,6,3): matches.append(("fathers","👨 HAPPY FATHER'S DAY!","Dad's got game! Put up a score today and chase DAD'S GOT GAME!"))
+    if day==nth_weekday(y,10,0,2): matches.append(("columbus","🧭 HAPPY COLUMBUS DAY!","Explore a new high score today and chase THE HIGH SCORE EXPLORER!"))
+    if day==nth_weekday(y,11,3,4): matches.append(("thanksgiving","🦃 HAPPY THANKSGIVING!","Stuff your face, then stuff the leaderboard! Play today for TURKEY DAY GAMER."))
+    if d==13 and day.weekday()==4: matches.append(("friday_13","😱 HAPPY FRIDAY THE 13TH!","Unlucky for some, legendary for you! Play today for UNLUCKY FOR SOME!"))
+    return matches
+
+def event_for(day):
+    """Backward-compatible first event for existing callers."""
+    matches = events_for(day)
+    return matches[0] if matches else None
 
 def run():
     parser=argparse.ArgumentParser()
@@ -60,31 +66,31 @@ def run():
     if args.send and now.hour!=9:
         print("Outside 9 AM Eastern announcement hour; skipping.")
         return
-    event=event_for(day)
-    if not event:
+    events=events_for(day)
+    if not events:
         print("No Holiday Legends announcement on",day)
         return
-    kind,title,body=event
-    print(json.dumps({"date":day.isoformat(),"event":kind,"title":title,"message":body,"send":args.send},ensure_ascii=False))
-    if not args.send:return
-    key=os.environ.get("ONESIGNAL_REST_API_KEY","").strip()
-    if not key: raise ValueError("Missing ONESIGNAL_REST_API_KEY")
-    # Stable event/date idempotency protects against reruns within OneSignal's dedupe window.
-    idem=str(uuid.uuid5(uuid.NAMESPACE_URL,"big-daddys-arcade:holiday-push:"+day.isoformat()+":"+kind))
-    payload={"app_id":APP_ID,"included_segments":["All"],"headings":{"en":title},
-             "contents":{"en":body},"url":ARCADE_URL,"idempotency_key":idem,
-             "data":{"kind":"holiday_announcement","holiday":kind,"date":day.isoformat()}}
-    req=Request("https://api.onesignal.com/notifications",
-                data=json.dumps(payload).encode(),
-                headers={"Authorization":"Key "+key,"Content-Type":"application/json","Accept":"application/json"},
-                method="POST")
-    try:
-        with urlopen(req,timeout=30) as response:
-            result=json.load(response)
-        if not result.get("id"): raise RuntimeError("OneSignal did not confirm notification ID")
-        print("OneSignal accepted holiday push:",result["id"])
-    except HTTPError as exc: raise RuntimeError("OneSignal HTTP "+str(exc.code)) from None
-    except URLError as exc: raise RuntimeError("OneSignal connection failed") from exc
+    key=os.environ.get("ONESIGNAL_REST_API_KEY","").strip() if args.send else ""
+    if args.send and not key: raise ValueError("Missing ONESIGNAL_REST_API_KEY")
+    for kind,title,body in events:
+        print(json.dumps({"date":day.isoformat(),"event":kind,"title":title,"message":body,"send":args.send},ensure_ascii=False))
+        if not args.send: continue
+        # Stable per-event/date idempotency: overlapping events remain independent.
+        idem=str(uuid.uuid5(uuid.NAMESPACE_URL,"big-daddys-arcade:holiday-push:"+day.isoformat()+":"+kind))
+        payload={"app_id":APP_ID,"included_segments":["All"],"headings":{"en":title},
+                 "contents":{"en":body},"url":ARCADE_URL,"idempotency_key":idem,
+                 "data":{"kind":"holiday_announcement","holiday":kind,"date":day.isoformat()}}
+        req=Request("https://api.onesignal.com/notifications",
+                    data=json.dumps(payload).encode(),
+                    headers={"Authorization":"Key "+key,"Content-Type":"application/json","Accept":"application/json"},
+                    method="POST")
+        try:
+            with urlopen(req,timeout=30) as response:
+                result=json.load(response)
+            if not result.get("id"): raise RuntimeError("OneSignal did not confirm notification ID")
+            print("OneSignal accepted holiday push:",result["id"])
+        except HTTPError as exc: raise RuntimeError("OneSignal HTTP "+str(exc.code)) from None
+        except URLError as exc: raise RuntimeError("OneSignal connection failed") from exc
 
 if __name__=="__main__":
     try:run()
