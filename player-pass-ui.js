@@ -1,9 +1,11 @@
 /* Big Daddy's Arcade Player Pass UI — DEVELOPMENT ONLY.
  * Import and call mountPlayerPass() after server endpoints are deployed/tested.
+ * The caller must supply a real Turnstile token callback and a separately
+ * authenticated operatorSupabase client for operator controls.
  * No auth secrets are bundled here. Operator UI visibility is NOT authorization.
  */
-export function mountPlayerPass({ host, supabase, handles, endpoint, operatorHost, operatorEnabled = false }) {
-  if (!host || !supabase || !endpoint || !Array.isArray(handles)) throw new Error("Player Pass setup incomplete");
+export function mountPlayerPass({ host, supabase, handles, endpoint, operatorHost, operatorEnabled = false, operatorSupabase = null, getTurnstileToken }) {
+  if (!host || !supabase || !endpoint || !Array.isArray(handles) || typeof getTurnstileToken !== "function") throw new Error("Player Pass setup incomplete");
   const cleanHandles = [...new Set(handles.map(x => String(x).trim().toUpperCase()).filter(x => /^[A-Z0-9 ]{1,24}$/.test(x)))].sort();
   const wrapper = document.createElement("section");
   wrapper.className = "player-pass";
@@ -68,7 +70,9 @@ export function mountPlayerPass({ host, supabase, handles, endpoint, operatorHos
     button.disabled = true;
     status.textContent = "Activating your Player Pass…";
     try {
-      const result = await send("player-pass-redeem", { initials, code });
+      const turnstile_token = await getTurnstileToken();
+      if (!turnstile_token) throw new Error("Complete human verification first");
+      const result = await send("player-pass-redeem", { initials, code, turnstile_token });
       if (!result.activated) throw new Error("Activation could not be confirmed");
       status.textContent = "🏆 " + result.initials + " — PLAYER PASS ACTIVATED!";
       form.hidden = true;
@@ -81,7 +85,7 @@ export function mountPlayerPass({ host, supabase, handles, endpoint, operatorHos
 
   // Only mount the operator controls after a server-verified operator session.
   // operatorEnabled is a UI hint; server independently enforces operator user ID.
-  if (operatorEnabled && operatorHost) {
+  if (operatorEnabled && operatorHost && operatorSupabase) {
     const admin = document.createElement("section");
     admin.className = "player-pass";
     admin.innerHTML = `
@@ -111,11 +115,11 @@ export function mountPlayerPass({ host, supabase, handles, endpoint, operatorHos
       try {
         // Operator auth is separate from anonymous player activation.
         // Never silently sign in anonymously for an operator action.
-        const { data } = await supabase.auth.getSession();
+        const { data } = await operatorSupabase.auth.getSession();
         if (!data?.session || data.session.user?.is_anonymous) throw new Error("Verified operator sign-in required");
         const response = await fetch(endpoint.replace(/\/$/, "") + "/player-pass-operator", {
           method: "POST",
-          headers: { "Content-Type": "application/json", Authorization: "Bearer " + data.session.access_token, apikey: supabase.supabaseKey },
+          headers: { "Content-Type": "application/json", Authorization: "Bearer " + data.session.access_token, apikey: operatorSupabase.supabaseKey },
           body: JSON.stringify({ initials: adminSelect.value, prefix: admin.querySelector("#player-pass-admin-prefix").value }),
         });
         const result = await response.json().catch(() => ({}));
