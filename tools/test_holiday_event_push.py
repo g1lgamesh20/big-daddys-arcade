@@ -1,100 +1,77 @@
 #!/usr/bin/env python3
-"""Regression coverage for every Holiday Legends push and moving calendar dates.
-
-This is an offline test. No OneSignal requests are made.
-"""
+"""Offline calendar regression tests for Holiday Legends push announcements."""
 import datetime as dt
-from send_holiday_event_push import event_for, events_for, easter, nth_weekday
-
-def check(day, expected):
-    actual = event_for(day)
-    kind = actual[0] if actual else None
-    assert kind == expected, f"{day}: expected {expected!r}, got {kind!r}"
+from send_holiday_event_push import events_for, easter, nth_weekday
 
 def date(y, m, d):
     return dt.date(y, m, d)
 
-# Independently verified Easter Sundays; catches incorrect algorithm changes.
+def kinds(day):
+    return {event[0] for event in events_for(day)}
+
+def check(day, expected):
+    actual = kinds(day)
+    assert actual == set(expected), f"{day}: expected {set(expected)!r}, got {actual!r}"
+
+# Independently known Easter dates (not derived from the algorithm under test).
 for year, month, day in [
     (2026, 4, 5), (2027, 3, 28), (2028, 4, 16),
-    (2029, 4, 1), (2030, 4, 21),
+    (2029, 4, 1), (2030, 4, 21), (2031, 4, 13),
+    (2032, 3, 28),
 ]:
     assert easter(year) == date(year, month, day), f"Incorrect Easter {year}"
 
-# Check all 15 existing holiday announcement types, every year, plus adjacent
-# dates. Christmas and New Year's are single start-of-window announcements.
+# Build an independent expected event calendar, then check EVERY day of seven
+# years. This correctly handles overlaps and non-Friday dates with other holidays.
+fixed = {
+    (2, 14): "valentines", (3, 10): "mar10",
+    (3, 17): "st_patricks", (5, 4): "may_fourth",
+    (7, 4): "independence", (9, 8): "star_trek",
+    (9, 12): "video_games", (10, 31): "halloween",
+    (12, 24): "christmas", (12, 31): "new_year",
+}
+days_checked = 0
 for year in range(2026, 2033):
-    fixed = {
-        (2, 14): "valentines",
-        (3, 10): "mar10",
-        (3, 17): "st_patricks",
-        (5, 4): "may_fourth",
-        (7, 4): "independence",
-        (9, 8): "star_trek",
-        (9, 12): "video_games",
-        (10, 31): "halloween",
-        (12, 24): "christmas",
-        (12, 31): "new_year",
-    }
+    expected = {}
+    def add(day, kind):
+        expected.setdefault(day, set()).add(kind)
     for (month, day), kind in fixed.items():
-        check(date(year, month, day), kind)
-    check(date(year, 12, 25), None)
-    check(date(year, 12, 26), None)
-    check(date(year, 1, 1), None)
-
-    moving = [
-        (easter(year), "easter"),
-        (nth_weekday(year, 6, 6, 3), "fathers"),
-        (nth_weekday(year, 10, 0, 2), "columbus"),
-        (nth_weekday(year, 11, 3, 4), "thanksgiving"),
-    ]
-    for day, kind in moving:
-        check(day, kind)
-        for neighbor in [day - dt.timedelta(days=1), day + dt.timedelta(days=1)]:
-            # An adjacent day can legitimately be another holiday.
-            if neighbor.month == 3 and neighbor.day == 10:
-                continue
-            if neighbor.day == 13 and neighbor.weekday() == 4:
-                continue
-            check(neighbor, None)
-
-    # Every Friday the 13th in the year, not just one sample.
+        add(date(year, month, day), kind)
+    add(easter(year), "easter")
+    add(nth_weekday(year, 6, 6, 3), "fathers")
+    add(nth_weekday(year, 10, 0, 2), "columbus")
+    add(nth_weekday(year, 11, 3, 4), "thanksgiving")
     for month in range(1, 13):
         thirteenth = date(year, month, 13)
         if thirteenth.weekday() == 4:
-            check(thirteenth, "friday_13")
-        else:
-            check(thirteenth, None)
+            add(thirteenth, "friday_13")
+    day = date(year, 1, 1)
+    while day.year == year:
+        check(day, expected.get(day, set()))
+        days_checked += 1
+        day += dt.timedelta(days=1)
 
-# Targeted regressions for previously failed preview and date windows.
-check(date(2027, 3, 10), "mar10")
-check(date(2027, 3, 28), "easter")
-check(date(2027, 4, 4), None)
-check(date(2026, 11, 26), "thanksgiving")
-check(date(2026, 11, 27), None)
-check(date(2026, 12, 24), "christmas")
-check(date(2026, 12, 31), "new_year")
-check(date(2027, 1, 1), None)
+# Christmas Eve and New Year's Eve each announce once, not again on the
+# second day of the eligibility window.
+for year in range(2026, 2033):
+    check(date(year, 12, 25), set())
+    check(date(year, 1, 1), set())
 
-print("All Holiday Legends event dates and announcement windows passed (2026–2032).")
-
-# Every Gregorian calendar year has at least one Friday the 13th.
+# Every year has 1-3 Friday the 13ths across the full 400-year Gregorian cycle.
 for year in range(2000, 2400):
     fridays = [date(year, month, 13) for month in range(1, 13)
                if date(year, month, 13).weekday() == 4]
     assert 1 <= len(fridays) <= 3, (year, fridays)
     for day in fridays:
-        assert "friday_13" in [item[0] for item in events_for(day)]
+        assert "friday_13" in kinds(day)
 
-# Collision example: September 13, 2030 is Friday the 13th, and 2030-09-13
-# may be checked alongside its neighboring Video Games Day announcement.
-# Test an actual overlap: May 13, 2028 is Friday the 13th only.
-# More generally, a future event added to an existing date must not replace it.
+# Simulate a future overlapping holiday; both must be independently selected.
 import send_holiday_event_push as module
 original_easter = module.easter
 try:
     module.easter = lambda year: date(year, 3, 10)
-    assert [item[0] for item in events_for(date(2027, 3, 10))] == ["mar10", "easter"]
+    check(date(2027, 3, 10), {"mar10", "easter"})
 finally:
     module.easter = original_easter
-print("Overlap and Friday-the-13th guarantee checks passed.")
+
+print(f"Holiday calendar tests passed: {days_checked} dates (2026-2032), all 15 events, overlap handling, and 400-year Friday-the-13th guarantee.")
