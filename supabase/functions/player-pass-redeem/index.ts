@@ -38,7 +38,8 @@ Deno.serve(async (req: Request) => {
   const serviceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
   const publicKey = Deno.env.get("SUPABASE_ANON_KEY");
   const pepper = Deno.env.get("PLAYER_PASS_PEPPER");
-  if (!url || !serviceKey || !publicKey || !pepper || pepper.length < 32) {
+  const turnstileSecret = Deno.env.get("TURNSTILE_SECRET_KEY");
+  if (!url || !serviceKey || !publicKey || !pepper || pepper.length < 32 || !turnstileSecret) {
     return respond(503, { error: "Player Pass not configured" });
   }
 
@@ -50,7 +51,7 @@ Deno.serve(async (req: Request) => {
   const { data: authData, error: authError } = await auth.auth.getUser(token);
   if (authError || !authData.user) return respond(401, { error: "Sign in required" });
 
-  let body: { initials?: unknown; code?: unknown };
+  let body: { initials?: unknown; code?: unknown; turnstile_token?: unknown };
   try {
     const raw = await req.text();
     if (raw.length > 512) return respond(413, { error: "Request too large" });
@@ -65,6 +66,24 @@ Deno.serve(async (req: Request) => {
   if (!/^[A-Z0-9 ]{1,24}$/.test(initials) || !/^[A-Z]{3,12}-[A-Z0-9]{4}$/.test(code)) {
     return respond(400, { error: "Invalid request" });
   }
+
+  // Four-character codes require a human-verification gate on EVERY attempt.
+  // Turnstile verification is performed server-side; never trust a client flag.
+  const challenge = typeof body.turnstile_token === "string" ? body.turnstile_token : "";
+  if (!challenge || challenge.length > 2048) return respond(403, { error: "Human verification required" });
+  try {
+    const verify = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({ secret: turnstileSecret, response: challenge }),
+      signal: AbortSignal.timeout(8000),
+    });
+    if (!verify.ok) return respond(503, { error: "Verification unavailable" });
+    const result = await verify.json();
+    if (result.success !== true || result.hostname !== "g1lgamesh20.github.io") {
+      return respond(403, { error: "Human verification failed" });
+    }
+  } catch { return respond(503, { error: "Verification unavailable" }); }
 
   // The database RPC performs atomic attempt accounting and code redemption.
   // Never rely on an in-memory rate limiter (each edge instance has its own memory).
