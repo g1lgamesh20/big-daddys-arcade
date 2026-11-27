@@ -47,7 +47,7 @@ def events_for(day):
     if day==nth_weekday(y,6,6,3): matches.append(("fathers","👨 HAPPY FATHER'S DAY!","Dad's got game! Put up a score today and chase DAD'S GOT GAME!"))
     if day==nth_weekday(y,10,0,2): matches.append(("columbus","🧭 HAPPY COLUMBUS DAY!","Explore a new high score today and chase THE HIGH SCORE EXPLORER!"))
     if day==nth_weekday(y,11,3,4): matches.append(("thanksgiving","🦃 HAPPY THANKSGIVING!","Stuff your face, then stuff the leaderboard! Play today for TURKEY DAY GAMER."))
-    if d==13 and day.weekday()==4: matches.append(("friday_13","😱 HAPPY FRIDAY THE 13TH!","Unlucky for some, legendary for you! Play today for UNLUCKY FOR SOME!"))
+    if d==13 and day.weekday()==4: matches.append(("friday_13","😱 WATCH OUT! IT'S FRIDAY THE 13TH!","Unlucky for some, legendary for you! Play today for UNLUCKY FOR SOME!"))
     return matches
 
 def event_for(day):
