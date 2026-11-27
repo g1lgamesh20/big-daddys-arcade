@@ -28,6 +28,7 @@ declare
   v_device uuid;
 begin
   if p_auth_user_id is null or p_iscored_handle is null or
+     p_code_digest is null or p_ip_digest is null or
      p_code_digest !~ '^[a-f0-9]{64}$' or p_ip_digest !~ '^[a-f0-9]{64}$'
   then return; end if;
   v_user_hash := md5(p_auth_user_id::text);
