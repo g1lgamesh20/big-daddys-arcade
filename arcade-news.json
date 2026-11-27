@@ -1,6 +1,12 @@
 {
   "bulletins": [
     {
+      "id": "fa74d908-782a-46cf-8596-6540eb56e950",
+      "title": "New Features!!",
+      "message": "Dude, check out the newly designed player cards and tell me what you think, lol. Also, I've added a ton or new achievements! Feedback appreciated!",
+      "created_at": "2026-11-27T19:45:54.607849+00:00"
+    },
+    {
       "id": "719afabc-7433-4a31-b165-a070bc580800",
       "title": "Achievements 2.0!",
       "message": "Check out all the new  features! New achievements, new trophy room, trophy hunters and more!",
