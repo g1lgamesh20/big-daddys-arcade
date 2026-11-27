@@ -18,7 +18,8 @@ language sql stable security definer set search_path = ''
 as $$
   select p.iscored_handle,
          exists(select 1 from arcade_private.player_pass_admins a
-           where a.player_id=p.id and a.revoked_at is null\n             and p.iscored_handle = 'DON') as is_admin
+           where a.player_id=p.id and a.revoked_at is null
+             and p.iscored_handle = 'DON') as is_admin
   from arcade_private.player_pass_devices d
   join arcade_private.player_pass_players p on p.id=d.player_id
   where d.auth_user_id=(select auth.uid()) and d.revoked_at is null
