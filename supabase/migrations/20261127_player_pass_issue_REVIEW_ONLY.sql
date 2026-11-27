@@ -7,7 +7,7 @@ language plpgsql security definer set search_path = ''
 as $$
 declare v_player uuid;
 begin
-  if p_handle is null or p_digest !~ '^[a-f0-9]{64}$'
+  if p_handle is null or p_digest is null or p_expires_at is null or p_digest !~ '^[a-f0-9]{64}$'
      or p_operator_id is null or p_expires_at <= now()
      or p_expires_at > now() + interval '8 days' then
     return false;
