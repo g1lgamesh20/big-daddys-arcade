@@ -38,3 +38,8 @@
 .arcade-profile-preview-arcade .arcade-preview-featured{margin:0!important;border-radius:4px!important}
 .arcade-profile-preview-arcade .arcade-preview-trophy-slot{border-radius:3px!important}
 @media(max-width:590px){.arcade-profile-preview-arcade .arcade-preview-dashboard{grid-template-columns:1fr}.arcade-profile-preview-arcade .arcade-preview-stats-panel .player-stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* Explicit active-style indicator for verifying device-specific preferences. */
+.arcade-player-style-indicator{margin:0 0 10px;padding:7px 8px;border:1px solid #70e6ef;border-radius:6px;background:#0b1426;color:#b8f9ff;text-align:center;font:900 11px/1.4 system-ui,sans-serif;letter-spacing:.07em}
+.arcade-profile-preview-arcade .arcade-player-style-indicator{border-color:#7eff52;color:#aaff82}
+.arcade-profile-preview-flip .arcade-player-style-indicator{border-color:#ffcb55;color:#ffe49c}
