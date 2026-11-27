@@ -30,3 +30,23 @@ grant execute on function public.arcade_my_player_pass_role() to authenticated;
 -- device AND player_pass_admins. The role RPC is a UI convenience, not proof
 -- a client may submit for authorization.
 -- Provision DON's role only after his verified Player Pass is activated.
+
+-- Server-only authorization used by the operator Edge Function.
+-- Requires active, non-revoked Player Pass and a granted admin role.
+create or replace function public.arcade_operator_is_active_admin(p_auth_user_id uuid)
+returns boolean
+language sql stable security definer set search_path = ''
+as $$
+  select exists (
+    select 1
+    from arcade_private.player_pass_devices d
+    join arcade_private.player_pass_players p on p.id = d.player_id
+    join arcade_private.player_pass_admins a on a.player_id = p.id
+    where d.auth_user_id = p_auth_user_id
+      and d.revoked_at is null
+      and a.revoked_at is null
+      and p.iscored_handle = 'DON'
+  );
+$$;
+revoke all on function public.arcade_operator_is_active_admin(uuid) from public, anon, authenticated;
+grant execute on function public.arcade_operator_is_active_admin(uuid) to service_role;
