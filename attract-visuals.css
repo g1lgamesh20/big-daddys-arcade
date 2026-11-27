@@ -94,3 +94,7 @@
 @keyframes attract-ship-patrol{from{transform:translateX(30px)}to{transform:translateX(min(420px,75vw))}}
 @keyframes attract-laser{0%{left:25%;bottom:38px;opacity:0}12%{opacity:1}90%{opacity:1}100%{left:25%;bottom:92%;opacity:0}}
 @media(prefers-reduced-motion:reduce){.attract-trophy-icon,.attract-trophy-burst,.attract-pixel-enemies,.attract-pixel-ship,.attract-pixel-shot{animation:none!important}.attract-pixel-shot{display:none}.attract-pixel-ship{left:45%}}
+
+/* Portrait on the attract-only Player Spotlight stage. */
+.attract-player-portrait{display:block;width:clamp(110px,28vh,220px);max-height:28vh;aspect-ratio:1;object-fit:contain;margin:0 auto 7px;border-radius:10px;box-shadow:0 0 20px #ff48bd88}
+.attract-player-portrait[hidden]{display:none!important}
