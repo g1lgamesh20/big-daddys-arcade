@@ -70,6 +70,9 @@
   const name=document.getElementById('attract-player-name');
   const rank=document.getElementById('attract-player-rank');
   const stats=document.getElementById('attract-player-stats');
+  const portrait=document.getElementById('attract-player-portrait');
+  const sourcePortrait=source?.querySelector('.player-card-portrait');
+  if(portrait){if(sourcePortrait){portrait.src=sourcePortrait.src;portrait.alt=sourcePortrait.alt;portrait.hidden=false;}else{portrait.hidden=true;portrait.removeAttribute('src');}}
   if(!name||!rank||!stats)return;
   name.textContent=source?.querySelector('h3')?.textContent||'AWAITING PLAYER DATA';
   rank.textContent=source?.querySelector('.player-stat-rank')?.textContent||'';
