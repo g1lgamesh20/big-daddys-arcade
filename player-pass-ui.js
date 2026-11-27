@@ -37,9 +37,9 @@ export function mountPlayerPass({ host, supabase, handles, endpoint, operatorHos
   for (const handle of cleanHandles) select.add(new Option(handle, handle));
   host.append(wrapper);
 
-  async function authSession() {
+  async function authSession(initials) {
     const { data: current } = await supabase.auth.getSession();
-    if (current?.session?.access_token) return current.session;
+    if (initials === "DON") {\n      if (!current?.session?.access_token || current.session.user?.is_anonymous ||\n          !current.session.user?.app_metadata?.providers?.includes("github")) {\n        throw new Error("DON: sign in with GitHub before activating your Player Pass.");\n      }\n      return current.session;\n    }\n    if (current?.session?.access_token) return current.session;
     const { data, error } = await supabase.auth.signInAnonymously();
     if (error || !data?.session) throw new Error("Device sign-in unavailable");
     return data.session;
@@ -113,7 +113,7 @@ export function mountPlayerPass({ host, supabase, handles, endpoint, operatorHos
       btn.disabled = true;
       output.textContent = "Generating…";
       try {
-        // Operator auth is separate from anonymous player activation.
+        // DON uses the same GitHub-authenticated identity for his Player Pass and operator actions.
         // Never silently sign in anonymously for an operator action.
         const { data } = await operatorSupabase.auth.getSession();
         if (!data?.session || data.session.user?.is_anonymous) throw new Error("Verified operator sign-in required");
