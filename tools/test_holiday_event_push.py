@@ -4,7 +4,7 @@
 This is an offline test. No OneSignal requests are made.
 """
 import datetime as dt
-from send_holiday_event_push import event_for, easter, nth_weekday
+from send_holiday_event_push import event_for, events_for, easter, nth_weekday
 
 def check(day, expected):
     actual = event_for(day)
@@ -77,3 +77,24 @@ check(date(2026, 12, 31), "new_year")
 check(date(2027, 1, 1), None)
 
 print("All Holiday Legends event dates and announcement windows passed (2026–2032).")
+
+# Every Gregorian calendar year has at least one Friday the 13th.
+for year in range(2000, 2400):
+    fridays = [date(year, month, 13) for month in range(1, 13)
+               if date(year, month, 13).weekday() == 4]
+    assert 1 <= len(fridays) <= 3, (year, fridays)
+    for day in fridays:
+        assert "friday_13" in [item[0] for item in events_for(day)]
+
+# Collision example: September 13, 2030 is Friday the 13th, and 2030-09-13
+# may be checked alongside its neighboring Video Games Day announcement.
+# Test an actual overlap: May 13, 2028 is Friday the 13th only.
+# More generally, a future event added to an existing date must not replace it.
+import send_holiday_event_push as module
+original_easter = module.easter
+try:
+    module.easter = lambda year: date(year, 3, 10)
+    assert [item[0] for item in events_for(date(2027, 3, 10))] == ["mar10", "easter"]
+finally:
+    module.easter = original_easter
+print("Overlap and Friday-the-13th guarantee checks passed.")
