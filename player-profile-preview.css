@@ -1,0 +1,23 @@
+/* Opt-in player profile comparison. No styles affect ordinary player cards. */
+.arcade-profile-preview{position:relative;overflow:hidden;border:2px solid #ff4ec7!important;background:repeating-linear-gradient(0deg,transparent 0px,transparent 5px,rgba(0,0,0,.13) 6px),radial-gradient(ellipse at top,#291044,#070b20 75%)!important;box-shadow:0 0 24px #ff4ec76b,inset 0 0 24px #7eff5230!important}
+.arcade-profile-preview *{box-sizing:border-box}
+.arcade-profile-preview [hidden]{display:none!important}
+.arcade-profile-preview-notice{font:900 clamp(11px,2.5vw,16px) system-ui,sans-serif;letter-spacing:.08em;text-align:center;color:#7eff52;text-shadow:0 0 12px #7eff52;padding:9px 4px 12px;border-bottom:2px solid #ff4ec7;margin-bottom:12px}
+.arcade-profile-preview>div:has(>.arcade-preview-portrait),.arcade-profile-preview .arcade-preview-front>div:first-child{box-shadow:inset 0 0 17px #ff4ec744,0 0 16px #7eff5230}
+.arcade-profile-preview .arcade-preview-portrait{border:3px solid #7eff52;border-radius:10px;box-shadow:0 0 17px #7eff52,0 0 29px #ff4ec770;max-width:min(180px,60%)!important;max-height:180px!important}
+.arcade-profile-preview .arcade-preview-featured{border:2px solid #ffcb55!important;background:linear-gradient(140deg,#27162d,#100b20)!important;box-shadow:0 0 15px #ffca5555}
+.arcade-profile-preview .arcade-preview-featured>h4{text-align:center;font-size:clamp(14px,3.5vw,19px)!important;text-shadow:0 0 10px #ffc750}
+.arcade-profile-preview .arcade-preview-trophy-slot{border:1px solid #ffd65c!important;border-radius:9px;margin:7px 0;padding:11px!important;background:#24162c;box-shadow:inset 0 0 9px #ffcb5533,0 0 9px #ffc64a33}
+.arcade-profile-preview [role=tablist] button,.arcade-profile-preview .arcade-preview-back-tabs button{border-width:2px!important;box-shadow:0 0 9px #ff4ec755;text-shadow:0 0 7px #ff4ec7}
+.arcade-profile-preview [role=tab][aria-selected=true]{background:#245327!important;border-color:#8cff64!important;color:#c7ffaf!important;box-shadow:0 0 15px #83ff6b77!important}
+.arcade-profile-preview-footer{text-align:center;color:#ffb8e7;letter-spacing:.06em;font:900 clamp(10px,2.6vw,14px) system-ui,sans-serif;padding:14px 3px 4px;text-shadow:0 0 9px #ff4ec7}
+.arcade-preview-flip-button{display:block;width:100%;margin:14px auto 4px;padding:14px 8px;border:2px solid #7eff52;border-radius:10px;background:#2a1040;color:#fff;font:900 clamp(11px,3vw,17px) system-ui,sans-serif;letter-spacing:.04em;box-shadow:0 0 16px #7eff5270;cursor:pointer}
+.arcade-preview-flip-button:focus-visible,.arcade-profile-preview button:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.arcade-preview-back{min-height:290px;padding:10px 3px;background:radial-gradient(ellipse at top,#1a2540,#10071f);border:2px solid #7eff52;border-radius:12px;box-shadow:inset 0 0 19px #7eff5244}
+.arcade-preview-back-title{text-align:center;font:900 clamp(17px,4vw,24px) Impact,system-ui,sans-serif;letter-spacing:.08em;color:#ffb7eb;text-shadow:0 0 12px #ff4ec7}
+.arcade-preview-back-tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:12px 6px}
+.arcade-preview-back-tabs button{min-width:0;padding:12px 3px;border:2px solid #ff4ec7;border-radius:8px;background:#230e31;color:white;font:900 clamp(10px,2.7vw,14px) system-ui,sans-serif;cursor:pointer}
+.arcade-preview-back-panels{padding:4px 7px}
+.arcade-profile-preview-flip .arcade-preview-front>.player-stat-grid{margin:10px auto}
+@media(prefers-reduced-motion:no-preference){.arcade-profile-preview .arcade-preview-portrait{animation:arcadePortraitGlow 2.8s ease-in-out infinite alternate}@keyframes arcadePortraitGlow{from{box-shadow:0 0 10px #7eff52,0 0 18px #ff4ec755}to{box-shadow:0 0 24px #7eff52,0 0 31px #ff4ec799}}}
+@media(max-width:440px){.arcade-profile-preview{padding:9px!important}.arcade-profile-preview .arcade-preview-portrait{max-height:135px!important}.arcade-preview-back{padding:8px 2px}}
