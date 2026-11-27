@@ -221,6 +221,55 @@
     sections.forEach((section,i)=>{section.id='arcade-profile-panel-'+i;section.setAttribute('role','tabpanel');section.setAttribute('aria-labelledby',buttons[i].id);section.tabIndex=0;panels.append(section);});
     activate(0);
     shell.append(heading,tabs,panels);
+    // Opt-in visual comparison: default player cards remain completely unchanged.
+    const preview=new URLSearchParams(window.location.search).get('profilePreview');
+    if(preview==='arcade'||preview==='flip'){
+      shell.classList.add('arcade-profile-preview','arcade-profile-preview-'+preview);
+      const notice=document.createElement('div');
+      notice.className='arcade-profile-preview-notice';
+      notice.textContent=preview==='arcade'?'★ CHARACTER SELECT • THREE-TAB PREVIEW ★':'★ COLLECTOR CARD • FLIP PREVIEW ★';
+      shell.prepend(notice);
+      const portrait=heading.querySelector('.player-card-portrait');
+      if(portrait)portrait.classList.add('arcade-preview-portrait');
+      const trophy=overview.querySelector('section');
+      if(trophy&&trophy.querySelector('h4')?.textContent.includes('FEATURED TROPHIES')){
+        trophy.classList.add('arcade-preview-featured');
+        trophy.querySelectorAll('div').forEach(el=>el.classList.add('arcade-preview-trophy-slot'));
+      }
+      const footer=document.createElement('div');
+      footer.className='arcade-profile-preview-footer';
+      footer.textContent='👾 INSERT COIN • BECOME A LEGEND 👾';
+      shell.append(footer);
+      if(preview==='flip'){
+        const front=document.createElement('div'),back=document.createElement('div');
+        front.className='arcade-preview-front';back.className='arcade-preview-back';
+        const flipFront=document.createElement('button'),flipBack=document.createElement('button');
+        flipFront.type='button';flipBack.type='button';
+        flipFront.className='arcade-preview-flip-button';flipBack.className='arcade-preview-flip-button';
+        flipFront.textContent='↻ FLIP CARD • VIEW CAREER RECORD';
+        flipBack.textContent='↶ FLIP BACK • PLAYER CARD';
+        const backTitle=document.createElement('h3');backTitle.className='arcade-preview-back-title';
+        backTitle.textContent='★ PLAYER CAREER RECORD ★';
+        // Preserve original live tab and panel implementations; only reorganize the opt-in preview.
+        tabs.removeChild(buttons[0]);overview.remove();
+        const backTabs=document.createElement('div');backTabs.className='arcade-preview-back-tabs';
+        backTabs.append(buttons[1],buttons[2]);
+        const backPanels=document.createElement('div');backPanels.className='arcade-preview-back-panels';
+        backPanels.append(achievements,history);
+        front.append(heading,overview,flipFront);
+        back.append(backTitle,backTabs,backPanels,flipBack);
+        tabs.remove();panels.remove();
+        footer.before(front,back);
+        function showSide(side){
+          const isBack=side==='back';
+          front.hidden=isBack;back.hidden=!isBack;
+          if(isBack)activate(1);
+        }
+        flipFront.addEventListener('click',()=>{showSide('back');flipBack.focus();});
+        flipBack.addEventListener('click',()=>{showSide('front');flipFront.focus();});
+        showSide('front');
+      }
+    }
     return shell;
   }
   function featured(){
