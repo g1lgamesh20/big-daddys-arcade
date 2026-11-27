@@ -50,3 +50,10 @@ The 4-character suffix uses a 32-symbol unambiguous alphabet: 32^4 = 1,048,576 s
 - Preserve the Space Invader five-second Test Lab shortcut and fun demos. Do not expose developer tools through it to other players.
 - Do not activate this behavior before the role model and authentication are deployed and tested. The existing hidden robot path remains unchanged on the live site in the meantime.
 - Avoid using a hardcoded string comparison with initials DON as sole proof of administrator identity; use a server-assigned role tied to verified player ID.
+
+## DON shortcut implementation status
+- Added `player-pass-admin-shortcut.js`: one-tap Control Room button appended to the supplied Arcade Control Panel container, visible only after the `arcade_my_player_pass_role` RPC reports DON and is_admin=true.
+- Added review-only admin-role migration. No DON role has been assigned in the live database.
+- **Critical before rollout:** disable the old robot long-press path as a route to developer tools for non-admin users. Merely hiding the new shortcut does not restrict the legacy route.
+- **Critical before rollout:** reconcile the operator Edge Function's `PLAYER_PASS_OPERATOR_USER_ID` check with the server-backed admin role and active device binding; every privileged endpoint must enforce it. The existing operator function is not yet ready for this new role model.
+- **Critical before rollout:** mount the shortcut only after Player Pass activation and existing Control Panel integration have been tested. Existing template and Test Lab scripts must not conflict with the new placement.
