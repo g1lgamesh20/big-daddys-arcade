@@ -57,3 +57,18 @@ The 4-character suffix uses a 32-symbol unambiguous alphabet: 32^4 = 1,048,576 s
 - **Critical before rollout:** disable the old robot long-press path as a route to developer tools for non-admin users. Merely hiding the new shortcut does not restrict the legacy route.
 - **Critical before rollout:** reconcile the operator Edge Function's `PLAYER_PASS_OPERATOR_USER_ID` check with the server-backed admin role and active device binding; every privileged endpoint must enforce it. The existing operator function is not yet ready for this new role model.
 - **Critical before rollout:** mount the shortcut only after Player Pass activation and existing Control Panel integration have been tested. Existing template and Test Lab scripts must not conflict with the new placement.
+
+## First-administrator bootstrap (DON)
+The operator issuance endpoint deliberately requires an already-active administrator device. Therefore it **cannot issue DON's very first code**. This is a bootstrap dependency, not an error.
+
+Safe one-time bootstrap sequence:
+1. Deploy and validate the private schema and RPCs in a staging environment first; verify all privileges.
+2. Independently verify DON's existing iScored identity. Provision DON's `player_pass_players` record from the verified roster (not public user input).
+3. Using a trusted server-side operator process, generate a cryptographically random one-use code, compute its HMAC with `PLAYER_PASS_PEPPER`, and insert the digest with a seven-day expiry through the service-only issuance RPC. Do not put raw codes or secrets in SQL migration files, GitHub, or browser source.
+4. DON redeems the code on his device. Verify active device mapping in the database.
+5. Assign the DON player ID an administrator grant through a trusted, audited service-only operation.
+6. Configure `PLAYER_PASS_OPERATOR_USER_ID` to a **non-anonymous Supabase Auth account** bound to DON's active Player Pass. A purely anonymous device session does NOT satisfy the current operator Edge Function's operator login requirement.
+7. Confirm the role-check RPC, operator issuance endpoint, and one-tap shortcut all succeed for DON and fail for a second non-admin player.
+8. Remove legacy robot access to privileged controls only after the new path is verified; preserve public Test Lab demos.
+
+**Unresolved design decision:** The current player activation creates an anonymous Supabase Auth account, but the operator Edge Function requires a permanent, non-anonymous Auth account. Decide whether DON should use a separate permanent operator sign-in or upgrade DON's Player Pass Auth identity. Do not claim the first-login path is complete until this is resolved.
