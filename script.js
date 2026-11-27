@@ -242,7 +242,11 @@
     shell.append(heading,tabs,panels);
     // Opt-in visual comparison: default player cards remain completely unchanged.
     const requestedPreview=new URLSearchParams(window.location.search).get('profilePreview');
-    const preview=validPlayerStyles.has(requestedPreview)?requestedPreview:playerCardStyle();
+    // The Control Panel is authoritative. Old comparison links may still
+    // preselect a style on first visit, but never override a saved choice.
+    let savedStyle=null;
+    try{savedStyle=localStorage.getItem(PLAYER_CARD_STYLE_KEY);}catch(_){}
+    const preview=validPlayerStyles.has(savedStyle)?savedStyle:(validPlayerStyles.has(requestedPreview)?requestedPreview:playerCardStyle());
     if(preview==='arcade'||preview==='flip'){
       shell.classList.add('arcade-profile-preview','arcade-profile-preview-'+preview);
       const notice=document.createElement('div');
