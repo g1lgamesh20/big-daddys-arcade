@@ -12,6 +12,12 @@ begin
      or p_expires_at > now() + interval '8 days' then
     return false;
   end if;
+  -- Independently revalidate the operator in the database. A supplied
+  -- p_operator_id is never sufficient evidence of authorization.
+  -- Initial DON bootstrap uses a separate trusted one-time procedure.
+  if not coalesce(public.arcade_operator_is_active_admin(p_operator_id), false) then
+    return false;
+  end if;
   select id into v_player from arcade_private.player_pass_players
     where iscored_handle = upper(trim(p_handle));
   if v_player is null then return false; end if;
