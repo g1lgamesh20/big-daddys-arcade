@@ -1,22 +1,22 @@
 {
-  "updated_at": "2026-11-27T05:31:16.424122+00:00",
+  "updated_at": "2026-11-27T06:46:12.370068+00:00",
   "source": "iScored public read API",
   "scoring_note": "PAPA-style estimate: top 1000 games per player; one best score per player per game; competition ties. iScored may handle ties differently.",
   "standings": [
     {
       "player": "DON",
-      "points": 21672,
+      "points": 21662,
       "games": 222,
-      "gold": 176,
-      "silver": 33,
+      "gold": 175,
+      "silver": 34,
       "bronze": 11
     },
     {
       "player": "VJG",
-      "points": 6666,
+      "points": 6655,
       "games": 73,
-      "gold": 17,
-      "silver": 43,
+      "gold": 16,
+      "silver": 44,
       "bronze": 5
     },
     {
@@ -29,10 +29,10 @@
     },
     {
       "player": "DAY",
-      "points": 2813,
-      "games": 31,
-      "gold": 12,
-      "silver": 3,
+      "points": 3103,
+      "games": 34,
+      "gold": 14,
+      "silver": 4,
       "bronze": 5
     },
     {
@@ -60,16 +60,16 @@
       "bronze": 6
     },
     {
-      "player": "FO",
-      "points": 1241,
-      "games": 14,
-      "gold": 3,
-      "silver": 2,
-      "bronze": 5
+      "player": "POD",
+      "points": 1886,
+      "games": 21,
+      "gold": 6,
+      "silver": 4,
+      "bronze": 6
     },
     {
-      "player": "POD",
-      "points": 1237,
+      "player": "FO",
+      "points": 1241,
       "games": 14,
       "gold": 3,
       "silver": 2,
@@ -393,6 +393,15 @@
       "score": 30000,
       "date": "2024-01-19 21:32:06",
       "score_id": "74167",
+      "rank": 1
+    },
+    {
+      "player": "POD",
+      "game": "Beetlejuice (Spooky)",
+      "game_id": "113824",
+      "score": 15616270,
+      "date": "2026-11-26 00:05:16",
+      "score_id": "390128",
       "rank": 1
     },
     {
@@ -1278,12 +1287,12 @@
       "rank": 1
     },
     {
-      "player": "VJG",
+      "player": "POD",
       "game": "JAWS (LE) (Stern 2024)",
       "game_id": "113819",
-      "score": 14091630,
-      "date": "2026-11-25 21:36:13",
-      "score_id": "390043",
+      "score": 58976090,
+      "date": "2026-11-25 23:14:34",
+      "score_id": "390105",
       "rank": 1
     },
     {
@@ -1401,6 +1410,15 @@
       "score": 21690720,
       "date": "2025-11-24 18:42:54",
       "score_id": "237313",
+      "rank": 1
+    },
+    {
+      "player": "POD",
+      "game": "King Kong",
+      "game_id": "113844",
+      "score": 25025250,
+      "date": "2026-11-26 00:16:51",
+      "score_id": "390131",
       "rank": 1
     },
     {
@@ -1575,12 +1593,12 @@
       "rank": 1
     },
     {
-      "player": "DON",
+      "player": "DAY",
       "game": "Monster Bash (Williams, 1998)",
       "game_id": "72616",
-      "score": 8363200,
-      "date": "2025-03-08 18:07:52",
-      "score_id": "154472",
+      "score": 13889590,
+      "date": "2026-11-26 20:09:30",
+      "score_id": "390481",
       "rank": 1
     },
     {
@@ -2085,6 +2103,15 @@
       "score": 55220,
       "date": "2026-11-12 23:01:38",
       "score_id": "384450",
+      "rank": 1
+    },
+    {
+      "player": "DAY",
+      "game": "Sonic The Hedgehog Pinball",
+      "game_id": "113827",
+      "score": 23559790,
+      "date": "2026-11-26 20:08:01",
+      "score_id": "390480",
       "rank": 1
     },
     {
@@ -2918,6 +2945,16 @@
       "score": 30000,
       "date": "2024-01-19 21:32:06",
       "score_id": "74167",
+      "rank": 1
+    },
+    {
+      "kind": "champion",
+      "player": "POD",
+      "game": "Beetlejuice (Spooky)",
+      "game_id": "113824",
+      "score": 15616270,
+      "date": "2026-11-26 00:05:16",
+      "score_id": "390128",
       "rank": 1
     },
     {
@@ -3811,14 +3848,31 @@
       "rank": 1
     },
     {
-      "kind": "champion",
-      "player": "DON",
-      "game": "Hercules (Atari 1979)",
-      "game_id": "72617",
-      "score": 27700,
-      "date": "2025-03-06 18:12:37",
-      "score_id": "153931",
-      "rank": 1
+      "kind": "recent",
+      "player": "DAY",
+      "game": "Monster Bash (Williams, 1998)",
+      "game_id": "72616",
+      "score": 13889590,
+      "date": "2026-11-26 20:09:30",
+      "score_id": "390481"
+    },
+    {
+      "kind": "recent",
+      "player": "DAY",
+      "game": "Sonic The Hedgehog Pinball",
+      "game_id": "113827",
+      "score": 23559790,
+      "date": "2026-11-26 20:08:01",
+      "score_id": "390480"
+    },
+    {
+      "kind": "recent",
+      "player": "DAY",
+      "game": "Beetlejuice (Spooky)",
+      "game_id": "113824",
+      "score": 2453270,
+      "date": "2026-11-26 20:05:40",
+      "score_id": "390477"
     },
     {
       "kind": "recent",
@@ -3831,104 +3885,77 @@
     },
     {
       "kind": "recent",
+      "player": "POD",
+      "game": "Arkanoid",
+      "game_id": "50015",
+      "score": 13640,
+      "date": "2026-11-26 00:20:23",
+      "score_id": "390132"
+    },
+    {
+      "kind": "recent",
+      "player": "POD",
+      "game": "King Kong",
+      "game_id": "113844",
+      "score": 25025250,
+      "date": "2026-11-26 00:16:51",
+      "score_id": "390131"
+    },
+    {
+      "kind": "recent",
+      "player": "POD",
+      "game": "Monster Bash (Williams, 1998)",
+      "game_id": "72616",
+      "score": 2349910,
+      "date": "2026-11-26 00:14:14",
+      "score_id": "390130"
+    },
+    {
+      "kind": "recent",
+      "player": "POD",
+      "game": "ATTACK from MARS",
+      "game_id": "86901",
+      "score": 357140240,
+      "date": "2026-11-26 00:10:05",
+      "score_id": "390129"
+    },
+    {
+      "kind": "recent",
+      "player": "POD",
+      "game": "Beetlejuice (Spooky)",
+      "game_id": "113824",
+      "score": 15616270,
+      "date": "2026-11-26 00:05:16",
+      "score_id": "390128"
+    },
+    {
+      "kind": "recent",
+      "player": "POD",
+      "game": "JAWS (LE) (Stern 2024)",
+      "game_id": "113819",
+      "score": 58976090,
+      "date": "2026-11-25 23:14:34",
+      "score_id": "390105"
+    },
+    {
+      "kind": "recent",
+      "player": "POD",
+      "game": "Sonic The Hedgehog Pinball",
+      "game_id": "113827",
+      "score": 12053520,
+      "date": "2026-11-25 23:10:43",
+      "score_id": "390101"
+    },
+    {
+      "kind": "recent",
       "player": "DON",
       "game": "Mappy",
       "game_id": "50062",
       "score": 10560,
       "date": "2026-11-25 22:56:44",
       "score_id": "390094"
-    },
-    {
-      "kind": "recent",
-      "player": "VJG",
-      "game": "Toobin'",
-      "game_id": "71977",
-      "score": 5613,
-      "date": "2026-11-25 21:54:38",
-      "score_id": "390059"
-    },
-    {
-      "kind": "recent",
-      "player": "VJG",
-      "game": "BurgerTime",
-      "game_id": "50024",
-      "score": 8300,
-      "date": "2026-11-25 21:51:37",
-      "score_id": "390057"
-    },
-    {
-      "kind": "recent",
-      "player": "VJG",
-      "game": "Arkanoid",
-      "game_id": "50015",
-      "score": 11750,
-      "date": "2026-11-25 21:48:01",
-      "score_id": "390054"
-    },
-    {
-      "kind": "recent",
-      "player": "VJG",
-      "game": "Super Off-Road",
-      "game_id": "113815",
-      "score": 630000,
-      "date": "2026-11-25 21:42:16",
-      "score_id": "390050"
-    },
-    {
-      "kind": "recent",
-      "player": "VJG",
-      "game": "Transformers: More Than Meets the Eye (2026)",
-      "game_id": "113817",
-      "score": 25515480,
-      "date": "2026-11-25 21:40:20",
-      "score_id": "390049"
-    },
-    {
-      "kind": "recent",
-      "player": "VJG",
-      "game": "Cactus Canyon",
-      "game_id": "113816",
-      "score": 3707950,
-      "date": "2026-11-25 21:37:48",
-      "score_id": "390046"
-    },
-    {
-      "kind": "recent",
-      "player": "VJG",
-      "game": "JAWS (LE) (Stern 2024)",
-      "game_id": "113819",
-      "score": 14091630,
-      "date": "2026-11-25 21:36:13",
-      "score_id": "390043"
-    },
-    {
-      "kind": "recent",
-      "player": "VJG",
-      "game": "Tron",
-      "game_id": "50057",
-      "score": 2807,
-      "date": "2026-11-25 20:29:24",
-      "score_id": "389998"
-    },
-    {
-      "kind": "recent",
-      "player": "KAK",
-      "game": "CIRCUS CHARLIE",
-      "game_id": "70346",
-      "score": 34240,
-      "date": "2026-11-25 18:55:00",
-      "score_id": "389972"
-    },
-    {
-      "kind": "recent",
-      "player": "KAK",
-      "game": "CIRCUS CHARLIE",
-      "game_id": "70346",
-      "score": 23840,
-      "date": "2026-11-25 18:44:04",
-      "score_id": "389968"
     }
   ],
-  "total_games": 272,
+  "total_games": 275,
   "total_players": 15
 }

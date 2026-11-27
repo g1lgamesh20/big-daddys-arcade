@@ -317,16 +317,16 @@
       ]
     },
     "72616": {
-      "score": 8363200,
+      "score": 13889590,
       "holders": [
-        "DON"
+        "DAY"
       ],
       "game": "Monster Bash (Williams, 1998)",
       "winning_scores": [
         {
-          "player": "DON",
-          "score": 8363200,
-          "score_id": "154472",
+          "player": "DAY",
+          "score": 13889590,
+          "score_id": "390481",
           "game": "Monster Bash (Williams, 1998)"
         }
       ]
@@ -4102,17 +4102,62 @@
       ]
     },
     "113819": {
-      "score": 14091630,
+      "score": 58976090,
       "holders": [
-        "VJG"
+        "POD"
       ],
       "game": "JAWS (LE) (Stern 2024)",
       "winning_scores": [
         {
-          "player": "VJG",
-          "score": 14091630,
-          "score_id": "390043",
+          "player": "POD",
+          "score": 58976090,
+          "score_id": "390105",
           "game": "JAWS (LE) (Stern 2024)"
+        }
+      ]
+    },
+    "113824": {
+      "score": 15616270,
+      "holders": [
+        "POD"
+      ],
+      "game": "Beetlejuice (Spooky)",
+      "winning_scores": [
+        {
+          "player": "POD",
+          "score": 15616270,
+          "score_id": "390128",
+          "game": "Beetlejuice (Spooky)"
+        }
+      ]
+    },
+    "113827": {
+      "score": 23559790,
+      "holders": [
+        "DAY"
+      ],
+      "game": "Sonic The Hedgehog Pinball",
+      "winning_scores": [
+        {
+          "player": "DAY",
+          "score": 23559790,
+          "score_id": "390480",
+          "game": "Sonic The Hedgehog Pinball"
+        }
+      ]
+    },
+    "113844": {
+      "score": 25025250,
+      "holders": [
+        "POD"
+      ],
+      "game": "King Kong",
+      "winning_scores": [
+        {
+          "player": "POD",
+          "score": 25025250,
+          "score_id": "390131",
+          "game": "King Kong"
         }
       ]
     }

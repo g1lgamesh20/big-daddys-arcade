@@ -1,6 +1,61 @@
 {
-  "updated_at": "2026-11-27T05:31:16.424122+00:00",
+  "updated_at": "2026-11-27T06:46:12.370068+00:00",
   "records": [
+    {
+      "id": "390481",
+      "player": "DAY",
+      "game": "Monster Bash (Williams, 1998)",
+      "game_id": "72616",
+      "score": 13889590,
+      "date": "2026-11-26 20:09:30",
+      "rank": 1,
+      "medal": "gold",
+      "record_type": "new_first_place"
+    },
+    {
+      "id": "390480",
+      "player": "DAY",
+      "game": "Sonic The Hedgehog Pinball",
+      "game_id": "113827",
+      "score": 23559790,
+      "date": "2026-11-26 20:08:01",
+      "rank": 1,
+      "medal": "gold",
+      "record_type": "new_first_place"
+    },
+    {
+      "id": "390131",
+      "player": "POD",
+      "game": "King Kong",
+      "game_id": "113844",
+      "score": 25025250,
+      "date": "2026-11-26 00:16:51",
+      "rank": 1,
+      "medal": "gold",
+      "record_type": "new_first_place"
+    },
+    {
+      "id": "390128",
+      "player": "POD",
+      "game": "Beetlejuice (Spooky)",
+      "game_id": "113824",
+      "score": 15616270,
+      "date": "2026-11-26 00:05:16",
+      "rank": 1,
+      "medal": "gold",
+      "record_type": "new_first_place"
+    },
+    {
+      "id": "390105",
+      "player": "POD",
+      "game": "JAWS (LE) (Stern 2024)",
+      "game_id": "113819",
+      "score": 58976090,
+      "date": "2026-11-25 23:14:34",
+      "rank": 1,
+      "medal": "gold",
+      "record_type": "new_first_place"
+    },
     {
       "id": "390050",
       "player": "VJG",

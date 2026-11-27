@@ -419,6 +419,21 @@
       "milestone": 1
     },
     {
+      "id": "holiday_thanksgiving:DAY",
+      "event_key": "thanksgiving:2026-11-26:DAY",
+      "type": "holiday_thanksgiving",
+      "name": "TURKEY DAY GAMER",
+      "player": "DAY",
+      "date": "2026-11-26",
+      "game": "Beetlejuice (Spooky)",
+      "game_id": "113824",
+      "score": 2453270,
+      "score_id": "390477",
+      "original_submitted_at_et": "2026-11-26T21:05:40-05:00",
+      "verified_at": "2026-11-27T06:46:13.259932+00:00",
+      "verification_method": "postfix_approved_iscored_original_submission_time"
+    },
+    {
       "id": "holiday_thanksgiving:DON",
       "event_key": "thanksgiving:2026-11-26:DON",
       "type": "holiday_thanksgiving",
@@ -434,6 +449,35 @@
       "verification_method": "postfix_approved_iscored_original_submission_time"
     },
     {
+      "id": "holiday_thanksgiving:POD",
+      "event_key": "thanksgiving:2026-11-26:POD",
+      "type": "holiday_thanksgiving",
+      "name": "TURKEY DAY GAMER",
+      "player": "POD",
+      "date": "2026-11-26",
+      "game": "Sonic The Hedgehog Pinball",
+      "game_id": "113827",
+      "score": 12053520,
+      "score_id": "390101",
+      "original_submitted_at_et": "2026-11-26T00:10:43-05:00",
+      "verified_at": "2026-11-27T06:46:13.259932+00:00",
+      "verification_method": "postfix_approved_iscored_original_submission_time"
+    },
+    {
+      "id": "secret_high_five:POD",
+      "event_key": "secret:390132",
+      "type": "secret_high_five",
+      "name": "HIGH FIVE!",
+      "player": "POD",
+      "date": "2026-11-26",
+      "game": "Arkanoid",
+      "game_id": "50015",
+      "score_id": "390132",
+      "original_submitted_at_et": "2026-11-26T01:20:23-05:00",
+      "verified_at": "2026-11-27T06:46:13.220207+00:00",
+      "verification_method": "postfix_approved_iscored_original_submission_time"
+    },
+    {
       "id": "secret_night_owl:DON",
       "event_key": "secret:390134",
       "type": "secret_night_owl",
@@ -445,6 +489,20 @@
       "score_id": "390134",
       "original_submitted_at_et": "2026-11-26T01:44:23-05:00",
       "verified_at": "2026-11-26T06:46:14.651823+00:00",
+      "verification_method": "postfix_approved_iscored_original_submission_time"
+    },
+    {
+      "id": "secret_night_owl:POD",
+      "event_key": "secret:390101",
+      "type": "secret_night_owl",
+      "name": "NIGHT OWL",
+      "player": "POD",
+      "date": "2026-11-26",
+      "game": "Sonic The Hedgehog Pinball",
+      "game_id": "113827",
+      "score_id": "390101",
+      "original_submitted_at_et": "2026-11-26T00:10:43-05:00",
+      "verified_at": "2026-11-27T06:46:13.220207+00:00",
       "verification_method": "postfix_approved_iscored_original_submission_time"
     }
   ],
