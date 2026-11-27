@@ -1,23 +1,79 @@
 #!/usr/bin/env python3
-"""Offline date/window checks for holiday push announcements."""
+"""Regression coverage for every Holiday Legends push and moving calendar dates.
+
+This is an offline test. No OneSignal requests are made.
+"""
 import datetime as dt
 from send_holiday_event_push import event_for, easter, nth_weekday
-def event(date):return event_for(dt.date.fromisoformat(date))
-assert event("2026-11-26")[0]=="thanksgiving"
-assert event("2026-11-27") is None
-assert event("2026-12-24")[0]=="christmas"
-assert event("2026-12-25") is None # Christmas is one announcement for the two-day window
-assert event("2026-12-31")[0]=="new_year"
-assert event("2027-01-01") is None # One event-start push on December 31 only
-assert easter(2027) == dt.date(2027, 3, 28)
-assert event("2027-03-28")[0]=="easter"
-assert event("2027-04-04") is None
-assert event("2027-03-10")[0]=="mar10"
-assert event("2027-06-20")[0]=="fathers"
-assert event("2027-05-04")[0]=="may_fourth"
-assert event("2027-09-08")[0]=="star_trek"
-assert event("2027-09-12")[0]=="video_games"
-assert event("2027-10-11")[0]=="columbus"
-assert event("2026-11-13")[0]=="friday_13"
-assert event("2026-12-26") is None
-print("Holiday event announcement date tests passed")
+
+def check(day, expected):
+    actual = event_for(day)
+    kind = actual[0] if actual else None
+    assert kind == expected, f"{day}: expected {expected!r}, got {kind!r}"
+
+def date(y, m, d):
+    return dt.date(y, m, d)
+
+# Independently verified Easter Sundays; catches incorrect algorithm changes.
+for year, month, day in [
+    (2026, 4, 5), (2027, 3, 28), (2028, 4, 16),
+    (2029, 4, 1), (2030, 4, 21),
+]:
+    assert easter(year) == date(year, month, day), f"Incorrect Easter {year}"
+
+# Check all 15 existing holiday announcement types, every year, plus adjacent
+# dates. Christmas and New Year's are single start-of-window announcements.
+for year in range(2026, 2033):
+    fixed = {
+        (2, 14): "valentines",
+        (3, 10): "mar10",
+        (3, 17): "st_patricks",
+        (5, 4): "may_fourth",
+        (7, 4): "independence",
+        (9, 8): "star_trek",
+        (9, 12): "video_games",
+        (10, 31): "halloween",
+        (12, 24): "christmas",
+        (12, 31): "new_year",
+    }
+    for (month, day), kind in fixed.items():
+        check(date(year, month, day), kind)
+    check(date(year, 12, 25), None)
+    check(date(year, 12, 26), None)
+    check(date(year, 1, 1), None)
+
+    moving = [
+        (easter(year), "easter"),
+        (nth_weekday(year, 6, 6, 3), "fathers"),
+        (nth_weekday(year, 10, 0, 2), "columbus"),
+        (nth_weekday(year, 11, 3, 4), "thanksgiving"),
+    ]
+    for day, kind in moving:
+        check(day, kind)
+        for neighbor in [day - dt.timedelta(days=1), day + dt.timedelta(days=1)]:
+            # An adjacent day can legitimately be another holiday.
+            if neighbor.month == 3 and neighbor.day == 10:
+                continue
+            if neighbor.day == 13 and neighbor.weekday() == 4:
+                continue
+            check(neighbor, None)
+
+    # Every Friday the 13th in the year, not just one sample.
+    for month in range(1, 13):
+        thirteenth = date(year, month, 13)
+        if thirteenth.weekday() == 4:
+            check(thirteenth, "friday_13")
+        else:
+            check(thirteenth, None)
+
+# Targeted regressions for previously failed preview and date windows.
+check(date(2027, 3, 10), "mar10")
+check(date(2027, 3, 28), "easter")
+check(date(2027, 4, 4), None)
+check(date(2026, 11, 26), "thanksgiving")
+check(date(2026, 11, 27), None)
+check(date(2026, 12, 24), "christmas")
+check(date(2026, 12, 31), "new_year")
+check(date(2027, 1, 1), None)
+
+print("All Holiday Legends event dates and announcement windows passed (2026–2032).")
