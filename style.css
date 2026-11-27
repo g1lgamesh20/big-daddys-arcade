@@ -651,9 +651,9 @@ html, body { max-width: 100%; overflow-x: clip; }
 /* Approved player portraits: presentation only; no score or award changes. */
 .player-card-portrait{display:block;width:clamp(110px,35vw,175px);aspect-ratio:1;object-fit:contain;margin:0 auto 10px;border-radius:9px;image-rendering:auto;box-shadow:0 0 14px #ff48bd66}
 
-/* Fixed achievement difficulty colors: Common silver, Rare electric blue,
+/* Fixed achievement difficulty colors: Common neon green, Rare electric blue,
    Epic neon purple, Legendary gold. Earned glows; locked stays subdued. */
-.achievement-tile.achievement-rarity-common{--rarity:#bfc8d5;--rarity-rgb:191,200,213}
+.achievement-tile.achievement-rarity-common{--rarity:#8aff78;--rarity-rgb:138,255,120}
 .achievement-tile.achievement-rarity-rare{--rarity:#36b9ff;--rarity-rgb:54,185,255}
 .achievement-tile.achievement-rarity-epic{--rarity:#c084fc;--rarity-rgb:192,132,252}
 .achievement-tile.achievement-rarity-legendary{--rarity:#ffd35c;--rarity-rgb:255,211,92}
