@@ -19,7 +19,11 @@ as $$
   select p.iscored_handle,
          exists(select 1 from arcade_private.player_pass_admins a
            where a.player_id=p.id and a.revoked_at is null
-             and p.iscored_handle = 'DON'\n             and exists (select 1 from auth.users u\n               where u.id = d.auth_user_id\n                 and u.is_anonymous is false\n                 and u.raw_app_meta_data->'providers' ? 'github')) as is_admin
+             and p.iscored_handle = 'DON'
+             and exists (select 1 from auth.users u
+               where u.id = d.auth_user_id
+                 and u.is_anonymous is false
+                 and u.raw_app_meta_data->'providers' ? 'github')) as is_admin
   from arcade_private.player_pass_devices d
   join arcade_private.player_pass_players p on p.id=d.player_id
   where d.auth_user_id=(select auth.uid()) and d.revoked_at is null
@@ -47,6 +51,12 @@ as $$
       and d.revoked_at is null
       and a.revoked_at is null
       and p.iscored_handle = 'DON'
+      and exists (
+        select 1 from auth.users u
+        where u.id = d.auth_user_id
+          and u.is_anonymous is false
+          and u.raw_app_meta_data->'providers' ? 'github'
+      )
   );
 $$;
 revoke all on function public.arcade_operator_is_active_admin(uuid) from public, anon, authenticated;
