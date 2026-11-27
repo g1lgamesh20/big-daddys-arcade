@@ -8,7 +8,7 @@ assert event("2026-11-27") is None
 assert event("2026-12-24")[0]=="christmas"
 assert event("2026-12-25") is None # Christmas is one announcement for the two-day window
 assert event("2026-12-31")[0]=="new_year"
-assert event("2027-01-01")[0]=="new_year" # January 1 is the same event, no second push intended
+assert event("2027-01-01") is None # One event-start push on December 31 only
 assert event("2027-04-04")[0]=="easter"
 assert event("2027-06-20")[0]=="fathers"
 assert event("2027-05-04")[0]=="may_fourth"
