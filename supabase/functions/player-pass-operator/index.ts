@@ -45,7 +45,7 @@ Deno.serve(async (req: Request) => {
   if (!/^Bearer\s+\S+$/i.test(bearer)) return reply(401, { error: "Sign in required" });
   const auth = createClient(url, anonKey, { auth: { persistSession: false, autoRefreshToken: false } });
   const { data, error } = await auth.auth.getUser(bearer.replace(/^Bearer\s+/i, ""));
-  if (error || !data.user || data.user.id !== operatorId || data.user.is_anonymous === true) {
+  if (error || !data.user || data.user.id !== operatorId ||\n      data.user.is_anonymous === true ||\n      !data.user.app_metadata?.providers?.includes("github")) {
     return reply(403, { error: "Operator access required" });
   }
   if (!(req.headers.get("content-type") || "").toLowerCase().startsWith("application/json")) {
