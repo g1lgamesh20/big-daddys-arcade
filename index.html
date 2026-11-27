@@ -903,6 +903,7 @@ See you on the leaderboard! 🏆`;
     panel.dataset.poolReady='yes';
     // Portal the operator editor out of the rotating showcase's layout.
     // Moving the existing node preserves filters, staged edits and event handlers.
+    const originalPanelStyle=panel.getAttribute('style');
     const home=document.createComment('monthly-pool-editor-home');
     panel.before(home);
     const overlay=document.createElement('div');
@@ -924,6 +925,7 @@ See you on the leaderboard! 🏆`;
     overlay.append(toolbar);
     document.body.append(overlay);
     const previousOverflow={html:'',body:''};
+    const originalListHeight=panel.querySelector('#monthly-pool-list')?.style.height;
     function closeEditor(){panel.open=false;}
     function showEditor(){
       previousOverflow.html=document.documentElement.style.overflow;
@@ -939,7 +941,9 @@ See you on the leaderboard! 🏆`;
     }
     function hideEditor(){
       home.after(panel);
-      panel.removeAttribute('style');
+      if(originalPanelStyle===null)panel.removeAttribute('style');else panel.setAttribute('style',originalPanelStyle);
+      const list=panel.querySelector('#monthly-pool-list');
+      if(list && originalListHeight!==undefined)list.style.height=originalListHeight;
       overlay.style.display='none';overlay.hidden=true;
       document.documentElement.style.overflow=previousOverflow.html;
       document.body.style.overflow=previousOverflow.body;
