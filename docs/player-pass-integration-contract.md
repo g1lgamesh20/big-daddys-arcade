@@ -72,3 +72,16 @@ Safe one-time bootstrap sequence:
 8. Remove legacy robot access to privileged controls only after the new path is verified; preserve public Test Lab demos.
 
 **Unresolved design decision:** The current player activation creates an anonymous Supabase Auth account, but the operator Edge Function requires a permanent, non-anonymous Auth account. Decide whether DON should use a separate permanent operator sign-in or upgrade DON's Player Pass Auth identity. Do not claim the first-login path is complete until this is resolved.
+
+## Approved administrator authentication decision (2026-11-27)
+DON selected GitHub OAuth for administrator authentication. The GitHub OAuth application was created and the Supabase GitHub provider configured by the operator. This does NOT install Player Pass schema or authorize DON yet.
+
+**Identity model:** Regular players redeem codes into anonymous Supabase Auth sessions. DON must use a **GitHub-authenticated Supabase user** as his Player Pass device identity, rather than redeeming DON's pass into an anonymous account and separately signing into GitHub with a second Auth user. Both the role RPC and operator issuance RPC look up the **same** `auth.users.id` in `player_pass_devices`; two separate identities cannot pass both checks.
+
+**Implementation requirement:** For DON, run `signInWithOAuth({ provider: "github" })` first, then redeem his operator-provisioned one-time DON code **using that GitHub session bearer**. The redemption API must verify the caller is the server-approved GitHub operator user before allowing the DON handle. This operator allowlist check MUST be enforced on the server, not inferred from client initials or GitHub username. Provision the initial trusted operator UUID only after verifying GitHub identity. Other players continue anonymous sign-in.
+
+**Fail closed:** The current UI automatically calls `signInAnonymously()` when no session; it must not do that for DON. The operator login module and Player Pass activation UI must share one Auth client/session for DON. Do not enable DON redemption or claim first login works until the frontend integration and backend DON allowlist gate are implemented and tested.
+
+**OAuth provider:** Supabase GitHub provider enabled by operator; redirect allowlist must include the GitHub Pages app URL, and GitHub OAuth App callback must point to Supabase `/auth/v1/callback`. Do not store OAuth secrets in repository.
+
+**Operator shortcut:** Hide by default and show only for the server-confirmed DON admin session; disable legacy robot privileged path once integrated. Every privileged Edge Function must independently verify role and active device. OAuth authentication alone is not authorization.
