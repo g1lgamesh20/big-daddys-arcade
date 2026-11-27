@@ -85,3 +85,11 @@ DON selected GitHub OAuth for administrator authentication. The GitHub OAuth app
 **OAuth provider:** Supabase GitHub provider enabled by operator; redirect allowlist must include the GitHub Pages app URL, and GitHub OAuth App callback must point to Supabase `/auth/v1/callback`. Do not store OAuth secrets in repository.
 
 **Operator shortcut:** Hide by default and show only for the server-confirmed DON admin session; disable legacy robot privileged path once integrated. Every privileged Edge Function must independently verify role and active device. OAuth authentication alone is not authorization.
+
+## Pre-deployment acceptance gates (do not skip)
+1. **Identity:** DON signs into GitHub first and redeems DON code under the same Supabase Auth UUID. Verify OAuth `app_metadata.providers` includes `github`; check `PLAYER_PASS_OPERATOR_USER_ID` matches that Auth UUID server-side. No client-controlled initials may grant a role.
+2. **Bootstrap:** Issue the first DON code via trusted operator-only provisioning; the regular operator endpoint cannot issue it before the DON role exists. No bootstrap secret, token, or code belongs in Git.
+3. **Security:** Review all migration functions and private-schema privileges, verify service-only redemption RPC, audit rate limiting for distributed anonymous users, and check Cloudflare Turnstile site key, secret and hostname.
+4. **Frontend:** Mount GitHub login, Player Pass UI, and role-checked Developer Control Room shortcut with a single DON Supabase client/session. Existing hidden robot route must not bypass authorization; ordinary players keep the Test Lab demos.
+5. **Tests:** Verify anonymous player redeem, DON GitHub redeem, replayed/expired/wrong-player codes, unauthorized DON claim, revoked admin, unauthorized operator issue, logout and session changes, mobile PWA OAuth return, and preservation of existing scores, push and social functionality.
+6. **Rollout:** Do not apply migrations or deploy Edge Functions into the production project until security and staging tests pass. Keep the live arcade public and operational during review.
