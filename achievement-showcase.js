@@ -51,7 +51,7 @@
     "thursday_participation:10": "epic",
     "monthly_participation:12": "epic",
     "monthly_participation:24": "epic",
-    "daily_streak:7": "epic",
+    "daily_streak:7": "rare",
     "thursday_streak:5": "epic",
     "monthly_streak:6": "epic",
     "daily_champion_mastery:10": "epic",
@@ -70,7 +70,7 @@
     "thursday_participation:25": "legendary",
     "monthly_participation:36": "legendary",
     "monthly_participation:60": "legendary",
-    "daily_streak:14": "legendary",
+    "daily_streak:14": "epic",
     "daily_champion_mastery:25": "legendary",
     "daily_champion_mastery:50": "legendary",
     "daily_champion_mastery:100": "legendary",
@@ -90,7 +90,9 @@
     "daily_participation:10": "rare",
     "thursday_participation:5": "rare",
     "monthly_participation:6": "rare",
-    "daily_streak:3": "rare",
+    "daily_streak:3": "common",
+    "daily_streak:21": "legendary",
+    "daily_streak:30": "legendary",
     "thursday_streak:3": "rare",
     "monthly_streak:3": "rare",
     "daily_champion_mastery:5": "rare",
@@ -146,7 +148,7 @@
           kind+'_participation',threshold);
   }
   for(const [kind,items,label] of [
-    ['daily',[[3,'Three-Day Streak'],[7,'Seven-Day Streak'],[14,'Two-Week Streak']],'Daily Challenge days'],
+    ['daily',[[3,'Three-Day Streak'],[7,'Seven-Day Streak'],[14,'Two-Week Streak'],[21,'Three-Week Streak'],[30,'Thirty-Day Streak']],'Daily Challenge days'],
     ['thursday',[[3,'Three-Thursday Streak'],[5,'Five-Thursday Streak']],'Thursdays'],
     ['monthly',[[3,'Three-Month Streak'],[6,'Six-Month Streak']],'months']]){
     for(const [threshold,name] of items)
@@ -272,7 +274,7 @@
   // Validate the full catalog after every achievement has been registered.
   const unknownRarities=entries.filter(entry=>!Object.prototype.hasOwnProperty.call(APPROVED_RARITY,entry.id));
   const unusedRarities=Object.keys(APPROVED_RARITY).filter(id=>!entries.some(entry=>entry.id===id));
-  if(unknownRarities.length||unusedRarities.length||entries.length!==88)
+  if(unknownRarities.length||unusedRarities.length||entries.length!==90)
     throw new Error('Achievement rarity catalog mismatch: missing='+unknownRarities.map(entry=>entry.id).join(',')+' unused='+unusedRarities.join(',')+' count='+entries.length);
 
   // These are discovery hints only; no client-side action can award a trophy.
