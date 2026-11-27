@@ -7,9 +7,9 @@
   const close=document.querySelector('#player-close');
   const seeAll=document.querySelector('#player-see-all');
   let players=[], victories={}, gotmWins={}, verifiedAwards={}, dailyCounts={}, challengeCounts={thursday:{},monthly:{}}, selected='', previousFocus=null;
-  // Operator will set this global default after today's visual comparison.
+  // Operator-approved global default: Arcade character select (2026-11-27).
   // Saved per-device choices override it.
-  const PLAYER_CARD_DEFAULT_STYLE='classic';
+  const PLAYER_CARD_DEFAULT_STYLE='arcade';
   const PLAYER_CARD_STYLE_KEY='arcade-player-card-style-v1';
   const playerStyleSelect=document.querySelector('#arcade-player-card-style');
   const validPlayerStyles=new Set(['classic','arcade','flip']);
