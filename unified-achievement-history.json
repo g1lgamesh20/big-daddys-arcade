@@ -503,7 +503,7 @@
       "date": "2026-11-27",
       "game_id": "50223",
       "game": "Gyruss",
-      "schedule_source": "daily-champion.json",
+      "schedule_source": "daily-champion-history.json",
       "participants": [],
       "champions": [],
       "verified_results": [],
