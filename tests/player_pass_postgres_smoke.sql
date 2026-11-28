@@ -79,8 +79,8 @@ $test$;
 insert into auth.users values
  ('33333333-3333-4333-8333-333333333333',true,'{"providers":["anonymous"]}'),
  ('44444444-4444-4444-8444-444444444444',true,'{"providers":["anonymous"]}');
-insert into arcade_private.player_pass_codes(player_id,code_digest,expires_at)
-select id,repeat('1',64),now()-interval '1 minute'
+insert into arcade_private.player_pass_codes(player_id,code_digest,issued_at,expires_at)
+select id,repeat('1',64),now()-interval '8 days',now()-interval '1 minute'
 from arcade_private.player_pass_players where iscored_handle='PAC';
 insert into arcade_private.player_pass_codes(player_id,code_digest,expires_at)
 select id,repeat('2',64),now()+interval '7 days'
