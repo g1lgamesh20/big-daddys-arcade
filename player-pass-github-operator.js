@@ -15,7 +15,9 @@ export function mountOperatorGitHubLogin({ host, operatorSupabase, redirectTo, o
   status.setAttribute("aria-live", "polite");
   section.append(button, status);
   host.append(section);
+  let generation = 0;
   async function verify() {
+    const current = ++generation;
     button.hidden = false;
     button.disabled = false;
     status.textContent = "";
@@ -26,6 +28,7 @@ export function mountOperatorGitHubLogin({ host, operatorSupabase, redirectTo, o
       // Existing GitHub session must redeem DON code, not start another OAuth flow.
       button.hidden = true;
       const { data, error } = await operatorSupabase.rpc("arcade_my_player_pass_role");
+      if (current !== generation) return false;
       const role = Array.isArray(data) ? data[0] : data;
       if (error || role?.iscored_handle !== "DON" || role?.is_admin !== true) {
         button.hidden = true;
