@@ -41,6 +41,31 @@ begin
   if public.arcade_issue_player_pass('PAC',repeat('a',64),now()+interval '7 days',v_user) is distinct from true then
     raise exception 'Authorized operator issuance failed';
   end if;
+  -- A real redemption: valid PAC code, atomic consumption, and replay rejection.
+  insert into arcade_private.player_pass_codes(player_id,code_digest,expires_at,created_by)
+  select id,repeat('c',64),now()+interval '7 days','smoke-test'
+  from arcade_private.player_pass_players where iscored_handle='PAC';
+  if (select count(*) from public.arcade_redeem_player_pass_limited(
+    '22222222-2222-4222-8222-222222222222','PAC',repeat('c',64),repeat('d',64))) <> 1 then
+    raise exception 'First valid code redemption failed';
+  end if;
+  if (select count(*) from public.arcade_redeem_player_pass_limited(
+    '22222222-2222-4222-8222-222222222222','PAC',repeat('c',64),repeat('d',64))) <> 0 then
+    raise exception 'Replayed code was accepted';
+  end if;
+  if (select count(*) from arcade_private.player_pass_codes
+      where code_digest=repeat('c',64) and redeemed_at is not null
+        and redeemed_by='22222222-2222-4222-8222-222222222222') <> 1 then
+    raise exception 'Code was not atomically marked redeemed';
+  end if;
+  -- A revoked code cannot activate a new device.
+  insert into arcade_private.player_pass_codes(player_id,code_digest,expires_at,revoked_at)
+  select id,repeat('e',64),now()+interval '7 days',now()
+  from arcade_private.player_pass_players where iscored_handle='PAC';
+  if (select count(*) from public.arcade_redeem_player_pass_limited(
+    v_user,'PAC',repeat('e',64),repeat('f',64))) <> 0 then
+    raise exception 'Revoked code was accepted';
+  end if;
   update arcade_private.player_pass_devices set revoked_at=now() where auth_user_id=v_user;
   if public.arcade_operator_is_active_admin(v_user) then
     raise exception 'Revoked operator device was accepted';
