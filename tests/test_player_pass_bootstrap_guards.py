@@ -38,6 +38,13 @@ class PlayerPassBootstrapGuards(unittest.TestCase):
         self.assertIn('Sign out of the GitHub operator account', s)
         self.assertIn('supabase.auth.signInAnonymously()', s)
 
+    def test_operator_issuer_clears_on_auth_change(self):
+        s = (ROOT / "player-pass-integration.js").read_text()
+        self.assertIn("supabase.auth.onAuthStateChange?.(", s)
+        self.assertIn("operatorHost.replaceChildren()", s)
+        self.assertIn("authSubscription?.unsubscribe()", s)
+        self.assertIn("if (current === operatorGeneration)", s)
+
     def test_operator_login_ignores_stale_role_verification(self):
         s = (ROOT / "player-pass-github-operator.js").read_text()
         self.assertIn("const current = ++generation", s)
