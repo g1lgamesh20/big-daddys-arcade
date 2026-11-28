@@ -128,4 +128,35 @@ begin
   end if;
 end;
 $limits$;
+-- Independent authorization regression: an active device is not enough if
+-- its admin grant is revoked, or its GitHub identity is no longer verified.
+insert into auth.users values
+ ('55555555-5555-4555-8555-555555555555',false,'{"providers":["github"]}');
+insert into arcade_private.player_pass_devices(player_id,auth_user_id)
+select id,'55555555-5555-4555-8555-555555555555'
+from arcade_private.player_pass_players where iscored_handle='DON';
+do $revocation$
+declare v_operator uuid := '55555555-5555-4555-8555-555555555555';
+begin
+  -- Existing DON grant from first fixture remains active.
+  if not public.arcade_operator_is_active_admin(v_operator) then
+    raise exception 'Second verified DON device was incorrectly denied';
+  end if;
+  update auth.users set raw_app_meta_data='{"providers":["email"]}'
+  where id=v_operator;
+  if public.arcade_operator_is_active_admin(v_operator) then
+    raise exception 'Non-GitHub identity was granted operator privileges';
+  end if;
+  update auth.users set raw_app_meta_data='{"providers":["github"]}'
+  where id=v_operator;
+  update arcade_private.player_pass_admins set revoked_at=now()
+  where player_id=(select id from arcade_private.player_pass_players where iscored_handle='DON');
+  if public.arcade_operator_is_active_admin(v_operator) then
+    raise exception 'Revoked admin grant was still authorized';
+  end if;
+  if public.arcade_issue_player_pass('GAL',repeat('7',64),now()+interval '7 days',v_operator) then
+    raise exception 'Revoked admin grant issued a new code';
+  end if;
+end;
+$revocation$;
 select 'Player Pass PostgreSQL smoke test passed' as result;
