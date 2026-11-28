@@ -9,6 +9,7 @@ source += '\nthis.mountArcadePlayerPass = mountArcadePlayerPass;';
 class Element {
   constructor() { this.children = []; this.isConnected = true; }
   append(child) { this.children.push(child); child.isConnected = true; }
+  replaceChildren(...children) { this.children = []; for (const child of children) this.append(child); }
   remove() { this.isConnected = false; }
 }
 const panel = new Element();
@@ -27,7 +28,7 @@ vm.runInNewContext(source, context);
 (async () => {
   await assert.rejects(
     context.mountArcadePlayerPass({
-      supabase: { auth: {} }, handles: ['DON'], endpoint: 'https://example.invalid',
+      supabase: { auth: { getUser: async () => ({ data: { user: null } }) } }, handles: ['DON'], endpoint: 'https://example.invalid',
       getTurnstileToken: async () => 'mock',
     }),
     /simulated shortcut failure/,
