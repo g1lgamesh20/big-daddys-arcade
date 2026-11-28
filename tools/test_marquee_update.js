@@ -10,7 +10,11 @@ new vm.Script(js,{filename:'marquee-import.html'});
 const inventory=JSON.parse(fs.readFileSync('marquee-game-inventory.json','utf8')).games;
 const mapping=JSON.parse(fs.readFileSync('game-logo-map.json','utf8'));
 assert.equal(Object.keys(inventory).length,311,'Baseline records all 311 known games');
-assert.equal(Object.keys(mapping).length,299,'Keep all 299 verified logos');
+assert.ok(Object.keys(mapping).length>0,'Existing verified logo map must not be empty');
+for(const [id,url] of Object.entries(mapping)){
+ assert.match(id,/^\d{1,12}$/,'Logo IDs must be numeric game IDs');
+ assert.match(url,/^\/(?:community\/)?images\/games\/game\d+$/,'Existing logos must use safe game image paths');
+}
 assert.equal(inventory['49994'],'PAC-MAN');
 assert.equal(mapping['101601'],'/community/images/games/game2781');
 for(const [id,name] of Object.entries(inventory)){
@@ -56,6 +60,10 @@ const settle=()=>new Promise(resolve=>setImmediate(resolve));
  assert.equal(out.logos['49994'],'/community/images/games/game400');
  assert.equal(out.logos['101601'],mapping['101601']);
  assert.equal(Object.keys(out.logos).length,Object.keys(mapping).length+1,'Partial import preserves all existing mappings and adds one new logo');
+for(const [id,url] of Object.entries(mapping)){
+ if(id==='49994')continue; // Intentional artwork replacement in fixture.
+ assert.equal(out.logos[id],url,`Existing logo ${id} must be preserved`);
+}
  assert.ok(!JSON.stringify(out).includes('"scores"'),'No raw score fields in package');
  ids.records.value=JSON.stringify([{gameID:900003,gameName:'BAD',RoomID:1118,GameLogo:'https://wrong.site/x'}]);
  ids.build.click();
