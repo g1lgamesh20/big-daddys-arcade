@@ -32,6 +32,12 @@ class PlayerPassBootstrapGuards(unittest.TestCase):
         self.assertIn("where a.player_id = v_player", s)
         self.assertIn("'admin_granted'", s)
 
+    def test_player_ui_does_not_reuse_operator_oauth_session(self):
+        s = (ROOT / "player-pass-ui.js").read_text()
+        self.assertIn('if (!current.session.user?.is_anonymous)', s)
+        self.assertIn('Sign out of the GitHub operator account', s)
+        self.assertIn('supabase.auth.signInAnonymously()', s)
+
     def test_redemption_accepts_full_turnstile_token(self):
         s = (ROOT / "supabase/functions/player-pass-redeem/index.ts").read_text()
         raw = re.search(r"if \(raw\.length > (\d+)\)", s)
