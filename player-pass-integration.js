@@ -27,16 +27,25 @@ export async function mountArcadePlayerPass({
   const loginHost = document.createElement("div");
   host.append(loginHost);
 
-  // One Supabase Auth client for DON's GitHub session and DON's Player Pass.
-  const login = mountOperatorGitHubLogin({
-    host: loginHost, operatorSupabase: supabase, redirectTo,
-  });
-  const pass = mountPlayerPass({
-    host, supabase, handles, endpoint, getTurnstileToken,
-  });
-  const shortcut = await installAdminControlRoomShortcut({
-    supabase, controlPanel: panel,
-  });
+  // Roll back partial UI mounts if the operator shortcut cannot initialize.
+  let login, pass, shortcut;
+  try {
+    login = mountOperatorGitHubLogin({
+      host: loginHost, operatorSupabase: supabase, redirectTo,
+    });
+    pass = mountPlayerPass({
+      host, supabase, handles, endpoint, getTurnstileToken,
+    });
+    shortcut = await installAdminControlRoomShortcut({
+      supabase, controlPanel: panel,
+    });
+  } catch (error) {
+    shortcut?.destroy();
+    login?.element.remove();
+    pass?.remove();
+    host.remove();
+    throw error;
+  }
   // The existing Test Lab remains accessible via the Space Invader gesture;
   // the old robot unlock must stay disabled in index.html.
   return {
