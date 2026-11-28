@@ -10,6 +10,7 @@ on:
       - 'supabase/migrations/*player_pass*'
       - '.github/workflows/player-pass-draft-checks.yml'
       - 'tests/player_pass_postgres_smoke.sql'
+      - 'tests/test_player_pass_concurrency_ci.py'
   pull_request:
     paths:
       - 'tests/test_player_pass_*.py'
@@ -60,3 +61,5 @@ jobs:
       - uses: actions/checkout@v4
       - name: Test draft SQL in isolated PostgreSQL
         run: psql -X -v ON_ERROR_STOP=1 -f tests/player_pass_postgres_smoke.sql
+      - name: Test simultaneous redemption in separate database sessions
+        run: python3 tests/test_player_pass_concurrency_ci.py
