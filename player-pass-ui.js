@@ -46,7 +46,14 @@ export function mountPlayerPass({ host, supabase, handles, endpoint, operatorHos
       }
       return current.session;
     }
-    if (current?.session?.access_token) return current.session;
+    // Never bind an ordinary player's code to DON's GitHub operator session.
+    // A player device uses its own anonymous identity, not a borrowed OAuth login.
+    if (current?.session?.access_token) {
+      if (!current.session.user?.is_anonymous) {
+        throw new Error("Sign out of the GitHub operator account before activating a player's pass.");
+      }
+      return current.session;
+    }
     const { data, error } = await supabase.auth.signInAnonymously();
     if (error || !data?.session) throw new Error("Device sign-in unavailable");
     return data.session;
