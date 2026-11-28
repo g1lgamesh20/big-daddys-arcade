@@ -511,6 +511,20 @@
       "unverified_candidates": [],
       "verified_participant_count": 0,
       "verified_champion_count": 0
+    },
+    {
+      "event_key": "daily:2026-11-28",
+      "kind": "daily",
+      "date": "2026-11-28",
+      "game_id": "50052",
+      "game": "Millipede",
+      "schedule_source": "daily-champion.json",
+      "participants": [],
+      "champions": [],
+      "verified_results": [],
+      "unverified_candidates": [],
+      "verified_participant_count": 0,
+      "verified_champion_count": 0
     }
   ],
   "players": {
