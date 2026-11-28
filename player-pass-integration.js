@@ -30,7 +30,7 @@ export async function mountArcadePlayerPass({
   host.append(operatorHost);
 
   // Roll back partial UI mounts if the operator shortcut cannot initialize.
-  let login, pass, shortcut;
+  let login, pass, shortcut, authSubscription;
   let operatorGeneration = 0;
   async function refreshOperator() {
     const current = ++operatorGeneration;
@@ -48,7 +48,9 @@ export async function mountArcadePlayerPass({
         host: operatorHost, supabase, handles, endpoint, getTurnstileToken,
         operatorHost, operatorEnabled: true, operatorSupabase: supabase,
       }).remove(); // Operator controls remain; discard duplicate player form.
-    } catch (_) { operatorHost.replaceChildren(); }
+    } catch (_) {
+      if (current === operatorGeneration) operatorHost.replaceChildren();
+    }
   }
   try {
     login = mountOperatorGitHubLogin({
@@ -62,8 +64,16 @@ export async function mountArcadePlayerPass({
     shortcut = await installAdminControlRoomShortcut({
       supabase, controlPanel: panel,
     });
+    // Immediately conceal privileged controls on auth changes, then recheck
+    // the current server role outside the synchronous Supabase auth callback.
+    authSubscription = supabase.auth.onAuthStateChange?.(() => {
+      ++operatorGeneration;
+      operatorHost.replaceChildren();
+      queueMicrotask(() => { void refreshOperator(); });
+    })?.data?.subscription;
   } catch (error) {
     ++operatorGeneration;
+    authSubscription?.unsubscribe();
     shortcut?.destroy();
     login?.element.remove();
     pass?.remove();
@@ -80,6 +90,8 @@ export async function mountArcadePlayerPass({
     },
     destroy: () => {
       ++operatorGeneration;
+      authSubscription?.unsubscribe();
+      operatorHost.replaceChildren();
       shortcut.destroy();
       login.element.remove();
       pass.remove();
