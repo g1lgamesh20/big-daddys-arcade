@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>DON Player Pass — Temporary Activation Test</title>
+<style>body{margin:0;background:radial-gradient(ellipse at top,#25123d,#090714 75%);color:#f5f3ff;font:16px system-ui,sans-serif}main{max-width:520px;margin:5vh auto;padding:24px}h1{color:#93ff85}h2{color:#ff78d9}section{border:1px solid #ff62ce;border-radius:16px;padding:20px;background:#160e26;margin:18px 0}button,input{font:inherit;padding:12px;border-radius:9px}button{background:#2d1743;border:1px solid #ff78d9;color:white;cursor:pointer}button:disabled{opacity:.55}input{background:#080716;border:1px solid #80eaff;color:white;max-width:95%;box-sizing:border-box}label{display:block;margin:14px 0 6px}#status{white-space:pre-wrap;min-height:24px}small{color:#b9b3ce}</style>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script></head>
+<body><main><h1>👾 DON PLAYER PASS</h1><p>Temporary, unlinked activation test. This is not the public Player Pass rollout.</p>
+<section><h2>1. Sign in with GitHub</h2><p id="identity">Checking session…</p><button id="login" disabled>🐙 Sign in with GitHub</button> <button id="logout" hidden>Sign out</button></section>
+<section><h2>2. Activate DON</h2><p>Enter your privately generated one-time code. Never share it with anyone.</p>
+<form id="activation"><label for="code">DON's private arcade code</label><input id="code" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="PACMAN-XXXX" maxlength="20" required><div id="challenge" style="margin:16px 0"></div><button id="activate" disabled>🔐 Activate DON Player Pass</button></form><p id="status" role="status" aria-live="polite"></p></section>
+<p><small>Uses Supabase GitHub authentication and server-side Cloudflare verification. No private secrets are embedded. Delete this temporary page after the permanent Player Pass goes live.</small></p></main>
+<script type="module">
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+const URL="https://jrqzwlowxofnyqpmjgkg.supabase.co";
+const KEY="sb_publishable_AYOK3FB6Kw0Oun_Sugq1wQ_brAZ3VRi";
+const SITE_KEY="0x4AAAAAAF7pNMnGbksEUOCw";
+const REDIRECT="https://g1lgamesh20.github.io/big-daddys-arcade/player-pass-test.html";
+const supabase=createClient(URL,KEY,{auth:{detectSessionInUrl:true,persistSession:true,autoRefreshToken:true}});
+const $=id=>document.getElementById(id);
+let widgetId=null,verified=false,used=false;
+function setStatus(s){$("status").textContent=s}
+async function update(){
+ const {data:{user},error}=await supabase.auth.getUser();
+ verified=!error&&!!user&&!user.is_anonymous&&user.app_metadata?.providers?.includes("github");
+ $("identity").textContent=verified?"Signed in with GitHub. You may activate DON.":user?"This is not a GitHub session. Sign out and sign in with GitHub.":"Not signed in.";
+ $("login").hidden=verified;$("login").disabled=false;$("logout").hidden=!user;
+ $("activate").disabled=!verified||used||widgetId===null;
+}
+$("login").onclick=async()=>{ $("login").disabled=true;const {error}=await supabase.auth.signInWithOAuth({provider:"github",options:{redirectTo:REDIRECT,scopes:"read:user"}});if(error){setStatus("GitHub sign-in failed: "+error.message);$("login").disabled=false;}};
+$("logout").onclick=async()=>{await supabase.auth.signOut();used=false;setStatus("Signed out.");await update()};
+$("activation").onsubmit=async e=>{
+ e.preventDefault();
+ if(!verified||used||widgetId===null)return;
+ const code=$("code").value.trim().toUpperCase();
+ if(!/^[A-Z]{3,12}-[A-Z0-9]{4}$/.test(code)){setStatus("Enter your complete PACMAN-XXXX code.");return}
+ $("activate").disabled=true;setStatus("Activating…");
+ try{
+  const token=window.turnstile?.getResponse(widgetId);
+  if(!token)throw Error("Complete the human verification first.");
+  const {data:{session}}=await supabase.auth.getSession();
+  if(!session?.access_token)throw Error("GitHub session expired. Sign in again.");
+  const response=await fetch(URL+"/functions/v1/player-pass-redeem",{method:"POST",headers:{"content-type":"application/json","apikey":KEY,"authorization":"Bearer "+session.access_token},body:JSON.stringify({initials:"DON",code,turnstile_token:token})});
+  const data=await response.json().catch(()=>({}));
+  if(!response.ok||data.activated!==true)throw Error(data.error||"Activation could not be confirmed");
+  used=true;$("code").value="";setStatus("🏆 DON — PLAYER PASS ACTIVATED! Administrator grant is a separate step.");
+ }catch(err){setStatus(err.message||"Activation failed. Please try again.");window.turnstile?.reset(widgetId)}
+ finally{await update()}
+};
+const start=()=>{if(typeof window.turnstile?.render!=="function"){setTimeout(start,200);return}try{widgetId=window.turnstile.render("#challenge",{sitekey:SITE_KEY});void update()}catch(e){setStatus("Turnstile unavailable: "+e.message)}};
+await update();start();
+</script></body></html>
