@@ -25,13 +25,15 @@ async function exercise({ origin='https://g1lgamesh20.github.io', method='POST',
   token='valid-token', initials='PAC', code='PACMAN-AB12',
   challenge='test-challenge', turnstile={success:true,hostname:'g1lgamesh20.github.io'},
   user={id:'player-1',is_anonymous:true,app_metadata:{providers:['anonymous']}},
-  failVerify=false, expectedStatus, expectedRpc=0 }) {
+  failVerify=false, dbFailure=false, noMatchingCode=false, missingPepper=false,
+  expectedStatus, expectedRpc=0, expectedVerify }) {
   let handler, rpcCalls=0, verifyCalls=0;
   const context = {
-    Deno: { env: { get: name => settings[name] }, serve: fn => { handler=fn; } },
+    Deno: { env: { get: name => missingPepper && name === 'PLAYER_PASS_PEPPER' ? undefined : settings[name] }, serve: fn => { handler=fn; } },
     createClient: (_url,key) => key === settings.SUPABASE_ANON_KEY
       ? {auth:{getUser:async value => value === 'valid-token' ? {data:{user}} : {error:'invalid',data:{}}}}
-      : {rpc:async () => {rpcCalls++;return {data:[{player_id:'player-id',iscored_handle:initials}]};}},
+      : {rpc:async () => {rpcCalls++;return dbFailure ? {error:{code:'TEST_ERROR'}} :
+          {data:noMatchingCode ? [] : [{player_id:'player-id',iscored_handle:initials}]};}},
     fetch: async (_url, options) => {
       verifyCalls++;
       assert.equal(options.method,'POST');
@@ -48,6 +50,7 @@ async function exercise({ origin='https://g1lgamesh20.github.io', method='POST',
   const response = await handler(request);
   assert.equal(response.status,expectedStatus);
   assert.equal(rpcCalls,expectedRpc,'Unexpected privileged database call');
+  if (expectedVerify !== undefined) assert.equal(verifyCalls,expectedVerify,'Unexpected Turnstile request');
   return {verifyCalls,body:await response.json()};
 }
 (async()=>{
@@ -60,6 +63,11 @@ async function exercise({ origin='https://g1lgamesh20.github.io', method='POST',
   await exercise({turnstile:{success:false,hostname:'g1lgamesh20.github.io'},expectedStatus:403});
   await exercise({turnstile:{success:true,hostname:'evil.invalid'},expectedStatus:403});
   await exercise({failVerify:true,expectedStatus:503});
-  await exercise({expectedStatus:200,expectedRpc:1});
+  await exercise({missingPepper:true,expectedStatus:503,expectedVerify:0});
+  await exercise({code:'INVALID',expectedStatus:400,expectedVerify:0});
+  await exercise({challenge:'',expectedStatus:403,expectedVerify:0});
+  await exercise({dbFailure:true,expectedStatus:429,expectedRpc:1,expectedVerify:1});
+  await exercise({noMatchingCode:true,expectedStatus:429,expectedRpc:1,expectedVerify:1});
+  await exercise({expectedStatus:200,expectedRpc:1,expectedVerify:1});
   console.log('Player Pass isolated Edge auth/Turnstile contract tests passed.');
 })().catch(err=>{console.error(err);process.exitCode=1;});
