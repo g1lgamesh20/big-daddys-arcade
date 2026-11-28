@@ -111,11 +111,20 @@ begin
     and subject_hash=md5('33333333-3333-4333-8333-333333333333')
     and window_start=date_trunc('hour',now());
   if v_count <> 7 then raise exception 'Attempt count incorrect: %',v_count; end if;
-  -- Separate user, same target: a valid code can still be redeemed before
-  -- the shared per-handle cap is reached.
+  -- The shared PAC handle is now at its hourly cap (10 attempts).
+  -- Switching accounts or IPs must not bypass that limit.
   if (select count(*) from public.arcade_redeem_player_pass_limited(
-    '44444444-4444-4444-8444-444444444444','PAC',repeat('2',64),repeat('5',64))) <> 1 then
-    raise exception 'Independent user was incorrectly blocked';
+    '44444444-4444-4444-8444-444444444444','PAC',repeat('2',64),repeat('5',64))) <> 0 then
+    raise exception 'Shared per-handle attempt limit was bypassed';
+  end if;
+  -- A different player's handle remains independently eligible.
+  insert into arcade_private.player_pass_players(iscored_handle) values('GAL');
+  insert into arcade_private.player_pass_codes(player_id,code_digest,expires_at)
+  select id,repeat('6',64),now()+interval '7 days'
+  from arcade_private.player_pass_players where iscored_handle='GAL';
+  if (select count(*) from public.arcade_redeem_player_pass_limited(
+    '44444444-4444-4444-8444-444444444444','GAL',repeat('6',64),repeat('5',64))) <> 1 then
+    raise exception 'Independent player was incorrectly blocked';
   end if;
 end;
 $limits$;
