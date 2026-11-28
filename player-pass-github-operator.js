@@ -17,15 +17,19 @@ export function mountOperatorGitHubLogin({ host, operatorSupabase, redirectTo, o
   host.append(section);
   async function verify() {
     button.hidden = false;
+    button.disabled = false;
+    status.textContent = "";
     try {
       const { data: userData, error: userError } = await operatorSupabase.auth.getUser();
       if (userError || !userData?.user || userData.user.is_anonymous ||
           !userData.user.app_metadata?.providers?.includes("github")) return false;
+      // Existing GitHub session must redeem DON code, not start another OAuth flow.
+      button.hidden = true;
       const { data, error } = await operatorSupabase.rpc("arcade_my_player_pass_role");
       const role = Array.isArray(data) ? data[0] : data;
       if (error || role?.iscored_handle !== "DON" || role?.is_admin !== true) {
         button.hidden = true;
-        status.textContent = "GitHub signed in. DON Player Pass activation and administrator approval are still required.";
+        status.textContent = "GitHub signed in. Redeem DON Player Pass code here; administrator approval follows.";
         return false;
       }
       button.hidden = true;
