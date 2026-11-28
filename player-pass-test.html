@@ -4,7 +4,7 @@
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script></head>
 <body><main><h1>👾 DON PLAYER PASS</h1><p>Temporary, unlinked activation test. This is not the public Player Pass rollout.</p>
 <section><h2>1. Sign in with GitHub</h2><p id="identity">Checking session…</p><button id="login" disabled>🐙 Sign in with GitHub</button> <button id="logout" hidden>Sign out</button></section>
-<section><h2>2. Activate DON</h2><p>Enter your privately generated one-time code. Never share it with anyone.</p>
+<section><h2 id="pass-heading">2. DON Player Pass Status</h2><p id="pass-description">Checking Player Pass…</p>
 <form id="activation"><label for="code">DON's private arcade code</label><input id="code" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="PACMAN-XXXX" maxlength="20" required><div id="challenge" style="margin:16px 0"></div><button id="activate" disabled>🔐 Activate DON Player Pass</button></form><p id="status" role="status" aria-live="polite"></p></section>
 <p><small>Uses Supabase GitHub authentication and server-side Cloudflare verification. No private secrets are embedded. Delete this temporary page after the permanent Player Pass goes live.</small></p></main>
 <script type="module">
@@ -27,12 +27,13 @@ async function update(){
   if(!roleError && Array.isArray(role) && role.some(r=>r.iscored_handle==="DON")){
    used=true;
    $("activation").hidden=true;
-   setStatus("🏆 DON — PLAYER PASS ALREADY ACTIVATED! Administrator grant is a separate step.");
+   $("pass-heading").textContent="2. DON Player Pass Status"; $("pass-description").textContent="Your Player Pass was verified with Supabase."; setStatus(role.some(r=>r.iscored_handle==="DON" && r.is_admin===true) ? "🏆 DON — PLAYER PASS ACTIVATED!\n🛡️ ADMINISTRATOR VERIFIED" : "🏆 DON — PLAYER PASS ACTIVATED!\nAdministrator grant pending.");
   }else if(roleError){
    $("activation").hidden=true;
    setStatus("Unable to check existing Player Pass. Do not reuse your activation code.");
   }else{
    $("activation").hidden=false;
+   $("pass-heading").textContent="2. Activate DON"; $("pass-description").textContent="Enter your privately generated one-time code. Never share it with anyone.";
    if(!used)setStatus("No linked Player Pass found for this GitHub account. Do not reuse an already redeemed code.");
   }
  }else{
