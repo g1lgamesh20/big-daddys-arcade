@@ -48,8 +48,10 @@ export async function installAdminControlRoomShortcut({
       entry.style.display = "block";
     } catch (_) { /* fail closed */ }
   }
-  entry.addEventListener("click", () => {
-    if (!verified) return;
+  entry.addEventListener("click", async () => {
+    // Recheck server authority at click time: a revoked admin must not reopen the room.
+    await refresh();
+    if (!verified || !entry.isConnected) return;
     // The existing template is moved into the room only after authorization.
     if (!room.querySelector("#arcade-developer-control-inner")) {
       room.append(template.content);
