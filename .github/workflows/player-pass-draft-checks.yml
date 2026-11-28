@@ -11,6 +11,7 @@ on:
       - '.github/workflows/player-pass-draft-checks.yml'
       - 'tests/player_pass_postgres_smoke.sql'
       - 'tests/test_player_pass_concurrency_ci.py'
+      - 'player-pass-*.js'
   pull_request:
     paths:
       - 'tests/test_player_pass_*.py'
@@ -33,6 +34,15 @@ jobs:
           python-version: '3.12'
       - name: Run Player Pass offline regression tests
         run: python -m unittest discover -s tests -p 'test_player_pass_*.py' -v
+
+  frontend-syntax:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate draft Player Pass JavaScript modules
+        run: |
+          for file in player-pass-*.js; do node --check "$file"; done
 
   postgres-smoke:
     runs-on: ubuntu-latest
