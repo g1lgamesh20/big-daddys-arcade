@@ -9,7 +9,7 @@ class Element {
     this.id = id; this.hidden = false; this.style = { display: '', cssText: '',
       setProperty: (key, value) => { this.style[key] = value; } };
     this.children = []; this.handlers = {}; this.isConnected = true;
-    this.open = false; this.content = new Element('template-content');
+    this.open = false; this.content = null;
   }
   append(node) { this.children.push(node); node.isConnected = true; }
   remove() { this.isConnected = false; }
@@ -18,6 +18,7 @@ class Element {
   scrollIntoView() {}
 }
 const template = new Element('arcade-developer-template');
+template.content = new Element('template-content');
 const room = new Element('arcade-developer-control');
 const inner = new Element('arcade-developer-control-inner');
 const panel = new Element('arcade-settings-body');
