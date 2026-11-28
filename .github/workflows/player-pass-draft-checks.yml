@@ -48,6 +48,7 @@ jobs:
         run: |
           node tests/test_player_pass_admin_dom.cjs
           node tests/test_player_pass_integration_dom.cjs
+          node tests/test_player_pass_turnstile.cjs
       - name: Test isolated Edge authentication and Turnstile gates
         run: node tests/test_player_pass_edge.cjs
 
