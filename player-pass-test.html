@@ -22,6 +22,23 @@ async function update(){
  verified=!error&&!!user&&!user.is_anonymous&&user.app_metadata?.providers?.includes("github");
  $("identity").textContent=verified?"Signed in with GitHub. You may activate DON.":user?"This is not a GitHub session. Sign out and sign in with GitHub.":"Not signed in.";
  $("login").hidden=verified;$("login").disabled=false;$("logout").hidden=!user;
+ if(verified){
+  const {data:role,error:roleError}=await supabase.rpc("arcade_my_player_pass_role");
+  if(!roleError && Array.isArray(role) && role.some(r=>r.iscored_handle==="DON")){
+   used=true;
+   $("activation").hidden=true;
+   setStatus("🏆 DON — PLAYER PASS ALREADY ACTIVATED! Administrator grant is a separate step.");
+  }else if(roleError){
+   $("activation").hidden=true;
+   setStatus("Unable to check existing Player Pass. Do not reuse your activation code.");
+  }else{
+   $("activation").hidden=false;
+   if(!used)setStatus("No linked Player Pass found for this GitHub account. Do not reuse an already redeemed code.");
+  }
+ }else{
+  $("activation").hidden=true;
+  if(!used)setStatus("Sign in with GitHub to check your existing Player Pass.");
+ }
  $("activate").disabled=!verified||used||widgetId===null;
 }
 $("login").onclick=async()=>{ $("login").disabled=true;const {error}=await supabase.auth.signInWithOAuth({provider:"github",options:{redirectTo:REDIRECT,scopes:"read:user"}});if(error){setStatus("GitHub sign-in failed: "+error.message);$("login").disabled=false;}};
