@@ -14,12 +14,12 @@
 3. Import the approved iScored player directory from an authenticated source. Verify exactly one `DON` record and reject duplicate or unverified handles.
 4. Generate a fresh DON activation code using cryptographically secure randomness. Compute its HMAC-SHA256 digest using the same server-only `PLAYER_PASS_PEPPER` as the redemption function. Insert **only the digest** into `arcade_private.player_pass_codes` with a seven-day expiry and a trusted bootstrap audit record. Do not commit or log the plaintext code. Deliver it to DON privately.
 5. On the same browser where GitHub OAuth created the verified Auth session, redeem the DON code through the reviewed `player-pass-redeem` endpoint. The endpoint must enforce Turnstile, allowlisted Auth UUID, GitHub provider, handle match, expiry, replay protection and attempt limits.
-6. **Only after redemption succeeds**, use a privileged one-time database operation to insert the admin grant for the verified DON player. Recheck that the active device is bound to the allowlisted GitHub Auth UUID. Log the grant, then remove or disable any bootstrap-only access path.
+6. **Only after redemption succeeds**, review and execute a PRIVATE copy of `supabase/bootstrap/player-pass-don-admin-grant_REVIEW_ONLY.sql` from a trusted privileged SQL session, substituting the independently verified operator UUID. This template deliberately fails closed with its placeholder and refuses a second grant. Never deploy it as a migration or expose it as an RPC. Use this privileged one-time database operation to insert the admin grant for the verified DON player. Recheck that the active device is bound to the allowlisted GitHub Auth UUID. Log the grant, then remove or disable any bootstrap-only access path.
 7. Verify `arcade_my_player_pass_role()` returns DON/admin only for the operator session; verify `arcade_operator_is_active_admin` rejects unrelated, anonymous and revoked users. Test the operator issuance endpoint and revocation. Test login persistence on iPhone and Android before enabling the Control Room shortcut.
 8. Require explicit production rollout approval before enabling Player Pass broadly. Do not merge PR #96 merely because the identity check succeeded.
 
 ## Critical pending work
-- Implement a reviewed, single-use bootstrap mechanism; the steps above are a design, not an executable credential-issuing tool.
+- A fail-closed admin-grant SQL template now exists, but it is unexecuted and not a credential-issuing tool. Complete the separate trusted first-code insertion procedure and PostgreSQL integration tests before any production use.
 - Complete independent review of four-character code brute-force protection and Turnstile enforcement.
 - Validate the client OAuth callback, shared Auth session, UI lifecycle and server-only admin authorization.
 - Retire the public identity-check page after enrollment or protect it from unnecessary continued use. It grants no admin access by itself.
