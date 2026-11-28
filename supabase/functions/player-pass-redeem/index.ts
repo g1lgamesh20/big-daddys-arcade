@@ -54,10 +54,11 @@ Deno.serve(async (req: Request) => {
   // never a self-claimed anonymous identity. Other players stay anonymous.
   const approvedOperatorId = Deno.env.get("PLAYER_PASS_OPERATOR_USER_ID");
 
+  // Allow the full 2,048-character Turnstile token plus JSON envelope.
   let body: { initials?: unknown; code?: unknown; turnstile_token?: unknown };
   try {
     const raw = await req.text();
-    if (raw.length > 512) return respond(413, { error: "Request too large" });
+    if (raw.length > 4096) return respond(413, { error: "Request too large" });
     body = JSON.parse(raw);
     if (!body || typeof body !== "object" || Array.isArray(body)) throw new Error("Invalid");
   } catch {
