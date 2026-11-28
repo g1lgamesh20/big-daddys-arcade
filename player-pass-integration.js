@@ -4,15 +4,16 @@
  * Do not enable until migrations, endpoints, operator bootstrap and tests pass.
  */
 import { mountPlayerPass } from "./player-pass-ui.js";
+import { createPlayerPassTurnstile } from "./player-pass-turnstile.js";
 import { mountOperatorGitHubLogin } from "./player-pass-github-operator.js";
 import { installAdminControlRoomShortcut } from "./player-pass-admin-shortcut.js";
 
 export async function mountArcadePlayerPass({
-  supabase, handles, endpoint, getTurnstileToken,
+  supabase, handles, endpoint, getTurnstileToken, turnstileSiteKey,
   redirectTo = "https://g1lgamesh20.github.io/big-daddys-arcade/",
 }) {
   if (!supabase?.auth || !Array.isArray(handles) || !endpoint ||
-      typeof getTurnstileToken !== "function") {
+      (typeof getTurnstileToken !== "function" && !turnstileSiteKey)) {
     throw new Error("Player Pass integration prerequisites missing");
   }
   const panel = document.querySelector("#arcade-settings-panel > .arcade-settings-body");
@@ -30,7 +31,8 @@ export async function mountArcadePlayerPass({
   host.append(operatorHost);
 
   // Roll back partial UI mounts if the operator shortcut cannot initialize.
-  let login, pass, shortcut, authSubscription;
+  let login, pass, shortcut, authSubscription, turnstileWidget;
+  let tokenProvider = getTurnstileToken;
   let operatorGeneration = 0;
   async function refreshOperator() {
     const current = ++operatorGeneration;
@@ -45,7 +47,7 @@ export async function mountArcadePlayerPass({
       if (role?.iscored_handle !== "DON" || role?.is_admin !== true) return;
       // The issuance endpoint independently checks DON UUID, bound device and role.
       mountPlayerPass({
-        host: operatorHost, supabase, handles, endpoint, getTurnstileToken,
+        host: operatorHost, supabase, handles, endpoint, getTurnstileToken: tokenProvider,
         operatorHost, operatorEnabled: true, operatorSupabase: supabase,
       }).remove(); // Operator controls remain; discard duplicate player form.
     } catch (_) {
@@ -53,12 +55,18 @@ export async function mountArcadePlayerPass({
     }
   }
   try {
+    if (!tokenProvider) {
+      const challengeHost = document.createElement("div");
+      host.append(challengeHost);
+      turnstileWidget = createPlayerPassTurnstile({ host: challengeHost, siteKey: turnstileSiteKey });
+      tokenProvider = turnstileWidget.getTurnstileToken;
+    }
     login = mountOperatorGitHubLogin({
       host: loginHost, operatorSupabase: supabase, redirectTo,
       onVerified: () => { void refreshOperator(); },
     });
     pass = mountPlayerPass({
-      host, supabase, handles, endpoint, getTurnstileToken,
+      host, supabase, handles, endpoint, getTurnstileToken: tokenProvider,
     });
     await refreshOperator();
     shortcut = await installAdminControlRoomShortcut({
@@ -74,6 +82,7 @@ export async function mountArcadePlayerPass({
   } catch (error) {
     ++operatorGeneration;
     authSubscription?.unsubscribe();
+    turnstileWidget?.destroy();
     shortcut?.destroy();
     login?.element.remove();
     pass?.remove();
@@ -91,6 +100,7 @@ export async function mountArcadePlayerPass({
     destroy: () => {
       ++operatorGeneration;
       authSubscription?.unsubscribe();
+      turnstileWidget?.destroy();
       operatorHost.replaceChildren();
       shortcut.destroy();
       login.element.remove();
