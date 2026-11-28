@@ -1,0 +1,60 @@
+/* DON operator GitHub OAuth login — DEVELOPMENT ONLY.
+ * Supabase GitHub provider and redirect allowlist must be configured first.
+ * GitHub identity alone NEVER grants administrator privileges: the server must
+ * also check the allowlisted Auth UUID, active device binding and admin role.
+ */
+export function mountOperatorGitHubLogin({ host, operatorSupabase, redirectTo, onVerified }) {
+  if (!host || !operatorSupabase?.auth || !redirectTo) throw new Error("Operator login setup incomplete");
+  const section = document.createElement("section");
+  section.className = "player-pass-operator-login";
+  const button = document.createElement("button");
+  button.type = "button";
+  button.textContent = "🐙 SIGN IN WITH GITHUB (DON)";
+  const status = document.createElement("p");
+  status.setAttribute("role", "status");
+  status.setAttribute("aria-live", "polite");
+  section.append(button, status);
+  host.append(section);
+  let generation = 0;
+  async function verify() {
+    const current = ++generation;
+    button.hidden = false;
+    button.disabled = false;
+    status.textContent = "";
+    try {
+      const { data: userData, error: userError } = await operatorSupabase.auth.getUser();
+      if (userError || !userData?.user || userData.user.is_anonymous ||
+          !userData.user.app_metadata?.providers?.includes("github")) return false;
+      // Existing GitHub session must redeem DON code, not start another OAuth flow.
+      button.hidden = true;
+      const { data, error } = await operatorSupabase.rpc("arcade_my_player_pass_role");
+      if (current !== generation) return false;
+      const role = Array.isArray(data) ? data[0] : data;
+      if (error || role?.iscored_handle !== "DON" || role?.is_admin !== true) {
+        button.hidden = true;
+        status.textContent = "GitHub signed in. Redeem DON Player Pass code here; administrator approval follows.";
+        return false;
+      }
+      button.hidden = true;
+      status.textContent = "🤖 DON — administrator session verified";
+      if (typeof onVerified === "function") onVerified();
+      return true;
+    } catch (_) { return false; }
+  }
+  button.addEventListener("click", async () => {
+    button.disabled = true;
+    status.textContent = "Opening GitHub sign-in…";
+    try {
+      const { error } = await operatorSupabase.auth.signInWithOAuth({
+        provider: "github",
+        options: { redirectTo, scopes: "read:user" },
+      });
+      if (error) throw error;
+    } catch (_) {
+      status.textContent = "GitHub sign-in unavailable. Please try again.";
+      button.disabled = false;
+    }
+  });
+  void verify();
+  return { verify, element: section };
+}

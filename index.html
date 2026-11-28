@@ -857,6 +857,9 @@ See you on the leaderboard! 🏆`;
    timer=null;active=false;robot.classList.remove('is-holding');
  };
  const unlock=()=>{
+   // Disabled on Player Pass development branch: hidden gesture is not authorization.
+   // The authorized DON shortcut will replace this route after backend verification.
+   cancel();return;
    if(!lab.open||lab.hidden){cancel();return;}
    cancel();if(!room.dataset.unlocked){
      const template=document.getElementById('arcade-developer-template');

@@ -1,0 +1,83 @@
+name: Player Pass draft security checks
+
+on:
+  push:
+    branches:
+      - feature/player-pass-foundation-20261127
+    paths:
+      - 'tests/test_player_pass_*.py'
+      - 'scripts/prepare-don-bootstrap.py'
+      - 'supabase/migrations/*player_pass*'
+      - '.github/workflows/player-pass-draft-checks.yml'
+      - 'tests/player_pass_postgres_smoke.sql'
+      - 'tests/test_player_pass_concurrency_ci.py'
+      - 'player-pass-*.js'
+      - 'tests/test_player_pass_*.cjs'
+  pull_request:
+    paths:
+      - 'tests/test_player_pass_*.py'
+      - 'scripts/prepare-don-bootstrap.py'
+      - 'supabase/migrations/*player_pass*'
+      - '.github/workflows/player-pass-draft-checks.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  offline-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run Player Pass offline regression tests
+        run: python -m unittest discover -s tests -p 'test_player_pass_*.py' -v
+
+  frontend-syntax:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate draft Player Pass JavaScript modules
+        run: |
+          for file in player-pass-*.js; do node --check "$file"; done
+      - name: Test Player Pass Control Panel DOM behavior
+        run: |
+          node tests/test_player_pass_admin_dom.cjs
+          node tests/test_player_pass_integration_dom.cjs
+          node tests/test_player_pass_turnstile.cjs
+      - name: Test isolated Edge authentication and Turnstile gates
+        run: node tests/test_player_pass_edge.cjs
+
+  postgres-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: test-only-password
+          POSTGRES_DB: arcade_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres -d arcade_test"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      PGHOST: localhost
+      PGPORT: '5432'
+      PGUSER: postgres
+      PGPASSWORD: test-only-password
+      PGDATABASE: arcade_test
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test draft SQL in isolated PostgreSQL
+        run: psql -X -v ON_ERROR_STOP=1 -f tests/player_pass_postgres_smoke.sql
+      - name: Test simultaneous redemption in separate database sessions
+        run: python3 tests/test_player_pass_concurrency_ci.py
