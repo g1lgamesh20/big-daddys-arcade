@@ -12,7 +12,7 @@ on:
       - 'tests/player_pass_postgres_smoke.sql'
       - 'tests/test_player_pass_concurrency_ci.py'
       - 'player-pass-*.js'
-      - 'tests/test_player_pass_*_dom.cjs'
+      - 'tests/test_player_pass_*.cjs'
   pull_request:
     paths:
       - 'tests/test_player_pass_*.py'
@@ -48,6 +48,8 @@ jobs:
         run: |
           node tests/test_player_pass_admin_dom.cjs
           node tests/test_player_pass_integration_dom.cjs
+      - name: Test isolated Edge authentication and Turnstile gates
+        run: node tests/test_player_pass_edge.cjs
 
   postgres-smoke:
     runs-on: ubuntu-latest
