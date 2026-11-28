@@ -44,7 +44,7 @@ export function createPlayerPassTurnstile({ host, siteKey }) {
     if (readyToken) {
       const token = readyToken;
       readyToken = null;
-      window.turnstile.reset(widgetId);
+      // Do not reset here: resetting can invalidate the token before Siteverify.
       return token;
     }
     return new Promise((resolve, reject) => {
