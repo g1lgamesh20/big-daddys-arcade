@@ -39,13 +39,20 @@ export function mountPlayerPass({ host, supabase, handles, endpoint, operatorHos
 
   async function authSession(initials) {
     const { data: current } = await supabase.auth.getSession();
-    if (initials === "DON") {\n      if (!current?.session?.access_token || current.session.user?.is_anonymous ||\n          !current.session.user?.app_metadata?.providers?.includes("github")) {\n        throw new Error("DON: sign in with GitHub before activating your Player Pass.");\n      }\n      return current.session;\n    }\n    if (current?.session?.access_token) return current.session;
+    if (initials === "DON") {
+      if (!current?.session?.access_token || current.session.user?.is_anonymous ||
+          !current.session.user?.app_metadata?.providers?.includes("github")) {
+        throw new Error("DON: sign in with GitHub before activating your Player Pass.");
+      }
+      return current.session;
+    }
+    if (current?.session?.access_token) return current.session;
     const { data, error } = await supabase.auth.signInAnonymously();
     if (error || !data?.session) throw new Error("Device sign-in unavailable");
     return data.session;
   }
   async function send(action, payload) {
-    const session = await authSession();
+    const session = await authSession(payload.initials);
     const response = await fetch(endpoint.replace(/\/$/, "") + "/" + action, {
       method: "POST",
       headers: {
