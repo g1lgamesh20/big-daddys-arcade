@@ -159,4 +159,52 @@ begin
   end if;
 end;
 $revocation$;
+-- Authorization boundary: public/anonymous clients cannot call privileged RPCs
+-- or access the private Player Pass schema, even with a valid Auth session.
+do $permissions$
+declare
+  v_role text;
+  v_rpc text;
+begin
+  foreach v_role in array array['anon','authenticated'] loop
+    if pg_catalog.has_schema_privilege(v_role,'arcade_private','USAGE') then
+      raise exception '% can access private Player Pass schema',v_role;
+    end if;
+    foreach v_rpc in array array[
+      'public.arcade_redeem_player_pass_limited(uuid,text,text,text)',
+      'public.arcade_issue_player_pass(text,text,timestamptz,uuid)',
+      'public.arcade_operator_is_active_admin(uuid)'
+    ] loop
+      if pg_catalog.has_function_privilege(v_role,v_rpc,'EXECUTE') then
+        raise exception '% can execute privileged RPC %',v_role,v_rpc;
+      end if;
+    end loop;
+  end loop;
+  if not pg_catalog.has_function_privilege(
+    'authenticated','public.arcade_my_player_pass_role()','EXECUTE') then
+    raise exception 'Authenticated players cannot query their own Player Pass role';
+  end if;
+  if pg_catalog.has_function_privilege(
+    'anon','public.arcade_my_player_pass_role()','EXECUTE') then
+    raise exception 'Anonymous public API can query Player Pass role';
+  end if;
+end;
+$permissions$;
+-- Device revocation is scoped to one device; it must not disable another
+-- still-active, independently enrolled device for the same operator.
+do $device_scope$
+declare
+  v_second uuid := '55555555-5555-4555-8555-555555555555';
+  v_first uuid := '11111111-1111-4111-8111-111111111111';
+begin
+  update arcade_private.player_pass_admins set revoked_at=null
+  where player_id=(select id from arcade_private.player_pass_players where iscored_handle='DON');
+  if public.arcade_operator_is_active_admin(v_first) then
+    raise exception 'Previously revoked first device regained operator privileges';
+  end if;
+  if not public.arcade_operator_is_active_admin(v_second) then
+    raise exception 'Active second device lost privileges due to first-device revocation';
+  end if;
+end;
+$device_scope$;
 select 'Player Pass PostgreSQL smoke test passed' as result;
