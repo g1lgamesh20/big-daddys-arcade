@@ -18,12 +18,15 @@ def sql(name):
 class PlayerPassSqlGuards(unittest.TestCase):
     def test_handle_limit_is_account_independent(self):
         s = sql("20261127_player_pass_limited_redeem_REVIEW_ONLY.sql")
-        self.assertIn("('user','ip','handle')", s)
+        self.assertIn("('user','ip','handle','global')", s)
         self.assertIn("v_handle_hash := md5(upper(trim(p_iscored_handle)))", s)
         self.assertIn("pass-handle:", s)
+        self.assertIn("pass-global", s)
+        self.assertIn("values('global','all',v_window,1)", s)
+        self.assertIn("returning attempts into v_global_attempts", s)
         self.assertIn("values('handle',v_handle_hash,v_window,1)", s)
         self.assertIn("returning attempts into v_handle_attempts", s)
-        self.assertRegex(s, r"if v_user_attempts > 5 or v_ip_attempts > 20 or v_handle_attempts > 10 then return; end if;")
+        self.assertRegex(s, r"if v_user_attempts > 5 or v_ip_attempts > 20 or v_handle_attempts > 10 or v_global_attempts > 100 then return; end if;")
 
     def test_code_redemption_is_atomic_and_one_use(self):
         s = sql("20261127_player_pass_limited_redeem_REVIEW_ONLY.sql")
