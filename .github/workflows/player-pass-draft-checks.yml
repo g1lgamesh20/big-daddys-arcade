@@ -1,0 +1,33 @@
+name: Player Pass draft security checks
+
+on:
+  push:
+    branches:
+      - feature/player-pass-foundation-20261127
+    paths:
+      - 'tests/test_player_pass_*.py'
+      - 'scripts/prepare-don-bootstrap.py'
+      - 'supabase/migrations/*player_pass*'
+      - '.github/workflows/player-pass-draft-checks.yml'
+  pull_request:
+    paths:
+      - 'tests/test_player_pass_*.py'
+      - 'scripts/prepare-don-bootstrap.py'
+      - 'supabase/migrations/*player_pass*'
+      - '.github/workflows/player-pass-draft-checks.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  offline-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run Player Pass offline regression tests
+        run: python -m unittest discover -s tests -p 'test_player_pass_*.py' -v
