@@ -207,4 +207,36 @@ begin
   end if;
 end;
 $device_scope$;
+-- Identity boundary: a valid code cannot be redeemed against a different
+-- player handle, and an anonymous Auth identity cannot claim DON.
+insert into auth.users values
+ ('88888888-8888-4888-8888-888888888888',true,'{"providers":["anonymous"]}'),
+ ('99999999-9999-4999-8999-999999999999',true,'{"providers":["anonymous"]}');
+insert into arcade_private.player_pass_players(iscored_handle) values('NEW');
+insert into arcade_private.player_pass_codes(player_id,code_digest,expires_at)
+select id,repeat('a',64),now()+interval '7 days'
+from arcade_private.player_pass_players where iscored_handle='NEW';
+insert into arcade_private.player_pass_codes(player_id,code_digest,expires_at)
+select id,repeat('b',64),now()+interval '7 days'
+from arcade_private.player_pass_players where iscored_handle='DON';
+do $identity$
+begin
+  if (select count(*) from public.arcade_redeem_player_pass_limited(
+    '88888888-8888-4888-8888-888888888888','PAC',repeat('a',64),repeat('a',64))) <> 0 then
+    raise exception 'Code redeemed for wrong player handle';
+  end if;
+  if (select count(*) from public.arcade_redeem_player_pass_limited(
+    '99999999-9999-4999-8999-999999999999','DON',repeat('b',64),repeat('b',64))) <> 0 then
+    raise exception 'Anonymous Auth user claimed DON';
+  end if;
+  if (select count(*) from public.arcade_redeem_player_pass_limited(
+    '88888888-8888-4888-8888-888888888888','NEW',repeat('a',64),repeat('a',64))) <> 1 then
+    raise exception 'Wrong-handle attempt invalidated legitimate code';
+  end if;
+  if (select count(*) from arcade_private.player_pass_codes
+    where code_digest=repeat('b',64) and redeemed_at is not null) <> 0 then
+    raise exception 'Rejected anonymous DON claim consumed a code';
+  end if;
+end;
+$identity$;
 select 'Player Pass PostgreSQL smoke test passed' as result;
