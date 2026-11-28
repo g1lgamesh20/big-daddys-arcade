@@ -12,6 +12,7 @@ on:
       - 'tests/player_pass_postgres_smoke.sql'
       - 'tests/test_player_pass_concurrency_ci.py'
       - 'player-pass-*.js'
+      - 'tests/test_player_pass_*_dom.cjs'
   pull_request:
     paths:
       - 'tests/test_player_pass_*.py'
@@ -43,6 +44,10 @@ jobs:
       - name: Validate draft Player Pass JavaScript modules
         run: |
           for file in player-pass-*.js; do node --check "$file"; done
+      - name: Test Player Pass Control Panel DOM behavior
+        run: |
+          node tests/test_player_pass_admin_dom.cjs
+          node tests/test_player_pass_integration_dom.cjs
 
   postgres-smoke:
     runs-on: ubuntu-latest
